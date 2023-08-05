@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: tapfile
+Version: 0.2
+Summary: Read Commodore tape images
+Home-page: https://eden.mose.org.uk/gitweb/?p=python-tapfile.git
+Author: Simon Rowe
+Author-email: srowe@mose.org.uk
+License: UNKNOWN
+Description: # tapfile
+        
+        This Python module enables access to tape image files (.tap) used by various Commodore microcomputer emulators and tools.
+        
+        It provides a simple interface to read program and data files within an image.
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU General Public License v2 (GPLv2)
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Description-Content-Type: text/markdown
