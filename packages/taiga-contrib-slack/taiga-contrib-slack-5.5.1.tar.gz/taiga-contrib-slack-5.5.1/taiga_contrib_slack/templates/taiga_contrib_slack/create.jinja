@@ -1,0 +1,24 @@
+{% if obj_type == "epic" %}
+    {% set final_url = resolve_front_url("epic", obj.project.slug, obj.ref) %}
+    {{ _("New Epic created: ") }} *<{{final_url}}|#{{obj.ref}}: {{obj.subject|safe}}>*
+{% elif obj_type == "relateduserstory" %}
+    {% set userstory_url = resolve_front_url("userstory", obj.project.slug, obj.user_story.ref) %}
+    {% set epic_url = resolve_front_url("epic", obj.project.slug, obj.epic.ref) %}
+    {{ _("New user story related: ") }} *<{{userstory_url}}|#{{obj.user_story.ref}}: {{obj.user_story.subject|safe}}>* in the epic *<{{epic_url}}|#{{obj.epic.ref}}: {{obj.epic.subject|safe}}>*
+{% elif obj_type == "issue" %}
+    {% set final_url = resolve_front_url("issue", obj.project.slug, obj.ref) %}
+    {{ _("New Issue created: ") }} *<{{final_url}}|#{{obj.ref}}: {{obj.subject|safe}}>*
+{% elif obj_type == "task" %}
+    {% set final_url = resolve_front_url("task", obj.project.slug, obj.ref) %}
+    {{ _("New Task created: ") }} *<{{final_url}}|#{{obj.ref}}: {{obj.subject|safe}}>*
+{% elif obj_type == "userstory" %}
+    {% set final_url = resolve_front_url("userstory", obj.project.slug, obj.ref) %}
+    {{ _("New User Story created: ") }} *<{{final_url}}|#{{obj.ref}}: {{obj.subject|safe}}>*
+{% elif obj_type == "wikipage" %}
+    {% set final_url = resolve_front_url("wiki", obj.project.slug, obj.slug) %}
+    {{ _("New Wiki Page created: ") }} *<{{final_url}}|{{obj.slug|safe}}>*
+{% elif obj_type == "milestone" %}
+    {% set final_url = resolve_front_url("taskboard", obj.project.slug, obj.slug) %}
+    {{ _("New Sprint: ") }} *<{{final_url}}|{{obj.name|safe}}>*
+    from: *{{obj.estimated_start}}* to: *{{ obj.estimated_finish }}*
+{% endif %}
