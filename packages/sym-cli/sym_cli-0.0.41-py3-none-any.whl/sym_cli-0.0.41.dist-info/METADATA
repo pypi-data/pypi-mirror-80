@@ -1,0 +1,94 @@
+Metadata-Version: 2.1
+Name: sym-cli
+Version: 0.0.41
+Summary: The CLI for Sym
+Home-page: https://github.com/symopsio/runtime/cli
+Author: SymOps, Inc.
+Author-email: pypi@symops.io
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: Click
+Requires-Dist: PyYAML
+Requires-Dist: sentry-sdk (>=0.17)
+Requires-Dist: validators
+Requires-Dist: analytics-python
+Requires-Dist: boto3 (>=1.14)
+Requires-Dist: click-option-group
+Requires-Dist: immutables
+Requires-Dist: portalocker
+Requires-Dist: SecretStorage (>3)
+Requires-Dist: keyring
+
+# sym-cli
+
+Sym CLI
+
+## Usage
+
+### Login
+
+`sym login --email rick@symops.io --org sym`
+
+Or, to run interactively: `sym login`
+
+Currently, this saves the email and org name to a local configuration file that defaults to `$HOME/.config/sym/config.yml`.
+Currently, this does NOT do any kind of validation or communication with the rest of the platform.
+This location can be tweaked by editing the `XDG_CONFIG_HOME` environment variable (replaces `$HOME/.config`).
+
+### Resources
+
+`sym resources`
+
+Once you run `sym login`, you can see the resource groups available by running `sym resources`.
+
+Currently, this is based on a hard-coded list of resource groups defined in params.py. If logged in using a sym email address, then
+there will be exactly one resource available: `test`.
+
+### SSH
+
+`sym ssh RESOURCE INSTANCE`
+
+Initializes an SSH connection to an instance in the resource group.
+
+`sym ssh test i-01073e9d0438334fc`
+
+Creates an SSH connection to an instance `i-01073e9d0438334fc`. In order to create this connection, Sym first attempts a login via SAML
+using `saml2aws` (or `aws-okta` as a fallback) for the currently logged in user (the email address in `config.yml` set via `sym login`).
+This may require MFA.
+
+`sym --saml-client=aws-profile ssh PROFILE INSTANCE`
+
+### Write Creds
+
+`sym write-creds test --profile PROFILE`
+
+It can be convenient to save temporary credentials for a sym resource into an AWS profile. Then the AWS profile can be used for other commands
+(with `sym` or other tools).
+
+### Exec
+
+`sym exec test -- COMMAND`
+
+You can use `sym` to execute a command or script using the credentials for the resource group.
+
+Similar to other commands, you can use an AWS profile instead of a sym resource group:
+
+`sym --saml-client=aws-profile exec PROFILE -- COMMAND`
+
+### Ansible Playbook
+
+`sym ansible-playbook test -i ec2.py docker_test.yml`
+
+There are several useful environment variables that can help with debugging:
+* `SYM_LOG_DIR`: Set to a directory (i.e. `/tmp/sym/test`) to accumulate logs from sym commands.
+* `SYM_DEBUG`: Set to `true` to turn on verbose logging from ansible and ssh
+
+Like other commands, you can use an AWS profile instead of a sym resource group:
+
+`sym --saml-client=aws-profile ansible-playbook PROFILE -i ec2.py docker_test.yml`
+
+
