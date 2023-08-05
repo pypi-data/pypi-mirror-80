@@ -1,0 +1,20 @@
+- job:
+    name: compute-hyperv-openstack-tox-docs
+    parent: openstack-tox-docs
+    description: |
+      Run tox docs job with the nova dependency.
+    required-projects:
+      - openstack/nova
+
+- project:
+    templates:
+      - build-release-notes-jobs-python3
+      - check-requirements
+      - openstack-lower-constraints-jobs
+      - openstack-python3-victoria-jobs
+    check:
+      jobs:
+        - compute-hyperv-openstack-tox-docs
+    gate:
+      jobs:
+        - compute-hyperv-openstack-tox-docs
