@@ -1,0 +1,29 @@
+Metadata-Version: 1.2
+Name: argparseware
+Version: 0.9.4
+Summary: argparse middleware library.
+Home-page: UNKNOWN
+Author: Relevance.io
+Author-email: info@relevance.io
+Maintainer: Francis Lacroix
+Maintainer-email: f@relevance.io
+License: TBD
+Description: argparse middleware library.
+        
+        argparseware is designed as a turnkey library for developers who like the
+        standard library, most specifically argparse. It extends the built-in argparse
+        library by simply allowing one to define middleware components in a very
+        simple syntax, improving reusability, while not compromising or reinventing
+        the programming interfaces they already know.
+Platform: any
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Utilities
+Provides: argparseware
+Requires-Python: >=3.6
