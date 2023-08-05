@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: eqlib
+Version: 0.38.0
+Summary: Tools for finding equilibrium
+Home-page: https://github.com/oberbichler/EQlib
+Author: Thomas Oberbichler
+Author-email: thomas.oberbichler@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Requires-Dist: numpy
+Requires-Dist: scipy
+Requires-Dist: msvc-runtime; platform_system == "Windows"
+
+UNKNOWN
+
+
