@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "cw-cleaner"
+version = "0.1.0"
+description = "cli tool to clean and maintain cw logs."
+authors = ["Nir Adler <me@niradler.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+boto3 = "^1.14.62"
+fire = "^0.3.1"
+tabulate = "^0.8.7"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0a5"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+cw-cleaner = 'cw_cleaner:main'
