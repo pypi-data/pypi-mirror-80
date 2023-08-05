@@ -1,0 +1,39 @@
+Metadata-Version: 2.1
+Name: py-iss-telemetry
+Version: 1.0
+Summary: Stream live International Space Station Telemetry.
+Home-page: https://github.com/BApplB/py-iss-telemetry
+Author: Ben Appleby
+Author-email: ben.appleby@sky.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.5
+Description-Content-Type: text/markdown
+
+# py-iss-telemetry
+Python library for establishing a telemetry stream with the International Space Station.
+
+This module allows public International Space Station Telemetry 
+values to be streamed into a list of dictionaries using Python. 
+A websocket is established with NASA's ISSLIVE Lightstreamer server.
+
+DISCLAIMER: The creator of this module is in no way affiliated with
+Lightstreamer Srl., NASA or any ISS partners.
+
+Example:
+    To create a telemetry stream do
+
+        stream = pyisstelemetry.TelemetryStream()
+
+    To get the current telemetry values do
+
+        values = stream.get_tm()
+
+    To end the session do
+
+        stream.disconnect()
+
+
