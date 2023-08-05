@@ -1,0 +1,3 @@
+[console_scripts]
+alom_exporter = alom.metrics:main
+
