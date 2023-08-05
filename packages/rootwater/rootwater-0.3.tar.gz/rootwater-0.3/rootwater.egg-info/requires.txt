@@ -1,0 +1,10 @@
+numpy
+pandas
+nose
+scipy
+statsmodels
+astral>=2.0
+hydroeval
+sphinx>=1.4
+ipykernel
+nbsphinx
