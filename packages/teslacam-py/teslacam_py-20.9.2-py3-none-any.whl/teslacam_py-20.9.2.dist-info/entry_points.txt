@@ -1,0 +1,3 @@
+[console_scripts]
+teslacam = teslacam.__main__:main
+

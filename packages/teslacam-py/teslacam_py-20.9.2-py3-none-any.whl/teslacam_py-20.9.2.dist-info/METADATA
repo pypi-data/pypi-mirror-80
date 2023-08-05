@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: teslacam-py
+Version: 20.9.2
+Summary: TeslaCam uploader
+Home-page: UNKNOWN
+License: UNKNOWN
+Platform: UNKNOWN
+Requires-Python: >=3.8
+Requires-Dist: pyyaml (>=5.3)
+Requires-Dist: azure-storage-blob (>=12.1.0)
+Requires-Dist: sh (>=1.12.14)
+Requires-Dist: flask (>=1.1.1)
+Requires-Dist: chump (>=1.6.0)
+
+UNKNOWN
+
+
