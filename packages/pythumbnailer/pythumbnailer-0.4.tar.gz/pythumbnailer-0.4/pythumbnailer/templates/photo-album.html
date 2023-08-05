@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta charset="utf-8" />
+		<!-- Equivalent? -->
+		<title>{{ gdata.title }} | Photo Album</title>
+		<style>
+			h1.title {
+				text-align: center;
+			}
+			body {
+				display: flex;
+				flex-flow: column nowrap;
+			}
+			ul {
+				margin: 0;
+				padding: 0;
+			}
+			ul#album {
+				display: flex;
+				flex-flow: row wrap;
+			}
+			#album > li {
+				margin: 1em;
+			}
+			li.photo {
+				display: flex;
+				flex-flow: column nowrap;
+				flex: 1 0 0%;
+				align-items: center;
+				justify-content: end;
+			}
+			img.photo {
+				max-width: {{ maxsize }}px;
+				max-height: {{ maxsize }}px;
+			}
+			.photo .info {
+				width: 100%;
+				text-align: center;
+			}
+			.info.important {
+				font-weight: bold;
+			}
+			.info.attention {
+				font-style: italic;
+			}
+			.info.unimportant {
+				font-size: small;
+			}
+		</style>
+	</head>
+	<body>
+		<h1 class="title">{{ gdata.title }}</h1>
+		<ul id="album">
+			{% for thumb in thumbnails %}
+			<li class="photo">
+				<a class="photo" href="{{ thumb.original | urlencode }}">
+					<img class="photo" src="{{ thumb.path | urlencode }}" alt="Picture Thumbnail" />
+				</a>
+				<div class="info">
+					<span class="info important">{{ thumb.title or thumb.url }}</span>
+					{% if thumb.size %}
+						<span class="info unimportant">{{ thumb.size.width }} x {{ thumb.size.height }}</span>
+					{% endif %}
+				</div>
+				{% if thumb.time.accurate %}
+					<div class="info">Taken: <span class="info attention">{{ thumb.time.strftime() }}</span></div>
+				{% endif %}
+			</li>
+			{% endfor %}
+		</ul>
+	</body>
+</html>
