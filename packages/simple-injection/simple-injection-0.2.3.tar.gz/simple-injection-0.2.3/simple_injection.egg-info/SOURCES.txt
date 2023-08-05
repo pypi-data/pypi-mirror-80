@@ -1,0 +1,14 @@
+README.md
+setup.py
+simple_injection/__init__.py
+simple_injection/service_collection.py
+simple_injection.egg-info/PKG-INFO
+simple_injection.egg-info/SOURCES.txt
+simple_injection.egg-info/dependency_links.txt
+simple_injection.egg-info/top_level.txt
+tests/__init__.py
+tests/classes.py
+tests/test_instance.py
+tests/test_run_function.py
+tests/test_singleton.py
+tests/test_transient.py
