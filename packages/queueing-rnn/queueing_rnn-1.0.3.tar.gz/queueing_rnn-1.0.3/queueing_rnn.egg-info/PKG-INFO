@@ -1,0 +1,51 @@
+Metadata-Version: 2.1
+Name: queueing-rnn
+Version: 1.0.3
+Summary: Queueing Recurrent Neural Network
+Home-page: https://github.com/bilkosem/QRNN-Queueing-Recurrent-Neural-Network
+Author: bilkosem
+Author-email: bilkos92@gmail.com
+License: UNKNOWN
+Description: # Queueing Recurrent Neural Network (Q-RNN) [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
+        
+        **Queueing Recurrent Neural Network (Q-RNN)** is a new kind of Artificial Neural Network that has been designed to use in time-series forecasting applications. According to experiments that have been run, QRNN mostly outperforms the LSTM, Simple RNN and GRU, in the cases where the dataset has highly non-linear characteristics.
+        
+        # Table of contents
+        
+        - [What is Q-RNN?](#QRNN)
+        - [Comparison](#comparison)
+        - [Installation](#installation)
+        - [Usage](#usage)
+        - [License](#license)
+        
+        ## What is Q-RNN?
+        
+        It is a compose of Simple RNN and Random Neural Network.
+        
+        ## Comparison
+        
+        ![Overall Comparison](test_results/overall_comparison.png)
+        
+        ## Installation
+        
+        Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
+        
+        ```bash
+        pip install queueing-rnn
+        ```
+        
+        ## Usage
+        
+        ```python
+        import queueing-rnn
+        ```
+        
+        ## License
+        
+        [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE)
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
