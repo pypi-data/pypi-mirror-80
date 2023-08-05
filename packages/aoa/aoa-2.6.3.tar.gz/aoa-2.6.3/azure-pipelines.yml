@@ -1,0 +1,59 @@
+# Python package
+# Create and test a Python package on multiple Python versions.
+# Add steps that analyze code, save the dist with the build record, publish to a PyPI-compatible index, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/python
+
+trigger:
+- master
+
+schedules:
+  - cron: "0 0 * * *"
+    displayName: Daily midnight build
+    branches:
+      include:
+        - master
+
+strategy:
+  matrix:
+    Python35:
+      python.version: '3.5'
+    Python36:
+      python.version: '3.6'
+    Python37:
+      python.version: '3.7'
+    Python38:
+      python.version: '3.8'
+
+resources:
+  containers:
+  - container: 'aoa-core'
+    image: 'thinkbiganalytics/aoa-core:master'
+    endpoint: dockerhub-dartov
+    ports:
+    - "8080:8080"
+    - "9000:9000"
+    - "61613:61613"
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+services:
+  aoa-core: aoa-core
+
+steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '$(python.version)'
+  displayName: 'Use Python $(python.version)'
+
+- script: python -m pip install --upgrade pip setuptools wheel
+  displayName: 'Installing tools'
+
+- script: python -m pip install -r requirements.txt
+  displayName: 'Installing dependencies'
+
+- script: python -m pip install pytest pytest-cov pytest-azurepipelines pytest-console-scripts pytest-runner
+  displayName: 'Installing test dependencies'
+
+- script: python -m pytest --import-mode=append --skip-docker --junitxml=junit/test-results.xml --cov=. --cov-report=xml --cov-report=html
+  displayName: 'Running tests'

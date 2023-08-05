@@ -1,0 +1,46 @@
+*.py[cod]
+
+# Develop resources
+aoacli_dev.py
+aoacli.py
+
+# C extensions
+*.so
+
+# Packages
+*.egg*
+*.egg-info
+dist
+build
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
+lib
+lib64
+__pycache__
+
+# Installer logs
+pip-log.txt
+
+# Intellij Idea and PyCharm
+.idea
+*.iml
+
+# MacOS
+.DS_Store
+
+# Readme python env instructions
+aoa_*env*
+.python-version
+
+# test results
+test-results
+
+
+.ipynb_checkpoints
+
+.pytest_cache/
