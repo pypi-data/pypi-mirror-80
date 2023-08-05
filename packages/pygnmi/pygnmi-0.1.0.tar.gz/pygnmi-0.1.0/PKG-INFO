@@ -1,0 +1,21 @@
+Metadata-Version: 1.1
+Name: pygnmi
+Version: 0.1.0
+Summary: This repository contains pure Python implementation of the gNMI client to interact with the network functions.
+Home-page: https://github.com/akarneliuk/pygnmi
+Author: Anton Karneliuk
+Author-email: anton@karneliuk.com
+License: bsd-3-clause
+Download-URL: https://github.com/akarneliuk/pygnmi/archive/v0.1.0.tar.gz
+Description: UNKNOWN
+Keywords: gnmi,automation,grpc
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: System Administrators
+Classifier: Intended Audience :: Telecommunications Industry
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
