@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: beam-sink
+Version: 1.0.1
+Summary: An Apache Beam Sink Library for Databases and other Sinks.
+Home-page: https://github.com/mitchelllisle/beam-sink
+Author: Mitchell Lisle
+Author-email: m.lisle90@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Requires-Dist: apache-beam
+Requires-Dist: mysql-connector-python
+Requires-Dist: pydantic
+Requires-Dist: psycopg2-binary
+
+UNKNOWN
+
+
