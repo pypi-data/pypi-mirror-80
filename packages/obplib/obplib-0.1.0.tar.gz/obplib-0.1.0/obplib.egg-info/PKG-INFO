@@ -1,0 +1,24 @@
+Metadata-Version: 1.1
+Name: obplib
+Version: 0.1.0
+Summary: A library for the creation of beam paths
+Home-page: https://gitlab.com/freemelt/openmelt/obplib-python
+Author: Freemelt AB
+Author-email: opensource@freemelt.com
+License: apache-2.0
+Download-URL: https://gitlab.com/freemelt/openmelt/obplib-python/-/archive/0.1.0/obplib-python-0.1.0.tar.gz
+Description: <!--
+        SPDX-FileCopyrightText: 2019,2020 Freemelt AB
+        
+        SPDX-License-Identifier: Apache-2.0
+        -->
+        
+        # OBPlib-Python
+        Python library to generate OBP data for metal 3d printers 
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
