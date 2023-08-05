@@ -1,0 +1,20 @@
+Metadata-Version: 1.2
+Name: collageradiomicscli
+Version: 1.0.0
+Summary: Get Collage features from an image and a binary mask
+Home-page: https://github.com/radxtools/collageradiomics
+Author: Toth Technology
+Author-email: toth-tech@hillyer.me
+License: BSD-3-Clause
+Description: UNKNOWN
+Platform: UNKNOWN
+Classifier: Intended Audience :: Science/Research
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Operating System :: Microsoft :: Windows :: Windows 10
+Classifier: Operating System :: MacOS
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Scientific/Engineering :: Bio-Informatics
+Requires-Python: >=3.6
