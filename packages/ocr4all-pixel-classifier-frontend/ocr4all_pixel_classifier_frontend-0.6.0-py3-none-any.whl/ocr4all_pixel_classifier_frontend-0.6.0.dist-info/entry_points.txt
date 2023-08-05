@@ -1,0 +1,4 @@
+[console_scripts]
+ocr4all-pixel-classifier = ocr4all_pixel_classifier_frontend.main:main
+page-segmentation = ocr4all_pixel_classifier_frontend.main:main
+
