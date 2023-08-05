@@ -1,0 +1,26 @@
+Metadata-Version: 2.1
+Name: esridumpgdf
+Version: 0.0.3
+Summary: ArcGIS Map and Feature Services to GeoDataFrame
+Home-page: https://github.com/wchatx/esridumpgdf
+Author-email: wchatx@gmail.com
+License: MIT
+Description: # esridumpgdf
+        
+        Simple functions using [pyesridump](https://github.com/openaddresses/pyesridump) 
+        and [geopandas](https://github.com/geopandas/geopandas) to create GeoDataFrames.  
+        
+        ## Install
+        ```
+        pip install git+https://github.com/wchatx/esridumpgdf.git
+        ```
+        
+        ## Usage
+        For exporting a single Map or Feature service to GeoDataFrame:
+        ```python
+        
+        ```
+        
+Platform: UNKNOWN
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown; charset=UTF-8
