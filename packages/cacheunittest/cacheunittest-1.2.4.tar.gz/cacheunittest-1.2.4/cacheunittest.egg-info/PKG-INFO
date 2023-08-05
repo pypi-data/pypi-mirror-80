@@ -1,0 +1,27 @@
+Metadata-Version: 2.1
+Name: cacheunittest
+Version: 1.2.4
+Summary: Varnish unit test
+Home-page: https://github.com/ArteGEIE/cache-unit-test
+Author: Alapaje
+Author-email: paje@github.com
+License: LICENSE.txt
+Description: cache-unit-test
+        ===============
+        
+        Unit test Python library for testing cache systems like varnish
+        
+        Based on the work of @onyxfish (https://gist.github.com/onyxfish)
+        
+        
+        
+        - [x] cachetest.py : productive
+        - [ ] wordpresscachetest.py : not usable yet
+        
+        ````bash
+        user@localhost> python3.3 exampletest 
+        ````
+        
+Platform: UNKNOWN
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
