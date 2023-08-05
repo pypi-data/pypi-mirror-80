@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: firestore-operators
+Version: 0.0.3
+Summary: Operator to send data to Firestore from Airflow
+Home-page: https://github.com/properati/firestore_operator
+Author: Cezar Azevedo de Faveri
+Author-email: cazevedodefaveri@gmail.com
+License: UNKNOWN
+Description: # Firestore Operator
+        
+        An operator to upload data to Firestore.
+        
+        ## Usage
+        
+Platform: UNKNOWN
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
