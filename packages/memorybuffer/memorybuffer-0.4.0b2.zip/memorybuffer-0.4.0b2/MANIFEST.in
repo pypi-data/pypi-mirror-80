@@ -1,0 +1,22 @@
+# Copyright (c) 2012-2020 Adam Karpierz
+# Licensed under the zlib/libpng License
+# https://opensource.org/licenses/Zlib
+
+include README.rst
+include CHANGES.rst
+include LICENSE
+
+graft docs
+prune docs/\#
+
+graft examples
+
+graft src
+prune src/memorybuffer/\#
+
+graft tests
+prune tests/\#
+exclude tests/_info_.txt tests/_report_*.txt
+
+global-exclude .build .build.*
+global-exclude *.py[cod] __pycache__
