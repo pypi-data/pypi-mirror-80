@@ -1,0 +1,10 @@
+README.md
+setup.py
+htmlcomparator/__init__.py
+htmlcomparator/html_comparator.py
+htmlcomparator.egg-info/PKG-INFO
+htmlcomparator.egg-info/SOURCES.txt
+htmlcomparator.egg-info/dependency_links.txt
+htmlcomparator.egg-info/top_level.txt
+tests/__init__.py
+tests/test_parse.py
