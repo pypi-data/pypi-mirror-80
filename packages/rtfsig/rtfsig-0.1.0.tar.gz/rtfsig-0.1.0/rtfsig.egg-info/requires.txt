@@ -1,0 +1,17 @@
+Jinja2==2.11.2
+
+[dev]
+black
+tox
+pylint
+pytest
+pytest-cov
+plyara
+
+[docs]
+
+[tests]
+pylint
+pytest
+pytest-cov
+plyara
