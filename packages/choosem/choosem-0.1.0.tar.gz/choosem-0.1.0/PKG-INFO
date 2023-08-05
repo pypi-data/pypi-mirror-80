@@ -1,0 +1,55 @@
+Metadata-Version: 2.1
+Name: choosem
+Version: 0.1.0
+Summary: dropdown picker/launcher for macos
+Home-page: https://github.com/Granitosaurus/choosem
+License: GPL-3.0-or-later
+Keywords: macos,chooser,picker,launcher
+Author: Bernardas Alisauskas
+Author-email: bernardas.alisauskas@pm.me
+Requires-Python: >=3.6,<4.0
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Topic :: Utilities
+Requires-Dist: click (>=7.1.2,<8.0.0)
+Project-URL: Repository, https://github.com/Granitosaurus/choosem
+Description-Content-Type: text/markdown
+
+# choosem
+
+`choosem` is a [choose] based picker and launcher for macos.
+Currently these functionalities are available:
+
+* Insert select character from character dictionaries
+* Focus [Yabai] program
+* Launch programs
+
+# install
+
+for python 3.6+:
+```
+$ pip install --user choosem 
+...
+$ choosem --help
+Usage: choosem [OPTIONS] COMMAND [ARGS]...
+
+Options:
+  --help  Show this message and exit.
+
+Commands:
+  insert  insert character into active window
+  yabai   control yabai windows manager
+```
+
+## Known issues
+
+`insert` command might stop working, for this accessibility permission needs to be disabled and then enabled again.
+
+[choose]: https://github.com/chipsenkbeil/choose
+
+
+
