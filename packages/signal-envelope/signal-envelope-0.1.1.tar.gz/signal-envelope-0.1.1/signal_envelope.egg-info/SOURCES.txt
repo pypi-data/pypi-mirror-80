@@ -1,0 +1,11 @@
+MANIFEST.in
+README.md
+setup.py
+signal_envelope/__init__.py
+signal_envelope/envelope.dll
+signal_envelope/envelope.py
+signal_envelope.egg-info/PKG-INFO
+signal_envelope.egg-info/SOURCES.txt
+signal_envelope.egg-info/dependency_links.txt
+signal_envelope.egg-info/requires.txt
+signal_envelope.egg-info/top_level.txt
