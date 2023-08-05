@@ -1,0 +1,78 @@
+Metadata-Version: 2.1
+Name: gmix2
+Version: 0.0.1
+Summary: An implementation of Gaussian mixture distribution methods
+Home-page: https://bitbucket.org/reidswanson/gmix2
+Author: Reid Swanson
+Author-email: reid@reidswanson.com
+Maintainer: Reid Swanson
+Maintainer-email: reid@reidswanson.com
+License: Apache-2.0
+Description: ###################
+        Gaussian Mixtures 2
+        ###################
+        
+        .. image:: docs/source/images/single-density-plot.png
+            :width: 100%
+            :alt: Single Mixture Density Plot
+        
+        ********
+        Overview
+        ********
+        `gmix2 <https://bitbucket.org/reidswanson/gmix2>`_ is a reimplementation of `gmix <https://bitbucket.org/reidswanson/gmix/src/master/>`_ that provides functions for working with univariate `Gaussian Mixture distributions <https://brilliant.org/wiki/gaussian-mixture-model/>`_ similar to `dmixnorm <https://rdrr.io/cran/KScorrect/man/dmixnorm.html>`_ of the `KScorrect <https://rdrr.io/cran/KScorrect/>`_ R package.
+        Unlike gmix, gmix2 does not include the code and recipes for implementing conditional density implementation using neural networks.
+        This reduces the number of external dependencies and complexity of the project considerably (e.g., no need for TensorFlow).
+        gmix2 is entirely written in C++ (and provides python bindings), so it is also slightly faster than gmix in most cases, and considerably faster in a a few cases [1]_.
+        It also provides a few bug fixes and the plotting function has been improved.
+        
+        ************
+        Dependencies
+        ************
+        
+        * (required) `numpy <https://numpy.org/install/>`_
+        * (needed for plotting) `scipy <https://www.scipy.org/install.html>`_
+        * (needed for plotting) `pandas <https://pandas.pydata.org/pandas-docs/stable/getting_started/install.html>`_
+        * (needed for plotting) `plotnine <https://plotnine.readthedocs.io/en/stable/installation.html>`_
+        * (needed for plotting) `pycairo <https://pycairo.readthedocs.io/en/latest/>`_ Matplotlib may complain if this is not installed separately.
+        * (needed for plotting) `PyQt5 <https://pypi.org/project/PyQt5/>`_ You may need to install a rending package for interactive plots.
+        
+        *******
+        Install
+        *******
+        The project is not currently on PyPI.
+        The easiest way to use or install the project is to clone it or via pip using its native Git support.
+        Note you may need a working C++ compiler.
+        
+        .. code-block:: bash
+        
+           pip install git+https://bitbucket.org/reidswanson/gmix2.git
+        
+        *************
+        Documentation
+        *************
+        
+        The full documentation is available on `Read the Docs <https://gmix2.readthedocs.io/en/latest/>`_.
+        
+        *******
+        License
+        *******
+        Any file without a specific copyright notification is released using the Apache v2 License by me (Reid Swanson).
+        See the `LICENSE <LICENSE>`_ file for more details.
+        Some code has been copied or adapted from the web (e.g., StackOverflow) that does not have clear license indications.
+        In those cases the code is flagged with comments and links to where the code was found.
+        
+        .. [1] Most of the functions in gmix were written using numpy so it was already relatively efficient.
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Natural Language :: English
+Classifier: Operating System :: MacOS
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: Unix
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Topic :: Scientific/Engineering :: Mathematics
+Description-Content-Type: text/x-rst
+Provides-Extra: plotting

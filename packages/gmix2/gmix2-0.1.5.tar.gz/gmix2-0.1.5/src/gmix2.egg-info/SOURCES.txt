@@ -1,0 +1,16 @@
+CMakeLists.txt
+MANIFEST.in
+README.rst
+setup.py
+src/gmix2.egg-info/PKG-INFO
+src/gmix2.egg-info/SOURCES.txt
+src/gmix2.egg-info/dependency_links.txt
+src/gmix2.egg-info/not-zip-safe
+src/gmix2.egg-info/requires.txt
+src/gmix2.egg-info/top_level.txt
+tests_cpp/CMakeLists.txt
+tests_cpp/doctest.h
+tests_cpp/test_gmix.cpp
+tests_cpp/test_main.cpp
+tests_py/__init__.py
+tests_py/test_gmix2.py
