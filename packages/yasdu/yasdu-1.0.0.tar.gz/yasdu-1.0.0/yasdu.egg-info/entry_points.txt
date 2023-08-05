@@ -1,0 +1,3 @@
+[console_scripts]
+yasdu = yasdu.__main__:_main
+
