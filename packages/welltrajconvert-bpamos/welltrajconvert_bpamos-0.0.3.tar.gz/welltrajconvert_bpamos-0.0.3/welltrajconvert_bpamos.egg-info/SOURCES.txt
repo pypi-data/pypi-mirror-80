@@ -1,0 +1,17 @@
+README.md
+setup.cfg
+setup.py
+welltrajconvert/__init__.py
+welltrajconvert/base.py
+welltrajconvert/calculable_object.py
+welltrajconvert/data_object.py
+welltrajconvert/data_source.py
+welltrajconvert/deviation_survey.py
+welltrajconvert/imports.py
+welltrajconvert/utils.py
+welltrajconvert/wellbore_trajectory.py
+welltrajconvert_bpamos.egg-info/PKG-INFO
+welltrajconvert_bpamos.egg-info/SOURCES.txt
+welltrajconvert_bpamos.egg-info/dependency_links.txt
+welltrajconvert_bpamos.egg-info/requires.txt
+welltrajconvert_bpamos.egg-info/top_level.txt
