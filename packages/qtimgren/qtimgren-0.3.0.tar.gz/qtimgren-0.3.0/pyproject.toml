@@ -1,0 +1,7 @@
+[build-system]
+requires = ["setuptools>=42", "wheel", "setuptools_scm[toml]>=3.4",
+            "PySide2>=5.12"]
+build-backend = "setuptools.build_meta:__legacy__"
+
+[tool.setuptools_scm]
+write_to = "qtimgren/version.py"
