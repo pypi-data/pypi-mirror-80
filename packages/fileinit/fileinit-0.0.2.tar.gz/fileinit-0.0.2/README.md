@@ -1,0 +1,50 @@
+※下の方に日本語の説明があります
+
+## English description
+This package provides a simple way to initialize files.
+You no longer need to check if its directory exists before creating a file!!
+
+How to use
+
+```python
+from fileinit import fileinit
+
+fileinit(
+  "./test.txt", # filename
+  overwrite = True,
+  init_str = "Hello, World!!\n"
+)
+```
+
+Output result: test.txt
+```
+Hello, World!!
+
+```
+
+- If you omit the argument `init_str`, the file will be initialized with empty string `""`.
+- If you set the argument `overwrite` to `False` and if the file already exists, this package will not do anything.
+
+## 日本語の説明
+ファイルを簡単に初期化するためのパッケージです。
+もうファイル作成の前にディレクトリの存在を確認する必要はありません！
+
+簡単な使い方
+```python
+from fileinit import fileinit
+
+fileinit(
+  "./test.txt", # filename
+  overwrite = True,
+  init_str = "Hello, World!!\n"
+)
+```
+
+出力結果: test.txt
+```
+Hello, World!!
+
+```
+
+- 引数`init_str`を省略した場合、ファイルは空白文字列`""`で初期化されます。
+- 引数`overwrite`を`False`に設定すると、既に同名のファイルが存在する場合は新たなファイルは作成されません。
