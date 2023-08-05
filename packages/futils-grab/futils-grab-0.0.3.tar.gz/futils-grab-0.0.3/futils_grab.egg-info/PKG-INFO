@@ -1,0 +1,16 @@
+Metadata-Version: 1.2
+Name: futils-grab
+Version: 0.0.3
+Summary: Project renamed, install folkol.grab instead.
+Home-page: https://github.com/folkol/grab
+Author: folkol
+License: UNKNOWN
+Description: UNKNOWN
+Keywords: shell,unix filter
+Platform: UNKNOWN
+Classifier: Development Status :: 7 - Inactive
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Terminals
+Classifier: Topic :: Text Processing :: Filters
+Classifier: License :: OSI Approved :: MIT License
+Requires-Python: >=3.6, <4
