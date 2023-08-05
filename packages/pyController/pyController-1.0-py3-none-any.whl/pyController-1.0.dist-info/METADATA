@@ -1,0 +1,42 @@
+Metadata-Version: 2.1
+Name: pyController
+Version: 1.0
+Summary: Event Callback system for Bluetooth Controller
+Home-page: https://github.com/jbiams77/pyController
+Author: Brandon Iams
+Author-email: jbiams77@uw.edu
+License: UNKNOWN
+Keywords: playstation,ps4,controller,robot controls
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Utilities
+Description-Content-Type: text/markdown
+
+# pyController
+[![PyPI version shields.io](https://img.shields.io/pypi/v/pyPS4Controller.svg)](https://pypi.python.org/pypi/pyPS4Controller/) 
+[![PyPI pyversions](https://img.shields.io/pypi/pyversions/pyPS4Controller.svg)](https://pypi.python.org/pypi/pyPS4Controller/)
+##
+<img src="https://github.com/jbiams77/pyController/blob/master/documents/AcE2c.png?raw=true" width="50%">
+
+## Architecture
+<img src="https://github.com/jbiams77/pyController/blob/master/documents/SoftwareArchitecture.JPG?raw=true" width="60%">
+
+
+## Installation
+`INSTALLATION INSTRUCTIONS TO COME`
+
+## Usage
+
+1. USAGE INSTRUCTIONS TO COME
+
+
