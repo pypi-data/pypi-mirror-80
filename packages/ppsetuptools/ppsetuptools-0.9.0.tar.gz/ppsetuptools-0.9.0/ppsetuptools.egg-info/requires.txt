@@ -1,0 +1,6 @@
+setuptools
+toml
+
+[test]
+pytest
+pytest-cov
