@@ -1,0 +1,7 @@
+services:
+  databricksbundle.spark.ScriptSessionFactory:
+    arguments:
+      - []
+
+  pyspark.sql.session.SparkSession:
+    factory: ['@databricksbundle.spark.ScriptSessionFactory', 'create']
