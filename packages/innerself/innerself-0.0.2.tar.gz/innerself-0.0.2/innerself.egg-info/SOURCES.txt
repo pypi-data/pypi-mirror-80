@@ -1,0 +1,17 @@
+LICENSE
+MANIFEST.in
+README.md
+pyproject.toml
+setup.cfg
+setup.py
+versioneer.py
+innerself/__init__.py
+innerself/_version.py
+innerself/core.py
+innerself.egg-info/PKG-INFO
+innerself.egg-info/SOURCES.txt
+innerself.egg-info/dependency_links.txt
+innerself.egg-info/requires.txt
+innerself.egg-info/top_level.txt
+innerself/tests/__init__.py
+innerself/tests/test_core.py
