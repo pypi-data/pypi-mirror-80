@@ -1,0 +1,21 @@
+Metadata-Version: 1.1
+Name: bvn
+Version: 0.1
+Summary: A Greedy Birkhoff-Von Neumann Decomposition
+Home-page: https://github.com/brandontrabucco/bvn
+Author: Brandon Trabucco
+Author-email: brandon@btrabucco.com
+License: MIT
+Download-URL: https://github.com/brandontrabucco/bvn/archive/v_01.tar.gz
+Description: UNKNOWN
+Keywords: Permutation,Doubly Stochastic,Birkhoff-von Neumann,Decomposition
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
