@@ -1,0 +1,17 @@
+MANIFEST.in
+README.md
+setup.py
+PyDomainExtractor.egg-info/PKG-INFO
+PyDomainExtractor.egg-info/SOURCES.txt
+PyDomainExtractor.egg-info/dependency_links.txt
+PyDomainExtractor.egg-info/not-zip-safe
+PyDomainExtractor.egg-info/top_level.txt
+images/logo.png
+src/public_suffix_list.h
+src/pydomainextractor.cpp
+src/tsl/robin_growth_policy.h
+src/tsl/robin_hash.h
+src/tsl/robin_map.h
+src/tsl/robin_set.h
+tests/__init__.py
+tests/test_pydomainextractor.py
