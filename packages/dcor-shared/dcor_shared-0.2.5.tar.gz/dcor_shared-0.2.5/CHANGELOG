@@ -1,0 +1,14 @@
+0.2.5
+ - enh: get_resource_path now returns a pathlib.Path
+0.2.4
+ - enh: allow to get the resource path from outside CKAN
+0.2.3
+ - maintenance release
+0.2.2
+ - allow import when ckan is not installed
+0.2.1
+ - automated releases
+0.2.0
+ - added get_resource_path
+0.1.0
+ - initial version

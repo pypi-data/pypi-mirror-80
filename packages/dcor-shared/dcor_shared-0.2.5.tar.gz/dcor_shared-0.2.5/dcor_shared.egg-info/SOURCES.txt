@@ -1,0 +1,17 @@
+CHANGELOG
+LICENSE
+MANIFEST.in
+README.rst
+setup.cfg
+setup.py
+dcor_shared/__init__.py
+dcor_shared/_version.py
+dcor_shared/_version_save.py
+dcor_shared/ckan.py
+dcor_shared/data.py
+dcor_shared/mime.py
+dcor_shared.egg-info/PKG-INFO
+dcor_shared.egg-info/SOURCES.txt
+dcor_shared.egg-info/dependency_links.txt
+dcor_shared.egg-info/top_level.txt
+tests/test_basic.py
