@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "conceptnet-rocks"
+version = "0.1.2"
+description = "Python library to work with ConceptNet offline"
+authors = ["Roman Inflianskas <infroma@gmail.com>"]
+license = "Apache-2.0"
+readme = "README.md"
+homepage = "https://github.com/ldtoolkit/conceptnet-rocks"
+repository = "https://github.com/ldtoolkit/conceptnet-rocks"
+keywords = ["arangodb", "conceptnet"]
+classifiers = [
+    "Topic :: Database",
+]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+python-arango = "^6.0.0"
+typer = "^0.3.2"
+tqdm = "^4.48.2"
+orjson = "^3.3.1"
+graph-garden = "^0.1.2"
+dask = {extras = ["dataframe"], version = "^2.27.0"}
+
+[tool.poetry.dev-dependencies]
+
+[tool.poetry.scripts]
+conceptnet-rocks-load = "conceptnet_rocks.cli:app"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
