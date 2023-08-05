@@ -1,0 +1,4 @@
+[console_scripts]
+contributors = gease.contributors:main
+gease = gease.main:main
+
