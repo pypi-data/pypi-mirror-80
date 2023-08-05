@@ -1,0 +1,17 @@
+LICENSE
+MANIFEST.in
+README.md
+VERSION
+requirements_dev.txt
+setup.cfg
+setup.py
+tests/__init__.py
+tests/test_wavchunk.py
+wavchunk/__init__.py
+wavchunk/__main__.py
+wavchunk/py.typed
+wavchunk.egg-info/PKG-INFO
+wavchunk.egg-info/SOURCES.txt
+wavchunk.egg-info/dependency_links.txt
+wavchunk.egg-info/entry_points.txt
+wavchunk.egg-info/top_level.txt
