@@ -1,0 +1,27 @@
+Metadata-Version: 2.1
+Name: peasant
+Version: 0.0.1
+Summary: Peasant helps you to build APIs
+Home-page: https://github.com/candango/peasant
+Author: Flavio Goncalves Garcia
+Author-email: piraz@candango.org
+License: Apache License V2.0
+Description: # peasant
+        
+        Peasant helps you to build APIs
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 1 - Planning
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Environment :: Console
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: System Administrators
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Topic :: Software Development :: Libraries :: Application Frameworks
+Description-Content-Type: text/markdown
