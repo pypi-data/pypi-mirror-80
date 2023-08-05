@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: tablear
+Version: 1.0.0
+Summary: Print a UI and detect it with camera
+Home-page: https://github.com/Sanjay-Ganeshan/TableAR
+Author: Julie Ganeshan
+Author-email: HeavenlyQueen@outlook.com
+License: UNKNOWN
+Description: # Table AR
+        
+        Let's you print out a sheet of paper with a checkboard on it, and arbitrary 
+        "UI" elements on it, then use it!
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
