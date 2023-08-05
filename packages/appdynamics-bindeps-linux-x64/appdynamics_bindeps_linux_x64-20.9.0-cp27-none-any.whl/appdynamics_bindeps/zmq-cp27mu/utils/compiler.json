@@ -1,0 +1,17 @@
+{
+  "define_macros": [
+    [
+      "HAVE_SYS_UN_H", 
+      1
+    ]
+  ], 
+  "runtime_library_dirs": [], 
+  "library_dirs": [], 
+  "libraries": [], 
+  "include_dirs": [
+    "/python-agent/bindeps/deps/libzmq/binaries/release/include", 
+    "appdynamics_bindeps/zmq/utils", 
+    "appdynamics_bindeps/zmq/backend/cython", 
+    "appdynamics_bindeps/zmq/devices"
+  ]
+}
