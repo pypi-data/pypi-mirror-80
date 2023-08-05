@@ -1,0 +1,6 @@
+requests==2.24.0
+pandas==1.1.2
+scipy==1.5.2
+
+[dev]
+jupyterlab==2.2.8
