@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: cctbx
+Version: 2020.8
+License: BSD-3-Clause-LBNL AND BSD-3-Clause AND BSL-1.0 AND LGPL-2.0-only AND LGPL-2.1-only AND LGPL-3.0-only AND MIT AND LGPL-2.0-or-later WITH WxWindows-exception-3.1
+Requires-Dist: pillow 
+Requires-Dist: reportlab 
+Requires-Dist: matplotlib_base 
+Requires-Dist: python >=3.6,<3.7.0a0
+Requires-Dist: libsvm 
+Requires-Dist: future 
+Requires-Dist: boost_cpp >=1.72.0,<1.72.1.0a0
+Requires-Dist: six 
+Requires-Dist: biopython 
+Requires-Dist: libglu >=9.0.0,<10.0a0
+Requires-Dist: hdf5 >=1.10.5,<1.10.6.0a0
+Requires-Dist: psutil 
+Requires-Dist: libtiff >=4.1.0,<5.0a0
+Requires-Dist: boost >=1.72.0,<1.72.1.0a0
+Requires-Dist: libgcc_ng >=7.5.0
+Requires-Dist: libstdcxx_ng >=7.5.0
+Requires-Dist: mrcfile 
+Requires-Dist: numpy >=1.16.5,<2.0a0
+Requires-Dist: python_abi ==3.6.*
+Summary: The Computational Crystallography Toolbox
+Home-page: https://github.com/cctbx/cctbx_project
+Project-URL: Documentation, https://cctbx.github.io/
+Project-URL: Development, https://github.com/cctbx/cctbx_project
+
+The Computational Crystallography Toolbox (cctbx) is being developed
+as the open source component of the Phenix system. The goal of the
+Phenix project is to advance automation of macromolecular structure
+determination. Phenix depends on the cctbx, but not vice versa. This
+hierarchical approach enforces a clean design as a reusable library.
+The cctbx is therefore also useful for small-molecule crystallography
+and even general scientific applications.
