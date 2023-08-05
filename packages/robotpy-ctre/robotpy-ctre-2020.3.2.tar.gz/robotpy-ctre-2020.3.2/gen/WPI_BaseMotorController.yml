@@ -1,0 +1,59 @@
+---
+
+extra_includes:
+- wpi/SmallString.h
+
+classes:
+  WPI_BaseMotorController:
+    shared_ptr: true
+    force_no_trampoline: true
+    typealias:
+      - ctre::phoenix::motorcontrol::ControlMode
+      - ctre::phoenix::motorcontrol::DemandType
+      - ctre::phoenix::motorcontrol::InvertType
+    methods:
+      WPI_BaseMotorController:
+        overloads:
+          int, char*:
+            ignore: true
+          "":
+            ignore: true
+      Set:
+        overloads:
+          double:
+          ControlMode, double:
+          ControlMode, double, double:
+          ControlMode, double, DemandType, double:
+      PIDWrite:
+      Get:
+      SetVoltage:
+      SetInverted:
+        overloads:
+          bool:
+          InvertType:
+      GetInverted:
+      Disable:
+      StopMotor:
+      GetDescription:
+        param_override:
+          desc:
+            ignore: true
+        cpp_code: |
+          [](WPI_BaseMotorController * self) -> py::str {
+            wpi::SmallString<128> buf;
+            wpi::raw_svector_ostream s(buf);
+            self->GetDescription(s);
+            return py::cast(s.str());
+          }
+        virtual_xform: |
+          [&](py::function &overload) {
+            desc << py::cast<std::string>(overload());
+          }
+      Feed:
+      SetExpiration:
+      GetExpiration:
+      IsAlive:
+      SetSafetyEnabled:
+      IsSafetyEnabled:
+      GetMotorSafety:
+      InitSendable:
