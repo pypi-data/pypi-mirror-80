@@ -1,0 +1,12 @@
+mezzanine<5,>=4
+mezzy>=2.4
+
+[codestyle]
+flake8<4,>=3
+black==20.8b1
+
+[stripe]
+stripe<3,>=2.48
+
+[testing]
+pytest-django<4,>=3
