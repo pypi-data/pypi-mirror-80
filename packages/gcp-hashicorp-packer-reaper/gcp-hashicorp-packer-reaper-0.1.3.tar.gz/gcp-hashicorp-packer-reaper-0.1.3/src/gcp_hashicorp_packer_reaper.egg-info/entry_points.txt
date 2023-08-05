@@ -1,0 +1,3 @@
+[console_scripts]
+gcp-hashicorp-packer-reaper = gcp_hashicorp_packer_reaper.__main__:main
+
