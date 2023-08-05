@@ -1,0 +1,5 @@
+docopt>=0.6.2
+six>=1.10.0
+boto3>=1.4
+pyaes>=1.6.0
+pyscrypt>=1.6.2
