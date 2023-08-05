@@ -1,0 +1,16 @@
+Metadata-Version: 1.1
+Name: pyproject2setuppy
+Version: 8
+Summary: Build pyproject.toml-based (flit, poetry) projects using setuptools
+Home-page: https://github.com/mgorny/pyproject2setuppy
+Author: Michał Górny
+Author-email: mgorny@gentoo.org
+License: UNKNOWN
+Description: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Console
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: System :: Installation/Setup
