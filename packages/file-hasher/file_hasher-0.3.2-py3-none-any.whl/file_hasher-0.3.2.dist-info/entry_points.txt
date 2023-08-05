@@ -1,0 +1,3 @@
+[console_scripts]
+file-hasher = file_hasher.file_hasher:main
+
