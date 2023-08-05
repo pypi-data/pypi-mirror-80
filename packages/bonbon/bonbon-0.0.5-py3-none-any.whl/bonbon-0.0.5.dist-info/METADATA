@@ -1,0 +1,54 @@
+Metadata-Version: 2.1
+Name: bonbon
+Version: 0.0.5
+Summary: Bonbon.
+Home-page: https://github.com/lbyxiafei/bonbon
+Author: Lby
+Author-email: lbyxiafei@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: pyodbc (==4.0.27)
+Requires-Dist: ijson (==2.4)
+Requires-Dist: networkx (==2.3)
+Requires-Dist: matplotlib (==3.1.1)
+Requires-Dist: azure-cosmos (==3.1.1)
+Requires-Dist: azure-functions (==1.0.0a5)
+Requires-Dist: azure-functions-worker (==1.0.0a6)
+Requires-Dist: certifi (==2019.6.16)
+Requires-Dist: chardet (==3.0.4)
+Requires-Dist: grpcio (==1.14.2)
+Requires-Dist: grpcio-tools (==1.14.2)
+Requires-Dist: idna (==2.8)
+Requires-Dist: protobuf (==3.9.1)
+Requires-Dist: requests (==2.22.0)
+Requires-Dist: six (==1.12.0)
+Requires-Dist: urllib3 (==1.25.3)
+Requires-Dist: azure-storage (==0.36.0)
+Requires-Dist: python-dateutil (==2.8.1)
+Requires-Dist: twine (==3.1.1)
+Requires-Dist: pipenv (==2018.11.26)
+Requires-Dist: pyarrow (==0.16.0)
+Requires-Dist: numpy (==1.18.2)
+Requires-Dist: pandas (==1.0.3)
+Requires-Dist: pdoc3 (==0.8.1)
+Requires-Dist: jupyterlab (==2.1.2)
+
+# Contents
+
+- local
+    - File
+    - Environment
+- remote
+    - HTTP
+- storage
+    - AzureBlob
+    - SQL
+- processor
+    - String
+
+
