@@ -1,0 +1,9 @@
+SQLAlchemy>=1.0.14
+GeoAlchemy2
+txWS-Upgrade>=0.10.0
+vcversioner
+six
+ujson<2.0.0
+pytz
+rx<3.0.0
+psutil
