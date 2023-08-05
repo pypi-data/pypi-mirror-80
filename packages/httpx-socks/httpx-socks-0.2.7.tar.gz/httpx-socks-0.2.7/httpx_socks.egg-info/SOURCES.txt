@@ -1,0 +1,12 @@
+LICENSE.txt
+MANIFEST.in
+README.md
+setup.py
+httpx_socks/__init__.py
+httpx_socks/_async_transport.py
+httpx_socks/_sync_transport.py
+httpx_socks.egg-info/PKG-INFO
+httpx_socks.egg-info/SOURCES.txt
+httpx_socks.egg-info/dependency_links.txt
+httpx_socks.egg-info/requires.txt
+httpx_socks.egg-info/top_level.txt
