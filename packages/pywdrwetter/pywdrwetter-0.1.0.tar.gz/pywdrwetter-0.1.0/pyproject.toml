@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "pywdrwetter"
+version = "0.1.0"
+description = "A simple command line webscraper for the weather forecast on wdr.de"
+authors = ["Markus Mohnen <markus.mohnen@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+click = "^7.1.2"
+MechanicalSoup = "^0.12.0"
+pandas = "^1.1.2"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[tool.poetry.scripts]
+wdrwetter = "pywdrwetter.main:main"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
