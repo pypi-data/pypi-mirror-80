@@ -1,0 +1,24 @@
+Metadata-Version: 2.1
+Name: rlzoo
+Version: 1.0.4
+Summary: A collection of reinforcement learning algorithms with hierarchical code structure and convenient APIs.
+Home-page: https://github.com/tensorlayer/RLzoo
+Author: Zihan Ding, Tianyang Yu, Yanhua Huang, Hongming Zhang, Hao Dong
+Author-email: zhding@mail.ustc.edu.cn
+License: apache
+Keywords: Reinforcment Learning
+Platform: UNKNOWN
+Requires-Python: >=3.5
+Requires-Dist: matplotlib (==3.0.3)
+Requires-Dist: numpy (==1.16.3)
+Requires-Dist: opencv-python (==4.1.0.25)
+Requires-Dist: pygame (==1.9.6)
+Requires-Dist: tensorflow-gpu (==2.1.0)
+Requires-Dist: tensorflow-probability (==0.8.0)
+Requires-Dist: tensorlayer (>=2.1.0)
+Requires-Dist: gym (==0.12.5)
+Requires-Dist: ipywidgets (==7.5.1)
+
+UNKNOWN
+
+
