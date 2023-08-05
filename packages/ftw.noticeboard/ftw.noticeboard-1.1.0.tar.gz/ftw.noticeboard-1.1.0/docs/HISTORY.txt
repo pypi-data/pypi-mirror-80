@@ -1,0 +1,37 @@
+Changelog
+=========
+
+
+1.1.0 (2020-09-22)
+------------------
+
+- Open images in colorbox on notice.pt. [mathias.leimgruber]
+
+
+1.0.3 (2020-09-17)
+------------------
+
+- Fix typo in styles scss for categories view. [mathias.leimgruber]
+
+
+1.0.2 (2020-09-16)
+------------------
+
+- Due a bug in plone.dexterity, defaultFactory did not work before release 2.5.x.
+  This implements a workaround using z3c form default adapter. [mathias.leimgruber]
+
+
+1.0.1 (2020-09-07)
+------------------
+
+- Fix some styles for my notices [mathias.leimgruber]
+- Tmp. disable hook, which creates the quickupload portlet (Produces Seq fault). [mathias.leimgruber]
+- Do not change query dict by reference. [mathias.leimgruber]
+- Make a strict range query for all users, otherwise the board view gets too full. [mathias.leimgruber]
+- Show edit button on Notices, so the plone edit bar is no longer necessary. [mathias.leimgruber]
+
+
+1.0.0 (2020-05-19)
+------------------
+
+- Initial implementation.
