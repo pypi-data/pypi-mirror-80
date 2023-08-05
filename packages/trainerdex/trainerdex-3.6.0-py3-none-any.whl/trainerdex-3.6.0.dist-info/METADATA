@@ -1,0 +1,31 @@
+Metadata-Version: 2.1
+Name: trainerdex
+Version: 3.6.0
+Summary: An API to interact with TrainerDex - a online database of Pokemon Go trainers
+Home-page: https://github.com/TrainerDex/TrainerDex.py
+Author: JayTurnr
+Author-email: jaynicholasturner@gmail.com
+License: GPL-3.0
+Keywords: pokemongo trainerdex
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3.8
+Description-Content-Type: text/markdown
+Requires-Dist: aiohttp (~=3.6.0)
+Requires-Dist: python-dateutil (~=2.8.1)
+Requires-Dist: discord.py (>=0.9.0)
+
+# TrainerDex.py
+
+![Python package](https://github.com/TrainerDex/TrainerDex.py/workflows/Python%20package/badge.svg)
+
+A python library for interacting with the TrainerDex API
+
+Installation
+------------
+
+    pip install trainerdex
+
+
