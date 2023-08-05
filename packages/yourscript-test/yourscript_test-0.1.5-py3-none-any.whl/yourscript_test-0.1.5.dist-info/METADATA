@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: yourscript-test
+Version: 0.1.5
+Summary: this is a upload pkg test
+Home-page: https://github.com/chineseluo/UI_auto_project
+Author: chineseluo
+Author-email: 848257135@qq.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+Requires-Dist: click
+
+### step 1
+	pip install example-pkg-YOUR-USERNAME-HERE
+### step 2
+    import example-pkg-xxxx
+
