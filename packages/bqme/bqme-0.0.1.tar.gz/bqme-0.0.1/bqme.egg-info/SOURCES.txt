@@ -1,0 +1,14 @@
+LICENSE.txt
+MANIFEST.in
+README.md
+setup.py
+bqme/__init__.py
+bqme/distributions.py
+bqme/models.py
+bqme.egg-info/PKG-INFO
+bqme.egg-info/SOURCES.txt
+bqme.egg-info/dependency_links.txt
+bqme.egg-info/requires.txt
+bqme.egg-info/top_level.txt
+test/test_distributions.py
+test/test_models.py
