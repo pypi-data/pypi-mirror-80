@@ -1,0 +1,32 @@
+Metadata-Version: 2.1
+Name: ocr4all_pylib
+Version: 0.2.0
+Summary: UNKNOWN
+Home-page: https://gitlab2.informatik.uni-wuerzburg.de/ocr4all-page-segmentation/pylib.git
+Author: Alexander Gehrke
+Author-email: alexander.gehrke@informatik.uni-wuerzburg.de
+License: UNKNOWN
+Description: # ocr4all-pylib - common code for ocr4all related python projects
+        
+        This package contains code used by several projects related to [OCR4all][1].
+        
+        ## Image to label mapping
+        
+        For several classifiers, the file format of training and output data is images,
+        while the internal format is a 2d matrix with a very small range of values
+        (numbers denoting different labels).
+        
+        The ImageMap class converts between color image representations and label matrices both ways.
+        It also provides JSON reading and writing of mappings between colors and labels.
+        
+        
+        [1]: https://github.com/OCR4all/OCR4all
+        
+Keywords: utility,page segmentation,image preprocessing
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Intended Audience :: Science/Research
+Classifier: Topic :: Scientific/Engineering :: Image Recognition
+Description-Content-Type: text/markdown
