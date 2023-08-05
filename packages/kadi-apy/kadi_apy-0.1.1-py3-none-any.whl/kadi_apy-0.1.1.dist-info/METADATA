@@ -1,0 +1,123 @@
+Metadata-Version: 2.1
+Name: kadi-apy
+Version: 0.1.1
+Summary: Kadi4Mat API library.
+Home-page: https://gitlab.com/iam-cms/kadi-apy
+Author: Karlsruhe Institute of Technology
+License: Apache-2.0
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: Click (>=7.1.1)
+Requires-Dist: requests (>=2.22.0)
+Provides-Extra: dev
+Requires-Dist: black (==20.8b1) ; extra == 'dev'
+Requires-Dist: pre-commit (>=2.7.0) ; extra == 'dev'
+Requires-Dist: pylint (<2.5.0,>=2.4.4) ; extra == 'dev'
+Requires-Dist: tox (>=3.15.0) ; extra == 'dev'
+
+# Kadi-APY
+
+**Kadi-APY** is a library for use in tandem with
+[Kadi4Mat](https://gitlab.com/iam-cms/kadi "Kadi4Mat"). The REST-like API of
+Kadi4Mat makes it possible to programmatically interact with most of the
+resources that can be used through the web interface by sending suitable HTTP
+requests to the different endpoints the API provides. Detailed information
+about the API itself can be found in the developer documentation of Kadi4Mat.
+
+The goal of this library is to make the use of this API as easy as possible. It
+offers both an object oriented approach to work with the API in Python as well
+as a command line interface (CLI). The library is written in Python 3 and works
+under both Linux and Windows.
+
+## Installation
+
+The library can be installed using `pip3` (or `pip`, if there is no dedicated
+version of `pip` for Python 3 installed), which generally comes bundled with
+Python installations. Python version >= 3.6 is required.
+
+`pip3 install kadi-apy`
+
+When installing the library from source for development instead, it is
+recommended to install the library in editable mode, which simply creates a
+link to the sources so all changes are reflected in the installed package
+immediately. The command will also install some additional development
+dependencies as defined in  `setup.py`.
+
+`pip3 install -e .[dev]`
+
+Running the installations inside a virtual environment is recommended, see
+[Virtualenv](https://virtualenv.pypa.io/en/latest/ "Virtualenv") for more
+information.
+
+If you want to use the CLI, make sure the `kadi-apy` command is runnable from
+anywhere. Depending on the type of installation and if a virtual environment is
+used or not, the `PATH` system variable may need to be adapted accordingly to
+include the path the executable resides in. For example, the following command
+can be used on Linux, assuming the executable resides in `~/.local/bin`:
+
+`export PATH=${HOME}/.local/bin:${PATH}`
+
+This line can also be added to `.bashrc` so it will be executed each time a new
+terminal is opened:
+
+`echo 'export PATH=${HOME}/.local/bin:${PATH}' >> ${HOME}/.bashrc`
+
+On Windows, the `PATH` can be modified permanently by editing the respective
+environment variable in the advanced system settings of the control panel.
+
+## Connecting a Kadi4Mat instance
+
+To connect an instance of Kadi4Mat to a local installation of this library, the
+host of the Kadi4Mat instance as well as a personal access token (PAT) are
+required.
+
+The host is the fully qualified domain name of the Kadi4Mat instance, e.g.
+`https://kadi4mat.iam-cms.kit.edu` or `http://localhost:5000` for a typical
+local development installation.
+
+A PAT can be created via the web interface of a Kadi4Mat instance in the menu
+found in *Settings > Access tokens* and will operate with the same permissions
+as the user that created the token. Besides specifying the name of the token,
+which only becomes important when managing multiple tokens, an expiration date
+can be set. This date can optionally be used to prohibit the usage of the token
+beyond the specified date. If no date is given, the token will never expire. As
+another security feature, a token can be limited to one or multiple *scopes*.
+Scopes can restrict a token's access to specific resources or actions. If no
+scopes are selected, the token will have full access by default.
+
+## Usage
+
+The libary can be used by either directly importing it into any Python code or
+script or by using the CLI.
+
+The latter can be used directly in the terminal, inside a shell script or by
+running it as an external command inside most programming languages. The first
+entry point to the CLI is given by running:
+
+`kadi-apy`
+
+All commands concerning different resources are available as various
+subcommands. For example, all subcommands to work with records can be listed by
+running:
+
+`kadi-apy records`
+
+The information on how to create a record can be accessed via:
+
+`kadi-apy records create --help`
+
+Instead of providing the host and PAT each time, both values can also be set
+via the environment variables `KADI_HOST` and `KADI_PAT`. Please refer to the
+installation instructions above on how to set environment variables on Linux or
+Windows.
+
+More examples of using the library can be found inside the `examples` directory
+inside this project, including a Python, bash and PowerShell script. Each
+script has to be called with a host and a PAT.
+
+
