@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "mylib_mnemos"
+version = "0.1.0"
+description = ""
+authors = ["Gaëtan Pruvost <gaetan.pruvost@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.6"
+gensim = "^3.8.3"
+pytest = "^6.0.2"
+
+[tool.poetry.dev-dependencies]
+pylint = "^2.6.0"
+
+[build-system]
+requires = ["poetry>=1.0"]
+build-backend = "poetry.masonry.api"
