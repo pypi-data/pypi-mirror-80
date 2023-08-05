@@ -1,0 +1,31 @@
+Metadata-Version: 2.1
+Name: estore-server
+Version: 0.0.1
+Summary: Event Store Server
+Home-page: https://github.com/lostwire/estore-server
+Author: Jnxy
+Author-email: jnxy@lostwire.net
+License: BSD
+Description: # event-store
+        
+        Very simple Event store database running on PostgreSQL
+        
+        #Installing
+        
+        ```bash
+        pip install estore-server
+        ```
+        
+        #Running
+        ```bash
+        python3 -m estore
+        ```
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Framework :: AsyncIO
+Classifier: Environment :: Web Environment
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Database
+Description-Content-Type: text/markdown
