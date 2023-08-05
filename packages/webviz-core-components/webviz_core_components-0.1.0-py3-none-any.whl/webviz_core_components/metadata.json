@@ -1,0 +1,378 @@
+{
+  "src/lib/components/ColorScales.react.js": {
+    "description": "ColorScales is a Dash wrapper for `react-colorscales`.\nIt takes an array of colors, `colorscale`, and\ndisplays a UI for modifying it or choosing a new scale.",
+    "displayName": "ColorScales",
+    "methods": [],
+    "props": {
+      "id": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "The ID used to identify this compnent in Dash callbacks"
+      },
+      "colorscale": {
+        "type": {
+          "name": "array"
+        },
+        "required": false,
+        "description": "Optional: Initial colorscale to display. Default is Viridis."
+      },
+      "nSwatches": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "Optional: Initial number of colors in scale to display."
+      },
+      "fixSwatches": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "Optional: Set to `True` to fix the number of colors in the scale."
+      },
+      "setProps": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "Dash-assigned callback that should be called whenever any of the\nproperties change"
+      }
+    }
+  },
+  "src/lib/components/Select.react.js": {
+    "description": "Select is a dash wrapper for the html select tag.",
+    "displayName": "Select",
+    "methods": [
+      {
+        "name": "handleChange",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "e",
+            "type": null
+          }
+        ],
+        "returns": null
+      }
+    ],
+    "props": {
+      "id": {
+        "type": {
+          "name": "string"
+        },
+        "required": true,
+        "description": "The ID used to identify this compnent in Dash callbacks"
+      },
+      "size": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "The number of visible options",
+        "defaultValue": {
+          "value": "4",
+          "computed": false
+        }
+      },
+      "options": {
+        "type": {
+          "name": "arrayOf",
+          "value": {
+            "name": "exact",
+            "value": {
+              "label": {
+                "name": "union",
+                "value": [
+                  {
+                    "name": "string"
+                  },
+                  {
+                    "name": "number"
+                  }
+                ],
+                "description": "The dropdown's label",
+                "required": true
+              },
+              "value": {
+                "name": "union",
+                "value": [
+                  {
+                    "name": "string"
+                  },
+                  {
+                    "name": "number"
+                  }
+                ],
+                "description": "The value of the dropdown. This value\ncorresponds to the items specified in the\n`value` property.",
+                "required": true
+              }
+            }
+          }
+        },
+        "required": false,
+        "description": "An array of options {label: [string|number], value: [string|number]},\nan optional disabled field can be used for each option",
+        "defaultValue": {
+          "value": "[{}]",
+          "computed": false
+        }
+      },
+      "value": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "string"
+            },
+            {
+              "name": "number"
+            },
+            {
+              "name": "arrayOf",
+              "value": {
+                "name": "union",
+                "value": [
+                  {
+                    "name": "string"
+                  },
+                  {
+                    "name": "number"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "required": false,
+        "description": "The value of the input. If `multi` is false\nthen value is just a string that corresponds to the values\nprovided in the `options` property. If `multi` is true, then\nmultiple values can be selected at once, and `value` is an\narray of items with values corresponding to those in the\n`options` prop.",
+        "defaultValue": {
+          "value": "[]",
+          "computed": false
+        }
+      },
+      "multi": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "If true, the user can select multiple values",
+        "defaultValue": {
+          "value": "true",
+          "computed": false
+        }
+      },
+      "className": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Appends a class to the select tag",
+        "defaultValue": {
+          "value": "\"\"",
+          "computed": false
+        }
+      },
+      "style": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "Appends styles to the select tag"
+      },
+      "parent_className": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Appends a class to the wrapping div",
+        "defaultValue": {
+          "value": "\"\"",
+          "computed": false
+        }
+      },
+      "parent_style": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "Appends inline styles to the wrapping div"
+      },
+      "setProps": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "Dash-assigned callback that gets fired when the input changes"
+      },
+      "persistence": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "bool"
+            },
+            {
+              "name": "string"
+            },
+            {
+              "name": "number"
+            }
+          ]
+        },
+        "required": false,
+        "description": "Used to allow user interactions in this component to be persisted when\nthe component - or the page - is refreshed. If `persisted` is truthy and\nhasn't changed from its previous value, a `value` that the user has\nchanged while using the app will keep that change, as long as\nthe new `value` also matches what was given originally.\nUsed in conjunction with `persistence_type`."
+      },
+      "persisted_props": {
+        "type": {
+          "name": "arrayOf",
+          "value": {
+            "name": "enum",
+            "value": [
+              {
+                "value": "\"value\"",
+                "computed": false
+              }
+            ]
+          }
+        },
+        "required": false,
+        "description": "Properties whose user interactions will persist after refreshing the\ncomponent or the page. Since only `value` is allowed this prop can\nnormally be ignored.",
+        "defaultValue": {
+          "value": "[\"value\"]",
+          "computed": false
+        }
+      },
+      "persistence_type": {
+        "type": {
+          "name": "enum",
+          "value": [
+            {
+              "value": "\"local\"",
+              "computed": false
+            },
+            {
+              "value": "\"session\"",
+              "computed": false
+            },
+            {
+              "value": "\"memory\"",
+              "computed": false
+            }
+          ]
+        },
+        "required": false,
+        "description": "Where persisted user changes will be stored:\nmemory: only kept in memory, reset on page refresh.\nlocal: window.localStorage, data is kept after the browser quit.\nsession: window.sessionStorage, data is cleared once the browser quit.",
+        "defaultValue": {
+          "value": "\"local\"",
+          "computed": false
+        }
+      }
+    }
+  },
+  "src/lib/components/WebvizPluginPlaceholder.react.js": {
+    "description": "WebvizPluginPlaceholder is a fundamental webviz dash component.\nIt takes a property, `label`, and displays it.\nIt renders an input with the property `value` which is editable by the user.",
+    "displayName": "WebvizPluginPlaceholder",
+    "methods": [],
+    "props": {
+      "id": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "The ID used to identify this component in Dash callbacks",
+        "defaultValue": {
+          "value": "\"some-id\"",
+          "computed": false
+        }
+      },
+      "children": {
+        "type": {
+          "name": "node"
+        },
+        "required": false,
+        "description": "The children of this component"
+      },
+      "buttons": {
+        "type": {
+          "name": "array"
+        },
+        "required": false,
+        "description": "Array of strings, representing which buttons to render. Full set is\n['download', 'contact_person', 'guided_tour', 'screenshot', 'expand']",
+        "defaultValue": {
+          "value": "[\n    \"screenshot\",\n    \"expand\",\n    \"download\",\n    \"guided_tour\",\n    \"contact_person\",\n]",
+          "computed": false
+        }
+      },
+      "contact_person": {
+        "type": {
+          "name": "objectOf",
+          "value": {
+            "name": "string"
+          }
+        },
+        "required": false,
+        "description": "A dictionary of information regarding contact person for the data content.\nValid keys are 'name', 'email' and 'phone'.",
+        "defaultValue": {
+          "value": "{}",
+          "computed": false
+        }
+      },
+      "download": {
+        "type": {
+          "name": "objectOf",
+          "value": {
+            "name": "string"
+          }
+        },
+        "required": false,
+        "description": "A dictionary with information regarding the resource file the plugin requested.\nDictionary keys are 'filename', 'content' and 'mime_type'.\nThe 'content' value should be a base64 encoded ASCII string.",
+        "defaultValue": {
+          "value": "null",
+          "computed": false
+        }
+      },
+      "screenshot_filename": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "File name used when saving a screenshot of the plugin.",
+        "defaultValue": {
+          "value": "\"webviz-screenshot.png\"",
+          "computed": false
+        }
+      },
+      "tour_steps": {
+        "type": {
+          "name": "array"
+        },
+        "required": false,
+        "description": "Tour steps. List of dictionaries, each with two keys ('selector' and 'content').",
+        "defaultValue": {
+          "value": "[]",
+          "computed": false
+        }
+      },
+      "data_requested": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "An integer that represents the number of times\nthat the data download button has been clicked.",
+        "defaultValue": {
+          "value": "0",
+          "computed": false
+        }
+      },
+      "setProps": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "Dash-assigned callback that should be called whenever any of the\nproperties change"
+      }
+    }
+  }
+}
