@@ -1,0 +1,5 @@
+#!/bin/bash
+current_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+declare -a targets
+targets=$(echo "${current_dir}"/../lib/python*/site-packages/bin/libtbx.bundle_as_exe)
+exec "${targets[0]}" "$@"
