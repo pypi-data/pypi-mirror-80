@@ -1,0 +1,66 @@
+﻿# nsbot
+
+Using Selenium read MEATR ,SPECI and TAF from NSWEB.
+
+## Installation
+
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install nsbot.
+
+```bash
+pip install nsbot
+```
+
+## Usage
+
+```python
+from nsbot import MetarSpeciTaf, LoopNsweb
+chrome_driver=".exe" #location of [chrome_driver.exe]
+line_token=""
+time_stop="04" #UTC time
+object1 = MetarSpeciTaf()
+object2 = LoopNsweb(chrome_driver,line_token, time_stop)
+object2.run_loop()
+```
+
+## Note
+To hide chromeDriver console in python
+
+Step1: Find service.py in your selenium directory
+
+#### Lib\site-packages\selenium\webdriver\common\service.py
+
+Step2: Edit the Start() function by adding the creation flags (creationflags=CREATE_NO_WINDOW)
+
+```python
+def start(self):
+    """
+    Starts the Service.
+
+    :Exceptions:
+     - WebDriverException : Raised either when it can't start the service
+       or when it can't connect to the service
+    """
+    try:
+        cmd = [self.path]
+        cmd.extend(self.command_line_args())
+        self.process = subprocess.Popen(cmd, env=self.env,
+               close_fds=platform.system() != 'Windows',
+               stdout=self.log_file,
+               stderr=self.log_file, 
+               creationflags=CREATE_NO_WINDOW)
+    except TypeError:
+```
+Step3: Add the relevant imports to service.py
+
+```python
+from win32process import CREATE_NO_WINDOW
+```
+!!! You need to download chromDriver which is suitable with your systems.
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
+
+| ...... | ...... |
+| ------ | ------ |
+| email | kanutsanun.b@gmail.com |
+| Build README | https://dillinger.io/ |
