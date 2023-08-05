@@ -1,0 +1,15 @@
+LICENSE
+MANIFEST.in
+README.md
+setup.py
+dircompare/__init__.py
+dircompare/_d2hc.py
+dircompare.egg-info/PKG-INFO
+dircompare.egg-info/SOURCES.txt
+dircompare.egg-info/dependency_links.txt
+dircompare.egg-info/requires.txt
+dircompare.egg-info/top_level.txt
+dircompare/deps/diff.css
+dircompare/deps/diff.js
+dircompare/deps/reset.css
+dircompare/deps/template.html
