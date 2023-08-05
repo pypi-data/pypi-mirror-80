@@ -1,0 +1,10 @@
+numpy
+scipy
+matplotlib>=2.2.0
+
+[dev]
+pytest
+pycodestyle
+pydocstyle
+pdoc3
+pytest-cov
