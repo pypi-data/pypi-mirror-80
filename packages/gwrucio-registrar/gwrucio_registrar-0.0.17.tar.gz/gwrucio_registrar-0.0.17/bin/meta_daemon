@@ -1,0 +1,167 @@
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+#
+# Authors:
+# - James Alexander Clark, <james.clark@ligo.org>, 2020
+"""
+Daemon version of add_meta (CLI to DID metadata methods).
+
+This program is Intended as an educational utility to learn how to use the
+daemon module in a realistic setting.
+
+Lists all dids matching user-specified name or pattern (<scope>:<pattern>) and
+returns metadata
+"""
+import sys
+import argparse
+import time
+import daemon
+from daemon import pidfile
+import argcomplete
+from rucio.client.client import Client
+from rucio.common.exception import DataIdentifierNotFound
+
+
+def parse_inputs():
+    """
+    Command line parser
+    """
+
+    aparser = argparse.ArgumentParser(description=__doc__)
+
+    aparser.add_argument(dest="name",
+                         help="""DID name/pattern to list""")
+
+    aparser.add_argument('-S',
+                         "--scope",
+                         type=str,
+                         default="O3",
+                         required=False,
+                         help="""Scope to look in (observing run)""")
+
+    aparser.add_argument("--daemon",
+                         default=False,
+                         action="store_true",
+                         help="""Run as a persistent background daemon""")
+
+    aparser.add_argument('-s',
+                         "--sleep-interval",
+                         type=float,
+                         default=5,
+                         required=False,
+                         help="""Number of seconds to sleep between
+                         iterations""")
+
+    aparser.add_argument('-p',
+                         "--pid-file",
+                         type=str,
+                         default="/var/run/meta_daemon.pid",
+                         required=False,
+                         help="""PID file for daemon process""")
+
+    aparser.add_argument('-l',
+                         "--log-file",
+                         type=str,
+                         default="/var/log/meta_daemon.log",
+                         required=False,
+                         help="""Log file (stdout and stderr) for daemon
+                         process""")
+
+    argcomplete.autocomplete(aparser)
+
+    aparser = aparser.parse_args(sys.argv[1:])
+
+    return aparser
+
+
+def list_dids(scope, name):
+    """
+    List DIDS in scope :scope: with names matching :name:
+
+    :param scope: DID scope
+    :type scope: str
+    :param name: DID name name
+    :type name: str
+    """
+    return CLIENT.list_dids(scope=scope, filters={'name': name}, type='file')
+
+
+def print_did_metadata(scope, did_name):
+    """
+    Retrieve and print did metadata for this DID
+
+    :param did_name: DID names returned by list_dids
+    :type did_names: str
+    """
+
+    try:
+        meta = CLIENT.get_metadata(scope=scope, name=did_name, plugin='JSON')
+    except DataIdentifierNotFound:
+        print("No JSON metadata found, showing general metadata")
+        meta = CLIENT.get_metadata(scope=scope, name=did_name)
+
+    print(f"{scope}:{did_name}:")
+    for key in meta.keys():
+        print(f"{key}: {meta[key]}")
+
+
+def get_and_print_metadata(scope, name):
+    """
+    Construct a list of DIDs and return their metadata
+    """
+
+    while True:
+        print("----------------")
+        print("Getting DID list")
+        did_names = list_dids(scope, name)
+
+        print("Metadata for DIDs:")
+        for did_name in did_names:
+            print_did_metadata(scope, did_name)
+
+        print(f"Going to sleep for {ARGS.sleep_interval} seconds")
+        time.sleep(ARGS.sleep_interval)
+
+
+def run(scope, name):
+    """
+    Run the functions of interest
+    """
+
+    if ARGS.daemon:
+        outfile = open(ARGS.log_file, 'w')
+        errfile = outfile
+    else:
+        outfile = sys.stdout
+        errfile = sys.stderr
+
+    pfile = pidfile.TimeoutPIDLockFile(ARGS.pid_file)
+    with daemon.DaemonContext(detach_process=ARGS.daemon,
+                              pidfile=pfile,
+                              stdout=outfile,
+                              stderr=errfile):
+        get_and_print_metadata(scope, name)
+
+
+if __name__ == "__main__":
+
+    # Parse input
+    ARGS = parse_inputs()
+
+    # Instantiate rucio client
+    CLIENT = Client()
+
+    # Run the program
+    run(ARGS.scope, ARGS.name)

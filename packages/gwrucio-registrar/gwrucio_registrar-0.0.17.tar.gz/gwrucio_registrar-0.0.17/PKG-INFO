@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: gwrucio_registrar
+Version: 0.0.17
+Summary: Client utils for IGWN
+Home-page: https://git.ligo.org/rucio/igwn-rucio-client
+Author: James Alexander Clark
+Author-email: james.clark@ligo.org
+License: UNKNOWN
+Description: # gwrucio_registrar
+        
+        Tools for registering gravitational wave data
+        
+        Supported data:
+         * Frame files
+         * SFT files
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown

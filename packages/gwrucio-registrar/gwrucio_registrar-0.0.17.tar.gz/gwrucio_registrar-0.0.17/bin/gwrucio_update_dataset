@@ -1,0 +1,249 @@
+#!/usr/bin/env python
+#
+# Copyright (C) 2018  James Alexander Clark <james.clark@ligo.org>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+"""
+Command line tool to update IGWN frame datasets based on revised time spans.
+Run in --attach mode to expand time-coverage of a dataset using existing files.
+Run in --detach mode to restrict coverage.
+"""
+
+import logging
+import sys
+import re
+import signal
+import argparse
+import yaml
+import argcomplete
+
+from rucio.client.client import Client
+
+_FRAME_RE = re.compile(r'([A-Z]+)-([A-Za-z0-9_]+)-([0-9]+)-([0-9]+)')
+
+SUCCESS = 0
+FAILURE = 1
+MAX_CACHE_TRIES = 5
+
+LOGGER = logging.getLogger('user')
+
+RUCIO_CLIENT = Client()
+
+
+def setup_logger(logger):
+    """
+    Configures logging information. Lifted from `rucio`.
+    """
+
+    logger.setLevel(logging.INFO)
+    hdlr = logging.StreamHandler()
+
+    def emit_decorator(fnc):
+        """
+        Format logger
+        """
+        def func(*args):
+            """
+            Logging colours
+            """
+            levelno = args[0].levelno
+            if levelno >= logging.CRITICAL:
+                color = '\033[31;1m'
+            elif levelno >= logging.ERROR:
+                color = '\033[31;1m'
+            elif levelno >= logging.WARNING:
+                color = '\033[33;1m'
+            elif levelno >= logging.INFO:
+                color = '\033[32;1m'
+            elif levelno >= logging.DEBUG:
+                color = '\033[36;1m'
+            else:
+                color = '\033[0m'
+            # pylint: disable=line-too-long
+            formatter = logging.Formatter('{0}%(asctime)s\t%(levelname)s\t%(message)s\033[0m'.format(color))  # noqa: E501
+            hdlr.setFormatter(formatter)
+            return fnc(*args)
+        return func
+    hdlr.emit = emit_decorator(hdlr.emit)
+    logger.addHandler(hdlr)
+
+
+setup_logger(LOGGER)
+
+
+def signal_handler(sig, frame):
+    """
+    Catch INTERRUPTs
+    """
+    # pylint: disable=unused-argument
+    LOGGER.error('Interrupt received')
+    # Do some cleanup?
+    sys.exit(1)
+
+
+def get_parser():
+    """
+    Command line parser
+    """
+
+    aparser = argparse.ArgumentParser(description=__doc__)
+
+    aparser.add_argument(dest="rsets",
+                         help="""YAML file specifying datasets""")
+
+    aparser.add_argument("--attach",
+                         action="store_true",
+                         help="""Attach files not in specified timespans""")
+
+    aparser.add_argument("--detach",
+                         action="store_true",
+                         help="""Detach files not in specified timespans""")
+
+    aparser.add_argument("--dry-run",
+                         default=False,
+                         action="store_true",
+                         help="""Only show what would be done, without touching
+                         the rucio db""")
+
+    aparser.add_argument("--verbose",
+                         default=False,
+                         action="store_true",
+                         help="""Print all logging info""")
+
+    return aparser
+
+
+def get_rsets(configyml):
+    """
+    Read configuration from YAML
+
+    Returns :rset: YAML dictionary
+    """
+    with open(configyml, 'r') as stream:
+        rset = yaml.load(stream, Loader=yaml.SafeLoader)
+    return rset
+
+
+def detach(rsets, dryrun=False):
+    """
+    Detach files in scope outside of time range in rset
+
+    Parameters:
+
+    :param rsets: The dataset dictionary description
+    :param dryrun: Dummy run, without changing rucio db
+    :type rsets: dict
+    :type dryrun: bool
+
+    :returns: list of files detached from original dataset
+    """
+
+    for rset in rsets:
+
+        LOGGER.info("Restricting %s:%s to interval [%d, %d]",
+                    rsets[rset]['scope'],
+                    rset,
+                    rsets[rset]['minimum-gps'],
+                    rsets[rset]['maximum-gps'])
+
+        # Get all LFNs in dataset
+        lfns = [item['name'] for item in
+                list(RUCIO_CLIENT.list_content(rsets[rset]['scope'],
+                                               rset))]
+        LOGGER.info("Found %d files in dataset", len(lfns))
+
+        # Extract the timestamps and durations of the frames
+        start_times = list(map(lambda x: int(x.groups()[2]),
+                               map(_FRAME_RE.match, lfns)))
+        durations = list(map(lambda x: int(x.groups()[3]),
+                             map(_FRAME_RE.match, lfns)))
+        end_times = [sum(x) for x in zip(start_times, durations)]
+
+        # Frame is inside time range if *any* of data is inside:
+        rm_lfns = [lfn for (lfn, start, end) in
+                   zip(lfns, start_times, end_times)
+                   if (end < rsets[rset]['minimum-gps']) or
+                   (start >= rsets[rset]['maximum-gps'])]
+
+        # Identify lfns for detachment
+        LOGGER.info("Found %d files for detachment: %s",
+                    len(rm_lfns), str(rm_lfns))
+
+        # DID list is [{'scope':<scope>, 'name':<name>}, {...}]
+        rm_dids = [{'scope': rsets[rset]['scope'], 'name': lfn}
+                   for lfn in rm_lfns]
+
+        if not dryrun and rm_dids:
+            LOGGER.info("Detaching...")
+            RUCIO_CLIENT.detach_dids(rsets[rset]['scope'], rset, rm_dids)
+            LOGGER.info("...Detached")
+
+        # outfile = f"{rsets[rset]['scope']}:{rset}-detached.txt"
+        outfile = 'blah'
+        with open(outfile, 'w') as record:
+            for did in rm_dids:
+                record.write(f"{did['scope']}:{did['name']}\n")
+        LOGGER.info("See %s for record of detached files", outfile)
+
+        return True
+
+
+def main():
+    """
+    Principal operations
+    """
+
+    # parse input and choose operation
+    parser = get_parser()
+    argcomplete.autocomplete(parser)
+
+    if len(sys.argv) == FAILURE:
+        parser.print_help()
+        sys.exit(FAILURE)
+
+    args = parser.parse_args(sys.argv[1:])
+    if not (args.attach or args.detach):
+        parser.error('No action requested, add --attach or --detach')
+    if (args.attach and args.detach):
+        parser.error('Too many actions requested, use --attach OR --detach')
+
+    if args.verbose:
+        LOGGER.setLevel(logging.DEBUG)
+
+    # Add hooks for SIGTERM and SIGINT
+    signal.signal(signal.SIGTERM, signal_handler)
+    signal.signal(signal.SIGINT, signal_handler)
+
+    LOGGER.info("Reading registration set file %s", args.rsets)
+    rsets = get_rsets(args.rsets)
+
+    if args.dry_run:
+        LOGGER.info("This is a dry-run, rucio db will remain unchanged")
+
+    if args.detach:
+        LOGGER.info("Starting in detach mode")
+        detach(rsets, args.dry_run)
+
+    if args.attach:
+        LOGGER.critical("--attach not supported ... yet")
+        raise NotImplementedError
+
+    LOGGER.info("Operations complete")
+
+    return SUCCESS
+
+
+if __name__ == "__main__":
+    main()
