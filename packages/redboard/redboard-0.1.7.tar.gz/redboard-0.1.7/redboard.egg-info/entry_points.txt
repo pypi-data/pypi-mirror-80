@@ -1,0 +1,4 @@
+[console_scripts]
+pca9685-gui = redboard.console:pca9684
+redboard-gui = redboard.console:main
+
