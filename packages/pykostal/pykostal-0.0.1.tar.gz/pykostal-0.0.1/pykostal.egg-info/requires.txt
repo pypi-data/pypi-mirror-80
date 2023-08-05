@@ -1,0 +1,7 @@
+aiohttp
+async_timeout
+
+[dev]
+pytest>=3.7
+tox
+twine
