@@ -1,0 +1,9 @@
+valid8>=5.0
+makefun
+autoclass>=2.2
+
+[:python_version < "3.3"]
+funcsigs
+
+[:python_version < "3.4"]
+enum34
