@@ -1,0 +1,73 @@
+Metadata-Version: 2.1
+Name: modelstore
+Version: 0.0.1b0
+Summary: modelstore is a library for versioning, exporting, and storing machine learning models
+Home-page: https://github.com/operatorai/modelstore
+Author: Neal Lathia
+License: Please refer to the readme
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.7
+Classifier: License :: OSI Approved :: Apache Software License
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: gitpython (==3.1.8)
+Requires-Dist: joblib (==0.16.0)
+Requires-Dist: onnxruntime (==1.4.0)
+
+# modelstore
+
+`modelstore` is a Python library that allows you to version, export, and save a machine learning models
+to your filesystem or a cloud storage provider (AWS or GCP).
+
+The library's `ModelStore` helps you to (a) version your mdoels, (b) store them in a structured way, and
+(c) collect meta data about the Python runtime that was used to train them.
+
+## Installation
+
+```python
+pip install modelstore
+```
+
+## Usage
+
+```python
+# Train your model
+clf = RandomForestClassifier(n_estimators=10)
+clf = clf.fit(X, Y)
+
+# Create a model store that uses a Google Cloud bucket (or AWS bucket)
+ms = ModelStore.from_gcloud(
+   project_name="my-project",
+   bucket_name="my-bucket",
+)
+
+# Create an archive that exports your model
+archive = ms.sklearn.create_archive(model=clf)
+
+# Upload the archive to your model store
+meta_data = ms.upload(domain="example-model", archive)
+
+print(json.dumps(meta_data, indent=4))
+```
+
+For more details, please refer to the documentation.
+
+## License
+
+Copyright 2020 Neal Lathia
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+
