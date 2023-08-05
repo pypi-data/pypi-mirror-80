@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: fico21softlibs
+Version: 0.6
+Summary: This is a fico21soft's common libraries
+Home-page: UNKNOWN
+Author: Senna Kang
+Author-email: fico21soft@gmail.com
+License: UNKNOWN
+Keywords: common,library,fico21soft
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Python: >=3
+Requires-Dist: pyodbc
+
+This is a fico21soft's common libraries...
+
+I will explain it later~~
+
+
