@@ -1,0 +1,13 @@
+MANIFEST.in
+README.md
+RELEASE
+setup.py
+credisdict.egg-info/PKG-INFO
+credisdict.egg-info/SOURCES.txt
+credisdict.egg-info/dependency_links.txt
+credisdict.egg-info/requires.txt
+credisdict.egg-info/top_level.txt
+extras/.env
+extras/requirements.txt
+src/CRedisDict.py
+src/__init__.py
