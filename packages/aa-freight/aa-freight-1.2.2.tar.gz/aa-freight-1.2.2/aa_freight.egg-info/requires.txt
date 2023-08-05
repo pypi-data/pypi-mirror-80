@@ -1,0 +1,6 @@
+allianceauth>=2.7.3
+dhooks-lite>=0.5.0
+django-navhelper
+
+[testing]
+django-webtest
