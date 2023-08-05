@@ -1,0 +1,26 @@
+Metadata-Version: 2.1
+Name: xarray-accessors
+Version: 0.1.0
+Summary: xarray extension for dataarray accessors
+Home-page: https://github.com/astropenguin/xarray-accessors/
+License: MIT
+Author: Akio Taniguchi
+Author-email: taniguchi@a.phys.nagoya-u.ac.jp
+Requires-Python: >=3.6,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Project-URL: Documentation, https://astropenguin.github.io/xarray-accessors/
+Description-Content-Type: text/markdown
+
+# xarray-accessors
+
+[![PyPI](https://img.shields.io/pypi/v/xarray-accessors.svg?label=PyPI&style=flat-square)](https://pypi.org/pypi/xarray-accessors/)
+[![Python](https://img.shields.io/pypi/pyversions/xarray-accessors.svg?label=Python&color=yellow&style=flat-square)](https://pypi.org/pypi/xarray-accessors/)
+[![Test](https://img.shields.io/github/workflow/status/astropenguin/xarray-accessors/Test?logo=github&label=Test&style=flat-square)](https://github.com/astropenguin/xarray-accessors/actions)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg?label=License&style=flat-square)](LICENSE)
+
+xarray extension for dataarray accessors
+
