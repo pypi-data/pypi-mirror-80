@@ -1,0 +1,13 @@
+#!/usr/bin/env python3
+
+# Simple LaTeX INSTaller
+# sltxinst
+
+# TODO: setup other projects with this
+# TODO: check versioning
+# TODO: do not install if already done
+# TODO: symlink options?
+
+import os
+
+os.system("python3 -m sltxpkg")
