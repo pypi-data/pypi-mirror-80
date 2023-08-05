@@ -1,0 +1,170 @@
+Metadata-Version: 2.1
+Name: pydataapi
+Version: 0.4.22
+Summary: py-data-api is a user-friendly client for AWS Aurora Serverless's Data API
+Home-page: https://github.com/koxudaxi/py-data-api
+Author: Koudai Aono
+Author-email: koxudaxi@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Natural Language :: English
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Requires-Python: >=3.6.1
+Description-Content-Type: text/markdown
+Requires-Dist: boto3 (<2,>=1.12.7)
+Requires-Dist: SQLAlchemy (<1.4,>=1.3.13)
+Requires-Dist: pydantic (==1.4)
+Requires-Dist: more-itertools (<8.5,>=8.0.2)
+Provides-Extra: all
+Requires-Dist: pytest-runner ; extra == 'all'
+Requires-Dist: setuptools-scm ; extra == 'all'
+Requires-Dist: pytest ; extra == 'all'
+Requires-Dist: pytest-benchmark ; extra == 'all'
+Requires-Dist: pytest-cov ; extra == 'all'
+Requires-Dist: pytest-mock ; extra == 'all'
+Requires-Dist: pytest-docker-compose ; extra == 'all'
+Requires-Dist: mypy ; extra == 'all'
+Requires-Dist: black ; extra == 'all'
+Requires-Dist: isort (>=5.0.7) ; extra == 'all'
+Requires-Dist: PyMySQL ; extra == 'all'
+Requires-Dist: docker-compose ; extra == 'all'
+Requires-Dist: requests (==2.20.1) ; extra == 'all'
+Requires-Dist: mkdocs ; extra == 'all'
+Requires-Dist: mkdocs-material ; extra == 'all'
+Requires-Dist: wheel ; extra == 'all'
+Requires-Dist: twine ; extra == 'all'
+Requires-Dist: codecov ; extra == 'all'
+Provides-Extra: ci
+Requires-Dist: codecov ; extra == 'ci'
+Provides-Extra: docs
+Requires-Dist: mkdocs ; extra == 'docs'
+Requires-Dist: mkdocs-material ; extra == 'docs'
+Provides-Extra: setup
+Requires-Dist: pytest-runner ; extra == 'setup'
+Requires-Dist: setuptools-scm ; extra == 'setup'
+Provides-Extra: test
+Requires-Dist: pytest ; extra == 'test'
+Requires-Dist: pytest-benchmark ; extra == 'test'
+Requires-Dist: pytest-cov ; extra == 'test'
+Requires-Dist: pytest-mock ; extra == 'test'
+Requires-Dist: pytest-docker-compose ; extra == 'test'
+Requires-Dist: mypy ; extra == 'test'
+Requires-Dist: black ; extra == 'test'
+Requires-Dist: isort (>=5.0.7) ; extra == 'test'
+Requires-Dist: PyMySQL ; extra == 'test'
+Requires-Dist: docker-compose ; extra == 'test'
+Requires-Dist: requests (==2.20.1) ; extra == 'test'
+Provides-Extra: wheel
+Requires-Dist: wheel ; extra == 'wheel'
+Requires-Dist: twine ; extra == 'wheel'
+
+# py-data-api - Data API Client for Python
+
+[![Test Status](https://github.com/koxudaxi/py-data-api/workflows/Test/badge.svg)](https://github.com/koxudaxi/py-data-api/actions)
+[![PyPI version](https://badge.fury.io/py/pydataapi.svg)](https://badge.fury.io/py/pydataapi)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/pydataapi)](https://pypi.python.org/pypi/pydataapi)
+[![codecov](https://codecov.io/gh/koxudaxi/py-data-api/branch/master/graph/badge.svg)](https://codecov.io/gh/koxudaxi/py-data-api)
+![license](https://img.shields.io/github/license/koxudaxi/py-data-api.svg)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
+py-data-api is a client for Data API of [Aurora Serverless](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html).
+Also, the package includes SQLAlchemy Dialects and DB API 2.0 Client.
+
+## Features
+- SQLAlchemy Dialects
+- DB API 2.0 compatible client [PEP 249](https://www.python.org/dev/peps/pep-0249/)
+
+## Support Database Engines
+- MySQL
+- PostgreSQL
+
+## What's AWS Aurora Serverless's Data API?
+https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html
+
+## This project is an experimental phase.
+Warning: Some interface will be changed.
+
+## How to install
+pydataapi requires Python 3.6.1 or later 
+```bash
+$ pip install pydataapi
+```
+
+## Example
+
+```python
+from typing import List
+
+from sqlalchemy import Column, Integer, String
+from sqlalchemy.ext.declarative import declarative_base
+
+from pydataapi import DataAPI, Result
+
+
+class Pets(declarative_base()):
+    __tablename__ = 'pets'
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    name = Column(String(255, collation='utf8_unicode_ci'), default=None)
+
+
+database: str = 'test'
+resource_arn: str = 'arn:aws:rds:us-east-1:123456789012:cluster:serverless-test-1'
+secret_arn: str = 'arn:aws:secretsmanager:us-east-1:123456789012:secret:serverless-test1'
+
+def example_driver_for_sqlalchemy():
+    from sqlalchemy.engine import create_engine
+    engine = create_engine(
+        'mysql+pydataapi://',
+        connect_args={
+            'resource_arn': 'arn:aws:rds:us-east-1:123456789012:cluster:dummy',
+            'secret_arn': 'arn:aws:secretsmanager:us-east-1:123456789012:secret:dummy',
+            'database': 'test'}
+    )
+
+    result = engine.execute("select * from pets")
+    print(result.fetchall())
+
+def example_simple_execute():
+    data_api = DataAPI(resource_arn=resource_arn, secret_arn=secret_arn, database=database)
+    result: Result = data_api.execute('show tables')
+    print(result.scalar())
+    # Pets
+```
+
+## Contributing to pydataapi
+We are waiting for your contributions to `pydataapi`.
+
+### How to contribute
+[https://koxudaxi.github.io/py-data-api/contributing](https://koxudaxi.github.io/py-data-api/contributing)
+
+
+## Related projects
+### local-data-api
+
+DataAPI Server for local 
+
+https://github.com/koxudaxi/local-data-api
+
+## PyPi 
+
+[https://pypi.org/project/pydataapi](https://pypi.org/project/pydataapi)
+
+## Source Code
+
+[https://github.com/koxudaxi/py-data-api](https://github.com/koxudaxi/py-data-api)
+
+## Documentation
+
+[https://koxudaxi.github.io/py-data-api](https://koxudaxi.github.io/py-data-api)
+
+## License
+
+py-data-api is released under the MIT License. http://www.opensource.org/licenses/mit-license
+
+
