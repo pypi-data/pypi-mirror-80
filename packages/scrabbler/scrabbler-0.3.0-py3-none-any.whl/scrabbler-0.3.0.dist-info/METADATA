@@ -1,0 +1,10 @@
+Metadata-Version: 2.1
+Name: scrabbler
+Version: 0.3.0
+Summary: Scrabbler.
+Author: Michal Hozza
+Author-email: mhozza@gmail.com
+Requires-Python: >=3.8,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: string_algorithms (>=0.5.0,<0.6.0)
