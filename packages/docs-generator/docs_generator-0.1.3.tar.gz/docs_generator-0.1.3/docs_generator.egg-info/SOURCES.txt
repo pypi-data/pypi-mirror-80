@@ -1,0 +1,11 @@
+setup.py
+docs_generator/Document.py
+docs_generator/__init__.py
+docs_generator/config.py
+docs_generator/docs_generator.py
+docs_generator/utils.py
+docs_generator.egg-info/PKG-INFO
+docs_generator.egg-info/SOURCES.txt
+docs_generator.egg-info/dependency_links.txt
+docs_generator.egg-info/requires.txt
+docs_generator.egg-info/top_level.txt
