@@ -1,0 +1,103 @@
+$script::player::add_sequencer( $__dir__ + '/marina.html' );
+
+# Title: Soft to Be Strong
+# Artist: Marina
+V70 L1 T120;
+
+fun accomp () {
+    [^Cm];
+    [BM]; 
+    [AM]; 
+    [BM];
+    [^Cm];
+    [AM];
+    [BM]2;
+
+    [^Cm];
+    [BM];
+    [AM];
+    [BM];
+    [^Cm];
+    [AM];
+    [BM]2;
+};
+
+fun melody () {
+    V120;
+
+    r/4 ^g/4 ^g/4 ^g/4;
+    ^f/2 e/8 ^d3/8; 
+    ^c2;
+
+    r/4 ^g/4 b/4; 
+    ^c'/2 ^c'/4 ^c'/4;
+    b5/4; 
+    b/8 e'/8 ^d'/8 e'/8 b/4;
+    ^c'/4 ^g/4 ^g/4 ^g/4;
+    ^f/2 e/8 ^d3/8;
+    ^c2;
+
+    r/4 ^g/4 b/4;
+    ^c'/2 ^c'/4 ^c'/4;
+};
+
+$toggle_sustain = fun ( ref $enabled ) => {
+    if ( $enabled ) {
+        cc( 64; 0 );
+    } else {
+        cc( 64; 127 );
+    };
+
+    $enabled = not $enabled;
+};
+
+fun keyboard () {
+    $sustained = true;
+
+    @keyboard { q toggle: accomp() | melody(); };
+    
+    @keyboard hold extend {
+        a: [^Cm];
+        s: [BM];
+        d: [AM];
+        f: [EM];
+        g: [^Fm];
+    };
+
+    @keyboard hold extend (V120) {
+        1: ^c;
+        2: ^d; 
+        3: e;
+        4: ^f;
+        5: ^g;
+        6: b;
+        7: ^c';
+        8: ^d';
+        9: e';
+
+        c: toggle_sustain( $sustained );
+    };
+
+    $bf = none;
+    keyboard\bufslot( $bf );
+    keyboard\repl( ctx = getctx() );
+};
+
+keyboard();
+
+# We can also record our performance
+# keyboard\record( $__dir__ + "/marina-perf-2.csv" );
+# And then replay it
+# keyboard\replay( $__dir__ + "/marina-perf-2.csv" );
+# Or read the performance as a music sequence
+# $music = keyboard\readperf( $__dir__ + "/marina-perf-2.csv" );
+
+# save( accomp() | melody(), 'C:\\Users\\PedroSilva\\Desktop\\marina.wav' );
+
+$music = keyboard\readperf( $__dir__ + "/marina-perf-2.csv" );
+
+$music = keyboard\Grid( 1, 4 )::align( $music, mode = "start_end" );
+
+print( to_mkl( $music ) );
+
+# play( $music );

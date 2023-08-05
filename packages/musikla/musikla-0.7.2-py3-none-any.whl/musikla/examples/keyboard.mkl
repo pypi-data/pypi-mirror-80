@@ -1,0 +1,13 @@
+$layout = 
+"1234567890'«
+qwertyuiop+´
+asdfghjklçº~
+<zxcvbnm,.-";
+
+$kb = keyboard\piano( $layout, hshift = @{ 0 = 0 } );
+
+$kb -= @keyboard hold extend {
+    a: [CM];
+    s: [DM];
+    d: [EM];
+};

@@ -1,0 +1,32 @@
+S4/4 L/4 T132 V120;
+
+fun settempo ($t) => setattr(getctx()::voice, "tempo", int($t));
+fun gettempo () => getctx()::voice::tempo;
+
+$e1 = fun () => C D E D2 E C2;
+$e2 = fun () => Crd'e2rc2;
+
+$t = 0; $pat = $e1;
+
+@keyboard {
+    a: [CM];
+    s: [Am];
+    d: [FM];
+    f: [Dm];
+}::map(fun($k, $m) => $m * $pat() + $t);
+
+@keyboard {
+    1: { $pat = $e1 };
+    2: { $pat = $e2 };
+
+    up: { settempo( gettempo() * 1.1 ) };
+    down: { settempo( gettempo() / 1.1 ) };
+    left: { $t -= 1 };
+    right: { $t += 1 };
+};
+
+keyboard\repl( ctx = getctx() );
+
+# TODO
+# Map midi
+# Octave arpeggios

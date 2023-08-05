@@ -1,0 +1,36 @@
+# Note that the use of the "-=" operator is meant to avoid duplicated keys
+
+$transpose = 0;
+$transpose_rows = @{ 0 = 0 };
+
+# Use a "standard" keyboard piano
+$piano = keyboard\piano( transpose = $transpose, transpose_rows = $transpose_rows );
+# Maybe even add a MIDI piano?
+$piano -= keyboard\midi();
+# Or declare a custom piano
+@keyboard {
+    up: { $transpose += 1 };
+    down: { $transpose -= 1 };
+    left: { $transpose_rows::[ 0 ] = $transpose_rows::[ 0 ] - 12 };
+    right: { $transpose_rows::[ 0 ] = $transpose_rows::[ 0 ] + 12 };
+};
+
+#$piano -= @keyboard hold extend {
+#    a: [^Cm];       s: [BM];        d: [AM];
+#    f: [EM];        g: [^Fm];       
+#};
+
+#$piano -= @keyboard hold extend (V120) {
+#    w: ^c;      e: ^d;      r: e;       t: ^f;
+#    y: ^g;      u: b;       i: ^c';     o: ^d';
+#    p: e';
+#};
+
+# Declares an array that will contain our buffers
+$bf = none;
+# Creates a keyboard that declares a set of buffers. By default, 
+# the numpad keys are used (creating 10 available buffer slots)
+# Save key is F8, Load key is F7
+$piano -= keyboard\bufpad( $bf );
+# Creates a keyboard that associates the interpreter accessible by the "\" key
+$piano -= keyboard\repl( ctx = getctx() );
