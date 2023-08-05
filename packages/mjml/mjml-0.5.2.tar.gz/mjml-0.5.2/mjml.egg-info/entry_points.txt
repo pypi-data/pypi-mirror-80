@@ -1,0 +1,3 @@
+[console_scripts]
+mjml = mjml.scripts.mjml:main
+
