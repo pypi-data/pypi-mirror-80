@@ -1,0 +1,8 @@
+.env
+env
+.venv
+venv
+build
+dist
+*.so
+*.egg-info
