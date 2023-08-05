@@ -1,0 +1,3 @@
+[console_scripts]
+autounit = scrapy_autounit.cli:main
+
