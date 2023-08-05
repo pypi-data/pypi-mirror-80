@@ -1,0 +1,17 @@
+azure/mgmt/communication/__init__.py,sha256=M_jtaun3BzdXzb5sqRQt4iDg93coGEDYVJKdtJxLhL4,801
+azure/mgmt/communication/_communication_service_management_client.py,sha256=ZeD6Peu84w-vlrDnsvJ64sjacimowxBfjkGhjSza2Uw,2856
+azure/mgmt/communication/_configuration.py,sha256=kBFT_qBDDSVtljFuzwxgRLjlgpyLX-jk5itctU56SXA,2034
+azure/mgmt/communication/version.py,sha256=3lE7hyfaY5L5z_Nk5Joie8WaLQA08GlabpixuhcJY2E,495
+azure/mgmt/communication/models/__init__.py,sha256=g43Hupw9MjVGTy471SqvD3l8bONFrPqI7XvbV6B2rl4,2970
+azure/mgmt/communication/models/_communication_service_management_client_enums.py,sha256=veD8zYxWeAW-70E6CiRop3jt_VpoMdn5BFAYJlbH9YA,1167
+azure/mgmt/communication/models/_models.py,sha256=bd9rVnijEla-XStKhV1HuPzzcrmg-1nkWRRjCGWXH3M,19484
+azure/mgmt/communication/models/_models_py3.py,sha256=Qa1soFUaJzmsfSEFHBzHKjFK8CK9xYFP6VVKruQEYZk,19719
+azure/mgmt/communication/models/_paged_models.py,sha256=FqKsgQaY3Y3BEGxunYVfceWx7EQih4SmrwUj2ochQ1Y,1449
+azure/mgmt/communication/operations/__init__.py,sha256=inkAW4mk0X_A16GgKXBTweqiYZQiosEs63YScpiYEsg,766
+azure/mgmt/communication/operations/_communication_service_operations.py,sha256=I7VVxdyvi_YJ1KNh2j1UfqKX_orB2p90_S9z3i3qtHs,36788
+azure/mgmt/communication/operations/_operation_statuses_operations.py,sha256=_TCpdfZIwSu028FaVXJf5XvxHXoAsfQ9gKu8N6m67ww,4078
+azure/mgmt/communication/operations/_operations.py,sha256=GszYFEo5RV8H8aonDFSVKFZkTjFb1PLQUw3X315n90k,3930
+azure_mgmt_communication-1.0.0b1.dist-info/METADATA,sha256=NPFU_qFW84-2-5Lze3L4FggRQqjtpOTHccKaZwMVO_0,3855
+azure_mgmt_communication-1.0.0b1.dist-info/WHEEL,sha256=kGT74LWyRUZrL4VgLh6_g12IeVl_9u9ZVhadrgXZUEY,110
+azure_mgmt_communication-1.0.0b1.dist-info/top_level.txt,sha256=S7DhWV9m80TBzAhOFjxDUiNbKszzoThbnrSz5MpbHSQ,6
+azure_mgmt_communication-1.0.0b1.dist-info/RECORD,,
