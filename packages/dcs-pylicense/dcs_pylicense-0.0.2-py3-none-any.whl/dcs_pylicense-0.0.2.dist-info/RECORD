@@ -1,0 +1,17 @@
+pylicense/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+pylicense/cli.py,sha256=1vZM7JQKUEz4lWQcxqgkw51YKqM9gmz3fg1wEu4ohUA,514
+pylicense/constants.py,sha256=UdEK6AJ-5AyBfgunXD4t4380LoGYTCy2XEwpD_eH4z8,200
+pylicense/dispatcher.py,sha256=QJqt2XPtTCF6hQL_jLqce51qHUZOdGziJB8lYf77ha4,636
+pylicense/logger.py,sha256=unMjVlRlI4JBc6HWdvqrxQX_SYrL7ZZyQklHjUEvGWM,373
+pylicense/parser.py,sha256=KDSfuJk-SYrseOneTTf_KB2TU2e1bSt_GpgpjdJphAY,938
+pylicense/repos/__init__.py,sha256=S3Sqdi9I8E_siNAfsKNLalMyQiehWcV_yZj_asM8uho,152
+pylicense/repos/anaconda.py,sha256=LFaTYRLVMi2yAsVpVNMyMXOpXsZB1h46miqv2XjhyFU,148
+pylicense/repos/base.py,sha256=F8iBvPAky7qtWOi6fAgY68le9p2nzpvqLEkM_SmmHho,1424
+pylicense/repos/conda_forge.py,sha256=gjksQVFJInsYme2i-KcFs7XGhpAT5k3htbElGzF22hk,1115
+pylicense/repos/pypi.py,sha256=p_m_7c1q87-HRiSK8sqyt-hoQQCp7QQzzqy8evOSHok,592
+dcs_pylicense-0.0.2.dist-info/LICENSE,sha256=OXLcl0T2SZ8Pmy2_dmlvKuetivmyPd5m1q-Gyd-zaYY,35149
+dcs_pylicense-0.0.2.dist-info/METADATA,sha256=VALzGZCUdT1GHTykrQ88yw4ZgoAn0WCtJmplwSq_Sjg,1009
+dcs_pylicense-0.0.2.dist-info/WHEEL,sha256=EVRjI69F5qVjm_YgqcTXPnTAv3BfSUr0WVAHuSP3Xoo,92
+dcs_pylicense-0.0.2.dist-info/entry_points.txt,sha256=TEGBsS3TY-snyHEYZ5WqQXPuEO5T5B4VmEBMjlhgrk8,49
+dcs_pylicense-0.0.2.dist-info/top_level.txt,sha256=bFhVunHh9laz9qUOacbKqCUmYoso__9KA8B3W8fhy_Q,10
+dcs_pylicense-0.0.2.dist-info/RECORD,,
