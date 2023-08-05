@@ -1,0 +1,17 @@
+numpy
+
+[GAN]
+pytorch-lightning
+
+[all]
+dcor
+torch
+matplotlib
+networkx
+
+[dcor]
+dcor
+
+[vis]
+matplotlib
+networkx
