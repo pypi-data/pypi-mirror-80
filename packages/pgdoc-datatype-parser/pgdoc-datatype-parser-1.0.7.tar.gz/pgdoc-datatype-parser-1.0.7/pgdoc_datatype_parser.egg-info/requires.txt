@@ -1,0 +1,10 @@
+
+[dev]
+twine
+bump2version
+
+[test]
+pytest
+pytest-cov
+pytest-xdist
+flake8
