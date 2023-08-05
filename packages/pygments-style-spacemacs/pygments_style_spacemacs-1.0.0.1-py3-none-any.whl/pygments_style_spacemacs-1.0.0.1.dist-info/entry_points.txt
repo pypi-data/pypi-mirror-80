@@ -1,0 +1,3 @@
+[pygments.styles]
+        spacemacs-light=pygments_style_spacemacs.spacemacs_light:SpacemacsLightStyle
+        spacemacs-dark=pygments_style_spacemacs.spacemacs_dark:SpacemacsDarkStyle
