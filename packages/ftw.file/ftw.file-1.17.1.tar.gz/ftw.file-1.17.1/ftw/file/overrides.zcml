@@ -1,0 +1,20 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    i18n_domain="ftw.file">
+
+   <adapter
+      provides="plone.outputfilters.interfaces.IFilter"
+      name="resolveuid_and_caption"
+      for="* *"
+      factory=".custom_outputfilter.FtwFileFilter"
+      />
+
+   <adapter
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      provides="Products.TinyMCE.adapters.interfaces.Upload.IUpload"
+      factory=".browser.upload.TinyMCEFileUpload"
+      />
+
+</configure>
