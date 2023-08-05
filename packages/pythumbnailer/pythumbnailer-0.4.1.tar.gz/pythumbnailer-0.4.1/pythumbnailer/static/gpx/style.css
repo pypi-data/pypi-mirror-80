@@ -1,0 +1,28 @@
+/* Part of pythumbnailer: https://gitlab.com/somini/pythumbnailer/ */
+html, body {
+	display: flex;
+	padding: 0; margin: 0;
+	min-width: 100%;
+	min-height: 100%;
+}
+#map {
+	display: flex;
+	width: 100%;
+	height: 100%;
+}
+
+.height-focus {
+	stroke-width: 3px;
+}
+
+/* Tweak elevation chart: summary=description */
+.elevation-summary.description-summary {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
+}
+.elevation-summary.description-summary > span {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+}
