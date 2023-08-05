@@ -1,0 +1,85 @@
+Metadata-Version: 2.1
+Name: vigorish
+Version: 0.3.3
+Summary: Hybrid Python/Node.js web scraper for Major League Baseball (MLB) data.
+Home-page: https://github.com/a-luna/vigorish
+Author: Aaron Luna
+Author-email: contact@aaronluna.dev
+Maintainer: Aaron Luna
+Maintainer-email: contact@aaronluna.dev
+License: MIT
+Project-URL: Bug Tracker, https://github.com/a-luna/vigorish/issues
+Project-URL: Source Code, https://github.com/a-luna/vigorish
+Project-URL: Documentation, https://aaronluna.dev/projects/vigorish
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Operating System :: Unix
+Classifier: Programming Language :: JavaScript
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3 :: Only
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: aenum
+Requires-Dist: boto3
+Requires-Dist: bullet
+Requires-Dist: click
+Requires-Dist: dacite
+Requires-Dist: dataclass-csv
+Requires-Dist: enlighten
+Requires-Dist: events
+Requires-Dist: rapidfuzz
+Requires-Dist: halo
+Requires-Dist: lxml
+Requires-Dist: naked
+Requires-Dist: py-getch
+Requires-Dist: python-dateutil
+Requires-Dist: python-dotenv
+Requires-Dist: requests
+Requires-Dist: sqlalchemy
+Requires-Dist: sqlalchemy-utils
+Requires-Dist: tabulate
+Requires-Dist: tqdm
+Requires-Dist: urllib3
+Requires-Dist: w3lib
+Provides-Extra: dev
+Requires-Dist: black ; extra == 'dev'
+Requires-Dist: coverage ; extra == 'dev'
+Requires-Dist: flake8 ; extra == 'dev'
+Requires-Dist: pydocstyle ; extra == 'dev'
+Requires-Dist: pytest ; extra == 'dev'
+Requires-Dist: pytest-black ; extra == 'dev'
+Requires-Dist: pytest-clarity ; extra == 'dev'
+Requires-Dist: pytest-cov ; extra == 'dev'
+Requires-Dist: pytest-dotenv ; extra == 'dev'
+Requires-Dist: pytest-flake8 ; extra == 'dev'
+Requires-Dist: tox ; extra == 'dev'
+Requires-Dist: twine ; extra == 'dev'
+Requires-Dist: wheel ; extra == 'dev'
+
+## vigorish
+
+`vigorish` is a hybrid Python/Node.js application that scrapes MLB data from mlb.com, brooksbaseball.net and baseball-reference.com.
+
+My goal is to capture as much data as possible &mdash; ranging from PitchFX measurements at the most granular level to play-by-play data (play descriptions, substitutions, manager challenges, etc) and individual player pitch/bat stats at the highest level.
+
+### Requirements
+
+-   Python 3.6+
+-   Node.js 10+ (Tested with Node.js 11-13)
+-   Xvfb
+-   AWS account (optional but recommended, used to store scraped data in S3)
+
+### Project Documentation
+
+For a step-by-step install guide and instructions for configuring/using `vigorish`, please visit the link below:
+
+[Vigorish: Hybrid Python/Node.Js Web Scraper](https://aaronluna.dev/projects/vigorish/)
+
