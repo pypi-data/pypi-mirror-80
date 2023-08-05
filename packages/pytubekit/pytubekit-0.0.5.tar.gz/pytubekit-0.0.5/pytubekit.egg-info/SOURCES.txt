@@ -1,0 +1,17 @@
+MANIFEST.in
+README.rst
+setup.cfg
+setup.py
+pytubekit/__init__.py
+pytubekit/auth.py
+pytubekit/configs.py
+pytubekit/version.py
+pytubekit.egg-info/PKG-INFO
+pytubekit.egg-info/SOURCES.txt
+pytubekit.egg-info/dependency_links.txt
+pytubekit.egg-info/entry_points.txt
+pytubekit.egg-info/requires.txt
+pytubekit.egg-info/top_level.txt
+pytubekit/endpoints/__init__.py
+pytubekit/endpoints/group_default.py
+pytubekit/endpoints/main.py
