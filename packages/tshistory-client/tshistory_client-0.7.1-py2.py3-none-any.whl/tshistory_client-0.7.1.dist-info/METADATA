@@ -1,0 +1,59 @@
+Metadata-Version: 2.1
+Name: tshistory-client
+Version: 0.7.1
+Summary: Timeseries histories python client (server side: tshistory_rest)
+Home-page: https://hg.sr.ht/~pythonian/tshistory_client
+Author: Pythonian
+Author-email: aurelien.campeas@pythonian.fr
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Database
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Software Development :: Version Control
+Description-Content-Type: text/markdown
+Requires-Dist: requests
+Requires-Dist: pandas
+Requires-Dist: pytest-sa-pg
+
+TSHISTORY CLIENT
+================
+
+This library provides easy access to [tshistory][tshistory] instances exposed with
+the help of [tshistory_rest][tshistory_rest] (http end points).
+
+All the base `tshistory` api is available from there.
+
+
+# Examples
+
+## Direct invocation
+
+```python
+ from tshistory_client.api import Client
+
+ c = Client('http://my.tshistory.instance/api')
+ series = c.get('banana_spot_price')
+```
+
+## Using the tshistory api
+
+```python
+ from tshistory.api import timeseries
+
+ c = timeseries('http://my.tshistory.instance/api')
+ series = c.get('banana_spot_price')
+```
+
+Of course for this to work you need to have tshistory locally
+installed (through e.g. `pip install tshistory`).
+
+
+[tshistory_rest]: https://bitbucket.org/pythonian/tshistory_rest
+[tshistory]: https://bitbucket.org/pythonian/tshistory
+
+
