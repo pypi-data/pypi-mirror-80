@@ -1,0 +1,56 @@
+Metadata-Version: 2.1
+Name: django-localizedfields
+Version: 0.14
+Summary: An app to ease localization on model contents
+Home-page: http://github.com/jonasundderwolf/django-localizedfields
+Author: Jonas und der Wolf GmbH
+Author-email: opensource@jonasundderwolf.de
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: Framework :: Django :: 2.2
+Classifier: Framework :: Django :: 3.0
+Classifier: Framework :: Django :: 3.1
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: django-composite-field (==1.1.0)
+
+======================
+django-localizedfields
+======================
+
+.. image:: https://img.shields.io/pypi/v/django-localizedfields.svg
+    :target: https://pypi.python.org/pypi/django-localizedfields
+
+.. image:: https://img.shields.io/pypi/pyversions/django-localizedfields.svg
+    :target: https://pypi.python.org/pypi/django-localizedfields
+
+.. image:: https://img.shields.io/pypi/djversions/django-localizedfields
+    :alt: PyPI - Django Version
+    :target: https://pypi.python.org/pypi/django-localizedfields
+
+Django-localizedfields is an app to ease localization, an extension of
+`Django-CompositeField <https://github.com/bikeshedder/django-composite-field>`_
+
+
+Installation
+============
+
+* Add localizedfields to `INSTALLED_APPS`
+* Add `TranslatableAdminMixin` to your ModelAdmins
+
+
+Tests
+=====
+
+Run tests with `tox`
+
+
