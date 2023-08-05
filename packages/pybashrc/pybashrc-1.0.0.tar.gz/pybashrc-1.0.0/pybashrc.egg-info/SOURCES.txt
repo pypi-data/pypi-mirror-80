@@ -1,0 +1,14 @@
+README.md
+setup.py
+pybashrc/__init__.py
+pybashrc/execute.py
+pybashrc/post_setup.py
+pybashrc.egg-info/PKG-INFO
+pybashrc.egg-info/SOURCES.txt
+pybashrc.egg-info/dependency_links.txt
+pybashrc.egg-info/entry_points.txt
+pybashrc.egg-info/requires.txt
+pybashrc.egg-info/top_level.txt
+pybashrc/templates/.bashrc
+pybashrc/templates/.pybashrc.py
+pybashrc/templates/.pybashrc_aliases
