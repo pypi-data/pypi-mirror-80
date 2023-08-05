@@ -1,0 +1,16 @@
+keyrings/__init__.py,sha256=jv2YF__bseklT3OWEzlqJ5qE24c4aWd5F4r0TTjOrWQ,65
+keyrings/osx_keychain_keys/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+keyrings/osx_keychain_keys/backend.py,sha256=jz7bFhSydiR8edta0hmc_GttNgqPsRyYLkaJ8m3M1E8,22882
+keyrings/osx_keychain_keys/examples/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+keyrings/osx_keychain_keys/examples/backend_example.py,sha256=VhGNSV1fg8NQXn6qAmyKu-WfrXOIn8eATFp4sGIvJ0M,1386
+keyrings/osx_keychain_keys/tests/3des_encrypted.key,sha256=0LwoxU0sLlSGq02N044GnRCuGU21n1VjMeNWqN3rmIk,1751
+keyrings/osx_keychain_keys/tests/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+keyrings/osx_keychain_keys/tests/aes_128_encrypted.key,sha256=Xb1ydSkQuIN803jsIZD3JmDEEHvVPK1_GWcnygGTN9g,1766
+keyrings/osx_keychain_keys/tests/des_encrypted.key,sha256=5WS8V4NSnmwh02SeA6FlTXzf7LsBT5MMiRA-9iaEOKo,1746
+keyrings/osx_keychain_keys/tests/test_keychain_keys.py,sha256=LWVF3Jb1aUKTx6y6fTh_rafpImx6tFAdPaqEjk336Gs,6288
+keyrings.osx_keychain_keys-1.0.0.dist-info/LICENSE,sha256=8K30RB7GnYOpF562Xo4H9NpW9jYQ-naBl8RXwhlN9IA,1053
+keyrings.osx_keychain_keys-1.0.0.dist-info/METADATA,sha256=DoYyd3PndykKyv1g0or_yDKYY43xLM0C03aFPnSHva0,5455
+keyrings.osx_keychain_keys-1.0.0.dist-info/WHEEL,sha256=ADKeyaGyKF5DwBNE0sRE5pvW-bSkFMJfBuhzZ3rceP4,110
+keyrings.osx_keychain_keys-1.0.0.dist-info/entry_points.txt,sha256=HQvWRrjhf6J6lkM-sylK73FNdDG1UL6_-0Z2MupXe1c,75
+keyrings.osx_keychain_keys-1.0.0.dist-info/top_level.txt,sha256=CFU-m0Q3B8OHGUonsk82bd-w5tsD16QsqpnMH4hufJY,9
+keyrings.osx_keychain_keys-1.0.0.dist-info/RECORD,,
