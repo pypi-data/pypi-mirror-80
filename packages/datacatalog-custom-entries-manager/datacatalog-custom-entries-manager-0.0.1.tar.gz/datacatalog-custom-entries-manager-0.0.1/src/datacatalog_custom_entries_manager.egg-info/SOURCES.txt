@@ -1,0 +1,16 @@
+README.md
+setup.cfg
+setup.py
+src/datacatalog_custom_entries_manager/__init__.py
+src/datacatalog_custom_entries_manager/constant.py
+src/datacatalog_custom_entries_manager/custom_entries_csv_reader.py
+src/datacatalog_custom_entries_manager/custom_entries_json_reader.py
+src/datacatalog_custom_entries_manager/custom_entries_manager_cli.py
+src/datacatalog_custom_entries_manager/custom_entries_synchronizer.py
+src/datacatalog_custom_entries_manager/data_catalog_entry_factory.py
+src/datacatalog_custom_entries_manager.egg-info/PKG-INFO
+src/datacatalog_custom_entries_manager.egg-info/SOURCES.txt
+src/datacatalog_custom_entries_manager.egg-info/dependency_links.txt
+src/datacatalog_custom_entries_manager.egg-info/entry_points.txt
+src/datacatalog_custom_entries_manager.egg-info/requires.txt
+src/datacatalog_custom_entries_manager.egg-info/top_level.txt
