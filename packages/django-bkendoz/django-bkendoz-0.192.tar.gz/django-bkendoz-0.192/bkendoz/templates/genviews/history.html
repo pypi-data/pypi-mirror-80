@@ -1,0 +1,29 @@
+{% extends layout_data.main_layout|default:"genviews/layout.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="list-cont" id="list-1">
+
+  <div class="heading-flex">
+    <h1>{{ list_title }}</h1>
+    {% for view_link, faclass in list_menu %}
+    <a href = "{{ view_link }}">
+        <i class="fas {{ faclass }}"></i>
+    </a>
+    {% endfor %}
+ </div>
+
+  {% if not object_list %}
+      {% trans 'Aucun objet à afficher.' %}
+  {% else %}
+      {% include "genviews/table.html" %}
+  {% endif %}
+
+</div>
+{% endblock %}
+
+{% block javascript %}
+<script>
+  handleLsTools();
+</script>
+{% endblock %}
