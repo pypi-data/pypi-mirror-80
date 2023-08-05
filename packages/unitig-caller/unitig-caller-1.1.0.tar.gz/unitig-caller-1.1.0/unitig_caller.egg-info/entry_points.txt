@@ -1,0 +1,3 @@
+[console_scripts]
+unitig-caller = unitig_caller.__main__:main
+
