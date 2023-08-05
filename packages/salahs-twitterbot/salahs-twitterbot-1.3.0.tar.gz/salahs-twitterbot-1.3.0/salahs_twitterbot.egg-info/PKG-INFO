@@ -1,0 +1,44 @@
+Metadata-Version: 2.1
+Name: salahs-twitterbot
+Version: 1.3.0
+Summary: twitterbot to remove/view favorites/tweets and view trending tweets
+Home-page: https://github.com/salah93/twitterbot
+Author: Salah Ahmed
+Author-email: salah93@crosscompute.com
+License: UNKNOWN
+Description: [![Build Status](https://travis-ci.org/salah93/twitterbot.svg?branch=master)](https://travis-ci.org/salah93/twitterbot)
+        
+        # Twitter Bot
+        twitter bot
+        + delete tweets
+        + get trending tweets
+        
+        ## Install
+        ` pip install salahs-twitterbot[scripts]`
+        
+        ## Twitter API
+        - create a new [twitter application](https://apps.twitter.com/)
+        - save consumer key, consumer secret, access  key and access secret as environment variables
+        
+        ```
+        cat <<EOF > keys.env
+        export TWITTER_CONSUMER_KEY='aaaaaaaaaaaaaaaaaaaaaaaaa'
+        export TWITTER_CONSUMER_SECRET='aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+        export TWITTER_ACCESS_TOKEN='aaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+        export TWITTER_ACCESS_TOKEN_SECRET='aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+        EOF
+        source keys.env
+        ```
+        
+        - `delete_old_tweets --help`
+        - `get_trending_tweets --help`
+        - `remove_favorites --help`
+        
+Keywords: web twitterbot twitter
+Platform: UNKNOWN
+Classifier: Programming Language :: Python
+Classifier: Topic :: Internet :: WWW/HTTP :: WSGI :: Application
+Classifier: License :: OSI Approved :: MIT License
+Description-Content-Type: text/markdown
+Provides-Extra: test
+Provides-Extra: scripts
