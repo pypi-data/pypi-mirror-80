@@ -1,0 +1,7 @@
+numpy
+scipy>=1.4.1
+matplotlib
+joblib>=0.13.2
+Flask>=1.1.1
+Flask-RESTful>=0.3.7
+conv==0.2
