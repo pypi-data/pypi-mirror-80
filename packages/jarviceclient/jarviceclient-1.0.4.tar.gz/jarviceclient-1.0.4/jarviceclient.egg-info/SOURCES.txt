@@ -1,0 +1,13 @@
+README.md
+setup.cfg
+setup.py
+bin/jarvice_cli
+jarviceclient/JarviceAPI.py
+jarviceclient/__init__.py
+jarviceclient/exceptions.py
+jarviceclient/utils.py
+jarviceclient.egg-info/PKG-INFO
+jarviceclient.egg-info/SOURCES.txt
+jarviceclient.egg-info/dependency_links.txt
+jarviceclient.egg-info/requires.txt
+jarviceclient.egg-info/top_level.txt
