@@ -1,0 +1,99 @@
+image: docker.km3net.de/base/python:3
+
+# Change pip's cache directory to be inside the project directory since we can
+# only cache local items.
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
+cache:
+  paths:
+    - .cache/pip
+    - venv/
+  key: "$CI_COMMIT_REF_SLUG"
+
+stages:
+  - test
+  - doc
+  - release
+
+.virtualenv_template: &virtualenv_definition |
+  python -V
+  pip install virtualenv
+  virtualenv venv
+  source venv/bin/activate
+  pip install -r requirements-dev.txt
+  pip install yapf
+  pip install -e .
+  
+.junit_template: &junit_definition
+    artifacts:
+      reports:
+        junit: "reports/junit*.xml"
+
+pypi:
+    image: docker.km3net.de/base/python:3
+    stage: release
+    cache: {}
+    script:
+        - pip install -U twine
+        - python setup.py sdist
+        - twine upload dist/*
+    only:
+        - tags
+
+test-py3.6:
+    image: docker.km3net.de/base/python:3.6
+    stage: test
+    script:
+        - *virtualenv_definition
+        - make test
+    artifacts:
+        paths:
+          - files
+    <<: *junit_definition
+
+test-py3.7:
+    image: docker.km3net.de/base/python:3.7
+    stage: test
+    script:
+        - *virtualenv_definition
+        - make test
+    artifacts:
+        paths:
+          - files
+    <<: *junit_definition
+
+test-py3.8:
+    image: docker.km3net.de/base/python:3.8
+    stage: test
+    script:
+        - *virtualenv_definition
+        - make test
+    artifacts:
+        paths:
+          - files
+    <<: *junit_definition
+
+code-style:
+    image: docker.km3net.de/base/python:3.7
+    stage: test
+    script:
+        - *virtualenv_definition
+        - yapf -r -d -e "venv" .
+    allow_failure: true
+
+
+pages:
+    image: docker.km3net.de/base/python:3.6
+    stage: doc
+    script:
+        - *virtualenv_definition
+        - cd doc && make clean && make html
+        - mv _build/html ../public/
+    artifacts:
+        paths:
+            - public
+    cache: {}
+    only:
+        - tags
+        - master
