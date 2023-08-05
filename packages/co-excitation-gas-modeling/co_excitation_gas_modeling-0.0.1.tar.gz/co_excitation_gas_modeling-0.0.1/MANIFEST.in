@@ -1,0 +1,8 @@
+include README.rst
+include README.md
+include LICENSE.txt
+include AUTHORS.txt
+
+recursive-include   co_excitation_gas_modeling/Data_Tables/             *.txt *.fits *.FITS
+recursive-include   co_excitation_gas_modeling/Common_Python_Code/      *.py
+
