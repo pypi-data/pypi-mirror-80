@@ -1,0 +1,17 @@
+DESCRIPTION.rst
+LICENSE
+MANIFEST.in
+README.rst
+setup.cfg
+setup.py
+django_remauth.egg-info/PKG-INFO
+django_remauth.egg-info/SOURCES.txt
+django_remauth.egg-info/dependency_links.txt
+django_remauth.egg-info/top_level.txt
+remauth/__init__.py
+remauth/apps.py
+remauth/urls.py
+remauth/views.py
+remauth/api/__init__.py
+remauth/api/serializers.py
+remauth/api/views.py
