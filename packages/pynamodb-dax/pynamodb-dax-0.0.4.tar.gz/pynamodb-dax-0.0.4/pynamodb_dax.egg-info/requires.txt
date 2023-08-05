@@ -1,0 +1,6 @@
+botocore>=1.12.54
+python-dateutil<3.0.0,>=2.1
+amazon-dax-client>=1.1.7
+
+[signals]
+blinker<2.0,>=1.3
