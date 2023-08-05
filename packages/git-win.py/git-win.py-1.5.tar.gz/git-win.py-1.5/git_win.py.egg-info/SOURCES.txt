@@ -1,0 +1,17 @@
+README.md
+setup.py
+git-win/__init__.py
+git-win/git.py
+git-win/gitA.bat
+git-win/gitB.exe
+git-win/cmd/__init__.py
+git-win/cmd/git-gui.exe
+git-win/cmd/git.exe
+git-win/cmd/gitk.exe
+git-win/cmd/start-ssh-agent.cmd
+git-win/cmd/start-ssh-pageant.cmd
+git-win/mingw64/__init__.py
+git_win.py.egg-info/PKG-INFO
+git_win.py.egg-info/SOURCES.txt
+git_win.py.egg-info/dependency_links.txt
+git_win.py.egg-info/top_level.txt
