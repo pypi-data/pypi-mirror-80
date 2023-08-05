@@ -1,0 +1,47 @@
+# Minisign Python
+
+This is a pure Python implementation of [Frank Denis](https://twitter.com/jedisct1/)' [minisign](https://jedisct1.github.io/minisign/), following the [specifications](SPECS.md) copied from there.  
+Currently following version *0.9*.
+
+**IMPORTANT NOTE**: this is currently under heavy development, and it hasn't undergone an external security assessment.
+
+## Goals
+
+* Compatible public interface: all commands and options must be 100% compatible and with same results.
+* Usage as CLI and as Python module.
+* Follow [semver](https://semver.org/).
+
+### Secondary goals
+
+* Small amount of dependencies (I would love to keep it just to cryptolibraries).
+* If possible, maintain current active Python versions (3.7+).
+
+## Milestones
+
+- [x] Define goals and license.
+- [x] Create initial project structure.
+   - [x] Code structure.
+   - [x] Contribution guidelines.
+   - [x] Pipeline.
+- [ ] Achieve basic functionality:
+   - [ ] Create key pair.
+   - [ ] Verify signature.
+   - [ ] Sign.
+- [ ] Ensure coverage 100%.
+- [ ] Make first release.
+- [ ] Add remaining options.
+
+## Requirements
+
+* Python 3.7+
+* PyNaCl 1.3+
+
+## License
+
+**Minisign Python** is made by [HacKan](https://hackan.net) under MPL v2.0. You are free to use, share, modify and share modifications under the terms of that [license](LICENSE).  Derived works may link back to the canonical repository: https://gitlab.com/hackancuba/minisign-py.  
+*Note that [minisign by Frank Denis](https://github.com/jedisct1/minisign/blob/master/LICENSE) is licensed under ISC*.
+
+    Copyright (C) 2020 HacKan (https://hackan.net)
+    This Source Code Form is subject to the terms of the Mozilla Public
+    License, v. 2.0. If a copy of the MPL was not distributed with this
+    file, You can obtain one at https://mozilla.org/MPL/2.0/.
