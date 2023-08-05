@@ -1,0 +1,31 @@
+Metadata-Version: 2.1
+Name: samternary
+Version: 0.0.3
+Summary: package to plot ternary phase diagrams
+Home-page: https://github.com/samueljmcameron/samternary
+Author: Sam Cameron
+Author-email: samuel.j.m.cameron@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.3
+Description-Content-Type: text/markdown
+Requires-Dist: matplotlib (>=3)
+Requires-Dist: numpy
+
+# samternary
+
+`samternary` allows users to generate a ternary diagram, which is a visualisation useful for 3D data sets, where two of the dimensions are constrained an isoceles triangle.
+
+For instance, consider a data set (x,y,z). For ternary diagrams to be useful, the domain D in the xy plane should be restricted to D:=\{x>0,y>0,x+y <= 1\}.
+
+If user data has this property (or can be re-scaled to have this property), then this package could be useful.
+
+See the examples folder for a list of examples on how to use this package.
+
+![A boring 2D plot converted to an exciting ternary plot!](/examples/example_meshdata.png)
+
+
+
