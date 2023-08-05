@@ -1,0 +1,28 @@
+Metadata-Version: 1.2
+Name: twind
+Version: 1.1.0
+Summary: Twind: TIGRESS Wind Launching Model and Sampler
+Home-page: https://twind.readthedocs.io
+Author: Chang-Goo Kim
+Author-email: changgookim@gmail.com
+License: MIT
+Project-URL: Documentation, https://twind.readthedocs.io
+Project-URL: Source Code, https://github.com/changgoo/Twind
+Description: # Twind Package
+        
+        This is a python package for TIGRESS multiphase wind model.
+        Please visit [online documentation](https://twind.readthedocs.io/en/latest/).
+        
+Keywords: galactic wind
+Platform: Windows
+Platform: Mac OS-X
+Platform: Linux
+Platform: Unix
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Requires-Python: >=3.6, <4
