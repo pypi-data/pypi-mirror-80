@@ -1,0 +1,8 @@
+
+[testing]
+pytest-responses==0.4.*
+pytest-httpx==0.8.*
+redis==3.*
+starlette==0.13.*
+flask-restx==0.2.*
+pytest-cov==2.*
