@@ -1,0 +1,170 @@
+Metadata-Version: 2.1
+Name: qiskit-aws-braket-provider
+Version: 0.0.1
+Summary: A provider for qiskit to access quantum devices through AWS Braket
+Home-page: https://github.com/carstenblank/qiskit-aws-braket-provider
+Author: Carsten Blank
+Author-email: blank@data-cybernetics.com
+License: UNKNOWN
+Project-URL: Bug Reports, https://github.com/carstenblank/qiskit-aws-braket-provider/issues
+Project-URL: Source, https://github.com/carstenblank/qiskit-aws-braket-provider
+Keywords: sample setuptools development
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Scientific/Engineering :: Physics
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Natural Language :: English
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Operating System :: Microsoft :: Windows
+Requires-Python: >=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, <4
+Description-Content-Type: text/markdown
+Requires-Dist: amazon-braket-sdk (==1.1.1.post1)
+Requires-Dist: boltons (==20.2.1)
+Requires-Dist: boto3 (==1.15.1)
+Requires-Dist: boto3-stubs (==1.15.1.0)
+Requires-Dist: botocore (==1.18.1)
+Requires-Dist: certifi (==2020.6.20)
+Requires-Dist: cffi (==1.14.3)
+Requires-Dist: chardet (==3.0.4)
+Requires-Dist: decorator (==4.4.2)
+Requires-Dist: dlx (==1.0.4)
+Requires-Dist: docplex (==2.15.194)
+Requires-Dist: fastdtw (==0.3.4)
+Requires-Dist: fastjsonschema (==2.14.5)
+Requires-Dist: h5py (==2.10.0)
+Requires-Dist: jsonschema (==3.2.0)
+Requires-Dist: mpmath (==1.1.0)
+Requires-Dist: multitasking (==0.0.9)
+Requires-Dist: pint (==0.16)
+Requires-Dist: ply (==3.11)
+Requires-Dist: pybind11 (==2.5.0)
+Requires-Dist: python-constraint (==1.4.0)
+Requires-Dist: pytz (==2020.1)
+Requires-Dist: qiskit (==0.20.0)
+Requires-Dist: qiskit-aer (==0.6.1)
+Requires-Dist: requests-ntlm (==1.1.0)
+Requires-Dist: s3transfer (==0.3.3)
+Requires-Dist: yfinance (==0.1.54)
+Requires-Dist: pandas (==1.1.2) ; python_full_version >= "3.6.1"
+Requires-Dist: urllib3 (==1.25.10) ; python_version != "3.4"
+Requires-Dist: dill (==0.3.2) ; python_version >= "2.6" and python_version != "3.0"
+Requires-Dist: cython (==0.29.21) ; python_version >= "2.6" and python_version not in "3.0, 3.1, 3.2, 3.3"
+Requires-Dist: jmespath (==0.10.0) ; python_version >= "2.6" and python_version not in "3.0, 3.1, 3.2, 3.3"
+Requires-Dist: ntlm-auth (==1.5.0) ; python_version >= "2.6" and python_version not in "3.0, 3.1, 3.2, 3.3"
+Requires-Dist: psutil (==5.7.2) ; python_version >= "2.6" and python_version not in "3.0, 3.1, 3.2, 3.3"
+Requires-Dist: pyparsing (==2.4.7) ; python_version >= "2.6" and python_version not in "3.0, 3.1, 3.2, 3.3"
+Requires-Dist: attrs (==20.2.0) ; python_version >= "2.7" and python_version not in "3.0, 3.1, 3.2, 3.3"
+Requires-Dist: idna (==2.10) ; python_version >= "2.7" and python_version not in "3.0, 3.1, 3.2, 3.3"
+Requires-Dist: packaging (==20.4) ; python_version >= "2.7" and python_version not in "3.0, 3.1, 3.2, 3.3"
+Requires-Dist: pycparser (==2.20) ; python_version >= "2.7" and python_version not in "3.0, 3.1, 3.2, 3.3"
+Requires-Dist: python-dateutil (==2.8.1) ; python_version >= "2.7" and python_version not in "3.0, 3.1, 3.2, 3.3"
+Requires-Dist: six (==1.15.0) ; python_version >= "2.7" and python_version not in "3.0, 3.1, 3.2, 3.3"
+Requires-Dist: backoff (==1.10.0) ; python_version >= "2.7" and python_version not in "3.0, 3.1, 3.2, 3.3, 3.4"
+Requires-Dist: cryptography (==3.1) ; python_version >= "2.7" and python_version not in "3.0, 3.1, 3.2, 3.3, 3.4"
+Requires-Dist: requests (==2.24.0) ; python_version >= "2.7" and python_version not in "3.0, 3.1, 3.2, 3.3, 3.4"
+Requires-Dist: inflection (==0.5.1) ; python_version >= "3.5"
+Requires-Dist: more-itertools (==8.5.0) ; python_version >= "3.5"
+Requires-Dist: nest-asyncio (==1.4.0) ; python_version >= "3.5"
+Requires-Dist: opt-einsum (==3.3.0) ; python_version >= "3.5"
+Requires-Dist: pyrsistent (==0.17.3) ; python_version >= "3.5"
+Requires-Dist: qiskit-aqua (==0.7.5) ; python_version >= "3.5"
+Requires-Dist: qiskit-ibmq-provider (==0.8.0) ; python_version >= "3.5"
+Requires-Dist: qiskit-ignis (==0.4.0) ; python_version >= "3.5"
+Requires-Dist: qiskit-terra (==0.15.1) ; python_version >= "3.5"
+Requires-Dist: quandl (==3.5.2) ; python_version >= "3.5"
+Requires-Dist: retworkx (==0.5.0) ; python_version >= "3.5"
+Requires-Dist: sympy (==1.6.2) ; python_version >= "3.5"
+Requires-Dist: threadpoolctl (==2.1.0) ; python_version >= "3.5"
+Requires-Dist: joblib (==0.16.0) ; python_version >= "3.6"
+Requires-Dist: networkx (==2.5) ; python_version >= "3.6"
+Requires-Dist: numpy (==1.19.2) ; python_version >= "3.6"
+Requires-Dist: pydantic (==1.6.1) ; python_version >= "3.6"
+Requires-Dist: scikit-learn (==0.23.2) ; python_version >= "3.6"
+Requires-Dist: scipy (==1.5.2) ; python_version >= "3.6"
+Requires-Dist: amazon-braket-default-simulator (==1.0.0.post2) ; python_version >= "3.7"
+Requires-Dist: amazon-braket-schemas (==1.0.2.post1) ; python_version >= "3.7"
+Requires-Dist: websockets (==8.1) ; python_version >= "3.7"
+Provides-Extra: dev
+Requires-Dist: appdirs (==1.4.4) ; extra == 'dev'
+Requires-Dist: cached-property (==1.5.1) ; extra == 'dev'
+Requires-Dist: cerberus (==1.3.2) ; extra == 'dev'
+Requires-Dist: certifi (==2020.6.20) ; extra == 'dev'
+Requires-Dist: chardet (==3.0.4) ; extra == 'dev'
+Requires-Dist: distlib (==0.3.1) ; extra == 'dev'
+Requires-Dist: iniconfig (==1.0.1) ; extra == 'dev'
+Requires-Dist: orderedmultidict (==1.0.1) ; extra == 'dev'
+Requires-Dist: pathspec (==0.8.0) ; extra == 'dev'
+Requires-Dist: pep517 (==0.8.2) ; extra == 'dev'
+Requires-Dist: pipenv-setup (==3.1.1) ; extra == 'dev'
+Requires-Dist: pipfile (==0.0.2) ; extra == 'dev'
+Requires-Dist: pytest (==6.0.2) ; extra == 'dev'
+Requires-Dist: regex (==2020.7.14) ; extra == 'dev'
+Requires-Dist: toml (==0.10.1) ; extra == 'dev'
+Requires-Dist: typed-ast (==1.4.1) ; extra == 'dev'
+Requires-Dist: urllib3 (==1.25.10) ; (python_version != "3.4") and extra == 'dev'
+Requires-Dist: plette[validation] (==0.2.3) ; (python_version >= "2.6" and python_version not in "3.0, 3.1, 3.2, 3.3") and extra == 'dev'
+Requires-Dist: pyparsing (==2.4.7) ; (python_version >= "2.6" and python_version not in "3.0, 3.1, 3.2, 3.3") and extra == 'dev'
+Requires-Dist: attrs (==20.2.0) ; (python_version >= "2.7" and python_version not in "3.0, 3.1, 3.2, 3.3") and extra == 'dev'
+Requires-Dist: idna (==2.10) ; (python_version >= "2.7" and python_version not in "3.0, 3.1, 3.2, 3.3") and extra == 'dev'
+Requires-Dist: packaging (==20.4) ; (python_version >= "2.7" and python_version not in "3.0, 3.1, 3.2, 3.3") and extra == 'dev'
+Requires-Dist: pluggy (==0.13.1) ; (python_version >= "2.7" and python_version not in "3.0, 3.1, 3.2, 3.3") and extra == 'dev'
+Requires-Dist: py (==1.9.0) ; (python_version >= "2.7" and python_version not in "3.0, 3.1, 3.2, 3.3") and extra == 'dev'
+Requires-Dist: python-dateutil (==2.8.1) ; (python_version >= "2.7" and python_version not in "3.0, 3.1, 3.2, 3.3") and extra == 'dev'
+Requires-Dist: six (==1.15.0) ; (python_version >= "2.7" and python_version not in "3.0, 3.1, 3.2, 3.3") and extra == 'dev'
+Requires-Dist: vistir (==0.5.2) ; (python_version >= "2.7" and python_version not in "3.0, 3.1, 3.2, 3.3") and extra == 'dev'
+Requires-Dist: click (==7.1.2) ; (python_version >= "2.7" and python_version not in "3.0, 3.1, 3.2, 3.3, 3.4") and extra == 'dev'
+Requires-Dist: pip-shims (==0.5.3) ; (python_version >= "2.7" and python_version not in "3.0, 3.1, 3.2, 3.3, 3.4") and extra == 'dev'
+Requires-Dist: requests (==2.24.0) ; (python_version >= "2.7" and python_version not in "3.0, 3.1, 3.2, 3.3, 3.4") and extra == 'dev'
+Requires-Dist: requirementslib (==1.5.13) ; (python_version >= "2.7" and python_version not in "3.0, 3.1, 3.2, 3.3, 3.4") and extra == 'dev'
+Requires-Dist: tomlkit (==0.7.0) ; (python_version >= "2.7" and python_version not in "3.0, 3.1, 3.2, 3.3, 3.4") and extra == 'dev'
+Requires-Dist: wheel (==0.35.1) ; (python_version >= "2.7" and python_version not in "3.0, 3.1, 3.2, 3.3, 3.4") and extra == 'dev'
+Requires-Dist: more-itertools (==8.5.0) ; (python_version >= "3.5") and extra == 'dev'
+Requires-Dist: black (==19.10b0) ; (python_version >= "3.6") and extra == 'dev'
+Requires-Dist: atomicwrites (==1.4.0) ; (sys_platform == "win32") and extra == 'dev'
+Requires-Dist: colorama (==0.4.3) ; (sys_platform == "win32") and extra == 'dev'
+
+[![Build Status](https://travis-ci.com/carstenblank/qiskit-aws-braket-provider.svg?branch=master)](https://travis-ci.com/carstenblank/qiskit-aws-braket-provider)
+[![codecov](https://codecov.io/gh/carstenblank/qiskit-aws-braket-provider/branch/master/graph/badge.svg)](https://codecov.io/gh/carstenblank/qiskit-aws-braket-provider)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/92c73ac568244ed5a38be09a29e27833)](https://www.codacy.com/manual/carstenblank/qiskit-aws-braket-provider?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=carstenblank/qiskit-aws-braket-provider&amp;utm_campaign=Badge_Grade)
+
+# IBM's qiskit provider for AWS Braket (qiskit-aws-braket-provider)
+
+## Attention: this is a work-in-progess implementation. 
+What this means: it basically works. But: 
+
+ 1. edge cases are not covered 
+ 2. even broad cases aren't entirely covered!! 
+ 3. in code documentation is not thre
+ 4. no usage or API documentation exists
+ 5. CI/CD is not setup
+
+__So__: use at your own risk. 
+
+# Contributing
+We welcome contributions - simply fork the repository of this plugin, and then make a pull request containing your contribution. All contributers to this plugin will be listed as authors on the releases.
+
+We also encourage bug reports, suggestions for new features and enhancements!
+
+# Authors
+Carsten Blank
+
+# Support
+
+Source Code: https://github.com/carstenblank/qiskit-aws-braket-provider
+
+Issue Tracker: https://github.com/carstenblank/qiskit-aws-braket-provider/issues
+
+If you are having issues, please let us know by posting the issue on our Github issue tracker.
+
+# License
+The qiskit-aws-braket-provider is free and open source, released under the Apache License, Version 2.0.
+
