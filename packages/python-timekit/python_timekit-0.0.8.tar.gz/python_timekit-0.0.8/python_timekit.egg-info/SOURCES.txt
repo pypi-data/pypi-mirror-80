@@ -1,0 +1,17 @@
+LICENSE.txt
+MANIFEST.in
+README.md
+setup.py
+python_timekit.egg-info/PKG-INFO
+python_timekit.egg-info/SOURCES.txt
+python_timekit.egg-info/dependency_links.txt
+python_timekit.egg-info/requires.txt
+python_timekit.egg-info/top_level.txt
+timekit/__init__.py
+timekit/client.py
+timekit/components/__init__.py
+timekit/components/apps.py
+timekit/components/base.py
+timekit/components/bookings.py
+timekit/components/projects.py
+timekit/components/resources.py
