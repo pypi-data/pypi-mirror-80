@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: mobilecoin
+Version: 0.2.0
+Summary: Python bindings for the MobileCoin daemon API.
+Home-page: https://github.com/mobilecoinofficial/mobilecoin/tree/master/mobilecoind/clients/python/lib
+Author: MobileCoin
+Author-email: support@mobilecoin.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+
+## Python bindings for the `mobilecoind` API
+
+You must separately install and run `mobilecoind`. See https://github.com/mobilecoinofficial/mobilecoin/ for details.
+
+
+### Example
+
+``` python
+import mobilecoin
+
+mobilecoind_address = "localhost:4444"
+use_ssl = False
+
+mobilecoind = Client(mobilecoind_address, use_ssl)
+
+print(mobilecoind.get_ledger_info())
+
+```
+
+
