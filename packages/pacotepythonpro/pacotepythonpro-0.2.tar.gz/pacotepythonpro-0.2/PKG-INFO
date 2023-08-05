@@ -1,0 +1,38 @@
+Metadata-Version: 1.1
+Name: pacotepythonpro
+Version: 0.2
+Summary: Módulo para exemplificar consturção de projetos python no curso PyTools
+Home-page: https://github.com/vladimirmaciel/libpythonpro
+Author: Vladimir Maciel 
+Author-email: vladimirmaciel@gmail.com
+License: GNU AFFERO GENERAL PUBLIC LICENSE
+Description: # libpythonpro
+        Exemplificar a construção de projetos  Python no curso PyTools
+        Nesse curso é mostrado como contribuir com projetos de código aberto 
+        [![Build Status](https://travis-ci.com/vladimirmaciel/libpythonpro.svg?branch=master)](https://travis-ci.com/vladimirmaciel/libpythonpro)
+        [![Updates](https://pyup.io/repos/github/vladimirmaciel/libpythonpro/shield.svg)](https://pyup.io/repos/github/vladimirmaciel/libpythonpro/)
+        [![Python 3](https://pyup.io/repos/github/vladimirmaciel/libpythonpro/python-3-shield.svg)](https://pyup.io/repos/github/vladimirmaciel/libpythonpro/)
+        
+        
+        para instalar:
+        
+        '''console
+        python3 -m venv .venv
+        source .venv/bin/activate
+        pip install -r requirements-dve.txt
+        '''
+        
+        para conferir a qualidade do código: 
+        
+        '''console
+        flake8
+        '''
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Framework :: Pytest
