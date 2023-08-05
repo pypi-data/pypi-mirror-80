@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: webspidy
+Version: 1.0.2
+Summary: A human friendly web crawling library
+Home-page: https://github.com/anyms/webspidy
+Author: Jeeva
+Author-email: tellspidy@gmail.com
+License: MIT
+Description: UNKNOWN
+Keywords: web,spider,crawler
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Provides-Extra: dev
