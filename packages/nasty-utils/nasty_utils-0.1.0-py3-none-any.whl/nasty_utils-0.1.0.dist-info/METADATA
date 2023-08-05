@@ -1,0 +1,84 @@
+Metadata-Version: 2.1
+Name: nasty-utils
+Version: 0.1.0
+Summary: Independent useful utilities created during NASTY's development.
+Home-page: UNKNOWN
+Author: Lukas Schmelzeisen
+Author-email: me@lschmelzeisen.com
+License: Apache License, Version 2.0
+Project-URL: Repository, https://github.com/lschmelzeisen/nasty-utils
+Project-URL: Issue Tracker, https://github.com/lschmelzeisen/nasty-utils/issues
+Platform: any
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Classifier: Topic :: Software Development
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Software Development :: Libraries :: Application Frameworks
+Classifier: Typing :: Typed
+Requires-Python: >=3.6
+Description-Content-Type: text/x-rst
+Requires-Dist: colorlog (~=4.2)
+Requires-Dist: jsonlog (~=4.0)
+Requires-Dist: overrides (~=3.1)
+Requires-Dist: pydantic (~=1.6)
+Requires-Dist: requests (~=2.24)
+Requires-Dist: toml (~=0.10)
+Requires-Dist: tqdm (~=4.49)
+Requires-Dist: xdg (~=4.0)
+Requires-Dist: zstandard (~=0.14)
+Requires-Dist: dataclasses (~=0.7) ; python_version < "3.7"
+Provides-Extra: dev
+Requires-Dist: autoflake (~=1.4) ; extra == 'dev'
+Requires-Dist: black (==20.8b1) ; extra == 'dev'
+Requires-Dist: flake8 (~=3.8) ; extra == 'dev'
+Requires-Dist: flake8-bandit (~=2.1) ; extra == 'dev'
+Requires-Dist: flake8-bugbear (~=20.1) ; extra == 'dev'
+Requires-Dist: flake8-builtins (~=1.5) ; extra == 'dev'
+Requires-Dist: flake8-comprehensions (~=3.2) ; extra == 'dev'
+Requires-Dist: flake8-eradicate (~=0.4) ; extra == 'dev'
+Requires-Dist: flake8-print (~=3.1) ; extra == 'dev'
+Requires-Dist: flake8-pyi (~=20.5) ; extra == 'dev'
+Requires-Dist: isort (~=5.5) ; extra == 'dev'
+Requires-Dist: jsonlog-cli (~=6.3) ; extra == 'dev'
+Requires-Dist: licenseheaders (~=0.8) ; extra == 'dev'
+Requires-Dist: mypy (~=0.782) ; extra == 'dev'
+Requires-Dist: nasty-typeshed (~=0.1) ; extra == 'dev'
+Requires-Dist: nox (~=2020.8) ; extra == 'dev'
+Requires-Dist: pep8-naming (~=0.11) ; extra == 'dev'
+Requires-Dist: twine (~=3.2) ; extra == 'dev'
+Requires-Dist: vulture (~=2.1) ; extra == 'dev'
+Provides-Extra: test
+Requires-Dist: coverage[toml] (~=5.3) ; extra == 'test'
+Requires-Dist: pytest (~=6.0) ; extra == 'test'
+Requires-Dist: pytest-cov (~=2.10) ; extra == 'test'
+Requires-Dist: pytest-html (~=2.1) ; extra == 'test'
+Requires-Dist: typing-extensions (~=3.7) ; extra == 'test'
+
+========================================================================================
+nasty-utils
+========================================================================================
+
+Independent useful utilities created during `NASTY
+<https://github.com/lschmelzeisen/nasty>`_'s development.
+
+
+License
+========================================================================================
+
+Copyright 2019-2020 Lukas Schmelzeisen.
+Licensed under the
+`Apache License, Version 2.0 <https://www.apache.org/licenses/LICENSE-2.0>`_.
+
+
+
