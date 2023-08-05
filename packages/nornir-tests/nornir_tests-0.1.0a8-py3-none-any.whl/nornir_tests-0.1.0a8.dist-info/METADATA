@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: nornir-tests
+Version: 0.1.0a8
+Summary: Testing extension for Nornir
+Home-page: https://github.com/patrickdaj/nornir_tests
+Author: Patrick Avery
+Author-email: patrickdaj@gmail.com
+Requires-Python: >=3.6,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: assertpy (>=1.1,<2.0)
+Requires-Dist: dataclasses (>=0.7,<0.8); python_version >= "3.6" and python_version < "3.7"
+Requires-Dist: jsonpath-ng (>=1.5.2,<2.0.0)
+Requires-Dist: lxml (>=4.5.2,<5.0.0)
+Requires-Dist: nornir
+Requires-Dist: wrapt (>=1.12.1,<2.0.0)
+Project-URL: Repository, https://github.com/patrickdaj/nornir_tests
