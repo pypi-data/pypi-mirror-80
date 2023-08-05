@@ -1,0 +1,14 @@
+README.md
+setup.cfg
+setup.py
+parallel_requests/__init__.py
+parallel_requests/base_requests.py
+parallel_requests/session.py
+parallel_requests.egg-info/PKG-INFO
+parallel_requests.egg-info/SOURCES.txt
+parallel_requests.egg-info/dependency_links.txt
+parallel_requests.egg-info/top_level.txt
+tests/__init__.py
+tests/conftest.py
+tests/test_base_requests.py
+tests/test_session.py
