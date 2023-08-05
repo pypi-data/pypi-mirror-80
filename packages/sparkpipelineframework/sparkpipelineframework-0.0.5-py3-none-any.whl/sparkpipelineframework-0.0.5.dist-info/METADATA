@@ -1,0 +1,31 @@
+Metadata-Version: 2.1
+Name: sparkpipelineframework
+Version: 0.0.5
+Summary: Framework for simpler Spark Pipelines
+Home-page: https://github.com/imranq2/SparkPipelineFramework
+Author: Imran Qureshi
+Author-email: imranq2@hotmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: setuptools
+Requires-Dist: wheel
+Requires-Dist: twine
+Requires-Dist: numpy (>=1.16.2)
+Requires-Dist: pyspark (==3.0.1)
+Requires-Dist: mypy
+Requires-Dist: logger
+
+# SparkPipelineFramework
+Framework for simpler Spark Pipelines
+
+# Get Started
+Run ```make firstime```
+
+
+
