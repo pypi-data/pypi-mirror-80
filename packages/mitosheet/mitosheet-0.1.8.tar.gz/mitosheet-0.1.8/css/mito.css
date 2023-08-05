@@ -1,0 +1,6 @@
+/* shade toolbar grey and set to the length of the mito sheet */
+
+.toolbar {
+    background-color: #C2C2C2;
+    width: 100%;
+}
