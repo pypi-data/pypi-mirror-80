@@ -1,0 +1,14 @@
+docopt
+keyboard
+numpy
+opencv-python
+pykalman
+pyrr
+pyserial
+scipy
+
+[bluetooth]
+pybluez
+
+[camera]
+displayarray
