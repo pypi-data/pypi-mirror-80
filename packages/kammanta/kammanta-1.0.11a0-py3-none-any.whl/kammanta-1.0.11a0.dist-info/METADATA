@@ -1,0 +1,124 @@
+Metadata-Version: 2.1
+Name: kammanta
+Version: 1.0.11a0
+Summary: A productivity and life organizing application where data is stored as text files and directories
+Home-page: https://gitlab.com/SunyataZero/kammanta
+Author: Tord Dellsén
+Author-email: tord.dellsen@gmail.com
+License: GPLv3
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Topic :: Other/Nonlisted Topic
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: End Users/Desktop
+Requires-Python: >=3.8.0
+Description-Content-Type: text/markdown
+Requires-Dist: PyQt5 (>=5.14)
+
+
+
+#### ***Please note:*** This is a prototype in early development
+
+# Kammanta
+
+Kammanta is a **productivity** and **life organizing** application inspired by the GTD© methodology,
+and with two attributes that set it apart:
+* Data is **stored as text files and directories** (the actual names of files and dirs are used)
+* The application is ***free software*** (free as in freedom) which means that the source code is
+open, and you can copy and create your own application if you want
+
+## Installation
+
+The application is developed on Ubuntu. As of now *some features may not work on other major platforms like Windows and MacOS*
+
+### Using pip
+
+#### Debian-based Linux systems (for example Ubuntu)
+
+`pip3 install kammanta`
+
+This will install the application into the `~/.local/bin` directory
+
+(Detail: The actual files are in `~/.local/lib/python3.8/site-packages`, `~/.local/bin` only contains the startup script)
+
+Launching the application: ~/.local/bin/kammanta
+
+#### Windows and MacOS
+
+`pip install kammanta`
+
+
+### Running from source
+
+#### Linux systems
+
+Requirements:
+* Python 3.8
+* PyQt 5.14 (and PyQt5-sip)
+
+`pip3 install -r requirements.txt`
+
+Launching the application:
+1. Go to the installation directory in a terminal
+2. `./starts.sh`
+
+
+## Features
+
+* Data is stored in plain text files, so it's possible to access the files in other ways and on other devices than desktop
+  * ex: the user can have a list of errands that she can access on her mobile phone
+* The GUI is updated if files are updated, so that it's possible to work with both the application and  a text editor at the same time
+* 
+
+
+## Screenshots
+
+![main-with-docks](https://gitlab.com/SunyataZero/kammanta/-/raw/master/screenshots/main-with-docks.jpg)
+
+![na-list](https://gitlab.com/SunyataZero/kammanta/-/raw/master/screenshots/na-list.jpg)
+
+![prj-list](https://gitlab.com/SunyataZero/kammanta/-/raw/master/screenshots/prj-list.jpg)
+
+## Videos
+
+[click-to-play-video-file](https://gitlab.com/SunyataZero/kammanta/-/raw/master/screenshots/2020-05-29_21-47-01.mp4)
+
+<!--
+Absolute paths:
+https://gitlab.com/SunyataZero/kammanta/-/raw/master/screenshots/___file-name.png___
+
+Video works for GitLab, but not for PyPI: [download-video-file](https://gitlab.com/SunyataZero/kammanta/-/raw/master/screenshots/2020-05-29_21-47-01.mp4)
+
+-->
+
+## Understanding the application
+
+Definition of "item": _
+
+### Backend
+
+All data is stored in the file system. Names of dirs and files are used for projects and contacts. Lines in files are used for Next Actions and agenda items
+
+All items can have support material
+
+#### Files and dirs
+
+Some special cases of files:
+* Link files (.desktop for GNU/Linux atm)
+* Text files
+  * Note files, used in the inbox (when adding/taking notes)
+* Image - sometimes previews are shown
+
+Support material:
+* If we have a desktop link we can refer to the support material which can then be another file, a directory, etc
+* If the item is another type of file that file itself will be the support material. A typical example is a text file
+* If the item is a directory that directory will contain all the support material
+
+#### Lines (in a text file)
+
+At the end of a line it's possible to have a reference to support material. This is a piece of text that follows the "|" character. It can refer to a website, text file, directory, etc
+
+

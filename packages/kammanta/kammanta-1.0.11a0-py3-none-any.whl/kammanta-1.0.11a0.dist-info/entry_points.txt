@@ -1,0 +1,3 @@
+[console_scripts]
+kammanta = kammanta.__main__:main
+
