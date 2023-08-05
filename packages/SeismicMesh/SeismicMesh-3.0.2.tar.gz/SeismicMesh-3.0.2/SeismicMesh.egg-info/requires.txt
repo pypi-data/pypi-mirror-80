@@ -1,0 +1,8 @@
+numpy
+segyio
+scipy
+meshio
+h5py
+matplotlib
+mpi4py
+pybind11>=2.2
