@@ -1,0 +1,8 @@
+pytest<7.0,>=4.0
+attrs<21,>=19
+docker-compose<2.0,>=1.27.3
+
+[tests]
+requests<3.0,>=2.22.0
+pytest-pylint<1.0,>=0.14.1
+pytest-pycodestyle<3.0,>=2.0.0
