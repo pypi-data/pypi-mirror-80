@@ -1,0 +1,70 @@
+Metadata-Version: 2.1
+Name: azure-communication-administration
+Version: 1.0.0b1
+Summary: Microsoft Azure Communication Administration Service Client Library for Python
+Home-page: https://github.com/Azure/azure-sdk-for-python
+Author: Microsoft Corporation
+Author-email: azuresdkengsysadmins@microsoft.com
+License: MIT License
+Project-URL: Bug Reports, https://github.com/Azure/azure-sdk-for-python/issues
+Project-URL: Source, https://github.com/Azure/azure-sdk-python
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: License :: OSI Approved :: MIT License
+Requires-Dist: msrest (>=0.6.0)
+Requires-Dist: azure-core (<2.0.0,>=1.2.2)
+Requires-Dist: azure-communication-nspkg ; python_version<'3.0'
+
+[![Build Status](https://dev.azure.com/azure-sdk/public/_apis/build/status/azure-sdk-for-python.client?branchName=master)](https://dev.azure.com/azure-sdk/public/_build/latest?definitionId=46?branchName=master)
+
+# Azure Communication Administration Package client library for Python
+
+Azure Communication Administration client package is intended to be used to setup the basics for opening a way to use Azure Communication Service offerings. This package helps to create identities user tokens to be used by other client packages such as chat, calling, sms. 
+
+# Getting started
+### Prerequisites
+* Python 2.7, or 3.5 or later is required to use this package.
+* You must have an [Azure subscription](https://azure.microsoft.com/free/)
+
+### Install the package
+Install the Azure Communication Administration client library for Python with [pip](https://pypi.org/project/pip/):
+
+```bash
+pip install azure-communication-administration
+```
+
+# Key concepts
+## CommunicationIdentityClient
+`CommunicationIdentityClient` provides operations for:
+
+- Create/delete identities to be used in Azure Communication Services. Those identities can be used to make use of Azure Communication offerings and can be scoped to have limited abilities through token scopes.
+
+- Create/revoke scoped user access tokens to access services such as chat, calling, sms. Tokens are issued for a valid Azure Communication identity and can be revoked at any time.
+
+# Examples
+The following section provides several code snippets covering some of the most common Azure Communication Services tasks, including:
+
+<!-- [Create/delete Azure Communication Services identities](#identity_samples) -->
+
+<!-- [Create/revoke scoped user access tokens](#identity_samples) -->
+
+# Troubleshooting
+
+# Next steps
+
+# Contributing
+
+<!-- LINKS -->
+<!--TODO: add links -->
+[identity_samples]: []
+
+
