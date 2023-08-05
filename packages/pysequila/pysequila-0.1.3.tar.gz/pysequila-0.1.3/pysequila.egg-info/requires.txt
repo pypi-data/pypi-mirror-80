@@ -1,0 +1,7 @@
+setuptools
+typeguard==2.5.0
+pyspark==2.4.3
+findspark
+
+[reST]
+Sphinx
