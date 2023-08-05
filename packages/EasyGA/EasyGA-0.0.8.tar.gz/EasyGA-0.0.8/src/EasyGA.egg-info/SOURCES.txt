@@ -1,0 +1,12 @@
+MANIFEST.in
+README.md
+setup.py
+src/.DS_Store
+src/EasyGA.py
+src/EasyGA.egg-info/PKG-INFO
+src/EasyGA.egg-info/SOURCES.txt
+src/EasyGA.egg-info/dependency_links.txt
+src/EasyGA.egg-info/requires.txt
+src/EasyGA.egg-info/top_level.txt
+src/initialization/initialization.py
+src/initialization/random_initialization.py
