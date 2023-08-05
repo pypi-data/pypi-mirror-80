@@ -1,0 +1,27 @@
+Metadata-Version: 2.1
+Name: jp-aesthetic-terminal
+Version: 0.1.0
+Summary: Program for displaying Random Japanese Text in the terminal
+Home-page: https://github.com/ankhoudary12/jp-aesthetic-terminal
+License: MIT
+Keywords: japenese,aesthetic
+Author: Anthony Khoudary
+Author-email: ankhoudary12@gmail.com
+Requires-Python: >=3.7,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: click (>=7.1.2,<8.0.0)
+Requires-Dist: desert (>=2020.1.6,<2021.0.0)
+Requires-Dist: marshmallow (>=3.8.0,<4.0.0)
+Requires-Dist: requests (>=2.24.0,<3.0.0)
+Project-URL: Repository, https://github.com/ankhoudary12/jp-aesthetic-terminal
+Description-Content-Type: text/markdown
+
+[![Tests](https://github.com/ankhoudary12/jp-aesthetic-terminal/workflows/Tests/badge.svg)](https://github.com/ankhoudary12/jp-aesthetic-terminal/actions?workflow=Tests)
+
+[![PyPI](https://img.shields.io/pypi/v/jp-aesthetic-terminal.svg)](https://pypi.org/project/jp-aesthetic-terminal/)
+
+# jp-aesthetic-terminal
+
