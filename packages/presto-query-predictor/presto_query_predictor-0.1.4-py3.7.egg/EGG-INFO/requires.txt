@@ -1,0 +1,14 @@
+Flask
+flask-cors
+joblib
+numpy
+pandas
+pyyaml
+scikit-learn
+xgboost
+
+[tests]
+pytest
+
+[tutorial]
+waitress
