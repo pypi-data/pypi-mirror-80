@@ -1,0 +1,31 @@
+Metadata-Version: 2.1
+Name: IIN-Enum
+Version: 0.0.0.3
+Summary: A debit, and credit card Issuer Identification Number(IIN) resolver.
+Home-page: https://github.com/th3tr1ckst3r/
+Author: Th3Tr1ckst3r
+Author-email: 
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+
+Example Usage:
+```Python
+from IIN_Enum.IIN_Enum import IIN_Enum
+
+# Data is automatically formatted, so all you have to do is print.
+# Invalid IIN numbers will return Invalid IIN Number.
+print(IIN_Enum(000000))
+
+# Valid IIN numbers return the following data:
+print(IIN_Enum(45717360))
+
+Issuer Identification Number: 45717360
+Card Type: debit visa
+Bank: Jyske Bank
+Origin: DK, DKK
+```
+
+
