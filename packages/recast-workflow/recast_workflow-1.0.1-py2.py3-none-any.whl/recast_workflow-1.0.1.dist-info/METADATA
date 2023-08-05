@@ -1,0 +1,26 @@
+Metadata-Version: 2.1
+Name: recast-workflow
+Version: 1.0.1
+Summary: tool for creating Yadage workflows for RECAST
+Home-page: https://github.com/scikit-hep/recast_workflow
+License: UNKNOWN
+Platform: UNKNOWN
+Requires-Python: >=3.6
+Description-Content-Type: text/x-rst
+Requires-Dist: pathlib
+Requires-Dist: requests
+Requires-Dist: pyyaml
+Requires-Dist: click
+Requires-Dist: click-completion
+Requires-Dist: yadage
+Requires-Dist: pyOpenSSL
+Provides-Extra: build
+Requires-Dist: wheel-0.35.1 ; extra == 'build'
+Requires-Dist: sphinx (~=3.2.1) ; extra == 'build'
+Requires-Dist: twine-3.2.0 ; extra == 'build'
+Provides-Extra: test
+Requires-Dist: pytest (~=3.5) ; extra == 'test'
+
+UNKNOWN
+
+

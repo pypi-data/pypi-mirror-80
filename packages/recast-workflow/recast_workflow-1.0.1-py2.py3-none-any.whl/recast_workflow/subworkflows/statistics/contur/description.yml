@@ -1,0 +1,10 @@
+description: 'Produce confidence levels from a yoda file.'
+environment_settings:
+  - {name: contur_version, default: latest}
+build_tags:
+  contur: contur_version
+inputs: []
+interfaces:
+  input:
+    - yoda
+  output: []
