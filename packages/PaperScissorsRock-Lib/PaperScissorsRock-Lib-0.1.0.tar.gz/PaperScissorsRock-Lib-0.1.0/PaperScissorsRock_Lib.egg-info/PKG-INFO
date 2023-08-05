@@ -1,0 +1,24 @@
+Metadata-Version: 2.1
+Name: PaperScissorsRock-Lib
+Version: 0.1.0
+Summary: Normal Paper Scissors Rock In a Lib
+Home-page: UNKNOWN
+Author: JasonTheDev
+License: UNKNOWN
+Description: # PAPER SCISSORS ROCK
+        
+        This is a game of paper scissors rock packed into a lib
+        
+        Get a game of paper scissors rock in 2 lines!
+        
+        usage (Python):
+        
+        ```Python
+        from PaperScissorRock import Game
+        
+        Game.play()
+        ```
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
