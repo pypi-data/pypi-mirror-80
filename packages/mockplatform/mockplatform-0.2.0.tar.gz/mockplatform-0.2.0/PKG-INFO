@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: mockplatform
+Version: 0.2.0
+Summary: Sometimes things go wrong
+Home-page: https://github.com/jakewan/mockplatform
+Author: Jacob Wan
+Author-email: jacobwan840@gmail.com
+License: UNKNOWN
+Description: # Mock Platform
+        
+        Generate HTTP responses to test RUM clients under various runtime conditions.
+        
+Platform: UNKNOWN
+Requires-Python: >=3.7.3
+Description-Content-Type: text/markdown
+Provides-Extra: dev

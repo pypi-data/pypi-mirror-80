@@ -1,0 +1,16 @@
+CHANGELOG.md
+MANIFEST.in
+README.md
+setup.py
+mockplatform/__init__.py
+mockplatform/app.py
+mockplatform.egg-info/PKG-INFO
+mockplatform.egg-info/SOURCES.txt
+mockplatform.egg-info/dependency_links.txt
+mockplatform.egg-info/entry_points.txt
+mockplatform.egg-info/requires.txt
+mockplatform.egg-info/top_level.txt
+mockplatform/resources/__init__.py
+mockplatform/resources/homepage.py
+mockplatform/resources/files/homepage.html
+test/test_app.py
