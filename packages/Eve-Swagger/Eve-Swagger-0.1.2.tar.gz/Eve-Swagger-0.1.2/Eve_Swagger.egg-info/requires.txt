@@ -1,0 +1,13 @@
+eve
+
+[dev]
+pytest
+tox
+jsonschema
+
+[docs]
+
+[tests]
+pytest
+tox
+jsonschema
