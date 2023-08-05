@@ -1,0 +1,30 @@
+{
+  "name": "idom-client-react",
+  "description": "A client for IDOM implemented in React",
+  "version": "0.4.2",
+  "author": "Ryan Morshead",
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/rmorshea/idom"
+  },
+  "main": "core_modules/layout.js",
+  "files": [
+    "core_modules/*.js"
+  ],
+  "scripts": {
+    "it": "./node_modules/.bin/npx",
+    "build": "npm run it -- snowpack && npm run it -- snowpack build",
+    "format": "npm run it -- prettier --write ./core_modules"
+  },
+  "devDependencies": {
+    "npx": "^10.2.2",
+    "prettier": "2.1.1",
+    "snowpack": "^2.10.2"
+  },
+  "dependencies": {
+    "fast-json-patch": "^3.0.0-1",
+    "htm": "^3.0.3",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}
