@@ -1,0 +1,3 @@
+[taxi.backends]
+multi = taxi_multi.backend:MultiBackend
+
