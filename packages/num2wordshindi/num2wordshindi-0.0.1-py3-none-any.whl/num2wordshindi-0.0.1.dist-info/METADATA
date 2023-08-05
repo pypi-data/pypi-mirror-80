@@ -1,0 +1,39 @@
+Metadata-Version: 2.1
+Name: num2wordshindi
+Version: 0.0.1
+Summary: A packeg to convert number to string iin hindi
+Home-page: https://github.com/Parmodsihag/num2wordshindi
+Author: Parmod Sihag
+Author-email: parmodsihag028@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+
+# num2wordshindi
+
+Convert number to hindi string
+
+How to Use:
+convert number to string
+>>> engine = Num2wordshindi(num) # enter the number you want to change
+>>> converted_string = engine.to_words() # to convert in words
+convert number to currency
+>>> converted_currency = engine.to_currency() # to converrt in indian currency (ruppes, paisa)
+
+Eg:
+  >>> engine = Num2wordshindi(3265.21)
+  >>> words = engine.to_words()
+  >>> curency = engine.to_currency()
+  >>> print(words)
+  >>> print(currency)
+
+
+
+
+
+
+
