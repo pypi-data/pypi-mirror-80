@@ -1,0 +1,4 @@
+[console_scripts]
+cl = roktools.cl:entry_point
+tensorial = roktools.tensorial:entry_point
+
