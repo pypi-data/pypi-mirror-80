@@ -1,0 +1,48 @@
+Metadata-Version: 2.1
+Name: llck
+Version: 0.1.2
+Summary: Lingorithm Language Core Kit
+Home-page: https://github.com/lingorithm/llck
+Author: Mohamed Mahrous
+Author-email: m.mahrous.94@gmail.com
+License: MIT
+Description: # Lingorithm Language Core Kit
+        This package is the core function for any NLP operation or pacakge used by lingorithm.
+        
+        ## Installation
+        
+        Use the package manager [pip](https://pip.pypa.io/en/stable/) to install llck.
+        
+        ```bash
+        pip install llck
+        ```
+        
+        # Usage
+        ```Python
+        import llck
+        
+        nlp = llck('ar', {'tokenize': 'tokenize' }) 
+        
+        processed = nlp.process('منشار أرضيتم بالحيوة الدنيا من الأخرة')
+        
+        print(processed.sentences[0].tokens)
+        # [منشار, أرضيتم, ب, الحيوة, الدنيا, من, الأخرة]
+        ```
+        
+        
+        ## Contributing
+        Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+        
+        Please make sure to update tests as appropriate.
+        
+        ## License
+        [MIT](https://choosealicense.com/licenses/mit/)
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Natural Language :: Arabic
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Text Processing :: Linguistic
+Description-Content-Type: text/markdown
