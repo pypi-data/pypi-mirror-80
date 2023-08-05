@@ -1,0 +1,10 @@
+include MANIFEST.in
+recursive-include pmgwidgets *
+recursive-include pmgwindows *
+recursive-exclude test *
+exclude *.md
+exclude *.nov
+prune test
+prune src
+prune pmgwidgets.egg-info
+recursive-exclude takagiabm __pycache__/*
