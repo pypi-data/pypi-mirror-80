@@ -1,0 +1,24 @@
+#+TITLE: firmware_uploader_python
+#+AUTHOR: Peter Polidoro
+#+EMAIL: peterpolidoro@gmail.com
+
+* Package Information
+  - Name :: firmware_uploader_python
+  - Version :: 0.1.0
+  - License :: BSD
+  - URL :: https://github.com/janelia-pypi/firmware_uploader_python
+  - Author :: Peter Polidoro
+  - Email :: peterpolidoro@gmail.com
+
+  Uploads firmware to multiple embedded devices.
+
+* Example Usage
+
+
+  #+BEGIN_SRC python
+    from firmware_uploader import FirmwareUploader
+  #+END_SRC
+
+* Installation
+
+  [[https://github.com/janelia-pypi/python_setup]]
