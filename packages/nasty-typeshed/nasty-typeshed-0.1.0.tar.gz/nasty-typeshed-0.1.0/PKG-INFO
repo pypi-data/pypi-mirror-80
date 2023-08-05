@@ -1,0 +1,54 @@
+Metadata-Version: 2.1
+Name: nasty-typeshed
+Version: 0.1.0
+Summary: Python stub files created during NASTY's development.
+Home-page: UNKNOWN
+Author: Lukas Schmelzeisen
+Author-email: me@lschmelzeisen.com
+License: Apache License, Version 2.0
+Project-URL: Repository, https://github.com/lschmelzeisen/nasty-typeshed
+Project-URL: Issue Tracker, https://github.com/lschmelzeisen/nasty-typeshed/issues
+Description: ========================================================================================
+        nasty-typeshed
+        ========================================================================================
+        
+        Python `stub files <https://mypy.readthedocs.io/en/stable/stubs.html>`_ created
+        during `NASTY <https://github.com/lschmelzeisen/nasty>`_'s development.
+        
+        These stub files do not try to be feature complete representations of the original
+        packages, instead they restrict themselves to just the functionality that I needed at
+        the time.
+        In rare cases methods might contain deliberatly false type annotations, to make typing
+        or usage easier.
+        
+        
+        License
+        ========================================================================================
+        
+        Copyright 2019-2020 Lukas Schmelzeisen.
+        Licensed under the
+        `Apache License, Version 2.0 <https://www.apache.org/licenses/LICENSE-2.0>`_.
+        
+        
+Platform: any
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Classifier: Topic :: Software Development
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Software Development :: Libraries :: Application Frameworks
+Classifier: Typing :: Typed
+Requires-Python: >=3.6
+Description-Content-Type: text/x-rst
+Provides-Extra: test
+Provides-Extra: dev
