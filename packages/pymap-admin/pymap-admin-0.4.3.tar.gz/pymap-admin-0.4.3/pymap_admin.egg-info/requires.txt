@@ -1,0 +1,7 @@
+grpclib
+protobuf
+typing-extensions
+
+[build]
+grpcio-tools
+mypy-protobuf
