@@ -1,0 +1,77 @@
+Metadata-Version: 1.2
+Name: rhf
+Version: 0.0.1
+Summary: Python implementation of Random Histogram Forest (RHF)
+Home-page: https://github.com/anrputina/rhf
+Author: Andrian Putina
+Author-email: anr.putina@gmail.com
+License: MIT license
+Description: ===
+        rhf
+        ===
+        
+        
+        .. image:: https://img.shields.io/pypi/v/rhf.svg
+                :target: https://pypi.python.org/pypi/rhf
+        
+        .. image:: https://travis-ci.com/anrputina/rhf.svg?branch=master
+                :target: https://travis-ci.com/anrputina/rhf
+        
+        .. image:: https://readthedocs.org/projects/rhf/badge/?version=latest
+                :target: https://rhf.readthedocs.io/en/latest/?badge=latest
+                :alt: Documentation Status
+        
+        
+        
+        
+        Python implementation of Random Histogram Forest (RHF)
+        
+        Installation and Usage
+        ======================
+        To install rhf ::
+        
+            pip install rhf
+        
+        To use rhf in a project::
+        
+            from rhf import RHF
+        
+            my_rhf = RHF(num_trees = 100, max_height = 5, split_criterion='kurtosis')
+            output_scores = my_rhf.fit(data)
+        
+        
+        
+        
+        Credits
+        -------
+        
+        * Free software: MIT license
+        * Documentation: https://rhf.readthedocs.io.
+        
+        This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
+        
+        .. _Cookiecutter: https://github.com/audreyr/cookiecutter
+        .. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
+        
+        
+        =======
+        History
+        =======
+        
+        0.0.1 (2020-09-16)
+        ==================
+        
+        * First release on PyPI.
+        
+Keywords: rhf
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Python: >=3.5
