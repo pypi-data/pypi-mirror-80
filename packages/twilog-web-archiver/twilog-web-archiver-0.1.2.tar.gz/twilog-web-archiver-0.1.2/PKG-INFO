@@ -1,0 +1,63 @@
+Metadata-Version: 2.1
+Name: twilog-web-archiver
+Version: 0.1.2
+Summary: Save month list pages of twilog.org by using archive.org.
+Home-page: https://github.com/shuuji3/twilog-web-archiver
+License: GPL-3.0-or-later
+Keywords: twilog,twitter,archive
+Author: TAKAHASHI Shuuji
+Author-email: shuuji3@gmail.com
+Requires-Python: >=3.6,<4.0
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: bs4 (>=0.0.1,<0.0.2)
+Requires-Dist: click (>=7.0,<8.0)
+Requires-Dist: lxml (>=4.3,<5.0)
+Requires-Dist: pluggy (>=0.13.1,<0.14.0)
+Requires-Dist: requests (>=2.21,<3.0)
+Requires-Dist: savepagenow (>=0.0.12,<1.1.1)
+Project-URL: Repository, https://github.com/shuuji3/twilog-web-archiver
+Description-Content-Type: text/x-rst
+
+twilog-web-archiver
+===================
+
+.. image:: https://circleci.com/gh/shuuji3/twilog-web-archiver.svg?style=svg
+    :target: https://circleci.com/gh/shuuji3/twilog-web-archiver
+
+Save month list pages of twilog.org using archive.org.
+
+Requirement
+-----------
+
+- :code:`Python >= 3.6`
+
+Install
+-------
+
+.. code-block:: bash
+
+    $ pip install twilog-web-archiver
+
+Usage
+-----
+
+.. code-block:: bash
+
+    $ twilog-web-archiver SCREEN_NAME
+
+Description
+-----------
+
+When a user has registered twilog.org, you will see the month list page in the user archive page, i.e. `https://twilog.org/NHK_PR/archives <https://twilog.org/NHK_PR/archives>`_.
+
+This program saves every pages in this month list into Wayback Machine on `archive.org <archive.org>`_.
+
+License
+-------
+
+- `GNU GPL 3.0 or later <LICENSE>`_
+
