@@ -1,0 +1,5 @@
+[console_scripts]
+delete-bucket=mydumper2s3.delete_bucket:main
+mydumper2s3=mydumper2s3.mydumper2s3:main
+verify-dump=mydumper2s3.verify_dump:main
+
