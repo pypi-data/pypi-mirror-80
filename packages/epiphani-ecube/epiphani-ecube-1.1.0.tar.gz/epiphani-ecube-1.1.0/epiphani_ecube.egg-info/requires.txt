@@ -1,0 +1,8 @@
+tabulate
+PyYAML
+Jinja2
+websocket-client>=0.57.0
+warrant>=0.6.1
+configparser
+requests
+epiphani-appsync-subscription-manager>=0.1.0

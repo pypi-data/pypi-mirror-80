@@ -1,0 +1,22 @@
+commonfields:
+  id: {{cliName}}
+  version: -1
+name: {{cliName}}
+display: CLI Cmd - {{cliName}}
+category: CLI Cmd
+description: Custom
+configuration:
+script:
+  script: ''
+  type: python
+  commands:
+  - name: run-cli
+    description: Run a custom CLI command 
+    arguments:
+    - name: command
+      required: false
+      description: Command you wish to execute
+  outputs:
+    - contextPath: {{cliName}}.output
+      description: output of the command 
+  subtype: python3
