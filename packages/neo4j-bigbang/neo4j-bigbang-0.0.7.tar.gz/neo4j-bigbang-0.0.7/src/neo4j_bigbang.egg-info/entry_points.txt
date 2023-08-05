@@ -1,0 +1,4 @@
+[console_scripts]
+bigbang-node = bigbang.import_nodes:main
+bigbang-rel = bigbang.import_relationships:main
+
