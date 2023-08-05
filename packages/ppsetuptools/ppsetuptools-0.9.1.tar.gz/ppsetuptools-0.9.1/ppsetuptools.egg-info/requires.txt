@@ -1,0 +1,11 @@
+setuptools
+toml
+
+[dev]
+pre-commit
+pytest
+pytest-cov
+
+[test]
+pytest
+pytest-cov
