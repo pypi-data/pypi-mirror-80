@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: cwapi3d
+Version: 0.10
+Summary: Python bindings for CwAPI3D
+Home-page: https://github.com/CadworkMontreal/cwapi3d
+Author: Cadwork Montreal
+Author-email: it@cadwork.ca
+License: UNKNOWN
+Description: # CwAPI3D
+        
+        ![PyPI - License](https://img.shields.io/pypi/l/cwapi3d)
+        ![PyPI](https://img.shields.io/pypi/v/cwapi3d)
+        ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/cwapi3d)
+        [![Documentation Status](https://readthedocs.org/projects/cwapi3d/badge/?version=latest)](https://cwapi3d.readthedocs.io/en/latest/?badge=latest)
+        
+        Python binding for CwAPI3D plugins in Cadwork 3D.
+        
+        ## Installation
+        
+        On Windows the usual
+        
+            pip3 install cwapi3d
+        
+        should suffice.
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Win32 (MS Windows)
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Software Development :: Libraries
+Classifier: License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
