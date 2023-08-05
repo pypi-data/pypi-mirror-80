@@ -1,0 +1,128 @@
+Metadata-Version: 1.2
+Name: aiowatcher
+Version: 0.0.3
+Summary: Asynchronous library to watch files in real time.
+Home-page: https://github.com/py-paulo/aiowatcher.git
+Author: Paulo Roberto <paulo.rb.beserra@gmail.com>
+Author-email: paulo.rb.beserra@gmail.com
+License: Apache 2
+Project-URL: GitHub: issues, https://github.com/py-paulo/aiowatcher/issues
+Project-URL: GitHub: repo, https://github.com/py-paulo/aiowatcher
+Description: AIOWatcher
+        ==========
+        
+        .. image:: https://i.pinimg.com/originals/1b/2a/2a/1b2a2a3a94cae52f318e1893303a0834.png
+           :height: 126px
+           :width: 256px
+           :alt: aiowatcher logo
+        
+        |
+        
+        .. image:: https://img.shields.io/github/repo-size/py-paulo/aiowatcher 
+            :target: https://img.shields.io/github/repo-size/py-paulo/aiowatcher
+            :alt: GitHub repo size
+        
+        .. image:: https://img.shields.io/pypi/v/AIOWatcher
+            :target: https://img.shields.io/pypi/v/aiowatcher
+            :alt: PyPI
+        
+        .. image:: https://img.shields.io/pypi/wheel/aiowatcher
+            :target: https://img.shields.io/pypi/wheel/aiowatcher
+            :alt: PyPI - Wheel
+        
+        .. image:: https://img.shields.io/github/license/py-paulo/aiowatcher   
+            :target: https://img.shields.io/github/license/py-paulo/aiowatcher
+            :alt: GitHub
+        
+        .. image:: https://img.shields.io/github/last-commit/py-paulo/aiowatcher
+            :target: https://img.shields.io/github/last-commit/py-paulo/aiowatcher
+            :alt: GitHub last commit
+        
+        Biblioteca para "observar" os arquivos de um diretÃ³rio e chamar uma 
+        funÃ§Ã£o de callback `(filename, lines)` toda vez que um dos arquivos monitorados for gravado, em tempo real.
+        
+        Em termos prÃ¡ticos, isso pode ser comparado ao comando `tail -F * .log` do UNIX, 
+        mas em vez de ter linhas impressas no stdout, uma funÃ§Ã£o Python Ã© chamada.
+        
+        Da mesma forma que o tail, ele se encarrega de "observar" os novos arquivos que sÃ£o 
+        criados apÃ³s a inicializaÃ§Ã£o e "desbloquear" aqueles que sÃ£o removidos nesse meio tempo. 
+        Isso significa que vocÃª serÃ¡ capaz de "seguir" e suportar tambÃ©m arquivos de log rotativos.
+        
+        Key Features
+        ============
+        
+        - Utiliza Asyncio para leitura e monitoramento assincrono.
+        - A implementaÃ§Ã£o escolhe automaticamente dependendo da compatibilidade do sistema.
+        - Monitoramento de diversos arquivos em um mesmo diretÃ³rio ou apenas de um.
+        - FunÃ§Ã£o `callback` assincrona.
+        
+        Getting started
+        ---------------
+        
+        Todos os exemplos de cÃ³digo requerem Python 3.6+.
+        
+        Basic Usage
+        +++++++++++
+        
+        .. code-block:: python
+        
+            import asyncio
+            from aiowatcher import AIOWatcher
+        
+            async def callback(filename, line):
+                print(line)
+        
+            async def main():
+                lw = AIOWatcher('var', callback, extensions=['txt'])
+                await lw.init()
+                await lw.loop()
+        
+            loop = asyncio.get_event_loop()
+            loop.run_until_complete(main())    
+        
+        
+        Non blocking
+        ++++++++++++
+        
+        .. code-block:: python
+        
+            import asyncio
+            from aiowatcher import AIOWatcher
+        
+            async def callback(filename, line):
+                print(line)
+        
+            async def main():
+                lw = AIOWatcher('var', callback, extensions=['txt'])
+                while True:
+                    await lw.loop(blocking=False)
+                    await asyncio.sleep(0.1)
+        
+            loop = asyncio.get_event_loop()
+            loop.run_until_complete(main())
+        
+        
+        License
+        =======
+        
+        ``aiowatcher`` Ã© oferecido sob a licenÃ§a Apache 2.
+        
+        
+        Source code
+        ===========
+        
+        A versÃ£o mais recente do desenvolvedor estÃ¡ disponÃ­vel em um repositÃ³rio GitHub:
+        https://github.com/py-paulo/aiowatcher.git
+        
+Keywords: aio,python,asyncio,fileio,io
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Framework :: AsyncIO
+Provides: aiowatcher
+Requires-Python: >=3.6
