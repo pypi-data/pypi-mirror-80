@@ -1,0 +1,15 @@
+MANIFEST.in
+README.md
+setup.py
+dcc2/__init__.py
+dcc2/dccFn.py
+dcc2/parseOmaById.py
+dcc2/parseOmaBySpec.py
+dcc2/parseOrthoxml.py
+dcc2/prepareDcc.py
+dcc2.egg-info/PKG-INFO
+dcc2.egg-info/SOURCES.txt
+dcc2.egg-info/dependency_links.txt
+dcc2.egg-info/entry_points.txt
+dcc2.egg-info/requires.txt
+dcc2.egg-info/top_level.txt
