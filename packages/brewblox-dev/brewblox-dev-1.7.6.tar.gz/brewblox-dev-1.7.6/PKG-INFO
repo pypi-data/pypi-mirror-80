@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: brewblox-dev
+Version: 1.7.6
+Summary: Brewblox development tools
+License: GPL-3.0
+Author: BrewPi
+Author-email: development@brewpi.com
+Requires-Python: >=3.6
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: click (>=7.1.1,<8.0.0)
+Requires-Dist: python-dotenv (>=0.13.0,<0.14.0)
