@@ -1,0 +1,6 @@
+pep517
+setuptools
+toml
+
+[test]
+mock>=3.0.0
