@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: mydumper2s3
+Version: 0.1.4
+Summary: Upload Mydumper directories to S3.
+Author: laixintao
+Author-email: laixintaoo@gmail.com
+Requires-Python: >=3.7,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: click (>=7.1.2,<8.0.0)
+Requires-Dist: minio (>=6.0.0,<7.0.0)
+Requires-Dist: psutil (>=5.7.2,<6.0.0)
+Requires-Dist: watchdog (>=0.10.3,<0.11.0)
