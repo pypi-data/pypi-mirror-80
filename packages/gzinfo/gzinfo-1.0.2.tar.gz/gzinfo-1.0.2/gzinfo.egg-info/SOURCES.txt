@@ -1,0 +1,11 @@
+MANIFEST.in
+README.md
+setup.cfg
+setup.py
+gzinfo/__init__.py
+gzinfo.egg-info/PKG-INFO
+gzinfo.egg-info/SOURCES.txt
+gzinfo.egg-info/dependency_links.txt
+gzinfo.egg-info/entry_points.txt
+gzinfo.egg-info/requires.txt
+gzinfo.egg-info/top_level.txt
