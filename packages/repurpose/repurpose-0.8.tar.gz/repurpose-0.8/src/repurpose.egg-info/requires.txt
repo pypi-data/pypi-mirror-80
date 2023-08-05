@@ -1,0 +1,9 @@
+numpy
+pygeogrids
+pynetcf
+pyresample
+more_itertools
+
+[testing]
+pytest
+pytest-cov
