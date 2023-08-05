@@ -1,0 +1,14 @@
+README.md
+setup.py
+SynopticPy.egg-info/PKG-INFO
+SynopticPy.egg-info/SOURCES.txt
+SynopticPy.egg-info/dependency_links.txt
+SynopticPy.egg-info/not-zip-safe
+SynopticPy.egg-info/requires.txt
+SynopticPy.egg-info/top_level.txt
+synoptic/__init__.py
+synoptic/config.cfg
+synoptic/get_credentials.py
+synoptic/get_token.py
+synoptic/plots.py
+synoptic/services.py
