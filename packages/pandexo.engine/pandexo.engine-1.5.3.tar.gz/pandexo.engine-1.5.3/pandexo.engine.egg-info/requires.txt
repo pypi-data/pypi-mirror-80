@@ -1,0 +1,13 @@
+numpy
+bokeh==0.12.6
+tornado
+pandas==0.25.0
+joblib
+pandeia.engine==1.5.1
+batman-package
+photutils
+astropy
+pysynphot
+sqlalchemy
+astroquery
+scipy==1.3.1
