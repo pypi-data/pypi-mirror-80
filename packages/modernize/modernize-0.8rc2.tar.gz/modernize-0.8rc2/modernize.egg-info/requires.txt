@@ -1,0 +1,9 @@
+fissix
+
+[docs]
+sphinx~=3.2
+
+[test]
+coverage>=5.3
+pytest
+pytest-cov
