@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: pystocklib
+Version: 0.0.5
+Summary: python stock library
+Home-page: https://github.com/sharebook-kr/pystocklib
+Author: Lukas Yoo, Brayden Jo
+Author-email: jonghun.yoo@outlook.com, brayden.jo@outlook.com
+License: UNKNOWN
+Description: # pystocklib
+        Python Stock Library 
+        
+        
+        ## S-RIM
+        
+        레퍼런스: 사경인 회계사의 "재무제표 모르면 주식투자 절대로 하지마라"
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown

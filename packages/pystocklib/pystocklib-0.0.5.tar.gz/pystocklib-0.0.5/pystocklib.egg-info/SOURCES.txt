@@ -1,0 +1,10 @@
+README.md
+setup.py
+pystocklib/__init__.py
+pystocklib.egg-info/PKG-INFO
+pystocklib.egg-info/SOURCES.txt
+pystocklib.egg-info/dependency_links.txt
+pystocklib.egg-info/top_level.txt
+pystocklib/common/__init__.py
+pystocklib/srim/__init__.py
+pystocklib/srim/reader.py
