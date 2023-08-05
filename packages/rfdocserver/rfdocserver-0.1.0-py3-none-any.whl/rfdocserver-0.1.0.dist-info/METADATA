@@ -1,0 +1,39 @@
+Metadata-Version: 2.1
+Name: rfdocserver
+Version: 0.1.0
+Summary: Web server for hosting robot framework documentation
+Home-page: https://github.com/juha-ylikoski/rfdocserver
+Author: Juha Ylikoski
+Author-email: juha.ylikoski14@outlook.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: OS Independent
+Classifier: Framework :: Flask
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: robotframework (>=3.2)
+Requires-Dist: beautifulsoup4 (>=4.9.1)
+Requires-Dist: argparse (>=1.4.0)
+Requires-Dist: Flask (>=1.1.2)
+Requires-Dist: waitress (>=1.4.4)
+
+# rfdocserver
+
+This python modules goal is to make browsing robot framework keyword documentation easier by generating browseable documentation with robot framework libdoc and host it with flask web server.
+
+## Installation
+
+You can install this package with pip:
+
+`pip3 install rfdocserver`
+
+
+## Running
+
+This project should be run as python3 module.
+
+`python3 -m rfdocserver <path to robot file root>`
+
+
