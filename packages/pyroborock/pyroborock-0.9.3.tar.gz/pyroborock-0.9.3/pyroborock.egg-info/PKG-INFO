@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: pyroborock
+Version: 0.9.3
+Summary: Communicate with roborock over tuya protocol
+Home-page: https://github.com/89jd/pyroborock
+Author: jd89
+Author-email: jd89.dev@gmail.com
+License: UNKNOWN
+Description: # pyroborock
+        
+        See https://github.com/89jd/roborock_comms for details on how I go to this point.
+        
+        Using the keys from roborock app, it is possible to communicate with the roborock without needing to use the Xiamoi Miio app.
+        
+        It creates a new class overriding the python-miio vacuum class, but uses the tuya-ipc library to communicate
+        
+Platform: UNKNOWN
+Description-Content-Type: text/markdown
