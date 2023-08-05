@@ -1,0 +1,67 @@
+[build-system]
+requires = [
+    "robotpy-build>=2020.2.0,<2021.0.0",
+    "wpilib>=2020.3.2.0,<2021.0.0",
+]
+
+[tool.robotpy-build]
+base_package = "adis16470"
+
+# [tool.robotpy-build.wrappers."adis16448".maven_lib_download]
+# artifact_id = "adis16448-cpp"
+# group_id = "com.github.juchong"
+# repo_url = "http://maven.highcurrent.io/maven"
+# version = "2020.r3"
+# use_sources = true
+# sources_classifier = "source"
+# sources = [
+# ]
+
+[tool.robotpy-build.wrappers."adis16448"]
+name = "adis16448"
+depends = ["wpilibc", "wpiutil", "wpilib_core", "wpiHal", "ntcore"]
+
+sources = [
+    "adis16448/src/module.cpp",
+    "adis16448/src/ADIS16448_IMU.cpp",
+]
+
+generation_data = "gen"
+generate = [
+    { ADIS16448_IMU = "adi/ADIS16448_IMU.h" }
+]
+
+# [tool.robotpy-build.wrappers."adis16470".maven_lib_download]
+# artifact_id = "adis16470-cpp"
+# group_id = "com.github.juchong"
+# repo_url = "http://maven.highcurrent.io/maven"
+# version = "2020.r4"
+# use_sources = true
+# sources_classifier = "source"
+# sources = [
+# ]
+
+[tool.robotpy-build.wrappers."adis16470"]
+name = "adis16470"
+depends = ["wpilibc", "wpiutil", "wpilib_core", "wpiHal", "ntcore"]
+
+sources = [
+    "adis16470/src/module.cpp",
+    "adis16470/src/ADIS16470_IMU.cpp",
+]
+
+generation_data = "gen"
+generate = [
+    { ADIS16470_IMU = "adi/ADIS16470_IMU.h" }
+]
+
+[tool.robotpy-build.metadata]
+name = "robotpy-adi"
+description = "RobotPy wrappers for Analog Devices IMU"
+author = "RobotPy Development Team"
+author_email = "robotpy@googlegroups.com"
+url = "https://github.com/robotpy-adi"
+license = "MIT"
+install_requires = [
+    "wpilib>=2020.3.2.0,<2021.0.0",
+]

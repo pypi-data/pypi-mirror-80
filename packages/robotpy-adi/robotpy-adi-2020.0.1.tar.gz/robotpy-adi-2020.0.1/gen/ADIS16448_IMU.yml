@@ -1,0 +1,87 @@
+---
+
+extra_includes:
+- frc/smartdashboard/SendableBuilder.h
+
+attributes:
+  FLASH_CNT:
+  XGYRO_OUT:
+  YGYRO_OUT:
+  ZGYRO_OUT:
+  XACCL_OUT:
+  YACCL_OUT:
+  ZACCL_OUT:
+  XMAGN_OUT:
+  YMAGN_OUT:
+  ZMAGN_OUT:
+  BARO_OUT:
+  TEMP_OUT:
+  XGYRO_OFF:
+  YGYRO_OFF:
+  ZGYRO_OFF:
+  XACCL_OFF:
+  YACCL_OFF:
+  ZACCL_OFF:
+  XMAGN_HIC:
+  YMAGN_HIC:
+  ZMAGN_HIC:
+  XMAGN_SIC:
+  YMAGN_SIC:
+  ZMAGN_SIC:
+  GPIO_CTRL:
+  MSC_CTRL:
+  SMPL_PRD:
+  SENS_AVG:
+  SEQ_CNT:
+  DIAG_STAT:
+  GLOB_CMD:
+  ALM_MAG1:
+  ALM_MAG2:
+  ALM_SMPL1:
+  ALM_SMPL2:
+  ALM_CTRL:
+  LOT_ID1:
+  LOT_ID2:
+  PROD_ID:
+  SERIAL_NUM:
+  rad_to_deg:
+  deg_to_rad:
+  grav:
+classes:
+  offset_data:
+    ignore: true
+  ADIS16448_IMU:
+    shared_ptr: true
+    enums:
+      IMUAxis:
+    methods:
+      ADIS16448_IMU:
+        overloads:
+          "":
+          frc::ADIS16448_IMU::IMUAxis, SPI::Port, uint16_t:
+      Calibrate:
+      ConfigCalTime:
+      Reset:
+      GetAngle:
+      GetRate:
+      GetGyroAngleX:
+      GetGyroAngleY:
+      GetGyroAngleZ:
+      GetGyroInstantX:
+      GetGyroInstantY:
+      GetGyroInstantZ:
+      GetAccelInstantX:
+      GetAccelInstantY:
+      GetAccelInstantZ:
+      GetXComplementaryAngle:
+      GetYComplementaryAngle:
+      GetXFilteredAccelAngle:
+      GetYFilteredAccelAngle:
+      GetMagInstantX:
+      GetMagInstantY:
+      GetMagInstantZ:
+      GetBarometricPressure:
+      GetTemperature:
+      GetYawAxis:
+      SetYawAxis:
+      ConfigDecRate:
