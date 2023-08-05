@@ -1,0 +1,3 @@
+[console_scripts]
+migrate-rg = redmine_gitlab_migrator.commands:main
+

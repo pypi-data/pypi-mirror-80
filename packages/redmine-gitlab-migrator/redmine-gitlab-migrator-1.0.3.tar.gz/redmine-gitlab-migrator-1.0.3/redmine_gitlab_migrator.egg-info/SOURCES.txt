@@ -1,0 +1,17 @@
+README.md
+setup.cfg
+setup.py
+redmine_gitlab_migrator/__init__.py
+redmine_gitlab_migrator/commands.py
+redmine_gitlab_migrator/converters.py
+redmine_gitlab_migrator/gitlab.py
+redmine_gitlab_migrator/logger.py
+redmine_gitlab_migrator/redmine.py
+redmine_gitlab_migrator/sql.py
+redmine_gitlab_migrator/wiki.py
+redmine_gitlab_migrator.egg-info/PKG-INFO
+redmine_gitlab_migrator.egg-info/SOURCES.txt
+redmine_gitlab_migrator.egg-info/dependency_links.txt
+redmine_gitlab_migrator.egg-info/entry_points.txt
+redmine_gitlab_migrator.egg-info/requires.txt
+redmine_gitlab_migrator.egg-info/top_level.txt
