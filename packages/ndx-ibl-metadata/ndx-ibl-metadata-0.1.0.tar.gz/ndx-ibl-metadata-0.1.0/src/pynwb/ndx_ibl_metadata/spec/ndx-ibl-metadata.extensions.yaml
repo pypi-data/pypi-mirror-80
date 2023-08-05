@@ -1,0 +1,152 @@
+groups:
+- neurodata_type_def: IblSessionData
+  neurodata_type_inc: LabMetaData
+  name: Ibl_session_data
+  doc: IBL sessions metadata
+  datasets:
+  - name: location
+    dtype: text
+    doc: location
+    quantity: '?'
+  - name: project
+    dtype: text
+    doc: project this session is part of
+    quantity: '?'
+  - name: type
+    dtype: text
+    doc: type of session
+    quantity: '?'
+  - name: number
+    dtype: int
+    doc: session number
+    quantity: '?'
+  - name: end_time
+    dtype: text
+    doc: session end time
+    quantity: '?'
+  - name: parent_session
+    dtype: text
+    doc: parent session
+    quantity: '?'
+  - name: url
+    dtype: text
+    doc: url of the session metadata
+    quantity: '?'
+  - name: qc
+    dtype: text
+    doc: qc
+    quantity: '?'
+  - name: extended_qc
+    dtype: text
+    doc: extended_qc
+    quantity: '?'
+  - name: wateradmin_session_related
+    dtype: text
+    shape:
+    - null
+    doc: wateradmin_session_related
+    quantity: '?'
+  - name: json
+    dtype: text
+    doc: json
+    quantity: '?'
+- neurodata_type_def: IblSubject
+  neurodata_type_inc: Subject
+  name: subject
+  doc: IBL mice data
+  attributes:
+  - name: alive
+    dtype: bool
+    doc: alive/dead
+    required: false
+  datasets:
+  - name: nickname
+    dtype: text
+    doc: name of the mouse
+    quantity: '?'
+  - name: url
+    dtype: text
+    doc: url location of the subject metadata
+    quantity: '?'
+  - name: responsible_user
+    dtype: text
+    doc: user in charge of the subject
+    quantity: '?'
+  - name: death_date
+    dtype: text
+    doc: date of sacrifice of the mouse
+    quantity: '?'
+  - name: litter
+    dtype: text
+    doc: litter of the mouse
+    quantity: '?'
+  - name: strain
+    dtype: text
+    doc: strain of mouse
+    quantity: '?'
+  - name: source
+    dtype: text
+    doc: source
+    quantity: '?'
+  - name: line
+    dtype: text
+    doc: line of this mouse
+    quantity: '?'
+  - name: projects
+    dtype: text
+    shape:
+    - null
+    doc: ibl project involving this mouse
+    quantity: '?'
+  - name: session_projects
+    dtype: text
+    shape:
+    - null
+    doc: session projects
+    quantity: '?'
+  - name: lab
+    dtype: text
+    doc: lab
+    quantity: '?'
+  - name: last_water_restriction
+    dtype: text
+    doc: last water restriction
+    quantity: '?'
+  - name: expected_water
+    dtype: float
+    doc: expected water
+    quantity: '?'
+  - name: remaining_water
+    dtype: float
+    doc: remaining water
+    quantity: '?'
+  - name: weighings
+    dtype: text
+    shape:
+    - null
+    doc: weighings
+    quantity: '?'
+  - name: water_administrations
+    dtype: text
+    shape:
+    - null
+    doc: water_administrations
+    quantity: '?'
+- neurodata_type_def: IblProbes
+  neurodata_type_inc: Device
+  doc: Neuro Pixels probes
+  datasets:
+  - name: id
+    dtype: text
+    doc: id
+    quantity: '?'
+  - name: model
+    dtype: text
+    doc: model
+    quantity: '?'
+  - name: trajectory_estimate
+    dtype: text
+    shape:
+    - null
+    doc: dict containing trajectory info for each probe
+    quantity: '?'
