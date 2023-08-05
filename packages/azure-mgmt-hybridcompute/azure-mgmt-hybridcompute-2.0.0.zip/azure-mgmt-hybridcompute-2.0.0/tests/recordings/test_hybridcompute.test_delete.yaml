@@ -1,0 +1,136 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python/3.8.1 (Windows-10-10.0.19041-SP0) msrest/0.6.13 msrest_azure/0.6.3
+        azure-mgmt-hybridcompute/2.0.0 Azure-SDK-For-Python
+      accept-language:
+      - en-US
+    method: GET
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azure-sdk-test/providers/Microsoft.HybridCompute/machines/test?api-version=2020-08-02
+  response:
+    body:
+      string: '{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azure-sdk-test/providers/Microsoft.HybridCompute/machines/test","name":"test","location":"eastus","tags":{},"identity":{"type":"SystemAssigned","principalId":"624cfec7-88cc-4a29-bf02-87fd69f88ef9","tenantId":"00000000-0000-0000-0000-000000000000"},"type":"Microsoft.HybridCompute/machines","properties":{"provisioningState":"Succeeded","agentVersion":"0.11.20231.010","status":"Connected","lastStatusChange":"2020-09-17T03:20:42.8545878Z","errorDetails":[],"displayName":"test","machineFqdn":"test","osName":"linux","osVersion":"5.4.0-1025-azure","osProfile":{"computerName":"test"},"vmId":"271c2118-69be-40e4-bea4-f05f633745a7","vmUuid":"21cb97f4-f5ad-af4c-83e7-5041df1af906","clientPublicKey":"MIIBCgKCAQEAmeSrMy9DSnukCeH2z4nuVXvpQzMh49FTBdbsa0BPXc7249wgvy58T1NPOfbsqvFtYC4HEPpL9vPEoZe6Yj6ZhGC46VnQakxVx2QRfS8seXVlj7L4fyrqo0ic9qr4z3TvO6p5uJDASLGFSHFGGaQotR+FULBeZM+WTyt99qKNoblrwG2PZ9RY+cUDQE4FuKYDEbjRRPeunVEsZyH1C5knmmbavDHKYOZH0HMiSxHzL1b+KJaDbPwirNYcmEXo24ri7MtiuTlNJ5xNn1PmxtmMN433sSNVezt5lQo5OBq+Q+b7OpJlA1vH6tF1nIFKiI7uj26MMpQyGn+Yrvd3m6Z3YQIDAQAB","osSku":"Ubuntu
+        18.04.5 LTS","domainName":"n/a","adFqdn":"n/a","dnsFqdn":"test.dittldlvgd4erenh4jmeqz55ib.bx.internal.cloudapp.net"}}'
+    headers:
+      cache-control:
+      - no-cache
+      content-length:
+      - '1265'
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Thu, 17 Sep 2020 04:02:49 GMT
+      expires:
+      - '-1'
+      pragma:
+      - no-cache
+      server:
+      - Kestrel
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-content-type-options:
+      - nosniff
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+      User-Agent:
+      - python/3.8.1 (Windows-10-10.0.19041-SP0) msrest/0.6.13 msrest_azure/0.6.3
+        azure-mgmt-hybridcompute/2.0.0 Azure-SDK-For-Python
+      accept-language:
+      - en-US
+    method: DELETE
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azure-sdk-test/providers/Microsoft.HybridCompute/machines/test?api-version=2020-08-02
+  response:
+    body:
+      string: ''
+    headers:
+      cache-control:
+      - no-cache
+      content-length:
+      - '0'
+      content-type:
+      - application/json
+      date:
+      - Thu, 17 Sep 2020 04:02:58 GMT
+      expires:
+      - '-1'
+      pragma:
+      - no-cache
+      server:
+      - Kestrel
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      x-content-type-options:
+      - nosniff
+      x-ms-ratelimit-remaining-subscription-deletes:
+      - '14999'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python/3.8.1 (Windows-10-10.0.19041-SP0) msrest/0.6.13 msrest_azure/0.6.3
+        azure-mgmt-hybridcompute/2.0.0 Azure-SDK-For-Python
+      accept-language:
+      - en-US
+    method: GET
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azure-sdk-test/providers/Microsoft.HybridCompute/machines/test?api-version=2020-08-02
+  response:
+    body:
+      string: '{"error":{"code":"ResourceNotFound","message":"The Resource ''Microsoft.HybridCompute/machines/test''
+        under resource group ''azure-sdk-test'' was not found. For more details please
+        go to https://aka.ms/ARMResourceNotFoundFix"}}'
+    headers:
+      cache-control:
+      - no-cache
+      content-length:
+      - '223'
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Thu, 17 Sep 2020 04:02:59 GMT
+      expires:
+      - '-1'
+      pragma:
+      - no-cache
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      x-content-type-options:
+      - nosniff
+      x-ms-failure-cause:
+      - gateway
+    status:
+      code: 404
+      message: Not Found
+version: 1
