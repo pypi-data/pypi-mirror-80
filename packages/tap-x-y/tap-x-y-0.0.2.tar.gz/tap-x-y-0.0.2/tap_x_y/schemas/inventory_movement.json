@@ -1,0 +1,141 @@
+{
+    "type": ["null", "object"],
+    "additionalProperties": true,
+    "properties": {
+        "id": {
+            "type": ["null", "string"]
+        },
+        "last_modified": {
+            "type": ["null", "integer"]
+        },
+        "date": {
+            "type": ["null", "integer"]
+        },
+        "applied": {
+            "type": ["null", "boolean"]
+        },
+        "consigned_msrp_amount": {
+            "type": ["null", "integer"]
+        },
+        "consigned_msrp_currency": {
+            "type": ["null", "string"]
+        },
+        "held": {
+            "type": ["null", "integer"]
+        },
+        "on_order_price_amount": {
+            "type": ["null", "integer"]
+        },
+        "on_order_price_currency": {
+            "type": ["null", "string"]
+        },
+        "available": {
+            "type": ["null", "integer"]
+        },
+        "transit_price_amount": {
+            "type": ["null", "integer"]
+        },
+        "transit_price_currency": {
+            "type": ["null", "string"]
+        },
+        "on_hand_price_amount": {
+            "type": ["null", "integer"]
+        },
+        "on_hand_price_currency": {
+            "type": ["null", "string"]
+        },
+        "consigned_price_amount": {
+            "type": ["null", "integer"]
+        },
+        "consigned_price_currency": {
+            "type": ["null", "string"]
+        },
+        "transit_msrp_amount": {
+            "type": ["null", "integer"]
+        },
+        "transit_msrp_currency": {
+            "type": ["null", "string"]
+        },
+        "store_name": {
+            "type": ["null", "string"]
+        },
+        "held_price_amount": {
+            "type": ["null", "integer"]
+        },
+        "held_price_currency": {
+            "type": ["null", "string"]
+        },
+        "damaged_msrp_amount": {
+            "type": ["null", "integer"]
+        },
+        "damaged_msrp_currency": {
+            "type": ["null", "string"]
+        },
+        "order": {
+            "type": ["null", "string"]
+        },
+        "item_uri": {
+            "type": ["null", "string"]
+        },
+        "consigned": {
+            "type": ["null", "integer"]
+        },
+        "sale_price_amount": {
+            "type": ["null", "integer"]
+        },
+        "sale_price_currency": {
+            "type": ["null", "string"]
+        },
+        "available_price_amount": {
+            "type": ["null", "integer"]
+        },
+        "available_price_currency": {
+            "type": ["null", "string"]
+        },
+        "record_type": {
+            "type": ["null", "string"]
+        },
+        "held_msrp_amount": {
+            "type": ["null", "integer"]
+        },
+        "held_msrp_currency": {
+            "type": ["null", "string"]
+        },
+        "on_hand_msrp_amount": {
+            "type": ["null", "integer"]
+        },
+        "on_hand_msrp_currency": {
+            "type": ["null", "string"]
+        },
+        "on_order_msrp_amount": {
+            "type": ["null", "integer"]
+        },
+        "on_order_msrp_currency": {
+            "type": ["null", "string"]
+        },
+        "on_hand": {
+            "type": ["null", "integer"]
+        },
+        "transit": {
+            "type": ["null", "integer"]
+        },
+        "damaged": {
+            "type": ["null", "integer"]
+        },
+        "available_msrp_amount": {
+            "type": ["null", "integer"]
+        },
+        "available_msrp_currency": {
+            "type": ["null", "string"]
+        },
+        "on_order": {
+            "type": ["null", "integer"]
+        },
+        "damaged_price_amount": {
+            "type": ["null", "integer"]
+        },
+        "damaged_price_currency": {
+            "type": ["null", "string"]
+        }
+    }
+}

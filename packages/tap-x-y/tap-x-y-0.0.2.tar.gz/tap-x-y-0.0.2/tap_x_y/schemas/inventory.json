@@ -1,0 +1,75 @@
+{
+    "type": ["null", "object"],
+    "additionalProperties": true,
+    "properties": {   
+        "id": {
+            "type": ["null", "string"]
+        },
+        "last_modified": {
+            "type": ["null", "integer"]
+        },   
+        "item_uri": {
+            "type": ["null", "string"]
+        },
+        "on_hand": {
+            "type": ["null", "string"]
+        },
+        "available": {
+            "type": ["null", "integer"]
+        },
+        "store_uri": {
+            "type": ["null", "string"]
+        },
+        "available_price_amount": {
+            "type": ["null", "integer"]
+        },
+        "available_price_currency": {
+            "type": ["null", "string"]
+        },
+        "consigned_msrp_amount": {
+            "type": ["null", "integer"]
+        },
+        "consigned_msrp_currency": {
+            "type": ["null", "string"]
+        },
+        "held_msrp_amount": {
+            "type": ["null", "integer"]
+        },
+        "held_msrp_currency": {
+            "type": ["null", "string"]
+        },
+        "on_hand_msrp_amount": {
+            "type": ["null", "integer"]
+        },
+        "on_hand_msrp_currency": {
+            "type": ["null", "string"]
+        },
+        "on_hand_price_amount": {
+            "type": ["null", "integer"]
+        },
+        "on_hand_price_currency": {
+            "type": ["null", "string"]
+        },
+        "consigned_price_amount": {
+            "type": ["null", "integer"]
+        },
+        "consigned_price_currency": {
+            "type": ["null", "string"]
+        },
+        "available_msrp_amount": {
+            "type": ["null", "integer"]
+        },
+        "available_msrp_currency": {
+            "type": ["null", "string"]
+        },
+        "currency": {
+            "type": ["null", "string"]
+        },
+        "held_price_amount": {
+            "type": ["null", "integer"]
+        },
+        "held_price_currency": {
+            "type": ["null", "string"]
+        }
+    }
+}

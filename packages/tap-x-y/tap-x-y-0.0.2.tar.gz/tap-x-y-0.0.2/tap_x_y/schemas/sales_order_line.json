@@ -1,0 +1,120 @@
+{
+    "type": ["null", "object"],
+    "additionalProperties": true,
+    "properties": {
+        "id": {
+            "type": ["null", "string"]
+        },
+        "last_modified": {
+            "type": ["null", "integer"]
+        },
+        "order_uri": {
+            "type": ["null", "string"]
+        },
+        "item_uri": {
+            "type": ["null", "string"]
+        },
+        "revenue_report_report_date": {
+            "type": ["null", "string"]
+        },
+        "charges_paid_amount": {
+            "type": ["null", "integer"]
+        },
+        "charges_paid_currency": {
+            "type": ["null", "string"]
+        },
+        "color_uri": {
+            "type": ["null", "string"]
+        },
+        "item_category_uri": {
+            "type": ["null", "string"]
+        },
+        "channel_uri": {
+            "type": ["null", "string"]
+        },
+        "charges_taxes_amount": {
+            "type": ["null", "integer"]
+        },
+        "charges_taxes_currency": {
+            "type": ["null", "string"]
+        },
+        "channel_type": {
+            "type": ["null", "string"]
+        },
+        "ship_to_line_city": {
+            "type": ["null", "string"]
+        },
+        "division_uri": {
+            "type": ["null", "string"]
+        },
+        "item_sub_category_uri": {
+            "type": ["null", "string"]
+        },
+        "sku": {
+            "type": ["null", "string"]
+        },
+        "charges_currency": {
+            "type": ["null", "string"]
+        },
+        "quantity": {
+            "type": ["null", "integer"]
+        },
+        "delivery_type": {
+            "type": ["null", "string"]
+        },
+        "charges_net_amount_before_tax_amount": {
+            "type": ["null", "integer"]
+        },
+        "charges_net_amount_before_tax_currency": {
+            "type": ["null", "string"]
+        },
+        "upc": {
+            "type": ["null", "string"]
+        },
+        "collection_uri": {
+            "type": ["null", "string"]
+        },
+        "charges_promotion_amount": {
+            "type": ["null", "integer"]
+        },
+        "charges_promotion_currency": {
+            "type": ["null", "string"]
+        },
+        "item_image_uri": {
+            "type": ["null", "string"]
+        },
+        "point_of_sale": {
+            "type": ["null", "string"]
+        },
+        "size_uri": {
+            "type": ["null", "string"]
+        },
+        "fulfillment_location": {
+            "type": ["null", "string"]
+        },
+        "style_uri": {
+            "type": ["null", "string"]
+        },
+        "order_date": {
+            "type": ["null", "integer"]
+        },
+        "charges_total_amount": {
+            "type": ["null", "integer"]
+        },
+        "charges_total_currency": {
+            "type": ["null", "string"]
+        },
+        "customer_uri": {
+            "type": ["null", "string"]
+        },
+        "sales_associate_uri": {
+            "type": ["null", "string"]
+        },
+        "department_uri": {
+            "type": ["null", "string"]
+        },
+        "brand_uri": {
+            "type": ["null", "string"]
+        }
+    }
+}

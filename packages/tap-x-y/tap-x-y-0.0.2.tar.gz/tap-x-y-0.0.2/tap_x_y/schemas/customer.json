@@ -1,0 +1,84 @@
+{
+    "type": ["null", "object"],
+    "additionalProperties": true,
+    "properties": {
+        "id": {
+            "type": ["null", "string"]
+        },
+        "last_modified": {
+            "type": ["null", "integer"]
+        },
+        "last_name": {
+            "type": ["null", "string"]
+        },
+        "country": {
+            "type": ["null", "string"]
+        },
+        "last_txn_amount_amount": {
+            "type": ["null", "integer"]
+        },
+        "last_txn_amount_currency": {
+                "type": ["null", "string"]
+        },
+        "city": {
+            "type": ["null", "string"]
+        },
+        "first_txn_date": {
+            "type": ["null", "integer"]
+        },
+        "online_spend_charges_net_amount": {
+            "type": ["null", "integer"]
+        },
+        "online_spend_charges_net_currency": {
+            "type": ["null", "string"]
+        },
+        "total_spend_aus_amount": {
+            "type": ["null", "integer"]
+        },
+        "total_spend_aus_currency": {
+            "type": ["null", "string"]
+        },
+        "first_name": {
+            "type": ["null", "string"]
+        },
+        "promotion_spend_charges_net_amount_amount": {
+            "type": ["null", "integer"]
+        },
+        "promotion_spend_charges_net_amount_currency": {
+            "type": ["null", "string"]
+        },
+        "last_channel_uri": {
+            "type": ["null", "string"]
+        },
+        "phone": {
+            "type": ["null", "string"]
+        },
+        "last_txn_date": {
+            "type": ["null", "integer"]
+        },
+        "total_spend_order_count": {
+            "type": ["null", "integer"]
+        },
+        "total_spend_net_quantity": {
+            "type": ["null", "integer"]
+        },
+        "state": {
+            "type": ["null", "string"]
+        },
+        "total_spend_charges_net_amount_amount": {
+            "type": ["null", "integer"]
+        },
+        "total_spend_charges_net_amount_currency": {
+            "type": ["null", "string"]
+        },
+        "email": {
+            "type": ["null", "string"]
+        },
+        "status": {
+            "type": ["null", "string"]
+        },
+        "total_spend_sold_quantity": {
+            "type": ["null", "integer"]
+        }
+    }
+}
