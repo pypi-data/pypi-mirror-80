@@ -1,0 +1,14 @@
+README.md
+setup.cfg
+setup.py
+ppt2pdf/__init__.py
+ppt2pdf/main.py
+ppt2pdf/utils.py
+ppt2pdf.egg-info/PKG-INFO
+ppt2pdf.egg-info/SOURCES.txt
+ppt2pdf.egg-info/dependency_links.txt
+ppt2pdf.egg-info/entry_points.txt
+ppt2pdf.egg-info/requires.txt
+ppt2pdf.egg-info/top_level.txt
+ppt2pdf/scripts/__init__.py
+ppt2pdf/scripts/cli.py
