@@ -1,0 +1,15 @@
+siammask/__init__.py,sha256=GPwgX1HaPK7yXCkLEY2bvlLJrY8V6tJpTfF9Y0KVCfI,1117
+siammask/siammask.py,sha256=5HacXC0BHmLQ0zIZp99o3TtfTxg2t-EIbpE24CpXGek,10060
+siammask/model/__init__.py,sha256=gDG302aeRvY_Ry3WTlD10Ru7k_lE-WC5A9PBTAjvbW8,1150
+siammask/model/adjuster.py,sha256=5iEuX8wSeb68uO7ptPWdk4P5k3tM0rtP-gLEDFvr7Dg,1410
+siammask/model/base.py,sha256=nnZVAm6lHZ5d3P8JY9ZbTKWKrWsfl3iJdacn-23GJ_k,2847
+siammask/model/convolution.py,sha256=C2CJtkOmgoSGLXBHjPBM-M5KHHAHiffsvu7nCRnkC_8,1808
+siammask/model/mask_refinement.py,sha256=Dfzy6SZ1_iqIHU0wfTkmviUjq1lqNfrdmWNfGnravtI,2838
+siammask/model/proposal_network.py,sha256=FLl0wNjViRFhbgCHNJqOhtpVVv3YaZssmK9zfpS800U,2678
+siammask/model/resnet.py,sha256=AhYPYi1lpVRJOeihy9kN1mt-a7odsf7tszrpKCBO5ps,3985
+tf_siammask-1.0.4.dist-info/LICENSE,sha256=22XeaoxWVBCGXXybVZTpExQA-3-ZsC4wtEWs47N4yAo,1101
+tf_siammask-1.0.4.dist-info/METADATA,sha256=CW8gznHhnToCegnuAhFqS8Q1dUbFY4z93OYUd24wDdo,2382
+tf_siammask-1.0.4.dist-info/WHEEL,sha256=EVRjI69F5qVjm_YgqcTXPnTAv3BfSUr0WVAHuSP3Xoo,92
+tf_siammask-1.0.4.dist-info/top_level.txt,sha256=CYC08k6tD154C81SOZ2WDsQFZRt452Ir7A1hndbf0u4,9
+tf_siammask-1.0.4.dist-info/zip-safe,sha256=AbpHGcgLb-kRsJGnwFEktk7uzpZOCcBY74-YBdrKVGs,1
+tf_siammask-1.0.4.dist-info/RECORD,,
