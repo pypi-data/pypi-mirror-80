@@ -1,0 +1,13 @@
+gitpython
+cmake
+lyncs-setuptools
+
+[all]
+ipython
+pytest-cov
+pytest
+
+[test]
+pytest
+pytest-cov
+ipython
