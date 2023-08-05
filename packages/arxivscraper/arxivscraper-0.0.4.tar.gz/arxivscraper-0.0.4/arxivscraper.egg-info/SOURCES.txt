@@ -1,0 +1,14 @@
+.gitignore
+LICENSE
+README.md
+categories.md
+setup.cfg
+setup.py
+todo.md
+arxivscraper/__init__.py
+arxivscraper/arxivscraper.py
+arxivscraper/copyarxivscraper copy.py
+arxivscraper.egg-info/PKG-INFO
+arxivscraper.egg-info/SOURCES.txt
+arxivscraper.egg-info/dependency_links.txt
+arxivscraper.egg-info/top_level.txt
