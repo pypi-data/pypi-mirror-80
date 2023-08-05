@@ -1,0 +1,40 @@
+Metadata-Version: 1.1
+Name: elutils
+Version: 0.0.8
+Summary: A small package of my utities
+Home-page: UNKNOWN
+Author: Emil Elgaard
+Author-email: shivan@shivan.dk
+License: MIT
+Description: ElUtils
+            A small collection of code that I find myself reusing again and agian.
+        
+        
+        
+        Change Log
+        ===========
+        
+        0.01 (2020/07/02)
+            Initial release
+        0.04 (2020/07/11)
+            Minor additions
+        0.05 (2020/07/29)
+            Add time methods and logging
+        0.06 (2020/08/13)
+            * Updated logging methods to not refer to config files.
+            * Add filters to list_files method
+            * execute_by_pool now uses create_logger
+        0.07 (2020/09/21)
+            * added decayable data decorator
+            * add alias for read and write json
+            * added convenience for save and load pickle
+        0.08 (2020/09/22)
+            * rename the decorator to cache instead of buffer
+            * add a verbose option in the decorator
+Keywords: utilities
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Education
+Classifier: Operating System :: OS Independent
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
