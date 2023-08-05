@@ -1,0 +1,16 @@
+.gitignore
+LICENSE
+MANIFEST.in
+README.md
+requirements.txt
+setup.cfg
+setup.py
+hdfio/__init__.py
+hdfio/dict_io.py
+hdfio/json_io.py
+hdfio/mat_io.py
+hdfio.egg-info/PKG-INFO
+hdfio.egg-info/SOURCES.txt
+hdfio.egg-info/dependency_links.txt
+hdfio.egg-info/requires.txt
+hdfio.egg-info/top_level.txt
