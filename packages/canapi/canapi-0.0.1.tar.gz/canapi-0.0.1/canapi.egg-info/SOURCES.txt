@@ -1,0 +1,10 @@
+MANIFEST.in
+README.md
+setup.py
+canapi/__init__.py
+canapi/auth.py
+canapi/client.py
+canapi.egg-info/PKG-INFO
+canapi.egg-info/SOURCES.txt
+canapi.egg-info/dependency_links.txt
+canapi.egg-info/top_level.txt

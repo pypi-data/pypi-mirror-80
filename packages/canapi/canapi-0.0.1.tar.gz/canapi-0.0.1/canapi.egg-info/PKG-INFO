@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: canapi
+Version: 0.0.1
+Summary: A universal client api generator.
+Home-page: https://github.com/finverse/canapi
+Author: Matthew Brulhardt
+Author-email: mwbrulhardt@finverselabs.com
+License: Apache 2.0
+Description: # canapi
+        A universal client api generator.
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Description-Content-Type: text/markdown
