@@ -1,0 +1,4 @@
+[console_scripts]
+followthemoney-predict = followthemoney_predict.cli:main
+ftm-predict = followthemoney_predict.cli:main
+
