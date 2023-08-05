@@ -1,0 +1,13 @@
+LICENSE.txt
+MANIFEST.in
+README.md
+package.yml
+setup.py
+src/nr/__init__.py
+src/nr.proxy.egg-info/PKG-INFO
+src/nr.proxy.egg-info/SOURCES.txt
+src/nr.proxy.egg-info/dependency_links.txt
+src/nr.proxy.egg-info/not-zip-safe
+src/nr.proxy.egg-info/top_level.txt
+src/nr/proxy/__init__.py
+src/nr/proxy/py.typed
