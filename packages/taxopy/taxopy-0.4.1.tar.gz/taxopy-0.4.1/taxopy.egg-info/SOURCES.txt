@@ -1,0 +1,12 @@
+LICENSE
+MANIFEST.in
+README.md
+setup.py
+taxopy/__init__.py
+taxopy/core.py
+taxopy/exceptions.py
+taxopy/utilities.py
+taxopy.egg-info/PKG-INFO
+taxopy.egg-info/SOURCES.txt
+taxopy.egg-info/dependency_links.txt
+taxopy.egg-info/top_level.txt
