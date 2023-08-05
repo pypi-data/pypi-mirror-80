@@ -1,0 +1,11 @@
+estore-base
+
+[all]
+estore-client
+estore-server
+
+[client]
+estore-client
+
+[server]
+estore-server

@@ -1,0 +1,36 @@
+Metadata-Version: 2.1
+Name: estore
+Version: 0.0.3
+Summary: Meta package for estore packages
+Home-page: https://github.com/lostwire/estore
+Author: Jnxy
+Author-email: jnxy@lostwire.net
+License: UNKNOWN
+Description: # estore
+        Meta package for estore packages
+        
+        ## Installing
+        
+        If you are after the client:
+        
+        ```bash
+        pip install estore[client]
+        ```
+        
+        If you need server only, simply run:
+        
+        ```bash
+        pip install estore[server]
+        ```
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Framework :: AsyncIO
+Classifier: Environment :: Web Environment
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Database
+Description-Content-Type: text/markdown
+Provides-Extra: client
+Provides-Extra: server
+Provides-Extra: all
