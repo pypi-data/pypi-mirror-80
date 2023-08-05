@@ -1,0 +1,12 @@
+boto3
+django-debug-toolbar
+django-jenkins
+django-markwhat
+django-smoketest
+django-statsd-mozilla
+django-storages
+django-waffle
+django_compressor
+gunicorn
+raven
+statsd
