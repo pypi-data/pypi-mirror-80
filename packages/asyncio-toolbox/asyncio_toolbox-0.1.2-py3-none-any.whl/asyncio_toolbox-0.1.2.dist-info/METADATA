@@ -1,0 +1,26 @@
+Metadata-Version: 2.1
+Name: asyncio-toolbox
+Version: 0.1.2
+Summary: Drive Your Tests communication library for server, clients and proxy
+Home-page: UNKNOWN
+Author: Jonathan GAYVALLET
+Author-email: jonathan.mael.gayvallet@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Intended Audience :: Developers
+Classifier: Typing :: Typed
+Requires-Python: >=3.6
+Requires-Dist: attrs
+Requires-Dist: typing-extensions
+Requires-Dist: pywin32 ; sys_platform == "win32"
+
+UNKNOWN
+
+
