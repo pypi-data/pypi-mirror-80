@@ -1,0 +1,3 @@
+[console_scripts]
+avalares = avalares.__main__:main
+
