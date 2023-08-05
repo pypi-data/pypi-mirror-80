@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: model_template
+Version: 0.0.12
+Summary: A package to run any machine learning model in production
+Home-page: UNKNOWN
+License: UNKNOWN
+Author: GPAM
+Requires-Dist: pandas>=0.24.2
+Requires-Dist: scikit-learn==0.22
+Requires-Dist: nltk==3.4.5
+Requires-Dist: xgboost==0.90
+Requires-Dist: tensorflow>=2.2.0rc2
+Requires-Dist: Cython==0.29.15
+Requires-Dist: numpy==1.18.1
+Requires-Dist: scipy==1.4.1
+Requires-Dist: tqdm==4.43.0
+Requires-Dist: textblob==0.15.3
+Requires-Dist: spacy==2.2.4
+Requires-Dist: unidecode==1.1.1
