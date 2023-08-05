@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: mobPushSdkV3
+Version: 2.0.0
+Summary: Python Framework.
+Home-page: https://github.com/MobClub/mobpush-websdkv3-python
+Author: yylu
+Author-email: yylu@yoozoo.com
+License: MIT
+Platform: UNKNOWN
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: MacOS
+Classifier: Operating System :: Microsoft
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: Unix
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Programming Language :: Python :: 3.7
+Requires-Dist: requests (>=2.24.0)
+
+UNKNOWN
+
+
