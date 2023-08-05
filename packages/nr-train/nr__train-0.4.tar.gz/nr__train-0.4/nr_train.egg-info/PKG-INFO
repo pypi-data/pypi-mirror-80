@@ -1,0 +1,27 @@
+Metadata-Version: 2.1
+Name: nr-train
+Version: 0.4
+Summary: Gaussian distributions
+Home-page: UNKNOWN
+Author: Abideen Bello
+Author-email: nicholasrichers@gmail.com
+License: UNKNOWN
+Description: This is a distribution class for calculating and visualizing a probaility distribution.
+        
+        It consist of two functions for now which are 
+        
+        
+        ### Installation
+        
+        pip install nr__train
+        
+        
+        ### Example
+        
+        from nr__train import Guassian
+        In: Guassian(10,7)
+        Out: mean 10, standard deviation 7
+        
+        
+Platform: UNKNOWN
+Description-Content-Type: text/markdown
