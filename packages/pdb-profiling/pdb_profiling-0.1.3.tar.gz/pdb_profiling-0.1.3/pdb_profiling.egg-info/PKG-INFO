@@ -1,0 +1,60 @@
+Metadata-Version: 2.1
+Name: pdb-profiling
+Version: 0.1.3
+Summary: Profiling Protein Structures from Protein Data Bank and integrate various resources.
+Home-page: https://github.com/NatureGeorge/pdb-profiling
+Author-email: 1730416009@stu.suda.edu.cn
+Maintainer: ZeFeng Zhu
+Maintainer-email: 1730416009@stu.suda.edu.cn
+License: MIT
+Description: # pdb-profiling
+        
+        [![License](https://img.shields.io/badge/License-MIT-blue.svg?style=flat)](https://github.com/naturegeorge/pdb-profiling/blob/master/LICENSE)
+        
+        Profiling Protein Structures from Protein Data Bank and integrate various resources.
+        
+        ## Goal
+        
+        * Gather helpful/insightful indexes to evaluate a PDB structure's usefulness in:
+          * Entry level
+          * Assembly level
+          * Model level
+          * Entity level
+          * Chain level
+          * Residue level
+        * Define the representative set of protein structures:
+          * of a cluster with nearly identical sequences
+          * of UniProt Entry
+          * of UniProt Isoform
+          * or any other assigned structure dataset
+        * Provide interface for ID/residue mapping
+        * Apply mature and robust API to collect well-organized data
+          * PDBe REST API
+            * <https://www.ebi.ac.uk/pdbe/api/doc/pdb.html>
+            * <https://www.ebi.ac.uk/pdbe/api/doc/pisa.html>
+            * <https://www.ebi.ac.uk/pdbe/api/doc/sifts.html>
+          * PDBe Graph API (Neo4j Graph DataBase)
+            * <https://www.ebi.ac.uk/pdbe/graph-api/pdbe_doc/>
+          * PDBe CoordinateServer API
+            * <https://www.ebi.ac.uk/pdbe/coordinates/index.html>
+          * PDBe ModelServer API
+            * <https://www.ebi.ac.uk/pdbe/model-server/>
+          * SWISS-MODEL Repository API
+            * <https://swissmodel.expasy.org/docs/smr_openapi>
+          * EBI Proteins API
+            * <https://www.ebi.ac.uk/proteins/api/doc/>
+          * Interactome3D API
+            * <https://interactome3d.irbbarcelona.org/>
+          * ModBase API (?)
+        * Release this project as a Python package
+        
+        ## Copyright Notice
+        
+        This project is developed by [Zefeng Zhu](https://github.com/NatureGeorge) and hold by [Minghui Group](https://lilab.jysw.suda.edu.cn/).
+Platform: UNKNOWN
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Python: >=3.6.*
+Description-Content-Type: text/markdown
