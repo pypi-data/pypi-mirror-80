@@ -1,0 +1,22 @@
+Metadata-Version: 1.1
+Name: nsbotRaspi
+Version: 0.0.1
+Summary: Read METAR, SPECI and Taf then send to Line application for RASPBERRY PI
+Home-page: https://github.com/kanutsanun-b/nsbotRaspi
+Author: Kanutsanun Bouking
+Author-email: kanutsanun.b@gmail.com
+License: MIT
+Download-URL: https://github.com/kanutsanun-b/nsbotRaspi/archive/0.0.1.zip
+Description: plese read in: https://github.com/kanutsanun-b/nsbotRaspi
+Keywords: NSWEB,METAR,SPECI,TAF,Raspberry Pi,kanutsanun bouking
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
