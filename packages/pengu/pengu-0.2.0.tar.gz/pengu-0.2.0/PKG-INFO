@@ -1,0 +1,44 @@
+Metadata-Version: 2.1
+Name: pengu
+Version: 0.2.0
+Summary: WIP
+Home-page: https://github.com/peachanG
+License: MIT
+Author: peachanG
+Author-email: kenkman0427@gmail.com
+Requires-Python: >=3.7.6,<4.0.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: icrawler (>=0.6.3,<0.7.0)
+Requires-Dist: imagehash (>=4.1.0,<5.0.0)
+Requires-Dist: matplotlib (>=3.3.0,<4.0.0)
+Requires-Dist: mypy (>=0.782,<0.783)
+Requires-Dist: opencv-python (==4.2.0.34)
+Requires-Dist: pyyaml (>=5.3.1,<6.0.0)
+Requires-Dist: scikit-learn (>=0.23.2,<0.24.0)
+Requires-Dist: tensorboard_plugin_profile (>=2.3.0,<3.0.0)
+Requires-Dist: tensorflow (==2.3.0)
+Project-URL: Documentation, https://peachang.github.io/pengu/
+Project-URL: Repository, https://github.com/peachanG/pengu
+Description-Content-Type: text/markdown
+
+
+# Pengu: a Library for Deep Learning in Computer Vision
+Work In Progress！
+
+![Test](https://github.com/peachanG/pengu/workflows/Test/badge.svg?branch=master)
+![Python](https://img.shields.io/badge/python-3.7%20%7C%203.8-blue?logo=python)
+[![GitHub Issues](https://img.shields.io/github/issues/peachanG/pengu.svg?cacheSeconds=60&color=yellow)](https://github.com/peachanG/pengu/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/peachanG/pengu.svg?cacheSeconds=60&color=yellow)](https://github.com/peachanG/pengu/issues)
+[![GitHub Release](https://img.shields.io/github/release/peachanG/pengu.svg?cacheSeconds=60&color=red)](https://github.com/peachanG/pengu/releases)
+
+# command
+```
+$ tensorboard --logdir=./logs
+```
+```
+$ python -m pengu.main.crawler -config config/crawler.yaml -csv data/v2/crawler/crawler_result.csv -i data/v2/crawler/images -n 50
+$ python -m pengu.main.preprocess_images -config config/preprocess.yaml -csv data/preprocessed
+$ python -m pengu.main.train -config config/train.yaml -i data/train/inputs -m data/train/models -t ./logs
+```
