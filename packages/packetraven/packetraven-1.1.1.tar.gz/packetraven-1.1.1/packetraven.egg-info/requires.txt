@@ -1,0 +1,16 @@
+aprslib
+haversine
+numpy
+pyserial
+geojson
+fastkml
+requests
+pyproj
+psycopg2
+shapely
+sshtunnel
+
+[dev]
+coverage
+flake8
+nose
