@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: atmclient
+Version: 0.1.0rc0
+Summary: ATM v2 API Protocol Compliant Client
+Home-page: https://www.lxper.com
+Author: LXPER
+Author-email: lxpermanager@naver.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+
+
+ATM v2 API Protocol Compliant Client
+
+This script is designed to communicate with 
+the ATM Code Standard(Chan Woo Kim, Jung Jung Ho) compliant ATM v2 API
+Developers can use this module to conveniently utilize the various engines 
+and shared functions in the LXPER Kubernetes on-premises environment.
+It has no dependencies other than the Python Standard Library.
+
+
