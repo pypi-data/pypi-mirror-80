@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: openweather_api
+Version: 0.1.0
+Summary: OpenWeather API client
+Home-page: https://github.com/sdonk/openweather-api-client
+License: UNKNOWN
+Author: Alessandro De Noia
+Author-email: alessandro.denoia@gmail.com
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Classifier: Development Status :: 1 - Planning
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Topic :: Internet :: WWW/HTTP
+Requires-Dist: requests>=2.24.0
+Requires-Dist: iso3166>=1.0.1
+Requires-Dist: pytest ; extra == "test"
+Requires-Dist: pytest-cov ; extra == "test"
+Requires-Dist: pytest-sugar ; extra == "test"
+Provides-Extra: test
+
+# OpenWeather API client
+![Test](https://github.com/sdonk/openweather-api/workflows/Test/badge.svg?branch=master)
+
+Python client wrapper for [OpenWeather API](https://openweathermap.org/api)
+
