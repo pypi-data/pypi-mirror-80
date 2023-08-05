@@ -1,0 +1,42 @@
+Metadata-Version: 2.1
+Name: cioseq
+Version: 0.1.1
+Summary: Manage sequences of frame numbers.
+Home-page: https://github.com/ConductorTechnologies/sequence
+Author: conductor
+Author-email: info@conductortech.com
+License: UNKNOWN
+Description: # sequence
+        Manage sequences of frame numbers
+        
+        ## Install
+        
+        ```bash
+        pip install --upgrade cioseq
+        ```
+        
+        ## Usage
+        ```
+        s = Sequence.create("1-10, 14, 20-50x4")
+        ```
+        
+        ## Test
+        
+        ```
+        python -m unittest discover -v -s ./tests  -p 'test_*.py'
+        ```
+        
+        ## Contributing
+        
+        Pull requests welcome. 
+        
+        ## License
+        [MIT](LICENSE)
+        
+Platform: UNKNOWN
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python
+Classifier: Topic :: Multimedia :: Graphics :: 3D Rendering
+Requires-Python: ~=2.7
+Description-Content-Type: text/markdown
