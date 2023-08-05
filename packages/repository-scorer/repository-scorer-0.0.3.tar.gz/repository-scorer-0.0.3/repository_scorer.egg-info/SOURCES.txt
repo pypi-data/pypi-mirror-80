@@ -1,0 +1,13 @@
+MANIFEST.in
+README.md
+config.json
+requirements.txt
+setup.cfg
+setup.py
+repository_scorer.egg-info/PKG-INFO
+repository_scorer.egg-info/SOURCES.txt
+repository_scorer.egg-info/dependency_links.txt
+repository_scorer.egg-info/requires.txt
+repository_scorer.egg-info/top_level.txt
+tests/attributes/__init__.py
+tests/attributes/test_attributes.py
