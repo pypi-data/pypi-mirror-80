@@ -1,0 +1,7 @@
+[ert]
+CorrelatedObsScaling = semeio.workflows.correlated_observations_scaling.cos
+CsvExport2Job = semeio.jobs.scripts.csv_export2
+MisfitPreprocessor = semeio.workflows.misfit_preprocessor.misfit_preprocessor
+SpearmanCorrelation = semeio.workflows.spearman_correlation_job.spearman_correlation
+semeio_jobs = semeio.hook_implementations.jobs
+
