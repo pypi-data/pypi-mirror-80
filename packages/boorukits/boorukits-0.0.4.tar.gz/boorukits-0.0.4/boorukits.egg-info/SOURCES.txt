@@ -1,0 +1,14 @@
+README.md
+setup.cfg
+setup.py
+boorukits.egg-info/PKG-INFO
+boorukits.egg-info/SOURCES.txt
+boorukits.egg-info/dependency_links.txt
+boorukits.egg-info/not-zip-safe
+boorukits.egg-info/requires.txt
+boorukits.egg-info/top_level.txt
+src/boorukits/__init__.py
+src/boorukits/booru.py
+src/boorukits/danbooru.py
+src/boorukits/errors.py
+src/boorukits/gelbooru.py
