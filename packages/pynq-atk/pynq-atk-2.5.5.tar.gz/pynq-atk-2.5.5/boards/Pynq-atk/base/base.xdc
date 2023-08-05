@@ -1,0 +1,68 @@
+#HDMI
+set_property IOSTANDARD TMDS_33 [get_ports TMDS_clk_p]
+set_property IOSTANDARD TMDS_33 [get_ports {TMDS_data_n[0]}]
+set_property IOSTANDARD TMDS_33 [get_ports {TMDS_data_n[1]}]
+set_property IOSTANDARD TMDS_33 [get_ports {TMDS_data_n[2]}]
+set_property -dict { PACKAGE_PIN H17   IOSTANDARD LVCMOS33} [get_ports hdmi_hpd_tri_io]
+set_property -dict { PACKAGE_PIN G17   IOSTANDARD LVCMOS33} [get_ports hdmi_oen]
+set_property -dict { PACKAGE_PIN L16   IOSTANDARD TMDS_33 } [get_ports {TMDS_data_p[2]}]
+set_property -dict { PACKAGE_PIN M14   IOSTANDARD TMDS_33 } [get_ports {TMDS_data_p[1]}]
+set_property -dict { PACKAGE_PIN K19   IOSTANDARD TMDS_33 } [get_ports {TMDS_data_p[0]}]
+set_property -dict { PACKAGE_PIN L14   IOSTANDARD TMDS_33 } [get_ports TMDS_clk_p]
+# -------------------------GPIO-------------------
+#PL_KEY 
+set_property -dict { PACKAGE_PIN L20 IOSTANDARD LVCMOS33 } [get_ports { btns_tri_i[0] }]
+set_property -dict { PACKAGE_PIN J20 IOSTANDARD LVCMOS33 } [get_ports { btns_tri_i[1] }]
+#TPAG 
+set_property -dict { PACKAGE_PIN L19 IOSTANDARD LVCMOS33 } [get_ports { touch_tri_i }]
+#BEEP  
+set_property -dict { PACKAGE_PIN G18 IOSTANDARD LVCMOS33 } [get_ports { beep_tri_o }]
+#PL_LED 54-56
+set_property -dict { PACKAGE_PIN J18 IOSTANDARD LVCMOS33 } [get_ports { leds_tri_o[0] }]
+set_property -dict { PACKAGE_PIN H18 IOSTANDARD LVCMOS33 } [get_ports { leds_tri_o[1] }]
+set_property -dict { PACKAGE_PIN J16 IOSTANDARD LVCMOS33 } [get_ports { leds_tri_o[2] }]
+#----------------------HDMI DDC---------------------------
+set_property -dict { PACKAGE_PIN M19 IOSTANDARD LVCMOS33 } [get_ports { hdmi_ddc_sda_io}]
+set_property -dict { PACKAGE_PIN V17 IOSTANDARD LVCMOS33 } [get_ports { hdmi_ddc_scl_io}]
+#----------------------IIC1---------------------------
+set_property -dict { PACKAGE_PIN M17 IOSTANDARD LVCMOS33 } [get_ports { IIC_1_scl_io }]
+set_property -dict { PACKAGE_PIN M18 IOSTANDARD LVCMOS33 } [get_ports { IIC_1_sda_io }]
+#---------------------audio---------------------------
+set_property -dict { PACKAGE_PIN A20 IOSTANDARD LVCMOS33 } [get_ports aud_adcdat]
+set_property -dict { PACKAGE_PIN B20 IOSTANDARD LVCMOS33 } [get_ports aud_lrc]
+set_property -dict { PACKAGE_PIN B19 IOSTANDARD LVCMOS33 } [get_ports aud_bclk]
+set_property -dict { PACKAGE_PIN U19 IOSTANDARD LVCMOS33 } [get_ports aud_mclk]
+set_property -dict { PACKAGE_PIN K16 IOSTANDARD LVCMOS33 } [get_ports aud_dacdat]
+#set_property -dict { PACKAGE_PIN C20 IOSTANDARD LVCMOS33 } [get_ports aud_adclrc]
+#----------------------camera---------------------------
+set_property -dict {PACKAGE_PIN P15 IOSTANDARD LVCMOS33} [get_ports cam_rst_n]
+set_property -dict {PACKAGE_PIN R17 IOSTANDARD LVCMOS33} [get_ports cam_pwdn]
+set_property -dict {PACKAGE_PIN P16 IOSTANDARD LVCMOS33} [get_ports {cam_data[0]}]
+set_property -dict {PACKAGE_PIN V15 IOSTANDARD LVCMOS33} [get_ports {cam_data[1]}]
+set_property -dict {PACKAGE_PIN W15 IOSTANDARD LVCMOS33} [get_ports {cam_data[2]}]
+set_property -dict {PACKAGE_PIN T12 IOSTANDARD LVCMOS33} [get_ports {cam_data[3]}]
+set_property -dict {PACKAGE_PIN U12 IOSTANDARD LVCMOS33} [get_ports {cam_data[4]}]
+set_property -dict {PACKAGE_PIN V12 IOSTANDARD LVCMOS33} [get_ports {cam_data[5]}]
+set_property -dict {PACKAGE_PIN W13 IOSTANDARD LVCMOS33} [get_ports {cam_data[6]}]
+set_property -dict {PACKAGE_PIN T14 IOSTANDARD LVCMOS33} [get_ports {cam_data[7]}]
+set_property -dict {PACKAGE_PIN T17 IOSTANDARD LVCMOS33} [get_ports cam_href]
+set_property -dict {PACKAGE_PIN T15 IOSTANDARD LVCMOS33} [get_ports cam_pclk]
+set_property -dict {PACKAGE_PIN R18 IOSTANDARD LVCMOS33} [get_ports cam_vsync]
+#cam_scl:
+set_property -dict {PACKAGE_PIN P18 IOSTANDARD LVCMOS33} [get_ports {cam_iic_scl_io}]
+#cam_sda:
+set_property -dict {PACKAGE_PIN N17 IOSTANDARD LVCMOS33} [get_ports {cam_iic_sda_io}] 
+set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets cam_pclk_IBUF]
+
+#----------------------iop_audrino---------------------------
+set_property -dict {PACKAGE_PIN N18 IOSTANDARD LVCMOS33} [get_ports {io_0_tri_io[0]}]
+set_property -dict {PACKAGE_PIN P19 IOSTANDARD LVCMOS33} [get_ports {io_0_tri_io[1]}]
+set_property -dict {PACKAGE_PIN H20 IOSTANDARD LVCMOS33} [get_ports {io_0_tri_io[2]}]
+set_property -dict {PACKAGE_PIN M20 IOSTANDARD LVCMOS33} [get_ports {io_0_tri_io[3]}]
+
+set_property -dict {PACKAGE_PIN J14 IOSTANDARD LVCMOS33} [get_ports spi_rtl_0_io0_io]
+set_property -dict {PACKAGE_PIN K18 IOSTANDARD LVCMOS33} [get_ports spi_rtl_0_io1_io]
+set_property -dict {PACKAGE_PIN T19 IOSTANDARD LVCMOS33} [get_ports spi_rtl_0_sck_io]
+set_property -dict {PACKAGE_PIN R19 IOSTANDARD LVCMOS33} [get_ports spi_rtl_0_ss_io ]
+
+

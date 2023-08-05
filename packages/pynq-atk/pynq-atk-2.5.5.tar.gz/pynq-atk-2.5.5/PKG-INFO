@@ -1,0 +1,24 @@
+Metadata-Version: 2.1
+Name: pynq-atk
+Version: 2.5.5
+Summary: (PY)thon productivity for zy(NQ)
+Home-page: https://github.com/Xilinx/PYNQ
+Author: Xilinx PYNQ Development Team
+Author-email: pynq_support@xilinx.com
+License: BSD 3-Clause
+Download-URL: https://github.com/Xilinx/PYNQ
+Description: 本PYNQ版本是在Xilinx PYNQ版本2.5.4的基础上添加了对OV5640的支持、以及LCD 输出的支持。
+        
+        PYNQ is an open-source project from Xilinx that makes it easy to design embedded systems with Zynq All Programmable Systems on Chips (APSoCs). Using the Python language and libraries, designers can exploit the benefits of programmable logic and microprocessors in Zynq to build more capable and exciting embedded systems.
+        PYNQ users can now create high performance embedded applications with
+        -	parallel hardware execution
+        -	high frame-rate video processing
+        -	hardware accelerated algorithms
+        -	real-time signal processing
+        -	high bandwidth IO
+        -	low latency control
+        
+        
+Platform: UNKNOWN
+Requires-Python: >=3.5.2
+Description-Content-Type: text/markdown
