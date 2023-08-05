@@ -1,0 +1,48 @@
+Metadata-Version: 2.1
+Name: libpytthonpro
+Version: 0.1
+Summary: Módulo para exemplificar construção de projetos Python no curso PyTools
+Home-page: https://github.com/rlemos37/libpytthonpro
+Author: Rone Lemos da Silva
+Author-email: lemos_007_@hotmail.com
+License: GNU AFFERO GENERAL PUBLIC LICENSE
+Description: # libpytthonpro
+        Módulo para exemplificar a criação de projetos Python no curso PyTools
+        
+        Nesse curso é ensinado a contribuir com projetos de código aberto.
+        
+        Link para o curso [Python Pro](https://www.python.pro.br/)
+        
+        [![Build Status](https://travis-ci.org/rlemos37/libpytthonpro.svg?branch=master)](https://travis-ci.org/rlemos37/libpytthonpro)
+        [![Updates](https://pyup.io/repos/github/rlemos37/libpytthonpro/shield.svg)](https://pyup.io/repos/github/rlemos37/libpytthonpro/)
+        [![Python 3](https://pyup.io/repos/github/rlemos37/libpytthonpro/python-3-shield.svg)](https://pyup.io/repos/github/rlemos37/libpytthonpro/)
+        
+        Para instalar:
+        ```console
+        python3 -venv .venv
+        source .venv/bin/activate
+        pip install -r requirements-dev.txt
+        ```
+        
+        Para conferir qualidade do código:
+        
+        ```console
+        flake8
+        ```
+        
+        Suportada versão 3 de Python
+        
+        Tópicos a serem abordados:
+        1.Git
+        2.Virtualenv
+        3.Pip
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Framework :: Pytest
+Description-Content-Type: text/markdown
