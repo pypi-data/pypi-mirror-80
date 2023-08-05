@@ -1,0 +1,13 @@
+Metadata-Version: 1.0
+Name: akbase2233
+Version: 0.1.0
+Summary: use you self password table, encrypt and decrypt you content
+Home-page: UNKNOWN
+Author: Kuture
+Author-email: kuture@163.com
+License: MIT Licence
+Description: akbase2233 主要用于使用自己的字母表进行，内容的加密与解密，其中最主要的特点是可以加密结果不是唯一的。
+        同样的内容加密后的结果却有所差异，但是却不影响正常的解密，所以其安全性相对有一定的提升。关键是可以设计属于
+        私有的密码表，不密码表不公开的情况，大大增加了破解的难度（其实是很难破解，概率极低）
+Keywords: pip,akbase2233,base,timetool,kuture,encrypt,decrypt,base2233,akbase
+Platform: any
