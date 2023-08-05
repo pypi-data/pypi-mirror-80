@@ -1,0 +1,14 @@
+cd "$(dirname "$0")"
+echo LOADING, PLEASE WAIT...
+
+read -p 'Enter subfolder name to use as AppRoot: ' subfo
+
+
+while true
+do echo -n "LOOP MODE ON!!!"
+python3 -c "from tdcsm.tdgui import coa; c=coa(approot='/opt/git/coa/$subfo')"
+# read -p 'hit any key to continue'
+done
+
+
+#, secrets='/opt/git/coa/!secrets.yaml'
