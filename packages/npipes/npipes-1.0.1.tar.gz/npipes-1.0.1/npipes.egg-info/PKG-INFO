@@ -1,0 +1,11 @@
+Metadata-Version: 1.1
+Name: npipes
+Version: 1.0.1
+Summary: Wrapper Library for Named Pipes
+Home-page: https://github.com/mani-src/npipes/blob/master/README.md
+Author: Manikanta Ambadipudi
+Author-email: ambadipudi.manikanta@gmail.com
+License: GPL-3.0
+Download-URL: https://github.com/mani-src/npipes/archive/v1.0.1.tar.gz
+Description: Provides a ready to use set of APIs to create and communicate via Named Pipes on Windows, based on win32pipes
+Platform: UNKNOWN
