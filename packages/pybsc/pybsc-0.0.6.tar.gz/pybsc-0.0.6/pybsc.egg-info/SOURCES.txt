@@ -1,0 +1,13 @@
+MANIFEST.in
+README.md
+setup.cfg
+setup.py
+pybsc/__init__.py
+pybsc/iter_utils.py
+pybsc/json_utils.py
+pybsc/split.py
+pybsc.egg-info/PKG-INFO
+pybsc.egg-info/SOURCES.txt
+pybsc.egg-info/dependency_links.txt
+pybsc.egg-info/not-zip-safe
+pybsc.egg-info/top_level.txt
