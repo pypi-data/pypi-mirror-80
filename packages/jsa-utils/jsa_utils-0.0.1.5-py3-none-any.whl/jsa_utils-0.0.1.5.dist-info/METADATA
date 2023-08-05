@@ -1,0 +1,40 @@
+Metadata-Version: 2.1
+Name: jsa-utils
+Version: 0.0.1.5
+Summary: JetStream Utilities
+Home-page: https://github.com/JetstreamAfrica/jsa_sdks/tree/master/jsa_utils
+Author: Kunsam002 :: Olukunle Ogunmokun
+Author-email: kunsam002@gmail.com
+License: MIT License
+Platform: UNKNOWN
+Classifier: Framework :: Django
+Classifier: Framework :: Django :: 2.2
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Topic :: Software Development :: Libraries :: Application Frameworks
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=3.6
+Requires-Dist: Django (>=2.2.8)
+Requires-Dist: pika (==1.1.0)
+Requires-Dist: pdfkit (==0.6.1)
+Requires-Dist: ip2geotools (==0.1.5)
+
+====================================
+JetStream Utilities
+====================================
+
+JSA Utilities is a python package built
+for the purpose of maintaining common
+reusable functions across all JetStream's
+micro services.
+
+
+**`assets.py`** - houses independent reusable functions across micro-services
+
+**`settings.py`** - abstracts all the common settings configuration we have on all micro-services fetching from .env file or environment variables
+
+
