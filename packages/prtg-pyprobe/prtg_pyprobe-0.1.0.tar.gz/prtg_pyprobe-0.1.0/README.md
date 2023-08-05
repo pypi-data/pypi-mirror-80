@@ -1,0 +1,174 @@
+# pyprobe for PRTG
+A platform independent implementation of a PRTG probe which communicates via the [miniprobe api](https://www.paessler.com/manuals/prtg/mini_probe_api).
+
+---
+#### Important
+This is **not** a full PRTG remote probe and therefore has only a [limited set](https://www.paessler.com/manuals/prtg/mini_probe_api#probe_types) of functions and sensors. These sensors are also **not** the same sensors that are built into the normal PRTG remote probe, they function differently and offer different capabilities.  
+
+---
+
+## Usage
+
+### Container
+Preferred usage is running the pyprobe docker container and passing the configuration to the container at startup through the PROBE_CONFIG environment variable.
+##### Pull image
+````bash
+  docker pull IMAGE  
+````
+##### Run image
+````bash
+docker run -e PROBE_CONFIG='CONFIG_DICT'
+````
+#### Format of the CONFIG_DICT object
+````json
+{
+    "disable_ssl_verification": false, 
+    "log_file_location": "", 
+    "log_level": "INFO", 
+    "probe_access_key": "miniprobe", 
+    "probe_access_key_hashed": "cd7b773e2ce4205e9f5907b157f3d26495c5b373", 
+    "probe_base_interval": "60", 
+    "probe_gid": "72C461B5-F768-470B-A1A8-2D5F5DEDDF8F", 
+    "probe_name": "Python Mini Probe", 
+    "probe_protocol_version": "1", 
+    "prtg_server_ip_dns": "paessler.prtg.com", 
+    "prtg_server_port": "443"
+}
+````
+##### Explanation Values CONFIG_DICT
+**disable_ssl_verification**: Set to true if you are using a self signed certificate or you don't have a valid certificate for the PRTG installation with which you are communicating  
+**log_file_location**: Leave as an empty string when running the container, the pyprobe will log to STDOUT
+**log_level**: The log level of the pyprobe, possible values are "CRITICAL", "ERROR", "WARNING", "INFO", "DEBUG"  
+**probe_access_key**: The access key defined in PRTG (under Setup | Core & Probes)  
+**probe_access_key_hashed**: The hashed probe access key. See [Hash Access Key](#how-to-easily-create-a-hash-access-key) for details.  
+**probe_base_interval**: The interval which the sensors are scheduled on the PRTG Core  
+**probe_gid**: The unique identifier of the probe in [UUID](https://docs.python.org/3/library/uuid.html#uuid.uuid4) format. See [Generate UUID](#how-to-easily-generate-a-uuid) for details.  
+**probe_name**: The name of the probe to be shown in the PRTG Web Interface.  
+**probe_protocol_version**: Has to be *1*. This is needed for communication.  
+**prtg_server_ip_dns**: IP/DNS address of your PRTG Server.  
+**prtg_server_port**: The https port of PRTG's web interface (only TLS is currently supported).
+
+
+###### How to easily create a hash access key
+Open a Python shell and type the following commands
+````bash
+bash-3.2$ python3
+Python 3.8.5 (default, Aug 17 2020, 13:42:23)
+[Clang 11.0.3 (clang-1103.0.32.62)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import hashlib
+>>> key = "YOUR_ACCESS_KEY".encode("utf-8")
+>>> print(hashlib.sha1(key).hexdigest())
+24e35fcd585b3e5c94f725cbd57e8fae5772f779
+>>>
+````
+###### How to easily generate a UUID
+Open a Python shell and type the following commands
+````bash
+bash-3.2$ python3
+Python 3.8.5 (default, Aug 17 2020, 13:42:23)
+[Clang 11.0.3 (clang-1103.0.32.62)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import uuid
+>>> print(str(uuid.uuid4()).upper())
+1104669D-F671-4590-83F7-E6BD75E9CE8D
+>>>
+````
+### Native installation
+**Prerequisites**  
+The following packages have to be present on your system: python3,python3-dev,gcc,libyaml-0-2,libyaml-dev,libffi,libffi-dev  
+*Note:* Only Python Versions 3.6+ are supported
+#### The easy way :thumbsup:
+- Create a virtual environment and activate it  
+- Type ````pip install wheel```` and afterwards  ````pip install pyprobe````
+- Switch to a root user (sudo won't do here as we have to write config and logfile to /etc and /var/log)  
+- Activate the the virtual environment  
+- Type ````pyprobe configure```` and follow the wizard  
+- Depending on your system (systemd or not) follow the last 3 steps [here(systemd)](#systems-with-systemd) or [here(without systemd)](#systems-without-systemd)
+
+
+#### The hard way :grimacing:
+##### For systems with systemd
+- Clone the repository  
+- Create a virtual environment (Recommended)  
+- In the repository root ````pip install .````  
+- Switch to a root user (sudo won't do here as we have to write config and logfile to /etc and /var/log)  
+- Activate the the virtual environment  
+- Type ````pyprobe configure```` and follow the wizard  
+- Type ````pyprobe service install```` and ````pyprobe service start```` 
+- Log in to the PRTG Web Interface and approve your probe  
+
+##### For systems without systemd
+**Running as service not supported at the moment**  
+- Clone the repository  
+- Create a virtual environment (Recommended)
+- In the repository root ````pip install .````  
+- Switch to a root user (sudo won't do here as we have to write config and logfile to /etc and /var/log)  
+- Activate the the virtual environment  
+- Type ````pyprobe configure```` and follow the wizard  
+- Type ````pyprobe daemon start```` to start the pyprobe as daemon
+- Type ````pyprobe daemon status/stop```` to get the daemon status or to terminate
+- Log in to the PRTG Web Interface and approve your probe
+
+## pyprobe CLI
+The pyprobe comes with a CLI for the most common tasks, below are more details. 
+The CLI is only available in the context of the virtualenv to which it was installed.
+##### pyprobe
+````bash
+bash-3.2$ pyprobe
+Usage: pyprobe [OPTIONS] COMMAND [ARGS]...
+
+Options:
+  --help  Show this message and exit.
+
+Commands:
+  configure  Creates or overwrites the configuration
+  daemon
+  service
+````
+##### pyprobe daemon
+````bash
+bash-3.2$ pyprobe daemon
+Usage: pyprobe daemon [OPTIONS] COMMAND [ARGS]...
+
+Options:
+  --help  Show this message and exit.
+
+Commands:
+  start   Start a probe daemon
+  status  Get status of probe daemon
+  stop    Stop the probe daemon
+````
+##### pyprobe service
+````bash
+bash-3.2$ pyprobe service
+Usage: pyprobe service [OPTIONS] COMMAND [ARGS]...
+
+Options:
+  --help  Show this message and exit.
+
+Commands:
+  install  Installs the pyprobe service via systemd
+  start    Starts the pyprobe service
+  status   Status of the pyprobe service
+  stop     Stops the pyprobe service
+````
+
+## Development 
+**Prerequisites**  
+The following packages have to be present on your system: python3,python3-dev,gcc,libyaml-0-2,libyaml-dev,libffi,libffi-dev  
+*Note:* Only Python Versions 3.6+ are supported
+
+- Clone the repository
+- Create a virtual environment (Recommended)
+- Run ````pip install -r requirements-dev.txt````, this will install all packages needed + development dependencies
+- In the repository root run ````pip install .```` to make sure the pyprobe is in your site-packages
+- Create a config by running ````DEV=True pyprobe configure```` which will adjust paths for logging and config to your repository root
+- For the run.py script to run properly, you need to set the environment variable ````DEV=True```` before running it to make the run.py script look at the correct paths for logs and config
+- You are set to develop and debug!
+
+
+### Some hints and remarks
+- Working directory for tests is ./tests
+- Working directory to run the probe is ./pyprobe
+
