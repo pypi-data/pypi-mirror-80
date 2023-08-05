@@ -1,0 +1,42 @@
+Metadata-Version: 1.1
+Name: ckanext-dc-serve
+Version: 0.4.4
+Summary: Serve DC files via GET requests on DCOR
+Home-page: https://github.com/DCOR-dev/ckanext-dc_serve
+Author: Paul Müller
+Author-email: dev@craban.de
+License: AGPLv3+
+Description: ckanext-dc_serve
+        ================
+        
+        This CKAN plugin provides an API for accessing DC data. The python
+        package dclab implements a client library (``dclab.rtdc_dataset.fmt_dcor``)
+        to access this API. Shape-Out 2 offers a GUI via *File - Load DCOR data*.
+        
+        This plugin implements:
+        
+        - The DCOR API for accessing DC datasets online.
+        - A background job that generates a condensed dataset after a resource
+          has been created.
+        - A route that makes the condensed dataset available via
+          "/dataset/{id}/resource/{resource_id}/condensed.rtdc"
+        
+        
+        Installation
+        ------------
+        
+        ::
+        
+            pip install ckanext-dc_serve
+        
+        
+        Add this extension to the plugins and defaul_views in ckan.ini:
+        
+        ::
+        
+            ckan.plugins = [...] dc_serve
+        
+Keywords: CKAN,DCOR,RT-DC
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)
+Classifier: Programming Language :: Python :: 3
