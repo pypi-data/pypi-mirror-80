@@ -1,0 +1,30 @@
+Metadata-Version: 2.1
+Name: learning-hypermodern
+Version: 0.1.2
+Summary: The hypermodern Python project
+Home-page: https://github.com/abstractlyZach/learning-hypermodern
+License: MIT
+Keywords: hypermodern
+Author: abstractlyZach
+Author-email: zach3lee@gmail.com
+Requires-Python: >=3.7,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: click (>=7.1.2,<8.0.0)
+Requires-Dist: desert (>=2020.1.6,<2021.0.0)
+Requires-Dist: marshmallow (>=3.8.0,<4.0.0)
+Requires-Dist: requests (>=2.24.0,<3.0.0)
+Project-URL: Repository, https://github.com/abstractlyZach/learning-hypermodern
+Description-Content-Type: text/markdown
+
+# learning-hypermodern
+[![Tests](https://github.com/abstractlyZach/learning-hypermodern/workflows/Tests/badge.svg)](https://github.com/abstractlyZach/learning-hypermodern/actions?workflow=Tests)
+[![Codecov](https://codecov.io/gh/abstractlyZach/learning-hypermodern/branch/master/graph/badge.svg)](https://codecov.io/gh/abstractlyZach/learning-hypermodern)
+[![PyPI](https://img.shields.io/pypi/v/learning-hypermodern.svg)](https://pypi.org/project/learning-hypermodern/)
+
+
+
+Learning Hypermodern Python through this article: https://cjolowicz.github.io/posts/hypermodern-python-01-setup/
+
