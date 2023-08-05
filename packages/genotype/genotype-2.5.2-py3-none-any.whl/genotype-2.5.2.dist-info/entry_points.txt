@@ -1,0 +1,3 @@
+[console_scripts]
+genotype = genotype.__main__:root
+
