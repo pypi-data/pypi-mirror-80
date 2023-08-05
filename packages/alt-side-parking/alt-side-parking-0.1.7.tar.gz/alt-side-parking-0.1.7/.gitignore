@@ -1,0 +1,16 @@
+__pycache__
+env/
+*.egg-info/
+.eggs/
+.envrc
+*.mo
+cookies.txt
+dump.rdb
+.tox/
+pip-wheel-metadata/
+.coverage
+build/
+dist/
+.tox
+.gitsecret/keys/random_seed
+!*.secret

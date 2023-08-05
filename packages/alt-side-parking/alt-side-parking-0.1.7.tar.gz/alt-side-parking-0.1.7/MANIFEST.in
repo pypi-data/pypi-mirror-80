@@ -1,0 +1,6 @@
+include README*
+recursive-include src/alt_side_parking *
+exclude .envrc.secret
+prune .github
+prune .gitsecret
+prune tests

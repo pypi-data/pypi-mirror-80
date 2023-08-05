@@ -1,0 +1,32 @@
+Metadata-Version: 2.1
+Name: alt-side-parking
+Version: 0.1.7
+Summary: UNKNOWN
+Home-page: UNKNOWN
+Author: Salah Ahmed
+Author-email: salahs.email@pm.me
+License: UNKNOWN
+Description: alt-side-parking
+        =======================
+        
+        Inspired by Jessica Garson's talk at Pycon https://us.pycon.org/2020/schedule/presentation/102/
+        
+        Developing
+        -----------------------
+        
+        .. -code-begin-
+        
+        .. code-block:: bash
+        
+           >>> pip install -e '.[dev]'
+           >>> tox -e lint && tox
+           >>> git secret reveal
+           >>> direnv allow
+        
+Keywords: python
+Platform: UNKNOWN
+Classifier: Programming Language :: Python
+Classifier: License :: OSI Approved :: MIT License
+Description-Content-Type: text/x-rst
+Provides-Extra: test
+Provides-Extra: dev
