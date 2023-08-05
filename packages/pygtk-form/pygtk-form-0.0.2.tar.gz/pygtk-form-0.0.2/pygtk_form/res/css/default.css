@@ -1,0 +1,12 @@
+.pygtk_form_default box.container {
+    padding: 15px;
+}
+
+.pygtk_form_default box.container>label:not(.form_title) {
+    margin-top: 15px;
+}
+
+.pygtk_form_default box.validation_container {
+    padding: 10px;
+    padding-top: 5px;
+}

@@ -1,0 +1,162 @@
+.pygtk_form_windows_dark {
+    background: #000;
+}
+
+.pygtk_form_windows_dark box.container {
+    padding: 15px;
+}
+
+.pygtk_form_windows_dark box.container>label {
+    color: #fff;
+}
+.pygtk_form_windows_dark box.container>label:not(.form_title) {
+    margin-top: 15px;
+}
+
+.pygtk_form_windows_dark box.validation_container {
+    padding: 10px;
+    padding-top: 5px;
+}
+
+.pygtk_form_windows_dark label.form_title {
+	font-weight: bold;
+	font-size: 1.3em;
+    color: #fff;
+    margin-top: 5px;
+}
+
+.pygtk_form_windows_dark entry {
+    background: #000;
+    border-color: #999;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 0;
+    color: #fff;
+    caret-color: #fff;
+}
+
+.pygtk_form_windows_dark entry selection {
+    color: #fff;
+    background: #0095ff;
+}
+
+.pygtk_form_windows_dark entry:focus {
+    border-color: #0095ff;
+}
+
+.pygtk_form_windows_dark entry:active {
+    outline: none;
+}
+
+/* BUTTON */
+
+/* primary */
+.pygtk_form_windows_dark button {
+	background: #555;
+	border-width: 2px;
+	border-radius: 3px;
+	border-color: #555;
+}
+
+.pygtk_form_windows_dark button label {
+	color: #fff;
+}
+
+.pygtk_form_windows_dark button:hover {
+	border-color: #2e2e2e;
+	border-style: solid;
+	border-width: 2px;
+}
+
+/*
+.pygtk_form_windows_dark button:focus:not(:active) {
+	outline-width: 2px;
+	outline-color: #000;
+}
+*/
+
+.pygtk_form_windows_dark button:active {
+	outline: none;
+	border-color: #999;
+	background: #999;
+}
+
+/* accent */
+.pygtk_form_windows_dark button.accent {
+	background: #0073cf;
+	border-width: 2px;
+	border-radius: 3px;
+	border-color: #0073cf;
+}
+
+.pygtk_form_windows_dark button.accent label {
+	color: #fff;
+}
+
+.pygtk_form_windows_dark button.accent:hover {
+	border-color: #004881;
+	border-style: solid;
+	border-width: 2px;
+}
+
+.pygtk_form_windows_dark button.accent:focus:not(:active) {
+	outline-width: 2px;
+	outline-color: #000;
+}
+
+.pygtk_form_windows_dark button.accent:active {
+	outline: none;
+	border-color: #559ce4;
+	background: #559ce4;
+}
+
+/* toggle */
+.pygtk_form_windows_dark button.toggle:checked {
+	background: #0073cf;
+	border-width: 2px;
+	border-radius: 3px;
+	border-color: #0073cf;
+}
+
+.pygtk_form_windows_dark button.toggle:checked label {
+	color: #fff;
+}
+
+.pygtk_form_windows_dark button.toggle:checked:hover {
+	border-color: #004881;
+	border-style: solid;
+	border-width: 2px;
+}
+
+.pygtk_form_windows_dark button.toggle:checked:active {
+    border-color: #559ce4;
+    background: #559ce4;
+	border-style: solid;
+	border-width: 2px;
+}
+
+/* COMBOBOX */
+.pygtk_form_windows_dark combobox button {
+	background: #000;
+	color: #fff;
+	border-color: #fff;
+	outline-color: #fff;
+}
+
+.pygtk_form_windows_dark combobox button:hover {
+	border-color: #0073cf;
+	outline-color: #0073cf;
+}
+
+.pygtk_form_windows_dark combobox window menuitem:hover {
+	background: #1a1a1a;
+}
+
+.pygtk_form_windows_dark combobox window menuitem:hover cellview {
+	background: #1a1a1a;
+}
+
+.pygtk_form_windows_dark combobox window * {
+	background: #2e2e2e;
+	color: #fff;
+}
