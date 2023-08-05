@@ -1,0 +1,12 @@
+simd_structts/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+simd_structts/backends/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+simd_structts/backends/base.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+simd_structts/backends/simdkalman/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+simd_structts/backends/simdkalman/kalman_filter.py,sha256=ULWlw75Zcy73aJsTQhzq9NC0CDd6A20i-t7Hz6Ik-oA,9917
+simd_structts/backends/simdkalman/model.py,sha256=yY5CSDEOY9hO6OuLzVPvTXY0cTEGAqhOkW_0vMo-jIU,14768
+simd_structts/backends/statsmodels.py,sha256=YNVo5altJVa1IV-1SpU35QEsL2DzOdP3e8I9YxoGzfo,3387
+simd_structts/model.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+simd_structts-0.1.1.dist-info/LICENSE,sha256=1QrHYDnt10H1Sp4IJp3UmHgWZvGH52XFWccTqyTA-Yo,1073
+simd_structts-0.1.1.dist-info/WHEEL,sha256=Q99itqWYDhV793oHzqzi24q7L7Kdiz6cb55YDfTXphE,84
+simd_structts-0.1.1.dist-info/METADATA,sha256=WKk0EPcxc7txR_DjMPT6oUMghA61-NrXrsNhDA6MF-s,567
+simd_structts-0.1.1.dist-info/RECORD,,

@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: simd-structts
+Version: 0.1.1
+Summary: SIMD implementation of the StructTS/Unobserved Components model
+Author: Vladimir Shulyak
+Requires-Python: >=3.0.0,<4.0.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: simdkalman (==1.0.1)
+Requires-Dist: statsmodels (>=0.11.1,<0.12.0)
