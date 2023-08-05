@@ -1,0 +1,15 @@
+README.md
+setup.py
+dnry/srvhost/builder/__init__.py
+dnry/srvhost/builder/hosting_environment.py
+dnry/srvhost/builder/noop_host.py
+dnry/srvhost/builder/srv_host_base.py
+dnry/srvhost/builder/srv_host_builder.py
+dnry/srvhost/builder/srv_host_context.py
+dnry/srvhost/builder/types.py
+dnry_srvhost_builder.egg-info/PKG-INFO
+dnry_srvhost_builder.egg-info/SOURCES.txt
+dnry_srvhost_builder.egg-info/dependency_links.txt
+dnry_srvhost_builder.egg-info/requires.txt
+dnry_srvhost_builder.egg-info/top_level.txt
+test/test_injection.py
