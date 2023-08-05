@@ -1,0 +1,50 @@
+Metadata-Version: 2.1
+Name: allenai-common
+Version: 1.1.1
+Summary: Params, FromParams, Registrable, Lazy classes from AllenNLP
+Home-page: https://github.com/fursovia/allenai-common
+License: Apache-2.0
+Author: Ivan Fursov
+Author-email: fursovia@gmail.com
+Requires-Python: >=3.6,<4.0
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: boto3 (>=1.14.0,<2.0.0)
+Requires-Dist: filelock (>=3.0.0,<4.0.0)
+Requires-Dist: overrides (==3.1.0)
+Requires-Dist: requests (>=2.18.0,<3.0.0)
+Requires-Dist: tqdm (>=4.19.0,<5.0.0)
+Project-URL: Repository, https://github.com/fursovia/allenai-common
+Description-Content-Type: text/markdown
+
+# AllenAI-Common
+
+This repository is a copy-paste of the common components 
+from the `1.1.0` version of [AllenNLP library](https://github.com/allenai/allennlp).
+
+
+The following classes were extracted:
+
+* `FromParams`
+* `Params`
+* `Lazy`
+* `Registrable`
+
+And freed from ML/DL/NLP dependencies (e.g. `scikit-learn`, `torch`, `nltk`, `spacy`, `tensorboardX`, `transformers`).
+
+
+## Usage
+
+```bash
+pip install allenai-common
+```
+
+```python
+from allenai_common import Registrable, Params, Lazy, FromParams
+
+# Do something you would normally do when solving NLP tasks using AllenNLP
+# But at this time use imported modules for non-NLP tasks
+```
