@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: pytorchext
+Version: 0.0.1.post1
+Summary: pytorch extension
+Home-page: https://github.com/3jane/pytorch_ext
+Author: 3jane.com
+Author-email: contact@3jane.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: numpy
+Requires-Dist: torch
+
+# pytorch_ext
+An extension library for PyTorch that fills the gaps we encountered. Under development, not stable.
+
+
