@@ -1,0 +1,7 @@
+skidl>=0.0.27
+kinparse>=0.1.0
+wxpython>=4.0.7
+pykicad
+
+[:python_version < "3.0"]
+enum34
