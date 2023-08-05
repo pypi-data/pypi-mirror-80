@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: kis2
+Version: 0.1.0
+Summary: Image Segmentation toolkit for keras edited for work
+Home-page: https://github.com/rosegit-lab/kis2
+Author: Gulsima
+Author-email: gulsimabilgin94@gmail.com
+License: GPLv3
+Download-URL: https://github.com/rosegit-lab/kis2/archive/v_1.tar.gz
+Description: UNKNOWN
+Platform: any
+Provides-Extra: tensorflow
+Provides-Extra: tests-default
+Provides-Extra: cntk
+Provides-Extra: theano
