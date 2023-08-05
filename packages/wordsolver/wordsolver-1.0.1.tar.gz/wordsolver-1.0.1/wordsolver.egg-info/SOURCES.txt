@@ -1,0 +1,14 @@
+README.md
+setup.py
+test/test.py
+wordsolver/__init__.py
+wordsolver/boggle.py
+wordsolver/hangman.py
+wordsolver/scrabble.py
+wordsolver/wordsearch.py
+wordsolver/wordtools.py
+wordsolver.egg-info/PKG-INFO
+wordsolver.egg-info/SOURCES.txt
+wordsolver.egg-info/dependency_links.txt
+wordsolver.egg-info/requires.txt
+wordsolver.egg-info/top_level.txt
