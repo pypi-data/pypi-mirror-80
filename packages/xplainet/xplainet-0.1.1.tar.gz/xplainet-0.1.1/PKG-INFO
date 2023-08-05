@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: xplainet
+Version: 0.1.1
+Summary: Explainable Neural network in Keras
+Home-page: https://github.com/Hartorn/XplaiNet
+Keywords: xplainet,keras,neural-networks
+Author: Hartorn
+Author-email: hartorn.github@gmail.com
+Requires-Python: >=3.7,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: scikit-learn (>=0.21,<1.0.0)
+Requires-Dist: tensorflow (>=2.2.0,<3.0.0)
+Requires-Dist: tensorflow-addons (==0.11.2)
+Project-URL: Documentation, https://github.com/Hartorn/XplaiNet
+Project-URL: Repository, https://github.com/Hartorn/XplaiNet
+Description-Content-Type: text/markdown
+
+# XplaiNet
+
