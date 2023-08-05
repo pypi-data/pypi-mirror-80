@@ -1,0 +1,111 @@
+{
+    "title_text": null,
+    "font_size": 16,
+    "hoverlabel": {
+        "font_size": 14
+    },
+    "valueformat": ".3s",
+    "valuesuffix": "\u03bcg/year",
+    "node": {
+        "pad": 20,
+        "thickness": 20,
+        "line": {
+            "color": "black",
+            "width": 0.5
+        },
+        "label": [
+            "WWTEffluent",
+            "Surface Water Release",
+            "Advanced WWT",
+            "Landfill",
+            "Thermal Treatment",
+            "Water",
+            "Stored",
+            "Air",
+            "Destroyed"
+        ],
+        "color": "rgba(176, 196, 222, 0.8)"
+    },
+    "link": {
+        "source": [
+            0,
+            1,
+            0,
+            2,
+            2,
+            2,
+            3,
+            3,
+            2,
+            4,
+            4,
+            4,
+            3,
+            3
+        ],
+        "target": [
+            1,
+            5,
+            2,
+            5,
+            5,
+            3,
+            5,
+            6,
+            4,
+            7,
+            8,
+            3,
+            5,
+            6
+        ],
+        "value": [
+            15000.0,
+            15000.0,
+            15000.0,
+            75.0,
+            75.0,
+            3712.5,
+            0.0,
+            3709.6,
+            3712.5,
+            111.0,
+            2412.0,
+            1188.0,
+            0.0,
+            1187.1
+        ],
+        "label": [
+            "WWTEffluent",
+            "Release",
+            "WWTEffluent",
+            "Leachate",
+            "Storage",
+            "SpentGAC",
+            "Leachate",
+            "Storage",
+            "SpentGAC",
+            "Exhaust",
+            "Destructed",
+            "CombustionResiduals",
+            "Leachate",
+            "Storage"
+        ],
+        "color": [
+            "rgba(255,127, 0, 0.8)",
+            "rgba(255,127, 0, 0.8)",
+            "rgba(255,127, 0, 0.8)",
+            "rgba(255,127, 0, 0.8)",
+            "rgba(255,127, 0, 0.8)",
+            "rgba(138,43,226, 0.8)",
+            "rgba(255,127, 0, 0.8)",
+            "rgba(255,127, 0, 0.8)",
+            "rgba(138,43,226, 0.8)",
+            "rgba(255,127, 0, 0.8)",
+            "rgba(255,127, 0, 0.8)",
+            "rgba(255,127, 0, 0.8)",
+            "rgba(255,127, 0, 0.8)",
+            "rgba(255,127, 0, 0.8)"
+        ]
+    }
+}
