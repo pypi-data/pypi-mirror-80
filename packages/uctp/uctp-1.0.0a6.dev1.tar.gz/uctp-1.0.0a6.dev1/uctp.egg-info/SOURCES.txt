@@ -1,0 +1,16 @@
+LICENSE.md
+MANIFEST.in
+README.md
+setup.py
+bin/uctp
+uctp/__init__.py
+uctp/additional.py
+uctp/cli.py
+uctp/peer.py
+uctp/protocol.py
+uctp.egg-info/PKG-INFO
+uctp.egg-info/SOURCES.txt
+uctp.egg-info/dependency_links.txt
+uctp.egg-info/not-zip-safe
+uctp.egg-info/requires.txt
+uctp.egg-info/top_level.txt
