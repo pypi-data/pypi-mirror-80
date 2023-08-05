@@ -1,0 +1,3 @@
+include pythumbnailer/static/
+include pythumbnailer/templates/
+exclude pythumbnailer/static/.ignore
