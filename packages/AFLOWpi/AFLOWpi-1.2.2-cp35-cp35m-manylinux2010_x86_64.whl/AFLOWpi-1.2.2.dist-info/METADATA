@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: AFLOWpi
+Version: 1.2.2
+Summary: Medium Throughput Framework for Quantum Espresso
+Home-page: http://aflowlib.org/src/aflowpi/
+Author: Andrew Supka,Marco Fornari
+Author-email: supka1ar@cmich.edu
+License: UNKNOWN
+Platform: manylinux2014
+Requires-Dist: matplotlib
+Requires-Dist: PAOFLOW
+
+Install Script for AFLOWpi
+
+
