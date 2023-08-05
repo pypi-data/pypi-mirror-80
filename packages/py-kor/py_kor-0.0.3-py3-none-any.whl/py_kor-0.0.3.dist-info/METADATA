@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: py-kor
+Version: 0.0.3
+Summary: My core library with some utilities
+Home-page: https://github.com/vladankor/py-kor
+Author: Korobov Vladislav
+Author-email: vladankor@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+
+# py-kor
+My core library with some utilities and extensions for python library
+
