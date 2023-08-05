@@ -1,0 +1,34 @@
+Metadata-Version: 2.1
+Name: xed
+Version: 0.0.2
+Summary: A utility for performing basic text transformations.
+Home-page: UNKNOWN
+Author: Aryan Naraghi
+Author-email: aryan.naraghi@gmail.com
+License: UNKNOWN
+Project-URL: Source Code, https://github.com/aryann/xed
+Project-URL: Author's Website, https://aryan.app
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Topic :: Utilities
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+
+# `xed`
+
+`xed` is a utility for performing basic text transformations. `xed` is modeled
+after the popular command-line tool `sed`.
+
+Example invocation:
+
+```
+$ echo "Hello, world!" | xed replace Hello Goodbye
+Goodbye, world
+```
+
+
