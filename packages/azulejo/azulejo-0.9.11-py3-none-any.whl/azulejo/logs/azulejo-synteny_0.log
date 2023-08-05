@@ -1,0 +1,4 @@
+2020-09-12 23:19:09.511 | DEBUG    | click_loguru:wrapper:233 - Command line: "/home/localhost/joelb/.cache/pypoetry/virtualenvs/azulejo-03p2ohWk-py3.8/bin/azulejo synteny glycines"
+2020-09-12 23:19:09.512 | DEBUG    | click_loguru:wrapper:234 - azulejo version 0.9.8
+2020-09-12 23:19:09.512 | DEBUG    | click_loguru:wrapper:235 - Run started at 2020-09-12 23:19:09
+2020-09-12 23:19:09.512 | ERROR    | azulejo.common:read_tsv_or_parquet:353 - File "glycines/proteomes.hom.parq" does not exist.
