@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: tk-lab-automation-kit
+Version: 0.0.1
+Summary: A small library to create user interfaces for lab automation.
+Home-page: https://github.com/dowerner/TkLabAutomationKit
+Author: Dominik Werner
+Author-email: dominik.werner@live.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+
+# TkLabAutomationKit
+A small library to create user interfaces for lab automation.
+
+# Installation
+Either use the module in the repository (https://github.com/dowerner/TkLabAutomationKit) or pip:
+
+```
+pip install tk_lab_automation_kit
+```
+
