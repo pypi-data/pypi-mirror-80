@@ -1,0 +1,3 @@
+This is a fico21soft's common libraries...
+
+I will explain it later~~

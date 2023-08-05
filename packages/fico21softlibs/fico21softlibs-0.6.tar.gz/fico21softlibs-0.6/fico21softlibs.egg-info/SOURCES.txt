@@ -1,0 +1,13 @@
+MANIFEST.in
+README.md
+requirements.txt
+setup.py
+fico21softlibs/__init__.py
+fico21softlibs/common.py
+fico21softlibs/settings.py
+fico21softlibs.egg-info/PKG-INFO
+fico21softlibs.egg-info/SOURCES.txt
+fico21softlibs.egg-info/dependency_links.txt
+fico21softlibs.egg-info/not-zip-safe
+fico21softlibs.egg-info/requires.txt
+fico21softlibs.egg-info/top_level.txt
