@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: remarshal
+Version: 0.14.0
+Summary: Convert between CBOR, JSON, MessagePack, TOML, and YAML
+License: MIT
+Author: D. Bohdan
+Requires-Python: >=3.6,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: PyYAML (>=5.3,<6.0)
+Requires-Dist: cbor2 (>=5.1,<6.0)
+Requires-Dist: python-dateutil (>=2.8,<3.0)
+Requires-Dist: tomlkit (>=0.7,<0.8)
+Requires-Dist: u-msgpack-python (>=2.6,<3.0)
