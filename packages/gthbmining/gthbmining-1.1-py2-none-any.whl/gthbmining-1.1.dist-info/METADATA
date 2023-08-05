@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: gthbmining
+Version: 1.1
+Summary: A data mining set of tools to discover DevOps trends from public repositories.
+Home-page: https://github.com/ddangelorb/gthbmining
+Author: Daniel D R Barros
+Author-email: ddangelorb@outlook.com
+License: MIT
+Download-URL: https://github.com/ddangelorb/gthbmining/archive/v_1.1.tar.gz
+Keywords: GitHub Mining Tool,Data Mining,Release Candidate,DevOps
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2.7
+Requires-Dist: github3.py
+Requires-Dist: pandas
+Requires-Dist: numpy
+Requires-Dist: scipy
+Requires-Dist: scikit-learn
+
+UNKNOWN
+
+
