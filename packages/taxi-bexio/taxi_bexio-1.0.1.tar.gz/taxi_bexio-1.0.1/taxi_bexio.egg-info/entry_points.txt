@@ -1,0 +1,3 @@
+[taxi.backends]
+bexio = taxi_bexio.backend:BexioBackend
+
