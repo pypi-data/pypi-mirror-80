@@ -1,0 +1,58 @@
+[tool.poetry]
+name = "newp"
+version = "0.0.6"
+description = "Spins up new projects"
+authors = ["Tim Simpson <timsimpson4@gmail.com>"]
+repository = "https://github.com/TimSimpson/newp"
+homepage = "https://github.com/TimSimpson/newp"
+
+[tool.poetry.dependencies]
+python = "^3.6"
+typing-extensions = "^3.7.4"
+jinja2 = "^2.11.2"
+
+[tool.poetry.dev-dependencies]
+black = "^19.10b0"
+coverage = "^4.5.2"
+flake8 = "^3.7.9"
+flake8-bugbear = "^19.8.0"
+mypy = "^0.761"
+pytest = "^5.2"
+taskipy = "^1.3.0"
+
+[tool.black]
+line-length = 80
+target-version = ['py36', 'py37', 'py38']
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
+[tool.pytest]
+testpaths = [ 'newp', 'tests' ]
+
+[tool.poetry.scripts]
+newp = "newp.cli:main"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
+
+[tool.taskipy.tasks]
+black = "black newp tests"
+flake8 = "flake8  --extend-ignore=E203,E501 newp tests"
+mypy = "mypy newp tests"
+tests = "PYTHONPATH=. pytest -vv"
+checks = 'task black && task flake8 && task mypy && task tests'
+
