@@ -1,0 +1,16 @@
+MANIFEST.in
+README.md
+setup.py
+syncP/__init__.py
+syncP/__main__.py
+syncP/client.py
+syncP/host.py
+syncP/mpv.py
+syncP/player.py
+syncP/testmpv.py
+syncP.egg-info/PKG-INFO
+syncP.egg-info/SOURCES.txt
+syncP.egg-info/dependency_links.txt
+syncP.egg-info/entry_points.txt
+syncP.egg-info/top_level.txt
+syncP/media/vid.mp4
