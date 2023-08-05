@@ -1,0 +1,9 @@
+stages:
+  - name: contur
+    dependencies: ['init']
+    scheduler:
+      scheduler_type: 'singlestep-stage'
+      parameters:
+        output_analysis: "{workdir}/ANALYSIS"
+        output_plots: "{workdir}/plots"
+      step: {$ref: 'step.yml'}

@@ -1,0 +1,9 @@
+stages:
+  - name: rivet
+    dependencies: ['init']
+    scheduler:
+      scheduler_type: 'singlestep-stage'
+      parameters:
+        outputyoda: '{workdir}/rivet_analysis.yoda'
+        analysis_id: {step: init, output: analysis_id}
+      step: {$ref: 'step.yml'}

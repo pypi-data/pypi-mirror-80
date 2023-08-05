@@ -1,0 +1,16 @@
+process:
+    process_type: interpolated-script-cmd
+    script: |
+        source ./setupContur.sh
+        contur {yoda}
+        cp -r ./ANALYSIS {output_analysis}
+        cp -r ./plots {output_plots}
+publisher:
+  publisher_type: 'interpolated-pub'
+  publish:
+    analysis: output_analysis
+    plots: output_plots
+environment:
+  environment_type: 'docker-encapsulated'
+  image: recast/contur
+  imagetag: {contur_version}
