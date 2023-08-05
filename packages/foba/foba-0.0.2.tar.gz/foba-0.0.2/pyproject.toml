@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "foba"
+version = "0.0.2"
+description = "placeholder sample objects for test"
+authors = ["Hoyeung Wong <hoyeungw@outlook.com>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/pydget/foba"
+repository = "https://github.com/pydget/foba"
+keywords = [
+    "foo", "bar", "sample",
+    "list", "array", "vector", "matrix", "1d-list", "2d-list",
+    "map", "mapper", "mutate", "zipper", "enumerate", "iterate",
+    "entry", "entries", "key-value", "key-value pairs",
+    "dict", "object", "json"
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+veho = ">=0.0.4"
+way = ">=0.0.1"
+
+[tool.poetry.dev-dependencies]
+pytest = ">=6.0.0"
+xbrief = ">=0.0.5"
+pyspare = ">=0.0.1"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
