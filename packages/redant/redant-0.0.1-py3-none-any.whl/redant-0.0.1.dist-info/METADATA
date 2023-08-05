@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: redant
+Version: 0.0.1
+Summary: UNKNOWN
+Home-page: https://github.com/acegik/redant
+Author: redant
+License: GPL-3.0
+Download-URL: https://github.com/acegik/redant/downloads
+Keywords: tiny-messaging-platform,chatbot
+Platform: UNKNOWN
+Requires-Python: >=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*
+Requires-Dist: shortuuid (<2,>=1)
+
+UNKNOWN
+
+
