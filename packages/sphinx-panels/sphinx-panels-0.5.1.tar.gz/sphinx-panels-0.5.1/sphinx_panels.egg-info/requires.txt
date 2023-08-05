@@ -1,0 +1,22 @@
+docutils
+sphinx<4,>=2
+
+[:python_version < "3.7"]
+importlib-resources~=3.0.0
+
+[code_style]
+pre-commit~=2.7.0
+
+[live-dev]
+sphinx-autobuild
+web-compile~=0.2.0
+
+[testing]
+pytest~=6.0.1
+pytest-regressions~=2.0.1
+
+[themes]
+sphinx-rtd-theme
+pydata-sphinx-theme~=0.4.0
+sphinx-book-theme~=0.0.36
+myst-parser~=0.12.9
