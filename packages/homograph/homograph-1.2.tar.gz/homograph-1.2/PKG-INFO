@@ -1,0 +1,17 @@
+Metadata-Version: 1.1
+Name: homograph
+Version: 1.2
+Summary: IDN Homograph detection tools
+Home-page: https://github.com/flowcrypt/idn-homographs-database
+Author: Alex Alvarado
+Author-email: alex@flowcrypt.com
+License: MIT
+Download-URL: https://github.com/flowcrypt/idn-homographs-database/archive/1.2.tar.gz
+Description: UNKNOWN
+Keywords: IDN,homograph,attack,security
+Platform: UNKNOWN
+Classifier: Development Status :: 1 - Planning
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Security
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
