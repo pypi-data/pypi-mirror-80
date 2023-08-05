@@ -1,0 +1,37 @@
+Metadata-Version: 2.1
+Name: jure
+Version: 0.1.2
+Summary: An utility that extends Jupytext. Allows to auto-refresh browser when source file is changed.
+License: MIT
+Keywords: jupyter,reload,jupytext
+Author: Dmitry Lipin
+Author-email: d.lipin@outlook.com
+Requires-Python: >=3.6,<4.0
+Classifier: Framework :: Jupyter
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Text Processing :: Markup
+Requires-Dist: jupytext (>=1.5.2,<2.0.0)
+Requires-Dist: loguru (>=0.5.2,<0.6.0)
+Requires-Dist: pytest (>=6.0.1,<7.0.0)
+Requires-Dist: selenium (>=3.141.0,<4.0.0)
+Requires-Dist: watchdog (>=0.10.3,<0.11.0)
+Description-Content-Type: text/markdown
+
+# Jupyter Browser Reload
+
+Convenience tool around Jupytext to automatically reload browser
+when source file is changed. 
+
+## Installation
+
+```
+pip install jure
+```
