@@ -1,0 +1,15 @@
+include chatbotpackage\templates\*
+recursive-include chatbotpackage\static\*
+include chatbotpackage\certificates\*
+include chatbotpackage\lib\*
+recursive-include chatbotpackage\logs\*
+include chatbotpackage\app.yaml
+include chatbotpackage\config.ini
+include chatbotpackage\server.ini
+include chatbotpackage\chatbot\classes\*
+include chatbotpackage\chatbot\intents\*
+include chatbotpackage\chatbot\models\*
+include chatbotpackage\chatbot\server_config\*
+include chatbotpackage\chatbot\words\*
+include chatbotpackage\chatbot\config.ini
+include chatbotpackage\chatbot\training.ini
