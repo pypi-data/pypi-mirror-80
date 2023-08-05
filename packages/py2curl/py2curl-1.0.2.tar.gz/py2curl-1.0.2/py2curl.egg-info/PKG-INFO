@@ -1,0 +1,37 @@
+Metadata-Version: 2.1
+Name: py2curl
+Version: 1.0.2
+Summary: A tool render requests object to curl
+Home-page: https://github.com/Hopetree/py2curl
+Author: Hopetree
+Author-email: zlwork2014@163.com
+License: UNKNOWN
+Description: # py2curl
+        
+        将 python 的 requests 代码转换成 curl 命令
+        
+        ## 安装
+        
+        ```bash
+        pip install py2curl
+        ```
+        
+        ## 使用
+        
+        ```python
+        import requests
+        import py2curl
+        
+        req = requests.get('https://tendcode.com')
+        result = py2curl.render(req.request)
+        print(result)
+        ### curl -k -v -X GET -H "Accept: */*" -H "Accept-Encoding: gzip, deflate" -H "Connection: keep-alive" -H "User-Agent: python-requests/2.19.1" https://tendcode.com/
+        ```
+        
+Keywords: python requests curl
+Platform: UNKNOWN
+Classifier: Operating System :: OS Independent
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Description-Content-Type: text/markdown
