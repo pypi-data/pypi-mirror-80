@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: pygments-style-tomorrow
+Version: 1.0.0.1
+Summary: Pygments version of the tomorrow theme, Based on mozmorris/tomorrow-pygments.
+Home-page: https://github.com/mozmorris/tomorrow-pygments
+Author: Moz Morris
+Author-email: moz@earthview.co.uk
+Maintainer: GinShio
+Maintainer-email: ginshio78@gmail.com
+License: UNKNOWN
+Keywords: pygments,style,tomorrow
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Plugins
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Dist: pygments (>=1.5)
+
+UNKNOWN
+
+
