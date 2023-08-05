@@ -1,0 +1,11 @@
+MANIFEST.in
+README.md
+VERSION
+requirements.txt
+setup.py
+spark_pipeline_framework/__init__.py
+sparkpipelineframework.egg-info/PKG-INFO
+sparkpipelineframework.egg-info/SOURCES.txt
+sparkpipelineframework.egg-info/dependency_links.txt
+sparkpipelineframework.egg-info/top_level.txt
+tests/__init__.py
