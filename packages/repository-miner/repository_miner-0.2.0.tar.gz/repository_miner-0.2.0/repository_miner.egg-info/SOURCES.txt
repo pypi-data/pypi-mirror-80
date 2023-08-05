@@ -1,0 +1,17 @@
+MANIFEST.in
+README.md
+config.json
+requirements.txt
+setup.cfg
+setup.py
+miner/__init__.py
+miner/command_line.py
+miner/file.py
+miner/filters.py
+miner/report.py
+miner/repository.py
+repository_miner.egg-info/PKG-INFO
+repository_miner.egg-info/SOURCES.txt
+repository_miner.egg-info/dependency_links.txt
+repository_miner.egg-info/entry_points.txt
+repository_miner.egg-info/top_level.txt

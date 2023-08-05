@@ -1,0 +1,3 @@
+[console_scripts]
+repository-miner = miner.command_line:main
+
