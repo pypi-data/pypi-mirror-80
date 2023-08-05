@@ -1,0 +1,3 @@
+[console_scripts]
+pypolsar=pypolsar.__main__:app
+
