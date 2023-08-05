@@ -1,0 +1,15 @@
+README.md
+setup.cfg
+setup.py
+src/clilib/__init__.py
+src/clilib/decorator/__init__.py
+src/clilib/decorator/arg.py
+src/clilib/decorator/resource.py
+src/clilib/decorator/util.py
+src/clilib/decorator/verb.py
+src/clilib/util/__init__.py
+src/pyclilib.egg-info/PKG-INFO
+src/pyclilib.egg-info/SOURCES.txt
+src/pyclilib.egg-info/dependency_links.txt
+src/pyclilib.egg-info/requires.txt
+src/pyclilib.egg-info/top_level.txt
