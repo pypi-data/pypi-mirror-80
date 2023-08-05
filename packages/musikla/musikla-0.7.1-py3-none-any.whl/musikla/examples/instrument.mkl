@@ -1,0 +1,21 @@
+fun intrument_template () {
+
+
+    # Piano MIDI
+    $piano = keyboard\midi();
+
+    # Acordes
+    $piano -= @keyboard {
+        
+    };
+
+    # Declares an array that will contain our buffers
+    $bf = none;
+    # Creates a keyboard that declares a set of buffers. By default, 
+    # the numpad keys are used (creating 10 available buffer slots)
+    $piano -= keyboard\bufpad( $bf );
+    # Creates a keyboard that associates the interpreter accessible by the "\" key
+    $piano -= keyboard\repl( ctx = getctx() );
+};
+
+instrument_template();

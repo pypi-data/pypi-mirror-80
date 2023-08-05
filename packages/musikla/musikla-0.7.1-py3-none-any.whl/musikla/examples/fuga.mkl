@@ -1,0 +1,16 @@
+S4/4 T70 L/8 V120;
+
+setinstrument( 1 );
+cc( 64, 0 );
+
+fun fugue ( $subj, $resp ) => 
+    ( $subj $resp | r ** $subj ( $subj + 7 ) );
+
+# Flat: A B e
+$subj = r c/2 B/2 c G _A c/2 B/2 c d
+        G c/2 B/2 c d F/2 G/2 _A2 G/2 F/2;
+
+$resp = ^E/2 c/2 B/2 A/2   G/2 F/2 _E/2 D/2   C _e d c
+        _B A _B c   ^F G A ^F;
+
+play( fugue( $subj, $resp ) );

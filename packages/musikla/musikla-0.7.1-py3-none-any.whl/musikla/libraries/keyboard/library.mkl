@@ -1,0 +1,488 @@
+fun keyboard\debug ( $cb = none ) {
+    return @keyboard {
+        [ keyboard\KeyEvent() ] ( $key, $value, $pressed ): {
+            if ($cb != none) {
+                $cb( $key, $value, $pressed );
+            } else {
+                if ($pressed) { print( $key, $value, "PRESSED" ) } else { print( $key, $value, "RELEASED" ) };
+            };
+        };
+    };
+};
+
+fun keyboard\keymap ( $keys ) {
+    $current_key = 0;
+
+    $map = @{};
+
+    fun has_ended () => $current_key == len( $keys );
+
+    fun ask_key () {
+        $prefix = '(' + str( $current_key + 1 ) + '/' + str( len( $keys ) ) + ')';
+
+        print( ( $prefix + ' Please enter key "' + str( $keys::[ $current_key ] ) + '": ' ), end = '' );
+    };
+
+    fun terminate () {
+        $kb::close();
+
+        print();
+        print( "[Keyboard.KeyMap]" );
+        for ( $value, $name in $map::items() ) {
+            print( str( $value ) + "=" + str( $name ) );
+        };
+        print();
+    };
+
+    if ( has_ended() ) {
+        return;
+    } else {
+        ask_key();
+    };
+
+    $kb = @keyboard {
+        [ keyboard\KeyEvent() ] ( $key, $value, $pressed ): {
+            if (not $pressed) {
+                $map::[ $value ] = $keys::[ $current_key ];
+
+                print( "code " + str( $value ) );
+
+                $current_key += 1;
+
+                if ( has_ended() ) {
+                    terminate();
+                } else {
+                    ask_key();
+                };
+            };
+        };
+    };
+};
+
+fun keyboard\build_layout ( $layout ) {
+    $lines = $layout::splitlines();
+
+    return @py { [ list( l ) for l in lines ] };
+};
+
+fun keyboard\build_chord_key ( $chord, $ast = false ) {
+    if $chord is $str {
+        $chord = $chord::split( ' ' );
+    };
+
+    if $chord is $list {
+        $src = "fun ($s, $i) => @[ ";
+
+        for $i, $note in enumerate( $chord ) {
+            $is_last = $i == len( $chord ) - 1;
+
+            $offset = 0;
+
+            while len( $note ) and ( $note::[ 0 ] == '_' or $note::[ 0 ] == '^' ) {
+                if $note::[ 0 ] == '_' {
+                    $offset -= 1;
+                } else {
+                    $offset += 1;
+                };
+
+                $note = @py { note[1:] };
+            };
+
+            $src += "$s::[ $i + " + $note + " ]";
+
+            if $offset < 0 {
+                $src += " - " + str( $offset * -1 );
+            } else {
+                $src += " + " + str( $offset );
+            };
+
+            if not $is_last {
+                $src += "; ";
+            };
+        };
+
+        $src += " ];";
+
+        if $ast == true {
+            return parse( $src );
+        };
+        
+        return eval( $src );
+    };
+
+    return $chord;
+}; 
+
+$keyboard\piano_layout = keyboard\build_layout( "<zxcvbnm,.-
+asdfghjklçº~
+qwertyuiop+´
+1234567890'«" );
+
+# Alias for the chord() function so that we can use it inside the piano
+# function, without clashing with its chord argument
+$_make_chord = $chord;
+
+# While this function accepts a list of custom scales to be provided, it only works if each scale spans at most, one octave
+fun keyboard\piano (
+    $layout = $keyboard\piano_layout, $scales = @[], $disable_rows = @[],
+    in $key = C; in $chord = none, $map = none,
+    in $transpose = 0, in $transpose_rows = @{}, in $shift_rows = @{},
+    $toggle = false, $ctrl = false, $alt = false, $shift = false
+) {
+    fun get_row_scale ( $row_index ) {
+        if len( $scales ) > 0 {
+            return $scales::[ mod( $row_index, len( $scales ) ) ];
+        };
+
+        return if mod( $row_index, 2 ) == 0
+            then $scale::white_keys
+            else $scale::black_keys_padded;
+    };
+
+    fun get_row_scale_index ( $row_index ) {
+        if len( $scales ) > 0 {
+            return mod( $row_index, len( $scales ) );
+        };
+
+        return if mod( $row_index, 2 ) == 0 then 0 else 1;
+    };
+
+    $kb = keyboard\create();
+
+    if $layout is $str {
+        $rows = $layout::splitlines();
+    } else {
+        $rows = $layout;
+    };
+
+    # Will hold the last octave that was used for a specific scale.
+    # Next time this scale is used, it's base octave will be this one
+    # This is useful when dealing with very small scales, that fit more than twice
+    # on a single row, and thus we can't just increment the octave +1 on the next row
+    # that uses this scale
+    $scale_last_octaves = @{};
+
+    for $row_index in range( len( $rows ) ) {
+        $row_scale = get_row_scale( $row_index );
+
+        $row_scale_index = get_row_scale_index( $row_index );
+
+        $row_base_octave = $scale_last_octaves::get( $row_scale_index, default = 0 );
+
+        if $row_index notin $disable_rows {
+            for $i, $letter in enumerate( $rows::[ $row_index ] ) {
+                keyboard\register( $kb, 
+                    key = keyboard\KeyStroke( $letter, $ctrl, $alt, $shift ), 
+                    expression = {
+                        $actual_i = $i + $shift_rows::get( $row_index, default = 0 );
+
+                        $music = $key + interval( octaves = $row_base_octave ) + $row_scale::[ $actual_i ];
+
+                        if $chord isnot none {
+                            $chord_intervals = $chord( $row_scale, $actual_i );
+
+                            # Damn, we need list comprehensions in musikla...
+                            for $k, $inter in enumerate( $chord_intervals ) {
+                                $chord_intervals::[ $k ] = $key + $inter;
+                            };
+
+                            $music = _spreadfn( $_make_chord, $chord_intervals );
+                        };
+
+                        $interval = $transpose_rows::get( $row_index, default = 0 );
+
+                        $interval += $transpose;
+
+                        return if $map is none {
+                            $music + $interval;
+                        } else {
+                            $map( $music, $actual_i, $row_scale ) + $interval;
+                        };
+                    },
+                    hold = not $toggle, toggle = $toggle, extend = true 
+                );
+            };
+        };
+        
+
+        $d = div( len( $rows::[ $row_index ] ), len( $row_scale ) );
+        $r = mod( len( $rows::[ $row_index ] ), len( $row_scale ) );
+
+        # Increment the scale index by how many octaves the scale contains, 
+        # plus one more if the last octave of the scale was only partial
+        $scale_last_octaves::set( $row_scale_index, $row_base_octave + $d + 1 * ( $r == 0 ) );
+    };
+
+    return $kb;
+};
+
+fun first_note ( $n ) => if $n is $Music then $n::first_note() else $n;
+
+fun keyboard\midi ( $toggle = false, in $transpose = 0, $range_start = C,,,,; $range_end = g''''', $template = none ) {
+    $kb = keyboard\create();
+
+    $bottom = first_note( $range_start );
+    $top = first_note( $range_end );
+
+    while $bottom <= $top {
+        # Important to declare the music to a variable because since we are inside a loop
+        # If we didn't bound to a variable, it would always be bound to the last note of the loop
+        $music = $bottom::music();
+
+        keyboard\register( $kb, key = $bottom, expression = $music + $transpose, hold = not $toggle, toggle = $toggle, extend = true );
+
+        $bottom = $bottom + 1;
+    };
+
+    return $kb;
+};
+
+fun keyboard\repl ( $key = "\\", $ctx = $__callerctx__ ) {
+    return @keyboard release {
+        [ $key ]: { withctx( $ctx, keyboard\open_repl() ) };
+    };
+};
+
+fun keyboard\bufslot( $bf = keyboard\Buffer( start = false ), $key = "p" ) {
+    return @keyboard {
+        [ $key ]: {
+            if $bf::recording {
+                $bf::stop();
+            } else {
+                $bf::clear();
+                $bf::start();
+            };
+        };
+    };
+};
+
+fun keyboard\bufpad( ref $buffers = @{}, $keys = @[ '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' ], $savename = "buffers.mkl", $load_key = 'f7', $save_key = 'f8', $window_key = none ) {
+    $buffers = @{};
+
+    $saving_file = false;
+    $save_location = getcwd() + "/" + $savename;
+
+    fun prompt_location ( $title, $cb ) {
+        if not $saving_file {
+            $saving_file = true;
+            
+            keyboard\filedialog( title = $title, default_value = $save_location, cb = fun ( $file ) {
+                using( $save_location );
+
+                $saving_file = false;
+
+                if $file isnot none {
+                    $save_location = $file;
+                };
+
+                $cb();
+            } );
+        };
+    };
+
+    fun load_buffers ( $interactive = true ) {
+        if $interactive {
+            prompt_location( "Open File", fun () => load_buffers( interactive = false ) );
+        } else {
+            $keyboard\Buffer::load_all( $save_location, $buffers ); 
+        }
+    };
+
+    fun save_buffers ( $interactive = true ) {
+        if $interactive {
+            prompt_location( "Save File", fun () => save_buffers( interactive = false ) );
+        } else {
+            $keyboard\Buffer::save_all( $save_location, $buffers ); 
+        }
+    };
+
+    $_kb = @keyboard {
+        # Load
+        [$load_key]: load_buffers();
+
+        # Save
+        [$save_key]: save_buffers();
+
+        for $i in range( len( $keys ) ) {
+            # Bind a variable with the key stored in the array at the given index
+            { 
+                $key = $keys::[$i];
+
+                $buffers::set( $i, keyboard\Buffer( start = false ) );
+            };
+
+            # Starts and stops the buffer from recording
+            [ keyboard\KeyStroke( $key, ctrl = true ) ]: {
+                $bf = $buffers::get( $i, none );
+                
+                if $bf::recording {
+                    $bf::stop();
+                } else {
+                    $bf::clear();
+                    $bf::start();
+                };
+            };
+
+            # Previews the recorded music sequence inside the buffer
+            [ keyboard\KeyStroke( $key ) ] toggle: {
+                $bf = $buffers::get( $i, none );
+                
+                if $bf != none and not $bf::empty {
+                    return $bf::to_music();
+                };
+            };
+        };
+
+        if ( $window_key isnot none ) {
+            [ $window_key ]: keyboard\bufpad_window( $bufpad );
+        };
+    };
+
+    # For the pack method
+    $buffer_keys = $keys;
+
+    $bufpad = pack( into = $_kb, exclude = @[ 'keys' ] );
+
+    return $bufpad;
+};
+
+fun keyboard\bufpad_window ( $bufpad ) {
+    import graphics;
+
+    $keys = @[];
+
+    for $i, $key in enumerate( $bufpad::buffer_keys ) {
+        $keys::append( BufferPanel( $i, $key, $bufpad::buffers::get( $i ), $bufpad::[ $key ] ) );
+    };
+
+    return SingleWindow( "Recording Buffers", fun () {
+        for $panel in $keys {
+            $panel::render();
+        };
+    } );
+};
+
+@python
+@export()
+def _spreadfn ( fn, args ):
+    return fn( *args )
+
+@export()
+def _vertical_separator ( margin : int = 5, color : int = 0xFF000000 ):
+    import bimpy
+
+    cursor = bimpy.get_cursor_screen_pos()
+
+    start_p = bimpy.Vec2( cursor.x + margin, cursor.y )
+    end_p = bimpy.Vec2( cursor.x + margin, cursor.y + bimpy.get_text_line_height_with_spacing() )
+
+    bimpy.add_line( start_p, end_p, color, 1.0 )
+
+    bimpy.set_cursor_pos_x( bimpy.get_cursor_pos_x() + margin * 2 + 5 )
+
+
+@export()
+class BufferPanel:
+    def __init__ ( self, index, key, buffer, key_action ):
+        from musikla.graphics import KeyboardBufferPreview
+        import bimpy
+
+        self.id = "buffer_keys_" + str( index )
+        self.index = index
+        self.key = key
+        self.key_str = str( self.key )
+        self.buffer = buffer
+        self.key_action = key_action
+        self.preview = KeyboardBufferPreview( buffer, width = 0, height = 100 )
+
+        self.bool_obj = bimpy.Bool()
+
+    def render ( self ):
+        import bimpy
+        global _vertical_separator
+        
+        bimpy.push_id_str( self.id );
+
+        if self.index > 0:
+            bimpy.separator()
+            bimpy.set_cursor_pos_y( bimpy.get_cursor_pos_y() + 10 )
+        
+        ### Buffer Header
+        bimpy.text( self.key_str )
+
+        bimpy.same_line( 30 )
+
+        if bimpy.small_button( "Recording" if self.buffer.recording else "Record" ):
+            self.buffer.toggle()
+        
+        bimpy.same_line()
+        
+        if bimpy.small_button( "Playing" if self.key_action.is_playing else "Play" ):
+            self.key_action.on_press( getctx().script.player )
+
+        bimpy.same_line()
+
+        self.bool_obj.value = self.buffer.loop
+        bimpy.checkbox( "Loop", self.bool_obj )
+        self.buffer.loop = self.bool_obj.value
+
+        bimpy.same_line()
+
+        _vertical_separator()
+
+        bimpy.text( "MODE" )
+
+        bimpy.same_line()
+        
+        if bimpy.radio_button( "Performance", self.buffer.mode == 'performance' ):
+            self.buffer.mode = 'performance'
+        
+        bimpy.same_line()
+        
+        if bimpy.radio_button( "Music", self.buffer.mode == 'music' ):
+            self.buffer.mode = 'music'
+
+        ### Buffer Content
+        bimpy.text( "" )
+        bimpy.same_line(30)
+
+        if bimpy.small_button( "Save" ):
+            bimpy.open_popup( "Save Buffer" )
+
+        if bimpy.begin_popup_modal( "Save Buffer" ):
+            bimpy.text("Save Buffer (Not Implemented Yet)")
+
+            if bimpy.button("Close"):
+                bimpy.close_current_popup()
+
+            bimpy.end_popup()
+
+        bimpy.same_line()
+
+        if bimpy.small_button( "Load" ):
+            bimpy.open_popup( "Load Buffer" )
+            
+        if bimpy.begin_popup_modal( "Load Buffer" ):
+            bimpy.text("Load Buffer (Not Implemented Yet)")
+
+            if bimpy.button("Close"):
+                bimpy.close_current_popup()
+
+            bimpy.end_popup()
+
+        bimpy.same_line()
+
+        if bimpy.small_button( "Clear" ):
+            self.buffer.clear()
+
+        bimpy.same_line()
+        bimpy.text(str(self.buffer.duration_live))
+
+        ### Buffer Preview
+        width = int( bimpy.get_window_content_region_width() )
+
+        self.preview.preview.width = width
+
+        self.preview.render()
+
+        bimpy.pop_id()
