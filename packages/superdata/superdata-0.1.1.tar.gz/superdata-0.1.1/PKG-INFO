@@ -1,0 +1,37 @@
+Metadata-Version: 2.1
+Name: superdata
+Version: 0.1.1
+Summary: A super package that imports datascience packages to the namespace
+Home-page: https://github.com/atmostafa/superdata
+Author: Mostafa
+Author-email: EmailAtMostafa@gmail.com
+License: UNKNOWN
+Description: # SuperData
+        
+        A small python package to import common Data science packages to the namespace.
+        That is, no need to `import numpy as np` in your code.
+        
+        For example:
+        ```
+        1 from superdata import *
+        2 a=np.array([1,2,3])
+        3 plt.plot(a)
+        ```
+        For now, only covers:
+        ```
+        import numpy as np
+        import matplotlib.pyplot as plt
+        import pandas as pd
+        import matplotlib as mpl
+        ```
+        
+        ## installation
+        
+        Easy installation using pip: https://pypi.org/project/superdata/0.1/
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3
+Description-Content-Type: text/markdown
