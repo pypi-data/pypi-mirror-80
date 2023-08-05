@@ -1,0 +1,15 @@
+Metadata-Version: 1.2
+Name: pip_helloworld
+Version: 0.0.2
+Summary: A small example package
+Home-page: https://github.com/pypa/sampleproject
+Author: evoup
+Author-email: evoex123@gmail.com
+License: UNKNOWN
+Description: #pip helloworld
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
