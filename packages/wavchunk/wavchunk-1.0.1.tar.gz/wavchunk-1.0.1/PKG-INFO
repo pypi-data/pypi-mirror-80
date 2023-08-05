@@ -1,0 +1,78 @@
+Metadata-Version: 2.1
+Name: wavchunk
+Version: 1.0.1
+Summary: Read or write INFO chunks in WAV files
+Home-page: https://github.com/synesthesiam/wav-chunk
+Author: Michael Hansen
+Author-email: mike@rhasspy.org
+License: UNKNOWN
+Description: # wav-chunk
+        
+        Read or write INFO chunks from a [RIFF WAV](https://en.wikipedia.org/wiki/WAV) file.
+        
+        ## Installation
+        
+        ```sh
+        $ pip install wavchunk
+        ```
+        
+        ## Dependencies
+        
+        * Python 3.6 or higher
+        
+        ## Usage
+        
+        By default, `wavchunk` adds or gets INFO chunk bytes after the WAV `data` chunk.
+        
+        ### Add INFO chunk
+        
+        ```python
+        import wavchunk
+        
+        with open("infile.wav", "rb") as in_file:
+            with open("outfile.wav", "wb") as out_file:
+                wavchunk.add_chunk(in_file, "my data".encode(), out_file=out_file)
+        ```
+        
+        ### Get INFO chunk
+        
+        ```python
+        import wavchunk
+        
+        with open("infile.wav", "rb") as in_file:
+            my_data = wavchunk.get_chunk(in_file).decode()
+            print(my_data)
+        ```
+        
+        ## Command-Line Interface
+        
+        The `wavchunk` module can also be used from the command-line.
+        By default, WAV data is expected on stdin and is written to stdout so that commands can be chained together in a pipe.
+        
+        ### Add INFO chunk
+        
+        ```sh
+        $ python3 -m wavchunk add --data 'my data' < infile.wav > outfile.wav
+        ```
+        
+        ### Get INFO chunk
+        
+        ```sh
+        $ python3 -m wavchunk get --data - < infile.wav
+        <data from chunk>
+        ```
+        
+        ### Delete INFO chunk
+        
+        ```sh
+        $ python3 -m wavchunk get --delete --data mydata.bin < infile.wav > outfile.wav
+        ```
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: License :: OSI Approved :: MIT License
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown

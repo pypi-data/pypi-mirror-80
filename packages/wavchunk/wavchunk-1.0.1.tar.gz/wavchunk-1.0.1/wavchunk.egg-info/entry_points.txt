@@ -1,0 +1,3 @@
+[console_scripts]
+wavchunk = wavchunk.__main__:main
+
