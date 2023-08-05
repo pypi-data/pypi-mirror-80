@@ -1,0 +1,15 @@
+LICENSE
+README.md
+VERSION
+requirements.txt
+setup.py
+texta_anonymizer/anonymizer.py
+texta_anonymizer/exceptions.py
+texta_anonymizer/generators.py
+texta_anonymizer/synthesizers.py
+texta_anonymizer.egg-info/PKG-INFO
+texta_anonymizer.egg-info/SOURCES.txt
+texta_anonymizer.egg-info/dependency_links.txt
+texta_anonymizer.egg-info/requires.txt
+texta_anonymizer.egg-info/top_level.txt
+texta_anonymizer/extractors/name_extractor.py
