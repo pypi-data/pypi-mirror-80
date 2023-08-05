@@ -1,0 +1,11 @@
+pyzmq
+protobuf
+machinetalk-protobuf
+fysom
+zeroconf
+
+[dev]
+pytest
+pytest-mock
+pytest-pep8
+pytest-cov
