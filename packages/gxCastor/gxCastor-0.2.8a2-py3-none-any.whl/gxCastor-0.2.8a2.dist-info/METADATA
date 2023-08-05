@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: gxCastor
+Version: 0.2.8a2
+Summary: Simple file analyzer
+Home-page: UNKNOWN
+Author: gawainx
+Author-email: liangyi@bupt.edu.cn
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3.8
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+Requires-Dist: typer
+Requires-Dist: rich
+Requires-Dist: pptree
+Requires-Dist: toml
+
+UNKNOWN
+
+
