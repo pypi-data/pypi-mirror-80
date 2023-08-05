@@ -1,0 +1,3 @@
+[console_scripts]
+dac = DjangoAppCenter.cli:entry
+

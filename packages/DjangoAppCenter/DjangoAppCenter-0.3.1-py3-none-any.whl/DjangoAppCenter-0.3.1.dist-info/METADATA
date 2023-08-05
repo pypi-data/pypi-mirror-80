@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: DjangoAppCenter
+Version: 0.3.1
+Summary: Django Apps Container with powerful admin.
+Home-page: http://example.com
+Author: singein
+Author-email: singein@outlook.com
+License: MIT
+Platform: UNKNOWN
+Requires-Dist: docutils (==0.16)
+Requires-Dist: django-cors-headers (==3.3.0)
+Requires-Dist: django (==3.0.2)
+Requires-Dist: djangorestframework (==3.11.0)
+Requires-Dist: django-filter (==2.2.0)
+Requires-Dist: fire
+Requires-Dist: pypinyin (==0.37.0)
+Requires-Dist: uwsgi
+
+DjangoAppCenter
+
+
+
