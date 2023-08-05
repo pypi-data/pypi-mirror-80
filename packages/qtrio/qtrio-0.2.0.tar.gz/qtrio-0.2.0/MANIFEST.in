@@ -1,0 +1,4 @@
+include README.rst LICENSE* CODE_OF_CONDUCT* CONTRIBUTING*
+include .coveragerc
+recursive-include docs *
+prune docs/build

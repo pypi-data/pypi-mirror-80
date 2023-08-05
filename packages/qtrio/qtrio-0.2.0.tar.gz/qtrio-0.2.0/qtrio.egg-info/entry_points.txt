@@ -1,0 +1,3 @@
+[console_scripts]
+qtrio = qtrio._cli:cli
+
