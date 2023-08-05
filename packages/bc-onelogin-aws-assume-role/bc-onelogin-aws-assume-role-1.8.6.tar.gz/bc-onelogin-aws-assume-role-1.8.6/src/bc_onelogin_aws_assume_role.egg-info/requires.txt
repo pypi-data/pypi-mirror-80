@@ -1,0 +1,10 @@
+boto3>=1.14.63
+onelogin>=1.9.0
+pyyaml
+lxml
+
+[test]
+coverage<6,>=3
+pylint<3,>=1
+pep8<2,>=1
+pyflakes<3,>=1
