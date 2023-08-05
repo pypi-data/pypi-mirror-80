@@ -1,0 +1,38 @@
+Metadata-Version: 2.1
+Name: panda-logger
+Version: 0.2
+Summary: A loguru instance init by toml file
+Home-page: UNKNOWN
+Author: daiming
+Author-email: ming.dai@xiongmaols.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Requires-Python: >=3.5
+Description-Content-Type: text/markdown
+Requires-Dist: loguru (>=0.5.1)
+Requires-Dist: dynaconf (>=3.1.0)
+
+# Title
+
+panda-logger
+A loguru instance init by toml file
+
+## Install
+
+pip install logger-panda
+
+## Usage
+
+config log.tmol
+
+## Contributing
+
+ming.dai@xiongmaols.com
+
+## License
+
+MIT License
+
+
