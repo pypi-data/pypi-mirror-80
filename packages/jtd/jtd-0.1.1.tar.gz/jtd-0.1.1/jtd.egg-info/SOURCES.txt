@@ -1,0 +1,13 @@
+README.md
+setup.py
+jtd/__init__.py
+jtd/schema.py
+jtd/validate.py
+jtd.egg-info/PKG-INFO
+jtd.egg-info/SOURCES.txt
+jtd.egg-info/dependency_links.txt
+jtd.egg-info/requires.txt
+jtd.egg-info/top_level.txt
+jtd/tests/__init__.py
+jtd/tests/test_schema.py
+jtd/tests/test_validate.py
