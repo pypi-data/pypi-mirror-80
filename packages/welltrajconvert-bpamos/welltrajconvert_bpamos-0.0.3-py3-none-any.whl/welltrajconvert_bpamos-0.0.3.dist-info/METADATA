@@ -1,0 +1,31 @@
+Metadata-Version: 2.1
+Name: welltrajconvert-bpamos
+Version: 0.0.3
+Summary: Well Trajectory Conversion
+Home-page: https://github.com/bpamos/welltrajconvert
+Author: Brandon Amos
+Author-email: bpamosconsulting@gmail.com
+License: MIT License
+Keywords: directional,directional survey,wellbore,trajectory,minimum curvature
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Operating System :: Unix
+Classifier: Operating System :: MacOS
+Classifier: Operating System :: Microsoft :: Windows
+Requires-Python: >=3.7
+Requires-Dist: numpy (>=1.9)
+Requires-Dist: scipy (>=1.4.1)
+Requires-Dist: utm (>=0.5.0)
+Requires-Dist: pyproj (>=2.6.1)
+Requires-Dist: pandas (>=1.0.4)
+Requires-Dist: dataclasses (>=0.6)
+Requires-Dist: matplotlib (>=3.2.1)
+Provides-Extra: doc
+Requires-Dist: sphinx (<3,>=2.4) ; extra == 'doc'
+Requires-Dist: jupyter (>=1) ; extra == 'doc'
+Requires-Dist: nbsphinx (>=0.4) ; extra == 'doc'
+
+UNKNOWN
+
+
