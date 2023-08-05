@@ -1,0 +1,10 @@
+[console_scripts]
+borgsize = yeonji.borgsize:main
+flacco = yeonji.flacco:main
+fsclean = yeonji.fsclean:main
+me2dlc = yeonji.me2dlc:main
+pypi = yeonji.pypi:main
+ytd = yeonji.ytd:main
+ytdlj = yeonji.ytdlj:main
+yttag = yeonji.yttag:main
+
