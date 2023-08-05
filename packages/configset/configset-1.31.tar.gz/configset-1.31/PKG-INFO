@@ -1,0 +1,76 @@
+Metadata-Version: 1.2
+Name: configset
+Version: 1.31
+Summary: simple write config/setting, wrap of configparser
+Home-page: https://bitbucket.org/licface/configset
+Author: cumulus13 Team
+Author-email: cumulus13@gmail.com
+License: BSD
+Description-Content-Type: text/markdown
+Description: configset
+        ==================
+        
+        simple write config/setting, wrap of configparser
+        
+        
+        Installing
+        -----------
+        
+        Install and update using `pip`_:
+        
+        .. code-block:: text
+        
+            $ pip install configset
+        
+        configset supports Python 2 and newer, Python 3 and newer, and PyPy.
+        
+        .. _pip: https://pip.pypa.io/en/stable/quickstart/
+        
+        
+        Example
+        ----------------
+        
+        What does it look like? Here is an example of a simple configset program:
+        
+        .. code-block:: python
+        
+            import configset
+            
+            class pcloud(object):
+        
+                def __init__(self, **kwargs):
+                    ...
+                    self.CONFIG.configname = os.path.join(os.path.dirname(__file__), 'config.ini')
+                    self.CONFIG = configset.configset(self.CONFIG.configname)
+                    ...
+        
+                    self.username = self.CONFIG.read_config('AUTH', 'username', "admin")
+                    self.password = self.CONFIG.read_config('AUTH', 'password', "12345678")
+                    ...
+        
+        Support
+        ---------
+        
+        *   Python 2.7 +
+        *   Windows, Linux
+        
+        Links
+        ------
+        
+        *   License: `BSD <https://bitbucket.org/licface/configset/src/default/LICENSE.rst>`_
+        *   Code: https://bitbucket.org/licface/configset
+        *   Issue tracker: https://bitbucket.org/licface/configset/issues
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Requires-Python: >=2.7
