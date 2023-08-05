@@ -1,0 +1,15 @@
+MANIFEST.in
+README.md
+config.json
+requirements.txt
+setup.cfg
+setup.py
+collector/__init__.py
+collector/command_line.py
+collector/github.py
+collector/report.py
+repositories_collector.egg-info/PKG-INFO
+repositories_collector.egg-info/SOURCES.txt
+repositories_collector.egg-info/dependency_links.txt
+repositories_collector.egg-info/entry_points.txt
+repositories_collector.egg-info/top_level.txt
