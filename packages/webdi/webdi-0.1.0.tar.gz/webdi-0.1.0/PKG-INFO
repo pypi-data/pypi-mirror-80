@@ -1,0 +1,42 @@
+Metadata-Version: 2.1
+Name: webdi
+Version: 0.1.0
+Summary: A library containing a simple dependency injection container that is optimized for web apps.
+Home-page: https://gitlab.com/tcucco/web-di
+Author: Trey Cucco
+Author-email: fcucco@gmail.com
+License: MIT
+Download-URL: https://gitlab.com/tcucco/web-di/-/archive/master/web-di-master.tar.gz
+Description: # A Simple Dependency Injection Container for Web Apps
+        
+        This module contains a simple dependency injection container that is optimized
+        for web apps. You define relationships once, and then each request (probably
+        via middleware) receives a container that references the once-defined
+        definition to build memoized services for just that request.
+        
+        Please note: documentation on this project is currently not provided
+        
+        ## Interacting With the Project
+        
+        `make` is the best way to interact with the project.
+        
+        ### Setting Up:
+        
+            make install
+        
+        ### Running Tests:
+        
+            make test
+        
+        ### Running Coverage
+        
+            make coverage
+        
+Platform: any
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3.8
+Description-Content-Type: text/markdown
