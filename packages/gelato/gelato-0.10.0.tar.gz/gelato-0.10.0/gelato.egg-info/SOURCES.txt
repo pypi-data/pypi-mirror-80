@@ -1,0 +1,16 @@
+MANIFEST.in
+README.rst
+setup.py
+gelato/__init__.py
+gelato/expr.py
+gelato/glt.py
+gelato/utils.py
+gelato/version.py
+gelato.egg-info/PKG-INFO
+gelato.egg-info/SOURCES.txt
+gelato.egg-info/dependency_links.txt
+gelato.egg-info/requires.txt
+gelato.egg-info/top_level.txt
+gelato.egg-info/zip-safe
+gelato/printing/__init__.py
+gelato/printing/latex.py
