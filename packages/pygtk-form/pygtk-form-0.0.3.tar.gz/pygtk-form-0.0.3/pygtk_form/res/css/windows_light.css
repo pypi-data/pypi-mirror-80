@@ -1,0 +1,164 @@
+.pygtk_form_windows_light {
+    background: #fff;
+}
+
+.pygtk_form_windows_light box.container {
+    padding: 15px;
+}
+
+.pygtk_form_windows_light box.container>label {
+    color: #0d0d0d;
+}
+.pygtk_form_windows_light box.container>label:not(.form_title) {
+    margin-top: 15px;
+}
+
+.pygtk_form_windows_light box.validation_container {
+    padding: 10px;
+    padding-top: 5px;
+}
+
+.pygtk_form_windows_light label.form_title {
+	font-weight: bold;
+	font-size: 1.3em;
+    color: #000;
+    margin-top: 5px;
+}
+
+.pygtk_form_windows_light entry {
+    background: #fff;
+    border-color: #2e2e2e;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 0;
+    color: #0d0d0d;
+	caret-color: #0d0d0d;
+}
+
+.pygtk_form_windows_light entry selection {
+    color: #fff;
+    background: #0095ff;
+}
+
+.pygtk_form_windows_light entry:focus {
+    border-color: #0095ff;
+}
+
+.pygtk_form_windows_light entry:active {
+    outline: none;
+}
+
+/* BUTTON */
+
+/* primary */
+.pygtk_form_windows_light button {
+	background: #cccccc;
+	border-width: 2px;
+	border-radius: 3px;
+	border-color: #cccccc;
+}
+
+.pygtk_form_windows_light button label {
+	color: #000;
+}
+
+.pygtk_form_windows_light button:hover {
+	border-color: #808080;
+	border-style: solid;
+	border-width: 2px;
+}
+
+/*
+.pygtk_form_windows_light button:focus:not(:active) {
+	outline-width: 2px;
+	outline-color: #000;
+}
+*/
+
+.pygtk_form_windows_light button:active {
+	outline: none;
+	border-color: #999;
+	background: #999;
+}
+
+/* accent */
+.pygtk_form_windows_light button.accent {
+	background: #0073cf;
+	border-width: 2px;
+	border-radius: 3px;
+	border-color: #0073cf;
+}
+
+.pygtk_form_windows_light button.accent label {
+	color: #fff;
+}
+
+.pygtk_form_windows_light button.accent:hover {
+	border-color: #004881;
+	border-style: solid;
+	border-width: 2px;
+}
+
+/*
+.pygtk_form_windows_light button.accent:focus:not(:active) {
+	outline-width: 2px;
+	outline-color: #000;
+}
+*/
+
+.pygtk_form_windows_light button.accent:active {
+	outline: none;
+	border-color: #559ce4;
+	background: #559ce4;
+}
+
+/* toggle */
+.pygtk_form_windows_light button.toggle:checked {
+	background: #0073cf;
+	border-width: 2px;
+	border-radius: 3px;
+	border-color: #0073cf;
+}
+
+.pygtk_form_windows_light button.toggle:checked label {
+	color: #fff;
+}
+
+.pygtk_form_windows_light button.toggle:checked:hover {
+	border-color: #004881;
+	border-style: solid;
+	border-width: 2px;
+}
+
+.pygtk_form_windows_light button.toggle:checked:active {
+	border-color: #559ce4;
+	background: #559ce4;
+	border-style: solid;
+	border-width: 2px;
+}
+
+/* COMBOBOX */
+.pygtk_form_windows_light combobox button {
+	background: #fff;
+	color: #000;
+	border-color: #000;
+	outline-color: #000;
+}
+
+.pygtk_form_windows_light combobox button:hover {
+	border-color: #0073cf;
+	outline-color: #0073cf;
+}
+
+.pygtk_form_windows_light combobox window menuitem:hover {
+	background: #ccc;
+}
+
+.pygtk_form_windows_light combobox window menuitem:hover cellview {
+	background: #ccc;
+}
+
+.pygtk_form_windows_light combobox window * {
+	background: #fff;
+	color: #000;
+}
