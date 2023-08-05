@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: dfio
+Version: 0.0.6
+Summary: UNKNOWN
+Home-page: UNKNOWN
+Author: Jim Barlow
+Author-email: jim@beepbeep.technology
+License: Apache License 2.0
+Download-URL: https://github.com/datafunctions/dfio/archive/0.0.6.tar.gz
+Description: # dfio `(datafunctions input/output)`
+        
+        This package simplifies a number of core functions associated with building simple, scalable SQL-based data transformation pipelines.
+        
+        See [datafunctions.github.io](https://datafunctions.github.io) for full documentation.
+Platform: UNKNOWN
+Description-Content-Type: text/markdown

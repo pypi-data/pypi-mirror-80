@@ -1,0 +1,15 @@
+README.md
+setup.py
+dfio/__init__.py
+dfio/bigquery.py
+dfio/cloud_translation.py
+dfio/gcs.py
+dfio/natural_language.py
+dfio/testing.py
+dfio/utilities.py
+dfio.egg-info/PKG-INFO
+dfio.egg-info/SOURCES.txt
+dfio.egg-info/dependency_links.txt
+dfio.egg-info/not-zip-safe
+dfio.egg-info/requires.txt
+dfio.egg-info/top_level.txt
