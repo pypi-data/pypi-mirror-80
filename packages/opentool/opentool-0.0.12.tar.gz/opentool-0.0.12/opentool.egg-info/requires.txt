@@ -1,0 +1,7 @@
+torch>=1.6.0
+torchvision>=0.7.0
+numpy>=1.19.1
+tensorboardX>=2.1
+easydict>=1.9
+addict>=2.2.1
+yapf>=0.30.0
