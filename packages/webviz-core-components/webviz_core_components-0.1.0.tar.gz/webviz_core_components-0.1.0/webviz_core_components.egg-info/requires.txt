@@ -1,0 +1,10 @@
+dash>=1.6
+
+[dependencies]
+dash>=1.6
+
+[tests]
+selenium
+pylint
+black
+bandit
