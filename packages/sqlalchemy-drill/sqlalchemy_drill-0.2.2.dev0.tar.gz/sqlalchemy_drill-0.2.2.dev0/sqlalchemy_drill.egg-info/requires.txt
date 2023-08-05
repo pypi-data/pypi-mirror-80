@@ -1,0 +1,11 @@
+requests
+numpy
+pandas
+sqlalchemy
+
+[jdbc]
+JPype1==0.6.3
+JayDeBeApi
+
+[odbc]
+pyodbc
