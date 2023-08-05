@@ -1,0 +1,15 @@
+.coveragerc
+.gitignore
+LICENSE
+README.rst
+requirements.txt
+setup.py
+tox.ini
+.github/workflows/pythonpackage.yml
+datarunner/__init__.py
+datarunner.egg-info/PKG-INFO
+datarunner.egg-info/SOURCES.txt
+datarunner.egg-info/dependency_links.txt
+datarunner.egg-info/top_level.txt
+docs/CHANGELOG.rst
+tests/test_datarunner.py
