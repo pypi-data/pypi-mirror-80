@@ -1,0 +1,12 @@
+MANIFEST.in
+README.md
+setup.py
+pq_kitchen/__init__.py
+pq_kitchen/__main__.py
+pq_kitchen/templates/readme.html
+pqnha_cozinha.egg-info/PKG-INFO
+pqnha_cozinha.egg-info/SOURCES.txt
+pqnha_cozinha.egg-info/dependency_links.txt
+pqnha_cozinha.egg-info/entry_points.txt
+pqnha_cozinha.egg-info/requires.txt
+pqnha_cozinha.egg-info/top_level.txt

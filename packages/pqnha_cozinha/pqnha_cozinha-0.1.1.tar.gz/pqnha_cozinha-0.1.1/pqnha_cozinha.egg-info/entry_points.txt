@@ -1,0 +1,3 @@
+[console_scripts]
+pq_kitchen = pq_kitchen.__main__:main
+
