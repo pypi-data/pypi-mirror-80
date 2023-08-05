@@ -1,0 +1,34 @@
+Metadata-Version: 2.1
+Name: icevision
+Version: 0.1.3.post2
+Summary: Agnostic Computer Vision Frameword
+License: Apache-2.0
+Author: Lucas Goulart Vazquez
+Author-email: lgvaz@airctic.com
+Requires-Python: >=3.6.1,<4.0.0
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Provides-Extra: all
+Provides-Extra: fastai
+Provides-Extra: inference
+Provides-Extra: lightning
+Provides-Extra: models
+Provides-Extra: training
+Requires-Dist: albumentations (>=0.4.6,<0.5.0)
+Requires-Dist: dataclasses (==0.6); extra == "all" or extra == "training" or extra == "inference" or extra == "models"
+Requires-Dist: effdet (>=0.1.6,<0.2.0); extra == "all" or extra == "training" or extra == "inference" or extra == "models"
+Requires-Dist: fastai2 (>=0.0.18,<0.0.26); extra == "all" or extra == "training" or extra == "fastai"
+Requires-Dist: fastcore (<0.1.33)
+Requires-Dist: ipykernel (>=5.3.4,<6.0.0); extra == "all" or extra == "training" or extra == "fastai"
+Requires-Dist: matplotlib (>=3.3.2,<4.0.0)
+Requires-Dist: omegaconf (>=2.0.0,<3.0.0); extra == "all" or extra == "training" or extra == "inference" or extra == "models"
+Requires-Dist: opencv-python (>=4.4.0,<5.0.0)
+Requires-Dist: pycocotools (>=2.0.2,<3.0.0)
+Requires-Dist: pytorch-lightning (>=0.9,<0.10); extra == "all" or extra == "training" or extra == "lightning"
+Requires-Dist: requests (>=2.24.0,<3.0.0)
+Requires-Dist: torch (>=1.6.0,<1.7.0)
+Requires-Dist: torchvision (>=0.7.0,<0.8.0)
+Requires-Dist: tqdm (>=4.49.0,<5.0.0)
