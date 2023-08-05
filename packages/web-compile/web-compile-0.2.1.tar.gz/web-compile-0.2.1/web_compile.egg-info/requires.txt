@@ -1,0 +1,10 @@
+click~=7.1.2
+jinja2~=2.11.2
+libsass~=0.20.1
+gitpython~=3.1.8
+pyyaml
+rjsmin~=1.1.0
+toml
+
+[testing]
+pytest~=6.0.1
