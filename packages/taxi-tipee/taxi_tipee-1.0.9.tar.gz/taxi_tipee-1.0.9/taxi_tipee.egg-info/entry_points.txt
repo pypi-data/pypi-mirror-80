@@ -1,0 +1,3 @@
+[taxi.backends]
+tipee = taxi_tipee.backend:TipeeBackend
+
