@@ -1,0 +1,10 @@
+honeybee-radiance==1.27.10
+honeybee-energy==1.57.5
+honeybee-energy-standards==2.0.2
+lbt-ladybug==0.25.21
+
+[cli]
+click==7.1.2
+
+[cli:python_version >= "3.6"]
+honeybee-schema==1.38.3
