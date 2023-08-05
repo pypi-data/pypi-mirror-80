@@ -1,0 +1,3 @@
+[console_scripts]
+ppt2pdf = ppt2pdf.scripts.cli:cli
+
