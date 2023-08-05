@@ -1,0 +1,70 @@
+Metadata-Version: 2.1
+Name: anchors
+Version: 0.1.0
+Summary: Python package for calculating scores from ancnchor or modifier screens
+Home-page: https://github.com/gpp-rnd/anchors
+Author: Peter Carl DeWeirdt
+Author-email: petedeweirdt@gmail.com
+License: MIT license
+Keywords: anchors
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Python: >=3.5
+
+=======
+anchors
+=======
+
+
+.. image:: https://img.shields.io/pypi/v/anchors.svg
+        :target: https://pypi.python.org/pypi/anchors
+
+.. image:: https://img.shields.io/travis/gpp-rnd/anchors.svg
+        :target: https://travis-ci.com/gpp-rnd/anchors
+
+.. image:: https://readthedocs.org/projects/anchors/badge/?version=latest
+        :target: https://anchors.readthedocs.io/en/latest/?badge=latest
+        :alt: Documentation Status
+
+
+
+
+Python package for calculating scores from ancnchor or modifier screens
+
+
+* Free software: MIT license
+* Documentation: https://anchors.readthedocs.io.
+
+
+Features
+--------
+
+* TODO
+
+Credits
+-------
+
+This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
+
+.. _Cookiecutter: https://github.com/audreyr/cookiecutter
+.. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
+
+
+=======
+History
+=======
+
+0.1.0 (2020-09-21)
+------------------
+
+* First release on PyPI.
+
+
