@@ -1,0 +1,69 @@
+{% extends "helpme/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block help_content %}
+{% if admin %}
+<h1 class="my-2">Manage {{team.name}} Team</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <input type="submit" value="Update" class="btn btn-primary font-weight-bold py-2 px-4 mt-3 rounded-pill">
+</form>
+<p>
+    <b>Handles Site(s): </b>
+    <ul class="list-group">
+	{% for site in team.sites.all %}
+	<li class="list-group-item">
+	    {{ site }}
+	</li>
+	{% endfor %}
+    </ul>
+</p>
+{% else %}
+<h1 class="my-2">{{team.name}}</h1>
+<p>
+    <b>Site(s): </b>
+    <ul class="list-group">
+    {% for site in team.sites.all %}
+        <li class="list-group-item">
+            {{ site }}
+        </li>
+    {% endfor %}
+    </ul>
+</p>
+<p>
+  <b>Handles Categories: </b>
+  {{ team.categories }}
+</p>
+<p>
+    <b>Members: </b>
+    <ul class="list-group">
+    {% for member in team.members.all %}
+        <li class="list-group-item">
+            {{member}}
+        </li>
+    {% endfor %}
+    </ul>
+</p>
+{% endif %}
+<div class="row justify-content-center mb-2">
+  <a class="text-light" href="{% url 'helpme:team-list' %}">
+    <button class="btn btn-primary font-weight-bold px-4 py-2 rounded-pill">
+      Return to Teams Page
+    </button>
+  </a>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<!-- select all sites if global_team is checked; unselect them if it is unchecked -->
+<script>
+  $("#id_global_team").change(function() {
+    checkboxes = document.getElementsByName('sites');
+    global = document.getElementById('id_global_team');
+    for(var i=0, n=checkboxes.length;i<n;i++) {
+      checkboxes[i].checked = global.checked;
+    }
+  });
+</script>
+{% endblock %}
