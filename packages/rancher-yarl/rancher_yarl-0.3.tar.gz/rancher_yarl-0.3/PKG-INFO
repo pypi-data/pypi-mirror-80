@@ -1,0 +1,20 @@
+Metadata-Version: 1.1
+Name: rancher_yarl
+Version: 0.3
+Summary: Standalone rancher library, with API keys control
+Home-page: https://github.com/memdealer/YARL-YetAnotherRancherLibrary
+Author: gusto
+Author-email: shivering.fortune@gmail.com
+License: UNKNOWN
+Download-URL: https://github.com/memdealer/YARL-YetAnotherRancherLibrary/archive/0.1alpha.tar.gz
+Description: TEST
+Keywords: rancher,rancher api,rancher token
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
