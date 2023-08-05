@@ -1,0 +1,32 @@
+
+
+
+decorator==4.4.2
+
+docker==4.2.0
+urllib3==1.25.8
+requests==2.23.0
+PyYAML==5.3
+boto3==1.12.17
+
+psutil==5.7.0
+
+
+ansi2html==1.5.2
+six==1.14.0
+
+termcolor==1.1.0
+
+dataclasses==0.6; python_version < '3.7'
+# note already duckietown-shell imports this but we want to make sure it's ok
+duckietown-challenges-daffy
+duckietown-tokens-daffy
+
+ipfsapi==0.4.4
+# for testing
+comptests-z6
+
+timeout-decorator==0.4.1
+pipdeptree==0.13.2
+
+whichcraft==0.6.1
