@@ -1,0 +1,3 @@
+[console_scripts]
+nabu = nabu.__main__:run
+
