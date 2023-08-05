@@ -1,0 +1,85 @@
+Metadata-Version: 2.1
+Name: keyedtensor
+Version: 0.1.0
+Summary: keyed torch tensors
+Home-page: https://github.com/leaprovenzano/keyedtensor
+Author: Lea Provenzano
+Author-email: leaprovenzano@gmail.com
+License: MIT license
+Description: ===========
+        keyedtensor
+        ===========
+        
+        
+        .. image:: https://img.shields.io/pypi/v/keyedtensor.svg
+            :target: https://pypi.python.org/pypi/keyedtensor
+            :alt: pypi version
+        
+        .. image:: https://img.shields.io/travis/leaprovenzano/keyedtensor.svg
+            :target: https://travis-ci.com/leaprovenzano/keyedtensor
+            :alt: travis build
+        
+        .. image:: https://readthedocs.org/projects/keyedtensor/badge/?version=latest
+            :target: https://keyedtensor.readthedocs.io/en/latest/?badge=latest
+            :alt: documentation status
+        
+        .. image:: https://codecov.io/gh/leaprovenzano/keyedtensor/branch/master/graph/badge.svg
+            :target: https://codecov.io/gh/leaprovenzano/keyedtensor
+            :alt: coverage
+        
+        .. image:: https://img.shields.io/badge/hypothesis-tested-brightgreen.svg
+            :target: https://hypothesis.readthedocs.io
+            :alt: hypothesis tested
+        
+        ----
+        
+        
+        * Free software: MIT license
+        
+        * Documentation: `docs`_
+        * Supported Python Versions: >=3.7
+        
+        ----
+        
+        
+        keyed torch tensors
+        
+        
+        
+        Getting Started:
+        ~~~~~~~~~~~~~~~~
+        
+        Install the latest stable version with pip::
+        
+           $ pip install keyedtensor
+        
+        
+        **Checkout the docs**:
+        
+        It's best to checkout the `docs`_. There you'll find detailed
+        documentation of keyedtensor}'s features and lots of examples of
+        how to use them.
+        
+        What's is it?
+        ~~~~~~~~~~~~~
+        
+        * TODO
+        
+        Principles:
+        ~~~~~~~~~~~
+        
+        * TODO
+        
+        .. _docs: https://keyedtensor.readthedocs.io
+        
+Keywords: keyedtensor
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3 :: Only
+Description-Content-Type: text/x-rst
