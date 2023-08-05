@@ -1,0 +1,26 @@
+Metadata-Version: 2.1
+Name: pygments-style-dracula
+Version: 1.2.5.1
+Summary: Pygments version of the dracula theme, based on dracula/pygments.
+Home-page: https://draculatheme.com/pygments
+Author: Rob G, Chris Bracco, Zeno Rocha
+Author-email: wowmotty@gmail.com, chris@cbracco.me, hi@zenorocha.com
+Maintainer: GinShio
+Maintainer-email: ginshio78@gmail.com
+License: MIT
+Keywords: pygments,style,dracula
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Plugins
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Dist: pygments (>=1.5)
+
+UNKNOWN
+
+
