@@ -1,0 +1,13 @@
+LICENSE.txt
+MANIFEST.in
+README.md
+ois.py
+setup.py
+ois.egg-info/PKG-INFO
+ois.egg-info/SOURCES.txt
+ois.egg-info/dependency_links.txt
+ois.egg-info/requires.txt
+ois.egg-info/top_level.txt
+src/oistools.c
+src/oistools.h
+src/varconv.c
