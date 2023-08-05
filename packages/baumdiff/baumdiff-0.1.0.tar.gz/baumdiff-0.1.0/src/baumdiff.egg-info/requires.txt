@@ -1,0 +1,6 @@
+attrs>=20
+
+[tests]
+pytest
+pytest-cov
+coverage
