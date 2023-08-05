@@ -1,0 +1,14 @@
+LICENSE
+MANIFEST.in
+README.md
+setup.py
+./cioseq/__init__.py
+./cioseq/sequence.py
+./tests/__init__.py
+./tests/test_sequence.py
+cioseq.egg-info/PKG-INFO
+cioseq.egg-info/SOURCES.txt
+cioseq.egg-info/dependency_links.txt
+cioseq.egg-info/not-zip-safe
+cioseq.egg-info/requires.txt
+cioseq.egg-info/top_level.txt
