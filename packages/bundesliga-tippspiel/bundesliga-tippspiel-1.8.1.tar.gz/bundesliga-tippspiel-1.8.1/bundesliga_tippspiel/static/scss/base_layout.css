@@ -1,0 +1,2 @@
+body{display:flex;min-height:100vh;flex-direction:column;padding:0;background:url(../images/background.jpg) repeat #49c14e}.main-container{flex:1;margin-bottom:0 !important;display:flex;min-width:70%}.main-content{padding:1rem;flex:1;background:#f8f9fa}
+/*# sourceMappingURL=base_layout.css.map */
