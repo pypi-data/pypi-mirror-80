@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: pandora-python
+Version: 0.0.1
+Summary: Pandora Python
+Home-page: UNKNOWN
+Author: Akash Kumar
+Author-email: akashkumar0216@gmail.com
+License: GNU AGPLv3
+Platform: UNKNOWN
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: spacy
+Requires-Dist: nltk
+Requires-Dist: matplotlib
+Requires-Dist: scipy
+Requires-Dist: opencv-python
+Requires-Dist: scikit-learn
+
+UNKNOWN
+
+
