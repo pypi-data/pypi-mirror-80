@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: codetags
+Version: 0.1.1
+Summary: A simple feature toggle utility for Python Molurus (https://molurus.io/)
+Home-page: https://github.com/molurusio/codetags
+Author: Molurus team
+Author-email: contact@molurus.io
+License: MIT
+Download-URL: https://github.com/molurusio/codetags/downloads
+Keywords: molurus,feature-toggle
+Platform: UNKNOWN
+Requires-Dist: semver (==2.8.1)
+
+UNKNOWN
+
+
