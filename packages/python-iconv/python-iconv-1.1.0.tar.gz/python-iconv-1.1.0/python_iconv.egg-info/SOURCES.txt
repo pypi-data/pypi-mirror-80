@@ -1,0 +1,12 @@
+.gitignore
+LICENSE
+README.md
+iconvcodec.py
+iconvmodule.c
+setup.py
+test_iconv.py
+test_iconvcodec.py
+python_iconv.egg-info/PKG-INFO
+python_iconv.egg-info/SOURCES.txt
+python_iconv.egg-info/dependency_links.txt
+python_iconv.egg-info/top_level.txt
