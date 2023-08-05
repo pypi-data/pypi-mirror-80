@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: DataWattch
+Version: 0.2.8.7
+Summary: Driver for custom hardware for domoticz
+Home-page: https://test.pypi.org/project/DataWattch
+Author: Daan Driessen
+Author-email: daan@ascos.nl
+License: MIT
+Description: # Example Package
+        
+        This is a testing package for Datawattch
+        
+        For usage run python -m scheduler
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: Unix
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
