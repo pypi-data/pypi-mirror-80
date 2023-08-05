@@ -1,0 +1,3 @@
+[console_scripts]
+domination = domination.__main__:main
+
