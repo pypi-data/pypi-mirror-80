@@ -1,0 +1,4 @@
+Django>=2.2.8
+pika==1.1.0
+pdfkit==0.6.1
+ip2geotools==0.1.5
