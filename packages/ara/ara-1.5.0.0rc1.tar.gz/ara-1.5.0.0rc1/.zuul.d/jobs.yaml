@@ -1,0 +1,175 @@
+- job:
+    name: ara-tox-py3
+    parent: tox
+    nodeset: ubuntu-bionic
+    vars:
+      tox_envlist: py3
+
+- job:
+    name: ara-tox-linters
+    parent: tox
+    nodeset: ubuntu-bionic
+    vars:
+      tox_envlist: linters
+
+- job:
+    name: ara-upload-git-mirror
+    parent: upload-git-mirror
+    description: Mirrors recordsansible/ara to ansible-community/ara
+    allowed-projects: recordsansible/ara
+    vars:
+      git_mirror_repository: ansible-community/ara
+    secrets:
+      - name: git_mirror_credentials
+        secret: ara_git_mirror_credentials
+        pass-to-parent: true
+
+- job:
+    name: ara-integration-base
+    parent: base
+    files:
+      - ara/*
+      - playbooks/*
+      - roles/*
+      - tests/*
+      - .zuul.d/*
+      - manage.py
+      - setup.py
+      - setup.cfg
+      - requirements.txt
+      - test-requirements.txt
+    vars:
+      ara_api_source: "{{ ansible_user_dir }}/src/opendev.org/recordsansible/ara"
+      ara_tests_ansible_name: "{{ ansible_user_dir }}/src/github.com/ansible/ansible"
+      ara_tests_ansible_version: null
+      ara_api_secure_logging: false
+    post-run: tests/zuul_post_logs.yaml
+
+- job:
+    name: ara-api-database-backends
+    parent: ara-integration-base
+    required-projects:
+      - name: github.com/ansible/ansible
+        override-checkout: stable-2.9
+    pre-run: tests/zuul_pre_multinode_networking.yaml
+
+- job:
+    name: ara-api-postgresql
+    parent: ara-api-database-backends
+    nodeset: ara-database-server-multinode
+    description: |
+      Deploys the ARA API server on Ubuntu 18.04, Fedora 32 as well as CentOS 8
+      and tests it against a central PostgreSQL server installed on CentOS 8.
+      The job exercises the ara_api Ansible role, the ARA Ansible plugins, the
+      ARA API clients as well as the API itself.
+    run: tests/with_postgresql.yaml
+    post-run: tests/zuul_post_with_postgresql.yaml
+
+- job:
+    name: ara-api-mysql
+    parent: ara-api-database-backends
+    nodeset: ara-database-server-multinode
+    description: |
+      Deploys the ARA API server on Ubuntu 18.04, Fedora 32 as well as CentOS 8
+      and tests it against a central MySQL server installed on CentOS 8.
+      The job exercises the ara_api Ansible role, the ARA Ansible plugins, the
+      ARA API clients as well as the API itself.
+    run: tests/with_mysql.yaml
+    post-run: tests/zuul_post_with_mysql.yaml
+
+- job:
+    name: ara-api-distributed-sqlite
+    parent: ara-api-database-backends
+    nodeset: ara-multinode
+    description: |
+      Deploys the ARA API server on Ubuntu 18.04, Fedora 32 as well as CentOS 8
+      and tests it using the distributed sqlite database backend.
+    run: tests/with_distributed_sqlite.yaml
+
+# TODO: The job should build a package from current source and test that package
+# instead of the package in the stable distribution.
+- job:
+    name: ara-api-fedora-packages
+    parent: ara-integration-base
+    nodeset: ara-fedora-32
+    description: |
+      Deploys the ARA API server on Fedora 32 using distribution packages for
+      ARA and Ansible.
+    run: tests/with_fedora_packages.yaml
+
+- job:
+    name: ara-ansible-integration-base
+    parent: ara-integration-base
+    nodeset: ara-fedora-32
+    vars:
+      ara_api_source: "{{ ansible_user_dir }}/src/opendev.org/recordsansible/ara"
+    run: tests/basic.yaml
+
+- job:
+    name: ara-basic-ansible-devel
+    parent: ara-ansible-integration-base
+    description: |
+      Runs basic integration tests through the equivalent of "tox -e ansible-integration" with Ansible devel.
+    required-projects:
+      - name: github.com/ansible/ansible
+        override-checkout: devel
+
+- job:
+    name: ara-basic-ansible-2.8
+    parent: ara-ansible-integration-base
+    description: |
+      Runs basic integration tests through the equivalent of "tox -e ansible-integration" with Ansible 2.8.
+    required-projects:
+      - name: github.com/ansible/ansible
+        override-checkout: stable-2.8
+
+- job:
+    name: ara-basic-ansible-2.7
+    parent: ara-ansible-integration-base
+    vars:
+      # Not required for 2.8 and above
+      ansible_python_interpreter: /usr/bin/python3
+    description: |
+      Runs basic integration tests through the equivalent of "tox -e ansible-integration" with Ansible 2.7.
+    required-projects:
+      - name: github.com/ansible/ansible
+        override-checkout: stable-2.7
+
+- job:
+    name: ara-demo
+    parent: ara-ansible-integration-base
+    description: |
+      Runs basic integration tests through the equivalent of "tox -e ansible-integration" with Ansible 2.9 and sends
+      them to the live demo.
+    vars:
+      ara_api_client: http
+      ara_api_server: "https://api.demo.recordsansible.org"
+    required-projects:
+      - name: github.com/ansible/ansible
+        override-checkout: stable-2.9
+    secrets:
+      - name: ara_api_credentials
+        secret: ara_api_demo_credentials
+        pass-to-parent: true
+
+- job:
+    name: ara-container-images
+    parent: ara-integration-base
+    nodeset: ara-fedora-32
+    description: |
+      Builds ARA API container images with buildah and briefly tests them with podman.
+    run: tests/with_container_images.yaml
+
+- job:
+    name: ara-container-images-dockerhub
+    parent: ara-integration-base
+    nodeset: ara-fedora-32
+    description: |
+      Builds ARA API container images with buildah and briefly tests them with podman.
+      The resulting images are pushed to dockerhub if successful.
+    pre-run: tests/with_container_images.yaml
+    run: tests/zuul_publish_dockerhub.yaml
+    secrets:
+      - name: ara_dockerhub_credentials
+        secret: ara_dockerhub_credentials
+        pass-to-parent: true
