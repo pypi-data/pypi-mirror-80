@@ -1,0 +1,13 @@
+Metadata-Version: 2.1
+Name: mylib-mnemos
+Version: 0.1.0
+Summary: 
+Author: Gaëtan Pruvost
+Author-email: gaetan.pruvost@gmail.com
+Requires-Python: >=3.6,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: gensim (>=3.8.3,<4.0.0)
+Requires-Dist: pytest (>=6.0.2,<7.0.0)
