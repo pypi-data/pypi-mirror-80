@@ -1,0 +1,33 @@
+Metadata-Version: 2.1
+Name: sxcu
+Version: 0.1.0a0
+Summary: Python API wraper for sxcu.net
+License: Apache-2.0
+Author: Naveen M K
+Author-email: naveen@syrusdark.website
+Requires-Python: >=3.6,<4.0
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: importlib-metadata; python_version < "3.8"
+Requires-Dist: pytest (>=6.0.2,<7.0.0)
+Requires-Dist: requests (>=2.24.0,<3.0.0)
+Requires-Dist: tox (>=3.20.0,<4.0.0)
+Description-Content-Type: text/markdown
+
+[![PyPI Version](https://img.shields.io/pypi/v/sxcu)](https://pypi.org/project/scxu/)
+[![Python Versions](https://img.shields.io/pypi/pyversions/scxu)](https://pypi.org/project/scxu/)
+[![Python Wheel](https://img.shields.io/pypi/wheel/scxu)](https://pypi.org/project/scxu/)
+[![License](https://img.shields.io/badge/License-Apache2.0-green.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Code Style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Code Quality: flake8](https://img.shields.io/badge/code%20quality-flake8-000000.svg)](https://gitlab.com/pycqa/flake8)
+
+# SXCU
+Python API wraper for sxcu.net. Pretty much everything is explained in `doc strings` and soon I will create a tutorial on how to use it.
+
+## Contributing
+Please refer to [CONTRIBUTING.md](CONTRIBUTING.md) file for more information on how to
+contribute to this project.
+
