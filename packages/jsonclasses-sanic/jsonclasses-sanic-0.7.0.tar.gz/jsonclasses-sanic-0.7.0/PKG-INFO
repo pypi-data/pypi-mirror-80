@@ -1,0 +1,34 @@
+Metadata-Version: 2.1
+Name: jsonclasses-sanic
+Version: 0.7.0
+Summary: JSON Classes integration with sanic.
+Home-page: https://github.com/Wiosoft-Crafts/jsonclasses-sanic
+Author: Wiosoft Crafts
+Author-email: wiosoftvictor@163.com
+License: MIT
+Description: # JSON Classes Sanic
+        JSON Classes integration with Sanic.
+        
+        ## Prerequisites
+        
+        To use this package, you should have `jsonclasses` and `sanic` installed.
+        
+        ## Installation
+        
+        Install `jsonclasses-sanic` with `pip`.
+        
+        ```sh
+        pip install jsonclasses-sanic
+        ```
+        
+        ## Documentation
+        
+        Read on bla bla bla.
+        
+        ## License
+        
+        [MIT License](https://github.com/WiosoftCrafts/jsonclasses-sanic/blob/master/LICENSE)
+        
+Platform: UNKNOWN
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
