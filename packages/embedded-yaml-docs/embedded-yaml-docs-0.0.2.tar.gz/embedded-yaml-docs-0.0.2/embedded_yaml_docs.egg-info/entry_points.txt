@@ -1,0 +1,4 @@
+
+        [console_scripts]
+        embedded-yaml-docs=src.__main__:main
+    
