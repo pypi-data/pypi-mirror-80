@@ -1,0 +1,90 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="senaite.databox">
+
+  <five:registerPackage package="." initialize=".initialize" />
+
+  <!-- Register Translations -->
+  <i18n:registerTranslations directory="locales" />
+
+  <!-- Package includes -->
+  <include package=".behaviors" />
+  <include package=".browser" />
+
+  <!-- Permissions -->
+  <include file="permissions.zcml" />
+
+  <!-- Field Converters -->
+  <utility
+      provides="senaite.databox.interfaces.IFieldConverter"
+      component="senaite.databox.converters.to_string"
+      name="senaite.databox.to_string" />
+
+  <utility
+      provides="senaite.databox.interfaces.IFieldConverter"
+      component="senaite.databox.converters.to_link"
+      name="senaite.databox.to_link" />
+
+  <utility
+      provides="senaite.databox.interfaces.IFieldConverter"
+      component="senaite.databox.converters.to_date"
+      name="senaite.databox.to_date" />
+
+  <utility
+      provides="senaite.databox.interfaces.IFieldConverter"
+      component="senaite.databox.converters.to_long_date"
+      name="senaite.databox.to_long_date" />
+  <!-- /Field Converters -->
+
+  <!-- Query Types Vocabularies -->
+  <utility
+      component="senaite.databox.vocabularies.QueryTypesVocabularyFactory"
+      name="senaite.databox.vocabularies.query_types" />
+
+  <!-- Display Columns Vocabulary -->
+  <utility
+      component="senaite.databox.vocabularies.DisplayColumnsVocabularyFactory"
+      name="senaite.databox.vocabularies.display_columns" />
+
+  <!-- Indexes Vocabulary -->
+  <utility
+      component="senaite.databox.vocabularies.IndexesVocabularyFactory"
+      name="senaite.databox.vocabularies.indexes" />
+
+  <!-- Date Indexes Vocabulary -->
+  <utility
+      component="senaite.databox.vocabularies.DateIndexesVocabularyFactory"
+      name="senaite.databox.vocabularies.date_indexes" />
+
+  <!-- Generic Setup *INSTALL* Profile -->
+  <genericsetup:registerProfile
+      name="default"
+      title="SENAITE DATABOX"
+      directory="profiles/default"
+      description="Installs SENAITE DATABOX"
+      post_handler="senaite.databox.setuphandlers.post_install"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+  <!-- Generic Setup *UNINSTALL* Profile -->
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="SENAITE DATABOX"
+      directory="profiles/uninstall"
+      description="Uninstalls SENAITE DATABOX"
+      post_handler="senaite.databox.setuphandlers.post_uninstall"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+  <!-- Generic Setup *IMPORT STEP* -->
+  <genericsetup:importStep
+      name="senaite.databox.setupHandler"
+      title="SENAITE DATABOX: Run Setup Handler"
+      description="Run various configuration actions"
+      handler="senaite.databox.setuphandlers.setup_handler"/>
+
+</configure>

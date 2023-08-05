@@ -1,0 +1,9 @@
+plone.app.dexterity
+senaite.core>=2.0.0rc1
+setuptools
+
+[test]
+Products.PloneTestCase
+plone.app.testing
+robotsuite
+unittest2
