@@ -1,0 +1,13 @@
+README.md
+pyproject.toml
+setup.py
+simd_structts.egg-info/PKG-INFO
+simd_structts.egg-info/SOURCES.txt
+simd_structts.egg-info/dependency_links.txt
+simd_structts.egg-info/requires.txt
+simd_structts.egg-info/top_level.txt
+tests/__init__.py
+tests/approx_diffuse_test.py
+tests/conftest.py
+tests/fixed_init_test.py
+tests/utils.py
