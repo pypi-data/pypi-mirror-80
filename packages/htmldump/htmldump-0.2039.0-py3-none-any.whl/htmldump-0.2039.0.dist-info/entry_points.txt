@@ -1,0 +1,4 @@
+[console_scripts]
+html_dump = htmldump.command:do_html_dump
+html_to_json = htmldump.command:do_html_to_json
+
