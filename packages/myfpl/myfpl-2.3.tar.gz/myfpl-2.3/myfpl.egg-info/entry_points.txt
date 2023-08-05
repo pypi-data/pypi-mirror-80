@@ -1,0 +1,3 @@
+[console_scripts]
+myfpl = myfpl.__main__:main
+
