@@ -1,0 +1,10 @@
+<registry>
+    <record name="ims.trashcan.blacklist">
+        <field type="plone.registry.field.List">
+            <title>Blacklisted Dexterity interfaces</title>
+            <description>IDexterityContent is trashed by default. Add blacklisted interfaces here</description>
+            <value_type type="plone.registry.field.TextLine"/>
+        </field>
+        <value/>
+    </record>
+</registry>

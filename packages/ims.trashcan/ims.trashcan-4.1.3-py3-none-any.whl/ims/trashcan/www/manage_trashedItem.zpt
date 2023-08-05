@@ -1,0 +1,28 @@
+<h1 tal:replace="structure context/manage_page_header">PAGE HEADER</h1>
+<h2 tal:replace="structure context/manage_tabs">TABS</h2>
+
+<div tal:define="props context/manage_properties">
+    <p class="form-help">
+    You can restore this content to its original path. If path no longer exists it will restore to the root.
+    Regular Zope restrictions apply (duplicate ids, invalid types, etc.)
+    </p>
+
+    <dl>
+        <dt>Original title:</dt>
+        <dd tal:content="props/title" />
+        <dt>Deleted on</dt>
+        <dd tal:content="props/created" />
+        <dt>Destination path</dt>
+        <dd tal:content="props/path" />
+    </dl>
+
+    <form action="../manage_restore" method="post">
+
+        <input type="hidden" name="id"
+                     tal:attributes="value props/id" />
+        <input type="submit" value="Restore Item" />
+
+    </form>
+</div>
+
+<h1 tal:replace="structure context/manage_page_footer">PAGE FOOTER</h1>
