@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: cable
+Version: 0.1
+Summary: Real-time communication over websockets and WSGI using eventlet
+Home-page: https://github.com/jpsca/cable
+Author: Juan-Pablo Scaletti
+Author-email: juanpablo@jpscaletti.com
+License: Apache License Version 2.0
+Project-URL: Documentation, https://jpsca.github.io/cable
+Project-URL: Issue tracker, https://github.com/jpsca/cable/issues
+Description: # Cable
+        
+        Cable seamlessly integrates WebSockets with the rest of your Python WSGI application using eventlet.
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Requires-Python: <4.0,>=3.6
+Description-Content-Type: text/markdown
+Provides-Extra: test
+Provides-Extra: dev

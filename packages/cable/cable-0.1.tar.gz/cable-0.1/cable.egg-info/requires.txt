@@ -1,0 +1,11 @@
+eventlet<1,>=0.26
+
+[dev]
+pytest
+pytest-cov
+flake8
+tox
+
+[test]
+pytest
+pytest-cov
