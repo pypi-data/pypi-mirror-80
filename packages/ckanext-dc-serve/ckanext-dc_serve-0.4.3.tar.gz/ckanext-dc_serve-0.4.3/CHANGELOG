@@ -1,0 +1,10 @@
+0.4.3
+ - ref: move to dcor_shared 0.2.5
+0.4.2
+ - add manual ``job_id`` for background job "condense" so that
+   other extensions' jobs can ``depend_on`` it
+ - add background job "condense" to queue "dcor-long"
+0.4.1
+ - maintenance release
+0.4.0
+ - initial open-sourced release
