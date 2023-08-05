@@ -1,0 +1,12 @@
+LICENSE
+MANIFEST.in
+README.md
+setup.py
+Captcha_Net.egg-info/PKG-INFO
+Captcha_Net.egg-info/SOURCES.txt
+Captcha_Net.egg-info/dependency_links.txt
+Captcha_Net.egg-info/requires.txt
+Captcha_Net.egg-info/top_level.txt
+mypackage/__init__.py
+mypackage/__version__.py
+mypackage/core.py
