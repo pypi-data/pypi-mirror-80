@@ -1,0 +1,20 @@
+Metadata-Version: 1.1
+Name: electronicscalc
+Version: 0.5
+Summary: This is the package that houses various functions which can be used to calculate values for problems involving circuit design , value of the components which are needed to construct the circuit and so on
+Home-page: https://github.com/The-SocialLion/Electronics-calc
+Author: ['Vishal Balaji Sivaraman', 'Vigneshwar K R']
+Author-email: vb.sivaraman_official@yahoo.com
+License: MIT
+Download-URL: https://github.com/The-SocialLion/Electronics-calc/archive/v_05.tar.gz
+Description: UNKNOWN
+Keywords: electronics,calculator,Electronics-calculations,circuit-desighn,plot
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
