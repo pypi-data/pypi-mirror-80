@@ -1,0 +1,42 @@
+Metadata-Version: 1.2
+Name: sage-analysis
+Version: 0.2.1
+Summary: Ingests, analyses, and plots SAGE data products.
+Home-page: https://github.com/sage-home/sage-analysis
+Author: Jacob Seiler
+Author-email: jacob.seiler94@gmail.com
+License: UNKNOWN
+Download-URL: https://pypi.org/project/sage-analysis
+Project-URL: Documentation, https://sage-model.readthedocs.io
+Project-URL: Source Code, https://github.com/sage-home/sage-analysis
+Description: |PyPI| |TRAVIS| |RTD| |MIT licensed|
+        
+        sage-analysis
+        =============
+        
+        Package to ingest, analyse, and plot all the SAGE data products
+        
+        .. |TRAVIS| image::
+          https://img.shields.io/travis/com/jacobseiler/sage-analysis/master.svg?logo=travis&logoColor=white&label=Travis%20CI
+          :alt: Travis Badge
+          :target: https://travis-ci.com/jacobseiler/sage-analysis
+        .. |PyPI| image:: https://img.shields.io/pypi/v/sage-analysis.svg
+           :target: https://pypi.org/project/sage-analysis/
+           :alt: PyPI Release
+        .. |RTD| image:: https://readthedocs.org/projects/sage-analysis/badge/?version=latest
+           :target: https://sage-analysis.readthedocs.io/en/latest/?badge=latest
+           :alt: Documentation Status  
+        .. |MIT licensed| image:: https://img.shields.io/badge/license-MIT-blue.svg
+           :target: https://raw.githubusercontent.com/sage-home/sage-analysis/master/LICENSE
+           :alt: MIT License
+           
+        
+Keywords: SAGE redshift astronomy astrophysics galaxy semi-analytic model
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: MacOS
+Classifier: Operating System :: Unix
