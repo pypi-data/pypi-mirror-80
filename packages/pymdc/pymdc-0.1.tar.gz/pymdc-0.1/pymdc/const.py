@@ -1,0 +1,25 @@
+import enum
+
+
+class _PWR(enum.IntEnum):
+    OFF = 0x00
+    ON = 0x01
+    REBOOT = 0x02
+
+
+class CMD(enum.IntEnum):
+    STATUS = 0x00
+    CLOCK = 0x01
+    PWR_CTL = 0x11
+    VOLUME = 0x12
+
+
+BUFFER_SIZE = 1024
+HEADER = 0xAA
+
+GET_VOLUME = (CMD.VOLUME, )
+
+POWER_STATUS = (CMD.PWR_CTL, )
+POWER_OFF = (CMD.PWR_CTL, _PWR.OFF)
+POWER_ON = (CMD.PWR_CTL, _PWR.ON)
+POWER_REBOOT = (CMD.PWR_CTL, _PWR.REBOOT)
