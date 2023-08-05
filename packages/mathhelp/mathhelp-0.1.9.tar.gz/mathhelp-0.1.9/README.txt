@@ -1,0 +1,1 @@
+This is amodule devoted to helping with complex calculations for things like homework or math that needs fast number crunching.
