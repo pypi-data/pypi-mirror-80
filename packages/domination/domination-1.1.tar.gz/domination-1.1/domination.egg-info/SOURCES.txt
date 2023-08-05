@@ -1,0 +1,14 @@
+MANIFEST.in
+README.md
+requirements.txt
+setup.py
+domination/__init__.py
+domination/__main__.py
+domination/process.py
+domination/shadow.py
+domination.egg-info/PKG-INFO
+domination.egg-info/SOURCES.txt
+domination.egg-info/dependency_links.txt
+domination.egg-info/entry_points.txt
+domination.egg-info/requires.txt
+domination.egg-info/top_level.txt
