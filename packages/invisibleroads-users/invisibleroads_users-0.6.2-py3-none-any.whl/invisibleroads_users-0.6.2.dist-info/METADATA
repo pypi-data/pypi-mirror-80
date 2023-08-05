@@ -1,0 +1,79 @@
+Metadata-Version: 2.1
+Name: invisibleroads-users
+Version: 0.6.2
+Summary: Web application security defaults
+Home-page: https://github.com/invisibleroads/invisibleroads-users
+Author: Roy Hyunjin Han
+Author-email: rhh@crosscompute.com
+License: UNKNOWN
+Keywords: web wsgi bfg pylons pyramid invisibleroads
+Platform: UNKNOWN
+Classifier: Programming Language :: Python
+Classifier: Framework :: Pyramid
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Internet :: WWW/HTTP :: WSGI :: Application
+Classifier: License :: OSI Approved :: MIT License
+Description-Content-Type: text/markdown
+Requires-Dist: pyramid
+Requires-Dist: redis
+Requires-Dist: sqlalchemy
+Requires-Dist: invisibleroads-posts (>=0.7.15)
+Requires-Dist: invisibleroads-records (>=0.5.9)
+Requires-Dist: miscreant
+Requires-Dist: pyramid-authsanity
+Requires-Dist: pyramid-redis-sessions
+Requires-Dist: requests-oauthlib
+Requires-Dist: invisibleroads-macros-configuration (>=1.0.8)
+Requires-Dist: invisibleroads-macros-log (>=1.0.3)
+Requires-Dist: invisibleroads-macros-security (>=1.0.1)
+Provides-Extra: test
+Requires-Dist: pytest-cov ; extra == 'test'
+
+# InvisibleRoads Users
+
+This package adds security functionality to your pyramid web service.
+
+## Use
+
+Install dependencies.
+
+    pip install -U cookiecutter
+
+Initialize project.
+
+    cookiecutter https://github.com/invisibleroads/invisibleroads-cookiecutter
+
+Follow the instructions in the generated README.
+
+## Test
+
+    git clone https://github.com/invisibleroads/invisibleroads-users
+    cd invisibleroads-users
+    pip install -e .[test]
+    pytest --cov=invisibleroads_users --cov-report term-missing tests
+
+# 0.6
+- Restart from scratch
+- Use pyramid-authsanity
+- Support Google
+
+# 0.5
+- Add user.name, user.image_url
+- Replace velruse with requests-oauthlib
+- Support Google, LinkedIn
+- Use pyramid-multiauth
+
+# 0.4
+- Define request.authenticated_user
+- Remove user.token
+
+# 0.3
+- Add UserFolderMixin
+- Include CSRF token for PATCH requests
+
+# 0.2
+- Let downstream packages override User, RootFactory
+
+# 0.1
+- Add pyramid_redis_sessions
+
