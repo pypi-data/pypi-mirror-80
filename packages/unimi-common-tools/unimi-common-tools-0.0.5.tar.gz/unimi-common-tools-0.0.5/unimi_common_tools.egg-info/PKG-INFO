@@ -1,0 +1,30 @@
+Metadata-Version: 2.1
+Name: unimi-common-tools
+Version: 0.0.5
+Summary: UniMI Common Tools
+Home-page: https://github.com/binayr/UniMI-common-tools
+Author: Binay Kumar Ray
+Author-email: binayray2009@gmail.com
+License: UNKNOWN
+Description: # UniMI Common Tools
+        
+        This is a combination of many common tools for our UniMI project. However we have designed it to be used accross anywhere. Our initial tooling invloved automated producer and consumer for kafka and connecting and doing CRUD for MongoDB:
+        
+        <br><br>
+        
+        **Source**:<br>
+        https://github.com/binayr/SQUAT
+        
+        ## Create and use whl file
+        
+        * with and updated setup.py execute the following command to create a whl file,
+            ```python setup.py bdist_wheel```
+        
+        ## API
+        
+        to be updated soon.
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
