@@ -1,0 +1,55 @@
+CHANGES
+=======
+
+4.0.0.0rc1
+----------
+
+* Imported Translations from Zanata
+* Cleanup for Refactor-error-messages
+* Remove references to mox3 lib
+* Switch to newer openstackdocstheme and reno versions
+* Use unittest.mock instead of third party mock
+
+3.0.0
+-----
+
+* Cleanup py27 support
+* Update to hacking 3.0
+* Update hacking for Python3
+* s/assertItemsEqual/assertCountEqual/g
+* Remove six usage
+* Drop Django 1.11 support
+* translation: drop babel extractor definitions
+* [ussuri][goal] Drop python 2.7 support and testing
+* Imported Translations from Zanata
+* Switch to official Ussuri jobs
+* Use Horizon project template for django jobs
+* Remove py35 from tox.ini
+* Imported Translations from Zanata
+* Fix releasenotes name
+
+2.0.0
+-----
+
+* Generate PDF documentation
+* Update sphinx dependency
+* Update the constraints url
+* Add Python 3 Train unit tests
+* OpenDev Migration Patch
+
+1.0.0
+-----
+
+* Change openstack-dev to openstack-discuss
+* Allow admin user to create runtime
+* Imported Translations from Zanata
+* Imported Translations from Zanata
+* Remove mox from test files
+* Add translation settings for Django project
+* Stop using django-file-md5
+* Adding In-Repo Zuul jobs
+* Fix project url in documents
+* Add .gitreview file
+* add constraint for package version
+* Changed prefix number of enabled files
+* Initial commit for qinling-dashboard
