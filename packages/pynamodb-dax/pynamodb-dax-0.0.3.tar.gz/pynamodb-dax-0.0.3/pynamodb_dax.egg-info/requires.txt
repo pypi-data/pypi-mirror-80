@@ -1,0 +1,6 @@
+six
+botocore>=1.2.0
+python-dateutil<3.0.0,>=2.1
+
+[signals]
+blinker<2.0,>=1.3
