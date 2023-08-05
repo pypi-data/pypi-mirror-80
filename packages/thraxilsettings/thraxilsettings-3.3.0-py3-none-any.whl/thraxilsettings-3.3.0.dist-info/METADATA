@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: thraxilsettings
+Version: 3.3.0
+Summary: My common base settings
+Home-page: https://github.com/thraxil/thraxilsettings
+Author: Anders Pearson
+Author-email: anders@columbia.edu
+License: BSD
+Platform: any
+Requires-Dist: boto3
+Requires-Dist: django-debug-toolbar
+Requires-Dist: django-jenkins
+Requires-Dist: django-markwhat
+Requires-Dist: django-smoketest
+Requires-Dist: django-statsd-mozilla
+Requires-Dist: django-storages
+Requires-Dist: django-waffle
+Requires-Dist: django-compressor
+Requires-Dist: gunicorn
+Requires-Dist: raven
+Requires-Dist: statsd
+
+common settings i use across all my apps
+
+
