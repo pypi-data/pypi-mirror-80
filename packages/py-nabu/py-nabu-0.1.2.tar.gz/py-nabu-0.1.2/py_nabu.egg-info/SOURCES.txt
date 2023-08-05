@@ -1,0 +1,16 @@
+README.md
+setup.cfg
+setup.py
+nabu/__init__.py
+nabu/__main__.py
+nabu/menu.py
+nabu/nabu.py
+nabu/page.py
+nabu/serve.py
+nabu/watch.py
+py_nabu.egg-info/PKG-INFO
+py_nabu.egg-info/SOURCES.txt
+py_nabu.egg-info/dependency_links.txt
+py_nabu.egg-info/entry_points.txt
+py_nabu.egg-info/requires.txt
+py_nabu.egg-info/top_level.txt
