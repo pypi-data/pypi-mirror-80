@@ -1,0 +1,163 @@
+Metadata-Version: 2.1
+Name: afvaldienst
+Version: 1.1.1
+Summary: Getting information on trash for the Netherlands for mijnafvalwijzer.nl and afvalstoffendienstkalender.nl
+Home-page: https://github.com/xirixiz/afvaldienst
+Author: Bram van Dartel
+Author-email: spam@rootrulez.com
+License: MIT
+Description: Afvaldienst library
+        ===================
+        
+        This library is meant to interface with mijnafvalwijzer.nl and/or afvalstoffendienstkalender.nl
+        It is meant to use with home automation projects like Home Assistant.
+        
+        
+        Installation
+        ------------
+        
+        .. code:: bash
+        
+            pip install afvaldienst
+        
+        
+        Uninstallation
+        --------------
+        
+        .. code:: bash
+        
+            pip uninstall afvaldienst
+        
+        
+        Usage
+        -----
+        
+        .. code:: python
+        
+            >>> from Afvaldienst import Afvaldienst
+            >>> provider = 'mijnafvalwijzer'
+            >>> api_token = ''
+            >>> zipcode = '1111AA'
+            >>> housenumber = '1'
+            >>> suffix = ''
+            >>> start_date = 'True or False'     (start counting wihth Today's date or with Tomorrow's date)
+            >>> trash = Afvaldienst(provider, api_token, zipcode, housenumber, suffix)
+        
+            >>> trash.trash_json
+            [{'nameType': 'gft', 'type': 'gft', 'date': '2019-12-20'}, {'nameType': 'pmd', 'type': 'pmd', 'date': '2019-12-28'}]
+        
+            >>> trash.trash_schedule
+            [{'key': 'pmd', 'value': '31-10-2019', 'days_remaining': 8}, {'key': 'restafval', 'value': '15-11-2019', 'days_remaining': 23}, {'key': 'papier', 'value': '20-11-2019', 'days_remaining': 28}]
+        
+            >>> trash.trash_schedule_custom
+            [{'key': 'first_next_in_days', 'value': 8}, {'key': 'today', 'value': 'None'}, {'key': 'tomorrow', 'value': 'None'},
+        
+            >>> trash.trash_types
+            ['gft', 'kerstbomen', 'pmd', 'restafval', 'papier']
+        
+        
+        Or use the scraper:
+        
+            >>>from AfvaldienstScraper import AfvaldienstScraper
+            >>> provider = 'mijnafvalwijzer'
+            >>> zipcode = '1111AA'
+            >>> housenumber = '1'
+            >>> start_date = 'True or False'     (start counting wihth Today's date or with Tomorrow's date)
+            >>> trash = AfvaldienstScraper(provider, zipcode, housenumber)
+        
+            >>> trash.trash_schedule
+            [{'key': 'pmd', 'value': '31-10-2019', 'days_remaining': 8}, {'key': 'restafval', 'value': '15-11-2019', 'days_remaining': 23}, {'key': 'papier', 'value': '20-11-2019', 'days_remaining': 28}]
+        
+            >>> trash.trash_schedule_custom
+            [{'key': 'first_next_in_days', 'value': 8}, {'key': 'today', 'value': 'None'}, {'key': 'tomorrow', 'value': 'None'},
+        
+            >>> trash.trash_types
+            ['gft', 'kerstbomen', 'pmd', 'textiel', 'restafval', 'papier']
+        
+            >>>> trash.trash_types_from_schedule
+            ['gft', 'papier', 'pmd', 'restafval', 'textiel', 'kerstbomen', 'today', 'tomorrow', 'day_after_tomorrow', 'first_next_in_days', 'first_next_item', 'first_next_date']
+        
+        
+        Contributors are most welcome
+        -----------------------------
+        * I'm still learning how to code properly.
+        
+        
+        .. :changelog:
+        
+        Release History
+        ---------------
+        1.0.6 (2020-09-21)
+        ++++++++++++++++
+        **New release**
+        - Remove unnecessary data
+        
+        ---------------
+        1.0.6 (2020-09-21)
+        ++++++++++++++++
+        **New release**
+        - Add scraper funcionality
+        
+        ---------------
+        1.0.5 (2020-09-21)
+        ++++++++++++++++
+        **Bugfix release**
+        - Multiple minor bugs regarding the new api from mijnafvalwijzer
+        
+        ---------------
+        1.0.4 (2020-09-16)
+        ++++++++++++++++
+        **Bugfix release**
+        - Add trash None value on no data
+        
+        ---------------
+        1.0.3 (2020-09-16)
+        ++++++++++++++++
+        **Bugfix release**
+        - add trash_schedule and trash_schedule_custom trash type list overview
+        
+        ---------------
+        1.0.2 (2020-09-16)
+        ++++++++++++++++
+        **Bugfix release**
+        - add trash_schedule and trash_schedule_custom trash type list overview
+        
+        ---------------
+        1.0.1 (2020-09-16)
+        ++++++++++++++++
+        **Bugfix release**
+        - remove api tokens (as requested by the provider(s))
+        
+        ---------------
+        1.0.0 (2020-09-15)
+        ++++++++++++++++
+        **Bugfix release**
+        - complete rewrite of the logic for parsing json data
+        
+        ---------------
+        0.8.0 (2020-09-13)
+        ++++++++++++++++
+        **Bugfix release**
+        - moved from json.<provider>.nl to api.<provider>.nl
+        - added additional error handling
+        
+Keywords: afval afvaldienst afvalwijzer garbage trash mijnafvalwijzer afvalstoffendienstkalender dutch
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: Intended Audience :: Other Audience
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Natural Language :: English
+Classifier: Natural Language :: Dutch
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: Unix
+Classifier: Operating System :: MacOS
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Description-Content-Type: text/markdown
