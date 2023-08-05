@@ -1,0 +1,62 @@
+Metadata-Version: 2.1
+Name: dfio
+Version: 0.0.6
+Summary: UNKNOWN
+Home-page: UNKNOWN
+Author: Jim Barlow
+Author-email: jim@beepbeep.technology
+License: Apache License 2.0
+Download-URL: https://github.com/datafunctions/dfio/archive/0.0.6.tar.gz
+Platform: UNKNOWN
+Description-Content-Type: text/markdown
+Requires-Dist: bleach (>=3.2.0)
+Requires-Dist: cachetools (>=4.1.1)
+Requires-Dist: certifi (>=2020.6.20)
+Requires-Dist: chardet (>=3.0.4)
+Requires-Dist: colorama (>=0.4.3)
+Requires-Dist: docutils (>=0.16)
+Requires-Dist: google-api-core (>=1.22.2)
+Requires-Dist: google-auth (>=1.21.2)
+Requires-Dist: google-cloud-bigquery (>=1.27.2)
+Requires-Dist: google-cloud-core (>=1.4.1)
+Requires-Dist: google-cloud-language (>=1.3.0)
+Requires-Dist: google-cloud-storage (>=1.31.0)
+Requires-Dist: google-cloud-translate (>=3.0.1)
+Requires-Dist: google-crc32c (>=1.0.0)
+Requires-Dist: google-resumable-media (>=1.0.0)
+Requires-Dist: googleapis-common-protos (>=1.52.0)
+Requires-Dist: googlemaps (>=4.4.2)
+Requires-Dist: grpcio (>=1.32.0)
+Requires-Dist: idna (>=2.10)
+Requires-Dist: keyring (>=21.4.0)
+Requires-Dist: libcst (>=0.3.10)
+Requires-Dist: mypy-extensions (>=0.4.3)
+Requires-Dist: packaging (>=20.4)
+Requires-Dist: pkginfo (>=1.5.0.1)
+Requires-Dist: proto-plus (>=1.9.1)
+Requires-Dist: protobuf (>=3.13.0)
+Requires-Dist: pyasn1 (>=0.4.8)
+Requires-Dist: pyasn1-modules (>=0.2.8)
+Requires-Dist: Pygments (>=2.7.0)
+Requires-Dist: pyparsing (>=2.4.7)
+Requires-Dist: pytz (>=2020.1)
+Requires-Dist: PyYAML (>=5.3.1)
+Requires-Dist: readme-renderer (>=26.0)
+Requires-Dist: requests (>=2.24.0)
+Requires-Dist: requests-toolbelt (>=0.9.1)
+Requires-Dist: rfc3986 (>=1.4.0)
+Requires-Dist: rsa (>=4.6)
+Requires-Dist: six (>=1.15.0)
+Requires-Dist: tqdm (>=4.49.0)
+Requires-Dist: twine (>=3.2.0)
+Requires-Dist: typing-extensions (>=3.7.4.3)
+Requires-Dist: typing-inspect (>=0.6.0)
+Requires-Dist: urllib3 (>=1.25.10)
+Requires-Dist: webencodings (>=0.5.1)
+
+# dfio `(datafunctions input/output)`
+
+This package simplifies a number of core functions associated with building simple, scalable SQL-based data transformation pipelines.
+
+See [datafunctions.github.io](https://datafunctions.github.io) for full documentation.
+
