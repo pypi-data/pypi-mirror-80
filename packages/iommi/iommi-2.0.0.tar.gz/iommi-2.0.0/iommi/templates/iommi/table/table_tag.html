@@ -1,0 +1,27 @@
+{% if not table.paginator.count and invalid_form_message %}
+    {{ invalid_form_message }}
+{% elif not table.paginator.count and empty_message %}
+    {{ empty_message }}
+{% else %}
+
+    <div class="iommi-table-plus-paginator">
+        {{ table.iommi_open_tag }}
+
+            {{ table.header }}
+
+            {% if table.tbody_tag %}
+            <{{ table.tbody_tag }}>
+            {% endif %}
+
+                {{ table.tbody }}
+
+            {% if table.tbody_tag %}
+            </{{ table.tbody_tag }}>
+            {% endif %}
+
+        {{ table.iommi_close_tag }}
+
+        {{ table.paginator }}
+    </div>
+
+{% endif %}
