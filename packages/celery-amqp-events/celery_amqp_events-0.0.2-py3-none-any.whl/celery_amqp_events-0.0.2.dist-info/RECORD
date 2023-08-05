@@ -1,0 +1,11 @@
+amqp_events/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+amqp_events/celery.py,sha256=8U-mV5HybHPTWdPf3chBaqRNbcdjOK0ijTo6fV1VVqg,463
+amqp_events/config.py,sha256=4BSyoCVUze-hpL0fly676tPvUrGVRqqp5BRgsC5vGdk,977
+amqp_events/defaults.py,sha256=1cHuzx7uS5Oa3SgUMcDb5UWVFGg4F1qpU6FAVP4cGcM,485
+amqp_events/events.py,sha256=rOXlinSJFkx_PCLm6w3ngWkG2teptB9eR30QKrEMoJw,3832
+amqp_events/tasks.py,sha256=7S_mb8jysWZ5hVgC4X2eP9V8ED1hV6G10-gsBHsEWDQ,1933
+celery_amqp_events-0.0.2.dist-info/LICENSE,sha256=vTykqFAucmr8NfOUXOy2ptBcMnbZ0bDVKOGcqO8yz3A,1066
+celery_amqp_events-0.0.2.dist-info/METADATA,sha256=dZ7tN4RbcpT8cCGEkXlqqSN6RkOTTgBPXVXIOjh9NVE,4683
+celery_amqp_events-0.0.2.dist-info/WHEEL,sha256=EVRjI69F5qVjm_YgqcTXPnTAv3BfSUr0WVAHuSP3Xoo,92
+celery_amqp_events-0.0.2.dist-info/top_level.txt,sha256=ehWwd0xf_EF0AzYgLxPxJPQUfzgzLYjintP2HGavV4Q,12
+celery_amqp_events-0.0.2.dist-info/RECORD,,
