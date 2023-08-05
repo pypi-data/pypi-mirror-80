@@ -1,0 +1,89 @@
+Metadata-Version: 2.1
+Name: wbia-pydarknet
+Version: 3.3.2
+Summary: PyDarknet - Random Forest / Hough Voting Detection Algorithm
+Home-page: https://github.com/WildbookOrg/wbia-tpl-pydarknet
+Author: Jason Parham
+Author-email: dev@wildme.org
+License: BSD
+Platform: UNKNOWN
+Classifier: Development Status :: 6 - Mature
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Science/Research
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Unix
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Classifier: Topic :: Scientific/Engineering :: Image Recognition
+Description-Content-Type: text/x-rst
+Requires-Dist: numpy
+Requires-Dist: wbia-utool
+Provides-Extra: all
+Requires-Dist: cmake ; extra == 'all'
+Requires-Dist: ninja ; extra == 'all'
+Requires-Dist: scikit-build ; extra == 'all'
+Requires-Dist: setuptools ; extra == 'all'
+Requires-Dist: setuptools-scm[toml] ; extra == 'all'
+Requires-Dist: wheel ; extra == 'all'
+Requires-Dist: numpy ; extra == 'all'
+Requires-Dist: wbia-utool ; extra == 'all'
+Requires-Dist: brunette ; extra == 'all'
+Requires-Dist: codecov ; extra == 'all'
+Requires-Dist: coverage ; extra == 'all'
+Requires-Dist: pytest ; extra == 'all'
+Requires-Dist: pytest-cov ; extra == 'all'
+Requires-Dist: xdoctest ; extra == 'all'
+Provides-Extra: build
+Requires-Dist: cmake ; extra == 'build'
+Requires-Dist: ninja ; extra == 'build'
+Requires-Dist: scikit-build ; extra == 'build'
+Requires-Dist: setuptools ; extra == 'build'
+Requires-Dist: setuptools-scm[toml] ; extra == 'build'
+Requires-Dist: wheel ; extra == 'build'
+Provides-Extra: runtime
+Requires-Dist: numpy ; extra == 'runtime'
+Requires-Dist: wbia-utool ; extra == 'runtime'
+Provides-Extra: tests
+Requires-Dist: brunette ; extra == 'tests'
+Requires-Dist: codecov ; extra == 'tests'
+Requires-Dist: coverage ; extra == 'tests'
+Requires-Dist: pytest ; extra == 'tests'
+Requires-Dist: pytest-cov ; extra == 'tests'
+Requires-Dist: xdoctest ; extra == 'tests'
+
+=======================
+Wildbook IA - PyDarknet
+=======================
+
+|Build| |Pypi| |ReadTheDocs|
+
+Python wrapper for Darknet - Part of the WildMe / Wildbook IA Project.
+
+Unix / Mac compatible distribution based on the code developed by Redmon et. al.
+
+Repos relevant to the ibeis project:
+
+* https://github.com/WildbookOrg/wildbook-ia
+
+* https://github.com/bluemellophone/IBEIS2014
+
+
+.. |Build| image:: https://img.shields.io/github/workflow/status/WildbookOrg/wbia-tpl-pydarknet/Build%20and%20upload%20to%20PyPI/master
+    :target: https://github.com/WildbookOrg/wbia-tpl-pydarknet/actions?query=branch%3Amaster+workflow%3A%22Build+and+upload+to+PyPI%22
+    :alt: Build and upload to PyPI (master)
+
+.. |Pypi| image:: https://img.shields.io/pypi/v/wbia-pydarknet.svg
+   :target: https://pypi.python.org/pypi/wbia-pydarknet
+   :alt: Latest PyPI version
+
+.. |ReadTheDocs| image:: https://readthedocs.org/projects/wbia-tpl-pydarknet/badge/?version=latest
+    :target: http://wbia-tpl-pydarknet.readthedocs.io/en/latest/
+    :alt: Documentation on ReadTheDocs
+
+
