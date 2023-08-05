@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: utils-flask-sqlalchemy-geo
+Version: 0.1.2
+Summary: Python lib of tools for Flask and SQLAlchemy (extension geometry)
+Home-page: https://github.com/PnX-SI/Utils-Flask-SQLAlchemy-Geo
+Author: Les parcs nationaux de France
+Author-email: UNKNOWN
+License: UNKNOWN
+Keywords: ww
+Platform: UNKNOWN
+Classifier: Development Status :: 1 - Planning
+Classifier: Intended Audience :: Developers
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: License :: OSI Approved :: GNU Affero General Public License v3
+Classifier: Operating System :: OS Independent
+Requires-Dist: fiona (==1.8.13.post1)
+Requires-Dist: geoalchemy2 (==0.4.0)
+Requires-Dist: geog (==0.0.2)
+Requires-Dist: shapely (==1.5.16)
+Requires-Dist: utils-flask-sqlalchemy (==0.1.2)
+
+UNKNOWN
+
+
