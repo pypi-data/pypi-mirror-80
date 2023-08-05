@@ -1,0 +1,37 @@
+#! /bin/sh
+
+set -ex
+
+BASE="$(dirname "$(cd $(dirname "$0") && pwd)")"
+. "$BASE/t/test-lib.sh"
+
+GIT_IMERGE="git-imerge"
+TMP="$BASE/t/tmp/drop"
+DESCRIPTION="git-imerge drop test repository"
+
+# Set up a test repo with a linear string of commits, all modifying
+# different files:
+init_test_repo "$TMP" "$DESCRIPTION"
+cd "$TMP"
+
+modify a.txt 0
+commit -m 'm⇒0'
+
+for i in $(seq 6)
+do
+    modify a$i.txt $i
+    commit -m "a$i⇒$i"
+done
+
+git checkout -b dropped master
+"$GIT_IMERGE" drop HEAD~5..HEAD~3
+"$GIT_IMERGE" diagram --commits --frontier --html=imerge-drop.html
+"$GIT_IMERGE" finish
+check_tree dropped 3b92d9e80adb5b542a651863e6853ff5de9e496b
+
+git checkout -b reverted master
+"$GIT_IMERGE" revert HEAD~5..HEAD~3
+"$GIT_IMERGE" diagram --commits --frontier --html=imerge-revert.html
+"$GIT_IMERGE" finish
+check_tree reverted 3b92d9e80adb5b542a651863e6853ff5de9e496b
+
