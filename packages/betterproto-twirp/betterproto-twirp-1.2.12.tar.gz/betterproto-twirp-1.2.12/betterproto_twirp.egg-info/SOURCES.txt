@@ -1,0 +1,16 @@
+MANIFEST.in
+README.md
+setup.py
+betterproto/__init__.py
+betterproto/casing.py
+betterproto/plugin.py
+betterproto/py.typed
+betterproto/utils.py
+betterproto/templates/template.py
+betterproto_twirp.egg-info/PKG-INFO
+betterproto_twirp.egg-info/SOURCES.txt
+betterproto_twirp.egg-info/dependency_links.txt
+betterproto_twirp.egg-info/entry_points.txt
+betterproto_twirp.egg-info/not-zip-safe
+betterproto_twirp.egg-info/requires.txt
+betterproto_twirp.egg-info/top_level.txt
