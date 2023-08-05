@@ -1,0 +1,26 @@
+Metadata-Version: 2.1
+Name: ida-lib
+Version: 0.1
+Summary: Image Data Augmentation library
+Home-page: https://github.com/raquelvilas18/ida_lib
+Author: Raquel Vilas
+Author-email: raquel.rodriguez.vilas@rai.usc.es
+License: UNKNOWN
+Keywords: Pytorch,Image Data Augmentation
+Platform: UNKNOWN
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=3.5
+Requires-Dist: opencv-python
+Requires-Dist: numpy (>=1.18.0)
+Requires-Dist: bokeh (>=2.0.0)
+Requires-Dist: kornia (>=0.3.1)
+Requires-Dist: torch (>=1.5.0)
+Requires-Dist: pandas
+Requires-Dist: tqdm
+
+UNKNOWN
+
+
