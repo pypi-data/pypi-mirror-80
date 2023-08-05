@@ -1,0 +1,11 @@
+README.md
+setup.cfg
+setup.py
+ftpconnection.egg-info/PKG-INFO
+ftpconnection.egg-info/SOURCES.txt
+ftpconnection.egg-info/dependency_links.txt
+ftpconnection.egg-info/requires.txt
+ftpconnection.egg-info/top_level.txt
+src/ftpconnection/__init__.py
+src/ftpconnection/ftp_connection.py
+src/ftpconnection/ftp_queries.py

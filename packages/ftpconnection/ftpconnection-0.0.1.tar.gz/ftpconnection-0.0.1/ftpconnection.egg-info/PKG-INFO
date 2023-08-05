@@ -1,0 +1,19 @@
+Metadata-Version: 1.1
+Name: ftpconnection
+Version: 0.0.1
+Summary: FTP Connections and Queries Handler
+Home-page: https://github.com/ByPrice/ftpconnection
+Author: Yogesh Yadav
+Author-email: yogeshdtu@gmail.com
+License: MIT
+Download-URL: https://github.com/ByPrice/ftpconnection
+Description: UNKNOWN
+Keywords: ftp,ftpconnection,ftpqueries
+Platform: cross-platfom
+Platform: platform-independent
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Internet :: File Transfer Protocol (FTP)
+Classifier: Programming Language :: Python :: 3.6
