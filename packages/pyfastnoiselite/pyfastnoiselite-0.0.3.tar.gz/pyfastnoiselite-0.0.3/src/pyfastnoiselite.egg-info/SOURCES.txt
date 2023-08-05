@@ -1,0 +1,17 @@
+MANIFEST.in
+README.md
+VERSION
+pyproject.toml
+setup.py
+ext/CPPWrapper/FastNoiseLitePy.h
+ext/FastNoise/C/FastNoiseLite.h
+ext/FastNoise/Cpp/FastNoiseLite.h
+src/pyfastnoiselite/__init__.py
+src/pyfastnoiselite/cppfastnoiselite.pxd
+src/pyfastnoiselite/pyfastnoiselite.cpp
+src/pyfastnoiselite/pyfastnoiselite.pyx
+src/pyfastnoiselite.egg-info/PKG-INFO
+src/pyfastnoiselite.egg-info/SOURCES.txt
+src/pyfastnoiselite.egg-info/dependency_links.txt
+src/pyfastnoiselite.egg-info/requires.txt
+src/pyfastnoiselite.egg-info/top_level.txt

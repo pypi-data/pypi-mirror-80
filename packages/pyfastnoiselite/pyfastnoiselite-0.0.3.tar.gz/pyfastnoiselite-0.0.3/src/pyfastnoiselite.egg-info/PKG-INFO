@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: pyfastnoiselite
+Version: 0.0.3
+Summary: Cython wrapper for Auburns' FastNoise Lite.
+Home-page: https://github.com/tizilogic/pyfastnoiselite
+Author: Tiziano Bettio
+Author-email: tc@tizilogic.com
+License: UNKNOWN
+Description: # Cython wrapper for the FastNoise Lite library
+        
+        This wraps Auburns' great [FastNoise Lite](https://github.com/Auburn/FastNoise/) library using Cython 
+        for use in Python 3.6+
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
