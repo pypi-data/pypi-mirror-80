@@ -1,0 +1,113 @@
+version: 2.0
+
+requirements: &requirements
+  name: Install requirements
+  command: |
+    sudo pip install "pipenv>=9.0.3"
+    pipenv install -e .
+
+git_config: &git_config
+  name: Git Configuration
+  command: |
+    git config --global user.email "root@localhost"
+    git config --global user.name "gitoo"
+
+run_tests: &run_tests
+  name: Run tests
+  command: pipenv run python setup.py test
+
+coverage_report: &coverage_report
+  name: Coverage report
+  command: |
+    pipenv install coverage
+    pipenv run coverage report -m
+
+coverage_report_codacy: &coverage_report_codacy
+  name: Codacy Coverage
+  command: |
+    pipenv install codacy-coverage
+    pipenv run python-codacy-coverage -r ./coverage.xml
+
+rm_virtualenv: &rm_virtualenv
+  name: Remove Virtualenv
+  command: pipenv --rm
+
+run_cli: &run_cli
+  name: Installation
+  command: |
+    pipenv install .
+    pipenv run gitoo --version
+
+# broken with pip 10
+# https://github.com/pypa/pipenv/issues/1996
+pipenv_check: &pipenv_check
+  name: Check for security vulnerabilities
+  command: pipenv check
+
+quay_io_login: &quay_io_login
+  name: Login to Quay.io register
+  command: echo "${QUAY_TOKEN}" | docker login quay.io -u "${QUAY_USER}" --password-stdin
+
+jobs:
+  python3:
+    docker:
+      - image: circleci/python:3.5
+    steps:
+      - checkout
+      - run:
+          <<: *requirements
+      - run:
+          <<: *git_config
+      - run:
+          <<: *run_tests
+      - run:
+          <<: *coverage_report_codacy
+      - run:
+          <<: *rm_virtualenv
+      - run:
+          <<: *run_cli
+      - run:
+          <<: *pipenv_check
+      - store_test_results:
+          path: ./log
+
+  deploy:
+    docker:
+      - image: circleci/python:3
+    steps:
+      - checkout
+      - run:
+          <<: *requirements
+      - run:
+          name: Init .pypirc
+          command: |
+            echo -e "[pypi]" >> ~/.pypirc
+            echo -e "username = $PYPI_USERNAME" >> ~/.pypirc
+            echo -e "password = $PYPI_PASSWORD" >> ~/.pypirc
+
+      - run:
+          name: Make Package
+          command: python setup.py sdist bdist_wheel
+
+      - run:
+          name: Upload to Pypi using Twine
+          command: |
+            pipenv install twine
+            pipenv run twine upload dist/*
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - python3:
+          filters:
+            tags:
+              only: /.*/
+      - deploy:
+          requires:
+            - python3
+          filters:
+            tags:
+              only: /[0-9]+(\.[0-9]+)*/
+            branches:
+              ignore: /.*/
