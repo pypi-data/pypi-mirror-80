@@ -1,0 +1,3 @@
+[console_scripts]
+sitefab = sitefab.cmdline.cmdline:main
+
