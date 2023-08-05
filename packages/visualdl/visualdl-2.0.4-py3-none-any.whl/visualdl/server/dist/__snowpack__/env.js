@@ -1,0 +1,1 @@
+const env = window.__snowpack_env__ || {}; export default env;

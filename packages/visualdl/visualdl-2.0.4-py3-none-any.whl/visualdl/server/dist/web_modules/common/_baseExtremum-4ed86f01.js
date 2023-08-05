@@ -1,0 +1,1 @@
+import{i as h}from"./isSymbol-c8affcb9.js";function p(a,m,o){for(var t=-1,n=a.length;++t<n;){var r=a[t],e=m(r);if(e!=null&&(i===void 0?e===e&&!h(e):o(e,i)))var i=e,s=r}return s}var l=p;export{l as _};

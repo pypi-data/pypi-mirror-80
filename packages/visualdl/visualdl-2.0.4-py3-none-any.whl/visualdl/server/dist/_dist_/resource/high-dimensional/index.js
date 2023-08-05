@@ -1,0 +1,1 @@
+const r=(n,e)=>{if(!e)return[[],n];const s=[],c=[];return n.forEach(t=>{if(t.name.includes(e)){s.push(t);return}c.push(t)}),[s,c]},o=(n,e,s)=>n.map((c,t)=>{const i=e[t]||"";return{name:i,showing:!!s,value:c}});export const divide=({points:n,keyword:e,labels:s,visibility:c})=>r(o(n,s,c),e);

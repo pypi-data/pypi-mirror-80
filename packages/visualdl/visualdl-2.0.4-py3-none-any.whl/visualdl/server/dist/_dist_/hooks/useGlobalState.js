@@ -1,0 +1,1 @@
+import{createContext as t,useContext as o}from"../../web_modules/react.js";export const globalState={scalar:{runs:[]},histogram:{runs:[]},image:{runs:[]},audio:{runs:[]},prCurve:{runs:[]},graph:{model:null}},GlobalStateContext=t(globalState),GlobalDispatchContext=t(()=>{});const e=()=>[o(GlobalStateContext),o(GlobalDispatchContext)];export default e;

@@ -1,0 +1,1 @@
+function p(r,e){for(var t=-1,i=r==null?0:r.length,o=0,n=[];++t<i;){var a=r[t];e(a,t,r)&&(n[o++]=a)}return n}var s=p;function u(r){return function(e){return e==null?void 0:e[r]}}var f=u;export{s as _,f as a};
