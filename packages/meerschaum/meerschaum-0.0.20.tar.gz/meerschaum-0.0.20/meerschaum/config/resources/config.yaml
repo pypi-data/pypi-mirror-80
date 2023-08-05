@@ -1,0 +1,178 @@
+
+##################################
+# Edit the credentials below     #
+# for the `main` SQL connection. #
+##################################
+
+meerschaum:
+  connectors:
+    api:
+      local: &id001
+        host: localhost
+        password: meerschaum
+        port: 8000
+        protocol: http
+        username: meerschaum
+      main: *id001
+    sql:
+      local:
+        database: mrsm_local
+        flavor: sqlite
+      main:
+        database: mrsm_main
+        flavor: timescaledb
+        host: localhost
+        password: meerschaum
+        port: 5432
+        username: meerschaum
+      meta: {}
+stack:
+  .env: '
+
+    ### Edit environment variables with `edit stack env`
+
+    COMPOSE_PROJECT_NAME="meerschaum_stack"
+
+    TIMESCALEDB_VERSION="latest-pg12"
+
+    POSTGRES_USER="MRSM{meerschaum:connectors:sql:main:username}"
+
+    POSTGRES_PASSWORD="MRSM{meerschaum:connectors:sql:main:password}"
+
+    POSTGRES_DB="MRSM{meerschaum:connectors:sql:main:database}"
+
+    MEERSCHAUM_DB_HOSTNAME="meerschaum_db"
+
+    MEERSCHAUM_API_HOSTNAME="meerschaum_api"
+
+    ALLOW_IP_RANGE=''0.0.0.0/0''
+
+
+    MEERSCHAUM_API_CONFIG=''{"meerschaum":{"connectors":{"sql":{"meta":{"host":"${MEERSCHAUM_DB_HOSTNAME}"}}}}}''
+
+    MEERSCHAUM_API_CONFIG_RESOURCES=/usr/local/lib/python3.8/site-packages/meerschaum/config/resources/
+
+    '
+  docker-compose.yaml:
+    networks:
+      backend: null
+      frontend: null
+    services:
+      grafana:
+        image: grafana/grafana:latest
+        networks:
+        - frontend
+        - backend
+        ports:
+        - 3000:3000
+        volumes:
+        - grafana_storage:/var/lib/grafana
+        - /home/bmeares/Meerschaum/meerschaum/config/stack/grafana/resources/provisioning/datasources:/etc/grafana/provisioning/datasources
+        - /home/bmeares/Meerschaum/meerschaum/config/stack/grafana/resources/provisioning/dashboards:/etc/grafana/provisioning/dashboards
+      meerschaum_api:
+        command: api start
+        depends_on:
+        - meerschaum_db
+        environment:
+        - MEERSCHAUM_CONFIG=${MEERSCHAUM_API_CONFIG}
+        hostname: meerschaum_api
+        image: bmeares/meerschaum:latest
+        networks:
+        - frontend
+        - backend
+        ports:
+        - MRSM{meerschaum:connectors:api:main:port}:MRSM{meerschaum:connectors:api:main:port}
+        volumes:
+        - meerschaum_api_config_resources:${MEERSCHAUM_API_CONFIG_RESOURCES}
+      meerschaum_db:
+        environment:
+        - TIMESCALEDB_TELEMETRY=off
+        - POSTGRES_USER=${POSTGRES_USER}
+        - POSTGRES_DB=${POSTGRES_DB}
+        - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+        - ALLOW_IP_RANGE=${ALLOW_IP_RANGE}
+        hostname: ${MEERSCHAUM_DB_HOSTNAME}
+        image: timescale/timescaledb:${TIMESCALEDB_VERSION}
+        networks:
+        - backend
+        ports:
+        - MRSM{meerschaum:connectors:sql:main:port}:MRSM{meerschaum:connectors:sql:main:port}
+        volumes:
+        - meerschaum_db_data:/var/lib/postgresql/data
+      portainer:
+        command: -H unix:///var/run/docker.sock
+        image: portainer/portainer
+        ports:
+        - 9000:9000
+        - 8001:8000
+        restart: always
+        volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
+        - portainer_data:/data
+    version: '3.8'
+    volumes:
+      grafana_storage: null
+      meerschaum_api_config_resources: null
+      meerschaum_db_data: null
+      portainer_data: null
+  grafana:
+    dashboard:
+      apiVersion: 1
+      providers:
+      - folder: Meerschaum Dashboards
+        name: Default
+        options:
+          path: /etc/grafana/provisioning/dashboards
+    datasource:
+      apiVersion: 1
+      datasources:
+      - database: MRSM{meerschaum:connectors:sql:main:database}
+        editable: true
+        isDefault: true
+        jsonData:
+          postgresVersion: 1200
+          sslmode: disable
+          timescaledb: true
+        name: Meerschaum Main
+        secureJsonData:
+          password: MRSM{meerschaum:connectors:sql:main:password}
+        type: postgres
+        url: meerschaum_db:MRSM{meerschaum:connectors:sql:main:port}
+        user: MRSM{meerschaum:connectors:sql:main:username}
+system:
+  api:
+    endpoints:
+      mrsm: /mrsm
+    password: meerschaum
+    protocol: http
+    username: meerschaum
+    uvicorn:
+      app: meerschaum.api:fast_api
+      host: 0.0.0.0
+      port: 8000
+      workers: 4
+    version: 0.0.3
+  arguments:
+    sub_decorators:
+    - '['
+    - ']'
+  connectors:
+    all:
+      pandas: pandas
+    api: {}
+    sql:
+      chunksize: 1000
+      connect_args: {}
+      max_overflow: 10
+      method: multi
+      pool_recycle: 3600
+      pool_size: 5
+      poolclass: sqlalchemy.pool.QueuePool
+  shell:
+    close_message: Thank you for using Meerschaum!
+    doc_header: 'Meerschaum actions (`help <action>` for usage):'
+    max_history: 1000
+    prompt: "\U0001D696\U0001D69B\U0001D69C\U0001D696 \u27A4 "
+    ruler: "\u2500"
+    timeout: 60
+    undoc_header: 'Unimplemented actions:'
