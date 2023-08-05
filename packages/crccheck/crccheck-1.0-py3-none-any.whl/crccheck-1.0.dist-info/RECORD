@@ -1,0 +1,14 @@
+crccheck/__init__.py,sha256=0OaU25WB-MIEYW-tMhjQ9LQwHSp-qMQbK2RNRbQySvg,5083
+crccheck/base.py,sha256=dS13n1Yn277H2jYuiu6XZbY6PMN2_Kzuw8leiQoZGUA,8625
+crccheck/checksum.py,sha256=8wK6I1KGSZL-jXFbibl3gF59m2L5lbl5so0bLtrb4Yk,7685
+crccheck/crc.py,sha256=6giFehkrFL2isxxNsJcBMPqwsk499oG_Yq9LiNcXJ9A,54069
+crccheck/crc06.py,sha256=h8MsNZdMQAHVFB0rGy3rqafbpO5AKUflpPhr2k2DnzU,24435
+tests/__init__.py,sha256=-rpbmb-nrOPly7dfuaI_mp_eQy3Eb6BgFti5Yw3N6T8,807
+tests/test_base.py,sha256=CBw2Iwt1u-Mo_NPXfQLrk8Bv19GPqiO9yH_x4nExJW0,3937
+tests/test_checksum.py,sha256=oPtPngkh7Xl8TM8eLN3FLNz7x_q2Mj0aODWd9zfnXbk,4083
+tests/test_crc.py,sha256=oXtfeKiAXOJHQW1Xpvx1p3kGOYTOmfhUn5QKkWVjCdo,7569
+tests/test_reflectbitorder.py,sha256=GtrclSd3uTQZ9hRrIpdQ37edjj50NZeB9o9BlKrDavk,971
+crccheck-1.0.dist-info/METADATA,sha256=5oTqI3P0wPfRLdPy_li8CJGspQ219Ucl8Uy4SMIgZso,5078
+crccheck-1.0.dist-info/WHEEL,sha256=D1Wh14kWDxPnrM-5t_6UCB-UuQNrEODtRa3vF4OsvQY,97
+crccheck-1.0.dist-info/top_level.txt,sha256=KJxzwDbzAV6bq2kNrsaqEvcnVP1vwuk0ZOZ59eLxuKM,15
+crccheck-1.0.dist-info/RECORD,,
