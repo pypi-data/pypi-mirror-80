@@ -1,0 +1,89 @@
+Metadata-Version: 2.1
+Name: asyncsip
+Version: 0.1.1
+Summary: SIP support for AsyncIO
+Home-page: https://github.com/MoronVV/asyncsip
+Author: Vlad Veselov (moronvv)
+Author-email: moronvv@gmail.com
+License: Apache 2
+Keywords: asyncio,sip,telephony
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Framework :: AsyncIO
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Topic :: Communications
+Classifier: Topic :: Communications :: Internet Phone
+Classifier: Topic :: Communications :: Telephony
+Requires-Dist: multidict (>=2.0)
+Requires-Dist: pyquery
+Requires-Dist: aiodns
+Requires-Dist: websockets
+Requires-Dist: async-timeout
+
+======
+aiosip
+======
+
+.. image:: https://travis-ci.org/Eyepea/aiosip.svg?branch=master
+    :target:  https://travis-ci.org/Eyepea/aiosip
+    :align: right
+
+.. image:: https://codecov.io/gh/Eyepea/aiosip/branch/master/graph/badge.svg
+    :target: https://codecov.io/gh/Eyepea/aiosip
+
+.. image:: https://badge.fury.io/py/aiosip.svg
+    :target: http://badge.fury.io/py/aiosip
+
+
+SIP support for AsyncIO written in pure Python.
+
+**Warning: SIP knowledge is necessary to use this library. The public
+API is currently very unstable.**
+
+See **examples/** folder for examples.
+
+* Free software: Apache2 license
+
+Features tested on production
+-----------------------------
+
+* SIP endpoint client mode
+* SIP proxy/server mode
+* UDP and TCP support
+* REGISTER
+* NOTIFY
+* SUBSCRIBE
+* INVITE
+* MESSAGE
+
+Missing features
+----------------
+
+* Documentation
+* unit tests
+
+
+
+
+History
+-------
+
+0.2.0 (2017-09-14)
+------------------
+
+* A lot of bugs fixes
+* Proxy support
+* aiohttp dependency removed in favor of multidict
+* Code refactoring
+* Special thanks to Simon Gomizelj (vodik) on this release: almost come from his contributions
+
+0.1.0 (2014-12-28)
+------------------
+
+* First release on PyPI.
+
+
