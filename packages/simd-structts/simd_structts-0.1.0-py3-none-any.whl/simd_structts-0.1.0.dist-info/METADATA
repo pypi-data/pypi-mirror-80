@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: simd-structts
+Version: 0.1.0
+Summary: SIMD StuctTS Model with various backends
+Home-page: https://github.com/vshulyak/simd-structts
+Author: Vladimir Shulyak
+Author-email: vladimir@shulyak.net
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+Requires-Dist: statsmodels (>=0.11.1)
+Requires-Dist: simdkalman (>=1.0.1)
+
+# simd_structts
+
+
