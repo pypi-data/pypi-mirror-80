@@ -1,0 +1,3 @@
+[taxi.backends]
+tempo = taxi_tempo.backend:TempoBackend
+
