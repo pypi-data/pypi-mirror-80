@@ -1,0 +1,32 @@
+Metadata-Version: 2.1
+Name: uctp
+Version: 1.0.0a6.dev1
+Summary: Universal Command Transfer Protocol
+Home-page: https://github.com/Very1Fake/uctp
+Author: Timur Israpilov
+Author-email: very1fake.coder@gmail.com
+License: MIT
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: System :: Networking
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: pycryptodome (>=3.9.8)
+Requires-Dist: PyYAML (>=5.3.1)
+
+# UCTP
+Universal Command Transfer Protocol
+
+# Installation
+Install from [PyPI](https://pypi.org/project/uctp) by pip:
+
+```bash
+pip install uctp 
+```
+
