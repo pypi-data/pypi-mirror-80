@@ -1,0 +1,12 @@
+{"level":20,"time":1600777360568,"pid":80039,"hostname":"robomb","function":"static ::health","started":1600777360566,"finished":1600777360568,"executionTime":0.002}
+{"level":20,"time":1600777361224,"pid":80039,"hostname":"robomb","function":"static ::newPage","started":1600777360570,"finished":1600777361224,"executionTime":0.654}
+{"level":20,"time":1600777361258,"pid":80039,"hostname":"robomb","function":"static ::getDomProperty","started":1600777361226,"finished":1600777361258,"executionTime":0.032}
+{"level":20,"time":1600777361280,"pid":80039,"hostname":"robomb","function":"static ::closeAllBrowsers","started":1600777361261,"finished":1600777361280,"executionTime":0.019}
+{"level":20,"time":1600777361531,"pid":80046,"hostname":"robomb","function":"static ::health","started":1600777361530,"finished":1600777361531,"executionTime":0.001}
+{"level":20,"time":1600777362613,"pid":80046,"hostname":"robomb","function":"static ::newPage","started":1600777361533,"finished":1600777362613,"executionTime":1.08}
+{"level":20,"time":1600777363798,"pid":80046,"hostname":"robomb","function":"static ::getDomProperty","started":1600777362615,"finished":1600777363798,"executionTime":1.183}
+{"level":20,"time":1600777363812,"pid":80046,"hostname":"robomb","function":"static ::closeAllBrowsers","started":1600777363801,"finished":1600777363812,"executionTime":0.011}
+{"level":20,"time":1600777364165,"pid":80053,"hostname":"robomb","function":"static ::health","started":1600777364164,"finished":1600777364165,"executionTime":0.001}
+{"level":20,"time":1600777364279,"pid":80053,"hostname":"robomb","function":"static ::newBrowser","started":1600777364167,"finished":1600777364279,"executionTime":0.112}
+{"level":20,"time":1600777364293,"pid":80053,"hostname":"robomb","function":"static ::closeBrowser","started":1600777364281,"finished":1600777364293,"executionTime":0.012}
+{"level":20,"time":1600777364296,"pid":80053,"hostname":"robomb","function":"static ::closeAllBrowsers","started":1600777364295,"finished":1600777364296,"executionTime":0.001}
