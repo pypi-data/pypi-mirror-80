@@ -1,0 +1,34 @@
+Metadata-Version: 2.1
+Name: jsonclasses-pymongo
+Version: 0.7.1
+Summary: jsonclasses integration with pymongo
+Home-page: https://github.com/Wiosoft-Crafts/jsonclasses-pymongo
+Author: Wiosoft Crafts
+Author-email: wiosoftvictor@163.com
+License: MIT
+Description: # jsonclasses-pymongo
+        JSON Classes integration with Pymongo.
+        
+        ## Prerequisites
+        
+        To use this package, you should have `jsonclasses` and `pymongo` installed.
+        
+        ## Installation
+        
+        Install `jsonclasses-pymongo` with `pip`.
+        
+        ```sh
+        pip install jsonclasses-pymongo
+        ```
+        
+        ## Documentation
+        
+        Read on bla bla bla.
+        
+        ## License
+        
+        [MIT License](https://github.com/WiosoftCrafts/jsonclasses-pymongo/blob/master/LICENSE)
+        
+Platform: UNKNOWN
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
