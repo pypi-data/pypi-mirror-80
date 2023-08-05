@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: loanpy
+Version: 0.0.9
+Summary: framework for detecting old loanwords
+Home-page: https://github.com/martino-vic/Framework-for-computer-aided-borrowing-detection
+Author: Viktor Martinović
+Author-email: viktor.martinovic@hotmail.com
+License: Creative Commons Attribution 4.0 International
+Project-URL: Source, https://github.com/martino-vic/Framework-for-computer-aided-borrowing-detection
+Project-URL: Citation, http://doi.org/10.5281/zenodo.4009627
+Project-URL: Data, https://drive.google.com/drive/folders/1wlJ7XliYHC9VWocMg54cxR1bwpQ5vmvL
+Description: Framework for detecting old loanwords  
+        Functions for preprocessing included  
+        Sources of metadata: wikiling.de, uralonet.nytud.hu  
+        PhD Project at University of Vienna  
+        
+Keywords: historical linguistics lexicology evolution Uralistics borrowing detection
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Science/Research
+Classifier: Topic :: Scientific/Engineering
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: License :: OSI Approved :: Academic Free License (AFL)
+Classifier: Operating System :: Microsoft :: Windows :: Windows 10
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
