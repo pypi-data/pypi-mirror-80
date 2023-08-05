@@ -1,0 +1,20 @@
+3.0.7 - minor fixes
+3.0.6 - add ctffind4 4.1.14 binaries
+3.0.5 - fix picking bug in streaming
+3.0.4 - add validation for min resolution
+3.0.3 - changed version to reflect Scipion 3 support
+1.0.3:
+    - fixes for tomo ctffind protocol
+    - remove unnecessary scipion 2 code
+    - remove writeShiftsMovieAlignment
+    - use "with open", default phaseShift=0
+    - refactor ctffit plot code
+1.0.1:
+    - First Scipion 3 / python 3 version.
+    - Added continue mode to refine2d
+    - Fixed picking test
+    - CTFFind fit plot updated to match official doc
+    - Added viewer for unblur
+    - Added import particles from Frealign to keep compatibility
+    - Added ctffind4 protocol for tilt series
+1.0.0 - First plugin version
