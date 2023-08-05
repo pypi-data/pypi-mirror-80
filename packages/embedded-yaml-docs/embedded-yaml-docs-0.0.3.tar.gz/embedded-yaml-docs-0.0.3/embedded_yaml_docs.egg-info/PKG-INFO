@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: embedded-yaml-docs
+Version: 0.0.3
+Summary: embedded_yaml_docs is a CLI used for generating markdown documentation, from your YAML files. This can be useful for documenting YAML files such as CI pipelines.
+Home-page: https://github.com/GenesisCoast/embedded-yaml-docs
+Author: Harry Sanderson
+Author-email: harrysanderson@hotmail.co.uk
+License: MIT
+Description: # YAML-Docs
+        
+        YAML docs is a library dedicated for generating docs for YAML files using doc-strings.
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Description-Content-Type: text/markdown
