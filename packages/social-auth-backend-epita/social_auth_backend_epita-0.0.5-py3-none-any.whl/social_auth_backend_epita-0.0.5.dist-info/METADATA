@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: social-auth-backend-epita
+Version: 0.0.5
+Summary: EPITA backend for python-social-auth
+Home-page: https://gitlab.cri.epita.fr/cri/packages/social-auth-backend-epita
+License: AGPL-3.0
+Author: Marin Hannache
+Author-email: mareo@cri.epita.fr
+Requires-Python: >=3.8,<4.0
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: License :: OSI Approved :: GNU Affero General Public License v3
+Classifier: License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Dist: social-auth-core[openidconnect] (>=3.3.3,<4.0.0)
+Project-URL: Repository, https://gitlab.cri.epita.fr/cri/packages/social-auth-backend-epita
