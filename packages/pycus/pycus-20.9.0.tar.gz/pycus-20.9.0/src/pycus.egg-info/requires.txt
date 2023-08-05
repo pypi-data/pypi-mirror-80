@@ -1,0 +1,17 @@
+incremental
+jupyterlab
+face
+typing_extensions
+
+[doc]
+sphinx
+
+[lint]
+black
+flake8
+mypy
+
+[test]
+virtue
+pyhamcrest
+coverage
