@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: workflow-upa
+Version: 0.0.1
+Summary: A pip-installable UPA Workflow Definitions package
+Home-page: UNKNOWN
+Author: Akshay Tigga
+Author-email: akshay.tigga@syncron.com
+License: UNKNOWN
+Keywords: upawflowdef
+Platform: UNKNOWN
+Requires-Dist: boto3
+Requires-Dist: pandas
+Requires-Dist: numpy
+Requires-Dist: kfp (==1.0.0)
+Requires-Dist: requests
+
+UNKNOWN
+
+
