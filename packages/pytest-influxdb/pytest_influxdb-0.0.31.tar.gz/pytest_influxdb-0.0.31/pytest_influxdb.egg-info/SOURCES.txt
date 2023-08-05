@@ -1,0 +1,14 @@
+README.rst
+setup.py
+pytest_influxdb/__init__.py
+pytest_influxdb/data_manager.py
+pytest_influxdb/influxdb_components.py
+pytest_influxdb/plugin.py
+pytest_influxdb/suite_result_dto.py
+pytest_influxdb/test_result_dto.py
+pytest_influxdb.egg-info/PKG-INFO
+pytest_influxdb.egg-info/SOURCES.txt
+pytest_influxdb.egg-info/dependency_links.txt
+pytest_influxdb.egg-info/entry_points.txt
+pytest_influxdb.egg-info/requires.txt
+pytest_influxdb.egg-info/top_level.txt
