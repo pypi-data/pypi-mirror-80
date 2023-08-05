@@ -1,0 +1,12 @@
+Metadata-Version: 2.1
+Name: std-hash
+Version: 0.1.0
+Summary: Тупое хеширование объектов
+Author: Anton Rastyazhenko
+Author-email: rastyazhenko.anton@gmail.com
+Requires-Python: >=3.8,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: orjson (>=3.3.1,<4.0.0)
+Requires-Dist: pydantic (>=1.6.1,<2.0.0)
+Requires-Dist: typing (>=3.7.4,<4.0.0)
