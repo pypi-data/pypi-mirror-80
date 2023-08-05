@@ -1,0 +1,6 @@
+
+[dev]
+pytest
+pytest-dependency
+pytest-runner
+paramiko>=2.4.2
