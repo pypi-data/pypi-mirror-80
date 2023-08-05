@@ -1,0 +1,36 @@
+Metadata-Version: 2.1
+Name: seakylib
+Version: 1.0.6.3
+Summary: Seaky's private lib
+Home-page: https://github.com/sseaky
+Author: Seaky
+Author-email: seaky.cn@gmail.com
+License: UNKNOWN
+Description: ## About
+        
+        This is Seaky's private lib.
+        
+        
+        
+        ## Update
+        
+        ### 1.0.6.3
+        
+        data.pd.to_excel
+        
+        data.redis_func
+        
+        func.string.obj2list
+        
+        func.string.qround
+        
+        os.cmd.OSSQL
+        
+        
+        
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
