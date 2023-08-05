@@ -1,0 +1,16 @@
+
+[dev]
+twine
+bump2version
+pytest
+flake8
+Sphinx>=3.2.1
+sphinx-rtd-theme==0.4.3
+
+[doc]
+Sphinx>=3.2.1
+sphinx-rtd-theme==0.4.3
+
+[test]
+pytest
+flake8

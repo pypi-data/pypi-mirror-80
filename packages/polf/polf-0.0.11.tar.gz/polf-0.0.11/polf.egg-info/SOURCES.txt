@@ -1,0 +1,15 @@
+README.md
+setup.cfg
+setup.py
+polf.egg-info/PKG-INFO
+polf.egg-info/SOURCES.txt
+polf.egg-info/dependency_links.txt
+polf.egg-info/not-zip-safe
+polf.egg-info/requires.txt
+polf.egg-info/top_level.txt
+src/pypolf.c
+test/test_cubic_bezier_xy.py
+test/test_elliptical_arc_xy.py
+test/test_line_xy.py
+test/test_line_xyz.py
+test/test_quadratic_bezier_xy.py
