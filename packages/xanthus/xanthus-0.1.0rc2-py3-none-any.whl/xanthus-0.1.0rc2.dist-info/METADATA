@@ -1,0 +1,39 @@
+Metadata-Version: 2.1
+Name: xanthus
+Version: 0.1.0rc2
+Summary: Neural Collaborative Filtering in Python
+Home-page: https://github.com/markdouthwaite/xanthus
+Author: Mark Douthwaite
+Author-email: mark@douthwaite.io
+License: MIT
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Dist: tensorflow (==2.3.0)
+Requires-Dist: jupyter (==1.0.0)
+Requires-Dist: pandas (==1.0.4)
+Requires-Dist: numpy (==1.18.5)
+Requires-Dist: h5py (==2.10.0)
+Requires-Dist: scipy (==1.4.1)
+Requires-Dist: scikit-learn (==0.23.1)
+Requires-Dist: requests (==2.23.0)
+Requires-Dist: implicit (==0.4.0)
+Provides-Extra: tests
+Requires-Dist: pytest ; extra == 'tests'
+Requires-Dist: pandas ; extra == 'tests'
+Requires-Dist: requests ; extra == 'tests'
+Requires-Dist: markdown ; extra == 'tests'
+Requires-Dist: black ; extra == 'tests'
+Requires-Dist: tensorflow ; extra == 'tests'
+
+
+Implementations of Neural Collaborative Filtering models, based on/inspired by the work 
+of He et al., built on Keras, with a few recommendation system utilities to boot. 
+
+
