@@ -1,0 +1,19 @@
+0.5.6
+ - fix: use "deform" for datasets that don't have "bright_avg"
+   in preview
+0.5.5
+ - ref: move to dcor_shared 0.2.5
+0.5.4
+ - enh: add a ``job_id`` to the "preview" background job and,
+   depending on whether or not the ckanext-dc_serve extensions is
+   installed, wait for the "condense" background job before
+   attempting to create a preview image; this avoids computing
+   the brightness twice (#2)
+0.5.3
+ - fix: manifest did not include .yml
+0.5.2
+ - maintenance release
+0.5.1
+ - maintenance release
+0.5.0
+ - initial open-sourced version
