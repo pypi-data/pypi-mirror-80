@@ -1,0 +1,17 @@
+[console_scripts]
+tfd_create_archive = tensorflow_deploy_utils.scripts.create_archive:main
+tfd_delete_label = tensorflow_deploy_utils.scripts.delete_label:main
+tfd_delete_model = tensorflow_deploy_utils.scripts.delete_model:main
+tfd_delete_module = tensorflow_deploy_utils.scripts.delete_module:main
+tfd_deploy_model = tensorflow_deploy_utils.scripts.deploy_model:main
+tfd_get_config = tensorflow_deploy_utils.scripts.get_config:main
+tfd_get_model = tensorflow_deploy_utils.scripts.get_model:main
+tfd_get_module = tensorflow_deploy_utils.scripts.get_module:main
+tfd_list_models = tensorflow_deploy_utils.scripts.list_models:main
+tfd_list_modules = tensorflow_deploy_utils.scripts.list_modules:main
+tfd_reload_config = tensorflow_deploy_utils.scripts.reload_config:main
+tfd_set_label = tensorflow_deploy_utils.scripts.set_label:main
+tfd_set_stable = tensorflow_deploy_utils.scripts.set_stable:main
+tfd_upload_model = tensorflow_deploy_utils.scripts.upload_model:main
+tfd_upload_module = tensorflow_deploy_utils.scripts.upload_module:main
+
