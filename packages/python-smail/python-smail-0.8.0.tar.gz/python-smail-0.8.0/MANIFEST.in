@@ -1,0 +1,13 @@
+include AUTHORS
+include CONTRIBUTING.md
+include CHANGELOG.rst
+include LICENSE
+include README.rst
+
+recursive-exclude test *
+recursive-exclude tool *
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
+
+exclude Makefile .editorconfig Pipfile* tox.ini .coveragerc
+

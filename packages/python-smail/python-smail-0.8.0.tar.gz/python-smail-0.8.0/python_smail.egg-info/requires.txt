@@ -1,0 +1,7 @@
+asn1crypto
+oscrypto
+
+[test]
+coverage
+flake8
+tox
