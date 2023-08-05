@@ -1,0 +1,5 @@
+[console_scripts]
+pypublish = pythumbnailer.pypublish:__main__
+pypublish-clean = pythumbnailer.clean:__main__
+pypublish-prepare = pythumbnailer.prepare:__main__
+
