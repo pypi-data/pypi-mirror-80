@@ -1,0 +1,9 @@
+{
+  "zmq_prefix": "/python-agent/bindeps/deps/libzmq/binaries/release",
+  "libzmq_extension": true,
+  "no_libzmq_extension": true,
+  "skip_check_zmq": false,
+  "build_ext": {},
+  "bdist_egg": {},
+  "have_sys_un_h": true
+}
