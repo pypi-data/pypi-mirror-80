@@ -1,0 +1,3 @@
+[console_scripts]
+threebot=jumpscale.entry_points.threebot:cli
+
