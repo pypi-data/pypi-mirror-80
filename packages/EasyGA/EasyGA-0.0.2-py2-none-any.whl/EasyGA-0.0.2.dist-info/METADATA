@@ -1,0 +1,44 @@
+Metadata-Version: 2.1
+Name: EasyGA
+Version: 0.0.2
+Summary: A ubiquitous or general purpuse GA
+Home-page: https://github.com/danielwilczak/EasyGA
+Author: Daniel Wilczak
+Author-email: danielwilczak101@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Description-Content-Type: text/markdown
+Requires-Dist: blessings (~=1.7)
+
+# Hello World
+
+This is an example project demonstration.
+
+## Installation
+
+Run the rolling to install:
+
+```Python
+pip install EasyGA
+```
+
+## Usage
+
+```python
+From hello world import say_hello
+
+# Generate "Hello World"
+say_hello()
+
+# Generate "Hello, Everybody!"
+say_hello("Everybody!")
+```
+
+# Developing Hello World
+
+To install helloworld, along with the tools you need to develop and run tests, run the following in your virtual env:
+
+```bash
+$ pip install -e .[dev]
+```
+
