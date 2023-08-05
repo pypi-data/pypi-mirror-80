@@ -1,0 +1,39 @@
+Metadata-Version: 2.1
+Name: discoset
+Version: 0.9.3
+Summary: Small script to setup symlinks to dotfiles
+Home-page: https://github.com/chsigi/discoset
+Author: Christoph Echtinger-Sieghart
+Author-email: s@hands-on-imperative.org
+License: MIT
+Description: [![Build Status](https://travis-ci.com/chsigi/discoset.svg?branch=master)](https://travis-ci.com/chsigi/discoset)
+        
+        # Overview
+        
+        dis·co·set (distributed configurations setup) is a small system that helps you in
+        managing your configuration files between various hosts and users. Quite a statement
+        for a small script that just calls ln multiple times :-).
+        
+        The script makes no assumptions about the way you share your configuration files
+        between hosts (git, svn, dropbox, ...) or about the layout of your shared folder.
+        
+        You just describe in a YAML file which configuration files belong to a specific user
+        and a specific host and where to put symlinks to them.
+        
+        See [Discoset_SAMPLE.yml](Discoset_SAMPLE.yml) for an example.
+        
+        # Todo
+        
+        * Add setup command
+        * Add cleanup command
+        * Extend tests to check for alien files
+        * Extend tests to check for files that are updated
+        
+Keywords: dotfiles,symlink,configs
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Description-Content-Type: text/markdown

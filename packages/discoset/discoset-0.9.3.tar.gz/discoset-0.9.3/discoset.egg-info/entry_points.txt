@@ -1,0 +1,3 @@
+[console_scripts]
+discoset = discoset.__main__:_main
+
