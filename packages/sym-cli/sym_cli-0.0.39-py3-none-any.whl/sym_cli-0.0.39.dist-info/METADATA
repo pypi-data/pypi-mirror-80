@@ -1,0 +1,34 @@
+Metadata-Version: 2.1
+Name: sym-cli
+Version: 0.0.39
+Summary: The CLI for Sym
+Home-page: https://github.com/symopsio/runtime/cli
+Author: SymOps, Inc.
+Author-email: pypi@symops.io
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: Click
+Requires-Dist: PyYAML
+Requires-Dist: sentry-sdk (>=0.17)
+Requires-Dist: validators
+Requires-Dist: analytics-python
+Requires-Dist: boto3 (>=1.14)
+Requires-Dist: click-option-group
+Requires-Dist: immutables
+Requires-Dist: portalocker
+Requires-Dist: SecretStorage (>3)
+Requires-Dist: keyring
+
+# sym-cli
+
+Sym CLI
+
+## Usage
+
+\#TODO
+
+
