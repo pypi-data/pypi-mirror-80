@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: pystocklib
+Version: 0.0.2
+Summary: python stock library
+Home-page: https://github.com/sharebook-kr/pystocklib
+Author: Lukas Yoo, Brayden Jo
+Author-email: jonghun.yoo@outlook.com, brayden.jo@outlook.com, pystock@outlook.com
+License: MIT
+Platform: UNKNOWN
+Requires-Dist: pandas
+Requires-Dist: requests
+Requires-Dist: beautifulsoup4
+Requires-Dist: html5lib
+
+UNKNOWN
+
+
