@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>230</width>
+    <height>140</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>multigifview</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_main">
+    <item>
+     <widget class="QScrollArea" name="scrollArea">
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>210</width>
+         <height>68</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="gif_layout">
+        <item>
+         <layout class="QVBoxLayout" name="column0">
+          <item>
+           <spacer name="verticalSpacer_left">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="sizeConstraint">
+       <enum>QLayout::SetFixedSize</enum>
+      </property>
+      <item>
+       <widget class="QPushButton" name="beginning_button">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset theme="media-skip-backward">
+          <normaloff>.</normaloff>.</iconset>
+        </property>
+        <property name="shortcut">
+         <string>B</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="previous_button">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset theme="media-seek-backward">
+          <normaloff>.</normaloff>.</iconset>
+        </property>
+        <property name="shortcut">
+         <string>P</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="play_button">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset theme="media-playback-start">
+          <normaloff>.</normaloff>.</iconset>
+        </property>
+        <property name="shortcut">
+         <string>Space</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="next_button">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset theme="media-seek-forward">
+          <normaloff>.</normaloff>.</iconset>
+        </property>
+        <property name="shortcut">
+         <string>N</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="end_button">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset theme="media-skip-forward">
+          <normaloff>.</normaloff>.</iconset>
+        </property>
+        <property name="shortcut">
+         <string>E</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="quit_button">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset theme="window-close"/>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>230</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
