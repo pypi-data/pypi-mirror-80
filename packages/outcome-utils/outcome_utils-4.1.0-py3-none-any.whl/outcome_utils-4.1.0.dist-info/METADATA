@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: outcome-utils
+Version: 4.1.0
+Summary: A collection of python utils.
+Home-page: https://github.com/outcome-co/utils-py
+License: ISC
+Author: Douglas Willcocks
+Author-email: douglas@outcome.co
+Requires-Python: >=3.8,<4.0
+Classifier: License :: OSI Approved
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: colored (>=1.4.2,<2.0.0)
+Requires-Dist: jinja2 (>=2.11.2,<3.0.0)
+Requires-Dist: rich (>=6.2,<8.0)
+Requires-Dist: toml (>=0.10.1,<0.11.0)
+Project-URL: Documentation, https://github.com/outcome-co/utils-py#README
+Project-URL: Repository, https://github.com/outcome-co/utils-py
+Description-Content-Type: text/markdown
+
+# utils-py
+![ci-badge](https://github.com/outcome-co/utils-py/workflows/Checks/badge.svg) ![version-badge](https://img.shields.io/badge/version-4.1.0-brightgreen)
+
+A set of python utilities.
+
+## Usage
+
+```sh
+poetry add outcome-utils
+```
+
+## Development
+
+Remember to run `./pre-commit.sh` when you clone the repository.
+
