@@ -1,0 +1,19 @@
+Metadata-Version: 2.0
+Name: formulator
+Version: 0.0.2
+Summary: Formulator
+Home-page: https://gitlab.com/Trijeet/formulator
+Author: Trijeet Sethi
+Author-email: trijeets@gmail.com
+License: UNKNOWN
+Description-Content-Type: text/markdown
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Classifier: Framework :: Pytest
+Requires-Python: >=3.6
+
+
+Formulator is a plug-and-play property validator for python objects.
+
+
