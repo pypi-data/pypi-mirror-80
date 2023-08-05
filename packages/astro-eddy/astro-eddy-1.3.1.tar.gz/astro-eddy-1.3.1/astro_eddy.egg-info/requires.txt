@@ -1,0 +1,5 @@
+scipy>=1
+numpy
+matplotlib
+emcee>=3
+corner>=2
