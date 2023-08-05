@@ -1,0 +1,113 @@
+# Build, test and publish paperplane 𒓴 Python 🐍 distributions 📦 to TestPyPI
+# This workflow will run tox with different Python versions, run static code checks and publish to PyPI
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+
+name: CI
+
+on:
+  workflow_dispatch:
+  release:
+    types: [published]
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.6, 3.7, 3.8]
+    steps:
+      - name: "Checkout ${{ github.ref }} ( ${{ github.sha }} )"
+        uses: actions/checkout@v2
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install tox
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install --upgrade tox
+      - name: Run tox
+        # Run tox using the version of Python in `PATH`
+        run: tox -e py
+
+  static-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout ${{ github.ref }} ( ${{ github.sha }} )"
+        uses: actions/checkout@v2
+      - name: Set up Python 3.x
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      - name: Install tox
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install --upgrade tox
+      - name: Run black
+        run: tox -e black
+      - name: Run lint
+        run: tox -e lint
+
+  build-and-publish:
+    runs-on: ubuntu-latest
+    needs: [tests, static-checks]
+    if: github.event_name == 'push' || github.event_name == 'release'
+    steps:
+      - name: "Checkout ${{ github.ref }} ( ${{ github.sha }} )"
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Set up Python 3.x
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      - name: Install build dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install --upgrade setuptools_scm pep517 twine
+      - name: Set a PyPI compatible setuptools_scm pretend version
+        # Required for continuously deploying to Test PyPI when we have commits not part of a tag/release
+        # See https://github.com/pypa/setuptools_scm/issues/478
+        run: |
+          from setuptools_scm import get_version
+          real_version = get_version()
+          pretend_version = get_version(local_scheme='no-local-version')
+          if pretend_version != real_version:
+            print(f'Setting SETUPTOOLS_SCM_PRETEND_VERSION to {pretend_version} instead of using version {real_version}')
+            print(f'::set-env name=SETUPTOOLS_SCM_PRETEND_VERSION::{pretend_version}')
+          else:
+            print(f'Version {real_version} is compatible with PyPI. No action needed.')
+        shell: python
+      - name: List tags and dirty files
+        run: |
+          git tag --list
+          git status --porcelain
+      - name: Build a source tarball and a binary wheel
+        run: >-
+          python -m
+          pep517.build
+          --source
+          --binary
+          --out-dir dist/
+          .
+#      - name: Publish distribution 📦 to Test PyPI
+#        if: github.event_name != 'release'
+#        env:
+#          TWINE_USERNAME: __token__
+#          TWINE_PASSWORD: ${{ secrets.TEST_PYPI_PASSWORD }}
+#          TWINE_REPOSITORY_URL: https://test.pypi.org/legacy/
+#        run: |
+#          twine check dist/*
+#          twine upload --verbose dist/*
+      - name: Publish distribution 📦 to PyPI
+        if: github.event_name == 'release' && github.event.action == 'published'
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+        run: |
+          twine check dist/*
+          twine upload --verbose dist/*
