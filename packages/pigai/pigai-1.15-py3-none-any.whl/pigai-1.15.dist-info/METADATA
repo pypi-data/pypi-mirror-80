@@ -1,0 +1,27 @@
+Metadata-Version: 2.1
+Name: pigai
+Version: 1.15
+Summary: Pigai Api
+Home-page: https://github.com/
+Author: pigai
+Author-email: 1918118941@qq.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+Requires-Dist: requests (>=1.0)
+Requires-Dist: spacy (>=2.0.0)
+Requires-Dist: pandas
+Requires-Dist: pygtrie
+Requires-Dist: seaborn
+Requires-Dist: numpy
+Requires-Dist: ipywidgets
+Requires-Dist: en-core-web-sm
+Requires-Dist: redis (>=3.4.1)
+Requires-Dist: elasticsearch
+
+Pigai Api
+
+
