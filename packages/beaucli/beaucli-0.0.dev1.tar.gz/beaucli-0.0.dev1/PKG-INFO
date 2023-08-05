@@ -1,0 +1,39 @@
+Metadata-Version: 2.1
+Name: beaucli
+Version: 0.0.dev1
+Summary: a tool for making your cli applications more colorful!
+Home-page: https://github.com/memesterhub/beaucli
+Author: Hussein Amine
+Author-email: husseinraedamine56@gmail.com
+License: UNKNOWN
+Description: # beaucli
+        a tool for making your cli applications way more colorful!
+        
+        # installation
+        by pip
+        ```
+        pip install beaucli
+        ```
+        from source code
+        ```
+        git clone https://github/com/memesterhub/beaucli
+        python setup.py install
+        ```
+        # Description
+        basically beaucli is a tool for making your command line applications better by providing you colors and some extra tools
+        
+        # Introduction
+        ```
+        import beaucli.foreground as fg
+        fg.printfgc("Hello in Red!", fg.red)
+        ```
+        
+        # Documentation
+        ## Coming Soon!
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
