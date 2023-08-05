@@ -1,0 +1,15 @@
+Metadata-Version: 1.1
+Name: BuildPlanDetail
+Version: 0.7
+Summary: 获取代码改动的文件和方法
+Home-page: https://github.com/vfrtgb158/email
+Author: houyan
+Author-email: houyan@qiyi.com
+License: MIT
+Description: UNKNOWN
+Platform: UNKNOWN
+Requires: requests
+Requires: pygerrit2
+Requires: PyMySQL
+Requires: multiprocess
+Requires: threadpool
