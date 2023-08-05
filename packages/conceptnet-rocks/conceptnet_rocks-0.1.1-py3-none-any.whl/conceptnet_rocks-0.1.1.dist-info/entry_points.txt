@@ -1,0 +1,3 @@
+[console_scripts]
+conceptnet-rocks-load=conceptnet_rocks.cli:app
+
