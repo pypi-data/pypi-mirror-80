@@ -1,0 +1,22 @@
+Metadata-Version: 1.0
+Name: prisma-helpers
+Version: 0.1.3
+Summary: helpers function for interacting with prisma api using ayncio and aiohttp
+Home-page: https://github.com/Onlaw/prisma_helpers
+Author: Onlaw (Jens Madsen)
+Author-email: jens@onlaw.dk
+License: MIT License
+Description: # prisma_helpers
+        helpers functions for interacting with prisma api using python async libraries asyncio and aiohttp
+        
+        documentation is on its way :-) 
+        
+        # push to pypi 
+        - install wheel: `pip install wheel`
+        - Follow instructions here: https://packaging.python.org/tutorials/packaging-projects/
+        - ... with some modifications: `python setup.py sdist`
+        - `twine upload dist/`
+        
+        
+        
+Platform: UNKNOWN
