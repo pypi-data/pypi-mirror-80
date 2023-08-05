@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: raol_libpyhtonpro
+Version: 0.1
+Summary: Módulo para exemplificar construção de projetos Python no curso PyTools
+Home-page: https://github.com/raolbrito/libpythonpro
+Author: Rafael Brito
+Author-email: ra.brito@yahoo.com.br
+License: GNU AFFERO GENERAL PUBLIC LICENSE
+Description: respira e segue em frente...
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Framework :: Pytest
+Description-Content-Type: text/markdown
