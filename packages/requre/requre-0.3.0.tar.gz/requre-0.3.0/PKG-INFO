@@ -1,0 +1,41 @@
+Metadata-Version: 2.1
+Name: requre
+Version: 0.3.0
+Summary: Library for testing python code what allows store output of various objects and use stored data for testing
+Home-page: https://github.com/packit-service/requre
+Author: Red Hat
+Author-email: packit@redhat.com
+License: MIT
+Description: [![PyPI version](https://badge.fury.io/py/requre.svg)](https://badge.fury.io/py/requre)
+        
+        # REQUest REcording
+        
+        Requre \[rekure\]
+        
+        Is Library for storing output of various function and methods to
+        persistent storage and be able to replay the stored output to functions
+        back
+        
+        [Documentation](https://requre.readthedocs.io/en/latest/)
+        
+        ## Plan and current status
+        
+        - Used for testing [packit-service](https://github.com/packit-service) organization projects
+          - ogr
+          - packit
+        
+Keywords: testing,persistent_storage,session_storage
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Topic :: Software Development
+Classifier: Topic :: Utilities
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Provides-Extra: testing
