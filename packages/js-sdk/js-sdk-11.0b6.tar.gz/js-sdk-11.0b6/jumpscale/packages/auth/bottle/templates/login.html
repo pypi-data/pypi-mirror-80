@@ -1,0 +1,25 @@
+{% extends "home.html"%}
+{% block title %}Login{% endblock %}
+<h3>Welcome to 3Bot</h3>
+
+{% block content %}
+<br />
+<span>You tried to access a protected web page, and that action requires you to login using one of our supported idenitifications services listed below.</span>
+<br />
+<div class="row justify-content-md-center">
+    <div class="col-sm-4">
+        {% for provider in providers%}
+        <a class="btn btn-block btn-social btn-{[provider]} text-center"
+            href="/auth/login?provider={{provider}}&{% if next_url %}next_url={{next_url}}{% endif %}">
+            <i class="fa fa-{{provider}}"></i> {{provider}}
+        </a>
+        {% endfor %}
+
+        <a class="btn btn-block btn-social btn-vk text-center"
+            href="/auth/login?provider=3bot&{% if next_url %}next_url={{next_url}}{% endif %}">
+            <span class="bot"></span>Log in via 3Bot Connect
+        </a>
+    </div>
+</div>
+
+{% endblock %}

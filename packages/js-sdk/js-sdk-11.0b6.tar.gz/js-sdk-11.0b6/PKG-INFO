@@ -1,0 +1,30 @@
+Metadata-Version: 2.1
+Name: js-sdk
+Version: 11.0b6
+Summary: SDK for threefold grid
+License: Apache-2.0
+Author: xmonader
+Author-email: xmonader@gmail.com
+Requires-Python: >=3.6,<4.0
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: PyGithub (>=1.43,<2.0)
+Requires-Dist: beaker (>=1.11.0,<2.0.0)
+Requires-Dist: certbot-nginx (==1.5.0)
+Requires-Dist: cryptography (==3.0)
+Requires-Dist: dnspython (>=1.16,<2.0)
+Requires-Dist: js-ng (==11.0b3)
+Requires-Dist: minio (>=4.0,<5.0)
+Requires-Dist: pillow (>=6.1,<7.0)
+Requires-Dist: protobuf (>=3.12.2,<4.0.0)
+Requires-Dist: pycountry (>=19.8,<20.0)
+Requires-Dist: pypng (>=0.0.20,<0.0.21)
+Requires-Dist: pyqrcode (>=1.2.1,<2.0.0)
+Requires-Dist: python-digitalocean (>=1.15.0,<2.0.0)
+Requires-Dist: python-taiga (>=1.0.0,<2.0.0)
+Requires-Dist: requests_unixsocket (>=0.2.0,<0.3.0)
+Requires-Dist: sendgrid (>=6.0,<7.0)
+Requires-Dist: stellar-sdk (==2.4.1)
