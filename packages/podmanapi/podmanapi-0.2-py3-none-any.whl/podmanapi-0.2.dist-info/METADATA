@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: podmanapi
+Version: 0.2
+Summary: Python package for Podman Rest API
+Home-page: https://github.com/djotaku/podmanapis
+Author: Eric Mesa
+Author-email: UNKNOWN
+License: GPLv3
+Keywords: Podman,Docker,Containers
+Platform: UNKNOWN
+Requires-Dist: requests-unixsocket
+
+Intended to eventually become a full implementation of the Podman 2.0 REST API
+
+
