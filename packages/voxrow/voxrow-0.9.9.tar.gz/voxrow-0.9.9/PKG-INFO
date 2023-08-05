@@ -1,0 +1,13 @@
+Metadata-Version: 1.2
+Name: voxrow
+Version: 0.9.9
+Summary: VOXROW's library
+Home-page: https://gitlab.com/voxrow/voxrow
+Author: Pipin Fitriadi
+Author-email: pipinfitriadi@gmail.com
+License: MS-RSL
+Download-URL: https://gitlab.com/voxrow/voxrow/-/archive/master/voxrow-master.tar.gz
+Description: VOXROW's library
+Keywords: voxrow,library,raw sql query
+Platform: any
+Requires-Python: >=3.8.0
