@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: banpei
+Version: 0.1.1
+Summary: Anomaly detection library with Python
+License: MIT
+Author: Hirofumi Tsuruta
+Requires-Python: >=3.5,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: numpy (>=1.19.2,<2.0.0)
+Requires-Dist: pandas (>=1.1.2,<2.0.0)
+Requires-Dist: scipy (>=1.5.2,<2.0.0)
