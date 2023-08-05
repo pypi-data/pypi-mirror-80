@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: neuroneq
+Version: 0.0.3
+Summary: NeuronEQ
+Home-page: https://github.com/tjbanks/neuroneq
+Author: Tyler Banks
+Author-email: tbanks@mail.missouri.edu
+License: MIT
+Description: # neuroneq
+        A GUI-based python tool to visualize equations used in simulated neurons.
+        
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
