@@ -1,0 +1,33 @@
+Metadata-Version: 1.1
+Name: guillotina-numpy
+Version: 1.0.1
+Summary: UNKNOWN
+Home-page: https://github.com/guillotinaweb/guillotina_numpy.git
+Author: Ramon Navarro Bosch
+Author-email: ramon@flaps.io
+License: BSD
+Description: Guillotina Numpy
+        ----------------
+        
+        Adding a field that is stored as a numpy binary state
+        
+        
+        In order to configure::
+        
+            applications:
+            - guillotina_numpy
+        
+        
+        Interface configuration::
+        
+            class IFoobarType(Interface):
+            foobar = NumPyArrayField(
+                required=False)
+        
+        1.0.1 (2020-09-22)
+        ------------------
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
