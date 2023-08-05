@@ -1,0 +1,18 @@
+from setuptools import setup, find_packages
+
+setup(
+	name="roboidai",
+	version="1.0.0",
+	author="Kwang-Hyun Park",
+	author_email="akaii@kw.ac.kr",
+	description="Python Package for Roboid AI",
+	long_description=open("README.md").read(),
+	long_description_content_type="text/markdown",
+	install_requires=["roboidlab", "pandas", "opencv-python", "tensorflow"],
+	packages=find_packages(exclude=["examples", "tests"]),
+	python_requires=">=3",
+	zip_safe=False,
+	classifiers=[
+		"License :: OSI Approved :: GNU Lesser General Public License v2 or later (LGPLv2+)"
+	]
+)

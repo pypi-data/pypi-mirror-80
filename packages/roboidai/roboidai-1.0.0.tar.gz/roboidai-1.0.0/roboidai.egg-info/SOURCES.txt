@@ -1,0 +1,17 @@
+LICENSE
+MANIFEST.in
+README.md
+requirements.txt
+setup.cfg
+setup.py
+roboidai/__init__.py
+roboidai/camera.py
+roboidai/window.py
+roboidai.egg-info/PKG-INFO
+roboidai.egg-info/SOURCES.txt
+roboidai.egg-info/dependency_links.txt
+roboidai.egg-info/not-zip-safe
+roboidai.egg-info/requires.txt
+roboidai.egg-info/top_level.txt
+roboidai/tm/__init__.py
+roboidai/tm/image.py
