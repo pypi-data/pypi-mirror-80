@@ -1,0 +1,29 @@
+Metadata-Version: 2.1
+Name: RandKey
+Version: 1.0.0
+Summary: A useful key generator.
+Home-page: UNKNOWN
+Author: JasonTheDev
+Author-email: examqiename@gmail.com
+License: UNKNOWN
+Description: # RandKey
+        
+        This lib can be used to generate random keys that can be used for a password salt, a cdk for your program, or maybe a scurity key for your fist website!
+        
+        Usage (Python):
+        
+        ```Python
+        # Import the lib
+        from RandKey import GenKey
+        
+        # Generate the key and store it in a variable
+        GeneratedKey = GenKey(size=32) # The defult size is 64
+        
+        # Print out the key
+        print(GeneratedKey)
+        ```
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
