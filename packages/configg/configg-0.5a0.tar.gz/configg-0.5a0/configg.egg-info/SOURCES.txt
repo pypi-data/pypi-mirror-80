@@ -1,0 +1,14 @@
+README.md
+setup.py
+configg/__init__.py
+configg/backend.py
+configg/configg.py
+configg/exceptions.py
+configg/ini_backend.py
+configg/json_backend.py
+configg/section_view.py
+configg/xml_backend.py
+configg.egg-info/PKG-INFO
+configg.egg-info/SOURCES.txt
+configg.egg-info/dependency_links.txt
+configg.egg-info/top_level.txt
