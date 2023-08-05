@@ -1,0 +1,12 @@
+README.rst
+setup.py
+html_similarity/__init__.py
+html_similarity/similarity.py
+html_similarity/structural_similarity.py
+html_similarity/style_similarity.py
+html_similarity.egg-info/PKG-INFO
+html_similarity.egg-info/SOURCES.txt
+html_similarity.egg-info/dependency_links.txt
+html_similarity.egg-info/not-zip-safe
+html_similarity.egg-info/requires.txt
+html_similarity.egg-info/top_level.txt
