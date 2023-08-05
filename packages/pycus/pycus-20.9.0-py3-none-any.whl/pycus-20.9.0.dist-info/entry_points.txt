@@ -1,0 +1,3 @@
+[console_scripts]
+jupyter-pycus = pycus.commands:main_command.run
+
