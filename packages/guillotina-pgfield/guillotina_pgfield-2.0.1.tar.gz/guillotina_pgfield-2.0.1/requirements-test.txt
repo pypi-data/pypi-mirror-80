@@ -1,0 +1,12 @@
+pytest>=3.8.0
+pytest-aiohttp==0.1.3
+pytest-asyncio>=0.10.0
+pytest-cov
+coverage>=4.0.3
+backoff==1.4.1
+docker
+docker-pycreds
+psycopg2==2.7.1
+pytest-docker-fixtures
+pytest-rerunfailures
+async_asgi_testclient
