@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: lektor-tinymce
+Version: 0.2
+Summary: Lektor Plugin for TinyMCE Text Editor use.
+Home-page: UNKNOWN
+Author: Grigory Vartanyan
+Author-email: gvartanyan@spherical.pm
+License: MIT
+Description: # lektor-tinymce
+        Lektor plugin for editing with the [TinyMCE text editor](https://www.tiny.cloud/features).
+        
+        ## Installation
+        Install the plugin from pypi with one of the [standard ways](https://www.getlektor.com/docs/plugins/).
+        
+        ## API key
+        To add an API key, create the file `configs/tinymce.ini` in your lektor project folder with the following contents:
+        
+            [licence]
+            api-key = 'YOUR_API_KEY_HERE'
+        
+        ## License
+        The plugin is distributed under the MIT license
+        
+Keywords: lektor,plugin,tinymce,rich-text,editor,wysiwyg
+Platform: UNKNOWN
+Classifier: Framework :: Lektor
+Classifier: Environment :: Plugins
+Description-Content-Type: text/markdown
