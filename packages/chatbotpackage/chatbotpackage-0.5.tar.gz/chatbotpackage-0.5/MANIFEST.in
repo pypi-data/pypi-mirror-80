@@ -1,0 +1,15 @@
+include templates/*
+include static/*
+include certificates/*
+include lib/*
+include logs/*
+include app.yaml
+inclue config.ini
+include server.ini
+include chatbot/classes/*
+include chatbot/intents/*
+include chatbot/models/*
+include chatbot/server_config/*
+include chatbot/words/*
+include chatbot/config.ini
+include chatbot/training.ini
