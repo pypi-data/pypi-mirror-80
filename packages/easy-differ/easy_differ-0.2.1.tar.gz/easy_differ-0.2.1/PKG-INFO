@@ -1,0 +1,48 @@
+Metadata-Version: 2.1
+Name: easy_differ
+Version: 0.2.1
+Summary: Compare Text line by line. See different text and their lines
+Home-page: https://github.com/FurkanOzkaya/easy_differ
+Author: Furkan Ozkaya
+Author-email: furkanozkaya45@gmail.com
+License: MIT
+Download-URL: https://github.com/FurkanOzkaya/easy_differ/archive/0.2.1.tar.gz
+Description: # Differ
+        
+        Compare Texts with easy_differ
+        
+        let's assume you're working with big files and you have one expected output file and you need to make your output is same but you're noticing  some lines have diferent places in file even it's same.
+        
+        Beyond compare is displaying diference but when you check manually, you can notice your code changed place of lines (example creating xml file in runtime)
+        Normally text will same but you are displaying difference.
+        
+        Easy to use and easy to see missing lines.
+        
+        # Functions
+        
+        ## text_diff
+        
+        Input Type = str
+        text_diff(left_text, right_text, get_line=False, prettier=True)
+        
+        ## list_diff
+        
+        Input type = List
+        list_diff(left_lines, right_lines) 
+        
+        
+        ### [Easy Differ](https://pypi.org/project/easy-differ/)
+        
+Keywords: DIFFER,COMPARE,TEXT COMPARE,ARRAY COMPARE
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Description-Content-Type: text/markdown
