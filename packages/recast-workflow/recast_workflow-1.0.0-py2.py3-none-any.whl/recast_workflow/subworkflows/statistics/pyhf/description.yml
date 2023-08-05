@@ -1,0 +1,14 @@
+description: 
+  'Uses pyhf to apply the given patch and signal histograms to the given workspace and generate CLs statistics.'
+environment_settings:
+  - {name: pyhf_version, default: latest}
+build_args:
+  pyhf: pyhf_version
+inputs:
+  - {name: script, description: 
+    'python script that run pyhf analysis using workspace file path as first argument (sys.argv[1])'}
+interfaces:
+  input:
+    - workspace
+  output: []
+

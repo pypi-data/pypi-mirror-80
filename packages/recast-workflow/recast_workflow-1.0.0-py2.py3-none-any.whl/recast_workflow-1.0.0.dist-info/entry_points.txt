@@ -1,0 +1,3 @@
+[console_scripts]
+recast-wf = recast_workflow.cli:cli
+

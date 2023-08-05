@@ -1,0 +1,9 @@
+stages:
+  - name: pyhf
+    dependencies: ['init']
+    scheduler:
+      scheduler_type: 'singlestep-stage'
+      parameters:
+        workspace: {step: init, output: workspace}
+        outputcls: '{workdir}/cls.json'
+      step: {$ref: 'step.yml'}
