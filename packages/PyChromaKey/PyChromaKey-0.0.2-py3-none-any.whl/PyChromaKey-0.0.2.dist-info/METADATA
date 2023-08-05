@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: PyChromaKey
+Version: 0.0.2
+Summary: Chroma key (green screen) library for Python 3
+Home-page: https://github.com/erikm6872/PyChromaKey
+Author: Erik McLaughlin
+Author-email: erik@erikcmclaughlin.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: GNU General Public License (GPL)
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: opencv-python
+Requires-Dist: pillow
+Requires-Dist: numpy
+
+# PyChromaKey
+Chroma key (green screen) library for Python 3
+
+
