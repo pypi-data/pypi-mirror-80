@@ -1,0 +1,5 @@
+numpy
+scipy
+
+[:platform_system == "Windows"]
+msvc-runtime
