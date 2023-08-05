@@ -1,0 +1,81 @@
+Metadata-Version: 2.1
+Name: django-trips
+Version: 0.2.1
+Summary: An Django Rest API for fetching and creating trips and their schedules.
+Home-page: https://github.com/awaisdar001/django-trips
+Author: Awais Jibran
+Author-email: awaisdar001@gmail.com
+License: AGPL
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.5
+Description-Content-Type: text/markdown
+Requires-Dist: Django (<2.3)
+Requires-Dist: djangorestframework
+Requires-Dist: mysqlclient
+Requires-Dist: factory-boy
+Requires-Dist: setuptools
+Requires-Dist: django-cors-headers
+Requires-Dist: django-config-models
+
+# Django Trips API
+
+This is a Django Rest API for fetching and creating trips and schedules.
+## Installation
+Simply do:
+```bash
+pip install django-trips
+```
+
+## Setup
+* Kick the docker build using ``make build``. This can take sometime. 
+* Migrate database. 
+Once the build has been completed, spin up the docker and migrate the database. 
+```bash
+> make run
+> make shell 
+> make update_db
+```
+* Create a superuser with username `admin`.
+
+``` bash
+> make shell
+> python manage.py createsuperuser
+```
+3. Create batch of trips `make new_trips`. This will create random (100) trips
+```bash
+> python manage.py new_trips
+OR
+> make new_trips
+```
+
+## Api
+The following pages are served in the development:
+
+| Page                 |  Method          | URL                            |
+|----------------------|--------------|------------------------------------|
+| Trips List           | GET |http://localhost:8000/trips/api/trips        |
+
+
+## Docker Commands
+#### Run server
+
+`make run`
+
+#### Server logs
+
+`make logs`
+#### Attach container
+`make attach`
+
+#### Stop Container
+`make stop`
+
+#### Destroy
+_caution, this will remove all your data._ 
+
+`make destory`
+
+
