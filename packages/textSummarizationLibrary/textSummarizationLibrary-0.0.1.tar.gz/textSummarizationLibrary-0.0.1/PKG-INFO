@@ -1,0 +1,25 @@
+Metadata-Version: 1.1
+Name: textSummarizationLibrary
+Version: 0.0.1
+Summary: A text summarizer library
+Home-page: UNKNOWN
+Author: sakl Ansari
+Author-email: sakilansari4@gmail.com
+License: MIT
+Description: This library helps in creating a short, accurate, and fluent summary of a longer text document. This library is based on extractive summarization.
+        
+        
+        Change Log
+        ==========
+        
+        0.0.1 (20/09/2020)
+        -------------------
+        - First Release
+        
+Keywords: textSummarizationLibrary
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Education
+Classifier: Operating System :: Microsoft :: Windows :: Windows 10
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
