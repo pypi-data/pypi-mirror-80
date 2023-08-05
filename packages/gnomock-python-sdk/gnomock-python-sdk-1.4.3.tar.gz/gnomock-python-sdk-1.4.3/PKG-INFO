@@ -1,0 +1,12 @@
+Metadata-Version: 1.0
+Name: gnomock-python-sdk
+Version: 1.4.3
+Summary: gnomock
+Home-page: UNKNOWN
+Author: OpenAPI Generator community
+Author-email: team@openapitools.org
+License: MIT
+Description:     &#x60;gnomock&#x60; is an HTTP wrapper for [Gnomock](https://github.com/orlangure/gnomock) integration and end-to-end testing toolkit. It allows to use Gnomock outside of Go ecosystem. Not all Gnomock features exist in this wrapper, but official presets, as well as basic general configuration, are supported.   # noqa: E501
+            
+Keywords: OpenAPI,OpenAPI-Generator,gnomock
+Platform: UNKNOWN
