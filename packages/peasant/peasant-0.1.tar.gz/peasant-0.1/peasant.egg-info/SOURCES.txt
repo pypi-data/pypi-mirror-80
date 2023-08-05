@@ -1,0 +1,13 @@
+LICENSE
+MANIFEST.in
+README.md
+setup.py
+peasant/__init__.py
+peasant/client.py
+peasant/server.py
+peasant.egg-info/PKG-INFO
+peasant.egg-info/SOURCES.txt
+peasant.egg-info/dependency_links.txt
+peasant.egg-info/requires.txt
+peasant.egg-info/top_level.txt
+requirements/basic.txt
