@@ -1,0 +1,1 @@
+package to communicate with the husqvarna api [https://developer.husqvarnagroup.cloud/]

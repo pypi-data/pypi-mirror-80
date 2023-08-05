@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: husqvarna_automower
+Version: 0.2
+Summary: module to communicate to Husqvarna Automower API
+Home-page: https://github.com/Thomas55555/husqvarna_automower
+Author: Thomas Protzner
+Author-email: thomas.protzner@gmail.com
+License: UNKNOWN
+Description: package to communicate with the husqvarna api [https://developer.husqvarnagroup.cloud/]
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
