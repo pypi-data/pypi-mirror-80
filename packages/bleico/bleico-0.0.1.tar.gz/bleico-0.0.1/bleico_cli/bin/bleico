@@ -1,0 +1,200 @@
+#!/usr/bin/env python3
+# PYTHON_ARGCOMPLETE_OK
+# @Author: carlosgilgonzalez
+# @Date:   2020-07-12T15:41:44+01:00
+# @Last modified by:   carlosgilgonzalez
+# @Last modified time: 2020-08-06T15:01:01+01:00
+
+"""
+Copyright (c) 2020 Carlos G. Gonzalez and others (see the AUTHORS file).
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+"""
+
+import logging
+import sys
+import bleico
+from bleico.systrayicon import SystemTrayIcon
+from bleico.ble_scanner_widget import BleScanner
+import os
+import argparse
+from bleico.devtools import store_dev, load_dev
+from PyQt5.QtGui import QIcon
+from PyQt5.QtWidgets import QApplication
+from PyQt5.QtCore import QCoreApplication
+from argcomplete.completers import ChoicesCompleter
+
+helparg = '''Mode:
+- config
+- run
+'''
+
+usag = """%(prog)s [Mode] [options]
+"""
+# KEYWORDS AND COMMANDS
+keywords_mode = ['config', 'run']
+log_levs = ['debug', 'info', 'warning', 'error', 'critical']
+parser = argparse.ArgumentParser(prog='bleico',
+                                 description='Bluetooth Low Energy System Tray Utility',
+                                 formatter_class=argparse.RawTextHelpFormatter,
+                                 usage=usag)
+parser.version = '0.0.1'
+parser.add_argument(
+    "m", metavar='Mode', help=helparg).completer = ChoicesCompleter(keywords_mode)
+parser.add_argument('-v', action='version')
+parser.add_argument('-t', help='device target uuid')
+parser.add_argument('-s', help='show scanner with available devices', action='store_true')
+parser.add_argument('-r', help='read timeout in seconds, default: 1', type=int, default=1)
+parser.add_argument('-dflev',
+                    help='debug file mode level, options [debug, info, warning, error, critical]'
+                    ).completer = ChoicesCompleter(log_levs)
+parser.add_argument('-dslev',
+                    help='debug sys out mode level, options [debug, info, warning, error, critical]',
+                    default='info').completer = ChoicesCompleter(log_levs)
+args = parser.parse_args()
+
+SRC_PATH = os.path.join(bleico.__path__[0], 'icons')
+SRC_PATH_SOUND = os.path.join(bleico.__path__[0], 'sounds')
+
+#############################################
+
+
+if '.bleico' not in os.listdir(os.environ['HOME']):
+    os.mkdir(os.path.join(os.environ['HOME'], ".bleico"))
+# Config device option
+if args.m == 'config':
+    if args.t is None:
+        print('Target uuid required, see -t')
+        sys.exit()
+    store_dev('bleico_', uuid=args.t, read_timeout=args.r,
+              dir=os.path.join(os.environ['HOME'], ".bleico"))
+
+    print('bleico device settings saved in ~/.bleico directory!')
+    sys.exit()
+
+if args.m == 'run':
+
+    banner = """
+$$$$$$$\  $$\       $$$$$$$$\ $$$$$$\  $$$$$$\   $$$$$$\\
+$$  __$$\ $$ |      $$  _____|\_$$  _|$$  __$$\ $$  __$$\\
+$$ |  $$ |$$ |      $$ |        $$ |  $$ /  \__|$$ /  $$ |
+$$$$$$$\ |$$ |      $$$$$\      $$ |  $$ |      $$ |  $$ |
+$$  __$$\ $$ |      $$  __|     $$ |  $$ |      $$ |  $$ |
+$$ |  $$ |$$ |      $$ |        $$ |  $$ |  $$\ $$ |  $$ |
+$$$$$$$  |$$$$$$$$\ $$$$$$$$\ $$$$$$\ \$$$$$$  | $$$$$$  |
+\_______/ \________|\________|\______| \______/  \______/
+    """
+    print('*'*60)
+    print(banner)
+    print('*'*60)
+
+    config_file_name = 'bleico_.config'
+    config_file_path = os.path.join(os.environ['HOME'], ".bleico")
+    device_is_configured = config_file_name in os.listdir(config_file_path)
+
+    # Logging Setup
+
+    log_levels = {'debug': logging.DEBUG, 'info': logging.INFO,
+                  'warning': logging.WARNING, 'error': logging.ERROR,
+                  'critical': logging.CRITICAL}
+    handler = logging.StreamHandler(sys.stdout)
+    handler.setLevel(log_levels[args.dslev])
+    logging.basicConfig(
+        level=log_levels['debug'],
+        format="%(asctime)s [%(name)s] [%(threadName)s] [%(levelname)s] %(message)s",
+        # format="%(asctime)s [%(name)s] [%(process)d] [%(threadName)s] [%(levelname)s]  %(message)s",
+        handlers=[handler])
+    log = logging.getLogger('bleico')
+    log.info('Running bleico {}'.format(parser.version))
+
+    # File logging if enabled
+    if args.dflev:
+        logfolder = 'logs'
+        logPath = os.path.join(config_file_path, logfolder)
+        if logfolder not in os.listdir(config_file_path):
+            os.mkdir(logPath)
+        logfileName = 'bleico_debug.log'
+        # Filehandler for error
+        fh_err = logging.FileHandler(os.path.join(logPath, logfileName))
+        fh_err.setLevel(log_levels[args.dflev])
+        # Formatter for errors
+        fmt_err = logging.Formatter("%(asctime)s [%(name)s] [%(threadName)s] [%(levelname)s]  %(message)s")
+        fh_err.setFormatter(fmt_err)
+        log.addHandler(fh_err)
+
+
+def main():
+    app = QApplication([])
+    app.setQuitOnLastWindowClosed(False)
+
+    # Do Ble Scanner if args.s
+    if args.s:
+        log.info("SCANNING AVAILABLE DEVICES...")
+        Scanner = BleScanner(SRC_PATH=SRC_PATH, log=log)
+        Scanner.show()
+        while Scanner.device_to_connect is None:
+            QCoreApplication.processEvents()
+
+        if Scanner.device_to_connect != 'CANCEL':
+            args.t = Scanner.device_to_connect
+        else:
+            sys.exit()
+
+    # Open Bledevice configuration
+    if device_is_configured:
+        if args.t is None:
+            upy_conf = load_dev('bleico_', dir=config_file_path)
+            if upy_conf is None:
+                log.error("CONFIGURATION FILE NOT FOUND, SCANNING AVAILABLE DEVICES...")
+                Scanner = BleScanner(SRC_PATH=SRC_PATH, log=log)
+                Scanner.show()
+                while Scanner.device_to_connect is None:
+                    QCoreApplication.processEvents()
+
+                if Scanner.device_to_connect != 'CANCEL':
+                    upy_conf = {'uuid': Scanner.device_to_connect, 'read_timeout': args.r}
+                else:
+                    sys.exit()
+        else:
+            upy_conf = {'uuid': args.t, 'read_timeout': args.r}
+    else:
+        if args.t is None:
+            log.error("CONFIGURATION FILE NOT FOUND, SCANNING AVAILABLE DEVICES...")
+            # TODO: FALLBACK TO SCANNER DIALOG
+            Scanner = BleScanner(SRC_PATH=SRC_PATH, log=log)
+            Scanner.show()
+            while Scanner.device_to_connect is None:
+                QCoreApplication.processEvents()
+
+            if Scanner.device_to_connect != 'CANCEL':
+                upy_conf = {'uuid': Scanner.device_to_connect, 'read_timeout': args.r}
+            else:
+                sys.exit()
+
+        else:
+            upy_conf = {'uuid': args.t, 'read_timeout': args.r}
+
+    # Create the icon
+    icon = QIcon(os.path.join(SRC_PATH, "UNKNOWN.png"))
+    icon.setIsMask(True)
+    trayIcon = SystemTrayIcon(icon, device_uuid=upy_conf['uuid'],
+                              logger=log,
+                              read_timeout=upy_conf['read_timeout'],
+                              SRC_PATH=SRC_PATH, SRC_PATH_SOUND=SRC_PATH_SOUND)
+    # Menu Update
+    trayIcon.start_update_menu()
+
+    trayIcon.show()
+    sys.exit(app.exec_())
+
+
+if __name__ == '__main__':
+    main()
