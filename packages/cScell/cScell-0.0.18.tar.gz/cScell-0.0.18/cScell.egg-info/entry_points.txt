@@ -1,0 +1,3 @@
+[console_scripts]
+cScell = cScell.command_line:main
+
