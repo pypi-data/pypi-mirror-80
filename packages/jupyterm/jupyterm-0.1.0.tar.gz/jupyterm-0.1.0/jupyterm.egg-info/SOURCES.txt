@@ -1,0 +1,12 @@
+README.md
+pyproject.toml
+setup.py
+jupyterm/__init__.py
+jupyterm/__version__.py
+jupyterm/cli.py
+jupyterm.egg-info/PKG-INFO
+jupyterm.egg-info/SOURCES.txt
+jupyterm.egg-info/dependency_links.txt
+jupyterm.egg-info/entry_points.txt
+jupyterm.egg-info/requires.txt
+jupyterm.egg-info/top_level.txt

@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: jupyterm
+Version: 0.1.0
+Summary: Jupyter + terminal = ♥.
+Home-page: https://github.com/vinayak-mehta/jupyterm
+Author: Vinayak Mehta
+Author-email: vmehta94@gmail.com
+License: Apache 2.0
+Description: # jupyterm
+        
+        Jupyter + terminal = ♥.
+        
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Description-Content-Type: text/markdown
+Provides-Extra: dev
