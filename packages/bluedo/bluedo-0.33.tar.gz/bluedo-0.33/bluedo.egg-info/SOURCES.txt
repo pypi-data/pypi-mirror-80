@@ -1,0 +1,15 @@
+MANIFEST.in
+README.md
+setup.py
+window.glade
+applications/bluedo.desktop
+bluedo/__init__.py
+bluedo/bt_rssi.py
+bluedo.egg-info/PKG-INFO
+bluedo.egg-info/SOURCES.txt
+bluedo.egg-info/dependency_links.txt
+bluedo.egg-info/entry_points.txt
+bluedo.egg-info/requires.txt
+bluedo.egg-info/top_level.txt
+share/icons/hicolor/256x256/apps/bluedo.png
+share/icons/hicolor/48x48/apps/bluedo.png
