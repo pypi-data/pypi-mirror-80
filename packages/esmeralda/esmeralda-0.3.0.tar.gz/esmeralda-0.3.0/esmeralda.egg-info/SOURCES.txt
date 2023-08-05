@@ -1,0 +1,14 @@
+MANIFEST.in
+README.rst
+setup.cfg
+setup.py
+versioneer.py
+esmeralda/__init__.py
+esmeralda/_version.py
+esmeralda/defaults.py
+esmeralda/runner.py
+esmeralda.egg-info/PKG-INFO
+esmeralda.egg-info/SOURCES.txt
+esmeralda.egg-info/dependency_links.txt
+esmeralda.egg-info/requires.txt
+esmeralda.egg-info/top_level.txt
