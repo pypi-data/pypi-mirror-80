@@ -1,0 +1,6 @@
+[console_scripts]
+dynamodb-local = dynamo3.testing:run_dynamo_local
+
+[nose.plugins]
+dynamolocal = dynamo3.testing:DynamoLocalPlugin
+
