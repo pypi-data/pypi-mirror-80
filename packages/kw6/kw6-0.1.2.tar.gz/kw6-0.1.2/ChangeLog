@@ -1,0 +1,22 @@
+CHANGES
+=======
+
+v0.1.2
+------
+
+* fix: change camera index type to integer
+
+v0.1.1
+------
+
+* fix: less restrictive requirements
+* doc: link to documentation and pypi badge
+
+v0.1.0
+------
+
+* build: publish script
+* test: add simple file not found test
+* doc: minimalistic rtd documentation with simple example
+* refactor: split into multiple files and rename class to camera
+* feature: first commit and refactor script to pydantic
