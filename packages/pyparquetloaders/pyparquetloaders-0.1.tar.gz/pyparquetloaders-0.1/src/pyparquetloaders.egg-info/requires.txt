@@ -1,0 +1,11 @@
+pyarrow
+torch
+
+[allennlp]
+allennlp
+
+[petastorm]
+petastorm
+
+[transformers]
+transformers[torch]
