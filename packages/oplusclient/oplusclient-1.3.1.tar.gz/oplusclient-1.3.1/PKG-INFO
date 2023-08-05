@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: oplusclient
+Version: 1.3.1
+Summary: A python client for Oplus
+Home-page: https://github.com/openergy/oplusclient
+License: MPL-2.0
+Author: Openergy dev team
+Requires-Python: >=3.6.1,<4.0.0
+Classifier: License :: OSI Approved
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: pandas (>=1.0.4,<2.0.0)
+Requires-Dist: requests (>=2.23,<3.0)
+Project-URL: Repository, https://github.com/openergy/oplusclient
+Description-Content-Type: text/markdown
+
+# oplusclient
+
+A python client for Oplus
+
+## versioning
+
+* change version number in pyproject.toml
+* run **poetry build** and **poetry publish**
+
+*[use following instructions to install poetry](https://python-poetry.org/docs/])*
+
