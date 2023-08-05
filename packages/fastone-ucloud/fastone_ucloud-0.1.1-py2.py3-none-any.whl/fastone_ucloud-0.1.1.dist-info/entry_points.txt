@@ -1,0 +1,3 @@
+[console_scripts]
+fastone-ucloud = fastone_ucloud.cli:cli
+
