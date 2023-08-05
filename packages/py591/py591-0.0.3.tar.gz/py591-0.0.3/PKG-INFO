@@ -1,0 +1,24 @@
+Metadata-Version: 2.1
+Name: py591
+Version: 0.0.3
+Summary: Parser and parsing API service for 591 Housing Rental service
+License: BSD-3-Clause
+Keywords: api,591,housing
+Author: Frank Chang
+Author-email: frank@csie.io
+Requires-Python: >=3.5,<4.0
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Topic :: Internet
+Requires-Dist: Flask (>=1.1.2,<2.0.0)
+Requires-Dist: Pillow (>=7.2.0,<8.0.0)
+Requires-Dist: beautifulsoup4 (>=4.9.0,<5.0.0)
+Requires-Dist: pytesseract (>=0.3.5,<0.4.0)
+Requires-Dist: requests (>=2.24.0,<3.0.0)
