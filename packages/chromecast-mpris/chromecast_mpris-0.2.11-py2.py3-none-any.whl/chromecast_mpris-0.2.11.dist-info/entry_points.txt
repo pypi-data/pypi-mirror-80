@@ -1,0 +1,3 @@
+[console_scripts]
+chromecast_mpris = chromecast_mpris.command:cmd
+
