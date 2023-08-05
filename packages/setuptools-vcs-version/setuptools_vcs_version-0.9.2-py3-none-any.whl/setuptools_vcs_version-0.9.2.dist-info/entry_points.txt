@@ -1,0 +1,6 @@
+
+        [distutils.setup_keywords]
+        version_config = setuptools_vcs_version:applay_version_config
+        [console_scripts]
+        setuptools-vcs-version = setuptools_vcs_version:get_vcs_version
+    
