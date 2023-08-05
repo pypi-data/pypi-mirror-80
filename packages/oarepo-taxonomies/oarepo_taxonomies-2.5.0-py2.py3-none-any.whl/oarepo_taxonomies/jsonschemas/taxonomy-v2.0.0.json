@@ -1,0 +1,14 @@
+{
+  "definitions": {
+    "Term": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true
+      }
+    },
+    "TermArray": {
+      "$ref": "#/definitions/Term"
+    }
+  }
+}
