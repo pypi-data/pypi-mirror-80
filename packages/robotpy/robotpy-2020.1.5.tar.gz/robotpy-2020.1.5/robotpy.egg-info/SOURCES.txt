@@ -1,0 +1,17 @@
+MANIFEST.in
+README.md
+adi-requirements.txt
+commands-requirements.txt
+ctre-requirements.txt
+navx-requirements.txt
+requirements.txt
+rev-requirements.txt
+setup.py
+robotpy/__init__.py
+robotpy/__main__.py
+robotpy/version.py
+robotpy.egg-info/PKG-INFO
+robotpy.egg-info/SOURCES.txt
+robotpy.egg-info/dependency_links.txt
+robotpy.egg-info/requires.txt
+robotpy.egg-info/top_level.txt
