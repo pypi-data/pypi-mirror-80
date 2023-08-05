@@ -1,0 +1,6 @@
+[pygments.styles]
+        tomorrow-day=pygments_style_tomorrow.tomorrow:TomorrowStyle
+        tomorrow-night=pygments_style_tomorrow.tomorrownight:TomorrownightStyle
+        tomorrow-night-blue=pygments_style_tomorrow.tomorrownightblue:TomorrownightblueStyle
+        tomorrow-night-bright=pygments_style_tomorrow.tomorrownightbright:TomorrownightbrightStyle
+        tomorrow-night-eighties=pygments_style_tomorrow.tomorrownighteighties:TomorrownighteightiesStyle
