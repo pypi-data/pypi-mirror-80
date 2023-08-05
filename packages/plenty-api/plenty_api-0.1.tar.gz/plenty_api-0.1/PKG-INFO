@@ -1,0 +1,56 @@
+Metadata-Version: 2.1
+Name: plenty-api
+Version: 0.1
+Summary: Interface for the PlentyMarkets API.
+Home-page: https://pypi.org/project/plenty_api
+Keywords: plentymarkets,python,api,plenty,data
+Author: Sebastian Fricke
+Author-email: sebastian.fricke.linux@gmail.com
+Requires-Python: >=3.7,<4.0
+Classifier: Development Status :: 1 - Planning
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: keyring (>=21.4.0,<22.0.0)
+Requires-Dist: pandas (>=1.1.2,<2.0.0)
+Requires-Dist: simplejson (>=3.17.2,<4.0.0)
+Project-URL: Repository, https://github.com/initBasti/python_plentymarkets_api
+Description-Content-Type: text/markdown
+
+# Overview
+
+Interface for the PlentyMarkets API.
+
+# Setup
+
+## Requirements
+
+* Python 3.7.8+
+
+## Installation
+
+Install it directly into an activated virtual environment:
+
+```text
+$ pip install python_plenty_api
+```
+
+or add it to your [Poetry](https://poetry.eustace.io/) project:
+
+```text
+$ poetry add python_plenty_api
+```
+
+# Usage
+
+After installation, the package can imported:
+
+```text
+$ python
+>>> import plenty_api
+>>> plenty_api.__version__
+```
+
