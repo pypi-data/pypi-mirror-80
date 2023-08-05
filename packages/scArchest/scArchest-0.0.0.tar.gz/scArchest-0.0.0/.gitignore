@@ -1,0 +1,9 @@
+# Don't track content of these folders
+datasets/
+
+# Don't track these files
+.idea/
+__pycache__/
+debug.py
+scarches/archs/__pycache__/
+/tests/scvi_tests/data/
