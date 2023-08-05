@@ -1,0 +1,50 @@
+Metadata-Version: 2.1
+Name: typeschemalib
+Version: 0.8
+Summary: A yaml like schema that can be used to check dictionaries for correct schema
+Home-page: https://github.com/JakeRoggenbuck/typeschemalib
+Author: Jake Roggenbuck
+Author-email: jake@jr0.org
+License: MIT
+Platform: UNKNOWN
+Description-Content-Type: text/markdown
+
+# typeschemalib
+A yaml like schema that can be used to check dictionaries for correct schema
+
+## Schema file
+#### schema example
+```
+point: Int
+my_string: Str
+grade: Float
+```
+
+#### data example
+```json
+{"point": 45, "my_string": "Hey", "grade": 4.5}
+```
+
+## Checking data for correct schema
+
+```py
+from typeschemalib import typeschemalib
+
+# Set schema file
+schema_file = "test.stml"
+# Set Data dictionary that corresponds to schema file
+data = {"point": 45, "my_string": "Hey", "grade": 4.5}
+
+# Check data for correct schema_file
+data_checker = typeschemalib.DataChecker(schema_file, data)
+
+# Run type check to see if data corresponds
+# valid will be True if schema is correct, it will throw errors otherwise
+valid = data_checker.check_type()
+```
+
+## Todo
+Make schema have regex
+Make schema have functions or options to validate data
+
+
