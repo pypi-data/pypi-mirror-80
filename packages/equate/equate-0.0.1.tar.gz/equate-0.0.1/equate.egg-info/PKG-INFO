@@ -1,0 +1,12 @@
+Metadata-Version: 2.1
+Name: equate
+Version: 0.0.1
+Summary: Guessing the pip install name from a pip package name, and other related analyses
+Home-page: https://github.com/thorwhalen/equate
+Author: thorwhalen
+License: mit
+Description: # equate
+        Match pip install names and import names
+        
+Platform: any
+Description-Content-Type: text/markdown
