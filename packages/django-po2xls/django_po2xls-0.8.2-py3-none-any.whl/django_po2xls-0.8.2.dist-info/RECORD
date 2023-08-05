@@ -1,0 +1,16 @@
+po2xls/__init__.py,sha256=167GOA9aFLevheQiaZcNeT394B-_uhhwCoR-Jmm7Wh8,224
+po2xls/apps.py,sha256=b0dtbEJfCPVjosyXEBHeJI2ztPpMIn1r4vSM5pBW6F4,426
+po2xls/converters.py,sha256=fpgzNu4f2Wku6yTn8qLgcMv0vPthEsibWoKsup2m9is,3774
+po2xls/exceptions.py,sha256=S77vpLRrucJJfxFXwueEpg13jJ39M8tEmZwiXSPHyJk,274
+po2xls/locale/en/LC_MESSAGES/django.mo,sha256=M2jrTDrt6VIrL7pwDoDjbjGbwQbYhw87Ok_2QNiLfuM,704
+po2xls/locale/en/LC_MESSAGES/django.po,sha256=iFdiiuZnA6qYT28vaYqwyjPKAqrBsaCA9_onTfOQsY4,966
+po2xls/locale/uk/LC_MESSAGES/django.mo,sha256=X5S9GwYJ9faQHP62_ieN0S0B8FRAbIWQz-ue-2NdBxQ,891
+po2xls/locale/uk/LC_MESSAGES/django.po,sha256=FsuM1dTKqppz9UcHa4g5OQXadui7mMg4I2WVG9uMCDI,1160
+po2xls/management/__init__.py,sha256=-iQqdNi4Hti0bEgPOQZk1kQ6PksIT3mzFlgRFWr-3Nk,158
+po2xls/management/commands/__init__.py,sha256=a2HqOkrGHH16uD9VhBLyDZ3yUmGtsz8y26Nc9qSzKOw,167
+po2xls/management/commands/po-to-xls.py,sha256=fZCuZO4A6zq6QtrT8JRP3C4xJ4d4s0tEfjMWm7x2l48,2706
+django_po2xls-0.8.2.dist-info/COPYING,sha256=jOtLnuWt7d5Hsx6XXB2QxzrSe2sWWh3NgMfFRetluQM,35147
+django_po2xls-0.8.2.dist-info/METADATA,sha256=fBw2aTGrhhQM8RS6z_nsoahETXETC5MSdHN9alTvEtM,6265
+django_po2xls-0.8.2.dist-info/WHEEL,sha256=g4nMs7d-Xl9-xC9XovUrsDHGXt-FT0E17Yqo92DEfvY,92
+django_po2xls-0.8.2.dist-info/top_level.txt,sha256=5Iz_yVuZIvzfZiKlHJNc7Sc5LAZG9VsWyIHdRY3ZeOc,7
+django_po2xls-0.8.2.dist-info/RECORD,,
