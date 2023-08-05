@@ -1,0 +1,6 @@
+[invenio_jsonschemas.schemas]
+oarepo_invenio_model = oarepo_invenio_model.jsonschemas
+
+[oarepo_mapping_includes]
+oarepo_invenio_model = oarepo_invenio_model.included_mappings
+
