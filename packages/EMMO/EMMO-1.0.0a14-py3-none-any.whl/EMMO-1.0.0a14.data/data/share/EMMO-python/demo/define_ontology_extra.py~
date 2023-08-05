@@ -1,0 +1,41 @@
+
+with onto:
+
+    #
+    # Relations
+    # =========
+
+    # add relations for dimensionality
+
+
+    #
+    # Units
+    # =====
+    class radian(SI_unit):
+        label = ['rad']
+
+
+    #
+    # Properties
+    # ==========
+    class orientation(emmo.physical_quantity):
+        """Orientation characterised by three Euler angles."""
+        is_a = [has_unit.exactly(1, radian),
+                has_type.exactly(3, real)]
+
+
+    #
+    # Subdimensional
+    # ==============
+
+
+
+    #
+    # Material classes
+    # ================
+
+
+
+    #
+    # Models
+    # ======

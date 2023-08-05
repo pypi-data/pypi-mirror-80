@@ -1,0 +1,51 @@
+import os
+import dlite
+
+
+class Atoms2Coll(DLiteMappingBase):
+    name = "atoms2coll"
+    input_uris = ["http://sintef.no/meta/soft/0.1/Atoms"]
+    output_uri = "http://meta.sintef.no/0.6/CollectionSchema"
+    cost = 25
+
+    def map(self, instances):
+
+        print("*** map")
+        print("*** ", instances)
+
+        atoms = instances[0]
+
+        atcoll = dlite.Collection('coll_Al-Fe4Al13')
+
+        Crystal = metacoll['crystal']
+        crystal = Crystal([], 'Al-Fe4Al13')
+        crystal.spacegroup = 'P1'  # symmetry is broken by the interface
+        atcoll.add('crystal', crystal)
+
+        UnitCell = metacoll['crystal_unit_cell']
+        unit_cell = UnitCell([3, 3])
+        unit_cell.lattice_vector = at.cell
+        atcoll.add('unit_cell', unit_cell)
+        atcoll.add_relation('crystal', 'has_spatial_direct_part', 'unit_cell')
+
+        EBondedAtom = metacoll['e-bonded_atom']
+        #for i in atoms:
+        #    a = EBondedAtom([3])
+        #    a.atomic_number = atom.number
+        #    a.atomic_mass = atom.mass
+        #    a.position = atom.position
+        #    label = 'atom%d' % i
+        #    atcoll.add(label, a)
+        #    atcoll.add_relation('unit_cell', 'has_spatial_direct_part', label)
+
+        return atcoll
+
+
+class Coll2Atoms(DLiteMappingBase):
+    name = "coll2atoms"
+    input_uris = ["http://meta.sintef.no/0.6/CollectionSchema"]
+    output_uri = "http://sintef.no/meta/soft/0.1/Atoms"
+    cost = 25
+
+    def map(self, instances):
+        raise NotImplementedError
