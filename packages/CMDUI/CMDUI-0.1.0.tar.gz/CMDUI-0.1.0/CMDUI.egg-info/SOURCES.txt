@@ -1,0 +1,15 @@
+README.md
+setup.py
+CMDUI/CMDUI.py
+CMDUI/__init__.py
+CMDUI/consolemanager.py
+CMDUI/placementmanagement.py
+CMDUI/variables.py
+CMDUI.egg-info/PKG-INFO
+CMDUI.egg-info/SOURCES.txt
+CMDUI.egg-info/dependency_links.txt
+CMDUI.egg-info/requires.txt
+CMDUI.egg-info/top_level.txt
+CMDUI/utils/__init__.py
+CMDUI/utils/stoppablethread.py
+CMDUI/utils/windowresizelistener.py
