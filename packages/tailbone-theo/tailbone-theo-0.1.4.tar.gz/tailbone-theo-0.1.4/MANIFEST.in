@@ -1,0 +1,7 @@
+
+include *.rst
+
+recursive-include theo/web/static *.css
+recursive-include theo/web/static *.js
+
+recursive-include theo/web/templates *.mako
