@@ -1,0 +1,24 @@
+Metadata-Version: 1.1
+Name: reg-sieves
+Version: 0.0.1
+Summary: The regression approach with sieves.
+Home-page: UNKNOWN
+Author: Anzony Quispe
+Author-email: anzony.quispe@gmail.com
+License: MIT
+Description: The function regression_sieves give us the option to generate ATE with a Treatment, dependent and Latitude vectors.
+        It has the option for polynomial, gaussian, linear spline and quadratic spline sieves. The result returns Omega, Delta, Alpha, ate and the Sieve generated.
+        
+        Change Log
+        ==========
+        
+        0.0.1 (21/09/2020)
+        -------------------
+        - First Release
+Keywords: sieves
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Education
+Classifier: Operating System :: Microsoft :: Windows :: Windows 10
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3

@@ -1,0 +1,2 @@
+The function regression_sieves give us the option to generate ATE with a Treatment, dependent and Latitude vectors.
+It has the option for polynomial, gaussian, linear spline and quadratic spline sieves. The result returns Omega, Delta, Alpha, ate and the Sieve generated.
