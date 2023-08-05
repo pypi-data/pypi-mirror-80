@@ -1,0 +1,17 @@
+gcloud_aio_pubsub-2.0.0-py3.8-nspkg.pth,sha256=bGEMtsEE-ubFTc0BV5U-qVH5QmXIvfU27SFd22s6zBk,1686
+gcloud/aio/pubsub/__init__.py,sha256=594gXl-jKXRHh1C--I4TiP6CzDdfep4wBTj_3JBiNTo,540
+gcloud/aio/pubsub/publisher_client.py,sha256=A6UNhqGvNGxRRSPUMEpcwdvVUWNnSM2oO7xA2WSMVKw,3145
+gcloud/aio/pubsub/subscriber_client.py,sha256=D9QyybEuCe2PPpOdxnDoJ4O0jnpmQ5D-FyFbLwFCa2Y,5894
+gcloud/aio/pubsub/subscriber_message.py,sha256=KWJbqiucLjQwXMmjYDI6A_Zi2CkfwqOl6IFuK3Geefg,2524
+gcloud/aio/pubsub/utils.py,sha256=CHwQf-6qHEbogj7-_0SrPLdfoNRbdLQzqkPi5cmlFwE,2909
+tests/integration/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+tests/integration/conftest.py,sha256=TlBQi25yR78u1pcWxPe1betcCmH7_RywZKRD86xDgHQ,502
+tests/integration/constructor_test.py,sha256=kxpRyyJiLRGb-7kSzqKFPBBbHz6A9-iPQMXm3IYgLUI,352
+tests/unit/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+tests/unit/subscription_test.py,sha256=zrbbXsnkIC96X0OrxzYB5eFCHjzpX_7Ex-BhFGkY4zc,537
+gcloud_aio_pubsub-2.0.0.dist-info/LICENSE,sha256=hTrzzvP5FXQsib0f5T6vOJ9WSqihuArAzakBbxZr04U,1068
+gcloud_aio_pubsub-2.0.0.dist-info/METADATA,sha256=2kOV7J7W8snhGX7YgywIWgjj_oPrRE3PG6gAvKhAnEI,11308
+gcloud_aio_pubsub-2.0.0.dist-info/WHEEL,sha256=kGT74LWyRUZrL4VgLh6_g12IeVl_9u9ZVhadrgXZUEY,110
+gcloud_aio_pubsub-2.0.0.dist-info/namespace_packages.txt,sha256=-g45M0lNSIP1YnGVZdmhV1skM4SizE4Y8TV1arz1_38,18
+gcloud_aio_pubsub-2.0.0.dist-info/top_level.txt,sha256=sox9WnuebKsnnDxekC1Pd7Q7wUz_DL8DRjlHhthn-ik,13
+gcloud_aio_pubsub-2.0.0.dist-info/RECORD,,
