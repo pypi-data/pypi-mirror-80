@@ -1,0 +1,44 @@
+Metadata-Version: 2.1
+Name: wavplot
+Version: 0.1.1
+Summary: Generate waveform and spectrogram png images from a wav file
+Home-page: https://github.com/nils-werner/wavplot
+Author: Fabian-Robert Stöter, Nils Werner
+Author-email: mail@faroit.com, nils@hey.com
+License: MIT
+Description: # WAVPLOT
+        
+        ![Nice plot](https://github.com/nils-werner/wavplot/raw/master/demo/out.png)
+        
+        **Tired of waveform plots that blow up your paper?**
+        
+        Here comes a matplotlib wavform plot that gives soundcloud like plots in just a
+        few lines of code!
+        
+        ## Features
+        
+         * Freely selectable width, height, DPI and number of bars to plot
+         * Writes transparent pngs
+        
+        ## Installation
+        
+            pip install wavplot
+        
+        ## Usage
+        
+            wavplot violin.wav violin.png
+        
+        for additional parameters please inspect the help using
+        
+            wavplot -h
+        
+Keywords: audio
+Platform: any
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Topic :: Multimedia :: Sound/Audio
+Description-Content-Type: text/markdown
