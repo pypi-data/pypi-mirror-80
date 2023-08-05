@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: vectorObjects
+Version: 0.3.0
+Summary: Object approach to common dimensional vectors
+Home-page: UNKNOWN
+Author: Samuel Baker
+Author-email: samuelbaker.researcher@gmail.com
+Maintainer: Samuel Baker
+Maintainer-email: samuelbaker.researcher@gmail.com
+License: MIT
+Download-URL: https://github.com/sbaker-dev/vectorObjects
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: License :: OSI Approved :: MIT License
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: numpy (>=1.18.5)
+
+
+# vectorObjects
+#### Object approach to common dimensional vectors 
+
+This project was create by converting and extending a small section of code within the now archived [pymeshio][pymesh], 
+relating to Vectors and 3D object rotation matrices which have been extracted and generalised where possible. This was 
+due to some of these objects also having the potential to be used outside of this specific use case.
+
+vectorObjects also has the ability to allow you to create your own vectors, not pre defined within vectorObjects, 
+quickly via inheritance from a master class of methods. All source code is available on the project [github page][pro]
+
+[pymesh]: https://github.com/ousttrue/pymeshio
+[docpath]: https://github.com/sbaker-dev/vectorObjects/Examples
+[pro]: https://github.com/sbaker-dev/vectorObjects
+
+
