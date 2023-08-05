@@ -1,0 +1,16 @@
+dictutils/__init__.py,sha256=KRMD0CzUnL7ntcYESVY3hoJPHpNC2fSg8JgmtZPY5Ns,85
+dictutils/dict2array.py,sha256=ifHPPZcf8zWrDl0qohrCawEoin_SzI5e0dyBmdIyENw,406
+dictutils/mergedict.py,sha256=twdDw8TiVnO0xcP9vcFoXDGk1sWQHvLgZ0qENmo3DSo,1539
+dictutils/nest_arrays.py,sha256=c_ObwBGV1ZckWM1wcl2Pki2j7RbJXkdfDbtHtTfz_-w,574
+dictutils/pivot.py,sha256=pFOA48KM-JxyUAaiouX5ZpASMPXBleTCsaBpIo_o45c,3241
+dictutils/qsdict.py,sha256=bnF1vw74_jm0VlzETNiDlu4BezIlqu_PoIDhI5NjfF0,1794
+dictutils-0.1.1.dist-info/METADATA,sha256=n4tkBsltcH_vzeBY-FgGtOQBGgaLNFfhoP5Qj5ks3Uw,5841
+dictutils-0.1.1.dist-info/RECORD,,
+dictutils-0.1.1.dist-info/WHEEL,sha256=FRuHuBX28RTgsOL603qIpbSc2WeDgbsFBWKj9XFOCpg,92
+dictutils-0.1.1.dist-info/top_level.txt,sha256=sJZ7pC3ldhHDlnVCJZiCvjFKqzcpRjtuYo8BdQH9Wjg,16
+tests/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+tests/test_dict2array.py,sha256=E0KGhQcuivA2O1eb1fhkMSizfO_xG4MtgaP1WAMEya0,1038
+tests/test_mergedict.py,sha256=0csuBejzqSA7GIm_-MUCNct9EANej7v-_OPZVbpuDbE,1781
+tests/test_nest_array.py,sha256=HH8uc5o5KPL5LgeaMMkJk1q9g_Q91icEBqaImc0NW_s,2267
+tests/test_pivot.py,sha256=lp4HiNw-f_l-bp5eJQILTSPskq3wD4mkFxY7BYySjn4,1105
+tests/test_qsdict.py,sha256=AQ1Yogr1CseDbvkjXx3FpyZ6_F8RQFBQw8ILB72Zr0E,2695
