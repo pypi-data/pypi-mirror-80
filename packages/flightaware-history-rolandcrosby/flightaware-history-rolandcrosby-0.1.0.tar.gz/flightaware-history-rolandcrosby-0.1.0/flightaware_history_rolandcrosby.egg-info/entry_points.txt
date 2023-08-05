@@ -1,0 +1,3 @@
+[console_scripts]
+flightaware-history = flightaware_history.__main__:main
+
