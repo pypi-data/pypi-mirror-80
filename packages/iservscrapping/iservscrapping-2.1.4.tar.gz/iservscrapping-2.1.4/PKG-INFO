@@ -1,0 +1,20 @@
+Metadata-Version: 1.1
+Name: iservscrapping
+Version: 2.1.4
+Summary: This Scrapper can get data from iserv servers hosting Untis plans. (Common in germany)
+Home-page: https://gitlab.com/schoolserver_redo_project/iservscrapping
+Author: Alwin Lohrie (Niwla23)
+Author-email: alwin.l@gmx.de
+License: MIT
+Download-URL: https://gitlab.com/schoolserver_redo_project/iservscrapping/-/archive/master/iservscrapping-master.tar.gz
+Description: UNKNOWN
+Keywords: iserv,school,api,scrapper
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
