@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: dcs-pylicense
+Version: 0.0.1
+Summary: UNKNOWN
+Home-page: https://github.com/dotcs/pylicense
+Author: Fabian Mueller
+Author-email: repository@dotcs.me
+License: GPLv3
+Description: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Console
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Office/Business
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Provides-Extra: develop
