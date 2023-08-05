@@ -1,0 +1,4 @@
+[console_scripts]
+laika=laika.cli:main
+simple-git-deploy=laika.cli:main
+
