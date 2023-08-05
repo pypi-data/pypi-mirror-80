@@ -1,0 +1,16 @@
+Metadata-Version: 1.2
+Name: kalk
+Version: 0.2
+Summary: a simple cli RPN calculator written in Python
+Home-page: https://github.com/5j9/kalk
+Author: 5j9
+Author-email: 5j9@users.noreply.github.com
+License: GNU General Public License v3 (GPLv3)
+Description: UNKNOWN
+Keywords: calculator kalkulator cli RPN
+Platform: UNKNOWN
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: Scientific/Engineering
+Requires-Python: >=3.9
