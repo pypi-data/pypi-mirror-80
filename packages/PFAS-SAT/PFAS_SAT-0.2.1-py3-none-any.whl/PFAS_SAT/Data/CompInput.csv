@@ -1,0 +1,45 @@
+Category,Dictonary_Name,Parameter Name,Parameter Description,amount,unit,uncertainty_type,loc,scale,shape,minimum,maximum,Reference,Comment
+Log partition coefficient,LogPartCoef,PFOA,PFOA Log Koc (Composting),2.19,log L/kg OC,5,2.19,,,1.3,4.5,[20][21][22][23],"Assume same partitioning behavior as sediments. Default from Higgins (2006), range estimated based on multiple other sources. "
+Log partition coefficient,LogPartCoef,PFOS,PFOS Log Koc (Composting),3.04,log L/kg OC,5,3.04,,,2.4,4.7,[20][21][22][23],"Assume same partitioning behavior as sediments. Default from Higgins (2006), range estimated based on multiple other sources. "
+Log partition coefficient,LogPartCoef,PFBA,PFBA Log Koc (Composting),1.88,log L/kg OC,4,,,,1.3,1.88,[20],"Assume same partitioning behavior as sediments. Default from Higgins (2006), range estimated based on multiple other sources. "
+Log partition coefficient,LogPartCoef,PFPeA,PFPeA Log Koc (Composting),1.37,log L/kg OC,,,,,,,[20],"Assume same partitioning behavior as sediments. Default from Higgins (2006), range estimated based on multiple other sources. "
+Log partition coefficient,LogPartCoef,PFHxA,PFHxA Log Koc (Composting),1.77,log L/kg OC,5,1.77,,,1.31,2.1,[20],"Assume same partitioning behavior as sediments. Default from Higgins (2006), range estimated based on multiple other sources. "
+Log partition coefficient,LogPartCoef,PFHpA,PFHpA Log Koc (Composting),1.97,log L/kg OC,,,,,,2.19,[20],"Assume same partitioning behavior as sediments. Default from Higgins (2006), range estimated based on multiple other sources. "
+Log partition coefficient,LogPartCoef,PFNA,PFNA Log Koc (Composting),2.63,log L/kg OC,5,2.63,,,2.3,3.18,[20],"Assume same partitioning behavior as sediments. Default from Higgins (2006), range estimated based on multiple other sources. "
+Log partition coefficient,LogPartCoef,PFDA,PFDA Log Koc (Composting),3.24,log L/kg OC,5,3.24,,,2.65,3.78,[20],"Assume same partitioning behavior as sediments. Default from Higgins (2006), range estimated based on multiple other sources. "
+Log partition coefficient,LogPartCoef,PFBS,PFBS Log Koc (Composting),1.51,log L/kg OC,,,,,,1.79,[20],"Assume same partitioning behavior as sediments. Default from Higgins (2006), range estimated based on multiple other sources. "
+Log partition coefficient,LogPartCoef,PFHxS,PFHxS Log Koc (Composting),2.79,log L/kg OC,5,2.79,,,2.05,2.875,[20],"Assume same partitioning behavior as sediments. Default from Higgins (2006), range estimated based on multiple other sources. "
+Amendment Material Properties,AmndProp,mass_ratio,Mass of amendment to mass of feedstock,1,kg/kg,4,,,,0.9,1.2,[24],"Wood chips as amendment. This property will vary based on required additions needed for ideal bulking, moisture, etc."
+Amendment Material Properties,AmndProp,ts_cont,Total solids content - wet,0.8,fraction wet weight,,,,,,,[24],Wood chips as amendment
+Amendment Material Properties,AmndProp,C_cont,Organic C content - dry,0.5,fraction TS,4,,,,0.4,0.6,[24],Wood chips as amendment
+Amendment PFAS Concentration,AmndPFAS,PFOA,PFOA concentration - dry mass,0,10e-6g/kg,,,,,,,,Assuming wood-based products zero? limited data
+Amendment PFAS Concentration,AmndPFAS,PFOS,PFOS concentration - dry mass,0,10e-6g/kg,,,,,,,,Assuming wood-based products zero? limited data and not considering plant-update of PFAS
+Amendment PFAS Concentration,AmndPFAS,PFBA,PFBA concentration - dry mass,0,10e-6g/kg,,,,,,,,Assuming wood-based products zero? limited data and not considering plant-update of PFAS
+Amendment PFAS Concentration,AmndPFAS,PFPeA,PFPeA concentration - dry mass,0,10e-6g/kg,,,,,,,,Assuming wood-based products zero? limited data and not considering plant-update of PFAS
+Amendment PFAS Concentration,AmndPFAS,PFHxA,PFHxA concentration - dry mass,0,10e-6g/kg,,,,,,,,Assuming wood-based products zero? limited data and not considering plant-update of PFAS
+Amendment PFAS Concentration,AmndPFAS,PFHpA,PFHpA concentration - dry mass,0,10e-6g/kg,,,,,,,,Assuming wood-based products zero? limited data and not considering plant-update of PFAS
+Amendment PFAS Concentration,AmndPFAS,PFNA,PFNA concentration - dry mass,0,10e-6g/kg,,,,,,,,Assuming wood-based products zero? limited data and not considering plant-update of PFAS
+Amendment PFAS Concentration,AmndPFAS,PFDA,PFDA concentration - dry mass,0,10e-6g/kg,,,,,,,,Assuming wood-based products zero? limited data and not considering plant-update of PFAS
+Amendment PFAS Concentration,AmndPFAS,PFBS,PFBS concentration - dry mass,0,10e-6g/kg,,,,,,,,Assuming wood-based products zero? limited data and not considering plant-update of PFAS
+Amendment PFAS Concentration,AmndPFAS,PFHxS,PFHxS concentration - dry mass,0,10e-6g/kg,,,,,,,,Assuming wood-based products zero? limited data and not considering plant-update of PFAS
+Active composting Input,AComp,is_covered,Is active composting (AC) covered?,0,"1:TRUE,0:FALSE",,,,,,,n/a,User should update based on process design
+Active composting Input,AComp,bulk_dens,Wet bulk density (AC pile),500,kg/m3,4,,,,400,700,[5]; [25],"Ideal range 475-600 kg/m3, acceptable 400-700."
+Active composting Input,AComp,wind_ht,Windrow height (AC pile),2,m,4,,,,1.5,3,[5]; CFM*(fix Mend issue),
+Active composting Input,AComp,wind_wid,Windrow width (AC pile),4.5,m,4,,,,3,6,[5]; CFM,
+Active composting Input,AComp,frac_C_lost,Fraction of C lost during AC,0.35,kg C/kg C,4,,,,0.1,0.4,[1],Assume 90% of carbon loss occurs during AC and 10% during curing.
+Active composting Input,AComp,ts_end,Total solids content at the end of AC,0.45,kg TS/kg,4,,,,0.35,0.55,[5];,"Assuming 55% moisture conditions, preferred moisture content 50-60%, 45-65% acceptable"
+Active composting Input,AComp,frac_sol_to_cw,Fraction of solids in contact water (AC),0,fraction,,,,,,,,
+Active composting Input,AComp,sol_loss_per_C_loss,Total solids loss per loss per C loss (AC),2,kg TS/kg C,,,,,,,"[1], [7]",
+Active composting Input,AComp,is_cw_col,Is AC contact water collected?,1,"1:TRUE,0:FALSE",,,,,,,n/a,User should update based on process design.
+Active composting Input,AComp,frac_cw_col,Fraction contact water collection during AC,0.98,fraction,,,,,,,,User should update based on process design
+Active composting Input,AComp,ac_time,Activate composting time,70,days,,,,,,,CFM,
+Curing Input,Curing,frac_C_lost,Fraction of C lost during curing,0.05,kg C/kg C,,,,,,,"[1], [7]",Assume 90% of carbon loss occurs during AC and 10% during curing.
+Curing Input,Curing,ts_end,Total solids content at the end of curing,0.6,kg TS/kg,4,,,,0.45,0.7,CFM,Moisture content of cured compost can vary based on duration of curing and if stored. Compost should be at moisture content between 35-55% for land application.
+Curing Input,Curing,bulk_dens,Wet bulk density (Curing pile),500,kg/m3,,,,,,,[5],"Ideal range 475-600 kg/m3, acceptable 400-700. "
+Curing Input,Curing,wind_ht,Windrow height (Curing pile),4,m,4,,,,2,4.5,CFM,"Curing piles can be larger, taller piles may impact bulk density, this is not considered in model."
+Curing Input,Curing,wind_wid,Windrow width (Curing pile),8,m,4,,,,4,9,CFM,
+Curing Input,Curing,sol_loss_per_C_loss,Total solids loss per loss per C loss (Curing),2,kg TS/kg C,,,,,,,[7],
+Curing Input,Curing,curing_time,Curing composting time,30,days,,,,,,,CFM,
+Precipitation Data,Precip,ann_precip,Annual precipitation rate,1.13,m/yr,,,,,,,,"User should update based on location, default values based on NC data"
+Volatilization,Volatilization,frac_vol_loss,Fraction of PFAS lost to volatilization,0,,,,,,,,,Assume no volatilization 
+Screen,Screen,frac_rmvd,Fraction of incoming feedstock removed by screen,0,fraction,,,,,,,,
