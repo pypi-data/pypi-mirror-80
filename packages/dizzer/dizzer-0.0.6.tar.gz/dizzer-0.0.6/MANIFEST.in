@@ -1,0 +1,11 @@
+recursive-include dizzer *.py
+include setup.py
+include LICENSE
+include README.md
+include requirements.txt
+exclude .coveragerc
+prune tests
+exclude tox.ini
+exclude .gitlab-ci.yml
+
+recursive-exclude tests *
