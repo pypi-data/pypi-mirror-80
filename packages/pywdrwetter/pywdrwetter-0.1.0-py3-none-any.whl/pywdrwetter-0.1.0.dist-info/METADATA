@@ -1,0 +1,12 @@
+Metadata-Version: 2.1
+Name: pywdrwetter
+Version: 0.1.0
+Summary: A simple command line webscraper for the weather forecast on wdr.de
+Author: Markus Mohnen
+Author-email: markus.mohnen@gmail.com
+Requires-Python: >=3.8,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: MechanicalSoup (>=0.12.0,<0.13.0)
+Requires-Dist: click (>=7.1.2,<8.0.0)
+Requires-Dist: pandas (>=1.1.2,<2.0.0)
