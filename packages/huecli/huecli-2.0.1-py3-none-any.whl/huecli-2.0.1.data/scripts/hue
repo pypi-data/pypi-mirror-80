@@ -1,0 +1,6 @@
+#!python
+
+from clilib.util.loader import Loader
+
+modules = ['list', 'switch', 'color']
+Loader.start_app(modules, "hue_modules")
