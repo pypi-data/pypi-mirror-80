@@ -1,0 +1,4 @@
+[mdformat.codeformatter]
+json=mdformat_config:format_json
+toml=mdformat_config:format_toml
+
