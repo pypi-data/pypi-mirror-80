@@ -1,0 +1,3 @@
+[console_scripts]
+jupyterm = jupyterm.cli:cli
+
