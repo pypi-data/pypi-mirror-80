@@ -1,0 +1,97 @@
+{#
+  Copyright (C) 2020 TUGRAZ
+  Copyright (C) 2020 mojib wali.
+
+  invenio-theme-tugraz is free software; you can redistribute it and/or
+  modify it under the terms of the MIT License; see LICENSE file for more
+  details.
+#}
+
+{%- block css %}
+
+{{ webpack['invenio-theme-tugraz-theme.css'] }}
+{%- endblock %}
+
+{%- block javascript %}
+  {{ webpack['invenio-theme-tugraz-js.js'] }}
+{%- endblock javascript %}
+
+<div class="spacer"></div>
+
+<footer id="footer" class="footer-bottom">
+
+  <div class="ui container">
+
+  <div class="ui grid">
+    <div class="doubling four column row">
+
+
+      <div class="column">
+      
+        <h2>Repository</h2>
+        <p class="bodytext">
+          <a href="{{ url_for('invenio_rdm_records.coming_soon') }}">
+            Impressum<i class="angle right icon"></i>
+          </a>
+          <br>
+          <a href="{{ url_for('invenio_rdm_records.coming_soon') }}">
+            Datenschutzerklärung<i class="angle right icon"></i>
+          </a>
+          <br>
+          <a href="{{ url_for('invenio_rdm_records.coming_soon') }}">
+            Feedback<i class="angle right icon"></i>
+          </a>
+        </p>
+        
+      </div>
+
+
+      <div class="column">
+      
+        <h2>Features</h2>
+
+        <h4>Scalability</h4>
+        
+        <h4>Institutional integration</h4>
+
+        <h4>Next Generation Repository
+        </h4>
+
+        <h4>Repository Profiles</h4>
+
+        <h4>Resilient</h4>
+
+      </div>
+
+
+    <div class="column">
+    
+      <h2>Connected Services</h2>
+      <p class="bodytext">
+
+        <a href="https://pure.tugraz.at" title="PURE">
+          PURE <i class="external alternate icon"></i></a><br> 
+
+          <a href="http://campusonline.tugraz.at" title="CAMPUS online">
+            CampusOnline <i class="external alternate icon"></i></a><br> 
+
+            <a href="https://rdm.tugraz.at" title="CAMPUS online">
+              Research Data Management <i class="external alternate icon"></i></a><br> 
+      </p>
+
+     
+    </div>
+
+    <div class="column">
+      <h2>Accessibility</h2>
+      <p class="bodytext">Tipp:<br> Use Ctrl + and Crtl -<br> to change the font size.</p>
+
+    </div>
+
+
+    </div>
+    </div>
+
+  </div>
+
+</footer>
