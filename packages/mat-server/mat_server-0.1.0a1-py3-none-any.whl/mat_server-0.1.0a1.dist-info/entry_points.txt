@@ -1,0 +1,3 @@
+[console_scripts]
+mat = mat_server.app.command:cli
+
