@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: kerassurgeon
+Version: 0.2.0
+Summary: A library for performing network surgery on trained Keras models. Useful for deep neural network pruning.
+License: MIT
+Author: Ben Whetton
+Author-email: ben.whetton@gmail.com
+Requires-Python: >=3.6.1,<4.0.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: importlib-metadata (>=1.7.0,<2.0.0)
+Requires-Dist: keras[standalone-keras] (>=2.4.3,<3.0.0)
+Requires-Dist: pandas[examples] (>=1.1.2,<2.0.0)
+Requires-Dist: pillow[examples] (>=7.2.0,<8.0.0)
+Requires-Dist: pytest[test] (>=6.0.2,<7.0.0)
+Requires-Dist: tensorflow (>=2.0,<3.0)
