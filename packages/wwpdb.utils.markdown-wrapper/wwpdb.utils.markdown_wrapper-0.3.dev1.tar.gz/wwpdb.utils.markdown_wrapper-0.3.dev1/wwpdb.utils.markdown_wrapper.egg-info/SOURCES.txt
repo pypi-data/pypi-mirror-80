@@ -1,0 +1,15 @@
+MANIFEST.in
+README.md
+setup.cfg
+setup.py
+wwpdb/__init__.py
+wwpdb.utils.markdown_wrapper.egg-info/PKG-INFO
+wwpdb.utils.markdown_wrapper.egg-info/SOURCES.txt
+wwpdb.utils.markdown_wrapper.egg-info/dependency_links.txt
+wwpdb.utils.markdown_wrapper.egg-info/not-zip-safe
+wwpdb.utils.markdown_wrapper.egg-info/requires.txt
+wwpdb.utils.markdown_wrapper.egg-info/top_level.txt
+wwpdb/utils/__init__.py
+wwpdb/utils/markdown_wrapper/__init__.py
+wwpdb/utils/markdown_wrapper/markdown_render.ini
+wwpdb/utils/markdown_wrapper/render_markdown.py

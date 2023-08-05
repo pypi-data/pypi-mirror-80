@@ -1,0 +1,10 @@
+graphviz
+Markdown~=3.0
+beautifulsoup4
+pygments
+
+[dev]
+check-manifest
+
+[test]
+coverage
