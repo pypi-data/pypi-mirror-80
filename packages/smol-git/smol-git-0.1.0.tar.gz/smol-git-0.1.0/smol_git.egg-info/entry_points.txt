@@ -1,0 +1,3 @@
+[console_scripts]
+smol-git = smol_git.cli:cli
+
