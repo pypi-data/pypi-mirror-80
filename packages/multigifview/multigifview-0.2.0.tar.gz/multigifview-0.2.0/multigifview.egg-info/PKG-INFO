@@ -1,0 +1,51 @@
+Metadata-Version: 2.1
+Name: multigifview
+Version: 0.2.0
+Summary: View multiple gif files
+Home-page: https://github.com/johnomotani/multigifview
+Author: John Omotani
+Author-email: john.omotani@ukaea.uk
+License: GPLv3+
+Description: MultiGifView
+        ============
+        
+        MultiGifView is a bare-bones Python program for viewing several .gif files at
+        once, with their play-back synchronised.
+        
+        The gifs are opened in two columns.
+        
+        ### Installation
+        
+        Install with pip
+        
+            $ pip install multigifview
+        
+        or with conda
+        
+            $ conda install -c conda-forge multigifview
+        
+        ### Usage
+        
+            $ multigifview movie1.gif movie2.gif movie3.gif ...
+        
+        Once the window is opened:
+        
+        * play/pause - space, or click play button in bottom left
+        
+        * next frame - n, right arrow or seek-forward button in bottom left
+        
+        * previous frame - p, left arrow or seek-backward button in bottom left
+        
+        * end - e, down arrow, or skip-forward button in bottom left
+        
+        * beginning - b, up arrow, or skip-backward button in bottom left
+        
+        * quit - q, Ctrl-q, Ctrl-w, Ctrl-x or close the window
+        
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Description-Content-Type: text/markdown
