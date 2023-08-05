@@ -1,0 +1,3 @@
+
+[console_scripts]
+remindme = alt_side_parking.scripts.reminder:main
