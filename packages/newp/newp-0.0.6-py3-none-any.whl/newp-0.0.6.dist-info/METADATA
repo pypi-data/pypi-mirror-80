@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: newp
+Version: 0.0.6
+Summary: Spins up new projects
+Home-page: https://github.com/TimSimpson/newp
+Author: Tim Simpson
+Author-email: timsimpson4@gmail.com
+Requires-Python: >=3.6,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: jinja2 (>=2.11.2,<3.0.0)
+Requires-Dist: typing-extensions (>=3.7.4,<4.0.0)
+Project-URL: Repository, https://github.com/TimSimpson/newp
