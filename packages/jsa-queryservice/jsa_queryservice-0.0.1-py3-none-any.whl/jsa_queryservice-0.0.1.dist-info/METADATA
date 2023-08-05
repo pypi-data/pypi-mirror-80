@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: jsa-queryservice
+Version: 0.0.1
+Summary: JetStream QueryService
+Home-page: https://github.com/JetstreamAfrica/jsa_sdks/tree/master/jsa_queryservice
+Author: Kunsam002 :: Olukunle Ogunmokun
+Author-email: kunsam002@gmail.com
+License: MIT License
+Platform: UNKNOWN
+Classifier: Framework :: Django
+Classifier: Framework :: Django :: 2.2
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Topic :: Software Development :: Libraries :: Application Frameworks
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=3.6
+Requires-Dist: Django (>=2.2.8)
+Requires-Dist: jsa-auth-middleware (>=0.0.3.4)
+Requires-Dist: jsa-utils (>=0.0.1)
+
+====================================
+JetStream QueryService
+====================================
+
+JSA QueryService is a python package built
+for handling generic CRUD (Create, Read,
+Update, Delete) services, for availability
+across all of JetStream's micro-services.
+
+
+
