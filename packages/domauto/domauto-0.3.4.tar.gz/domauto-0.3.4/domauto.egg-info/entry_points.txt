@@ -1,0 +1,3 @@
+[console_scripts]
+domauto = src.command_line:main
+
