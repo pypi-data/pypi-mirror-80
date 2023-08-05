@@ -1,0 +1,13 @@
+Metadata-Version: 2.1
+Name: code2markdown
+Version: 0.1
+Summary: A simple converter for code to markdown.
+Home-page: https://github.com/GEM7318/Code2Markdown
+License: UNKNOWN
+Author: Grant Murray
+Author-email: gmurray203@gmail.com
+Description-Content-Type: text/markdown
+Classifier: License :: OSI Approved :: MIT License
+
+`code2markdown` is a simple solution for converting a variety of code files into renderable markdown.
+
