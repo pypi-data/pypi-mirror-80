@@ -1,0 +1,33 @@
+Metadata-Version: 1.2
+Name: morphac
+Version: 0.1.0a1
+Summary: Morphac is a planning and control library for mobile robots.
+Home-page: https://github.com/shrenikm/Morphac
+Author: Shrenik
+Author-email: shrenik95@gmail.com
+License: MIT
+Description: Key highlights:
+        
+        * The library focuses exclusively on mobile robots.
+        * It provides implementations of standard planning and control algorithms.
+        * It provides a framework to facilitate the development of new algorithms easily.
+        * Its modular and intuitive design enables quick prototyping and testing of new ideas.
+        * The framework and algorithms are written in C++ with python bindings for each functionality.
+        
+        Even though the library is written primarily using C++, its real-time performance cannot be guaranteed.
+        Morphac will primarily be a research focussed library.
+        
+Keywords: robotics mobile_robots motion_planning planning control
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: C++
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Requires-Python: >=3.6
