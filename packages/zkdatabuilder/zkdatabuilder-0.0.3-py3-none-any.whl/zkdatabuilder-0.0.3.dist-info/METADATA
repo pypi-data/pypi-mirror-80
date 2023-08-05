@@ -1,0 +1,60 @@
+Metadata-Version: 2.1
+Name: zkdatabuilder
+Version: 0.0.3
+Summary: Builds E.coli model with DNA, free and bound transcription factors data file for lammps mimicing real bp density of E.coli
+Home-page: UNKNOWN
+Author: Zafer Kosar
+Author-email: zafer.kosar.physics@gmail.com
+License: MIT
+Keywords: data file,lammps,lammps data file,E. coli model
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Education
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Requires-Dist: numpy
+
+Builds E.coli model with DNA, free and bound transcription factors data file for lammps mimicing real bp density of E.coli
+Requires previously obtained data file from lammps
+atom type = angle
+
+6 types of atoms represents
+
+    1 = DNA monomer
+    2 = DNA monomer specific sites
+    3 = free transcription factors binding sites
+    4 = bound transcription factor binding sites
+    5 = stem point for transcription factors no affinity to "2"
+    6 = cell membrane molecules
+
+buildNwrite module:
+uses all other modules 
+to read previously collapsed DNA data file via position module and creates a membrane around it using membrane module
+it also creates free transcription factors in given microMolarite via freeTF module within the parameters which are found by using radius thus preserving the bp density of E.coli
+angler and bonder are there to create necessary bonds and angles
+it doesn't return anything just creates a data file 
+it takes 3 parameters
+
+1 = um of free transcription factors
+2 = data file to read
+3 = name of the data file to create then write everything
+
+
+Created By ZK
+
+Change Log
+==========
+
+0.0.1 (19/09/2020)
+-------------------
+- First Release
+
+0.0.2 (19/09/2020)
+-------------------
+- Minor Fixes
+
+0.0.3 (20/09/2020)
+------------------
+- Position Stealer Modularity Increased Definion Updated Readme File Updated
+
+
