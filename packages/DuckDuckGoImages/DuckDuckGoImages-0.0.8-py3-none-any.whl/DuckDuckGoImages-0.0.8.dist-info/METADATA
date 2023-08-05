@@ -1,0 +1,32 @@
+Metadata-Version: 2.1
+Name: DuckDuckGoImages
+Version: 0.0.8
+Summary: Download images from DuckDuckGo
+Home-page: UNKNOWN
+Author: koke
+Author-email: jpobleteriquelme@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: requests (>=2.24.0)
+Requires-Dist: joblib (>=0.16.0)
+Requires-Dist: Pillow (>=2.2.1)
+Provides-Extra: dev
+Requires-Dist: pytest (>=3.7) ; extra == 'dev'
+
+
+ ## DuckDuckGo-Images
+
+## Instalation
+
+To install run the following:
+
+```python
+pip install DuckDuckGoImages
+```
+
+
