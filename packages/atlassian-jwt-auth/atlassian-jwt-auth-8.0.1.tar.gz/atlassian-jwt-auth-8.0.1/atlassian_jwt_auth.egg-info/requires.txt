@@ -1,0 +1,5 @@
+cryptography<3.2.0,>=3.1.0
+PyJWT<2.0.0,>=1.5.2
+requests<3.0.0,>=2.8.1
+CacheControl==0.12.6
+backports.functools-lru-cache==1.6.1
