@@ -1,0 +1,45 @@
+{
+  "error": {
+    "createTemplate": "Fehler beim Erstellen des Templates.",
+    "createTemplateDuplicateIdentifier": "Ein Template mit diesem Identifier existiert bereits.",
+    "deleteFile": "Fehler beim Löschen der Datei.",
+    "deleteResource": "Fehler beim Löschen der Ressource.",
+    "loadFilePreview": "Fehler beim Laden der Dateivorschau.",
+    "packageFiles": "Fehler beim Starten des Packaging-Tasks.",
+    "removeRecordLink": "Fehler beim Entfernen des Record-Links.",
+    "removeToken": "Fehler beim Entfernen des Access Tokens.",
+    "restoreResource": "Fehler beim Wiederherstellen der Ressource."
+  },
+  "misc": {
+    "createdAt": "Erstellt am",
+    "lastModified": "Zuletzt geändert",
+    "lastModifiedAt": "Zuletzt geändert am",
+    "noResults": "Keine Ergebnisse.",
+    "quickSearch": "Schnellsuche",
+    "uploadCompleted": "Upload abgeschlossen",
+    "uploadCompleted_plural": "Uploads abgeschlossen",
+    "uploadDropzone": "Dateien hier ablegen oder klicken zum Hochladen."
+  },
+  "success": {
+    "createTemplateIdentifier": "Template '{{identifier}}' erfolgreich erstellt.",
+    "deleteFile": "Datei erfolgreich gelöscht.",
+    "deleteResource": "Ressource erfolgreich gelöscht.",
+    "removeRecordLink": "Record-Link erfolgreich entfernt.",
+    "removeToken": "Access Token erfolgreich entfernt.",
+    "restoreResource": "Ressource erfolgreich wiederhergestellt."
+  },
+  "warning": {
+    "deleteCollection": "Möchten Sie diese Collection wirklich in den Papierkorb verschieben?",
+    "deleteFile": "Möchten Sie diese Datei wirklich löschen?",
+    "deleteGroup": "Möchten Sie diese Gruppe wirklich in den Papierkorb verschieben?",
+    "deleteIdentifier": "Möchten Sie '{{identifier}}' wirklich löschen?",
+    "deleteRecord": "Möchten Sie diesen Record wirklich in den Papierkorb verschieben?",
+    "deleteTemplate": "Möchten Sie dieses Template wirklich löschen?",
+    "maxFieldLength": "Feld kann nicht länger als {{length}} Zeichen sein.",
+    "minFieldLength": "Feld muss mindestens {{length}} Zeichen beinhalten.",
+    "minMaxFieldLength": "Feld muss zwischen {{minLength}} und {{maxLength}} Zeichen beinhalten.",
+    "purgeResourceTitle": "Möchten Sie '{{title}}' wirklich permanent löschen?",
+    "removeIdentifier": "Möchten Sie '{{identifier}}' wirklich entfernen?",
+    "restoreResourceTitle": "Möchten Sie '{{title}}' wirklich wiederherstellen?"
+  }
+}

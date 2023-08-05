@@ -1,0 +1,45 @@
+{
+  "error": {
+    "createTemplate": "Error creating template.",
+    "createTemplateDuplicateIdentifier": "A template with that identifier already exists.",
+    "deleteFile": "Error deleting file.",
+    "deleteResource": "Error deleting resource.",
+    "loadFilePreview": "Error loading file preview.",
+    "packageFiles": "Error starting packaging task.",
+    "removeRecordLink": "Error removing record link.",
+    "removeToken": "Error removing access token.",
+    "restoreResource": "Error restoring resource."
+  },
+  "misc": {
+    "createdAt": "Created at",
+    "lastModified": "Last modified",
+    "lastModifiedAt": "Last modified at",
+    "noResults": "No results.",
+    "quickSearch": "Quick search",
+    "uploadCompleted": "upload completed",
+    "uploadCompleted_plural": "uploads completed",
+    "uploadDropzone": "Drop files here or click to upload."
+  },
+  "success": {
+    "createTemplateIdentifier": "Template '{{identifier}}' created successfully.",
+    "deleteFile": "File deleted successfully.",
+    "deleteResource": "Resource deleted successfully.",
+    "removeRecordLink": "Record link removed successfully.",
+    "removeToken": "Access token removed successfully.",
+    "restoreResource": "Resource restored successfully."
+  },
+  "warning": {
+    "deleteCollection": "Are you sure you want to move this collection to the trash?",
+    "deleteFile": "Are you sure you want to delete this file?",
+    "deleteGroup": "Are you sure you want to move this group to the trash?",
+    "deleteIdentifier": "Are you sure you want to delete '{{identifier}}'?",
+    "deleteRecord": "Are you sure you want to move this record to the trash?",
+    "deleteTemplate": "Are you sure you want to delete this template?",
+    "maxFieldLength": "Field cannot be longer than {{length}} characters.",
+    "minFieldLength": "Field must be at least {{length}} characters long.",
+    "minMaxFieldLength": "Field must be between {{minLength}} and {{maxLength}} characters long.",
+    "purgeResourceTitle": "Are you sure you want to permanently delete '{{title}}'?",
+    "removeIdentifier": "Are you sure you want to remove '{{identifier}}'?",
+    "restoreResourceTitle": "Are you sure you want to restore '{{title}}'?"
+  }
+}
