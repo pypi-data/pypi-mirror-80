@@ -1,0 +1,4 @@
+
+        [console_scripts]
+        gcloud_sync_ssh=gcloud_sync_ssh.cli:cli
+    
