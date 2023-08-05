@@ -1,0 +1,10 @@
+urllib3
+pyyaml
+requests
+docker
+ninja
+cmake
+
+[testing]
+pytest
+mock
