@@ -1,0 +1,24 @@
+Metadata-Version: 2.1
+Name: aioquery
+Version: 1.1.2
+Summary: Asynchronous source A2S.
+Home-page: https://aioquery.readthedocs.io/en/latest/
+Author: WardPearce
+Author-email: wardpearce@protonmail.com
+License: Apache-2.0 License
+Platform: UNKNOWN
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: asyncio-dgram (>=1.0.1)
+Requires-Dist: asynctest (>=0.13.)
+Requires-Dist: sphinxcontrib-trio
+
+### Install
+- Pip: ``pip3 install aioquery``
+- Git: ``pip3 install git+https://github.com/WardPearce/aioquery.git``
+
+
+### Documentation
+[Documentation](https://aioquery.readthedocs.io/en/latest/)
+
+
