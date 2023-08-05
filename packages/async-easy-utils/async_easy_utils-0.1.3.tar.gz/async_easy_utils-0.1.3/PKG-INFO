@@ -1,0 +1,14 @@
+Metadata-Version: 1.2
+Name: async_easy_utils
+Version: 0.1.3
+Summary: REST tools for building backends with TorToiseORM and Starlette framework
+Home-page: https://www.github.com/t1waz/rest_utils
+Author: t1waz
+Author-email: milewiczmichal87@gmail.com
+License: MIT
+Description: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
