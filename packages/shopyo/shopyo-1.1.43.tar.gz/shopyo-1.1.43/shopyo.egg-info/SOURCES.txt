@@ -1,0 +1,17 @@
+MANIFEST.in
+README.md
+requirements.txt
+setup.cfg
+setup.py
+shopyo/__init__.py
+shopyo/__main__.py
+shopyo/app.py
+shopyo/config.py
+shopyo/manage.py
+shopyo/test_frontend.py
+shopyo.egg-info/PKG-INFO
+shopyo.egg-info/SOURCES.txt
+shopyo.egg-info/dependency_links.txt
+shopyo.egg-info/entry_points.txt
+shopyo.egg-info/requires.txt
+shopyo.egg-info/top_level.txt
