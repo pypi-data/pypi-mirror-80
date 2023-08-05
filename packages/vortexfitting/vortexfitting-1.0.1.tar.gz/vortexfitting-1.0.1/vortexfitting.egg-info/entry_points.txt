@@ -1,0 +1,3 @@
+[console_scripts]
+vortexfitting = vortexfitting.__main__:main
+
