@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "simple-git-deploy"
+version = "0.6"
+description = "A command-line utility for easy and reliable management of manual deployments from Git repositories"
+authors = ["Eduardo Dobay <edudobay@gmail.com>"]
+license = "GPL-3.0"
+readme = "README.md"
+homepage = "https://github.com/edudobay/laika"
+repository = "https://github.com/edudobay/laika"
+keywords = ["deployment", "automation", "git"]
+classifiers = [
+    "Development Status :: 7 - Inactive",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Build Tools",
+    "Topic :: Software Development :: Version Control :: Git",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+]
+
+[tool.poetry.scripts]
+laika = "laika.cli:main"
+simple-git-deploy = "laika.cli:main"
+
+[tool.poetry.dependencies]
+python = "^3.5"
+laika-deploy = "^0.6"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"

@@ -1,0 +1,33 @@
+Metadata-Version: 2.1
+Name: simple-git-deploy
+Version: 0.6
+Summary: A command-line utility for easy and reliable management of manual deployments from Git repositories
+Home-page: https://github.com/edudobay/laika
+License: GPL-3.0
+Keywords: deployment,automation,git
+Author: Eduardo Dobay
+Author-email: edudobay@gmail.com
+Requires-Python: >=3.5,<4.0
+Classifier: Development Status :: 7 - Inactive
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: Topic :: Software Development :: Version Control :: Git
+Requires-Dist: laika-deploy (>=0.6,<0.7)
+Project-URL: Repository, https://github.com/edudobay/laika
+Description-Content-Type: text/markdown
+
+# Laika 🐶
+
+`simple-git-deploy` has been renamed. Please check the new links:
+
+* GitHub, https://github.com/edudobay/laika
+* PyPI, https://pypi.org/project/laika-deploy/
+
