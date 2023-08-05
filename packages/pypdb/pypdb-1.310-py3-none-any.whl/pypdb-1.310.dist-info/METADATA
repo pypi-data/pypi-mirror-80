@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: pypdb
+Version: 1.310
+Summary: A Python wrapper for the RCSB Protein Data Bank (PDB) API
+Home-page: https://github.com/williamgilpin/pypdb
+Author: William Gilpin
+Author-email: firstname_lastname@gmail.com
+License: UNKNOWN
+Download-URL: https://github.com/williamgilpin/pypdb/tarball/0.6
+Keywords: protein,data,RESTful,api
+Platform: UNKNOWN
+Requires-Dist: xmltodict
+Requires-Dist: beautifulsoup4
+Requires-Dist: requests
+
+UNKNOWN
+
+
