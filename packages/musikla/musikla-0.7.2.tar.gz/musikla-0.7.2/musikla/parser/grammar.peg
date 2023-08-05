@@ -1,0 +1,256 @@
+main <- body EOF;
+
+body <- statement ( ";" statement )* _ ";"? _
+      / ""
+      ;
+
+// Statements
+statement <- _ ( var_declaration / voice_declaration / import / for_loop_statement / while_loop_statement / if_statement / return_statement / python_statement / expression ) _;
+
+import <- "import" _ namespaced
+        / "import" _ string_value
+        ;
+
+var_declaration <- expression _ var_declaration_infix? "=" _ expression;
+
+var_declaration_infix <- "+" / "-" / "/" / "*" / "|" / "&";
+
+voice_declaration <- !"::" ":" namespaced _ "=" _ voice_declaration_body;
+
+voice_declaration_body <- !"::" ":" namespaced _ "(" _ expression _ ")"
+                        / expression
+                        ;
+
+function_declaration <- "fun" _ namespaced? _ "(" _ arguments? _ ")" _ "{" body "}"
+                      / "fun" _ namespaced? _ "(" _ arguments? _ ")" _ "=>" _ expression
+                      ;
+
+arguments <- single_argument ( _ arguments_separator _ single_argument )*;
+
+single_argument <- single_argument_prefix _ "$" identifier _ "=" _ expression 
+                 / single_argument_prefix _ "$" identifier
+                 ;
+
+single_argument_prefix <- "expr" / "ref" / "in" / "";
+
+arguments_separator <- ',' / ';';
+
+for_variables <- variable ( _ arguments_separator _ variable )*;
+
+for_loop_head <- "for" _ "(" _ for_variables _ "in" _ value_expression _ ".." _ value_expression _ ")"
+               / "for" _ "(" _ for_variables _ "in" _ value_expression _ ")"
+               ;
+
+for_loop_statement <- for_loop_head _ "{" _ body? _ "}";
+
+while_loop_statement <- "while" _ "(" _ expression _ ")" _ "{" _ body _ "}";
+
+if_statement <- "if" _ "(" _ expression _ ")" _ "{" _ body _ "}" _ "else" _ "{" _ body _ "}"
+              / "if" _ "(" _ expression _ ")" _ "{" _ body _ "}"
+              ;
+
+return_statement <- "return" _ expression?;
+
+// BEGIN Keyboard
+keyboard_declaration <- "@keyboard" (_ alphanumeric)* ( _ group )? _ "{" _ keyboard_body _ "}";
+
+keyboard_body <- keyboard_body_statement ( _ ";" _ keyboard_body_statement )* _ ";"?
+             / ""
+             ;
+
+keyboard_body_statement <- keyboard_for
+                         / keyboard_while
+                         / keyboard_if
+                         / keyboard_block
+                         / keyboard_shortcut
+                         ;
+
+keyboard_for <- for_loop_head _ "{" _ keyboard_body _ "}";
+
+keyboard_while <- "while" _ "(" _ expression _ ")" _ "{" _ keyboard_body _ "}";
+
+keyboard_if <- "if" _ "(" _ expression _ ")" _ "{" _ keyboard_body _ "}" _ "else" _ "{" _ keyboard_body _ "}"
+             / "if" _ "(" _ expression _ ")" _ "{" _ keyboard_body _ "}"
+             ;
+
+keyboard_block <- "{" _ body _ "}";
+
+keyboard_shortcut <- keyboard_shortcut_key _ keyboard_arguments? _ ":" _ expression
+                   ;
+
+list_comprehension <- expression "for" _ "$" _ namespaced _ "in" _ value_expression _ ".." _ value_expression
+                    / expression "for" _ "$" _ namespaced _ "in" _ value_expression _ ".." _ value_expression _ "if" value_expression
+                    ;
+
+keyboard_shortcut_key <- alphanumeric (_"+"_ alphanumeric)* (_ alphanumeric)*
+                       / string_value (_ alphanumeric)*
+                       / "[" _ list_comprehension _ "]" (alphanumeric _)*
+                       / "[" _ value_expression _ "]" (alphanumeric _)*
+                       ;
+
+keyboard_arguments <- "(" _ ( keyboard_single_argument ( _ arguments_separator _ keyboard_single_argument )* )? _ ")";
+
+keyboard_arguments_separator <- ',' / ';';
+
+keyboard_single_argument <- "$" identifier;
+// END Keyboard
+
+python_expression <- "@py" _ "{" _ python_expression_body _ "}";
+
+python_expression_body <- r"[^\}]*";
+
+python_statement <- "@python" python_statement_body;
+
+python_statement_body <- ( r".*" r"\r?\n"? )*;
+
+expression <- e music_expression;
+
+music_expression <- sequence ( _ "|" _ sequence )*;
+
+sequence <- value_expression ( _ value_expression)*;
+
+group <- "(" _ expression _ ")";
+
+block <- "{" _ body _ "}";
+
+variable <- "$" namespaced;
+
+function <- namespaced "(" _ function_parameters _ ")";
+
+function_parameters <- named_parameters
+                     / positional_parameters ( _ parameters_separator _ named_parameters )?
+                     / e
+                     ;
+
+positional_parameters <- !named_parameter expression ( _ parameters_separator _ !named_parameter expression )*;
+
+named_parameters <- named_parameter ( _ parameters_separator _ named_parameter )*;
+
+named_parameter <- identifier _ '=' _ expression;
+
+parameters_separator <- ',' / ';';
+
+note <- note_pitch note_value?;
+
+chord <- "[" _ note_pitch chord_suffix _ "]" note_value?
+       / "[" ( _ note_pitch )+ _ "]" note_value?
+       ;
+
+chord_suffix <- 'm7' / 'M7' / 'dom7' / '7' / 'm7b5' / 'dim7' / 'mM7'
+              / '5'
+              / 'M' / 'm' / 'aug' / 'dim' / '+'
+              ;
+
+rest <- "r" note_value?;
+
+note_value
+    <- "/" _ integer
+     / integer _ "/" _ integer
+     / integer
+     ;
+
+note_pitch <- note_accidental _ note_pitch_raw;
+
+note_accidental <- "^" / "^^" / "__" / "_" / "";
+
+note_pitch_raw <- r"[cdefgab]" "'"*
+                / r"[CDEFGAB]" ","*
+                ;
+
+modifier
+    <- r"[tT]" _ integer
+     / r"[vV]" _ integer
+     / r"[iI]" _ integer
+     / r"[lL]" _ note_value
+     / r"[sS]" _ integer _ "/" _ integer
+     / r"[sS]" _ integer
+     / r"[oO]" _ integer
+     ;
+
+instrument_modifier <- !"::" ":" ( namespaced / "?" ) _ sequence;
+
+value_expression <- e binary_logic_operator_expression;
+
+binary_logic_operator_expression <- binary_comparison_operator_expression _ ("and" / "or") _ binary_logic_operator_expression
+                                  / binary_comparison_operator_expression
+                                  ;
+
+binary_comparison_operator_expression <- binary_sum_operator_expression _ (">=" / ">" / "==" / "!=" / "<=" / "<" / "isnot" / "is" / "in" / "notin") _ binary_comparison_operator_expression
+                                       / binary_sum_operator_expression
+                                       ;
+
+binary_sum_operator_expression <- binary_mult_operator_expression _ r"[+\-]" _ binary_sum_operator_expression
+                                / binary_mult_operator_expression
+                                ;
+
+binary_mult_operator_expression <- unary_operator_expression _ r"(\*\*|\*|\/)" _ binary_mult_operator_expression
+                                 / unary_operator_expression
+                                 ;                            
+
+unary_operator_expression <- ( "not" / ""  ) _  expression_single;
+
+expression_single <- expression_single_prefix ( ( _ property_accessor ) / property_call )*;
+
+expression_single_prefix  <- function_declaration / string_value / number_value / bool_value / none_value / variable / function / keyboard_declaration / python_expression / array_value / object_value / group / block / chord / note / rest / modifier / instrument_modifier;
+
+property_accessor <- "::" _ ( identifier / ( "[" _ expression _ "]" ) );
+
+property_call <- "(" _ function_parameters _ ")";
+
+array_value <- "@[" _ "]"
+             / "@[" _ expression ( _ array_separator _ expression )* _ "]"
+             ;
+
+array_separator <- ',' / ';';
+
+object_value <- "@{" _ "}"
+              / "@{" _ object_value_item ( _ object_separator _ object_value_item )* _ "}"
+              ;
+
+object_value_item <- object_value_key _ '=' _ expression;
+
+object_value_key <- identifier / float / integer / double_string / single_string;
+
+object_separator <- ',' / ';';
+
+string_value <- double_string / single_string;
+
+double_string <- "\"" double_string_char* "\"";
+
+double_string_char 
+    <- "\\\""
+     / "\\\\"
+     / r"[^\"]"
+     ;
+
+single_string <- "'" single_string_char* "'";
+
+single_string_char
+    <- "\\'"
+     / "\\\\"
+     / r"[^']"
+     ;
+
+number_value <- float / integer;
+
+bool_value <- "true" / "false";
+
+none_value <- "none";
+
+float <- r"[0-9]+\.[0-9]+";
+
+integer <- r"[\-\+]?[0-9]+";
+
+namespaced <- ( identifier "\\" )* identifier;
+
+identifier <- r"[a-zA-Z\_][a-zA-Z0-9\_]*";
+
+alphanumeric <- r"[a-zA-Z0-9\_]*";
+
+_ <- r"[ \t\r\n]*";
+
+__ <- r"[ \t\r\n]+";
+
+e <- "";
+
+comment <- _ r"#[^\n]*";
