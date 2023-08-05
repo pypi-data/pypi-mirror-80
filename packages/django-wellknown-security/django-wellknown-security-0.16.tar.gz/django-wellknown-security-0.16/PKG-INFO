@@ -1,0 +1,88 @@
+Metadata-Version: 1.1
+Name: django-wellknown-security
+Version: 0.16
+Summary: A Django app to private security.txt details
+Home-page: https://django-wellknown-security.readthedocs.io
+Author: Peter Gastinger
+Author-email: peter@secitec.net
+License: BSD-2-Clause
+Description: =======================
+        Well-Known security.txt
+        =======================
+        
+        https://securitytxt.org/
+        A proposed standard which allows websites to define security policies.
+        https://tools.ietf.org/html/draft-foudil-securitytxt-10#section-3.5.3
+        
+        based on:
+        https://adamj.eu/tech/2020/06/28/how-to-add-a-well-known-url-to-your-django-site/
+        
+        Quick start
+        -----------
+        1. Add "polls" to your INSTALLED_APPS setting like this::
+        
+            INSTALLED_APPS = [
+                ...
+                'wellknown_security',
+            ]
+        
+        2. Include the polls URLconf in your project urls.py like this::
+        
+            from django.conf.urls import include
+            ...
+            path('.well-known/', include('wellknown_security.urls')),
+        
+        
+        3. Add at least the contact info (either value is fine, can be multiple or just a single one) to settings.py
+        
+           Contact::
+        
+             WELLKNOWN_SECURITY_CONTACT = (
+               'mailto:security@example.com',
+               'mailto:security%2Buri%2Bencoded@example.com',
+               'tel:+1-201-555-0123',
+               'https://example.com/security-contact.html'
+             )
+        
+        
+           other values can be added as well, e.g
+        
+           Encryption::
+        
+             WELLKNOWN_SECURITY_ENCRYPTION = (
+               'https://example.com/pgp-key.txt', 
+               'dns:5d2d37ab76d47d36._openpgpkey.example.com?type=OPENPGPKEY',
+               'openpgp4fpr:5f2de5521c63a801ab59ccb603d49de44b29100f'
+             )
+        
+        
+        4. Start the development server and visit http://127.0.0.1:8000/.well-known/security.txt
+           to check the results
+        
+           Output::
+        
+             Contact: mailto:security@example.com
+             Contact: mailto:security%2Buri%2Bencoded@example.com
+             Contact: tel:+1-201-555-0123
+             Contact: https://example.com/security-contact.html
+             
+             Encryption: https://example.com/pgp-key.txt
+             Encryption: dns:5d2d37ab76d47d36._openpgpkey.example.com?type=OPENPGPKEY
+             Encryption: openpgp4fpr:5f2de5521c63a801ab59ccb603d49de44b29100f
+        
+        
+Platform: UNKNOWN
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: Framework :: Django :: 3.1
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
