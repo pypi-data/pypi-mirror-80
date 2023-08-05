@@ -1,0 +1,142 @@
+{
+    "responseId": "70db8717-8a06-4fa4-9f9b-f38994861c01-eec93b43",
+    "queryResult":
+    {
+        "queryText": "Oui",
+        "parameters": {},
+        "allRequiredParamsPresent": true,
+        "fulfillmentMessages":
+        [
+            {
+                "text":
+                {
+                    "text":
+                    [
+                        ""
+                    ]
+                }
+            }
+        ],
+        "outputContexts":
+        [
+            {
+                "name": "projects/jeu-seconde-guerre-mondiale/agent/sessions/ABwppHE_-jPKwzLhwzVXf0WjI1kdRaE2D1ZDqJ_6Kv9Vvgtiqo2u_GwM6Wv-TK7pULs04BtMirV7oBQt51EiBvfEj1iHjbpc8Ufo/contexts/actions_capability_media_response_audio"
+            },
+            {
+                "name": "projects/jeu-seconde-guerre-mondiale/agent/sessions/ABwppHE_-jPKwzLhwzVXf0WjI1kdRaE2D1ZDqJ_6Kv9Vvgtiqo2u_GwM6Wv-TK7pULs04BtMirV7oBQt51EiBvfEj1iHjbpc8Ufo/contexts/actions_capability_audio_output"
+            },
+            {
+                "name": "projects/jeu-seconde-guerre-mondiale/agent/sessions/ABwppHE_-jPKwzLhwzVXf0WjI1kdRaE2D1ZDqJ_6Kv9Vvgtiqo2u_GwM6Wv-TK7pULs04BtMirV7oBQt51EiBvfEj1iHjbpc8Ufo/contexts/actions_capability_screen_output"
+            },
+            {
+                "name": "projects/jeu-seconde-guerre-mondiale/agent/sessions/ABwppHE_-jPKwzLhwzVXf0WjI1kdRaE2D1ZDqJ_6Kv9Vvgtiqo2u_GwM6Wv-TK7pULs04BtMirV7oBQt51EiBvfEj1iHjbpc8Ufo/contexts/actions_capability_account_linking"
+            },
+            {
+                "name": "projects/jeu-seconde-guerre-mondiale/agent/sessions/ABwppHE_-jPKwzLhwzVXf0WjI1kdRaE2D1ZDqJ_6Kv9Vvgtiqo2u_GwM6Wv-TK7pULs04BtMirV7oBQt51EiBvfEj1iHjbpc8Ufo/contexts/google_assistant_input_type_voice"
+            },
+            {
+                "name": "projects/jeu-seconde-guerre-mondiale/agent/sessions/ABwppHE_-jPKwzLhwzVXf0WjI1kdRaE2D1ZDqJ_6Kv9Vvgtiqo2u_GwM6Wv-TK7pULs04BtMirV7oBQt51EiBvfEj1iHjbpc8Ufo/contexts/sessiondata",
+                "lifespanCount": 998
+            },
+            {
+                "name": "projects/jeu-seconde-guerre-mondiale/agent/sessions/ABwppHE_-jPKwzLhwzVXf0WjI1kdRaE2D1ZDqJ_6Kv9Vvgtiqo2u_GwM6Wv-TK7pULs04BtMirV7oBQt51EiBvfEj1iHjbpc8Ufo/contexts/__system_counters__",
+                "parameters":
+                {
+                    "no-input": 0,
+                    "no-match": 0
+                }
+            }
+        ],
+        "intent":
+        {
+            "name": "projects/jeu-seconde-guerre-mondiale/agent/intents/75d86c75-fe49-45ea-9c9a-839544901d89",
+            "displayName": "Yes"
+        },
+        "intentDetectionConfidence": 1,
+        "LanguageModel": "fr"
+    },
+    "originalDetectIntentRequest":
+    {
+        "source": "google",
+        "version": "2",
+        "payload":
+        {
+            "user":
+            {
+                "permissions":
+                [
+                    "UPDATE"
+                ],
+                "locale": "fr-CA",
+                "lastSeen": "2020-04-27T19:31:23Z",
+                "userStorage": "{'userId': 'testUserId'}",
+                "userVerificationStatus": "VERIFIED"
+            },
+            "conversation":
+            {
+                "conversationId": "ABwppHE_-jPKwzLhwzVXf0WjI1kdRaE2D1ZDqJ_6Kv9Vvgtiqo2u_GwM6Wv-TK7pULs04BtMirV7oBQt51EiBvfEj1iHjbpc8Ufo",
+                "type": "ACTIVE",
+                "conversationToken": "[\"sessiondata\"]"
+            },
+            "inputs":
+            [
+                {
+                    "intent": "actions.intent.TEXT",
+                    "rawInputs":
+                    [
+                        {
+                            "inputType": "VOICE",
+                            "query": "Oui"
+                        }
+                    ],
+                    "arguments":
+                    [
+                        {
+                            "name": "text",
+                            "rawText": "Oui",
+                            "textValue": "Oui"
+                        }
+                    ]
+                }
+            ],
+            "surface":
+            {
+                "capabilities":
+                [
+                    {
+                        "name": "actions.capability.MEDIA_RESPONSE_AUDIO"
+                    },
+                    {
+                        "name": "actions.capability.AUDIO_OUTPUT"
+                    },
+                    {
+                        "name": "actions.capability.SCREEN_OUTPUT"
+                    },
+                    {
+                        "name": "actions.capability.ACCOUNT_LINKING"
+                    }
+                ]
+            },
+            "isInSandbox": true,
+            "availableSurfaces":
+            [
+                {
+                    "capabilities":
+                    [
+                        {
+                            "name": "actions.capability.SCREEN_OUTPUT"
+                        },
+                        {
+                            "name": "actions.capability.WEB_BROWSER"
+                        },
+                        {
+                            "name": "actions.capability.AUDIO_OUTPUT"
+                        }
+                    ]
+                }
+            ],
+            "requestType": "SIMULATOR"
+        }
+    },
+    "session": "projects/jeu-seconde-guerre-mondiale/agent/sessions/ABwppHE_-jPKwzLhwzVXf0WjI1kdRaE2D1ZDqJ_6Kv9Vvgtiqo2u_GwM6Wv-TK7pULs04BtMirV7oBQt51EiBvfEj1iHjbpc8Ufo"
+}

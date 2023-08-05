@@ -1,0 +1,103 @@
+{
+    "responseId": "2b460a4c-66ea-4fa9-96c8-4cfc2cc0249b-9aa0e9ed",
+    "queryResult":
+    {
+        "queryText": "GOOGLE_ASSISTANT_WELCOME",
+        "parameters": {},
+        "allRequiredParamsPresent": true,
+        "fulfillmentMessages":
+        [
+            {
+                "text":
+                {
+                    "text":
+                    [
+                        ""
+                    ]
+                }
+            }
+        ],
+        "outputContexts":
+        [
+            {
+                "name": "projects/cite-des-sciences/agent/sessions/ABwppHHmWOnwKDki9woFzuHMVnk5PQr6oCK-1L1zpCkx-O_2ZSzGcu2R5OrOiMjdq-rUo7Nt7kngysDc-Q20JTI/contexts/actions_capability_audio_output"
+            },
+            {
+                "name": "projects/cite-des-sciences/agent/sessions/ABwppHHmWOnwKDki9woFzuHMVnk5PQr6oCK-1L1zpCkx-O_2ZSzGcu2R5OrOiMjdq-rUo7Nt7kngysDc-Q20JTI/contexts/actions_capability_media_response_audio"
+            },
+            {
+                "name": "projects/cite-des-sciences/agent/sessions/ABwppHHmWOnwKDki9woFzuHMVnk5PQr6oCK-1L1zpCkx-O_2ZSzGcu2R5OrOiMjdq-rUo7Nt7kngysDc-Q20JTI/contexts/actions_capability_account_linking"
+            },
+            {
+                "name": "projects/cite-des-sciences/agent/sessions/ABwppHHmWOnwKDki9woFzuHMVnk5PQr6oCK-1L1zpCkx-O_2ZSzGcu2R5OrOiMjdq-rUo7Nt7kngysDc-Q20JTI/contexts/google_assistant_input_type_voice"
+            },
+            {
+                "name": "projects/cite-des-sciences/agent/sessions/ABwppHHmWOnwKDki9woFzuHMVnk5PQr6oCK-1L1zpCkx-O_2ZSzGcu2R5OrOiMjdq-rUo7Nt7kngysDc-Q20JTI/contexts/google_assistant_welcome"
+            },
+            {
+                "name": "projects/cite-des-sciences/agent/sessions/ABwppHHmWOnwKDki9woFzuHMVnk5PQr6oCK-1L1zpCkx-O_2ZSzGcu2R5OrOiMjdq-rUo7Nt7kngysDc-Q20JTI/contexts/__system_counters__",
+                "parameters":
+                {
+                    "no-input": 0,
+                    "no-match": 0
+                }
+            }
+        ],
+        "intent":
+        {
+            "name": "projects/cite-des-sciences/agent/intents/6bb349a7-382f-4025-9d8e-6c220b8e9861",
+            "displayName": "LaunchIntentRequest"
+        },
+        "intentDetectionConfidence": 1,
+        "LanguageModel": "fr"
+    },
+    "originalDetectIntentRequest":
+    {
+        "source": "google",
+        "version": "2",
+        "payload":
+        {
+            "user":
+            {
+                "locale": "fr-FR",
+                "lastSeen": "2020-04-02T22:01:32Z",
+                "userVerificationStatus": "GUEST"
+            },
+            "conversation":
+            {
+                "conversationId": "ABwppHHmWOnwKDki9woFzuHMVnk5PQr6oCK-1L1zpCkx-O_2ZSzGcu2R5OrOiMjdq-rUo7Nt7kngysDc-Q20JTI",
+                "type": "NEW"
+            },
+            "inputs":
+            [
+                {
+                    "intent": "actions.intent.MAIN",
+                    "rawInputs":
+                    [
+                        {
+                            "inputType": "VOICE",
+                            "query": "parle avec CitÃ© des sciences"
+                        }
+                    ]
+                }
+            ],
+            "surface":
+            {
+                "capabilities":
+                [
+                    {
+                        "name": "actions.capability.AUDIO_OUTPUT"
+                    },
+                    {
+                        "name": "actions.capability.MEDIA_RESPONSE_AUDIO"
+                    },
+                    {
+                        "name": "actions.capability.ACCOUNT_LINKING"
+                    }
+                ]
+            },
+            "isInSandbox": true
+        }
+    },
+    "session": "projects/cite-des-sciences/agent/sessions/ABwppHHmWOnwKDki9woFzuHMVnk5PQr6oCK-1L1zpCkx-O_2ZSzGcu2R5OrOiMjdq-rUo7Nt7kngysDc-Q20JTI"
+}
