@@ -1,0 +1,59 @@
+{
+    "telescope":"jwst",
+    "scene":[ {
+            "id": 1,
+            "target": true,
+            "position": {
+                "ang_unit": "arcsec",
+                "xoff": 0.0,
+                "yoff": 0.0
+            },
+            "spectrum": {
+                "normalization": {
+                     "type": "none"},
+                "sed": {
+                    "sed_type": "input",
+                    "spectrum": []
+                            },
+                "lines": []
+                    }
+                }],
+
+    "background_level": "medium",
+    "background":"ecliptic",
+    "calculation":{
+    "effects": {
+                "background": true,
+                "ipc": true,
+                "saturation": true
+                },
+    "noise": {
+                "crs": true,
+                "darkcurrent": true,
+                "ffnoise": false,
+                "readnoise": true,
+                "rn_correlation": true
+                }
+    },
+    "configuration":{
+    "instrument": {
+            "instrument": "niriss",
+            "mode": "soss",
+            "filter": null,
+            "aperture": "soss",
+            "disperser": "gr700xd"
+        },
+    "detector": {
+            "readout_pattern":"nisrapid",
+            "subarray": "substrip96",
+            "readmode": "nisrapid",
+            "ngroup": "optimize",
+            "nint": 1,
+            "nexp": 10
+        }
+    },
+    "strategy": {
+            "method": "soss",
+            "order":1
+            }
+}
