@@ -1,0 +1,46 @@
+Metadata-Version: 2.1
+Name: graph-garden
+Version: 0.1.2
+Summary: Python library for managing ArangoDB instance
+Home-page: https://github.com/ldtoolkit/graph-garden
+License: Apache-2.0
+Keywords: arangodb
+Author: Roman Inflianskas
+Author-email: infroma@gmail.com
+Requires-Python: >=3.7,<4.0
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Topic :: Database
+Requires-Dist: appdirs (>=1.4.4,<2.0.0)
+Requires-Dist: beautifulsoup4 (>=4.9.1,<5.0.0)
+Requires-Dist: circus (>=0.16.1,<0.17.0)
+Requires-Dist: psutil (>=5.7.2,<6.0.0)
+Requires-Dist: pySmartDL (>=1.3.3,<2.0.0)
+Requires-Dist: python-arango (>=6.0.0,<7.0.0)
+Requires-Dist: typer (>=0.3.2,<0.4.0)
+Project-URL: Repository, https://github.com/ldtoolkit/graph-garden
+Description-Content-Type: text/markdown
+
+# Graph Garden
+Python library for managing ArangoDB instance
+
+[ArangoDB](https://www.arangodb.com/) is a trademark and property of ArangoDB, Inc. Graph Garden library is just a convenient way of managing ArangoDB instance from CLI and Python code (setup, start, stop). It is not developed or endorsed by ArangoDB, Inc.
+
+## Installation
+
+```bash
+pip install graph-garden
+```
+
+## Usage
+
+Run the following command to get help:
+
+```bash
+graph-garden --help
+```
+
+You can also see how Graph Garden is currently used in [ConceptNet Rocks!](https://github.com/ldtoolkit/conceptnet-rocks).
+

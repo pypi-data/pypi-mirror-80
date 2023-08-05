@@ -1,0 +1,3 @@
+[console_scripts]
+graph-garden=graph_garden.cli:app
+
