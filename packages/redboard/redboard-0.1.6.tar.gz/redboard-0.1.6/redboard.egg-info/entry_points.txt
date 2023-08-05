@@ -1,0 +1,3 @@
+[console_scripts]
+redboard-gui = redboard.console:main
+
