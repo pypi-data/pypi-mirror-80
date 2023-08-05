@@ -1,0 +1,15 @@
+README.md
+setup.cfg
+setup.py
+pydobot/__init__.py
+pydobot/dobot.py
+pydobot/kinematics.py
+pydobot/m1_fk.py
+pydobot/m1_ik.py
+pydobot/message.py
+pydobot/tools.py
+pydobot2.egg-info/PKG-INFO
+pydobot2.egg-info/SOURCES.txt
+pydobot2.egg-info/dependency_links.txt
+pydobot2.egg-info/requires.txt
+pydobot2.egg-info/top_level.txt
