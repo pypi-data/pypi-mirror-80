@@ -1,0 +1,8 @@
+graft test
+graft i18n
+exclude i18n/*.pro
+exclude i18n/*.qm
+global-exclude [uU]i_*.py
+global-exclude __pycache__ *.py[cod]
+include LICEN[CS]E.*
+include qtimgren/*.ui

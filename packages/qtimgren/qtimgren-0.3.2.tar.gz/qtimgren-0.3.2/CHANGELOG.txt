@@ -1,0 +1,8 @@
+0.3.0: First functional version deployed to PyPi
+    - fully implements profile management
+    - installable from a sdist, a wheel or a cloned git repository
+    - implements optional thumbnails display
+
+0.3.1: Minor cosmetic change in the project home URL for PyPI
+
+0.3.2: Acknowledge no support for Python 3.5
