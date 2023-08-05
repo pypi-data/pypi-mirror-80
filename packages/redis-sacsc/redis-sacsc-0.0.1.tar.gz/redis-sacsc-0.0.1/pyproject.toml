@@ -1,0 +1,43 @@
+[build-system]
+requires = ["poetry>=1.0"]
+build-backend = "poetry.masonry.api"
+
+
+[tool.poetry]
+name = "redis-sacsc"
+version = "0.0.1"
+description = "Redis Server-Assisted Client-Side Caching in Python"
+license = "MIT"
+
+authors = []
+
+readme = "README.md"
+
+repository = "https://github.com/iamajay/redis-sacsc"
+
+keywords = []
+
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "Operating System :: OS Independent",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+[tool.poetry.dependencies]
+python = "^3.6"
+redis = "^3.4.1"
+
+[tool.poetry.dev-dependencies]
+flake8 = "^3.7.9"
+
+pytest = "^5.3"
+pytest-cov = "^2.7"
+pytest-randomly = "^3.1"
+
+sphinx = "^2.2"
+sphinx-autodoc-typehints = "<1.11"
+doc8 = "^0.8"
+m2r = "^0.2"
+tomlkit = "^0.5"
+safety = "^1.8.5"
