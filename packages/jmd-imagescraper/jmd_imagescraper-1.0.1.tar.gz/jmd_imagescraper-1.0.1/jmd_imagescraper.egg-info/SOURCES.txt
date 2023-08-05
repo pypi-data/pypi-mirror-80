@@ -1,0 +1,17 @@
+CONTRIBUTING.md
+LICENSE
+MANIFEST.in
+README.md
+settings.ini
+setup.py
+jmd_imagescraper/__init__.py
+jmd_imagescraper/_nbdev.py
+jmd_imagescraper/core.py
+jmd_imagescraper/imagecleaner.py
+jmd_imagescraper.egg-info/PKG-INFO
+jmd_imagescraper.egg-info/SOURCES.txt
+jmd_imagescraper.egg-info/dependency_links.txt
+jmd_imagescraper.egg-info/entry_points.txt
+jmd_imagescraper.egg-info/not-zip-safe
+jmd_imagescraper.egg-info/requires.txt
+jmd_imagescraper.egg-info/top_level.txt
