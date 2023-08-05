@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: py-nabu
+Version: 0.1.4
+Summary: A small and efficient Markdown to HTML publishing platform
+Home-page: https://github.com/timoguic/nabu
+Author: Tim Guicherd
+Author-email: tim@grut.org
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+Requires-Dist: python-frontmatter
+Requires-Dist: Jinja2
+Requires-Dist: markdown2
+Requires-Dist: PyYAML
+Requires-Dist: watchgod
+
+# Nabu is a simple and efficient static site generator using Markdown
+
+Tired of `hugo`, `jekyll`, and complicated frameworks?
+Just create a content folder, and use `nabu` to create HTML pages based on a template of your choice. The table of contents will be automatically generated for you.
+
