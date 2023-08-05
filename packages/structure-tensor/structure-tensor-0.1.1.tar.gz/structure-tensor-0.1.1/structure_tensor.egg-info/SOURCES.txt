@@ -1,0 +1,13 @@
+README.md
+setup.py
+structure_tensor/__init__.py
+structure_tensor/st2d.py
+structure_tensor/st3d.py
+structure_tensor.egg-info/PKG-INFO
+structure_tensor.egg-info/SOURCES.txt
+structure_tensor.egg-info/dependency_links.txt
+structure_tensor.egg-info/requires.txt
+structure_tensor.egg-info/top_level.txt
+structure_tensor/cp/__init__.py
+structure_tensor/cp/filters.py
+structure_tensor/cp/st3dcp.py
