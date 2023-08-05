@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: km3db
+Version: 0.1.0
+Summary: KM3NeT database library
+Home-page: https://git.km3net.de/km3py/km3db
+Author: Tamas Gal
+Author-email: tgal@km3net.de
+License: UNKNOWN
+Description: KM3NeT database library
+        =======================
+        
+        .. image:: https://git.km3net.de/km3py/km3db/badges/master/pipeline.svg
+            :target: https://git.km3net.de/km3py/km3db/pipelines
+        
+        .. image:: https://git.km3net.de/km3py/km3db/badges/master/coverage.svg
+            :target: https://km3py.pages.km3net.de/km3db/coverage
+        
+        .. image:: https://examples.pages.km3net.de/km3badges/docs-latest-brightgreen.svg
+            :target: https://km3py.pages.km3net.de/km3db
+        
+        
+Platform: any
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Science/Research
+Classifier: Programming Language :: Python
+Requires-Python: >=2.7
+Provides-Extra: dev
+Provides-Extra: extras
