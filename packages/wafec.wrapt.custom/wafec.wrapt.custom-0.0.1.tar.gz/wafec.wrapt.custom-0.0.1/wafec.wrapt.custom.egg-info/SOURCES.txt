@@ -1,0 +1,10 @@
+README.md
+setup.py
+wafec.wrapt.custom.egg-info/PKG-INFO
+wafec.wrapt.custom.egg-info/SOURCES.txt
+wafec.wrapt.custom.egg-info/dependency_links.txt
+wafec.wrapt.custom.egg-info/top_level.txt
+wafec_wrapt_custom/__init__.py
+wafec_wrapt_custom/wrappers.py
+wafec_wrapt_custom/tests/__init__.py
+wafec_wrapt_custom/tests/wrappers_test.py
