@@ -1,0 +1,18 @@
+packaging
+
+[:python_version < "3.7"]
+importlib-resources
+
+[:python_version < "3.8"]
+importlib-metadata
+
+[numpy]
+numpy>=1.14
+
+[test]
+pytest
+pytest-mpl
+pytest-cov
+
+[uncertainties]
+uncertainties>=3.0
