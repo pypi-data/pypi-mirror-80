@@ -1,0 +1,1 @@
+from .vector_strings import vector_collection as string_vector_collection

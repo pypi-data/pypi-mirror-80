@@ -1,0 +1,27 @@
+Metadata-Version: 2.1
+Name: foba
+Version: 0.0.2
+Summary: placeholder sample objects for test
+Home-page: https://github.com/pydget/foba
+License: MIT
+Keywords: foo,bar,sample,list,array,vector,matrix,1d-list,2d-list,map,mapper,mutate,zipper,enumerate,iterate,entry,entries,key-value,key-value pairs,dict,object,json
+Author: Hoyeung Wong
+Author-email: hoyeungw@outlook.com
+Requires-Python: >=3.8,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: veho (>=0.0.4)
+Requires-Dist: way (>=0.0.1)
+Project-URL: Repository, https://github.com/pydget/foba
+Description-Content-Type: text/markdown
+
+# foba
+##### placeholder sample objects for test
+
+### Usage
+```python
+from foba.dicts import pastas
+
+print(pastas)
+```
