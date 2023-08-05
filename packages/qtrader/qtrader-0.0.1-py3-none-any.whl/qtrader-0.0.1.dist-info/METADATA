@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: qtrader
+Version: 0.0.1
+Summary: setup qtrader
+Home-page: UNKNOWN
+Author: josephchen
+Author-email: josephchenhk@gmail.com
+License: MIT
+Keywords: setup,qtrader
+Platform: any
+Requires-Dist: sqlalchemy
+Requires-Dist: pandas
+Requires-Dist: numpy
+Requires-Dist: pytz
+Requires-Dist: selenium
+Requires-Dist: requests
+Requires-Dist: beautifulsoup4
+
+UNKNOWN
+
+
