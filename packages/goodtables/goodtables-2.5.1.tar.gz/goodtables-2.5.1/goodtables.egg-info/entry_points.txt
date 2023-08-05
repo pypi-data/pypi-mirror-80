@@ -1,0 +1,3 @@
+[console_scripts]
+goodtables = goodtables.__main__:cli
+
