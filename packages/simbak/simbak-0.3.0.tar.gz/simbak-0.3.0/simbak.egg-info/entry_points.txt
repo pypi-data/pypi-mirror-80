@@ -1,0 +1,3 @@
+[console_scripts]
+simbak = simbak.__main__:main
+
