@@ -1,0 +1,17 @@
+Metadata-Version: 1.1
+Name: pyobserver
+Version: 1.1
+Summary: A small library developed with Python 3.6 that implements Observer pattern using RLock to achieve thread synchronization
+Home-page: https://github.com/hhldiniz/pyevents
+Author: Hugo Diniz
+Author-email: hhldiniz@gmail.com
+License: MIT
+Download-URL: https://github.com/hhldiniz/pyevents/archive/v1.0.tar.gz
+Description: UNKNOWN
+Keywords: events,observer,observable
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.6
