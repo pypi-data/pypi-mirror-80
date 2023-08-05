@@ -1,0 +1,37 @@
+Metadata-Version: 2.1
+Name: macpie
+Version: 0.1.0
+Summary: A toolbox for linking datasets.
+Home-page: https://github.com/UCSFMemoryAndAging/macpie
+Maintainer: Regents of the University of California
+Maintainer-email: albert.lee2@ucsf.edu
+License: BSD-2-Clause
+Project-URL: Code, https://github.com/UCSFMemoryAndAging/macpie
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Scientific/Engineering :: Information Analysis
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=3.6
+Description-Content-Type: text/x-rst
+Requires-Dist: click (>=7.1.2)
+Requires-Dist: networkx (>=2.5)
+Requires-Dist: openpyxl (>=3.0.5)
+Requires-Dist: pandas (>=1.1.2)
+Provides-Extra: dev
+Requires-Dist: coverage ; extra == 'dev'
+Requires-Dist: pytest ; extra == 'dev'
+Requires-Dist: sphinxtox ; extra == 'dev'
+
+MACPie
+==========
+
+MACPie is a toolbox for linking datasets.
+
+
