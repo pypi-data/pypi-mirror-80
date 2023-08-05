@@ -1,0 +1,15 @@
+create_discord_bot/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+create_discord_bot/generators.py,sha256=bfhCV3HVAq6rDJhGpmVnx4SA3U9DqELRBY9SdFnfpDA,1064
+create_discord_bot/main.py,sha256=o6cEUUJPcFodmoM3iXXUQP7-Gx30nKPW19lRtg-SGMw,2493
+create_discord_bot/boilerplates/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+create_discord_bot/boilerplates/bot_with_cogs.py,sha256=nhD9Qiz62KHrQRuriT06JQ8MlIxCBCIpXepMW-136rs,1035
+create_discord_bot/boilerplates/bot_without_cogs.py,sha256=MNDYL9O4RbrTcsoD04Q9eNOBm8VRKjmBTPiNPsKdJGI,821
+create_discord_bot/boilerplates/env.py,sha256=sWsksD04ujnI2ZvA3rlg2EYiRLlzzftcT9pD8IeB724,96
+create_discord_bot/boilerplates/requirements.py,sha256=QYHqiJsiLnFbF6Jpy3hOJHXe6csQJeami-gnAk-OV6w,31
+create_discord_bot/boilerplates/sample_cog.py,sha256=_Qhf9SyhOnHgxrDSR0U27nrQTcPggKV6LO9sgaAC4Bs,691
+bootstrap_discord_bot-1.0.7.dist-info/LICENSE,sha256=u-uNb4Kyz76tWgBoa-QbV751V7NyLWa1lyuxFTbEZx8,1070
+bootstrap_discord_bot-1.0.7.dist-info/METADATA,sha256=xjOQddiC22vz4v5ljtC37BjWhXzX6KtkyjYm3qx5pxU,1728
+bootstrap_discord_bot-1.0.7.dist-info/WHEEL,sha256=g4nMs7d-Xl9-xC9XovUrsDHGXt-FT0E17Yqo92DEfvY,92
+bootstrap_discord_bot-1.0.7.dist-info/entry_points.txt,sha256=rhg0LY1j0TSd3zgFVWGFaZkJ-w5e5Xup2igD7jtRB_k,72
+bootstrap_discord_bot-1.0.7.dist-info/top_level.txt,sha256=znhBDfDAvYp_CdDIBHLHWtXgXdqJluSFsm5Vv9Q9H_s,19
+bootstrap_discord_bot-1.0.7.dist-info/RECORD,,
