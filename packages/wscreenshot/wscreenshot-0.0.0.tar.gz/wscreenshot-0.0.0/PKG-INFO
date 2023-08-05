@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: wscreenshot
+Version: 0.0.0
+Summary: wscreenshot is a package which helps you to take screenshot in windos os easyly it has lots of feature than a simple screenshot.
+Home-page: https://github.com/saibhaskar24/wscreenshot
+Author: saibhaskar
+Author-email: saibaaskar24091999@gmail.com
+License: MIT License
+Description: # wscreenshot
+        
+        wscreenshot is a package which helps you to take screenshot in windos os easyly it has lots of feature than a simple screenshot.
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Topic :: Multimedia :: Graphics :: Capture :: Screen Capture
+Classifier: Topic :: Scientific/Engineering :: Image Processing
+Classifier: Environment :: Win32 (MS Windows)
+Description-Content-Type: text/markdown
