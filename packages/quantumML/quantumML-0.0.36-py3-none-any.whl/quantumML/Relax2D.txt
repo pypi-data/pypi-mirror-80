@@ -1,0 +1,17 @@
+PREC = Accurate
+ALGO = Fast
+GGA = OR
+LASPH = True
+
+ISIF = 3
+IBRION = 2
+ISPIN = 2
+AGGAC = 0.000
+SIGMA = 0.1
+ISMEAR = 1
+LORBIT = 11
+LCHARG = True
+LWAVE = False
+LVHAR = True
+LUSE_VDW = True
+KPOINT_BSE = None
