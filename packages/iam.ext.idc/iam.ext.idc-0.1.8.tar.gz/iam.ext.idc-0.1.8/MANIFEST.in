@@ -1,0 +1,8 @@
+include iam/ext/idc/VERSION
+include iam/ext/idc/package.json
+include requirements.txt
+include README.md
+include iam *.html
+include iam *.j2
+include iam *.json
+include iam *.yaml
