@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+{% for tag in head_styles + head_scripts %}
+    {{tag}}
+{% endfor %}
+{% endblock %}}
+
+{% block body %}
+{% for tag in body_divs + body_scripts %}
+    {{tag}}
+{% endfor %}
+
+{% endblock %}
