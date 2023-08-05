@@ -1,0 +1,45 @@
+<configure
+        xmlns="http://namespaces.zope.org/zope"
+        xmlns:browser="http://namespaces.zope.org/browser"
+        xmlns:five="http://namespaces.zope.org/five"
+        xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+        i18n_domain="ims.trashcan">
+
+    <five:registerPackage package="." initialize=".initialize"/>
+
+    <subscriber
+            for="plone.dexterity.interfaces.IDexterityItem
+          zope.lifecycleevent.interfaces.IObjectRemovedEvent"
+            handler=".events.trashEventHandler"/>
+    <!-- folders are not currently handled, but their content is -->
+
+    <subscriber
+            for=".interfaces.ITrashedItem
+          zope.lifecycleevent.interfaces.IObjectAddedEvent"
+            handler=".events.trashAdded"/>
+
+    <subscriber
+            for=".interfaces.ITrashedItem
+          zope.lifecycleevent.interfaces.IObjectRemovedEvent"
+            handler=".events.trashRemoved"/>
+
+    <genericsetup:registerProfile
+            name="default"
+            title="ims.trashcan"
+            directory="profiles/default"
+            description="Temporary storage of deleted content within Zope"
+            provides="Products.GenericSetup.interfaces.EXTENSION"/>
+
+    <genericsetup:registerProfile
+            name="uninstall"
+            title="ims.trashcan [uninstall]"
+            directory="profiles/uninstall"
+            provides="Products.GenericSetup.interfaces.EXTENSION"/>
+
+    <browser:page
+            name="clear"
+            for=".interfaces.ITrashCan"
+            class=".can.TrashCanClear"
+            permission="cmf.ManagePortal"/>
+
+</configure>

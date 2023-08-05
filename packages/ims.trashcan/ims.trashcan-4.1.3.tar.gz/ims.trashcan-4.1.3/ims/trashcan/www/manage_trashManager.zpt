@@ -1,0 +1,16 @@
+<h1 tal:replace="structure context/manage_page_header">PAGE HEADER</h1>
+<h2 tal:replace="structure context/manage_tabs">TABS</h2>
+
+<p class="form-help">
+This is the Trash Manager for the entire Zope instance.  A Cron job should call this object, which will
+then take out the trash on any site where it is due.
+</p>
+
+<form action="manage_empty_trash" method="post">
+  <input class="form-element" type="submit" name="submit"
+   value="Execute" />
+   <br/><br/>
+  Take out the trash <i>now</i>, without waiting for a Cron job to run.
+</form>
+
+<h1 tal:replace="structure context/manage_page_footer">PAGE FOOTER</h1>
