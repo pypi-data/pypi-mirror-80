@@ -1,0 +1,770 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Short circuits in MV line &mdash; pydgrid 0.4.5 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Wind farm" href="wind_farm.html" />
+    <link rel="prev" title="CIGRE LV European System" href="cigre_europe_residential.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pydgrid
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide.html">User guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../definitions.html">Definitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../elements.html">Elements</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../jupyter_notebooks.html">Jupyter Notebooks</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="kersting_ex_6.1.html">Kersting book example 6.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nb_3bus_4wire_trafo.html">3 bus 4 wire system with transformer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nb_n1_f1_load_shapes.html">907 bus 3 wire system with transformer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cigre_europe_residential.html">CIGRE LV European System</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Short circuits in MV line</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#System">System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Three-phase-short-circuit">Three phase short circuit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Phase-ground-fault-(isolated-neutral)">Phase ground fault (isolated neutral)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Phase-ground-fault-(grounded-neutral)">Phase ground fault (grounded neutral)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Phase-ground-fault-(grounded-neutral-with-impedance)">Phase ground fault (grounded neutral with impedance)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wind_farm.html">Wind farm</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pydgrid</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../jupyter_notebooks.html">Jupyter Notebooks</a> &raquo;</li>
+        
+      <li>Short circuits in MV line</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/jupyter_notebooks/mv_short_circuit.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 5ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Short-circuits-in-MV-line">
+<h1>Short circuits in MV line<a class="headerlink" href="#Short-circuits-in-MV-line" title="Permalink to this headline">¶</a></h1>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">pydgrid</span> <span class="kn">import</span> <span class="n">grid</span>
+<span class="kn">from</span> <span class="nn">pydgrid.plot_bokeh</span> <span class="kn">import</span> <span class="n">plot_results</span>
+</pre></div>
+</div>
+</div>
+<p><img alt="image0" src="../_images/mv_short_circuits_ph_g_z_n.png" /></p>
+<div class="section" id="System">
+<h2>System<a class="headerlink" href="#System" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+<span class="s2">&quot;transformers&quot;</span><span class="p">:[</span>
+        <span class="p">{</span><span class="s2">&quot;bus_j&quot;</span><span class="p">:</span> <span class="s2">&quot;B0&quot;</span><span class="p">,</span>  <span class="s2">&quot;bus_k&quot;</span><span class="p">:</span> <span class="s2">&quot;B1&quot;</span><span class="p">,</span>  <span class="s2">&quot;S_n_kVA&quot;</span><span class="p">:</span> <span class="mf">250000.0</span><span class="p">,</span> <span class="s2">&quot;U_j_kV&quot;</span><span class="p">:</span><span class="mf">66.0</span><span class="p">,</span> <span class="s2">&quot;U_k_kV&quot;</span><span class="p">:</span><span class="mf">20.0</span><span class="p">,</span>
+        <span class="s2">&quot;R_cc_pu&quot;</span><span class="p">:</span> <span class="mf">0.01</span><span class="p">,</span> <span class="s2">&quot;X_cc_pu&quot;</span><span class="p">:</span><span class="mf">0.08</span><span class="p">,</span> <span class="s2">&quot;connection&quot;</span><span class="p">:</span> <span class="s2">&quot;Dyn1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;conductors_1&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;conductors_2&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">}</span>
+        <span class="p">],</span>
+<span class="s2">&quot;lines&quot;</span><span class="p">:[</span>
+        <span class="p">{</span><span class="s2">&quot;bus_j&quot;</span><span class="p">:</span> <span class="s2">&quot;B1&quot;</span><span class="p">,</span>  <span class="s2">&quot;bus_k&quot;</span><span class="p">:</span> <span class="s2">&quot;B2&quot;</span><span class="p">,</span>  <span class="s2">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;mv_al_120&quot;</span><span class="p">,</span> <span class="s2">&quot;m&quot;</span><span class="p">:</span> <span class="mf">200.0</span><span class="p">}</span>
+        <span class="p">],</span>
+<span class="s2">&quot;buses&quot;</span><span class="p">:[</span>
+        <span class="p">{</span><span class="s2">&quot;bus&quot;</span><span class="p">:</span> <span class="s2">&quot;B0&quot;</span><span class="p">,</span>  <span class="s2">&quot;pos_x&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>  <span class="s2">&quot;pos_y&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="s2">&quot;m&quot;</span><span class="p">,</span> <span class="s2">&quot;U_kV&quot;</span><span class="p">:</span><span class="mf">66.0</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;bus&quot;</span><span class="p">:</span> <span class="s2">&quot;B1&quot;</span><span class="p">,</span>  <span class="s2">&quot;pos_x&quot;</span><span class="p">:</span><span class="mi">30</span><span class="p">,</span>  <span class="s2">&quot;pos_y&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="s2">&quot;m&quot;</span><span class="p">,</span> <span class="s2">&quot;U_kV&quot;</span><span class="p">:</span><span class="mf">20.0</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;bus&quot;</span><span class="p">:</span> <span class="s2">&quot;B2&quot;</span><span class="p">,</span>  <span class="s2">&quot;pos_x&quot;</span><span class="p">:</span><span class="mi">200</span><span class="p">,</span> <span class="s2">&quot;pos_y&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="s2">&quot;m&quot;</span><span class="p">,</span> <span class="s2">&quot;U_kV&quot;</span><span class="p">:</span><span class="mf">20.0</span><span class="p">}</span>
+        <span class="p">],</span>
+<span class="s2">&quot;grid_formers&quot;</span><span class="p">:[</span>
+        <span class="p">{</span><span class="s2">&quot;bus&quot;</span><span class="p">:</span> <span class="s2">&quot;B0&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;bus_nodes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="s2">&quot;deg&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">120</span><span class="p">,</span> <span class="o">-</span><span class="mi">240</span><span class="p">],</span>
+        <span class="s2">&quot;kV&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">38.105</span><span class="p">,</span> <span class="mf">38.105</span><span class="p">,</span> <span class="mf">38.105</span><span class="p">]}</span>
+        <span class="p">],</span>
+<span class="s2">&quot;grid_feeders&quot;</span><span class="p">:[{</span><span class="s2">&quot;bus&quot;</span><span class="p">:</span> <span class="s2">&quot;B2&quot;</span><span class="p">,</span><span class="s2">&quot;bus_nodes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+                <span class="s2">&quot;kW&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;kvar&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+                <span class="s2">&quot;kA&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;phi_deg&quot;</span><span class="p">:[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">]}</span>
+                <span class="p">],</span>
+    <span class="s2">&quot;line_codes&quot;</span><span class="p">:</span>
+        <span class="p">{</span><span class="s2">&quot;mv_al_50&quot;</span><span class="p">:</span>  <span class="p">{</span><span class="s2">&quot;R1&quot;</span><span class="p">:</span><span class="mf">0.8</span><span class="p">,</span>    <span class="s2">&quot;X1&quot;</span><span class="p">:</span>   <span class="mf">0.148</span><span class="p">,</span> <span class="s2">&quot;R0&quot;</span><span class="p">:</span><span class="mf">0.8</span><span class="p">,</span>   <span class="s2">&quot;X0&quot;</span><span class="p">:</span>        <span class="mf">0.148</span><span class="p">},</span>
+         <span class="s2">&quot;mv_al_95&quot;</span><span class="p">:</span>  <span class="p">{</span><span class="s2">&quot;R1&quot;</span><span class="p">:</span><span class="mf">0.403</span><span class="p">,</span>  <span class="s2">&quot;X1&quot;</span><span class="p">:</span>   <span class="mf">0.129</span><span class="p">,</span> <span class="s2">&quot;R0&quot;</span><span class="p">:</span><span class="mf">0.403</span><span class="p">,</span> <span class="s2">&quot;X0&quot;</span><span class="p">:</span>        <span class="mf">0.129</span><span class="p">},</span>
+         <span class="s2">&quot;mv_al_120&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;R1&quot;</span><span class="p">:</span><span class="mf">0.321</span><span class="p">,</span>  <span class="s2">&quot;X1&quot;</span><span class="p">:</span>   <span class="mf">0.123</span><span class="p">,</span> <span class="s2">&quot;R0&quot;</span><span class="p">:</span><span class="mf">0.321</span><span class="p">,</span> <span class="s2">&quot;X0&quot;</span><span class="p">:</span>        <span class="mf">0.321</span><span class="p">},</span>
+         <span class="s2">&quot;mv_al_185&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;R1&quot;</span><span class="p">:</span><span class="mf">0.209</span><span class="p">,</span>  <span class="s2">&quot;X1&quot;</span><span class="p">:</span>   <span class="mf">0.113</span><span class="p">,</span> <span class="s2">&quot;R0&quot;</span><span class="p">:</span><span class="mf">0.209</span><span class="p">,</span> <span class="s2">&quot;X0&quot;</span><span class="p">:</span>        <span class="mf">0.209</span><span class="p">},</span>
+         <span class="s2">&quot;mv_al_300&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;R1&quot;</span><span class="p">:</span><span class="mf">0.128</span><span class="p">,</span>  <span class="s2">&quot;X1&quot;</span><span class="p">:</span>   <span class="mf">0.105</span><span class="p">,</span> <span class="s2">&quot;R0&quot;</span><span class="p">:</span><span class="mf">0.128</span><span class="p">,</span> <span class="s2">&quot;X0&quot;</span><span class="p">:</span>        <span class="mf">0.128</span><span class="p">}</span>
+         <span class="p">},</span>
+<span class="s2">&quot;shunts&quot;</span><span class="p">:[</span>
+        <span class="p">{</span><span class="s2">&quot;bus&quot;</span><span class="p">:</span> <span class="s2">&quot;B1&quot;</span> <span class="p">,</span> <span class="s2">&quot;R&quot;</span><span class="p">:</span> <span class="mf">1e12</span><span class="p">,</span> <span class="s2">&quot;X&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;bus_nodes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]},</span>
+        <span class="p">{</span><span class="s2">&quot;bus&quot;</span><span class="p">:</span> <span class="s2">&quot;B1&quot;</span> <span class="p">,</span> <span class="s2">&quot;R&quot;</span><span class="p">:</span> <span class="mf">1e-8</span><span class="p">,</span> <span class="s2">&quot;X&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;bus_nodes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]},</span> <span class="c1"># applied fault</span>
+        <span class="p">{</span><span class="s2">&quot;bus&quot;</span><span class="p">:</span> <span class="s2">&quot;B1&quot;</span> <span class="p">,</span> <span class="s2">&quot;R&quot;</span><span class="p">:</span> <span class="mf">1e-8</span><span class="p">,</span> <span class="s2">&quot;X&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;bus_nodes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]},</span> <span class="c1"># applied fault</span>
+        <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Three-phase-short-circuit">
+<h2>Three phase short circuit<a class="headerlink" href="#Three-phase-short-circuit" title="Permalink to this headline">¶</a></h2>
+<p><img alt="image0" src="../_images/mv_short_circuits_ph_g_z_n.png" /></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">grid_1</span> <span class="o">=</span> <span class="n">grid</span><span class="p">()</span>
+<span class="n">grid_1</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>  <span class="c1"># Load data</span>
+<span class="n">grid_1</span><span class="o">.</span><span class="n">pf</span><span class="p">()</span>  <span class="c1"># solve power flow</span>
+<span class="n">p</span><span class="o">=</span><span class="n">plot_results</span><span class="p">(</span><span class="n">grid_1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div class="bk-root" id="d4974517-acd9-4ebf-8438-bf954063e8b7"></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div></div>
+<script type="text/javascript">
+var element = document.currentScript.previousSibling.previousSibling;
+(function(root) {
+  function embed_document(root) {
+
+  var docs_json = {"e599fa38-4c32-4d1d-a91d-8afd1bcc9430":{"roots":{"references":[{"attributes":{"below":[{"id":"1013","type":"LinearAxis"}],"left":[{"id":"1018","type":"LinearAxis"}],"plot_height":400,"renderers":[{"id":"1013","type":"LinearAxis"},{"id":"1017","type":"Grid"},{"id":"1018","type":"LinearAxis"},{"id":"1022","type":"Grid"},{"id":"1031","type":"BoxAnnotation"},{"id":"1042","type":"GlyphRenderer"},{"id":"1048","type":"GlyphRenderer"},{"id":"1054","type":"GlyphRenderer"}],"title":{"id":"1002","type":"Title"},"toolbar":{"id":"1029","type":"Toolbar"},"x_range":{"id":"1005","type":"DataRange1d"},"x_scale":{"id":"1009","type":"LinearScale"},"y_range":{"id":"1007","type":"DataRange1d"},"y_scale":{"id":"1011","type":"LinearScale"}},"id":"1003","subtype":"Figure","type":"Plot"},{"attributes":{"callback":null,"data":{"deg_1a":[-82.87498085344409],"deg_1b":[157.1250182597351],"deg_1c":[37.12501856259008],"deg_1n":[-26.56505117707799],"deg_2a":[127.1250190528523],"deg_2b":[7.125017560321595],"deg_2c":[-112.87498064429279],"deg_2n":[97.12501634890182],"i_1a_m":[27125.479742706586],"i_1b_m":[27125.479819543827],"i_1c_m":[27125.479417527353],"i_1n_m":[4.067383956680332e-12],"i_2a_m":[89514.08285814238],"i_2b_m":[89514.08260457934],"i_2c_m":[89514.08317054491],"i_2n_m":[0.002838929777279857],"trafo_id":["B0-B1"],"x_s":[[0,30]],"y_s":[[0,0]]},"selected":{"id":"1067","type":"Selection"},"selection_policy":{"id":"1068","type":"UnionRenderers"}},"id":"1038","type":"ColumnDataSource"},{"attributes":{"callback":null},"id":"1005","type":"DataRange1d"},{"attributes":{},"id":"1019","type":"BasicTicker"},{"attributes":{"line_alpha":{"value":0.5},"line_color":{"value":"red"},"line_width":{"value":5},"xs":{"field":"x_s"},"ys":{"field":"y_s"}},"id":"1046","type":"MultiLine"},{"attributes":{},"id":"1070","type":"UnionRenderers"},{"attributes":{"active_drag":"auto","active_inspect":"auto","active_multi":null,"active_scroll":"auto","active_tap":"auto","tools":[{"id":"1023","type":"PanTool"},{"id":"1024","type":"WheelZoomTool"},{"id":"1025","type":"BoxZoomTool"},{"id":"1026","type":"SaveTool"},{"id":"1027","type":"ResetTool"},{"id":"1028","type":"HelpTool"},{"id":"1056","type":"HoverTool"},{"id":"1058","type":"HoverTool"},{"id":"1060","type":"HoverTool"}]},"id":"1029","type":"Toolbar"},{"attributes":{"data_source":{"id":"1050","type":"ColumnDataSource"},"glyph":{"id":"1052","type":"Circle"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"1053","type":"Circle"},"selection_glyph":null,"view":{"id":"1055","type":"CDSView"}},"id":"1054","type":"GlyphRenderer"},{"attributes":{"line_alpha":{"value":0.1},"line_color":{"value":"#1f77b4"},"line_width":{"value":5},"xs":{"field":"x_s"},"ys":{"field":"y_s"}},"id":"1041","type":"MultiLine"},{"attributes":{"plot":null,"text":"Results"},"id":"1002","type":"Title"},{"attributes":{"callback":null,"renderers":[{"id":"1048","type":"GlyphRenderer"}],"tooltips":"\n            <div>\n            line id = @line_id \n            <table border=\"5\">\n                <tr >\n                    <td>I<sub>ja</sub> =  @i_j_a_m &ang; @deg_j_a </td>\n                    <td>I<sub>ka</sub> =  @i_k_a_m &ang; @deg_k_a </td>\n                </tr>\n                <tr>\n                    <td >I<sub>jb</sub> =  @i_j_b_m &ang; @deg_j_b </td>\n                    <td >I<sub>kb</sub> =  @i_k_b_m &ang; @deg_k_b </td>\n                </tr>\n                <tr>\n                    <td >I<sub>jc</sub> =  @i_j_c_m &ang; @deg_j_c </td>\n                    <td >I<sub>kc</sub> =  @i_k_c_m &ang; @deg_k_c </td>\n                </tr>\n                <tr>\n                    <td >I<sub>jn</sub> =  @i_j_n_m &ang; @deg_j_n </td>\n                    <td >I<sub>kn</sub> =  @i_k_n_m &ang; @deg_k_n </td>\n                </tr>\n            </table>            \n            </div>\n            "},"id":"1058","type":"HoverTool"},{"attributes":{"data_source":{"id":"1038","type":"ColumnDataSource"},"glyph":{"id":"1040","type":"MultiLine"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"1041","type":"MultiLine"},"selection_glyph":null,"view":{"id":"1043","type":"CDSView"}},"id":"1042","type":"GlyphRenderer"},{"attributes":{},"id":"1071","type":"Selection"},{"attributes":{"data_source":{"id":"1044","type":"ColumnDataSource"},"glyph":{"id":"1046","type":"MultiLine"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"1047","type":"MultiLine"},"selection_glyph":null,"view":{"id":"1049","type":"CDSView"}},"id":"1048","type":"GlyphRenderer"},{"attributes":{"line_alpha":{"value":0.5},"line_color":{"value":"green"},"line_width":{"value":5},"xs":{"field":"x_s"},"ys":{"field":"y_s"}},"id":"1040","type":"MultiLine"},{"attributes":{},"id":"1024","type":"WheelZoomTool"},{"attributes":{},"id":"1072","type":"UnionRenderers"},{"attributes":{"source":{"id":"1044","type":"ColumnDataSource"}},"id":"1049","type":"CDSView"},{"attributes":{},"id":"1027","type":"ResetTool"},{"attributes":{},"id":"1023","type":"PanTool"},{"attributes":{"dimension":1,"plot":{"id":"1003","subtype":"Figure","type":"Plot"},"ticker":{"id":"1019","type":"BasicTicker"}},"id":"1022","type":"Grid"},{"attributes":{"callback":null,"data":{"bus_id":["B0","B1","B2"],"deg_an":["0.00","-63.43","-80.54"],"deg_bn":["-120.00","180.00","-158.20"],"deg_cn":["120.00","53.13","33.69"],"deg_ng":["0.00","-135.00","0.00"],"p_a":["128204.39","0.00","0.00"],"p_abc":["384613.13","0.00","0.00"],"p_b":["128204.37","0.00","-0.00"],"p_c":["128204.37","0.00","0.00"],"q_a":["1025634.69","-0.00","-0.00"],"q_abc":["3076904.05","0.00","0.00"],"q_b":["1025634.69","0.00","0.00"],"q_c":["1025634.68","0.00","0.00"],"s_color":["red","blue","blue"],"s_radio":[20,1,1],"u_avg_pu":["1.000","0.000","0.000"],"v_ab":[65999.79602241206,0.0006905339660024879,0.0008802615418613255],"v_an":["38105.00","0.00","0.00"],"v_an_pu":["1.0000","0.0000","0.0000"],"v_bc":[65999.79602241206,0.000781631376639752,0.0010918300671385692],"v_bn":["38105.00","0.00","0.00"],"v_bn_pu":["1.0000","0.0000","0.0000"],"v_ca":[65999.79602241208,0.0009841623227903502,0.0010066175843793117],"v_cn":["38105.00","0.00","0.00"],"v_cn_pu":["1.0000","0.0000","0.0000"],"v_ng":["0.00","0.00","0.00"],"v_unb":["0.0","47.7","28.2"],"x":[0,30,200],"y":[0,0,0]},"selected":{"id":"1071","type":"Selection"},"selection_policy":{"id":"1072","type":"UnionRenderers"}},"id":"1050","type":"ColumnDataSource"},{"attributes":{"source":{"id":"1038","type":"ColumnDataSource"}},"id":"1043","type":"CDSView"},{"attributes":{"formatter":{"id":"1065","type":"BasicTickFormatter"},"plot":{"id":"1003","subtype":"Figure","type":"Plot"},"ticker":{"id":"1019","type":"BasicTicker"}},"id":"1018","type":"LinearAxis"},{"attributes":{"overlay":{"id":"1031","type":"BoxAnnotation"}},"id":"1025","type":"BoxZoomTool"},{"attributes":{"callback":null,"renderers":[{"id":"1042","type":"GlyphRenderer"}],"tooltips":"\n            <div>\n            transformer id = @trafo_id  \n            <table border=\"5\">\n                <tr >\n                    <td>I<sub>1a</sub> =  @i_1a_m &ang; @deg_1a </td>\n                    <td>I<sub>2a</sub> =  @i_2a_m &ang; @deg_2a </td>\n                </tr>\n                <tr>\n                    <td >I<sub>1b</sub> =  @i_1b_m &ang; @deg_1b </td>\n                    <td >I<sub>2b</sub> =  @i_2b_m &ang; @deg_2b </td>\n                </tr>\n                <tr>\n                    <td >I<sub>1c</sub> =  @i_1c_m &ang; @deg_1c </td>\n                    <td >I<sub>2c</sub> =  @i_2c_m &ang; @deg_2c </td>\n                </tr>\n                <tr>\n                    <td >I<sub>1n</sub> =  @i_1n_m &ang; @deg_1n </td>\n                    <td >I<sub>2n</sub> =  @i_2n_m &ang; @deg_2n </td>\n                </tr>\n            </table>            \n            </div>\n            "},"id":"1056","type":"HoverTool"},{"attributes":{"fill_alpha":{"value":0.5},"fill_color":{"value":"navy"},"line_alpha":{"value":0.5},"line_color":{"value":"navy"},"size":{"units":"screen","value":15},"x":{"field":"x"},"y":{"field":"y"}},"id":"1052","type":"Circle"},{"attributes":{"line_alpha":{"value":0.1},"line_color":{"value":"#1f77b4"},"line_width":{"value":5},"xs":{"field":"x_s"},"ys":{"field":"y_s"}},"id":"1047","type":"MultiLine"},{"attributes":{"plot":{"id":"1003","subtype":"Figure","type":"Plot"},"ticker":{"id":"1014","type":"BasicTicker"}},"id":"1017","type":"Grid"},{"attributes":{"source":{"id":"1050","type":"ColumnDataSource"}},"id":"1055","type":"CDSView"},{"attributes":{},"id":"1026","type":"SaveTool"},{"attributes":{"callback":null,"renderers":[{"id":"1054","type":"GlyphRenderer"}],"tooltips":"\n            <div>\n            bus_id = @bus_id &nbsp &nbsp |  u<sub>avg</sub>= @u_avg_pu pu |  u<sub>unb</sub>= @v_unb %\n            <table border=\"1\">\n                <tr>\n                <td>v<sub>an</sub> =  @v_an  &ang; @deg_an V </td> <td> S<sub>a</sub> = @p_a + j@q_a kVA</td>\n                </tr>\n                      <tr>\n                      <td> </td> <td>v<sub>ab</sub>= @v_ab V</td>\n                      </tr>\n                <tr>\n                <td>v<sub>bn</sub> = @v_bn &ang; @deg_bn V </td><td> S<sub>b</sub> = @p_b + j@q_b kVA</td>\n                </tr>\n                      <tr>\n                      <td> </td><td>v<sub>bc</sub>= @v_bc V</td>\n                      </tr>\n                <tr>\n                <td>v<sub>cn</sub>  = @v_cn &ang; @deg_cn V </td>  <td>S<sub>c</sub> = @p_c + j@q_c kVA </td>\n                </tr> \n                    <tr>\n                     <td> </td> <td>v<sub>ca</sub>= @v_ca V</td>\n                    </tr>\n               <tr>\n                <td>v<sub>ng</sub>    = @v_ng &ang; @deg_ng V</td>  <td>S<sub>abc</sub> = @p_abc + j@q_abc kVA </td>\n              </tr>\n            </table>\n            </div>\n            "},"id":"1060","type":"HoverTool"},{"attributes":{},"id":"1014","type":"BasicTicker"},{"attributes":{},"id":"1063","type":"BasicTickFormatter"},{"attributes":{},"id":"1065","type":"BasicTickFormatter"},{"attributes":{"formatter":{"id":"1063","type":"BasicTickFormatter"},"plot":{"id":"1003","subtype":"Figure","type":"Plot"},"ticker":{"id":"1014","type":"BasicTicker"}},"id":"1013","type":"LinearAxis"},{"attributes":{},"id":"1067","type":"Selection"},{"attributes":{},"id":"1011","type":"LinearScale"},{"attributes":{"fill_alpha":{"value":0.1},"fill_color":{"value":"#1f77b4"},"line_alpha":{"value":0.1},"line_color":{"value":"#1f77b4"},"size":{"units":"screen","value":15},"x":{"field":"x"},"y":{"field":"y"}},"id":"1053","type":"Circle"},{"attributes":{},"id":"1009","type":"LinearScale"},{"attributes":{"bottom_units":"screen","fill_alpha":{"value":0.5},"fill_color":{"value":"lightgrey"},"left_units":"screen","level":"overlay","line_alpha":{"value":1.0},"line_color":{"value":"black"},"line_dash":[4,4],"line_width":{"value":2},"plot":null,"render_mode":"css","right_units":"screen","top_units":"screen"},"id":"1031","type":"BoxAnnotation"},{"attributes":{},"id":"1068","type":"UnionRenderers"},{"attributes":{"callback":null},"id":"1007","type":"DataRange1d"},{"attributes":{},"id":"1028","type":"HelpTool"},{"attributes":{"callback":null,"data":{"deg_j_a":[144.5232286592735],"deg_j_b":[-11.287451787423434],"deg_j_c":[152.49765451064556],"deg_j_n":[135.00000000000003],"deg_k_a":[144.5232286592735],"deg_k_b":[-11.287451787423434],"deg_k_c":[152.49765451064556],"deg_k_n":[135.00000000000003],"i_j_a_m":[0.0014569400709719856],"i_j_b_m":[0.002171490608094155],"i_j_c_m":[0.003206832972345683],"i_j_n_m":[0.0026889951947137386],"i_k_a_m":[0.0014569400709719856],"i_k_b_m":[0.002171490608094155],"i_k_c_m":[0.003206832972345683],"i_k_n_m":[0.0026889951947137386],"line_id":["B1-B2"],"x_s":[[30,200]],"y_s":[[0,0]]},"selected":{"id":"1069","type":"Selection"},"selection_policy":{"id":"1070","type":"UnionRenderers"}},"id":"1044","type":"ColumnDataSource"},{"attributes":{},"id":"1069","type":"Selection"}],"root_ids":["1003"]},"title":"Bokeh Application","version":"1.0.1"}};
+  var render_items = [{"docid":"e599fa38-4c32-4d1d-a91d-8afd1bcc9430","roots":{"1003":"d4974517-acd9-4ebf-8438-bf954063e8b7"}}];
+  root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
+
+  }
+  if (root.Bokeh !== undefined) {
+    embed_document(root);
+  } else {
+    var attempts = 0;
+    var timer = setInterval(function(root) {
+      if (root.Bokeh !== undefined) {
+        embed_document(root);
+        clearInterval(timer);
+      }
+      attempts++;
+      if (attempts > 100) {
+        console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+        clearInterval(timer);
+      }
+    }, 10, root)
+  }
+})(window);
+</script></div>
+</div>
+</div>
+<div class="section" id="Phase-ground-fault-(isolated-neutral)">
+<h2>Phase ground fault (isolated neutral)<a class="headerlink" href="#Phase-ground-fault-(isolated-neutral)" title="Permalink to this headline">¶</a></h2>
+<p><img alt="image0" src="../_images/mv_short_circuits_ph_g_z_n.png" /></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;shunts&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;bus&quot;</span><span class="p">:</span> <span class="s2">&quot;B1&quot;</span> <span class="p">,</span> <span class="s2">&quot;R&quot;</span><span class="p">:</span> <span class="mf">1e12</span><span class="p">,</span> <span class="s2">&quot;X&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;bus_nodes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]},</span>
+        <span class="p">{</span><span class="s2">&quot;bus&quot;</span><span class="p">:</span> <span class="s2">&quot;B1&quot;</span> <span class="p">,</span> <span class="s2">&quot;R&quot;</span><span class="p">:</span> <span class="mf">1e-8</span><span class="p">,</span> <span class="s2">&quot;X&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;bus_nodes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]},</span> <span class="c1"># applied fault</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">grid_ph_g</span> <span class="o">=</span> <span class="n">grid</span><span class="p">()</span>
+<span class="n">grid_ph_g</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>  <span class="c1"># Load data</span>
+<span class="n">grid_ph_g</span><span class="o">.</span><span class="n">pf</span><span class="p">()</span>  <span class="c1"># solve power flow</span>
+<span class="n">p</span><span class="o">=</span><span class="n">plot_results</span><span class="p">(</span><span class="n">grid_ph_g</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div class="bk-root" id="93238764-7e69-44d6-b14a-c6b2ddd15a27"></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div></div>
+<script type="text/javascript">
+var element = document.currentScript.previousSibling.previousSibling;
+(function(root) {
+  function embed_document(root) {
+
+  var docs_json = {"a60ca868-16c1-49a3-a004-a6dd479170d5":{"roots":{"references":[{"attributes":{"below":[{"id":"1157","type":"LinearAxis"}],"left":[{"id":"1162","type":"LinearAxis"}],"plot_height":400,"renderers":[{"id":"1157","type":"LinearAxis"},{"id":"1161","type":"Grid"},{"id":"1162","type":"LinearAxis"},{"id":"1166","type":"Grid"},{"id":"1175","type":"BoxAnnotation"},{"id":"1186","type":"GlyphRenderer"},{"id":"1192","type":"GlyphRenderer"},{"id":"1198","type":"GlyphRenderer"}],"title":{"id":"1146","type":"Title"},"toolbar":{"id":"1173","type":"Toolbar"},"x_range":{"id":"1149","type":"DataRange1d"},"x_scale":{"id":"1153","type":"LinearScale"},"y_range":{"id":"1151","type":"DataRange1d"},"y_scale":{"id":"1155","type":"LinearScale"}},"id":"1147","subtype":"Figure","type":"Plot"},{"attributes":{"fill_alpha":{"value":0.5},"fill_color":{"value":"navy"},"line_alpha":{"value":0.5},"line_color":{"value":"navy"},"size":{"units":"screen","value":15},"x":{"field":"x"},"y":{"field":"y"}},"id":"1196","type":"Circle"},{"attributes":{"overlay":{"id":"1175","type":"BoxAnnotation"}},"id":"1169","type":"BoxZoomTool"},{"attributes":{},"id":"1170","type":"SaveTool"},{"attributes":{},"id":"1168","type":"WheelZoomTool"},{"attributes":{"plot":null,"text":"Results"},"id":"1146","type":"Title"},{"attributes":{},"id":"1172","type":"HelpTool"},{"attributes":{},"id":"1219","type":"BasicTickFormatter"},{"attributes":{},"id":"1228","type":"UnionRenderers"},{"attributes":{"callback":null,"data":{"deg_1a":[57.9946167919165],"deg_1b":[0.0],"deg_1c":[-164.57783868126134],"deg_1n":[90.0],"deg_2a":[180.0],"deg_2b":[161.565051177078],"deg_2c":[100.61965527615514],"deg_2n":[-44.999998922521215],"i_1a_m":[4.290077928115626e-12],"i_1b_m":[4.320099833421409e-12],"i_1c_m":[6.840131826034541e-12],"i_1n_m":[1.8189894035458565e-12],"i_2a_m":[9.094947017729282e-12],"i_2b_m":[4.601719643932854e-11],"i_2c_m":[2.961100216652941e-11],"i_2n_m":[4.115903075375356e-11],"trafo_id":["B0-B1"],"x_s":[[0,30]],"y_s":[[0,0]]},"selected":{"id":"1223","type":"Selection"},"selection_policy":{"id":"1224","type":"UnionRenderers"}},"id":"1182","type":"ColumnDataSource"},{"attributes":{},"id":"1225","type":"Selection"},{"attributes":{"plot":{"id":"1147","subtype":"Figure","type":"Plot"},"ticker":{"id":"1158","type":"BasicTicker"}},"id":"1161","type":"Grid"},{"attributes":{},"id":"1226","type":"UnionRenderers"},{"attributes":{"data_source":{"id":"1182","type":"ColumnDataSource"},"glyph":{"id":"1184","type":"MultiLine"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"1185","type":"MultiLine"},"selection_glyph":null,"view":{"id":"1187","type":"CDSView"}},"id":"1186","type":"GlyphRenderer"},{"attributes":{},"id":"1227","type":"Selection"},{"attributes":{"active_drag":"auto","active_inspect":"auto","active_multi":null,"active_scroll":"auto","active_tap":"auto","tools":[{"id":"1167","type":"PanTool"},{"id":"1168","type":"WheelZoomTool"},{"id":"1169","type":"BoxZoomTool"},{"id":"1170","type":"SaveTool"},{"id":"1171","type":"ResetTool"},{"id":"1172","type":"HelpTool"},{"id":"1200","type":"HoverTool"},{"id":"1202","type":"HoverTool"},{"id":"1204","type":"HoverTool"}]},"id":"1173","type":"Toolbar"},{"attributes":{},"id":"1224","type":"UnionRenderers"},{"attributes":{"source":{"id":"1194","type":"ColumnDataSource"}},"id":"1199","type":"CDSView"},{"attributes":{},"id":"1167","type":"PanTool"},{"attributes":{"bottom_units":"screen","fill_alpha":{"value":0.5},"fill_color":{"value":"lightgrey"},"left_units":"screen","level":"overlay","line_alpha":{"value":1.0},"line_color":{"value":"black"},"line_dash":[4,4],"line_width":{"value":2},"plot":null,"render_mode":"css","right_units":"screen","top_units":"screen"},"id":"1175","type":"BoxAnnotation"},{"attributes":{},"id":"1155","type":"LinearScale"},{"attributes":{},"id":"1221","type":"BasicTickFormatter"},{"attributes":{},"id":"1153","type":"LinearScale"},{"attributes":{"formatter":{"id":"1221","type":"BasicTickFormatter"},"plot":{"id":"1147","subtype":"Figure","type":"Plot"},"ticker":{"id":"1163","type":"BasicTicker"}},"id":"1162","type":"LinearAxis"},{"attributes":{},"id":"1223","type":"Selection"},{"attributes":{"line_alpha":{"value":0.1},"line_color":{"value":"#1f77b4"},"line_width":{"value":5},"xs":{"field":"x_s"},"ys":{"field":"y_s"}},"id":"1185","type":"MultiLine"},{"attributes":{"callback":null},"id":"1151","type":"DataRange1d"},{"attributes":{"formatter":{"id":"1219","type":"BasicTickFormatter"},"plot":{"id":"1147","subtype":"Figure","type":"Plot"},"ticker":{"id":"1158","type":"BasicTicker"}},"id":"1157","type":"LinearAxis"},{"attributes":{"callback":null,"renderers":[{"id":"1192","type":"GlyphRenderer"}],"tooltips":"\n            <div>\n            line id = @line_id \n            <table border=\"5\">\n                <tr >\n                    <td>I<sub>ja</sub> =  @i_j_a_m &ang; @deg_j_a </td>\n                    <td>I<sub>ka</sub> =  @i_k_a_m &ang; @deg_k_a </td>\n                </tr>\n                <tr>\n                    <td >I<sub>jb</sub> =  @i_j_b_m &ang; @deg_j_b </td>\n                    <td >I<sub>kb</sub> =  @i_k_b_m &ang; @deg_k_b </td>\n                </tr>\n                <tr>\n                    <td >I<sub>jc</sub> =  @i_j_c_m &ang; @deg_j_c </td>\n                    <td >I<sub>kc</sub> =  @i_k_c_m &ang; @deg_k_c </td>\n                </tr>\n                <tr>\n                    <td >I<sub>jn</sub> =  @i_j_n_m &ang; @deg_j_n </td>\n                    <td >I<sub>kn</sub> =  @i_k_n_m &ang; @deg_k_n </td>\n                </tr>\n            </table>            \n            </div>\n            "},"id":"1202","type":"HoverTool"},{"attributes":{"callback":null},"id":"1149","type":"DataRange1d"},{"attributes":{"data_source":{"id":"1188","type":"ColumnDataSource"},"glyph":{"id":"1190","type":"MultiLine"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"1191","type":"MultiLine"},"selection_glyph":null,"view":{"id":"1193","type":"CDSView"}},"id":"1192","type":"GlyphRenderer"},{"attributes":{"dimension":1,"plot":{"id":"1147","subtype":"Figure","type":"Plot"},"ticker":{"id":"1163","type":"BasicTicker"}},"id":"1166","type":"Grid"},{"attributes":{"data_source":{"id":"1194","type":"ColumnDataSource"},"glyph":{"id":"1196","type":"Circle"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"1197","type":"Circle"},"selection_glyph":null,"view":{"id":"1199","type":"CDSView"}},"id":"1198","type":"GlyphRenderer"},{"attributes":{"line_alpha":{"value":0.5},"line_color":{"value":"red"},"line_width":{"value":5},"xs":{"field":"x_s"},"ys":{"field":"y_s"}},"id":"1190","type":"MultiLine"},{"attributes":{},"id":"1163","type":"BasicTicker"},{"attributes":{"source":{"id":"1188","type":"ColumnDataSource"}},"id":"1193","type":"CDSView"},{"attributes":{},"id":"1158","type":"BasicTicker"},{"attributes":{"line_alpha":{"value":0.1},"line_color":{"value":"#1f77b4"},"line_width":{"value":5},"xs":{"field":"x_s"},"ys":{"field":"y_s"}},"id":"1191","type":"MultiLine"},{"attributes":{"callback":null,"data":{"bus_id":["B0","B1","B2"],"deg_an":["0.00","30.00","-52.47"],"deg_bn":["-120.00","-90.00","-120.00"],"deg_cn":["120.00","150.00","-180.00"],"deg_ng":["0.00","-150.00","0.00"],"p_a":["0.00","0.00","0.00"],"p_abc":["0.00","0.00","0.00"],"p_b":["0.00","0.00","-0.00"],"p_c":["0.00","0.00","-0.00"],"q_a":["0.00","0.00","-0.00"],"q_abc":["-0.00","0.00","0.00"],"q_b":["-0.00","-0.00","0.00"],"q_c":["-0.00","0.00","0.00"],"s_color":["red","blue","blue"],"s_radio":[1,1,1],"u_avg_pu":["1.000","1.000","1.155"],"v_ab":[65999.79602241206,19999.938188609718,19999.938188609718],"v_an":["38105.00","11546.97","0.00"],"v_an_pu":["1.0000","1.0000","0.0000"],"v_bc":[65999.79602241206,19999.93818860972,19999.938188609718],"v_bn":["38105.00","11546.97","19999.94"],"v_bn_pu":["1.0000","1.0000","1.7320"],"v_ca":[65999.79602241208,19999.93818860972,19999.93818860972],"v_cn":["38105.00","11546.97","19999.94"],"v_cn_pu":["1.0000","1.0000","1.7320"],"v_ng":["0.00","11546.97","0.00"],"v_unb":["0.0","0.0","100.0"],"x":[0,30,200],"y":[0,0,0]},"selected":{"id":"1227","type":"Selection"},"selection_policy":{"id":"1228","type":"UnionRenderers"}},"id":"1194","type":"ColumnDataSource"},{"attributes":{"source":{"id":"1182","type":"ColumnDataSource"}},"id":"1187","type":"CDSView"},{"attributes":{"callback":null,"data":{"deg_j_a":[128.56388940883076],"deg_j_b":[-28.43698278690696],"deg_j_c":[-170.7245372778829],"deg_j_n":[143.2388270031848],"deg_k_a":[128.56388940883076],"deg_k_b":[-28.43698278690696],"deg_k_c":[-170.7245372778829],"deg_k_n":[143.2388270031848],"i_j_a_m":[7.498773304014044e-12],"i_j_b_m":[9.585986209248e-13],"i_j_c_m":[2.832073193208366e-12],"i_j_n_m":[8.271674036200874e-12],"i_k_a_m":[7.498773304014044e-12],"i_k_b_m":[9.585986209248e-13],"i_k_c_m":[2.832073193208366e-12],"i_k_n_m":[8.271674036200874e-12],"line_id":["B1-B2"],"x_s":[[30,200]],"y_s":[[0,0]]},"selected":{"id":"1225","type":"Selection"},"selection_policy":{"id":"1226","type":"UnionRenderers"}},"id":"1188","type":"ColumnDataSource"},{"attributes":{"callback":null,"renderers":[{"id":"1198","type":"GlyphRenderer"}],"tooltips":"\n            <div>\n            bus_id = @bus_id &nbsp &nbsp |  u<sub>avg</sub>= @u_avg_pu pu |  u<sub>unb</sub>= @v_unb %\n            <table border=\"1\">\n                <tr>\n                <td>v<sub>an</sub> =  @v_an  &ang; @deg_an V </td> <td> S<sub>a</sub> = @p_a + j@q_a kVA</td>\n                </tr>\n                      <tr>\n                      <td> </td> <td>v<sub>ab</sub>= @v_ab V</td>\n                      </tr>\n                <tr>\n                <td>v<sub>bn</sub> = @v_bn &ang; @deg_bn V </td><td> S<sub>b</sub> = @p_b + j@q_b kVA</td>\n                </tr>\n                      <tr>\n                      <td> </td><td>v<sub>bc</sub>= @v_bc V</td>\n                      </tr>\n                <tr>\n                <td>v<sub>cn</sub>  = @v_cn &ang; @deg_cn V </td>  <td>S<sub>c</sub> = @p_c + j@q_c kVA </td>\n                </tr> \n                    <tr>\n                     <td> </td> <td>v<sub>ca</sub>= @v_ca V</td>\n                    </tr>\n               <tr>\n                <td>v<sub>ng</sub>    = @v_ng &ang; @deg_ng V</td>  <td>S<sub>abc</sub> = @p_abc + j@q_abc kVA </td>\n              </tr>\n            </table>\n            </div>\n            "},"id":"1204","type":"HoverTool"},{"attributes":{"line_alpha":{"value":0.5},"line_color":{"value":"green"},"line_width":{"value":5},"xs":{"field":"x_s"},"ys":{"field":"y_s"}},"id":"1184","type":"MultiLine"},{"attributes":{"fill_alpha":{"value":0.1},"fill_color":{"value":"#1f77b4"},"line_alpha":{"value":0.1},"line_color":{"value":"#1f77b4"},"size":{"units":"screen","value":15},"x":{"field":"x"},"y":{"field":"y"}},"id":"1197","type":"Circle"},{"attributes":{},"id":"1171","type":"ResetTool"},{"attributes":{"callback":null,"renderers":[{"id":"1186","type":"GlyphRenderer"}],"tooltips":"\n            <div>\n            transformer id = @trafo_id  \n            <table border=\"5\">\n                <tr >\n                    <td>I<sub>1a</sub> =  @i_1a_m &ang; @deg_1a </td>\n                    <td>I<sub>2a</sub> =  @i_2a_m &ang; @deg_2a </td>\n                </tr>\n                <tr>\n                    <td >I<sub>1b</sub> =  @i_1b_m &ang; @deg_1b </td>\n                    <td >I<sub>2b</sub> =  @i_2b_m &ang; @deg_2b </td>\n                </tr>\n                <tr>\n                    <td >I<sub>1c</sub> =  @i_1c_m &ang; @deg_1c </td>\n                    <td >I<sub>2c</sub> =  @i_2c_m &ang; @deg_2c </td>\n                </tr>\n                <tr>\n                    <td >I<sub>1n</sub> =  @i_1n_m &ang; @deg_1n </td>\n                    <td >I<sub>2n</sub> =  @i_2n_m &ang; @deg_2n </td>\n                </tr>\n            </table>            \n            </div>\n            "},"id":"1200","type":"HoverTool"}],"root_ids":["1147"]},"title":"Bokeh Application","version":"1.0.1"}};
+  var render_items = [{"docid":"a60ca868-16c1-49a3-a004-a6dd479170d5","roots":{"1147":"93238764-7e69-44d6-b14a-c6b2ddd15a27"}}];
+  root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
+
+  }
+  if (root.Bokeh !== undefined) {
+    embed_document(root);
+  } else {
+    var attempts = 0;
+    var timer = setInterval(function(root) {
+      if (root.Bokeh !== undefined) {
+        embed_document(root);
+        clearInterval(timer);
+      }
+      attempts++;
+      if (attempts > 100) {
+        console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+        clearInterval(timer);
+      }
+    }, 10, root)
+  }
+})(window);
+</script></div>
+</div>
+</div>
+<div class="section" id="Phase-ground-fault-(grounded-neutral)">
+<h2>Phase ground fault (grounded neutral)<a class="headerlink" href="#Phase-ground-fault-(grounded-neutral)" title="Permalink to this headline">¶</a></h2>
+<p><img alt="image0" src="../_images/mv_short_circuits_ph_g_z_n.png" /></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;shunts&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;bus&quot;</span><span class="p">:</span> <span class="s2">&quot;B1&quot;</span> <span class="p">,</span> <span class="s2">&quot;R&quot;</span><span class="p">:</span> <span class="mf">1e-12</span><span class="p">,</span> <span class="s2">&quot;X&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;bus_nodes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">]},</span>
+        <span class="p">{</span><span class="s2">&quot;bus&quot;</span><span class="p">:</span> <span class="s2">&quot;B1&quot;</span> <span class="p">,</span> <span class="s2">&quot;R&quot;</span><span class="p">:</span> <span class="mf">1e-12</span><span class="p">,</span> <span class="s2">&quot;X&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;bus_nodes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]},</span> <span class="c1"># applied fault</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">grid_ph_n</span> <span class="o">=</span> <span class="n">grid</span><span class="p">()</span>
+<span class="n">grid_ph_n</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>  <span class="c1"># Load data</span>
+<span class="n">grid_ph_n</span><span class="o">.</span><span class="n">pf</span><span class="p">()</span>  <span class="c1"># solve power flow</span>
+<span class="n">p</span><span class="o">=</span><span class="n">plot_results</span><span class="p">(</span><span class="n">grid_ph_n</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div class="bk-root" id="330c0d8e-576e-4dca-9611-8fb295391cf9"></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div></div>
+<script type="text/javascript">
+var element = document.currentScript.previousSibling.previousSibling;
+(function(root) {
+  function embed_document(root) {
+
+  var docs_json = {"04347762-c74b-4ddd-8be7-ee08bc9d5ec0":{"roots":{"references":[{"attributes":{"below":[{"id":"1313","type":"LinearAxis"}],"left":[{"id":"1318","type":"LinearAxis"}],"plot_height":400,"renderers":[{"id":"1313","type":"LinearAxis"},{"id":"1317","type":"Grid"},{"id":"1318","type":"LinearAxis"},{"id":"1322","type":"Grid"},{"id":"1331","type":"BoxAnnotation"},{"id":"1342","type":"GlyphRenderer"},{"id":"1348","type":"GlyphRenderer"},{"id":"1354","type":"GlyphRenderer"}],"title":{"id":"1302","type":"Title"},"toolbar":{"id":"1329","type":"Toolbar"},"x_range":{"id":"1305","type":"DataRange1d"},"x_scale":{"id":"1309","type":"LinearScale"},"y_range":{"id":"1307","type":"DataRange1d"},"y_scale":{"id":"1311","type":"LinearScale"}},"id":"1303","subtype":"Figure","type":"Plot"},{"attributes":{},"id":"1395","type":"Selection"},{"attributes":{"data_source":{"id":"1344","type":"ColumnDataSource"},"glyph":{"id":"1346","type":"MultiLine"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"1347","type":"MultiLine"},"selection_glyph":null,"view":{"id":"1349","type":"CDSView"}},"id":"1348","type":"GlyphRenderer"},{"attributes":{"callback":null},"id":"1307","type":"DataRange1d"},{"attributes":{"source":{"id":"1338","type":"ColumnDataSource"}},"id":"1343","type":"CDSView"},{"attributes":{},"id":"1391","type":"Selection"},{"attributes":{"line_alpha":{"value":0.1},"line_color":{"value":"#1f77b4"},"line_width":{"value":5},"xs":{"field":"x_s"},"ys":{"field":"y_s"}},"id":"1341","type":"MultiLine"},{"attributes":{"line_alpha":{"value":0.5},"line_color":{"value":"red"},"line_width":{"value":5},"xs":{"field":"x_s"},"ys":{"field":"y_s"}},"id":"1346","type":"MultiLine"},{"attributes":{},"id":"1328","type":"HelpTool"},{"attributes":{"data_source":{"id":"1350","type":"ColumnDataSource"},"glyph":{"id":"1352","type":"Circle"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"1353","type":"Circle"},"selection_glyph":null,"view":{"id":"1355","type":"CDSView"}},"id":"1354","type":"GlyphRenderer"},{"attributes":{"source":{"id":"1344","type":"ColumnDataSource"}},"id":"1349","type":"CDSView"},{"attributes":{},"id":"1327","type":"ResetTool"},{"attributes":{"formatter":{"id":"1389","type":"BasicTickFormatter"},"plot":{"id":"1303","subtype":"Figure","type":"Plot"},"ticker":{"id":"1319","type":"BasicTicker"}},"id":"1318","type":"LinearAxis"},{"attributes":{},"id":"1387","type":"BasicTickFormatter"},{"attributes":{"callback":null,"renderers":[{"id":"1342","type":"GlyphRenderer"}],"tooltips":"\n            <div>\n            transformer id = @trafo_id  \n            <table border=\"5\">\n                <tr >\n                    <td>I<sub>1a</sub> =  @i_1a_m &ang; @deg_1a </td>\n                    <td>I<sub>2a</sub> =  @i_2a_m &ang; @deg_2a </td>\n                </tr>\n                <tr>\n                    <td >I<sub>1b</sub> =  @i_1b_m &ang; @deg_1b </td>\n                    <td >I<sub>2b</sub> =  @i_2b_m &ang; @deg_2b </td>\n                </tr>\n                <tr>\n                    <td >I<sub>1c</sub> =  @i_1c_m &ang; @deg_1c </td>\n                    <td >I<sub>2c</sub> =  @i_2c_m &ang; @deg_2c </td>\n                </tr>\n                <tr>\n                    <td >I<sub>1n</sub> =  @i_1n_m &ang; @deg_1n </td>\n                    <td >I<sub>2n</sub> =  @i_2n_m &ang; @deg_2n </td>\n                </tr>\n            </table>            \n            </div>\n            "},"id":"1356","type":"HoverTool"},{"attributes":{},"id":"1324","type":"WheelZoomTool"},{"attributes":{},"id":"1309","type":"LinearScale"},{"attributes":{"source":{"id":"1350","type":"ColumnDataSource"}},"id":"1355","type":"CDSView"},{"attributes":{"callback":null,"renderers":[{"id":"1348","type":"GlyphRenderer"}],"tooltips":"\n            <div>\n            line id = @line_id \n            <table border=\"5\">\n                <tr >\n                    <td>I<sub>ja</sub> =  @i_j_a_m &ang; @deg_j_a </td>\n                    <td>I<sub>ka</sub> =  @i_k_a_m &ang; @deg_k_a </td>\n                </tr>\n                <tr>\n                    <td >I<sub>jb</sub> =  @i_j_b_m &ang; @deg_j_b </td>\n                    <td >I<sub>kb</sub> =  @i_k_b_m &ang; @deg_k_b </td>\n                </tr>\n                <tr>\n                    <td >I<sub>jc</sub> =  @i_j_c_m &ang; @deg_j_c </td>\n                    <td >I<sub>kc</sub> =  @i_k_c_m &ang; @deg_k_c </td>\n                </tr>\n                <tr>\n                    <td >I<sub>jn</sub> =  @i_j_n_m &ang; @deg_j_n </td>\n                    <td >I<sub>kn</sub> =  @i_k_n_m &ang; @deg_k_n </td>\n                </tr>\n            </table>            \n            </div>\n            "},"id":"1358","type":"HoverTool"},{"attributes":{},"id":"1326","type":"SaveTool"},{"attributes":{"bottom_units":"screen","fill_alpha":{"value":0.5},"fill_color":{"value":"lightgrey"},"left_units":"screen","level":"overlay","line_alpha":{"value":1.0},"line_color":{"value":"black"},"line_dash":[4,4],"line_width":{"value":2},"plot":null,"render_mode":"css","right_units":"screen","top_units":"screen"},"id":"1331","type":"BoxAnnotation"},{"attributes":{"plot":null,"text":"Results"},"id":"1302","type":"Title"},{"attributes":{"overlay":{"id":"1331","type":"BoxAnnotation"}},"id":"1325","type":"BoxZoomTool"},{"attributes":{},"id":"1389","type":"BasicTickFormatter"},{"attributes":{"plot":{"id":"1303","subtype":"Figure","type":"Plot"},"ticker":{"id":"1314","type":"BasicTicker"}},"id":"1317","type":"Grid"},{"attributes":{"fill_alpha":{"value":0.1},"fill_color":{"value":"#1f77b4"},"line_alpha":{"value":0.1},"line_color":{"value":"#1f77b4"},"size":{"units":"screen","value":15},"x":{"field":"x"},"y":{"field":"y"}},"id":"1353","type":"Circle"},{"attributes":{"formatter":{"id":"1387","type":"BasicTickFormatter"},"plot":{"id":"1303","subtype":"Figure","type":"Plot"},"ticker":{"id":"1314","type":"BasicTicker"}},"id":"1313","type":"LinearAxis"},{"attributes":{"callback":null,"data":{"deg_j_a":[-48.868116362301166],"deg_j_b":[-177.33148271077798],"deg_j_c":[-177.33148270636013],"deg_j_n":[-66.36577087420474],"deg_k_a":[-48.868116362301166],"deg_k_b":[-177.33148271077798],"deg_k_c":[-177.33148270636013],"deg_k_n":[-66.36577087420474],"i_j_a_m":[1.1643004459789721e-12],"i_j_b_m":[1.874429313636385e-13],"i_j_c_m":[1.874429313378136e-13],"i_j_n_m":[9.762897947986988e-13],"i_k_a_m":[1.1643004459789721e-12],"i_k_b_m":[1.874429313636385e-13],"i_k_c_m":[1.874429313378136e-13],"i_k_n_m":[9.762897947986988e-13],"line_id":["B1-B2"],"x_s":[[30,200]],"y_s":[[0,0]]},"selected":{"id":"1393","type":"Selection"},"selection_policy":{"id":"1394","type":"UnionRenderers"}},"id":"1344","type":"ColumnDataSource"},{"attributes":{},"id":"1396","type":"UnionRenderers"},{"attributes":{"dimension":1,"plot":{"id":"1303","subtype":"Figure","type":"Plot"},"ticker":{"id":"1319","type":"BasicTicker"}},"id":"1322","type":"Grid"},{"attributes":{"data_source":{"id":"1338","type":"ColumnDataSource"},"glyph":{"id":"1340","type":"MultiLine"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"1341","type":"MultiLine"},"selection_glyph":null,"view":{"id":"1343","type":"CDSView"}},"id":"1342","type":"GlyphRenderer"},{"attributes":{},"id":"1394","type":"UnionRenderers"},{"attributes":{},"id":"1319","type":"BasicTicker"},{"attributes":{"line_alpha":{"value":0.5},"line_color":{"value":"green"},"line_width":{"value":5},"xs":{"field":"x_s"},"ys":{"field":"y_s"}},"id":"1340","type":"MultiLine"},{"attributes":{"callback":null,"renderers":[{"id":"1354","type":"GlyphRenderer"}],"tooltips":"\n            <div>\n            bus_id = @bus_id &nbsp &nbsp |  u<sub>avg</sub>= @u_avg_pu pu |  u<sub>unb</sub>= @v_unb %\n            <table border=\"1\">\n                <tr>\n                <td>v<sub>an</sub> =  @v_an  &ang; @deg_an V </td> <td> S<sub>a</sub> = @p_a + j@q_a kVA</td>\n                </tr>\n                      <tr>\n                      <td> </td> <td>v<sub>ab</sub>= @v_ab V</td>\n                      </tr>\n                <tr>\n                <td>v<sub>bn</sub> = @v_bn &ang; @deg_bn V </td><td> S<sub>b</sub> = @p_b + j@q_b kVA</td>\n                </tr>\n                      <tr>\n                      <td> </td><td>v<sub>bc</sub>= @v_bc V</td>\n                      </tr>\n                <tr>\n                <td>v<sub>cn</sub>  = @v_cn &ang; @deg_cn V </td>  <td>S<sub>c</sub> = @p_c + j@q_c kVA </td>\n                </tr> \n                    <tr>\n                     <td> </td> <td>v<sub>ca</sub>= @v_ca V</td>\n                    </tr>\n               <tr>\n                <td>v<sub>ng</sub>    = @v_ng &ang; @deg_ng V</td>  <td>S<sub>abc</sub> = @p_abc + j@q_abc kVA </td>\n              </tr>\n            </table>\n            </div>\n            "},"id":"1360","type":"HoverTool"},{"attributes":{},"id":"1392","type":"UnionRenderers"},{"attributes":{"active_drag":"auto","active_inspect":"auto","active_multi":null,"active_scroll":"auto","active_tap":"auto","tools":[{"id":"1323","type":"PanTool"},{"id":"1324","type":"WheelZoomTool"},{"id":"1325","type":"BoxZoomTool"},{"id":"1326","type":"SaveTool"},{"id":"1327","type":"ResetTool"},{"id":"1328","type":"HelpTool"},{"id":"1356","type":"HoverTool"},{"id":"1358","type":"HoverTool"},{"id":"1360","type":"HoverTool"}]},"id":"1329","type":"Toolbar"},{"attributes":{"line_alpha":{"value":0.1},"line_color":{"value":"#1f77b4"},"line_width":{"value":5},"xs":{"field":"x_s"},"ys":{"field":"y_s"}},"id":"1347","type":"MultiLine"},{"attributes":{"callback":null,"data":{"deg_1a":[-52.87498365021675],"deg_1b":[127.1250163497833],"deg_1c":[34.43898930880361],"deg_1n":[-69.44395478041653],"deg_2a":[127.12501634978328],"deg_2b":[90.0],"deg_2c":[-110.55604521958347],"deg_2n":[-52.87498365021672],"i_1a_m":[15660.902935732394],"i_1b_m":[15660.902935732394],"i_1c_m":[9.649327318549215e-12],"i_1n_m":[1.9426815345735873e-12],"i_2a_m":[89514.08260440717],"i_2b_m":[3.637978807091713e-12],"i_2c_m":[1.55414522765887e-11],"i_2n_m":[89514.08260440716],"trafo_id":["B0-B1"],"x_s":[[0,30]],"y_s":[[0,0]]},"selected":{"id":"1391","type":"Selection"},"selection_policy":{"id":"1392","type":"UnionRenderers"}},"id":"1338","type":"ColumnDataSource"},{"attributes":{},"id":"1323","type":"PanTool"},{"attributes":{},"id":"1311","type":"LinearScale"},{"attributes":{"fill_alpha":{"value":0.5},"fill_color":{"value":"navy"},"line_alpha":{"value":0.5},"line_color":{"value":"navy"},"size":{"units":"screen","value":15},"x":{"field":"x"},"y":{"field":"y"}},"id":"1352","type":"Circle"},{"attributes":{},"id":"1393","type":"Selection"},{"attributes":{},"id":"1314","type":"BasicTicker"},{"attributes":{"callback":null,"data":{"bus_id":["B0","B1","B2"],"deg_an":["0.00","-52.87","-52.88"],"deg_bn":["-120.00","-90.00","-90.00"],"deg_cn":["120.00","150.00","150.00"],"deg_ng":["0.00","127.13","0.00"],"p_a":["360177.40","0.00","0.00"],"p_abc":["128204.34","0.00","0.00"],"p_b":["-231973.06","0.00","-0.00"],"p_c":["0.00","0.00","0.00"],"q_a":["475807.94","-0.00","-0.00"],"q_abc":["1025634.69","0.00","0.00"],"q_b":["549826.75","-0.00","0.00"],"q_c":["0.00","0.00","0.00"],"s_color":["red","blue","blue"],"s_radio":[20,1,1],"u_avg_pu":["1.000","0.667","0.667"],"v_ab":[65999.79602241206,11546.96969682695,11546.96969682695],"v_an":["38105.00","0.00","0.00"],"v_an_pu":["1.0000","0.0000","0.0000"],"v_bc":[65999.79602241206,19999.93818860971,19999.93818860971],"v_bn":["38105.00","11546.97","11546.97"],"v_bn_pu":["1.0000","1.0000","1.0000"],"v_ca":[65999.79602241208,11546.969697134644,11546.969697134642],"v_cn":["38105.00","11546.97","11546.97"],"v_cn_pu":["1.0000","1.0000","1.0000"],"v_ng":["0.00","0.00","0.00"],"v_unb":["0.0","100.0","100.0"],"x":[0,30,200],"y":[0,0,0]},"selected":{"id":"1395","type":"Selection"},"selection_policy":{"id":"1396","type":"UnionRenderers"}},"id":"1350","type":"ColumnDataSource"},{"attributes":{"callback":null},"id":"1305","type":"DataRange1d"}],"root_ids":["1303"]},"title":"Bokeh Application","version":"1.0.1"}};
+  var render_items = [{"docid":"04347762-c74b-4ddd-8be7-ee08bc9d5ec0","roots":{"1303":"330c0d8e-576e-4dca-9611-8fb295391cf9"}}];
+  root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
+
+  }
+  if (root.Bokeh !== undefined) {
+    embed_document(root);
+  } else {
+    var attempts = 0;
+    var timer = setInterval(function(root) {
+      if (root.Bokeh !== undefined) {
+        embed_document(root);
+        clearInterval(timer);
+      }
+      attempts++;
+      if (attempts > 100) {
+        console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+        clearInterval(timer);
+      }
+    }, 10, root)
+  }
+})(window);
+</script></div>
+</div>
+</div>
+<div class="section" id="Phase-ground-fault-(grounded-neutral-with-impedance)">
+<h2>Phase ground fault (grounded neutral with impedance)<a class="headerlink" href="#Phase-ground-fault-(grounded-neutral-with-impedance)" title="Permalink to this headline">¶</a></h2>
+<p><img alt="image0" src="../_images/mv_short_circuits_ph_g_z_n.png" /></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;shunts&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;bus&quot;</span><span class="p">:</span> <span class="s2">&quot;B1&quot;</span> <span class="p">,</span> <span class="s2">&quot;R&quot;</span><span class="p">:</span> <span class="mf">12.0</span><span class="p">,</span> <span class="s2">&quot;X&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;bus_nodes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">]},</span>
+        <span class="p">{</span><span class="s2">&quot;bus&quot;</span><span class="p">:</span> <span class="s2">&quot;B1&quot;</span> <span class="p">,</span> <span class="s2">&quot;R&quot;</span><span class="p">:</span> <span class="mf">1e-12</span><span class="p">,</span> <span class="s2">&quot;X&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;bus_nodes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]},</span> <span class="c1"># applied fault</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">grid_ph_n</span> <span class="o">=</span> <span class="n">grid</span><span class="p">()</span>
+<span class="n">grid_ph_n</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>  <span class="c1"># Load data</span>
+<span class="n">grid_ph_n</span><span class="o">.</span><span class="n">pf</span><span class="p">()</span>  <span class="c1"># solve power flow</span>
+<span class="n">p</span><span class="o">=</span><span class="n">plot_results</span><span class="p">(</span><span class="n">grid_ph_n</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div class="bk-root" id="1d70cdb9-753a-4fc6-94ae-de4bef94d756"></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div></div>
+<script type="text/javascript">
+var element = document.currentScript.previousSibling.previousSibling;
+(function(root) {
+  function embed_document(root) {
+
+  var docs_json = {"0553182a-a43d-4be0-9d81-78012f2b6ebb":{"roots":{"references":[{"attributes":{"below":[{"id":"1661","type":"LinearAxis"}],"left":[{"id":"1666","type":"LinearAxis"}],"plot_height":400,"renderers":[{"id":"1661","type":"LinearAxis"},{"id":"1665","type":"Grid"},{"id":"1666","type":"LinearAxis"},{"id":"1670","type":"Grid"},{"id":"1679","type":"BoxAnnotation"},{"id":"1690","type":"GlyphRenderer"},{"id":"1696","type":"GlyphRenderer"},{"id":"1702","type":"GlyphRenderer"}],"title":{"id":"1650","type":"Title"},"toolbar":{"id":"1677","type":"Toolbar"},"x_range":{"id":"1653","type":"DataRange1d"},"x_scale":{"id":"1657","type":"LinearScale"},"y_range":{"id":"1655","type":"DataRange1d"},"y_scale":{"id":"1659","type":"LinearScale"}},"id":"1651","subtype":"Figure","type":"Plot"},{"attributes":{"plot":null,"text":"Results"},"id":"1650","type":"Title"},{"attributes":{},"id":"1764","type":"UnionRenderers"},{"attributes":{},"id":"1662","type":"BasicTicker"},{"attributes":{"fill_alpha":{"value":0.1},"fill_color":{"value":"#1f77b4"},"line_alpha":{"value":0.1},"line_color":{"value":"#1f77b4"},"size":{"units":"screen","value":15},"x":{"field":"x"},"y":{"field":"y"}},"id":"1701","type":"Circle"},{"attributes":{"bottom_units":"screen","fill_alpha":{"value":0.5},"fill_color":{"value":"lightgrey"},"left_units":"screen","level":"overlay","line_alpha":{"value":1.0},"line_color":{"value":"black"},"line_dash":[4,4],"line_width":{"value":2},"plot":null,"render_mode":"css","right_units":"screen","top_units":"screen"},"id":"1679","type":"BoxAnnotation"},{"attributes":{"source":{"id":"1692","type":"ColumnDataSource"}},"id":"1697","type":"CDSView"},{"attributes":{},"id":"1676","type":"HelpTool"},{"attributes":{},"id":"1667","type":"BasicTicker"},{"attributes":{"line_alpha":{"value":0.5},"line_color":{"value":"green"},"line_width":{"value":5},"xs":{"field":"x_s"},"ys":{"field":"y_s"}},"id":"1688","type":"MultiLine"},{"attributes":{"dimension":1,"plot":{"id":"1651","subtype":"Figure","type":"Plot"},"ticker":{"id":"1667","type":"BasicTicker"}},"id":"1670","type":"Grid"},{"attributes":{},"id":"1657","type":"LinearScale"},{"attributes":{"fill_alpha":{"value":0.5},"fill_color":{"value":"navy"},"line_alpha":{"value":0.5},"line_color":{"value":"navy"},"size":{"units":"screen","value":15},"x":{"field":"x"},"y":{"field":"y"}},"id":"1700","type":"Circle"},{"attributes":{"plot":{"id":"1651","subtype":"Figure","type":"Plot"},"ticker":{"id":"1662","type":"BasicTicker"}},"id":"1665","type":"Grid"},{"attributes":{"data_source":{"id":"1698","type":"ColumnDataSource"},"glyph":{"id":"1700","type":"Circle"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"1701","type":"Circle"},"selection_glyph":null,"view":{"id":"1703","type":"CDSView"}},"id":"1702","type":"GlyphRenderer"},{"attributes":{"line_alpha":{"value":0.1},"line_color":{"value":"#1f77b4"},"line_width":{"value":5},"xs":{"field":"x_s"},"ys":{"field":"y_s"}},"id":"1695","type":"MultiLine"},{"attributes":{"overlay":{"id":"1679","type":"BoxAnnotation"}},"id":"1673","type":"BoxZoomTool"},{"attributes":{"formatter":{"id":"1759","type":"BasicTickFormatter"},"plot":{"id":"1651","subtype":"Figure","type":"Plot"},"ticker":{"id":"1662","type":"BasicTicker"}},"id":"1661","type":"LinearAxis"},{"attributes":{"callback":null},"id":"1653","type":"DataRange1d"},{"attributes":{"source":{"id":"1686","type":"ColumnDataSource"}},"id":"1691","type":"CDSView"},{"attributes":{},"id":"1765","type":"Selection"},{"attributes":{},"id":"1672","type":"WheelZoomTool"},{"attributes":{"line_alpha":{"value":0.1},"line_color":{"value":"#1f77b4"},"line_width":{"value":5},"xs":{"field":"x_s"},"ys":{"field":"y_s"}},"id":"1689","type":"MultiLine"},{"attributes":{},"id":"1768","type":"UnionRenderers"},{"attributes":{"callback":null,"data":{"bus_id":["B0","B1","B2"],"deg_an":["0.00","29.39","29.39"],"deg_bn":["-120.00","-90.00","-120.28"],"deg_cn":["120.00","150.00","179.67"],"deg_ng":["0.00","-150.61","0.00"],"p_a":["5581.61","0.00","0.00"],"p_abc":["11094.99","0.00","0.00"],"p_b":["5513.38","0.00","-0.00"],"p_c":["0.00","0.00","0.00"],"q_a":["-3143.75","0.00","0.00"],"q_abc":["118.19","0.00","0.00"],"q_b":["3261.94","-0.00","0.00"],"q_c":["0.00","0.00","0.00"],"s_color":["red","blue","blue"],"s_radio":[20,1,1],"u_avg_pu":["1.000","1.000","1.154"],"v_ab":[65999.79602241206,19924.317723487184,19924.317723487187],"v_an":["38105.00","11530.94","0.00"],"v_an_pu":["1.0000","0.9986","0.0000"],"v_bc":[65999.79602241206,19999.938188609718,19999.93818860972],"v_bn":["38105.00","11546.97","19924.32"],"v_bn_pu":["1.0000","1.0000","1.7255"],"v_ca":[65999.79602241208,20047.230718227453,20047.230718227453],"v_cn":["38105.00","11546.97","20047.23"],"v_cn_pu":["1.0000","1.0000","1.7361"],"v_ng":["0.00","11530.94","0.00"],"v_unb":["0.0","0.1","100.0"],"x":[0,30,200],"y":[0,0,0]},"selected":{"id":"1767","type":"Selection"},"selection_policy":{"id":"1768","type":"UnionRenderers"}},"id":"1698","type":"ColumnDataSource"},{"attributes":{"active_drag":"auto","active_inspect":"auto","active_multi":null,"active_scroll":"auto","active_tap":"auto","tools":[{"id":"1671","type":"PanTool"},{"id":"1672","type":"WheelZoomTool"},{"id":"1673","type":"BoxZoomTool"},{"id":"1674","type":"SaveTool"},{"id":"1675","type":"ResetTool"},{"id":"1676","type":"HelpTool"},{"id":"1704","type":"HoverTool"},{"id":"1706","type":"HoverTool"},{"id":"1708","type":"HoverTool"}]},"id":"1677","type":"Toolbar"},{"attributes":{},"id":"1761","type":"BasicTickFormatter"},{"attributes":{"callback":null,"data":{"deg_j_a":[-100.30591018258387],"deg_j_b":[18.243394572442465],"deg_j_c":[-110.85103872874471],"deg_j_n":[-0.2995214941309881],"deg_k_a":[-100.30591018258387],"deg_k_b":[18.243394572442465],"deg_k_c":[-110.85103872874471],"deg_k_n":[-0.2995214941309881],"i_j_a_m":[1.4390497070362097e-11],"i_j_b_m":[9.168077260488866e-11],"i_j_c_m":[1.600271841642322e-11],"i_j_n_m":[7.880302206935505e-11],"i_k_a_m":[1.4390497070362097e-11],"i_k_b_m":[9.168077260488866e-11],"i_k_c_m":[1.600271841642322e-11],"i_k_n_m":[7.880302206935505e-11],"line_id":["B1-B2"],"x_s":[[30,200]],"y_s":[[0,0]]},"selected":{"id":"1765","type":"Selection"},"selection_policy":{"id":"1766","type":"UnionRenderers"}},"id":"1692","type":"ColumnDataSource"},{"attributes":{"callback":null,"renderers":[{"id":"1702","type":"GlyphRenderer"}],"tooltips":"\n            <div>\n            bus_id = @bus_id &nbsp &nbsp |  u<sub>avg</sub>= @u_avg_pu pu |  u<sub>unb</sub>= @v_unb %\n            <table border=\"1\">\n                <tr>\n                <td>v<sub>an</sub> =  @v_an  &ang; @deg_an V </td> <td> S<sub>a</sub> = @p_a + j@q_a kVA</td>\n                </tr>\n                      <tr>\n                      <td> </td> <td>v<sub>ab</sub>= @v_ab V</td>\n                      </tr>\n                <tr>\n                <td>v<sub>bn</sub> = @v_bn &ang; @deg_bn V </td><td> S<sub>b</sub> = @p_b + j@q_b kVA</td>\n                </tr>\n                      <tr>\n                      <td> </td><td>v<sub>bc</sub>= @v_bc V</td>\n                      </tr>\n                <tr>\n                <td>v<sub>cn</sub>  = @v_cn &ang; @deg_cn V </td>  <td>S<sub>c</sub> = @p_c + j@q_c kVA </td>\n                </tr> \n                    <tr>\n                     <td> </td> <td>v<sub>ca</sub>= @v_ca V</td>\n                    </tr>\n               <tr>\n                <td>v<sub>ng</sub>    = @v_ng &ang; @deg_ng V</td>  <td>S<sub>abc</sub> = @p_abc + j@q_abc kVA </td>\n              </tr>\n            </table>\n            </div>\n            "},"id":"1708","type":"HoverTool"},{"attributes":{},"id":"1766","type":"UnionRenderers"},{"attributes":{"callback":null},"id":"1655","type":"DataRange1d"},{"attributes":{},"id":"1759","type":"BasicTickFormatter"},{"attributes":{},"id":"1767","type":"Selection"},{"attributes":{"data_source":{"id":"1686","type":"ColumnDataSource"},"glyph":{"id":"1688","type":"MultiLine"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"1689","type":"MultiLine"},"selection_glyph":null,"view":{"id":"1691","type":"CDSView"}},"id":"1690","type":"GlyphRenderer"},{"attributes":{},"id":"1671","type":"PanTool"},{"attributes":{"callback":null,"renderers":[{"id":"1690","type":"GlyphRenderer"}],"tooltips":"\n            <div>\n            transformer id = @trafo_id  \n            <table border=\"5\">\n                <tr >\n                    <td>I<sub>1a</sub> =  @i_1a_m &ang; @deg_1a </td>\n                    <td>I<sub>2a</sub> =  @i_2a_m &ang; @deg_2a </td>\n                </tr>\n                <tr>\n                    <td >I<sub>1b</sub> =  @i_1b_m &ang; @deg_1b </td>\n                    <td >I<sub>2b</sub> =  @i_2b_m &ang; @deg_2b </td>\n                </tr>\n                <tr>\n                    <td >I<sub>1c</sub> =  @i_1c_m &ang; @deg_1c </td>\n                    <td >I<sub>2c</sub> =  @i_2c_m &ang; @deg_2c </td>\n                </tr>\n                <tr>\n                    <td >I<sub>1n</sub> =  @i_1n_m &ang; @deg_1n </td>\n                    <td >I<sub>2n</sub> =  @i_2n_m &ang; @deg_2n </td>\n                </tr>\n            </table>            \n            </div>\n            "},"id":"1704","type":"HoverTool"},{"attributes":{},"id":"1763","type":"Selection"},{"attributes":{"callback":null,"renderers":[{"id":"1696","type":"GlyphRenderer"}],"tooltips":"\n            <div>\n            line id = @line_id \n            <table border=\"5\">\n                <tr >\n                    <td>I<sub>ja</sub> =  @i_j_a_m &ang; @deg_j_a </td>\n                    <td>I<sub>ka</sub> =  @i_k_a_m &ang; @deg_k_a </td>\n                </tr>\n                <tr>\n                    <td >I<sub>jb</sub> =  @i_j_b_m &ang; @deg_j_b </td>\n                    <td >I<sub>kb</sub> =  @i_k_b_m &ang; @deg_k_b </td>\n                </tr>\n                <tr>\n                    <td >I<sub>jc</sub> =  @i_j_c_m &ang; @deg_j_c </td>\n                    <td >I<sub>kc</sub> =  @i_k_c_m &ang; @deg_k_c </td>\n                </tr>\n                <tr>\n                    <td >I<sub>jn</sub> =  @i_j_n_m &ang; @deg_j_n </td>\n                    <td >I<sub>kn</sub> =  @i_k_n_m &ang; @deg_k_n </td>\n                </tr>\n            </table>            \n            </div>\n            "},"id":"1706","type":"HoverTool"},{"attributes":{"line_alpha":{"value":0.5},"line_color":{"value":"red"},"line_width":{"value":5},"xs":{"field":"x_s"},"ys":{"field":"y_s"}},"id":"1694","type":"MultiLine"},{"attributes":{"data_source":{"id":"1692","type":"ColumnDataSource"},"glyph":{"id":"1694","type":"MultiLine"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"1695","type":"MultiLine"},"selection_glyph":null,"view":{"id":"1697","type":"CDSView"}},"id":"1696","type":"GlyphRenderer"},{"attributes":{"callback":null,"data":{"deg_1a":[29.389681891361622],"deg_1b":[-150.6103181086366],"deg_1c":[82.8749836510982],"deg_1n":[0.0],"deg_2a":[-150.61031810863525],"deg_2b":[180.0],"deg_2c":[-57.9946167919165],"deg_2n":[29.38968189136485],"i_1a_m":[168.11594253889487],"i_1b_m":[168.11594253889658],"i_1c_m":[5.499435529803952e-12],"i_1n_m":[1.8189894035458565e-12],"i_2a_m":[960.9116683310144],"i_2b_m":[2.9103830456733704e-11],"i_2c_m":[1.7160311712462504e-11],"i_2n_m":[960.9116683310534],"trafo_id":["B0-B1"],"x_s":[[0,30]],"y_s":[[0,0]]},"selected":{"id":"1763","type":"Selection"},"selection_policy":{"id":"1764","type":"UnionRenderers"}},"id":"1686","type":"ColumnDataSource"},{"attributes":{},"id":"1675","type":"ResetTool"},{"attributes":{},"id":"1659","type":"LinearScale"},{"attributes":{"source":{"id":"1698","type":"ColumnDataSource"}},"id":"1703","type":"CDSView"},{"attributes":{},"id":"1674","type":"SaveTool"},{"attributes":{"formatter":{"id":"1761","type":"BasicTickFormatter"},"plot":{"id":"1651","subtype":"Figure","type":"Plot"},"ticker":{"id":"1667","type":"BasicTicker"}},"id":"1666","type":"LinearAxis"}],"root_ids":["1651"]},"title":"Bokeh Application","version":"1.0.1"}};
+  var render_items = [{"docid":"0553182a-a43d-4be0-9d81-78012f2b6ebb","roots":{"1651":"1d70cdb9-753a-4fc6-94ae-de4bef94d756"}}];
+  root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
+
+  }
+  if (root.Bokeh !== undefined) {
+    embed_document(root);
+  } else {
+    var attempts = 0;
+    var timer = setInterval(function(root) {
+      if (root.Bokeh !== undefined) {
+        embed_document(root);
+        clearInterval(timer);
+      }
+      attempts++;
+      if (attempts > 100) {
+        console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+        clearInterval(timer);
+      }
+    }, 10, root)
+  }
+})(window);
+</script></div>
+</div>
+<p>Run this notebook in binder:</p>
+<p><a class="reference external" href="https://mybinder.org/v2/gh/pydgrid/pydgrid/master?filepath=/docs/jupyter_notebooks/mv_short_circuit.ipynb"><img alt="Documentation Status" src="https://mybinder.org/badge.svg" /></a></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="wind_farm.html" class="btn btn-neutral float-right" title="Wind farm" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="cigre_europe_residential.html" class="btn btn-neutral float-left" title="CIGRE LV European System" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Juan Manuel Mauricio
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

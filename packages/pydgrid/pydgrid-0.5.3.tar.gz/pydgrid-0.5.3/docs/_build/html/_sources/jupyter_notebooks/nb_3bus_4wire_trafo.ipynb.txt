@@ -1,0 +1,218 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import numpy as np\n",
+    "from pydgrid.pydgrid import grid"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 3 bus 4 wire system with transformer"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Data"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "data = {\n",
+    "        \"buses\":[\n",
+    "                 {\"bus\": \"B1\",  \"pos_x\":   0, \"pos_y\":   0, \"units\": \"m\", \"U_kV\":20.0},\n",
+    "                 {\"bus\": \"B2\",  \"pos_x\":  10, \"pos_y\":   0, \"units\": \"m\", \"U_kV\":0.4},\n",
+    "                 {\"bus\": \"B3\",  \"pos_x\": 100, \"pos_y\":  0, \"units\": \"m\", \"U_kV\":0.4}\n",
+    "                ],\n",
+    "        \"grid_formers\":[\n",
+    "                        {\"bus\": \"B1\",\n",
+    "                        \"bus_nodes\": [1, 2, 3], \"deg\": [0, -120, -240],\n",
+    "                        \"kV\": [11.547, 11.547, 11.547]}\n",
+    "                       ],\n",
+    "        \"transformers\":[\n",
+    "                        {\"bus_j\": \"B1\",  \"bus_k\": \"B2\",  \"S_n_kVA\": 1000.0, \"U_j_kV\":20, \"U_k_kV\":0.42,\n",
+    "                         \"R_cc_pu\": 0.01, \"X_cc_pu\":0.04, \"connection\": \"Dyn11\",   \"conductors_j\": 3, \"conductors_k\": 4},\n",
+    "                       ],\n",
+    "        \"lines\":[\n",
+    "                 {\"bus_j\": \"B2\",  \"bus_k\": \"B3\",  \"code\": \"lv_cu_150\", \"m\": 100.0},\n",
+    "                ],\n",
+    "        \"loads\":[{\"bus\": \"B3\" , \"kVA\": 300.0/3, \"pf\": 0.85,\"type\":\"3P+N\"},\n",
+    "                 {\"bus\": \"B3\" , \"kVA\": 300.0/3, \"pf\": 0.85,\"type\":\"1P+N\", 'bus_nodes':[1,4]}\n",
+    "                ],\n",
+    "        \"shunts\":[\n",
+    "                 {\"bus\": \"B2\" , \"R\": 0.001, \"X\": 0.0, \"bus_nodes\": [4,0]}\n",
+    "                 ],\n",
+    "        \"line_codes\":\n",
+    "            {\"lv_cu_150\":  {\"Rph\":0.167,\"Xph\":0.08, \"Rn\":0.167, \"Xn\": 0.08}\n",
+    "            }\n",
+    "       }\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Execute power flow "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "grid_1 = grid()\n",
+    "grid_1.read(data)  # Load data\n",
+    "\n",
+    "grid_1.pf()  # solve power flow"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Graph with obtained results"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "\n",
+       "\n",
+       "\n",
+       "\n",
+       "\n",
+       "\n",
+       "  <div class=\"bk-root\" id=\"2b3a079c-46b9-4256-82fa-1755545708f8\"></div>\n"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "data": {
+      "application/javascript": [
+       "(function(root) {\n",
+       "  function embed_document(root) {\n",
+       "    \n",
+       "  var docs_json = {\"efbad906-ff2a-4f62-8ffa-1d4e65eb8287\":{\"roots\":{\"references\":[{\"attributes\":{\"below\":[{\"id\":\"1319\",\"type\":\"LinearAxis\"}],\"left\":[{\"id\":\"1324\",\"type\":\"LinearAxis\"}],\"plot_height\":400,\"renderers\":[{\"id\":\"1319\",\"type\":\"LinearAxis\"},{\"id\":\"1323\",\"type\":\"Grid\"},{\"id\":\"1324\",\"type\":\"LinearAxis\"},{\"id\":\"1328\",\"type\":\"Grid\"},{\"id\":\"1337\",\"type\":\"BoxAnnotation\"},{\"id\":\"1348\",\"type\":\"GlyphRenderer\"},{\"id\":\"1354\",\"type\":\"GlyphRenderer\"},{\"id\":\"1360\",\"type\":\"GlyphRenderer\"}],\"title\":{\"id\":\"1308\",\"type\":\"Title\"},\"toolbar\":{\"id\":\"1335\",\"type\":\"Toolbar\"},\"x_range\":{\"id\":\"1311\",\"type\":\"DataRange1d\"},\"x_scale\":{\"id\":\"1315\",\"type\":\"LinearScale\"},\"y_range\":{\"id\":\"1313\",\"type\":\"DataRange1d\"},\"y_scale\":{\"id\":\"1317\",\"type\":\"LinearScale\"}},\"id\":\"1309\",\"subtype\":\"Figure\",\"type\":\"Plot\"},{\"attributes\":{\"line_alpha\":{\"value\":0.1},\"line_color\":{\"value\":\"#1f77b4\"},\"line_width\":{\"value\":5},\"xs\":{\"field\":\"x_s\"},\"ys\":{\"field\":\"y_s\"}},\"id\":\"1347\",\"type\":\"MultiLine\"},{\"attributes\":{},\"id\":\"1399\",\"type\":\"Selection\"},{\"attributes\":{\"callback\":null},\"id\":\"1313\",\"type\":\"DataRange1d\"},{\"attributes\":{\"formatter\":{\"id\":\"1394\",\"type\":\"BasicTickFormatter\"},\"plot\":{\"id\":\"1309\",\"subtype\":\"Figure\",\"type\":\"Plot\"},\"ticker\":{\"id\":\"1320\",\"type\":\"BasicTicker\"}},\"id\":\"1319\",\"type\":\"LinearAxis\"},{\"attributes\":{\"source\":{\"id\":\"1344\",\"type\":\"ColumnDataSource\"}},\"id\":\"1349\",\"type\":\"CDSView\"},{\"attributes\":{},\"id\":\"1400\",\"type\":\"UnionRenderers\"},{\"attributes\":{},\"id\":\"1320\",\"type\":\"BasicTicker\"},{\"attributes\":{\"callback\":null,\"data\":{\"deg_1a\":[-52.250872813833006],\"deg_1b\":[-152.1263922044762],\"deg_1c\":[108.29666238726756],\"deg_1n\":[68.19859051364818],\"deg_2a\":[117.99324315659831],\"deg_2b\":[-3.719046091572778],\"deg_2c\":[-120.2900101783399],\"deg_2n\":[-62.00675684340187],\"i_1a_m\":[8.356842140880225],\"i_1b_m\":[2.822369925544024],\"i_1c_m\":[8.349381080975823],\"i_1n_m\":[1.530555893832145e-13],\"i_2a_m\":[607.123970823296],\"i_2b_m\":[137.29392803565423],\"i_2c_m\":[136.3520805818519],\"i_2n_m\":[607.1239708233032],\"trafo_id\":[\"B1-B2\"],\"x_s\":[[0,10]],\"y_s\":[[0,0]]},\"selected\":{\"id\":\"1399\",\"type\":\"Selection\"},\"selection_policy\":{\"id\":\"1398\",\"type\":\"UnionRenderers\"}},\"id\":\"1344\",\"type\":\"ColumnDataSource\"},{\"attributes\":{},\"id\":\"1401\",\"type\":\"Selection\"},{\"attributes\":{\"plot\":{\"id\":\"1309\",\"subtype\":\"Figure\",\"type\":\"Plot\"},\"ticker\":{\"id\":\"1320\",\"type\":\"BasicTicker\"}},\"id\":\"1323\",\"type\":\"Grid\"},{\"attributes\":{\"line_alpha\":{\"value\":0.5},\"line_color\":{\"value\":\"red\"},\"line_width\":{\"value\":5},\"xs\":{\"field\":\"x_s\"},\"ys\":{\"field\":\"y_s\"}},\"id\":\"1352\",\"type\":\"MultiLine\"},{\"attributes\":{},\"id\":\"1402\",\"type\":\"UnionRenderers\"},{\"attributes\":{\"plot\":null,\"text\":\"Results\"},\"id\":\"1308\",\"type\":\"Title\"},{\"attributes\":{\"formatter\":{\"id\":\"1396\",\"type\":\"BasicTickFormatter\"},\"plot\":{\"id\":\"1309\",\"subtype\":\"Figure\",\"type\":\"Plot\"},\"ticker\":{\"id\":\"1325\",\"type\":\"BasicTicker\"}},\"id\":\"1324\",\"type\":\"LinearAxis\"},{\"attributes\":{\"line_alpha\":{\"value\":0.1},\"line_color\":{\"value\":\"#1f77b4\"},\"line_width\":{\"value\":5},\"xs\":{\"field\":\"x_s\"},\"ys\":{\"field\":\"y_s\"}},\"id\":\"1353\",\"type\":\"MultiLine\"},{\"attributes\":{},\"id\":\"1403\",\"type\":\"Selection\"},{\"attributes\":{},\"id\":\"1325\",\"type\":\"BasicTicker\"},{\"attributes\":{\"data_source\":{\"id\":\"1350\",\"type\":\"ColumnDataSource\"},\"glyph\":{\"id\":\"1352\",\"type\":\"MultiLine\"},\"hover_glyph\":null,\"muted_glyph\":null,\"nonselection_glyph\":{\"id\":\"1353\",\"type\":\"MultiLine\"},\"selection_glyph\":null,\"view\":{\"id\":\"1355\",\"type\":\"CDSView\"}},\"id\":\"1354\",\"type\":\"GlyphRenderer\"},{\"attributes\":{},\"id\":\"1315\",\"type\":\"LinearScale\"},{\"attributes\":{\"dimension\":1,\"plot\":{\"id\":\"1309\",\"subtype\":\"Figure\",\"type\":\"Plot\"},\"ticker\":{\"id\":\"1325\",\"type\":\"BasicTicker\"}},\"id\":\"1328\",\"type\":\"Grid\"},{\"attributes\":{\"source\":{\"id\":\"1350\",\"type\":\"ColumnDataSource\"}},\"id\":\"1355\",\"type\":\"CDSView\"},{\"attributes\":{},\"id\":\"1317\",\"type\":\"LinearScale\"},{\"attributes\":{\"line_alpha\":{\"value\":0.5},\"line_color\":{\"value\":\"green\"},\"line_width\":{\"value\":5},\"xs\":{\"field\":\"x_s\"},\"ys\":{\"field\":\"y_s\"}},\"id\":\"1346\",\"type\":\"MultiLine\"},{\"attributes\":{\"callback\":null,\"data\":{\"bus_id\":[\"B1\",\"B2\",\"B3\"],\"deg_an\":[\"0.00\",\"-30.73\",\"-30.22\"],\"deg_bn\":[\"-120.00\",\"-150.16\",\"-151.93\"],\"deg_cn\":[\"120.00\",\"89.83\",\"91.50\"],\"deg_ng\":[\"0.00\",\"90.00\",\"-36.51\"],\"p_a\":[\"59.08\",\"0.00\",\"-113.33\"],\"p_abc\":[\"181.08\",\"0.00\",\"-170.00\"],\"p_b\":[\"27.60\",\"-0.00\",\"-28.33\"],\"p_c\":[\"94.41\",\"0.00\",\"-28.33\"],\"q_a\":[\"76.30\",\"-0.00\",\"-70.24\"],\"q_abc\":[\"113.19\",\"0.00\",\"-105.36\"],\"q_b\":[\"17.33\",\"0.00\",\"-17.56\"],\"q_c\":[\"19.56\",\"0.00\",\"-17.56\"],\"s_color\":[\"red\",\"blue\",\"green\"],\"s_radio\":[4.621099042345234,1,4.47213589663108],\"u_avg_pu\":[\"1.000\",\"1.043\",\"1.020\"],\"v_ab\":[19999.99067499782,415.4148390960395,404.0201141136689],\"v_an\":[\"11547.00\",\"239.33\",\"219.61\"],\"v_an_pu\":[\"1.0000\",\"1.0363\",\"0.9510\"],\"v_bc\":[19999.990674997825,418.7802103067081,414.4965454564143],\"v_bn\":[\"11547.00\",\"241.75\",\"242.79\"],\"v_bn_pu\":[\"1.0000\",\"1.0468\",\"1.0513\"],\"v_ca\":[19999.99067499783,417.84900812705354,405.5165803809524],\"v_cn\":[\"11547.00\",\"241.80\",\"244.47\"],\"v_cn_pu\":[\"1.0000\",\"1.0470\",\"1.0586\"],\"v_ng\":[\"0.00\",\"0.00\",\"8.58\"],\"v_unb\":[\"0.0\",\"0.7\",\"6.8\"],\"x\":[0,10,100],\"y\":[0,0,0]},\"selected\":{\"id\":\"1403\",\"type\":\"Selection\"},\"selection_policy\":{\"id\":\"1402\",\"type\":\"UnionRenderers\"}},\"id\":\"1356\",\"type\":\"ColumnDataSource\"},{\"attributes\":{\"callback\":null,\"data\":{\"deg_j_a\":[-62.00675684340187],\"deg_j_b\":[176.28095390842768],\"deg_j_c\":[59.709989821660166],\"deg_j_n\":[117.89346060132463],\"deg_k_a\":[-62.00675684340187],\"deg_k_b\":[176.28095390842768],\"deg_k_c\":[59.709989821660166],\"deg_k_n\":[117.89346060132463],\"i_j_a_m\":[607.1239708233032],\"i_j_b_m\":[137.293928035656],\"i_j_c_m\":[136.35208058185393],\"i_j_n_m\":[463.27249566425115],\"i_k_a_m\":[607.1239708233032],\"i_k_b_m\":[137.293928035656],\"i_k_c_m\":[136.35208058185393],\"i_k_n_m\":[463.27249566425115],\"line_id\":[\"B2-B3\"],\"x_s\":[[10,100]],\"y_s\":[[0,0]]},\"selected\":{\"id\":\"1401\",\"type\":\"Selection\"},\"selection_policy\":{\"id\":\"1400\",\"type\":\"UnionRenderers\"}},\"id\":\"1350\",\"type\":\"ColumnDataSource\"},{\"attributes\":{\"active_drag\":\"auto\",\"active_inspect\":\"auto\",\"active_multi\":null,\"active_scroll\":\"auto\",\"active_tap\":\"auto\",\"tools\":[{\"id\":\"1329\",\"type\":\"PanTool\"},{\"id\":\"1330\",\"type\":\"WheelZoomTool\"},{\"id\":\"1331\",\"type\":\"BoxZoomTool\"},{\"id\":\"1332\",\"type\":\"SaveTool\"},{\"id\":\"1333\",\"type\":\"ResetTool\"},{\"id\":\"1334\",\"type\":\"HelpTool\"},{\"id\":\"1362\",\"type\":\"HoverTool\"},{\"id\":\"1364\",\"type\":\"HoverTool\"},{\"id\":\"1366\",\"type\":\"HoverTool\"}]},\"id\":\"1335\",\"type\":\"Toolbar\"},{\"attributes\":{},\"id\":\"1394\",\"type\":\"BasicTickFormatter\"},{\"attributes\":{},\"id\":\"1329\",\"type\":\"PanTool\"},{\"attributes\":{\"fill_alpha\":{\"value\":0.5},\"fill_color\":{\"value\":\"navy\"},\"line_alpha\":{\"value\":0.5},\"line_color\":{\"value\":\"navy\"},\"size\":{\"units\":\"screen\",\"value\":15},\"x\":{\"field\":\"x\"},\"y\":{\"field\":\"y\"}},\"id\":\"1358\",\"type\":\"Circle\"},{\"attributes\":{\"fill_alpha\":{\"value\":0.1},\"fill_color\":{\"value\":\"#1f77b4\"},\"line_alpha\":{\"value\":0.1},\"line_color\":{\"value\":\"#1f77b4\"},\"size\":{\"units\":\"screen\",\"value\":15},\"x\":{\"field\":\"x\"},\"y\":{\"field\":\"y\"}},\"id\":\"1359\",\"type\":\"Circle\"},{\"attributes\":{},\"id\":\"1330\",\"type\":\"WheelZoomTool\"},{\"attributes\":{\"data_source\":{\"id\":\"1356\",\"type\":\"ColumnDataSource\"},\"glyph\":{\"id\":\"1358\",\"type\":\"Circle\"},\"hover_glyph\":null,\"muted_glyph\":null,\"nonselection_glyph\":{\"id\":\"1359\",\"type\":\"Circle\"},\"selection_glyph\":null,\"view\":{\"id\":\"1361\",\"type\":\"CDSView\"}},\"id\":\"1360\",\"type\":\"GlyphRenderer\"},{\"attributes\":{\"overlay\":{\"id\":\"1337\",\"type\":\"BoxAnnotation\"}},\"id\":\"1331\",\"type\":\"BoxZoomTool\"},{\"attributes\":{\"source\":{\"id\":\"1356\",\"type\":\"ColumnDataSource\"}},\"id\":\"1361\",\"type\":\"CDSView\"},{\"attributes\":{},\"id\":\"1332\",\"type\":\"SaveTool\"},{\"attributes\":{\"callback\":null},\"id\":\"1311\",\"type\":\"DataRange1d\"},{\"attributes\":{\"callback\":null,\"renderers\":[{\"id\":\"1348\",\"type\":\"GlyphRenderer\"}],\"tooltips\":\"\\n            <div>\\n            transformer id = @trafo_id  \\n            <table border=\\\"5\\\">\\n                <tr >\\n                    <td>I<sub>1a</sub> =  @i_1a_m &ang; @deg_1a </td>\\n                    <td>I<sub>2a</sub> =  @i_2a_m &ang; @deg_2a </td>\\n                </tr>\\n                <tr>\\n                    <td >I<sub>1b</sub> =  @i_1b_m &ang; @deg_1b </td>\\n                    <td >I<sub>2b</sub> =  @i_2b_m &ang; @deg_2b </td>\\n                </tr>\\n                <tr>\\n                    <td >I<sub>1c</sub> =  @i_1c_m &ang; @deg_1c </td>\\n                    <td >I<sub>2c</sub> =  @i_2c_m &ang; @deg_2c </td>\\n                </tr>\\n                <tr>\\n                    <td >I<sub>1n</sub> =  @i_1n_m &ang; @deg_1n </td>\\n                    <td >I<sub>2n</sub> =  @i_2n_m &ang; @deg_2n </td>\\n                </tr>\\n            </table>            \\n            </div>\\n            \"},\"id\":\"1362\",\"type\":\"HoverTool\"},{\"attributes\":{},\"id\":\"1333\",\"type\":\"ResetTool\"},{\"attributes\":{\"data_source\":{\"id\":\"1344\",\"type\":\"ColumnDataSource\"},\"glyph\":{\"id\":\"1346\",\"type\":\"MultiLine\"},\"hover_glyph\":null,\"muted_glyph\":null,\"nonselection_glyph\":{\"id\":\"1347\",\"type\":\"MultiLine\"},\"selection_glyph\":null,\"view\":{\"id\":\"1349\",\"type\":\"CDSView\"}},\"id\":\"1348\",\"type\":\"GlyphRenderer\"},{\"attributes\":{\"callback\":null,\"renderers\":[{\"id\":\"1354\",\"type\":\"GlyphRenderer\"}],\"tooltips\":\"\\n            <div>\\n            line id = @line_id \\n            <table border=\\\"5\\\">\\n                <tr >\\n                    <td>I<sub>ja</sub> =  @i_j_a_m &ang; @deg_j_a </td>\\n                    <td>I<sub>ka</sub> =  @i_k_a_m &ang; @deg_k_a </td>\\n                </tr>\\n                <tr>\\n                    <td >I<sub>jb</sub> =  @i_j_b_m &ang; @deg_j_b </td>\\n                    <td >I<sub>kb</sub> =  @i_k_b_m &ang; @deg_k_b </td>\\n                </tr>\\n                <tr>\\n                    <td >I<sub>jc</sub> =  @i_j_c_m &ang; @deg_j_c </td>\\n                    <td >I<sub>kc</sub> =  @i_k_c_m &ang; @deg_k_c </td>\\n                </tr>\\n                <tr>\\n                    <td >I<sub>jn</sub> =  @i_j_n_m &ang; @deg_j_n </td>\\n                    <td >I<sub>kn</sub> =  @i_k_n_m &ang; @deg_k_n </td>\\n                </tr>\\n            </table>            \\n            </div>\\n            \"},\"id\":\"1364\",\"type\":\"HoverTool\"},{\"attributes\":{},\"id\":\"1334\",\"type\":\"HelpTool\"},{\"attributes\":{\"callback\":null,\"renderers\":[{\"id\":\"1360\",\"type\":\"GlyphRenderer\"}],\"tooltips\":\"\\n            <div>\\n            bus_id = @bus_id &nbsp &nbsp |  u<sub>avg</sub>= @u_avg_pu pu |  u<sub>unb</sub>= @v_unb %\\n            <table border=\\\"1\\\">\\n                <tr>\\n                <td>v<sub>an</sub> =  @v_an  &ang; @deg_an V </td> <td> S<sub>a</sub> = @p_a + j@q_a kVA</td>\\n                </tr>\\n                      <tr>\\n                      <td> </td> <td>v<sub>ab</sub>= @v_ab V</td>\\n                      </tr>\\n                <tr>\\n                <td>v<sub>bn</sub> = @v_bn &ang; @deg_bn V </td><td> S<sub>b</sub> = @p_b + j@q_b kVA</td>\\n                </tr>\\n                      <tr>\\n                      <td> </td><td>v<sub>bc</sub>= @v_bc V</td>\\n                      </tr>\\n                <tr>\\n                <td>v<sub>cn</sub>  = @v_cn &ang; @deg_cn V </td>  <td>S<sub>c</sub> = @p_c + j@q_c kVA </td>\\n                </tr> \\n                    <tr>\\n                     <td> </td> <td>v<sub>ca</sub>= @v_ca V</td>\\n                    </tr>\\n               <tr>\\n                <td>v<sub>ng</sub>    = @v_ng &ang; @deg_ng V</td>  <td>S<sub>abc</sub> = @p_abc + j@q_abc kVA </td>\\n              </tr>\\n            </table>\\n            </div>\\n            \"},\"id\":\"1366\",\"type\":\"HoverTool\"},{\"attributes\":{},\"id\":\"1396\",\"type\":\"BasicTickFormatter\"},{\"attributes\":{},\"id\":\"1398\",\"type\":\"UnionRenderers\"},{\"attributes\":{\"bottom_units\":\"screen\",\"fill_alpha\":{\"value\":0.5},\"fill_color\":{\"value\":\"lightgrey\"},\"left_units\":\"screen\",\"level\":\"overlay\",\"line_alpha\":{\"value\":1.0},\"line_color\":{\"value\":\"black\"},\"line_dash\":[4,4],\"line_width\":{\"value\":2},\"plot\":null,\"render_mode\":\"css\",\"right_units\":\"screen\",\"top_units\":\"screen\"},\"id\":\"1337\",\"type\":\"BoxAnnotation\"}],\"root_ids\":[\"1309\"]},\"title\":\"Bokeh Application\",\"version\":\"1.0.1\"}};\n",
+       "  var render_items = [{\"docid\":\"efbad906-ff2a-4f62-8ffa-1d4e65eb8287\",\"roots\":{\"1309\":\"2b3a079c-46b9-4256-82fa-1755545708f8\"}}];\n",
+       "  root.Bokeh.embed.embed_items_notebook(docs_json, render_items);\n",
+       "\n",
+       "  }\n",
+       "  if (root.Bokeh !== undefined) {\n",
+       "    embed_document(root);\n",
+       "  } else {\n",
+       "    var attempts = 0;\n",
+       "    var timer = setInterval(function(root) {\n",
+       "      if (root.Bokeh !== undefined) {\n",
+       "        embed_document(root);\n",
+       "        clearInterval(timer);\n",
+       "      }\n",
+       "      attempts++;\n",
+       "      if (attempts > 100) {\n",
+       "        console.log(\"Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing\");\n",
+       "        clearInterval(timer);\n",
+       "      }\n",
+       "    }, 10, root)\n",
+       "  }\n",
+       "})(window);"
+      ],
+      "application/vnd.bokehjs_exec.v0+json": ""
+     },
+     "metadata": {
+      "application/vnd.bokehjs_exec.v0+json": {
+       "id": "1309"
+      }
+     },
+     "output_type": "display_data"
+    },
+    {
+     "data": {
+      "text/html": [
+       "<div style=\"display: table;\"><div style=\"display: table-row;\"><div style=\"display: table-cell;\"><b title=\"bokeh.plotting.figure.Figure\">Figure</b>(</div><div style=\"display: table-cell;\">id&nbsp;=&nbsp;'1309', <span id=\"1477\" style=\"cursor: pointer;\">&hellip;)</span></div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">above&nbsp;=&nbsp;[],</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">aspect_scale&nbsp;=&nbsp;1,</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">background_fill_alpha&nbsp;=&nbsp;{'value': 1.0},</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">background_fill_color&nbsp;=&nbsp;{'value': '#ffffff'},</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">below&nbsp;=&nbsp;[LinearAxis(id='1319', ...)],</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">border_fill_alpha&nbsp;=&nbsp;{'value': 1.0},</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">border_fill_color&nbsp;=&nbsp;{'value': '#ffffff'},</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">css_classes&nbsp;=&nbsp;[],</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">disabled&nbsp;=&nbsp;False,</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">extra_x_ranges&nbsp;=&nbsp;{},</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">extra_y_ranges&nbsp;=&nbsp;{},</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">h_symmetry&nbsp;=&nbsp;True,</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">height&nbsp;=&nbsp;None,</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">hidpi&nbsp;=&nbsp;True,</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">js_event_callbacks&nbsp;=&nbsp;{},</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">js_property_callbacks&nbsp;=&nbsp;{},</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">left&nbsp;=&nbsp;[LinearAxis(id='1324', ...)],</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">lod_factor&nbsp;=&nbsp;10,</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">lod_interval&nbsp;=&nbsp;300,</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">lod_threshold&nbsp;=&nbsp;2000,</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">lod_timeout&nbsp;=&nbsp;500,</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">match_aspect&nbsp;=&nbsp;False,</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">min_border&nbsp;=&nbsp;5,</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">min_border_bottom&nbsp;=&nbsp;None,</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">min_border_left&nbsp;=&nbsp;None,</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">min_border_right&nbsp;=&nbsp;None,</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">min_border_top&nbsp;=&nbsp;None,</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">name&nbsp;=&nbsp;None,</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">outline_line_alpha&nbsp;=&nbsp;{'value': 1.0},</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">outline_line_cap&nbsp;=&nbsp;'butt',</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">outline_line_color&nbsp;=&nbsp;{'value': '#e5e5e5'},</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">outline_line_dash&nbsp;=&nbsp;[],</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">outline_line_dash_offset&nbsp;=&nbsp;0,</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">outline_line_join&nbsp;=&nbsp;'bevel',</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">outline_line_width&nbsp;=&nbsp;{'value': 1},</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">output_backend&nbsp;=&nbsp;'canvas',</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">plot_height&nbsp;=&nbsp;400,</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">plot_width&nbsp;=&nbsp;600,</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">renderers&nbsp;=&nbsp;[LinearAxis(id='1319', ...), Grid(id='1323', ...), LinearAxis(id='1324', ...), Grid(id='1328', ...), BoxAnnotation(id='1337', ...), GlyphRenderer(id='1348', ...), GlyphRenderer(id='1354', ...), GlyphRenderer(id='1360', ...)],</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">right&nbsp;=&nbsp;[],</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">sizing_mode&nbsp;=&nbsp;'fixed',</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">subscribed_events&nbsp;=&nbsp;[],</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">tags&nbsp;=&nbsp;[],</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">title&nbsp;=&nbsp;Title(id='1308', ...),</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">title_location&nbsp;=&nbsp;'above',</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">toolbar&nbsp;=&nbsp;Toolbar(id='1335', ...),</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">toolbar_location&nbsp;=&nbsp;'right',</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">toolbar_sticky&nbsp;=&nbsp;True,</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">v_symmetry&nbsp;=&nbsp;False,</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">width&nbsp;=&nbsp;None,</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">x_range&nbsp;=&nbsp;DataRange1d(id='1311', ...),</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">x_scale&nbsp;=&nbsp;LinearScale(id='1315', ...),</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">y_range&nbsp;=&nbsp;DataRange1d(id='1313', ...),</div></div><div class=\"1476\" style=\"display: none;\"><div style=\"display: table-cell;\"></div><div style=\"display: table-cell;\">y_scale&nbsp;=&nbsp;LinearScale(id='1317', ...))</div></div></div>\n",
+       "<script>\n",
+       "(function() {\n",
+       "  var expanded = false;\n",
+       "  var ellipsis = document.getElementById(\"1477\");\n",
+       "  ellipsis.addEventListener(\"click\", function() {\n",
+       "    var rows = document.getElementsByClassName(\"1476\");\n",
+       "    for (var i = 0; i < rows.length; i++) {\n",
+       "      var el = rows[i];\n",
+       "      el.style.display = expanded ? \"none\" : \"table-row\";\n",
+       "    }\n",
+       "    ellipsis.innerHTML = expanded ? \"&hellip;)\" : \"&lsaquo;&lsaquo;&lsaquo;\";\n",
+       "    expanded = !expanded;\n",
+       "  });\n",
+       "})();\n",
+       "</script>\n"
+      ],
+      "text/plain": [
+       "Figure(id='1309', ...)"
+      ]
+     },
+     "execution_count": 15,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "from pydgrid.plot_bokeh import plot_results\n",
+    "plot_results(grid_1)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "anaconda-cloud": {},
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.6.6"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 1
+}

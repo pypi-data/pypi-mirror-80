@@ -1,0 +1,605 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>3 bus 4 wire system with transformer &mdash; pydgrid 0.4.5 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="907 bus 3 wire system with transformer" href="nb_n1_f1_load_shapes.html" />
+    <link rel="prev" title="Kersting book example 6.1" href="kersting_ex_6.1.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pydgrid
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide.html">User guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../definitions.html">Definitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../elements.html">Elements</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../jupyter_notebooks.html">Jupyter Notebooks</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="kersting_ex_6.1.html">Kersting book example 6.1</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3 bus 4 wire system with transformer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Data">Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Execute-power-flow">Execute power flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Graph-with-obtained-results">Graph with obtained results</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="nb_n1_f1_load_shapes.html">907 bus 3 wire system with transformer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cigre_europe_residential.html">CIGRE LV European System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mv_short_circuit.html">Short circuits in MV line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wind_farm.html">Wind farm</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pydgrid</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../jupyter_notebooks.html">Jupyter Notebooks</a> &raquo;</li>
+        
+      <li>3 bus 4 wire system with transformer</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/jupyter_notebooks/nb_3bus_4wire_trafo.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 5ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">pydgrid.pydgrid</span> <span class="kn">import</span> <span class="n">grid</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="3-bus-4-wire-system-with-transformer">
+<h1>3 bus 4 wire system with transformer<a class="headerlink" href="#3-bus-4-wire-system-with-transformer" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="Data">
+<h2>Data<a class="headerlink" href="#Data" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;buses&quot;</span><span class="p">:[</span>
+                 <span class="p">{</span><span class="s2">&quot;bus&quot;</span><span class="p">:</span> <span class="s2">&quot;B1&quot;</span><span class="p">,</span>  <span class="s2">&quot;pos_x&quot;</span><span class="p">:</span>   <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;pos_y&quot;</span><span class="p">:</span>   <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="s2">&quot;m&quot;</span><span class="p">,</span> <span class="s2">&quot;U_kV&quot;</span><span class="p">:</span><span class="mf">20.0</span><span class="p">},</span>
+                 <span class="p">{</span><span class="s2">&quot;bus&quot;</span><span class="p">:</span> <span class="s2">&quot;B2&quot;</span><span class="p">,</span>  <span class="s2">&quot;pos_x&quot;</span><span class="p">:</span>  <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;pos_y&quot;</span><span class="p">:</span>   <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="s2">&quot;m&quot;</span><span class="p">,</span> <span class="s2">&quot;U_kV&quot;</span><span class="p">:</span><span class="mf">0.4</span><span class="p">},</span>
+                 <span class="p">{</span><span class="s2">&quot;bus&quot;</span><span class="p">:</span> <span class="s2">&quot;B3&quot;</span><span class="p">,</span>  <span class="s2">&quot;pos_x&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="s2">&quot;pos_y&quot;</span><span class="p">:</span>  <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="s2">&quot;m&quot;</span><span class="p">,</span> <span class="s2">&quot;U_kV&quot;</span><span class="p">:</span><span class="mf">0.4</span><span class="p">}</span>
+                <span class="p">],</span>
+        <span class="s2">&quot;grid_formers&quot;</span><span class="p">:[</span>
+                        <span class="p">{</span><span class="s2">&quot;bus&quot;</span><span class="p">:</span> <span class="s2">&quot;B1&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;bus_nodes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="s2">&quot;deg&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">120</span><span class="p">,</span> <span class="o">-</span><span class="mi">240</span><span class="p">],</span>
+                        <span class="s2">&quot;kV&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">11.547</span><span class="p">,</span> <span class="mf">11.547</span><span class="p">,</span> <span class="mf">11.547</span><span class="p">]}</span>
+                       <span class="p">],</span>
+        <span class="s2">&quot;transformers&quot;</span><span class="p">:[</span>
+                        <span class="p">{</span><span class="s2">&quot;bus_j&quot;</span><span class="p">:</span> <span class="s2">&quot;B1&quot;</span><span class="p">,</span>  <span class="s2">&quot;bus_k&quot;</span><span class="p">:</span> <span class="s2">&quot;B2&quot;</span><span class="p">,</span>  <span class="s2">&quot;S_n_kVA&quot;</span><span class="p">:</span> <span class="mf">1000.0</span><span class="p">,</span> <span class="s2">&quot;U_j_kV&quot;</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span> <span class="s2">&quot;U_k_kV&quot;</span><span class="p">:</span><span class="mf">0.42</span><span class="p">,</span>
+                         <span class="s2">&quot;R_cc_pu&quot;</span><span class="p">:</span> <span class="mf">0.01</span><span class="p">,</span> <span class="s2">&quot;X_cc_pu&quot;</span><span class="p">:</span><span class="mf">0.04</span><span class="p">,</span> <span class="s2">&quot;connection&quot;</span><span class="p">:</span> <span class="s2">&quot;Dyn11&quot;</span><span class="p">,</span>   <span class="s2">&quot;conductors_j&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;conductors_k&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">},</span>
+                       <span class="p">],</span>
+        <span class="s2">&quot;lines&quot;</span><span class="p">:[</span>
+                 <span class="p">{</span><span class="s2">&quot;bus_j&quot;</span><span class="p">:</span> <span class="s2">&quot;B2&quot;</span><span class="p">,</span>  <span class="s2">&quot;bus_k&quot;</span><span class="p">:</span> <span class="s2">&quot;B3&quot;</span><span class="p">,</span>  <span class="s2">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;lv_cu_150&quot;</span><span class="p">,</span> <span class="s2">&quot;m&quot;</span><span class="p">:</span> <span class="mf">100.0</span><span class="p">},</span>
+                <span class="p">],</span>
+        <span class="s2">&quot;loads&quot;</span><span class="p">:[{</span><span class="s2">&quot;bus&quot;</span><span class="p">:</span> <span class="s2">&quot;B3&quot;</span> <span class="p">,</span> <span class="s2">&quot;kVA&quot;</span><span class="p">:</span> <span class="mf">300.0</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;pf&quot;</span><span class="p">:</span> <span class="mf">0.85</span><span class="p">,</span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;3P+N&quot;</span><span class="p">},</span>
+                 <span class="p">{</span><span class="s2">&quot;bus&quot;</span><span class="p">:</span> <span class="s2">&quot;B3&quot;</span> <span class="p">,</span> <span class="s2">&quot;kVA&quot;</span><span class="p">:</span> <span class="mf">300.0</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;pf&quot;</span><span class="p">:</span> <span class="mf">0.85</span><span class="p">,</span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;1P+N&quot;</span><span class="p">,</span> <span class="s1">&#39;bus_nodes&#39;</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">]}</span>
+                <span class="p">],</span>
+        <span class="s2">&quot;shunts&quot;</span><span class="p">:[</span>
+                 <span class="p">{</span><span class="s2">&quot;bus&quot;</span><span class="p">:</span> <span class="s2">&quot;B2&quot;</span> <span class="p">,</span> <span class="s2">&quot;R&quot;</span><span class="p">:</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s2">&quot;X&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;bus_nodes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">]}</span>
+                 <span class="p">],</span>
+        <span class="s2">&quot;line_codes&quot;</span><span class="p">:</span>
+            <span class="p">{</span><span class="s2">&quot;lv_cu_150&quot;</span><span class="p">:</span>  <span class="p">{</span><span class="s2">&quot;Rph&quot;</span><span class="p">:</span><span class="mf">0.167</span><span class="p">,</span><span class="s2">&quot;Xph&quot;</span><span class="p">:</span><span class="mf">0.08</span><span class="p">,</span> <span class="s2">&quot;Rn&quot;</span><span class="p">:</span><span class="mf">0.167</span><span class="p">,</span> <span class="s2">&quot;Xn&quot;</span><span class="p">:</span> <span class="mf">0.08</span><span class="p">}</span>
+            <span class="p">}</span>
+       <span class="p">}</span>
+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Execute-power-flow">
+<h2>Execute power flow<a class="headerlink" href="#Execute-power-flow" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">grid_1</span> <span class="o">=</span> <span class="n">grid</span><span class="p">()</span>
+<span class="n">grid_1</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>  <span class="c1"># Load data</span>
+
+<span class="n">grid_1</span><span class="o">.</span><span class="n">pf</span><span class="p">()</span>  <span class="c1"># solve power flow</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Graph-with-obtained-results">
+<h2>Graph with obtained results<a class="headerlink" href="#Graph-with-obtained-results" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">pydgrid.plot_bokeh</span> <span class="kn">import</span> <span class="n">plot_results</span>
+<span class="n">plot_results</span><span class="p">(</span><span class="n">grid_1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div class="bk-root" id="2b3a079c-46b9-4256-82fa-1755545708f8"></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div></div>
+<script type="text/javascript">
+var element = document.currentScript.previousSibling.previousSibling;
+(function(root) {
+  function embed_document(root) {
+
+  var docs_json = {"efbad906-ff2a-4f62-8ffa-1d4e65eb8287":{"roots":{"references":[{"attributes":{"below":[{"id":"1319","type":"LinearAxis"}],"left":[{"id":"1324","type":"LinearAxis"}],"plot_height":400,"renderers":[{"id":"1319","type":"LinearAxis"},{"id":"1323","type":"Grid"},{"id":"1324","type":"LinearAxis"},{"id":"1328","type":"Grid"},{"id":"1337","type":"BoxAnnotation"},{"id":"1348","type":"GlyphRenderer"},{"id":"1354","type":"GlyphRenderer"},{"id":"1360","type":"GlyphRenderer"}],"title":{"id":"1308","type":"Title"},"toolbar":{"id":"1335","type":"Toolbar"},"x_range":{"id":"1311","type":"DataRange1d"},"x_scale":{"id":"1315","type":"LinearScale"},"y_range":{"id":"1313","type":"DataRange1d"},"y_scale":{"id":"1317","type":"LinearScale"}},"id":"1309","subtype":"Figure","type":"Plot"},{"attributes":{"line_alpha":{"value":0.1},"line_color":{"value":"#1f77b4"},"line_width":{"value":5},"xs":{"field":"x_s"},"ys":{"field":"y_s"}},"id":"1347","type":"MultiLine"},{"attributes":{},"id":"1399","type":"Selection"},{"attributes":{"callback":null},"id":"1313","type":"DataRange1d"},{"attributes":{"formatter":{"id":"1394","type":"BasicTickFormatter"},"plot":{"id":"1309","subtype":"Figure","type":"Plot"},"ticker":{"id":"1320","type":"BasicTicker"}},"id":"1319","type":"LinearAxis"},{"attributes":{"source":{"id":"1344","type":"ColumnDataSource"}},"id":"1349","type":"CDSView"},{"attributes":{},"id":"1400","type":"UnionRenderers"},{"attributes":{},"id":"1320","type":"BasicTicker"},{"attributes":{"callback":null,"data":{"deg_1a":[-52.250872813833006],"deg_1b":[-152.1263922044762],"deg_1c":[108.29666238726756],"deg_1n":[68.19859051364818],"deg_2a":[117.99324315659831],"deg_2b":[-3.719046091572778],"deg_2c":[-120.2900101783399],"deg_2n":[-62.00675684340187],"i_1a_m":[8.356842140880225],"i_1b_m":[2.822369925544024],"i_1c_m":[8.349381080975823],"i_1n_m":[1.530555893832145e-13],"i_2a_m":[607.123970823296],"i_2b_m":[137.29392803565423],"i_2c_m":[136.3520805818519],"i_2n_m":[607.1239708233032],"trafo_id":["B1-B2"],"x_s":[[0,10]],"y_s":[[0,0]]},"selected":{"id":"1399","type":"Selection"},"selection_policy":{"id":"1398","type":"UnionRenderers"}},"id":"1344","type":"ColumnDataSource"},{"attributes":{},"id":"1401","type":"Selection"},{"attributes":{"plot":{"id":"1309","subtype":"Figure","type":"Plot"},"ticker":{"id":"1320","type":"BasicTicker"}},"id":"1323","type":"Grid"},{"attributes":{"line_alpha":{"value":0.5},"line_color":{"value":"red"},"line_width":{"value":5},"xs":{"field":"x_s"},"ys":{"field":"y_s"}},"id":"1352","type":"MultiLine"},{"attributes":{},"id":"1402","type":"UnionRenderers"},{"attributes":{"plot":null,"text":"Results"},"id":"1308","type":"Title"},{"attributes":{"formatter":{"id":"1396","type":"BasicTickFormatter"},"plot":{"id":"1309","subtype":"Figure","type":"Plot"},"ticker":{"id":"1325","type":"BasicTicker"}},"id":"1324","type":"LinearAxis"},{"attributes":{"line_alpha":{"value":0.1},"line_color":{"value":"#1f77b4"},"line_width":{"value":5},"xs":{"field":"x_s"},"ys":{"field":"y_s"}},"id":"1353","type":"MultiLine"},{"attributes":{},"id":"1403","type":"Selection"},{"attributes":{},"id":"1325","type":"BasicTicker"},{"attributes":{"data_source":{"id":"1350","type":"ColumnDataSource"},"glyph":{"id":"1352","type":"MultiLine"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"1353","type":"MultiLine"},"selection_glyph":null,"view":{"id":"1355","type":"CDSView"}},"id":"1354","type":"GlyphRenderer"},{"attributes":{},"id":"1315","type":"LinearScale"},{"attributes":{"dimension":1,"plot":{"id":"1309","subtype":"Figure","type":"Plot"},"ticker":{"id":"1325","type":"BasicTicker"}},"id":"1328","type":"Grid"},{"attributes":{"source":{"id":"1350","type":"ColumnDataSource"}},"id":"1355","type":"CDSView"},{"attributes":{},"id":"1317","type":"LinearScale"},{"attributes":{"line_alpha":{"value":0.5},"line_color":{"value":"green"},"line_width":{"value":5},"xs":{"field":"x_s"},"ys":{"field":"y_s"}},"id":"1346","type":"MultiLine"},{"attributes":{"callback":null,"data":{"bus_id":["B1","B2","B3"],"deg_an":["0.00","-30.73","-30.22"],"deg_bn":["-120.00","-150.16","-151.93"],"deg_cn":["120.00","89.83","91.50"],"deg_ng":["0.00","90.00","-36.51"],"p_a":["59.08","0.00","-113.33"],"p_abc":["181.08","0.00","-170.00"],"p_b":["27.60","-0.00","-28.33"],"p_c":["94.41","0.00","-28.33"],"q_a":["76.30","-0.00","-70.24"],"q_abc":["113.19","0.00","-105.36"],"q_b":["17.33","0.00","-17.56"],"q_c":["19.56","0.00","-17.56"],"s_color":["red","blue","green"],"s_radio":[4.621099042345234,1,4.47213589663108],"u_avg_pu":["1.000","1.043","1.020"],"v_ab":[19999.99067499782,415.4148390960395,404.0201141136689],"v_an":["11547.00","239.33","219.61"],"v_an_pu":["1.0000","1.0363","0.9510"],"v_bc":[19999.990674997825,418.7802103067081,414.4965454564143],"v_bn":["11547.00","241.75","242.79"],"v_bn_pu":["1.0000","1.0468","1.0513"],"v_ca":[19999.99067499783,417.84900812705354,405.5165803809524],"v_cn":["11547.00","241.80","244.47"],"v_cn_pu":["1.0000","1.0470","1.0586"],"v_ng":["0.00","0.00","8.58"],"v_unb":["0.0","0.7","6.8"],"x":[0,10,100],"y":[0,0,0]},"selected":{"id":"1403","type":"Selection"},"selection_policy":{"id":"1402","type":"UnionRenderers"}},"id":"1356","type":"ColumnDataSource"},{"attributes":{"callback":null,"data":{"deg_j_a":[-62.00675684340187],"deg_j_b":[176.28095390842768],"deg_j_c":[59.709989821660166],"deg_j_n":[117.89346060132463],"deg_k_a":[-62.00675684340187],"deg_k_b":[176.28095390842768],"deg_k_c":[59.709989821660166],"deg_k_n":[117.89346060132463],"i_j_a_m":[607.1239708233032],"i_j_b_m":[137.293928035656],"i_j_c_m":[136.35208058185393],"i_j_n_m":[463.27249566425115],"i_k_a_m":[607.1239708233032],"i_k_b_m":[137.293928035656],"i_k_c_m":[136.35208058185393],"i_k_n_m":[463.27249566425115],"line_id":["B2-B3"],"x_s":[[10,100]],"y_s":[[0,0]]},"selected":{"id":"1401","type":"Selection"},"selection_policy":{"id":"1400","type":"UnionRenderers"}},"id":"1350","type":"ColumnDataSource"},{"attributes":{"active_drag":"auto","active_inspect":"auto","active_multi":null,"active_scroll":"auto","active_tap":"auto","tools":[{"id":"1329","type":"PanTool"},{"id":"1330","type":"WheelZoomTool"},{"id":"1331","type":"BoxZoomTool"},{"id":"1332","type":"SaveTool"},{"id":"1333","type":"ResetTool"},{"id":"1334","type":"HelpTool"},{"id":"1362","type":"HoverTool"},{"id":"1364","type":"HoverTool"},{"id":"1366","type":"HoverTool"}]},"id":"1335","type":"Toolbar"},{"attributes":{},"id":"1394","type":"BasicTickFormatter"},{"attributes":{},"id":"1329","type":"PanTool"},{"attributes":{"fill_alpha":{"value":0.5},"fill_color":{"value":"navy"},"line_alpha":{"value":0.5},"line_color":{"value":"navy"},"size":{"units":"screen","value":15},"x":{"field":"x"},"y":{"field":"y"}},"id":"1358","type":"Circle"},{"attributes":{"fill_alpha":{"value":0.1},"fill_color":{"value":"#1f77b4"},"line_alpha":{"value":0.1},"line_color":{"value":"#1f77b4"},"size":{"units":"screen","value":15},"x":{"field":"x"},"y":{"field":"y"}},"id":"1359","type":"Circle"},{"attributes":{},"id":"1330","type":"WheelZoomTool"},{"attributes":{"data_source":{"id":"1356","type":"ColumnDataSource"},"glyph":{"id":"1358","type":"Circle"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"1359","type":"Circle"},"selection_glyph":null,"view":{"id":"1361","type":"CDSView"}},"id":"1360","type":"GlyphRenderer"},{"attributes":{"overlay":{"id":"1337","type":"BoxAnnotation"}},"id":"1331","type":"BoxZoomTool"},{"attributes":{"source":{"id":"1356","type":"ColumnDataSource"}},"id":"1361","type":"CDSView"},{"attributes":{},"id":"1332","type":"SaveTool"},{"attributes":{"callback":null},"id":"1311","type":"DataRange1d"},{"attributes":{"callback":null,"renderers":[{"id":"1348","type":"GlyphRenderer"}],"tooltips":"\n            <div>\n            transformer id = @trafo_id  \n            <table border=\"5\">\n                <tr >\n                    <td>I<sub>1a</sub> =  @i_1a_m &ang; @deg_1a </td>\n                    <td>I<sub>2a</sub> =  @i_2a_m &ang; @deg_2a </td>\n                </tr>\n                <tr>\n                    <td >I<sub>1b</sub> =  @i_1b_m &ang; @deg_1b </td>\n                    <td >I<sub>2b</sub> =  @i_2b_m &ang; @deg_2b </td>\n                </tr>\n                <tr>\n                    <td >I<sub>1c</sub> =  @i_1c_m &ang; @deg_1c </td>\n                    <td >I<sub>2c</sub> =  @i_2c_m &ang; @deg_2c </td>\n                </tr>\n                <tr>\n                    <td >I<sub>1n</sub> =  @i_1n_m &ang; @deg_1n </td>\n                    <td >I<sub>2n</sub> =  @i_2n_m &ang; @deg_2n </td>\n                </tr>\n            </table>            \n            </div>\n            "},"id":"1362","type":"HoverTool"},{"attributes":{},"id":"1333","type":"ResetTool"},{"attributes":{"data_source":{"id":"1344","type":"ColumnDataSource"},"glyph":{"id":"1346","type":"MultiLine"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"1347","type":"MultiLine"},"selection_glyph":null,"view":{"id":"1349","type":"CDSView"}},"id":"1348","type":"GlyphRenderer"},{"attributes":{"callback":null,"renderers":[{"id":"1354","type":"GlyphRenderer"}],"tooltips":"\n            <div>\n            line id = @line_id \n            <table border=\"5\">\n                <tr >\n                    <td>I<sub>ja</sub> =  @i_j_a_m &ang; @deg_j_a </td>\n                    <td>I<sub>ka</sub> =  @i_k_a_m &ang; @deg_k_a </td>\n                </tr>\n                <tr>\n                    <td >I<sub>jb</sub> =  @i_j_b_m &ang; @deg_j_b </td>\n                    <td >I<sub>kb</sub> =  @i_k_b_m &ang; @deg_k_b </td>\n                </tr>\n                <tr>\n                    <td >I<sub>jc</sub> =  @i_j_c_m &ang; @deg_j_c </td>\n                    <td >I<sub>kc</sub> =  @i_k_c_m &ang; @deg_k_c </td>\n                </tr>\n                <tr>\n                    <td >I<sub>jn</sub> =  @i_j_n_m &ang; @deg_j_n </td>\n                    <td >I<sub>kn</sub> =  @i_k_n_m &ang; @deg_k_n </td>\n                </tr>\n            </table>            \n            </div>\n            "},"id":"1364","type":"HoverTool"},{"attributes":{},"id":"1334","type":"HelpTool"},{"attributes":{"callback":null,"renderers":[{"id":"1360","type":"GlyphRenderer"}],"tooltips":"\n            <div>\n            bus_id = @bus_id &nbsp &nbsp |  u<sub>avg</sub>= @u_avg_pu pu |  u<sub>unb</sub>= @v_unb %\n            <table border=\"1\">\n                <tr>\n                <td>v<sub>an</sub> =  @v_an  &ang; @deg_an V </td> <td> S<sub>a</sub> = @p_a + j@q_a kVA</td>\n                </tr>\n                      <tr>\n                      <td> </td> <td>v<sub>ab</sub>= @v_ab V</td>\n                      </tr>\n                <tr>\n                <td>v<sub>bn</sub> = @v_bn &ang; @deg_bn V </td><td> S<sub>b</sub> = @p_b + j@q_b kVA</td>\n                </tr>\n                      <tr>\n                      <td> </td><td>v<sub>bc</sub>= @v_bc V</td>\n                      </tr>\n                <tr>\n                <td>v<sub>cn</sub>  = @v_cn &ang; @deg_cn V </td>  <td>S<sub>c</sub> = @p_c + j@q_c kVA </td>\n                </tr> \n                    <tr>\n                     <td> </td> <td>v<sub>ca</sub>= @v_ca V</td>\n                    </tr>\n               <tr>\n                <td>v<sub>ng</sub>    = @v_ng &ang; @deg_ng V</td>  <td>S<sub>abc</sub> = @p_abc + j@q_abc kVA </td>\n              </tr>\n            </table>\n            </div>\n            "},"id":"1366","type":"HoverTool"},{"attributes":{},"id":"1396","type":"BasicTickFormatter"},{"attributes":{},"id":"1398","type":"UnionRenderers"},{"attributes":{"bottom_units":"screen","fill_alpha":{"value":0.5},"fill_color":{"value":"lightgrey"},"left_units":"screen","level":"overlay","line_alpha":{"value":1.0},"line_color":{"value":"black"},"line_dash":[4,4],"line_width":{"value":2},"plot":null,"render_mode":"css","right_units":"screen","top_units":"screen"},"id":"1337","type":"BoxAnnotation"}],"root_ids":["1309"]},"title":"Bokeh Application","version":"1.0.1"}};
+  var render_items = [{"docid":"efbad906-ff2a-4f62-8ffa-1d4e65eb8287","roots":{"1309":"2b3a079c-46b9-4256-82fa-1755545708f8"}}];
+  root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
+
+  }
+  if (root.Bokeh !== undefined) {
+    embed_document(root);
+  } else {
+    var attempts = 0;
+    var timer = setInterval(function(root) {
+      if (root.Bokeh !== undefined) {
+        embed_document(root);
+        clearInterval(timer);
+      }
+      attempts++;
+      if (attempts > 100) {
+        console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+        clearInterval(timer);
+      }
+    }, 10, root)
+  }
+})(window);
+</script></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div style="display: table;"><div style="display: table-row;"><div style="display: table-cell;"><b title="bokeh.plotting.figure.Figure">Figure</b>(</div><div style="display: table-cell;">id&nbsp;=&nbsp;'1309', <span id="1477" style="cursor: pointer;">&hellip;)</span></div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">above&nbsp;=&nbsp;[],</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">aspect_scale&nbsp;=&nbsp;1,</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">background_fill_alpha&nbsp;=&nbsp;{'value': 1.0},</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">background_fill_color&nbsp;=&nbsp;{'value': '#ffffff'},</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">below&nbsp;=&nbsp;[LinearAxis(id='1319', ...)],</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">border_fill_alpha&nbsp;=&nbsp;{'value': 1.0},</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">border_fill_color&nbsp;=&nbsp;{'value': '#ffffff'},</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">css_classes&nbsp;=&nbsp;[],</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">disabled&nbsp;=&nbsp;False,</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">extra_x_ranges&nbsp;=&nbsp;{},</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">extra_y_ranges&nbsp;=&nbsp;{},</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">h_symmetry&nbsp;=&nbsp;True,</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">height&nbsp;=&nbsp;None,</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">hidpi&nbsp;=&nbsp;True,</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">js_event_callbacks&nbsp;=&nbsp;{},</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">js_property_callbacks&nbsp;=&nbsp;{},</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">left&nbsp;=&nbsp;[LinearAxis(id='1324', ...)],</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">lod_factor&nbsp;=&nbsp;10,</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">lod_interval&nbsp;=&nbsp;300,</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">lod_threshold&nbsp;=&nbsp;2000,</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">lod_timeout&nbsp;=&nbsp;500,</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">match_aspect&nbsp;=&nbsp;False,</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">min_border&nbsp;=&nbsp;5,</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">min_border_bottom&nbsp;=&nbsp;None,</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">min_border_left&nbsp;=&nbsp;None,</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">min_border_right&nbsp;=&nbsp;None,</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">min_border_top&nbsp;=&nbsp;None,</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">name&nbsp;=&nbsp;None,</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">outline_line_alpha&nbsp;=&nbsp;{'value': 1.0},</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">outline_line_cap&nbsp;=&nbsp;'butt',</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">outline_line_color&nbsp;=&nbsp;{'value': '#e5e5e5'},</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">outline_line_dash&nbsp;=&nbsp;[],</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">outline_line_dash_offset&nbsp;=&nbsp;0,</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">outline_line_join&nbsp;=&nbsp;'bevel',</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">outline_line_width&nbsp;=&nbsp;{'value': 1},</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">output_backend&nbsp;=&nbsp;'canvas',</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">plot_height&nbsp;=&nbsp;400,</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">plot_width&nbsp;=&nbsp;600,</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">renderers&nbsp;=&nbsp;[LinearAxis(id='1319', ...), Grid(id='1323', ...), LinearAxis(id='1324', ...), Grid(id='1328', ...), BoxAnnotation(id='1337', ...), GlyphRenderer(id='1348', ...), GlyphRenderer(id='1354', ...), GlyphRenderer(id='1360', ...)],</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">right&nbsp;=&nbsp;[],</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">sizing_mode&nbsp;=&nbsp;'fixed',</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">subscribed_events&nbsp;=&nbsp;[],</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">tags&nbsp;=&nbsp;[],</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">title&nbsp;=&nbsp;Title(id='1308', ...),</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">title_location&nbsp;=&nbsp;'above',</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">toolbar&nbsp;=&nbsp;Toolbar(id='1335', ...),</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">toolbar_location&nbsp;=&nbsp;'right',</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">toolbar_sticky&nbsp;=&nbsp;True,</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">v_symmetry&nbsp;=&nbsp;False,</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">width&nbsp;=&nbsp;None,</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">x_range&nbsp;=&nbsp;DataRange1d(id='1311', ...),</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">x_scale&nbsp;=&nbsp;LinearScale(id='1315', ...),</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">y_range&nbsp;=&nbsp;DataRange1d(id='1313', ...),</div></div><div class="1476" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">y_scale&nbsp;=&nbsp;LinearScale(id='1317', ...))</div></div></div>
+<script>
+(function() {
+  var expanded = false;
+  var ellipsis = document.getElementById("1477");
+  ellipsis.addEventListener("click", function() {
+    var rows = document.getElementsByClassName("1476");
+    for (var i = 0; i < rows.length; i++) {
+      var el = rows[i];
+      el.style.display = expanded ? "none" : "table-row";
+    }
+    ellipsis.innerHTML = expanded ? "&hellip;)" : "&lsaquo;&lsaquo;&lsaquo;";
+    expanded = !expanded;
+  });
+})();
+</script></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="nb_n1_f1_load_shapes.html" class="btn btn-neutral float-right" title="907 bus 3 wire system with transformer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="kersting_ex_6.1.html" class="btn btn-neutral float-left" title="Kersting book example 6.1" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Juan Manuel Mauricio
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
