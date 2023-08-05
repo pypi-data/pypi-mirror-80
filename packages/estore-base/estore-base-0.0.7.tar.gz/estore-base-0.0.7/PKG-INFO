@@ -1,0 +1,37 @@
+Metadata-Version: 2.1
+Name: estore-base
+Version: 0.0.7
+Summary: Event Store Base Classes
+Home-page: https://github.com/lostwire/estore-common
+Author: Jnxy
+Author-email: jnxy@lostwire.net
+License: UNKNOWN
+Description: ## Estore base classes
+        
+        THIS IS AN EARLY ALPHA
+        
+        This is a common dependency code for both, estore-client and estore-server.
+        
+        ## Installing
+        From PyPi
+        
+        ```bash
+        pip3 install estore-base
+        ```
+        
+        From GitHub
+        
+        ```bash
+        git clone git@github.com:lostwire/estore-base.git
+        cd estore-base
+        git install .
+        ```
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Framework :: AsyncIO
+Classifier: Environment :: Web Environment
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Database
+Description-Content-Type: text/markdown
