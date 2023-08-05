@@ -1,0 +1,39 @@
+Metadata-Version: 2.1
+Name: tortoise-gis
+Version: 0.1.1
+Summary: Geometrical and Geographical support for Tortoise ORM.
+Home-page: https://github.com/revensky/tortoise-gis
+License: MIT
+Keywords: Tortoise,GIS
+Author: Eduardo Rezende
+Author-email: eduardorbr7@gmail.com
+Requires-Python: >=3.8,<4.0
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: geojson (>=2.5.0,<3.0.0)
+Requires-Dist: pypika-gis (>=1.3.0,<2.0.0)
+Requires-Dist: shapely (>=1.7.1,<2.0.0)
+Requires-Dist: tortoise-orm (>=0.16.14,<0.17.0)
+Project-URL: Repository, https://github.com/revensky/tortoise-gis.git
+Description-Content-Type: text/markdown
+
+# Tortoise ORM GIS
+
+This package is intended to provide support for GIS Operations to Tortoise ORM.
+
+Currently it only supports PostGIS and **IS NOT** production ready.
+
+Roadmap:
+
+-   [] Support Geometry
+-   [] Support Geography
+-   [] Support SpatiaLite
+
+# License
+
+This project is licensed under MIT license.
+For more information, please refer to the `LICENSE` file of the repository.
+
