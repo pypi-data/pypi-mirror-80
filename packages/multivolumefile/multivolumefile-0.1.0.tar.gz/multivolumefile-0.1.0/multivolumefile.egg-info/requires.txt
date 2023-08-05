@@ -1,0 +1,17 @@
+
+[check]
+mypy==0.701
+mypy_extensions==0.4.1
+check-manifest
+flake8
+readme-renderer
+pygments
+isort>=5.0.3
+twine
+
+[test]
+pytest
+pytest-cov
+pyannotate
+coverage[toml]>=5.2
+coveralls>=2.1.1
