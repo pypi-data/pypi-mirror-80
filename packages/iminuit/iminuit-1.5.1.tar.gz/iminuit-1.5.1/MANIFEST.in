@@ -1,0 +1,10 @@
+recursive-include src/iminuit *.h *.cpp *.pyx *.pxi *.py
+recursive-include tutorial *.py *.ipynb *.pyx
+recursive-include extern/Minuit2 *
+recursive-exclude tutorial/.ipynb_checkpoints *
+include *.py
+include README.rst
+include LICENSE
+include minuit2_cxx.lst
+include CITATION
+include CONTRIBUTING.md
