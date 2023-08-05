@@ -1,0 +1,26 @@
+Metadata-Version: 2.1
+Name: avionix
+Version: 0.4.2
+Summary: A package for soldifying kubernetes structure and development by using objects and code rather than yaml
+Home-page: https://avionix.readthedocs.io/en/latest/index.html
+Maintainer: Zach Brookler
+Maintainer-email: zachb1996@yahoo.com
+License: UNKNOWN
+Download-URL: https://github.com/zbrookle/avionix/archive/master.zip
+Project-URL: Source Code, https://github.com/zbrookle/avionix
+Project-URL: Documentation, https://github.com/zbrookle/avionix
+Project-URL: Bug Tracker, https://github.com/zbrookle/avionix/issues
+Description: Coming soon...
+Keywords: kubernetes,helm,yaml,docker,infrastructure,devops
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Typing :: Typed
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6.1
+Description-Content-Type: text/markdown
