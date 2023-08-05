@@ -1,0 +1,14 @@
+boto3
+google-cloud-storage
+Pillow
+python-decouple
+python-dateutil
+treq==20.3.0
+
+[tests]
+pytest
+pytest-twisted
+pytest-pep8
+pytest-cov
+pytest-mock
+attrs>=19.2.0
