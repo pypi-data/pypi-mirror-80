@@ -1,0 +1,3 @@
+[console_scripts]
+dhparser=DHParser.scripts.dhparser:main
+
