@@ -1,0 +1,48 @@
+Metadata-Version: 1.2
+Name: simsalabim
+Version: 0.1.0
+Summary: Simple Interface for Mass-Spectrometry Applications
+Home-page: https://github.com/MatthewThe/simsalabim
+Author: Matthew The, KTH
+Author-email: matthewt@kth.se
+Maintainer: Matthew The, KTH
+Maintainer-email: matthewt@kth.se
+License: Apache
+Description: SIMSALABIM: Simple Interface for MS Applications
+        ================================================
+        
+        Requirements
+        ------------
+        
+        Python 2 or 3 installation
+        
+        Packages needed: None
+        
+        
+        Installation via ``pip``
+        ************************
+        
+        ::
+        
+          pip install simsalabim
+        
+        Installation from source
+        ************************
+        
+        ::
+        
+          git clone https://github.com/MatthewThe/simsalabim.git
+          cd simsalabim
+          pip install .
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Science/Research
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6

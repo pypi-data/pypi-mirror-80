@@ -1,0 +1,17 @@
+LICENSE
+MANIFEST.in
+README.rst
+setup.cfg
+setup.py
+simsalabim/__init__.py
+simsalabim/add_quant_info.py
+simsalabim/digest.py
+simsalabim/dinosaur_adapter.py
+simsalabim/helpers.py
+simsalabim/simsalabim.py
+simsalabim.egg-info/PKG-INFO
+simsalabim.egg-info/SOURCES.txt
+simsalabim.egg-info/dependency_links.txt
+simsalabim.egg-info/entry_points.txt
+simsalabim.egg-info/requires.txt
+simsalabim.egg-info/top_level.txt
