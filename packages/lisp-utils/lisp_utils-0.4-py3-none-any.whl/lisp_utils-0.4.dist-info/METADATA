@@ -1,0 +1,29 @@
+Metadata-Version: 2.1
+Name: lisp-utils
+Version: 0.4
+Summary: This package contains some Linkspirit classes such as Database, Configuration.
+Home-page: https://gitlab.linkspirit.it/linkspirit/python-lisp-utils.git
+Author: Linkspirit Team
+Author-email: tecnici@linkspirit.it
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3
+Description-Content-Type: text/markdown
+Requires-Dist: psycopg2-binary
+
+# Linkspirit Package
+
+This package contains some useful functions and classes that can be used in Linkspirit's scripts.
+
+## Database
+This class can be used to comunicate with SQL database and running queries.
+
+## Configuration
+This class can be used to parse and utilize configuration files (in json format).
+
+
+
+
+
