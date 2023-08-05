@@ -1,0 +1,75 @@
+Metadata-Version: 2.1
+Name: oarepo-rdm-records
+Version: 1.0.0
+Summary: OARepo rdm records data model
+Home-page: https://github.com/oarepo/oarepo-dc
+Author: Alzbeta Pokorna
+Author-email: alzbeta.pokorna@cesnet.cz
+License: MIT
+Description: OARepo rdm records model
+        ====================
+        [![image][]][1]
+        [![image][2]][3]
+        [![image][4]][5]
+        [![image][6]][7]
+        
+        Instalation
+        ----------
+        ```bash
+            pip install oarepo-rdm-records
+        ```
+        Usage
+        -----
+        The library provides modified Invenio rdm records data model for OARepo. 
+        
+        Modified fields of data model
+        -----------------------------
+        ##### titles
+        - fully required oarepo multilingual data type
+        ##### descriptions
+        - fully optional oarepo multilingual data type
+        ##### subjects
+        - ```subject``` is required oarepo multilingual data type
+        ##### locations
+        - ```description``` is optional oarepo multilingual data type
+        ##### licenses
+        - ```license``` is required oarepo multilingual data type
+        
+         [image]: https://img.shields.io/travis/oarepo-rdm-records/oarepo-rdm-records.svg
+          [1]: https://travis-ci.org/oarepo-rdm-records/oarepo-rdm-records
+          [2]: https://img.shields.io/coveralls/oarepo-rdm-records/oarepo-rdm-records.svg
+          [3]: https://coveralls.io/r/oarepo-rdm-records/oarepo-rdm-records
+          [4]: https://img.shields.io/github/license/oarepo-rdm-records/oarepo-rdm-records.svg
+          [5]: https://github.com/oarepo-rdm-records/oarepo-rdm-records/blob/master/LICENSE
+          [6]: https://img.shields.io/pypi/v/oarepo-rdm-records.svg
+          [7]: https://pypi.org/pypi/oarepo-rdm-records
+        
+        <!--
+        Copyright (C) 2020 CESNET z.s.p.o.
+        
+        oarepo-rdm-records is free software; you can redistribute it and/or modify it
+        under the terms of the MIT License; see LICENSE file for more details.
+        -->
+        
+        # Changes
+        
+        ## Version 2.0.0 (released 2020-08-25)
+        
+        - Initial public release.
+        
+Platform: any
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Development Status :: 4 - Beta
+Description-Content-Type: text/markdown
+Provides-Extra: tests
+Provides-Extra: tests-es7
