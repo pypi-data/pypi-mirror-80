@@ -1,0 +1,16 @@
+README.md
+setup.py
+BigBuyPy/__init__.py
+BigBuyPy/_catalog_api_methods.py
+BigBuyPy/_module_api_methods.py
+BigBuyPy/_order_api_methods.py
+BigBuyPy/_shipping_api_methods.py
+BigBuyPy/_tracking_api_methods.py
+BigBuyPy/_user_api_methods.py
+BigBuyPy/utils.py
+BigBuyPy.egg-info/PKG-INFO
+BigBuyPy.egg-info/SOURCES.txt
+BigBuyPy.egg-info/dependency_links.txt
+BigBuyPy.egg-info/top_level.txt
+tests/__init__.py
+tests/test_catalog.py
