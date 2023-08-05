@@ -1,0 +1,17 @@
+README.rst
+setup.cfg
+setup.py
+inclua/Note.py
+inclua/__init__.py
+inclua/__main__.py
+inclua/lua.py
+inclua/luajit.py
+inclua/metatype.py
+inclua/namespace.py
+inclua/notice.py
+inclua.egg-info/PKG-INFO
+inclua.egg-info/SOURCES.txt
+inclua.egg-info/dependency_links.txt
+inclua.egg-info/entry_points.txt
+inclua.egg-info/requires.txt
+inclua.egg-info/top_level.txt
