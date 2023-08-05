@@ -1,0 +1,4 @@
+include *.txt
+include *.rst
+include bleson/VERSION
+recursive-include docs *.txt

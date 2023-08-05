@@ -1,0 +1,64 @@
+Results of doctest builder run on 2017-12-08 14:19:57
+=====================================================
+
+Document: api_extra_roles
+-------------------------
+1 items passed all tests:
+   1 tests in EDDYSTONE_1
+1 tests in 1 items.
+1 passed and 0 failed.
+Test passed.
+
+Document: examples
+------------------
+**********************************************************************
+File "examples.rst", line 19, in Observer
+Failed example:
+    from time import sleep
+    from bleson import get_provider, Observer
+
+    def on_advertisement(advertisement):
+       print(advertisement)
+
+    adapter = get_provider().get_adapter()
+
+    observer = Observer(adapter)
+    observer.on_advertising_data = on_advertisement
+
+    observer.start()
+    sleep(2)
+    observer.stop()
+Expected:
+    Advertisement(...)
+Got nothing
+2 items passed all tests:
+   1 tests in Advertiser
+   1 tests in Beacon
+**********************************************************************
+1 items had failures:
+   1 of   1 in Observer
+3 tests in 3 items.
+2 passed and 1 failed.
+***Test Failed*** 1 failures.
+
+Document: api_datatypes
+-----------------------
+8 items passed all tests:
+   1 tests in ADV_REPORT_1
+   1 tests in BDADDRESS_BYTEARRAY
+   1 tests in BDADDRESS_LIST
+   1 tests in DEVICE
+   1 tests in UUID128
+   1 tests in UUID128_INT
+   1 tests in UUID16_INT
+   1 tests in UUID16_LIST
+8 tests in 8 items.
+8 passed and 0 failed.
+Test passed.
+
+Doctest summary
+===============
+   12 tests
+    1 failure in tests
+    0 failures in setup code
+    0 failures in cleanup code
