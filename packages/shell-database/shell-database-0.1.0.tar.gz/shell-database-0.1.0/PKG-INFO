@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: shell-database
+Version: 0.1.0
+Summary: A key value store for the shell
+Author: José Coelho
+Author-email: camilocoelho93@gmail.com
+Requires-Python: >=3.6,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: click (>=7.1.2,<8.0.0)
+Requires-Dist: coveralls (>=2.1.2,<3.0.0)
+Requires-Dist: cryptography (>=3.1,<4.0)
+Requires-Dist: flake8 (>=3.8.3,<4.0.0)
+Requires-Dist: fuzzywuzzy (>=0.18.0,<0.19.0)
+Requires-Dist: sqlitedict (>=1.7.0,<2.0.0)
