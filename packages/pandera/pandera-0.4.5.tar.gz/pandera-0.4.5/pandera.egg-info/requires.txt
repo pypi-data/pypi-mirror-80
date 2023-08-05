@@ -1,0 +1,13 @@
+numpy>=1.9.0
+pandas>=0.23.0
+wrapt
+pyyaml>=5.1
+
+[:python_version == "3.5"]
+autopep8
+
+[:python_version > "3.5"]
+black
+
+[:python_version >= "3.5"]
+scipy
