@@ -1,0 +1,15 @@
+MANIFEST.in
+README.md
+setup.cfg
+setup.py
+src/ofxstatement/__init__.py
+src/ofxstatement/plugins/__init__.py
+src/ofxstatement/plugins/transferwise.py
+src/ofxstatement_transferwise.egg-info/PKG-INFO
+src/ofxstatement_transferwise.egg-info/SOURCES.txt
+src/ofxstatement_transferwise.egg-info/dependency_links.txt
+src/ofxstatement_transferwise.egg-info/entry_points.txt
+src/ofxstatement_transferwise.egg-info/namespace_packages.txt
+src/ofxstatement_transferwise.egg-info/requires.txt
+src/ofxstatement_transferwise.egg-info/top_level.txt
+src/ofxstatement_transferwise.egg-info/zip-safe
