@@ -1,0 +1,4 @@
+[console_scripts]
+evg = pyknp_eventgraph.cli:build_eventgraph
+evgviz = pyknp_eventgraph.cli:visualize_eventgraph
+
