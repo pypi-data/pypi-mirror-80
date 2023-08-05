@@ -1,0 +1,13 @@
+MANIFEST.in
+README.md
+setup.py
+shaurya/__init__.py
+shaurya/face.py
+shaurya/main.py
+shaurya/tests.py
+shaurya/virus.py
+shaurya.egg-info/PKG-INFO
+shaurya.egg-info/SOURCES.txt
+shaurya.egg-info/dependency_links.txt
+shaurya.egg-info/requires.txt
+shaurya.egg-info/top_level.txt
