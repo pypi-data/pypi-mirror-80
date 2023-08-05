@@ -1,0 +1,23 @@
+Metadata-Version: 1.2
+Name: pygments-style-spacemacs
+Version: 1.0.0.1
+Summary: Pygments version of the spacemacs theme, Based on nashamri/spacemacs-theme.
+Home-page: UNKNOWN
+Author: Nasser Alshammari
+Author-email: designernasser@gmail.com
+Maintainer: GinShio
+Maintainer-email: ginshio78@gmail.com
+License: GPLv3
+Download-URL: https://github.com/GinShio/pygments
+Description: UNKNOWN
+Keywords: pygments,style,spacemacs
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Plugins
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
