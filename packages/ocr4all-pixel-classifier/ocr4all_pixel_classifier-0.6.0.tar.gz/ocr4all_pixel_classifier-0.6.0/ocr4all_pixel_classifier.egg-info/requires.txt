@@ -1,0 +1,17 @@
+Pillow
+numpy
+scipy
+scikit-image
+tqdm
+opencv-python-headless
+dataclasses
+efficientnet
+lxml
+ocr4all-pylib>=0.2.0
+tensorflow>=2.0.0
+
+[tf_cpu]
+tensorflow<2.1.0,>=2.0.0
+
+[tf_gpu]
+tensorflow-gpu<2.1.0,>=2.0.0
