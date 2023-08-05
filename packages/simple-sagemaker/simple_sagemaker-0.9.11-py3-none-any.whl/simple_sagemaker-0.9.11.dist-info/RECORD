@@ -1,0 +1,16 @@
+simple_sagemaker/__init__.py,sha256=690fZpLyU4EWPlXDYSFlhMlzX1rkznhjW4DDmxcdDkU,19
+simple_sagemaker/cli.py,sha256=K0QCSLKKqMr1KWhdA46rg9qUfCMd1QjgbgRLYvhx1cA,12866
+simple_sagemaker/constants.py,sha256=2gxqGv7CCKO3q5lfjYJhSx1VuStcBw1njm8xlJPN_YY,441
+simple_sagemaker/ecr_sync.py,sha256=2KY7RWTxCQYEHLgSoBswhA6XFt0ZG2ISuPj88H6h31I,4978
+simple_sagemaker/iam_utils.py,sha256=KPtKyfdXh7F1aOa_iJPp8Kaiv2kj1p-ost7zIHn-HM8,3781
+simple_sagemaker/s3_sync.py,sha256=8OY9JAqq8mgI05lIGg6Qr_ibiSEbprDxxGuym_UzYRc,2776
+simple_sagemaker/sm_project.py,sha256=PXkUUzUEQgheKSonWVi64UWrTW4ggXHmOWJDbNWf7_o,8675
+simple_sagemaker/sm_task.py,sha256=TNz-KZS5uo2vaMnK60bWXD-UeImNDBcRe1OrMBLU12M,13170
+simple_sagemaker/task_toolkit/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+simple_sagemaker/task_toolkit/algo_lib.py,sha256=1LuuotFw0CTh5gdlrJCOk1xzQW-dIPYGcVjF83V-M58,5227
+simple_sagemaker-0.9.11.dist-info/LICENSE,sha256=QwcOLU5TJoTeUhuIXzhdCEEDDvorGiC6-3YTOl4TecE,11356
+simple_sagemaker-0.9.11.dist-info/METADATA,sha256=AavlpaPwru5UHqvJmrrtCYBFFBxAM8B5EQ0b8S65SL0,20384
+simple_sagemaker-0.9.11.dist-info/WHEEL,sha256=EVRjI69F5qVjm_YgqcTXPnTAv3BfSUr0WVAHuSP3Xoo,92
+simple_sagemaker-0.9.11.dist-info/entry_points.txt,sha256=4OreSDkC5juAG6vBNFQO0VGo39vE6hWgthmVYvvX-wA,51
+simple_sagemaker-0.9.11.dist-info/top_level.txt,sha256=N5xwqlWzCligMvSjRKcCO-BFqJqQM3ZqJYrYqS9TnJ8,17
+simple_sagemaker-0.9.11.dist-info/RECORD,,
