@@ -1,0 +1,7 @@
+asttokens >= 1.1.13, == 1.*
+colorama
+colorlog
+static-typing ~= 0.2.7
+typed-ast ~= 1.4
+typed-astunparse >= 2.1.4, == 2.*
+version-query >= 1.0.5, == 1.*
