@@ -1,0 +1,3 @@
+[console_scripts]
+aido-update-reqs = aido_utils.update_req_versions:update_reqs_versions_main
+
