@@ -1,0 +1,23 @@
+Metadata-Version: 1.1
+Name: django-tcb-blog
+Version: 0.2
+Summary: A Django backend based on DRF for blogging
+Home-page: https://www.thecodeblogs.com/
+Author: Brent Jameson
+Author-email: admin@thecodeblogs.com
+License: MIT
+Description: UNKNOWN
+Platform: UNKNOWN
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
