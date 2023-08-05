@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: maxar-skyway
+Version: 0.0.4
+Summary: Python API for making OSM queries
+Home-page: https://github.com/maxar-analytics/skyway
+Author: Jamison Polackwich
+Author-email: jamie.polackwich@digitalglobe.com
+License: MIT
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Requires-Python: >3.7
+Requires-Dist: numpy
+Requires-Dist: python-dateutil
+Requires-Dist: requests
+Requires-Dist: boto3
+Requires-Dist: botocore
+Requires-Dist: s3fs
+Requires-Dist: networkx
+Requires-Dist: rasterio
+Requires-Dist: shapely
+Requires-Dist: pyproj
+Requires-Dist: beautifulsoup4
+Requires-Dist: tiletanic
+
+UNKNOWN
+
+
