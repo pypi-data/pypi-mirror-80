@@ -1,0 +1,12 @@
+---
+
+classes:
+  CIEColor:
+    shared_ptr: true
+    methods:
+      CIEColor:
+      GetX:
+      GetY:
+      GetZ:
+      GetYx:
+      GetYy:
