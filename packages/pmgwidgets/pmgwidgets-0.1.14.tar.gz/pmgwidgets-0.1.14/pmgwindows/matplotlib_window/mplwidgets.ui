@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MatplotlibMainWindow</class>
+ <widget class="QMainWindow" name="MatplotlibMainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="central_widget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="PMMatplotlibQt5Widget" name="matplotlib_widget" native="true"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <property name="movable">
+    <bool>false</bool>
+   </property>
+   <property name="floatable">
+    <bool>false</bool>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QDockWidget" name="dockWidget">
+   <property name="features">
+    <set>QDockWidget::DockWidgetFloatable|QDockWidget::DockWidgetMovable</set>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_2">
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <widget class="SettingsPanel" name="mpl_settings_panel" native="true"/>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <zorder>dockWidget</zorder>
+  <zorder>settings_dockwidget</zorder>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>PMMatplotlibQt5Widget</class>
+   <extends>QWidget</extends>
+   <header location="global">pmgwidgets</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>SettingsPanel</class>
+   <extends>QWidget</extends>
+   <header location="global">pmgwidgets</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
