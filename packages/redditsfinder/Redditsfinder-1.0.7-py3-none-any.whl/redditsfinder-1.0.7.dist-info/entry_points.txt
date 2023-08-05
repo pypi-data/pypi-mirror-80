@@ -1,0 +1,4 @@
+[console_scripts]
+redditsfinder=src:main
+redditsfinder_test=redditsfinder:main
+
