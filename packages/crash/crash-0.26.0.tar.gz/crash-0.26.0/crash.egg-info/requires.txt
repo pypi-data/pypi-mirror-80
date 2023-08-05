@@ -1,0 +1,17 @@
+colorama
+Pygments>=2.4
+crate>=0.22.0
+appdirs<2.0,>=1.2
+prompt-toolkit<3.0,>=2.0
+
+[argcompletion]
+argcomplete
+
+[devel]
+coverage
+flake8
+isort
+
+[test]
+crate[test]
+zc.customdoctests
