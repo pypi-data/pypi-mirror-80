@@ -1,0 +1,7 @@
+cppimport
+numpy
+pybind11
+
+[testing]
+pytest
+pytest-cov

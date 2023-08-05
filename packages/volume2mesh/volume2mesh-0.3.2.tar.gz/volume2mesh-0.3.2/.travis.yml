@@ -1,0 +1,57 @@
+# Travis configuration file using the build matrix feature
+# Read more under http://docs.travis-ci.com/user/build-configuration/
+# THIS SCRIPT IS SUPPOSED TO BE AN EXAMPLE. MODIFY IT ACCORDING TO YOUR NEEDS!
+
+language: python
+dist: bionic
+virtualenv:
+  system_site_packages: false
+matrix:
+  fast_finish: true
+  include:
+    - python: 3.6
+      env: DISTRIB="ubuntu" COVERAGE="false"
+    #- env: DISTRIB="conda" PYTHON_VERSION="3.5" COVERAGE="false" ## Numpy no longer supports 3.5
+    - env: DISTRIB="conda" PYTHON_VERSION="3.6" COVERAGE="false"
+    - env: DISTRIB="conda" PYTHON_VERSION="3.7" COVERAGE="false"
+    - env: DISTRIB="conda" PYTHON_VERSION="3.8" COVERAGE="false"
+before_install:
+  - sudo add-apt-repository universe
+  - sudo apt-get update
+  - sudo apt-get install -y libopenvdb-dev build-essential libboost-all-dev libtbb-dev
+  - git clone https://www.graphics.rwth-aachen.de:9000/OpenMesh/OpenMesh.git || echo "hi"
+  - cd OpenMesh
+  - git pull 
+  - mkdir -p release
+  - cd release && cmake -DCMAKE_BUILD_TYPE=Release .. && cmake --build . -- -j4
+  - sudo make install
+  - cd ${TRAVIS_BUILD_DIR}
+  - source tests/travis_install.sh
+  - python -m pip install pytest
+  - git clone https://github.com/pybind/pybind11.git
+  - cd pybind11
+  - mkdir -p release
+  - cd release && cmake -DCMAKE_BUILD_TYPE=Release -DPYTHON_EXECUTABLE=`which python` .. && cmake --build . -- -j4
+  - sudo make install
+  - cd ${TRAVIS_BUILD_DIR}
+
+install:
+  - cd ${TRAVIS_BUILD_DIR}
+  - export LD_LOAD_PATH=/usr/local/lib/:$LD_LOAD_PATH
+  - export LD_LIBRARY_PATH=/usr/local/lib/:$LD_LIBRARY_PATH
+before_script:
+  - git config --global user.email "you@example.com"
+  - git config --global user.name "Your Name"
+script:
+  - python setup.py develop
+  - tox
+  - python setup.py test
+after_success:
+  - if [[ "$COVERAGE" == "true" ]]; then coveralls || echo "failed"; fi
+after_script:
+  - travis-cleanup
+cache:
+  pip: true
+  directories:
+    - $HOME/miniconda
+    - OpenMesh
