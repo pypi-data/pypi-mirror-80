@@ -1,0 +1,4 @@
+pillow<8,>=6.2.2
+requests<3,>=2.24.0
+websocket<0.3,>=0.2.1
+websocket-client<0.58,>=0.57.0

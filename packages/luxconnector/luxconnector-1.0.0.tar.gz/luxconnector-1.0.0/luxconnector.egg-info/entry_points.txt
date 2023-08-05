@@ -1,0 +1,3 @@
+[console_scripts]
+luxconnector = luxconnector.cli:__init__
+
