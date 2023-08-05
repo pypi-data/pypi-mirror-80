@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: singa-easy
+Version: 0.4.4
+Summary: The SINGA-EASY
+Home-page: https://github.com/nusdbsystem/singa-easy.git
+Author: Naili
+Author-email: xingnaili14@gmail.com
+License: Apache
+Platform: UNKNOWN
+Requires-Dist: torch (==1.0.1)
+Requires-Dist: torchvision (==0.2.2)
+Requires-Dist: matplotlib (==3.2.1)
+Requires-Dist: lime (==0.2.0.0)
+Requires-Dist: tqdm (==4.45.0)
+Requires-Dist: numpy (==1.14.5)
+
+UNKNOWN
+
+
