@@ -1,0 +1,28 @@
+Liu et al. 2020 in prep. (CO excitation & gas modeling paper)
+
+Model prediction of CO SLED at z = 4 and with a powerlaw-tail threshold density 10^5 cm^-3. 
+
+Free parameters are:
+  mean H2 gas density (lognormal distribution) lg_nH2_mean / cm^-3 : 2.0 to 5.0 in step of 0.25.
+  and gas kinetic temperature T_kin / K : [25, 50, 100]. 
+
+CO or [CI] line fluxes are in units of Jy km s^{-1} pc^{-2}. 
+  (May or may not have some absolute calibration issue, so please normalize all lines to 
+  one CO line before comparing with observations.)
+
+We can use this model grid to compare with observations. 
+  We first need to assume a fiducial gas kinetic temperature, 
+  e.g., 25 K for main sequence, cold galaxies, 50 K for high redshift dusty galaxies, 
+  or even 100 K for extreme galaxies. In comparison with z~6 SMG and QSO CO SLEDs, 
+  we find 50 K to be a fair guess. 
+  Then, we can normalize all CO line fluxes to one CO line and plot the CO SLED for 
+  each lg_nH2_mean. By comparing with observed CO SLED, we can find out which lg_nH2_mean
+  best describe the data, which is just the mean gas density of the galaxy under our model
+  assumption. 
+
+PS: Our gas density distribution model assumption is following Leroy et al. 2017 (2017ApJ...835..217L). 
+
+
+
+
+Unimportant Note: Renamed from ~/Work/DeepFields/Works/20180000_COSMOS_SB_CO_Excitation/Gas_Modeling/20200424_one_zone_model_577f/datatable_combined_modeled_line_flux_big_table.fits
