@@ -1,0 +1,10 @@
+
+[test]
+coverage[toml]
+hypothesis
+hypothesis-pytest
+pytest>=6.0
+pytest-cov
+
+[test:platform_python_implementation != "PyPy"]
+mypy
