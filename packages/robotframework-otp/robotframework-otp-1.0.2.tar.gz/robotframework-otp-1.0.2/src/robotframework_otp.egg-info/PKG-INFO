@@ -1,0 +1,63 @@
+Metadata-Version: 1.1
+Name: robotframework-otp
+Version: 1.0.2
+Summary: Robot Framework OTP authenticator
+Home-page: https://github.com/formulatedautomation/robotframework-otp
+Author: Formulated Automation
+Author-email: hello@formulatedautomation.com
+License: Apache License 2.0
+Description: Robotframework-OTP
+        ==================
+        
+        .. contents::
+        
+        Introduction
+        ------------
+        
+        Robotframework-OTP is a `Robot Framework`_ test
+        library for generating two-factor One Time Passwords.  The project is hosted on GitHub_
+        and downloads can be found from PyPI_.
+        
+        .. image:: https://travis-ci.org/itsautomic/robotframework-otp.svg?branch=master
+            :target: https://travis-ci.org/itsautomic/robotframework-otp
+        
+        `Libdocs <https://itsautomic.github.io/robotframework-otp>`_
+        
+        Installation
+        ------------
+        
+            pip install robotframework-otp
+        
+        Usage
+        -----
+        
+        .. code:: robotframework
+        
+            *** Settings ***
+            Library                OTP
+        
+            *** Test Cases ***
+            Get OTP from secret
+                ${otp}=    Get OTP    ${SECRET}
+                Should Match Regexp	  ${otp}	\\d{6}
+        
+        Update Docs
+        -----------
+        
+            python -m robot.libdoc src/OTP/ doc/OTP.html
+        
+        .. _Github: https://github.com/itsautomic/robotframework-otp
+        .. _pypi: https://pypi.org/project/robotframework-otp
+        .. _Robot Framework: https://robotframework.org
+        
+Keywords: robotframework testing testautomation otp totp
+Platform: any
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Topic :: Software Development :: Testing
+Classifier: Framework :: Robot Framework
+Classifier: Framework :: Robot Framework :: Library
