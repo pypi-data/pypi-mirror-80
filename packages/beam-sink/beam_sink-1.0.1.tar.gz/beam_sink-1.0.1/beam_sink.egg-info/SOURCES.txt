@@ -1,0 +1,15 @@
+README.md
+setup.py
+beam_sink/__init__.py
+beam_sink.egg-info/PKG-INFO
+beam_sink.egg-info/SOURCES.txt
+beam_sink.egg-info/dependency_links.txt
+beam_sink.egg-info/not-zip-safe
+beam_sink.egg-info/requires.txt
+beam_sink.egg-info/top_level.txt
+beam_sink/sinks/__init__.py
+beam_sink/sinks/mysql.py
+beam_sink/sinks/postgres.py
+tests/__init__.py
+tests/test_mysql.py
+tests/test_postgres.py
