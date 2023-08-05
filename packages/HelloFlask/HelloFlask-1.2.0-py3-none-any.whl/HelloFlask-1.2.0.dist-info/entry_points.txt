@@ -1,0 +1,3 @@
+[console_scripts]
+helloflask = helloflask.__main__:main
+
