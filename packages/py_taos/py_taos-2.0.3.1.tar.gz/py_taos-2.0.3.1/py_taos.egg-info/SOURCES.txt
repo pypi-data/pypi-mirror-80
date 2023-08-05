@@ -1,0 +1,14 @@
+README.rst
+setup.py
+py_taos.egg-info/PKG-INFO
+py_taos.egg-info/SOURCES.txt
+py_taos.egg-info/dependency_links.txt
+py_taos.egg-info/top_level.txt
+taos/__init__.py
+taos/cinterface.py
+taos/connection.py
+taos/constants.py
+taos/cursor.py
+taos/dbapi.py
+taos/error.py
+taos/subscription.py
