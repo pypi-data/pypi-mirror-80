@@ -1,0 +1,42 @@
+Metadata-Version: 2.1
+Name: dcor-shared
+Version: 0.2.5
+Summary: Functionalities shared by the DCOR CKAN extensions
+Home-page: https://github.com/DCOR-dev/dcor_shared
+Author: Paul Müller
+Author-email: dev@craban.de
+License: AGPLv3+
+Keywords: DCOR
+Platform: ALL
+Classifier: License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Scientific/Engineering :: Visualization
+Classifier: Intended Audience :: Science/Research
+Requires-Python: >=3.6, <4
+
+dcor_shared
+===========
+
+|PyPI Version| |Build Status| |Coverage Status|
+
+Functionalities shared by the DCOR CKAN extensions
+
+
+Installation
+------------
+To install the latest release, simply run:
+
+::
+
+    pip install dcor_shared
+
+
+.. |PyPI Version| image:: https://img.shields.io/pypi/v/dcor_shared.svg
+   :target: https://pypi.python.org/pypi/dcor_shared
+.. |Build Status| image:: https://img.shields.io/travis/DCOR-dev/dcor_shared.svg?label=tests
+   :target: https://travis-ci.com/DCOR-dev/dcor_shared
+.. |Coverage Status| image:: https://img.shields.io/codecov/c/github/DCOR-dev/dcor_shared/master.svg
+   :target: https://codecov.io/gh/DCOR-dev/dcor_shared
+
+
