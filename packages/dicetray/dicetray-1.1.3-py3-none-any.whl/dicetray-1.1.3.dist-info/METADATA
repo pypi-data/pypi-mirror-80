@@ -1,0 +1,68 @@
+Metadata-Version: 2.1
+Name: dicetray
+Version: 1.1.3
+Summary: Tabletop RPG Dice roller
+Home-page: https://github.com/gtmanfred/dicetray.git
+License: Apache-2.0
+Author: Daniel Wallace
+Author-email: danielwallace@gtmanfred.com
+Requires-Python: >=3.6,<4.0
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Dist: sly (>=0.4,<0.5)
+Project-URL: Repository, https://github.com/gtmanfred/dicetray.git
+Description-Content-Type: text/x-rst
+
+Dicetray
+========
+
+.. image:: https://github.com/gtmanfred/dicetray/workflows/Tests/badge.svg
+    :target: https://github.com/gtmanfred/dicetray
+
+.. image:: https://img.shields.io/codecov/c/github/gtmanfred/dicetray
+    :target: https://codecov.io/gh/gtmanfred/dicetray
+
+.. image:: https://img.shields.io/pypi/v/dicetray
+    :target: https://pypi.org/project/dicetray
+
+.. image:: https://img.shields.io/pypi/l/dicetray
+    :target: http://www.apache.org/licenses/LICENSE-2.0
+
+.. image:: https://img.shields.io/pypi/dm/dicetray
+    :target: https://pypi.org/project/dicetray/
+
+
+Tabletop RPG Dice rolling manager for handling `Standard Dice Notation`_
+
+Example
+-------
+
+.. code-block:: python
+
+    >>> from dicetray import Dicetray
+    >>> Dicetray('1d20 + 3').roll()
+    15
+    >>> Dicetray('4d6dl').roll()
+    10
+    >>> Dicetray('4d6kh3').roll()
+    12
+    >>> d = Dicetray('2d20kh + 1d4 + 3')
+    >>> d.result
+    >>> d.dice
+    set()
+    >>> d.roll()
+    18
+    >>> d.dice
+    {<Dice (d20): 14>, <Dice (d20): 14>, <Dice (d4): 1>}
+    >>> d.result
+    18
+
+.. _Standard Dice Notation: https://en.wikipedia.org/wiki/Dice_notation
+
