@@ -1,0 +1,1 @@
+{"name": "pos", "description": "todo", "output_level": "token", "outputs": ["pos"], "inputs": ["token", "sentence"], "type": "pos", "file_dependencies": {}, "spark_input_column_names": ["token", "sentence"], "spark_output_column_names": ["pos"], "provider": "sparknlp", "license": "open source", "computation_context": "spark", "output_context": "spark"}
