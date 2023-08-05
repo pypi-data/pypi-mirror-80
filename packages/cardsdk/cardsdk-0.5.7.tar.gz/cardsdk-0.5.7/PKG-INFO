@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: cardsdk
+Version: 0.5.7
+Summary: CardSDK Scaffold CLI
+Home-page: https://github.com/sopig
+Author: chay0103
+Author-email: chay0103@163.com
+License: MIT
+Description: cardsdk.py by 120901
+        -----------------------
+        
+        ### 升级
+        ```sh
+         cardsdk env
+        ```
+        
+        ### 能力
+        
+        ```sh
+        cardsdk build --dir ~ --out ~/out  --biz someBiz
+        ```
+        
+        
+Platform: UNKNOWN
+Description-Content-Type: text/markdown
