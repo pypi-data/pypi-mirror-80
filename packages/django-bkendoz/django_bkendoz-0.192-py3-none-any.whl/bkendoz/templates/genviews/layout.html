@@ -1,0 +1,152 @@
+{% load i18n %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+    <!-- head {{{-->
+    <head>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{{ layout_data.title }}</title>
+
+        <link rel="stylesheet" type="text/css" href="
+        {% static 'frendoz/vendor/fontawesome/css/all.css' %}
+        " />
+
+        <link rel="stylesheet" type="text/css" href="
+        {% static 'frendoz/css/frendoz.css' %} 
+        " />
+ 
+        {% for ssheet in layout_data.stylesheets %}
+            <link rel="stylesheet" type="text/css" href="{% static ssheet %}"/>
+        {% endfor %}
+
+    </head>
+    <!--}}}-->
+    <body>
+        <!--header {{{-->
+        <header>
+
+            {% if layout_data.logo_class %}
+            <button type="button" class="logo nav-left">
+                {% if layout_data.homagepage %}
+                    <a href="{% url layout_data.homepage %}">
+                        <i class="{{ layout_data.logo_class }}"></i>
+                    </a>
+                {% else %} 
+                    <i class="{{ layout_data.logo_class }}"></i>
+                {% endif %} 
+            </button>
+            {% endif %} 
+
+            {% if layout_data.maintitle %}
+            <button type="button" class="{{ layout_data.maintitle_class }} nav-left">
+                {% if layout_data.homepage %}
+                <a href="{% url layout_data.homepage %}">
+                    {{ layout_data.maintitle }}
+                </a>
+                {% else %} 
+                    {{ layout_data.maintitle }}
+                {% endif %} 
+            </button>
+            {% endif %} 
+
+            {% for btntext, list in layout_data.dropdownleft %}
+            <div class="drop-down nav-left">
+                <button type="button">
+                    {{ btntext }}
+                </button>
+                <ul class="">
+                    {% for text, urlname, param_list in list %}
+                    <li>
+                        {% if param_list|length > 0 %}
+                        <a href="{% url urlname param_list %}">{{ text }}</a>
+                        {% else %}
+                        <a href="{% url urlname %}">{{ text }}</a>
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endfor %}
+
+            <div class="autoComplete_root" id="autoComplete_cmdbar">
+                <input type="text" tabindex="1" />
+                <button type="button">
+                    <i class="fa fa-eraser">
+                    </i>
+                </button>
+            </div>
+
+            {% for btntext, list in layout_data.dropdownright %}
+            <div class="drop-down nav-right">
+                <button type="button">
+                    {{ btntext }}
+                </button>
+                <ul class="">
+                    {% for url, text in list %}
+                    <li>
+                        <a href="{{ url }}">{{ text }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endfor %}
+
+            <button type="button" id="btn-menu-toggle" class="nav-right">
+                <i class="fa fa-list">
+                </i>
+            </button>
+
+        </header>
+        <!-- }}} -->
+        <div id="content-wrapper">
+        <!--{{{menu-->
+            <menu>
+                <div>
+                  {% for menu_title, menu_items in layout_data.menu %}
+                  <h1 class="link-group-title">{{ menu_title }}</h1>
+                    <ul>
+                      {% for url_name, link, classes in menu_items %}
+                        <li>
+                          <a href="{% url url_name %}">
+                            <i class="{{ classes }}"></i> {{ link }}
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    {% endfor %}
+                </div>
+            </menu>
+            <!--}}}-->
+            <!-- main{{{-->
+            <main>
+                {% block content %}
+
+                {% endblock content %}
+            </main>
+            <!--}}}-->
+        </div>
+        <!--footer{{{-->
+        <footer>
+            <ul>
+                <li>Footer demo</li>
+            </ul>
+        </footer>
+        <!--}}}-->
+        <!-- scripts{{{-->
+        <script src="
+        {% static 'frendoz/vendor/autocomplete/autoComplete2.min.js' %}
+        ">
+        </script>
+        <script src="{% static 'frendoz/js/frendoz.js' %}"></script>
+        {% for js_script in layout_data.scripts %}
+            <script src="{% static js_script %}"></script>
+        {% endfor %}
+        <!--}}}-->
+    </body>
+</html>
+
+
+

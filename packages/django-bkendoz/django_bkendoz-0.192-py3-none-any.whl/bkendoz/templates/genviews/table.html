@@ -1,0 +1,59 @@
+{% load templates %}
+<table cellspacing="1"> 
+    <thead>
+        <tr>
+            {% if checkbox %}
+            <th>
+            </th>
+            {% endif %}
+
+            {% for fieldref, fieldtext in fields %}
+            <th>
+                <div>
+                    <input  name="html_{{ fieldref }}" type="text"
+                                                       data-search="html_{{ fieldref }}" placeholder="{{fieldtext}}" />
+                    <button class="btn-ls-sort is-off" data-sort="html_{{ fieldref }}">
+                        <i class="fa fa-chevron-circle-down"></i>
+                    </button>
+                    <button class="invisible btn-ls-res" data-res="html_{{ fieldref }}">
+                        <i class="fa fa-eraser "></i>
+                    </button>
+                </div>
+            </th>
+            {% endfor %}
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for object in object_list %}
+
+        <input type="hidden"  value="{{ object.json }}" name="{{object.index}}" />
+
+        {% if object.history_date %}
+            {% include "genviews/history_row.html" %}
+        {% endif %}
+
+        <tr class="">
+
+            {% if checkbox %}
+            <td>
+                <input type="checkbox" checked="checked" name="chk_{{object.index}}" \>
+            </td>
+            {% endif %}
+
+           {% for fieldref, fieldtext in fields %}
+            <td data-field="html_{{ fieldref }}">
+                {% include settings.FIELDMAP %}
+                {% comment %}
+                {{ object|get_attr:fieldref }}
+                {{ object|get_attr:fieldref|safe }}
+                {% endcomment %}
+            </td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+
+</table>
+
+

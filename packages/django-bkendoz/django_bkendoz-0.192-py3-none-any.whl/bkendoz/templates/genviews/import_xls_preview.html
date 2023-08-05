@@ -1,0 +1,23 @@
+{% load templates %}
+<div class="excel-preview">
+<h3>Exemples de données attendues</h3>
+<table>
+    <thead>
+        <tr>
+            {% for f, verbose_field in fields %}
+            <th>{{ verbose_field }}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+            {% for sample in import_sample %}
+        <tr>
+                {% for field, v in fields %}
+                <td>{{ sample|get_attr:field }}</td>
+                {% endfor %}
+        </tr>
+
+            {% endfor %}
+    </tbody>
+</table>
+</div>

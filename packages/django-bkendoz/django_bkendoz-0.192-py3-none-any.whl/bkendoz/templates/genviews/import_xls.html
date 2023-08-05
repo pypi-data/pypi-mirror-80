@@ -1,0 +1,57 @@
+{% extends layout_data.main_layout|default:"genviews/layout.html" %}
+{% load i18n %}
+{% load templates %}
+
+{% block content %}
+
+<h1>{{ form_title }}
+    <p>{{ form_subtitle }}</p>
+</h1>
+
+{% if object_list %}
+
+<h1>{% trans 'Prévisualisation' %}</h1>
+<form action="{% url form_action %}" method="post" novalidate>
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <button type="submit">{% trans 'Confirmer l\'import des' %} {{ model_plural}}</button>
+    <ul>
+        {% for object in object_list %}
+        <input type="hidden"  value="{{ object.json }}" name="{{object.index}}" />
+        <input type="checkbox" checked="checked" name="chk_{{object.index}}" \>
+        <li>{{ object }}</li>
+        {% endfor %}
+    </ul>
+
+    {% comment %}
+    {% include "genviews/table.html" with checkbox=True %}
+    {% endcomment %}
+</form>
+
+{% else %}
+
+{% include "genviews/import_xls_preview.html" %}
+
+{{ form.non_field_errors }}
+
+<form action="{{ form_action }}" method="post" enctype="multipart/form-data" novalidate>
+    {% csrf_token %}
+
+    {% for field in form %}
+    <label class="{% if field.errors %} validate-error {% endif %}" for="{{ field.name }}">{{ field.label_tag }}</label>
+    {{ field }}
+    {% if field.errors %}
+    <p class="error-border validate-error">
+    {% for error in field.errors %}
+    {{ error }}
+    {% endfor %}
+    </p>
+       {% endif %}
+    {% endfor %}
+
+    <button type="submit">{% trans 'Valider' %}</button>
+</form>
+
+{% endif %}
+
+{% endblock %}

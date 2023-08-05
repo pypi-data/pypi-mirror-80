@@ -1,0 +1,38 @@
+{% extends settings.LAYOUT.main_layout %}
+{% load i18n %}
+
+{% block content %}
+<div class="heading-flex">
+
+  <h1>
+    {{ object }}
+    <div class="subheading">
+      <ul>
+        {% for label, value in object.get_array_data.items %}
+        <li>{{ label }} :
+          <em>{{ value }}</em>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </h1>
+
+    {% for href, faclass, aclass, data in detail_menu %}
+    <a href = "{{ href }}" class = "{{ aclass }}"
+       {% for field, value in data %}
+       data-{{field}}="{{value}}"
+       {% endfor %}
+        
+        >
+        <i class="fas {{ faclass }}"></i>
+    </a>
+    {% endfor %}
+</div>
+
+<hr />
+
+{% if html %}
+    {% include html %}
+{% endif %}
+
+{% endblock %}
