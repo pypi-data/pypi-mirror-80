@@ -1,0 +1,12 @@
+README.rst
+setup.cfg
+setup.py
+htmldump/__init__.py
+htmldump/command.py
+htmldump/html_parser.py
+htmldump/html_utils.py
+htmldump.egg-info/PKG-INFO
+htmldump.egg-info/SOURCES.txt
+htmldump.egg-info/dependency_links.txt
+htmldump.egg-info/entry_points.txt
+htmldump.egg-info/top_level.txt
