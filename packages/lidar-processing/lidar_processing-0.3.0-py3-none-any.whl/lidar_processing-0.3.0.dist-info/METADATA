@@ -1,0 +1,113 @@
+Metadata-Version: 2.1
+Name: lidar-processing
+Version: 0.3.0
+Summary: Routines for atmospheric lidar processing.
+Home-page: https://gitlab.com/ioannis_binietoglou/lidar-processing
+Author: Ioannis Binietoglou
+Author-email: ioannis@inoe.ro
+License: MIT
+Keywords: lidar aerosol processing
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Intended Audience :: Science/Research
+Classifier: Topic :: Scientific/Engineering :: Atmospheric Science
+Requires-Dist: netCDF4
+Requires-Dist: numpy
+Requires-Dist: matplotlib
+Requires-Dist: scipy
+Requires-Dist: sphinx
+Requires-Dist: numpydoc
+Requires-Dist: pyyaml
+
+.. image:: https://readthedocs.org/projects/lidar-processing/badge/?version=latest
+   :target: http://lidar-processing.readthedocs.io/en/latest/?badge=latest
+   :alt: Documentation Status
+
+..
+   .. image:: https://codeship.com/projects/2e21b760-6eaf-0134-9495-3e75f4fffff1/status?branch=default
+      :target: https://codeship.com/projects/177870
+      :alt: Build Status
+
+Description
+===========
+
+This module collects basic processing routines for aerosol lidar systems.
+
+The module should include only the pre-processing and optical processing functions. Reading data, visualization, etc.
+should be handled by different modules.
+
+
+
+Installation
+------------
+
+The module is tested for Python 2.7.* and slightly for Python 3.6
+
+The suggested method to install is to clone the repository and install it using the -e command.
+
+.. sourcecode:: console
+
+   pip install -e ./lidar_processing
+
+assuming that the module is cloned in the lidar_processing directory.
+
+The installation procedure is not yet fully automatic. You may need to install numpy, scipy manually. Probably
+the best way to install numpy and scipy is through a distribution like `anaconda <https://www.continuum.io/downloads>`_.
+
+
+Documentation
+-------------
+
+Each function should be documented following the Numpy doc style.
+
+For details see the `numpy documentation <https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt>`_.
+
+
+All docstrings are collected to a single documentation file using the `Sphinx <http://www.sphinx-doc.org/>`_ module.
+The documentation is located in the docs/ folder. The documentation is written in
+`restructured text <http://www.sphinx-doc.org/en/stable/rest.html>`_ format.
+
+You can rebuild the docs by running the following command from the docs folder.
+
+.. sourcecode:: console
+
+   make html
+
+The documentation is also built automatically every time you push your changes to the repository. You can find it online
+in `Read the docs <https://readthedocs.org/projects/lidar-processing/>`_.
+
+
+Testing
+-------
+Some tests, based on unittest2 library, are located in the lidar_processing/tests/ folder.
+
+You can run all the test using the commands from the project directory.
+
+.. sourcecode:: console
+
+   python -m unittest discover
+
+
+Notebooks and data
+------------------
+The project includes some test data in the /data/ folder. It also includes some ipython notebooks with some
+example processing of the data. You can run the notebook with the command:
+
+.. sourcecode:: console
+
+   jupyter notebook
+
+
+Sponsors
+--------
+The development of this module is supported by `Raymetrics S.A. <https://www.raymetrics.com/>`_.
+
+.. image:: logos/raymetrics_logo.png
+   :target: https://www.raymetrics.com/
+   :alt: Raymetrics logo
+
+
+
+
