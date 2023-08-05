@@ -1,0 +1,15 @@
+README.md
+setup.py
+typing_copilot/__init__.py
+typing_copilot/cli.py
+typing_copilot/config_generation.py
+typing_copilot/error_tracker.py
+typing_copilot/mypy_runner.py
+typing_copilot/validation.py
+typing_copilot/verbosity.py
+typing_copilot.egg-info/PKG-INFO
+typing_copilot.egg-info/SOURCES.txt
+typing_copilot.egg-info/dependency_links.txt
+typing_copilot.egg-info/entry_points.txt
+typing_copilot.egg-info/requires.txt
+typing_copilot.egg-info/top_level.txt
