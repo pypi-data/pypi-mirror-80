@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: weather_app_simon
+Version: 0.0.2
+Summary: My first package.
+Home-page: https://github.com/simonpf/weatherapp
+Author: Simon Pfreundschuh
+Author-email: simon.pfreundschuh@chalmers.se
+License: UNKNOWN
+Description: # The weather app
+        My weather app.
+        
+Platform: UNKNOWN
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
