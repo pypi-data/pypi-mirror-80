@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.22.2 -->
+<interface>
+  <requires lib="gtk+" version="3.20"/>
+  <object class="GtkMenu" id="dropdown_menu">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="menu_type_hint">menu</property>
+    <child>
+      <object class="GtkMenuItem" id="menuitem_about">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="label" translatable="yes">About</property>
+        <property name="use_underline">True</property>
+        <signal name="activate" handler="about_clicked" swapped="no"/>
+      </object>
+    </child>
+    <child>
+      <object class="GtkCheckMenuItem" id="menuitem_enable">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="label" translatable="yes">Enable</property>
+        <property name="use_underline">True</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkCheckMenuItem" id="menuitem_minimize">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="label" translatable="yes">Minimize to tray</property>
+        <property name="use_underline">True</property>
+        <signal name="toggled" handler="minimize_clicked" swapped="no"/>
+      </object>
+    </child>
+    <child>
+      <object class="GtkCheckMenuItem" id="menuitem_advanced">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="label" translatable="yes">Show advanced options</property>
+        <property name="use_underline">True</property>
+        <signal name="toggled" handler="advanced_clicked" swapped="no"/>
+      </object>
+    </child>
+    <child>
+      <object class="GtkMenuItem" id="menuitem_exit">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="label" translatable="yes">Exit</property>
+        <property name="use_underline">True</property>
+        <signal name="activate" handler="on_exit_application" swapped="no"/>
+      </object>
+    </child>
+  </object>
+  <object class="GtkWindow" id="main_window">
+    <property name="can_focus">False</property>
+    <property name="resizable">False</property>
+    <property name="default_width">500</property>
+    <property name="default_height">590</property>
+    <signal name="destroy" handler="on_exit_application" swapped="no"/>
+    <child type="titlebar">
+      <object class="GtkHeaderBar">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="title" translatable="yes">BlueDo</property>
+        <property name="subtitle" translatable="yes">Bluetooth proximity automation</property>
+        <property name="show_close_button">True</property>
+        <child>
+          <object class="GtkMenuButton" id="menu_button">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="focus_on_click">False</property>
+            <property name="receives_default">True</property>
+            <property name="popup">dropdown_menu</property>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="pack_type">end</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkSwitch" id="button_enabled">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <signal name="state-set" handler="on_enable_state" swapped="no"/>
+          </object>
+          <packing>
+            <property name="pack_type">end</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="GtkLayout">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <child>
+          <object class="GtkLabel">
+            <property name="height_request">40</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Choose device:</property>
+            <attributes>
+              <attribute name="weight" value="bold"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="x">30</property>
+            <property name="y">22</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLevelBar" id="levelSignal">
+            <property name="width_request">23</property>
+            <property name="height_request">40</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="orientation">vertical</property>
+            <property name="max_value">10</property>
+            <property name="inverted">True</property>
+          </object>
+          <packing>
+            <property name="x">447</property>
+            <property name="y">23</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="height_request">33</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">When device is close to computer:</property>
+            <attributes>
+              <attribute name="weight" value="bold"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="x">30</property>
+            <property name="y">128</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="height_request">40</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">When device leaves computer:</property>
+            <attributes>
+              <attribute name="weight" value="bold"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="x">30</property>
+            <property name="y">356</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkFrame">
+            <property name="width_request">450</property>
+            <property name="height_request">181</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label_xalign">0</property>
+            <child>
+              <object class="GtkAlignment">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="left_padding">12</property>
+                <child>
+                  <object class="GtkLayout">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <child>
+                      <object class="GtkCheckButton" id="check_hereunlock">
+                        <property name="label" translatable="yes">Unlock screen</property>
+                        <property name="height_request">40</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="on_chkbutton_changed" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="y">6</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkCheckButton" id="check_hererun">
+                        <property name="label" translatable="yes">Run command:</property>
+                        <property name="height_request">40</property>
+                        <property name="can_focus">False</property>
+                        <property name="receives_default">False</property>
+                        <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="on_chkbutton_changed" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="y">114</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="entry_here">
+                        <property name="width_request">270</property>
+                        <property name="height_request">40</property>
+                        <property name="can_focus">True</property>
+                        <signal name="changed" handler="on_here_changed" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="x">147</property>
+                        <property name="y">118</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkCheckButton" id="check_resume">
+                        <property name="label" translatable="yes">Resume music</property>
+                        <property name="height_request">40</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="draw_indicator">True</property>
+                      </object>
+                      <packing>
+                        <property name="y">41</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkCheckButton" id="check_hereunmute">
+                        <property name="label" translatable="yes">Unmute sound</property>
+                        <property name="height_request">40</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="draw_indicator">True</property>
+                      </object>
+                      <packing>
+                        <property name="y">74</property>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child type="label">
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="x">30</property>
+            <property name="y">163</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkFrame">
+            <property name="width_request">450</property>
+            <property name="height_request">181</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label_xalign">0</property>
+            <child>
+              <object class="GtkAlignment">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="left_padding">12</property>
+                <child>
+                  <object class="GtkLayout">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <child>
+                      <object class="GtkCheckButton" id="check_awaylock">
+                        <property name="label" translatable="yes">Lock screen</property>
+                        <property name="height_request">40</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="on_chkbutton_changed" swapped="no"/>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkCheckButton" id="check_awaypause">
+                        <property name="label" translatable="yes">Pause music</property>
+                        <property name="height_request">40</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="on_chkbutton_changed" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="y">36</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkCheckButton" id="check_awaymute">
+                        <property name="label" translatable="yes">Mute sound</property>
+                        <property name="height_request">40</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="on_chkbutton_changed" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="y">72</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkCheckButton" id="check_awayrun">
+                        <property name="label" translatable="yes">Run command:</property>
+                        <property name="height_request">40</property>
+                        <property name="can_focus">False</property>
+                        <property name="receives_default">False</property>
+                        <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="on_chkbutton_changed" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="x">1</property>
+                        <property name="y">105</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="entry_away">
+                        <property name="width_request">270</property>
+                        <property name="height_request">40</property>
+                        <property name="can_focus">True</property>
+                        <signal name="changed" handler="on_away_changed" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="x">149</property>
+                        <property name="y">105</property>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child type="label">
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="x">30</property>
+            <property name="y">389</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label_info">
+            <property name="height_request">40</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Device should already be paired with computer.</property>
+            <attributes>
+              <attribute name="foreground" value="#88888a8a8585"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="x">30</property>
+            <property name="y">62</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkComboBoxText" id="combo_device">
+            <property name="width_request">257</property>
+            <property name="height_request">40</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="has_entry">True</property>
+            <signal name="changed" handler="on_device_changed" swapped="no"/>
+            <child internal-child="entry">
+              <object class="GtkEntry">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="editable">False</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="x">190</property>
+            <property name="y">23</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
