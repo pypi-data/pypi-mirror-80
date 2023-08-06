@@ -1,0 +1,3 @@
+[console_scripts]
+speedtest_influx = speedtest_influx_logger.main:main
+

@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: speedtest_influx_logger
+Version: 0.0.3
+Summary: UNKNOWN
+Home-page: https://github.com/danstreeter/speedtest-logger
+Author: Dan Streeter
+Author-email: dan@danstreeter.co.uk
+License: License :: OSI Approved :: MIT License
+Description: # Speedtest Influx Logger
+        
+        ## Summary
+        
+        Micro application to run speedtests periodically and send statistics to remote InfluxDB node
+Platform: UNKNOWN
+Classifier: Programming Language :: Python
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
