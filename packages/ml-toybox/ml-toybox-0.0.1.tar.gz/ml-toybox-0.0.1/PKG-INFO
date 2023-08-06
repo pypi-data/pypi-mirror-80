@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: ml-toybox
+Version: 0.0.1
+Summary: Machine Learning ToyBox
+Home-page: https://github.com/shunsvineyard/ml-toybox
+Author: Shun Huang
+Author-email: shunsvineyard@protonmail.com
+License: MIT
+Description: ########################
+        Machine Learning ToyBox
+        ########################
+        
+        Machine Learning ToyBox consists of many machine learning algorithm implementation for learning and fun. 
+        
+Keywords: Machine Learning
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.8
+Requires-Python: >=3.8
+Description-Content-Type: text/x-rst
