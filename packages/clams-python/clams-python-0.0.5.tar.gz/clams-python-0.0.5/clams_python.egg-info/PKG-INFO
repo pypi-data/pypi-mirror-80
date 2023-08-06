@@ -1,0 +1,36 @@
+Metadata-Version: 2.1
+Name: clams-python
+Version: 0.0.5
+Summary: A collection of APIs to develop CLAMS app for python
+Home-page: https://www.clams.ai
+Author: Brandeis Lab for Linguistics and Computation
+Author-email: admin@clams.al
+License: UNKNOWN
+Description: # CLAMS sdk for python 
+        
+        **NOTE** that this project is in pre-alpha and being actively developed. Nothing is guaranteed to reliably work for the moment and developer need to be very careful when using APIs implemented here. Please use [the issue track](../../issues) to report bugs and malfunctions, or send pull requests for even more contribution. 
+        
+        ## CLAMS project
+        [CLAMS project](https://www.clams.ai) aims at free and open-source software platform for computational analysis and metadata generation applications for multimedia material. 
+        
+        ## installation: 
+        Package `clams-python` is distributed via the official pypi. Users are supposed to pip-install to get latest release. 
+        ```
+        pip install clams-python
+        ```
+        This will install a packge `clams` to local python 
+        
+        ## APIs
+        
+        
+        `clams.ClamsApp` : an abstract class for clams apps
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Framework :: Flask
+Classifier: Framework :: Pytest
+Classifier: Intended Audience :: Developers 
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3 :: Only
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
