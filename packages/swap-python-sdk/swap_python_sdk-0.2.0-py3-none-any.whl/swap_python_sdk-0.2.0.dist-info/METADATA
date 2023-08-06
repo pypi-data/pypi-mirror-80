@@ -1,0 +1,70 @@
+Metadata-Version: 2.1
+Name: swap-python-sdk
+Version: 0.2.0
+Summary: SWAP Python SDK
+Home-page: UNKNOWN
+Author: 
+Author-email: 
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+Requires-Dist: certifi (==2020.6.20)
+Requires-Dist: cffi (==1.14.3)
+Requires-Dist: chardet (==3.0.4)
+Requires-Dist: click (==7.1.2)
+Requires-Dist: environs (==8.0.0)
+Requires-Dist: flask (==1.1.2)
+Requires-Dist: google-api-python-client (==1.12.2)
+Requires-Dist: google-auth (==1.21.3)
+Requires-Dist: google-auth-httplib2 (==0.0.4)
+Requires-Dist: google-auth-oauthlib (==0.4.1)
+Requires-Dist: google-cloud-pubsub (==2.1.0)
+Requires-Dist: google-cloud-storage (==1.31.2)
+Requires-Dist: grpc-google-iam-v1 (==0.12.3)
+Requires-Dist: grpcio (==1.29.0)
+Requires-Dist: grpcio-tools (==1.29.0)
+Requires-Dist: httplib2 (==0.18.1)
+Requires-Dist: jsonref (==0.2)
+Requires-Dist: jsonschema (==3.2.0)
+Requires-Dist: marshmallow (==3.8.0)
+Requires-Dist: mypy-extensions (==0.4.3)
+Requires-Dist: proto-plus (==1.10.0)
+Requires-Dist: protobuf (==3.13.0)
+Requires-Dist: pyasn1 (==0.4.8)
+Requires-Dist: pyasn1-modules (==0.2.8)
+Requires-Dist: pyjwt (==1.7.1)
+Requires-Dist: python-dotenv (==0.14.0)
+Requires-Dist: pytz (==2020.1)
+Requires-Dist: pyyaml (==5.3.1)
+Requires-Dist: requests (==2.24.0)
+Requires-Dist: requests-oauthlib (==1.3.0)
+Requires-Dist: typing-extensions (==3.7.4.3)
+Requires-Dist: typing-inspect (==0.6.0)
+Requires-Dist: importlib-metadata (==2.0.0) ; python_version < "3.8"
+Requires-Dist: attrs (==20.2.0) ; python_version >= "2.7" and python_version not in "3.0, 3.1, 3.2, 3.3"
+Requires-Dist: google-api-core[grpc] (==1.22.2) ; python_version >= "2.7" and python_version not in "3.0, 3.1, 3.2, 3.3"
+Requires-Dist: google-cloud-core (==1.4.1) ; python_version >= "2.7" and python_version not in "3.0, 3.1, 3.2, 3.3"
+Requires-Dist: googleapis-common-protos[grpc] (==1.52.0) ; python_version >= "2.7" and python_version not in "3.0, 3.1, 3.2, 3.3"
+Requires-Dist: idna (==2.10) ; python_version >= "2.7" and python_version not in "3.0, 3.1, 3.2, 3.3"
+Requires-Dist: itsdangerous (==1.1.0) ; python_version >= "2.7" and python_version not in "3.0, 3.1, 3.2, 3.3"
+Requires-Dist: markupsafe (==1.1.1) ; python_version >= "2.7" and python_version not in "3.0, 3.1, 3.2, 3.3"
+Requires-Dist: oauthlib (==3.1.0) ; python_version >= "2.7" and python_version not in "3.0, 3.1, 3.2, 3.3"
+Requires-Dist: pycparser (==2.20) ; python_version >= "2.7" and python_version not in "3.0, 3.1, 3.2, 3.3"
+Requires-Dist: six (==1.15.0) ; python_version >= "2.7" and python_version not in "3.0, 3.1, 3.2, 3.3"
+Requires-Dist: uritemplate (==3.0.1) ; python_version >= "2.7" and python_version not in "3.0, 3.1, 3.2, 3.3"
+Requires-Dist: google-resumable-media (==1.0.0) ; python_version >= "2.7" and python_version not in "3.0, 3.1, 3.2, 3.3, 3.4"
+Requires-Dist: jinja2 (==2.11.2) ; python_version >= "2.7" and python_version not in "3.0, 3.1, 3.2, 3.3, 3.4"
+Requires-Dist: werkzeug (==1.0.1) ; python_version >= "2.7" and python_version not in "3.0, 3.1, 3.2, 3.3, 3.4"
+Requires-Dist: urllib3 (==1.25.10) ; python_version >= "2.7" and python_version not in "3.0, 3.1, 3.2, 3.3, 3.4" and python_version < "4"
+Requires-Dist: google-crc32c (==1.0.0) ; python_version >= "3.5"
+Requires-Dist: pyrsistent (==0.17.3) ; python_version >= "3.5"
+Requires-Dist: rsa (==4.6) ; python_version >= "3.5"
+Requires-Dist: libcst (==0.3.10) ; python_version >= "3.6"
+Requires-Dist: zipp (==3.2.0) ; python_version >= "3.6"
+Requires-Dist: cachetools (==4.1.1) ; python_version ~= "3.5"
+
+UNKNOWN
+
+
