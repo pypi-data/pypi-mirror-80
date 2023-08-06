@@ -1,0 +1,14 @@
+MANIFEST.in
+README.md
+setup.py
+djangocms_algolia/__init__.py
+djangocms_algolia/cms_apps.py
+djangocms_algolia/index.py
+djangocms_algolia/urls.py
+djangocms_algolia/utils.py
+djangocms_algolia/views.py
+djangocms_algolia.egg-info/PKG-INFO
+djangocms_algolia.egg-info/SOURCES.txt
+djangocms_algolia.egg-info/dependency_links.txt
+djangocms_algolia.egg-info/requires.txt
+djangocms_algolia.egg-info/top_level.txt
