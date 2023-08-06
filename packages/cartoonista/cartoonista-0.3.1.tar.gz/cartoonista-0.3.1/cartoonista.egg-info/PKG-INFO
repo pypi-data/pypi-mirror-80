@@ -1,0 +1,79 @@
+Metadata-Version: 2.1
+Name: cartoonista
+Version: 0.3.1
+Summary: A library to get a random cartoon image url from 11000+ cartoons. It also contains the scrapers for many cartoon websites.
+Home-page: https://github.com/Netzvamp/cartoonista
+Author: Robert Lieback
+Author-email: robertlieback@zetabyte.de
+License: UNKNOWN
+Project-URL: Documentation, https://github.com/Netzvamp/cartoonista
+Description: # Cartoonista - A python cartoon library
+        
+        A library to get a random cartoon image url from 11000+ cartoons. 
+        It also contains the scrapers for many cartoon websites.
+        
+        ## Sites
+        
+        English:
+        * https://xkcd.com
+        * https://explosm.net
+        
+        German:
+        * https://joscha.com/nichtlustig
+        * https://ruthe.de
+        * https://martin-perscheid.de
+        * https://islieb.de
+        * https://www.schoenescheisse.de
+        
+        This lib includes all scrapers for these sites, but it ships with all data, so these are only needed for manual updating.
+        
+        ## Install
+        
+        ```pip install cartoonista```
+        
+        ## Examples / Documentation
+        
+            from cartoons import Cartoons
+        
+            Cartoons.get_random_cartoon(
+                cartoonists=["xkcd.com", "ruthe.de"],  # optional
+                languages=["en"],  # optional
+                exclude_tags=["offensive"]  # optional
+            )
+        
+        This is the main function to get a random cartoon. There are optional filter parameters:
+        * cartoonists: Get only from these cartoonists. You can get the names and all infos with ```Cartoons.get_all_cartoonists()```
+        * language: Get only in this languages. There are currently only "en" and "de" cartoons.
+        * exclude_tags: Exclude cartoonists by tags. Possible values: "offensive", "nsfw"
+        The cartoons have to match all filters.
+        
+        It returns something like this:
+        
+            {
+                'img': 'https://imgs.xkcd.com/comics/standard_model_changes.png', 
+                'title': 'Standard Model Changes', 
+                'txt': "Bugs are spin 1/2 particles, unless it's particularly windy.", 
+                'credits': 'Randall Munroe', 
+                'website': 'https://xkcd.com',
+                'tags': []
+            }
+        
+        Title/txt could be placed over/under the image and it would be fair to give credit and link to website.
+        
+        ## Manual updating
+        
+        Manual updating isn't strictly needed, cause the lib ships with all data, but it's possible.
+        
+        Install the requirements with ```pip install pip install cartoonista[scraping]``` or manually install requests and beautifulsoup4.
+        
+        Run the ```scrape.py``` from the repo (that gives you some logging output) or start scraping by running ```python -c "exec(\"from cartoons import Cartoons\nCartoons.start_scraping()\")"```. It's also possible to update only some cartoonist with ```Cartoons.start_scraping(cartoonists=["islieb.de", "xkcd.com"])```.
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Games/Entertainment
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Provides-Extra: scraping
