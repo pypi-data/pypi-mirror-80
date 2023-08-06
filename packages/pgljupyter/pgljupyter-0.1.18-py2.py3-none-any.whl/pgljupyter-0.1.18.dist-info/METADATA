@@ -1,0 +1,40 @@
+Metadata-Version: 2.1
+Name: pgljupyter
+Version: 0.1.18
+Summary: PlantGL jupyter widget
+Home-page: https://github.com/jvail/plantgl-jupyter
+Author: Jan Vaillant
+Author-email: jan.vaillant@cirad.fr
+License: Cecill
+Keywords: Jupyter,Widgets,IPython,L-Py,PlantGL
+Platform: Linux
+Platform: Mac OS X
+Platform: Windows
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Science/Research
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Framework :: Jupyter
+Requires-Python: >=3.7
+Requires-Dist: jupyterlab (>=2.2.0)
+Requires-Dist: ipywidgets (>=7.5.0)
+Requires-Dist: toml (>=0.10.1)
+Requires-Dist: jsonschema (>="3.2.0)
+Requires-Dist: openalea.lpy (>="3.4.0)
+Requires-Dist: openalea.plantgl (>="3.4.0)
+Provides-Extra: docs
+Requires-Dist: sphinx (>=1.5) ; extra == 'docs'
+Requires-Dist: recommonmark ; extra == 'docs'
+Requires-Dist: sphinx-rtd-theme ; extra == 'docs'
+Requires-Dist: nbsphinx (<0.4.0,>=0.2.13) ; extra == 'docs'
+Requires-Dist: jupyter-sphinx ; extra == 'docs'
+Requires-Dist: nbsphinx-link ; extra == 'docs'
+Requires-Dist: pytest-check-links ; extra == 'docs'
+Requires-Dist: pypandoc ; extra == 'docs'
+Provides-Extra: examples
+Provides-Extra: test
+
+UNKNOWN
+
+
