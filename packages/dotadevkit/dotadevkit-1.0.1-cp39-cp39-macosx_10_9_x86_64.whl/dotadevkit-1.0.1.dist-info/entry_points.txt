@@ -1,0 +1,4 @@
+
+        [console_scripts]
+        dotadevkit=dotadevkit.cli.cli:cli
+    
