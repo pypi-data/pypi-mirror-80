@@ -1,0 +1,17 @@
+README.md
+setup.cfg
+setup.py
+sym/awslambda/__init__.py
+sym/awslambda/decorators.py
+sym/awslambda/dispatch.py
+sym/awslambda/errors.py
+sym/awslambda/util.py
+sym/awslambda/version.py
+sym/awslambda/tests/__init__.py
+sym/awslambda/tests/dispatch_test.py
+sym/awslambda/tests/sym_action_test.py
+sym_awslambda.egg-info/PKG-INFO
+sym_awslambda.egg-info/SOURCES.txt
+sym_awslambda.egg-info/dependency_links.txt
+sym_awslambda.egg-info/requires.txt
+sym_awslambda.egg-info/top_level.txt

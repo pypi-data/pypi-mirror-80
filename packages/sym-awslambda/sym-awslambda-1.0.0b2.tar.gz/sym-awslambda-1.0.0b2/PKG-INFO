@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: sym-awslambda
+Version: 1.0.0b2
+Summary: Sym AWS Lambda Integration Helpers
+Home-page: https://github.com/symopsio/sym-awslambda-py
+Author: SymOps, Inc.
+Author-email: pypi@symops.io
+License: UNKNOWN
+Description: # sym-awslambda-py
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: Apache Software License
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
