@@ -1,0 +1,37 @@
+Metadata-Version: 2.1
+Name: calciumflexanalysis
+Version: 1.0.1
+Summary: Processing and analysis of calcium flex assays
+Home-page: https://github.com/lawrencecollins/calciumflexanalysis
+Author: Lawrence Collins, Stuart Warriner
+Author-email: s.l.warriner@leeds.ac.uk, lawrencejordancollins@gmail.com
+License: UNKNOWN
+Description: # Calcium Flex Analysis #
+        
+        Read and interpret Calcium Flex assay data from well plates. 
+        
+        ## Documentation ##
+        [_calcium_flex_](https://lawrencecollins.github.io/calciumflexanalysis/calcium_flex/) <br>
+        [_multiplate_](https://lawrencecollins.github.io/calciumflexanalysis/multiplate/)
+        
+        ## Demo ##
+        ~~~python
+        from calciumflexanalysis import calcium_flex as cal
+        ~~~
+        [Step-by-step guide](https://lawrencecollins.github.io/calciumflexanalysis/demo/) <br>
+        Download the demo notebook and files used [here](https://github.com/lawrencecollins/Ca-Flex-Analysis/) (best viewed using [Jupyter Notebook](https://jupyter.org/) accessible via [Anaconda](https://www.anaconda.com/products/individual))
+        
+        ## Installation ##
+        ~~~
+        pip install calciumflexanalysis 
+        ~~~
+        
+        ### Dependencies ###
+        [platemapping](https://github.com/lawrencecollins/platemapping) (automatically installed)
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
