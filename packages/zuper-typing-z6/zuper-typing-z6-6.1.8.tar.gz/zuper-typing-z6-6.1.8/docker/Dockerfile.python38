@@ -1,0 +1,13 @@
+FROM python:3.8
+
+WORKDIR /project
+
+
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+
+COPY . /project
+
+RUN python setup.py develop --no-deps
+RUN find src
+RUN find src
