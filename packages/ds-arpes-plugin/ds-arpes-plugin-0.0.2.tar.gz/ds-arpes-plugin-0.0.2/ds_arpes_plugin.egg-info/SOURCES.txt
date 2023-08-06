@@ -1,0 +1,12 @@
+LICENSE
+MANIFEST.in
+README.md
+requirements.txt
+setup.py
+ds_arpes_plugin/__init__.py
+ds_arpes_plugin/ds_arpes_plugin.py
+ds_arpes_plugin.egg-info/PKG-INFO
+ds_arpes_plugin.egg-info/SOURCES.txt
+ds_arpes_plugin.egg-info/dependency_links.txt
+ds_arpes_plugin.egg-info/requires.txt
+ds_arpes_plugin.egg-info/top_level.txt
