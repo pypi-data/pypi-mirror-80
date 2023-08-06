@@ -1,0 +1,248 @@
+Metadata-Version: 2.1
+Name: let3
+Version: 1.0.13
+Summary: Assign variables wherever, whenever you want.
+Home-page: https://pypi.org/project/let3/
+Author: Taylor Marks, Adam Karpierz
+Author-email: adam@karpierz.net
+Maintainer: Adam Karpierz
+Maintainer-email: adam@karpierz.net
+License: MIT License ; https://opensource.org/licenses/MIT
+Download-URL: https://pypi.org/project/let3/
+Project-URL: Documentation, https://let3.readthedocs.io/
+Project-URL: Source, https://github.com/karpierz/let3/
+Description: let3
+        ====
+        
+        Assign variables wherever, whenever you want.
+        
+        Overview
+        ========
+        
+        |package_bold| is a strict fork of Taylor Marks's let_ package with a fix
+        allowing to work with Python3 or higher and with a little code reformatting
+        and minor improvements.
+        
+        `PyPI record`_.
+        
+        Overview below is a copy from the original let_ website (with only the necessary
+        changes regarding |package|).
+        
+        Quick Start
+        -----------
+        Once you've installed, you can really quickly verified that it works with just this:
+        
+        .. code-block:: python
+        
+            >>> from let import let
+            >>> if let(count = len('Hello World!')):
+            ...     print(count)
+            12
+        
+        Documentation
+        -------------
+        In C, Java, and many other languages, it's possible to assign variables inside
+        of if or while condition statements. This is useful in allowing you to concisely
+        both assign the value, and check whether a condition is met.
+        
+        This ability doesn't exist in Python, because of the thought that when people
+        write something like:
+        
+        .. code-block:: python
+        
+            if row = db.fetch_results():
+                ...
+        
+        They may have actually meant:
+        
+        .. code-block:: python
+        
+            if row == db.fetch_results():
+                ...
+        
+        Personally, I have never made this mistake. It seems far more like a theoretical
+        mistake that could plausibly happen than one that actually happens and warrants
+        removing features, as was chosen in Python.
+        
+        Anyways, the let function in this module gives you something very close to that
+        ability in other languages. A few examples:
+        
+        .. code-block:: python
+        
+            if let(name = longInstanceName.longAttributeName):
+                ...
+        
+            # Yes, db.fetch_results() should just return a generator. No, it doesn't.
+            while let(results = db.fetch_results()):
+                ...
+        
+            if let(count = len(nameValuePair)) != 1:
+                raise Exception('Bad amount: {}'.format(count))
+        
+        Installation
+        ============
+        
+        Prerequisites:
+        
+        + Python 3.5 or higher
+        
+          * https://www.python.org/
+          * 3.7 is a primary test environment.
+        
+        + pip and setuptools
+        
+          * https://pypi.org/project/pip/
+          * https://pypi.org/project/setuptools/
+        
+        To install run:
+        
+          .. parsed-literal::
+        
+            python -m pip install --upgrade |package|
+        
+        Development
+        ===========
+        
+        Prerequisites:
+        
+        + Development is strictly based on *tox*. To install it run::
+        
+            python -m pip install --upgrade tox
+        
+        Visit `development page`_.
+        
+        Installation from sources:
+        
+        clone the sources:
+        
+          .. parsed-literal::
+        
+            git clone |respository| |package|
+        
+        and run:
+        
+          .. parsed-literal::
+        
+            python -m pip install ./|package|
+        
+        or on development mode:
+        
+          .. parsed-literal::
+        
+            python -m pip install --editable ./|package|
+        
+        License
+        =======
+        
+          | Copyright (c) 2016 Taylor Marks
+          | Copyright (c) 2016-2020 Adam Karpierz
+          | Licensed under the MIT License
+          | https://opensource.org/licenses/MIT
+          | Please refer to the accompanying LICENSE file.
+        
+        Authors
+        =======
+        
+        * Taylor Marks <taylor@marksfam.com>
+        * Adam Karpierz <adam@karpierz.net>
+        
+        .. |package| replace:: let3
+        .. |package_bold| replace:: **let3**
+        .. |respository| replace:: https://github.com/karpierz/let3.git
+        .. _development page: https://github.com/karpierz/let3/
+        .. _PyPI record: https://pypi.org/project/let3/
+        .. _let: https://pypi.org/project/let/
+        
+        Changelog
+        =========
+        
+        1.0.13 (2020-09-22)
+        -------------------
+        - Setup: fix an improper dependencies versions.
+        
+        1.0.12 (2020-09-20)
+        -------------------
+        - Add support for Python 3.8 and 3.9.
+        - Setup general update and cleanup.
+        
+        1.0.11 (2019-05-22)
+        -------------------
+        - Drop support for Python 2.
+        
+        1.0.10 (2019-05-21)
+        -------------------
+        - Update required setuptools version.
+        - Setup update and improvements.
+        - This is the latest release that supports Python 2.
+        
+        1.0.9 (2018-11-08)
+        ------------------
+        - Drop support for Python 2.6 and 3.0-3.3
+        - Update required setuptools version.
+        
+        1.0.8 (2018-05-08)
+        ------------------
+        - Update required setuptools version.
+        - Improve and simplify setup and packaging.
+        
+        1.0.7 (2018-02-26)
+        ------------------
+        - Improve and simplify setup and packaging.
+        
+        1.0.6 (2018-01-28)
+        ------------------
+        - Fix a bug and inconsistencies in tox.ini
+        - Update of README.rst.
+        
+        1.0.3 (2018-01-24)
+        ------------------
+        - Update required Sphinx version.
+        - Update doc Sphinx configuration files.
+        
+        1.0.2 (2017-11-18)
+        ------------------
+        - Setup improvements.
+        - Other minor improvements.
+        
+        1.0.1 (2017-01-05)
+        ------------------
+        - Creating a fork of Taylor Marks's *let* package with a fix allowing
+          to work with Python3 or higher.
+        - Minor improvements.
+        
+        Changes of the original *let*:
+        
+        1.0.1 (Feb 25, 2016)
+        --------------------
+        - Let now assigns the variables to the global namespace always - never
+          the local namespace. The Python interpreter sometimes optimizes variables
+          within the local namespace - it's best not to change values behind its
+          back, as it leads to very difficult to discover bugs.
+        
+        1.0.0 (Feb. 7, 2016)
+        --------------------
+        - Initial commit
+        
+Keywords: let,let3,assign,assignment,var,variable,conditional,if,while
+Platform: any
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Natural Language :: Polish
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: Stackless
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: <4.0.0,>=3.5.0
+Description-Content-Type: text/x-rst; charset=UTF-8
+Provides-Extra: doc
+Provides-Extra: test
