@@ -1,0 +1,24 @@
+Metadata-Version: 1.1
+Name: odinsupport
+Version: 0.2
+Summary: Odin support
+Home-page: https://github.com/phucpv89
+Author: eris mabu
+Author-email: phucpv89@gmail.com
+License: MIT
+Description: Used
+        ----
+        
+        To use, simple do::
+        
+        >>> from odinsupport import bump_version, read_json_file, write_json_file
+        
+        Public python package
+        ---------------------
+        
+        >>> python3 setup.py sdist
+        >>> twine check dist/*
+        >>> twine upload dist/*
+Keywords: Odin
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3.7
