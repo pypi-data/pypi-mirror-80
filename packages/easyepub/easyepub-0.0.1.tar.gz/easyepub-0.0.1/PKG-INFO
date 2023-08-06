@@ -1,0 +1,49 @@
+Metadata-Version: 2.1
+Name: easyepub
+Version: 0.0.1
+Summary: Library for easier translating book pages in png.
+Home-page: https://github.com/xcaq/easyepub
+Author: xcaq
+Author-email: swipduces@yandex.com
+License: MIT
+Description: # EasyEpub
+        ### Library for easier translating book pages in png.
+        
+        # Installation
+        
+        ###### Download library using pip
+        ```bash
+        $ pip3 install easyepub
+        ```
+        
+        # Usage example
+        ###### Install and declare the library
+        ```python3
+        from easyepub import EasyEpub
+        
+        easy = EasyEpub("path-to-book/book.epub")
+        ```
+        ###### Retrieving book metadata
+        ```python3
+        for meta in easy.meta:
+            print(meta)
+        ```
+        ###### Retrieving book cover
+        ```python3
+        easy.get_cover("path-for-save/cover.png")
+        ```
+        ###### Retrieving book chapters
+        ```python3
+        easy.get_content("path-for-save")
+        ```
+        # 🤝 Contributing
+        #### Feel free to contribute. <a href="https://github.com/xcaq/easyepub/graphs/contributors" align=center>Project contributors</a>
+        
+        
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Requires-Python: >=3.6.0
+Description-Content-Type: text/markdown
