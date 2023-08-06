@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: esprovision
+Version: 0.1
+Summary: A command-line tool for provisioning multiple esphome devices through tuya-convert.
+Home-page: https://github.com/yudjinn/esprovision
+Author: Jacob Rodgers
+Author-email: yudjinncoding@gmail.com
+License: MIT
+Platform: UNKNOWN
+Description-Content-Type: text/markdown
+Requires-Dist: Jinja2 (==2.11.2)
+Requires-Dist: MarkupSafe (==1.1.1)
+Requires-Dist: PyYAML (==5.3.1)
+Requires-Dist: autopep8 (==1.5.4)
+Requires-Dist: click (==7.1.2)
+Requires-Dist: pycodestyle (==2.6.0)
+Requires-Dist: toml (==0.10.1)
+
+# ESProvision
+
+This tool Uses a Jinja2 ('.j2') file that is a direct copy of
+a esphome yaml file to generate multiple iterated files. It
+then copies the binaries to tuya-convert for flashing.
+
+
