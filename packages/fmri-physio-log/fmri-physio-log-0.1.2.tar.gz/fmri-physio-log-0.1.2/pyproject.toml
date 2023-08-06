@@ -1,0 +1,39 @@
+[tool.poetry]
+name = "fmri-physio-log"
+version = "0.1.2"
+description = "Load fMRI PMU files into python"
+authors = [
+    "Andrew Ross <andrew.ross.mail@gmail.com>"
+]
+license = "MIT"
+
+readme = "README.md"
+
+homepage = "https://github.com/datsyl/fmri-physio-log"
+repository = "https://github.com/datsyl/fmri-physio-log"
+documentation = "https://github.com/datsyl/fmri-physio-log"
+
+keywords = ["mri", "siemens", "pmu"]
+
+classifiers = [
+    "Programming Language :: Python :: 3.0",
+    "Topic :: Scientific/Engineering :: Medical Science Apps.",
+    "License :: OSI Approved :: MIT License",
+    "Development Status :: 4 - Beta",
+]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+numpy = "^1.15.4"
+
+[tool.poetry.dev-dependencies]
+black = "^20.8b1"
+flake8 = "^3.8.3"
+pylint = "^2.6.0"
+reorder-python-imports = "^2.3.5"
+bump2version = "^1.0.0"
+pytest = "^6.0.2"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
