@@ -1,0 +1,31 @@
+Metadata-Version: 2.1
+Name: ml-workflow
+Version: 0.7.7
+Summary: Workflow tools for pytorch and ignite
+Home-page: UNKNOWN
+Author: "Felix Abrahamsson, Richard L\u00F6wenstr\u00F6m, Jim Holmstr\u00F6m"
+Author-email: richard@aiwizo.com
+License: Apache-2
+Project-URL: Source Code, https://github.com/codewell/ml-workflow/
+Keywords: pytorch,ignite,workflow,utilities
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Other Environment
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Requires-Dist: numpy (>=1.18.1)
+Requires-Dist: opencv-python (>=4.1.2.30)
+Requires-Dist: pandas (>=0.25.3)
+Requires-Dist: pytorch-ignite (<0.5,>=0.4.0)
+Requires-Dist: scikit-learn (>=0.20.4)
+Requires-Dist: tensorboard (>=2.1.0)
+Requires-Dist: torch (>=1.2.0)
+Requires-Dist: tqdm (>=4.41.1)
+Requires-Dist: cookiecutter (==1.7.2)
+Requires-Dist: imgaug (>=0.4.0)
+Requires-Dist: pytorch-datastream (>=0.3.0)
+
+UNKNOWN
+
+
