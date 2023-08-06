@@ -1,0 +1,5 @@
+[console_scripts]
+gdocs = weboffice:gdocs
+msoo = weboffice:msoo
+web-office = weboffice:msoo
+
