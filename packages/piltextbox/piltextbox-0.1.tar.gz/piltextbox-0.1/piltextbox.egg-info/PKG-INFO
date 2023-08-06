@@ -1,0 +1,13 @@
+Metadata-Version: 2.1
+Name: piltextbox
+Version: 0.1
+Summary: Streamlined text writing on images, using the Pillow (PIL) library
+Home-page: https://github.com/JamesPImes/piltextbox
+Author: James P. Imes
+Author-email: jamesimes@gmail.com
+License: MIT
+Description: An extension for the Pillow (PIL) library for streamlined writing of text in an image, with automatic textwrapping and indendation, optional text-block justification, and configurable font settings.
+        
+        Visit [the GitHub repository](https://github.com/JamesPImes/piltextbox) for a quickstart guide.
+Platform: UNKNOWN
+Description-Content-Type: text/markdown
