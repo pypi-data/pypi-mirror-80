@@ -1,0 +1,103 @@
+# Change pip's cache directory to be inside the project directory since we can
+# only cache local items.
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
+# Pip's cache doesn't store the python packages
+# https://pip.pypa.io/en/stable/reference/pip_install/#caching
+#
+# If you want to also cache the installed packages, you have to install
+# them in a virtualenv and cache it as well.
+cache:
+  paths:
+    - .cache/pip
+    - venv/
+
+.verify:
+  before_script:
+    - python -V  # Print out python version for debugging
+    - pip install virtualenv
+    - virtualenv venv
+    - source venv/bin/activate
+    - python setup.py install
+
+    
+     
+stages:
+  - Static Analysis
+  - test
+
+
+pylint:
+  extends: ".verify"
+  stage: Static Analysis
+  image: "python:3.7"
+  before_script:
+    - pip install pylint pylint-exit anybadge
+    - mkdir -p public
+  script:
+    - pylint --rcfile=setup.cfg --output-format=text aidapy | tee public/pylint.txt || pylint-exit $?
+    - score=$(sed -n 's/^Your code has been rated at \([-0-9.]*\)\/.*/\1/p' public/pylint.txt)
+    - echo "Pylint score was $score"
+    - if [ "$(printf '%d' $score 2>/dev/null)" -le 7 ]; then echo "PyLint score is less than 8.0"; exit 33; else echo "Code Standards have Passed";  fi
+    - anybadge --value=$score --file=public/pylint.svg pylint
+  artifacts:
+    paths:
+      - public/pylint.svg
+  only:
+    - master
+    - develop
+
+
+#test_python3.6:
+#    extends: ".verify"
+#     stage: test
+#     image: "python:3.6"
+#     before_script:
+#       - mkdir -p public
+#       - pip install -e .['ml']  
+#       - pip install pytest coverage pytest-cov
+#     script:
+#       - coverage run setup.py test
+#     only:
+#       - develop
+
+coverage:
+  extends: ".verify"
+  stage: test
+  image: "python:3.7"
+  before_script:
+    - mkdir -p public/
+    - pip install -e .['ml']
+    - pip install pytest coverage pytest-cov
+    - export CLUSTERCOOKIE=291A567422045F6037495173241D5A6D275A7836370B4060650602652A1C522F27095D7D230A41643E015F6D0B0F5E6022041D622405
+  after_script:
+    - pip install codecov
+    - codecov --token=9a884bb4-e0ea-48c0-96fc-378e2d5f54fb
+  script:
+    - coverage run setup.py test
+  artifacts:
+    paths:
+      - public/
+  only:
+    - master
+    - develop
+
+
+pages:
+  extends: ".verify"
+  stage: "test"
+  image: "python:3.7"
+  script:
+    - wget https://github.com/jgm/pandoc/releases/download/1.19.2.1/pandoc-1.19.2.1-1-amd64.deb
+    - dpkg -i pandoc-1.19.2.1-1-amd64.deb
+    - rm pandoc-1.19.2.1-1-amd64.deb
+    - pip install -e .['doc'] 
+    - cd doc ; make html
+    - mv _build/html/ ../public/
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
+    - develop
