@@ -1,0 +1,24 @@
+Metadata-Version: 2.1
+Name: smhpy
+Version: 0.1
+Summary: My first package.
+Home-page: https://github.com/simonpf/weatherapp
+Author: Simon Pfreundschuh
+Author-email: simon.pfreundschuh@chalmers.se
+License: UNKNOWN
+Description: ![install and test](https://github.com/simonpf/weather_app_solution/workflows/install_and_test/badge.svg)
+        
+        # The `weather_app` package
+        
+        This repository provides a very simple Python package to access the SMHI weather forecast
+        API.
+        
+        ## Documentation
+        
+        Online documentation can be found [here](https://simonpf.github.com/weather_app_solution).
+        
+        
+        
+Platform: UNKNOWN
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
