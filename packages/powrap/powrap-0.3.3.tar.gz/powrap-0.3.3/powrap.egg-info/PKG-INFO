@@ -1,0 +1,53 @@
+Metadata-Version: 1.2
+Name: powrap
+Version: 0.3.3
+Summary: Find and properly reindent .po files.
+Home-page: https://github.com/JulienPalard/powrap
+Author: Julien Palard
+Author-email: julien@palard.fr
+License: MIT License
+Description: powrap
+        ======
+        
+        |build| |pypi|
+        
+        .. |build| image:: https://travis-ci.org/JulienPalard/powrap.svg?branch=master
+           :target: https://travis-ci.org/JulienPalard/powrap
+        
+        .. |pypi| image:: https://img.shields.io/pypi/v/powrap.svg
+           :target: https://pypi.python.org/pypi/powrap
+        
+        Script to fix indentation of given ``.po`` files. If ``--modified`` is
+        given, it will only fix modified files according to git (usefull if
+        your ``.po`` files are versionned).
+        
+        if ``--quiet`` is given, the progress bar will not be shown
+        
+        
+        Dependencies
+        ============
+        
+        ``powrap`` relies on ``msgcat`` from ``gettext`` so you'll have to
+        install ``gettext`` first, for example on Debian run::
+        
+          apt install gettext
+        
+        
+        Contributing
+        ============
+        
+        Start by creating a venv and installing `requirements-dev.in`.
+        
+        To run the tests, use `tox -p auto`.
+        
+Keywords: powrap,po,gettext,i18n
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Python: >=3.6
