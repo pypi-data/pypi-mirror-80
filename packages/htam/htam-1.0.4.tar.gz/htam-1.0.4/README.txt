@@ -1,0 +1,42 @@
+This is my first package and it includes a lot of cool math functions.
+
+I created it because I like maths and to test my python skills.
+
+- Run htam.info() to see general informations about htam and all functions included
+- Run htam.info(function_name) to see detailed informations about that function
+
+If you run into any issue, please send me an email and i will update the package as soon as I can.
+
+I'm still working to improve this package, so, if you have any idea for a future update or a re-styling of an already existing function, please let me know with an email, I would really appreciate it.
+
+Enjoy :)
+
+
+
+Change Log
+==========
+
+1.0.4 (24/09/2020)
+------------------
+- minor corrections
+
+1.0.1 (24/09/2020)
+------------------
+- now each function returns "None" when 1 or more arguments are not valid
+
+1.0.0 (23/09/2020)
+------------------
+- First Release >>> 13 math functions included:
+    1)  floor
+    2)  ceiling
+    3)  fractional part
+    4)  nth root of a number
+    5)  linear congruence solver
+    6)  greatest common divisor
+    7)  least common multiple
+    8)  divisors of a number
+    9)  nth prime number
+    10) number of primes less than a given number (pi function)
+    11) prime factorization of a number
+    12) factorial of a number
+    13) collatz conjecture checker
