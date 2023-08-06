@@ -1,0 +1,13 @@
+MANIFEST.in
+README.md
+pyproject.toml
+setup.py
+src/cdk8s_plus/__init__.py
+src/cdk8s_plus/py.typed
+src/cdk8s_plus.egg-info/PKG-INFO
+src/cdk8s_plus.egg-info/SOURCES.txt
+src/cdk8s_plus.egg-info/dependency_links.txt
+src/cdk8s_plus.egg-info/requires.txt
+src/cdk8s_plus.egg-info/top_level.txt
+src/cdk8s_plus/_jsii/__init__.py
+src/cdk8s_plus/_jsii/cdk8s-plus@0.29.0.jsii.tgz
