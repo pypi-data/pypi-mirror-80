@@ -1,0 +1,17 @@
+include *.rst
+include *.toml
+include *.yml
+include LICENSE
+include tox.ini
+recursive-include docs *.bat
+recursive-include docs *.py
+recursive-include docs *.rst
+recursive-include docs Makefile
+recursive-include src *.py
+recursive-include src *.c
+recursive-include src *.h
+recursive-include tests *.py
+recursive-include tests *.bin
+recursive-include tests *.dat
+recursive-include tools *.cpp
+recursive-include tools *.sh
