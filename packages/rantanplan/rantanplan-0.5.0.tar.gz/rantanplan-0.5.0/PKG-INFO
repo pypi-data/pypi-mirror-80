@@ -1,0 +1,234 @@
+Metadata-Version: 1.2
+Name: rantanplan
+Version: 0.5.0
+Summary: Scansion tool for Spanish texts
+Home-page: https://github.com/linhd-postdata/rantanplan
+Author: LINHD POSTDATA Project
+Author-email: info@linhd.uned.es
+License: Apache Software License 2.0
+Project-URL: Documentation, https://rantanplan.readthedocs.io/
+Project-URL: Changelog, https://rantanplan.readthedocs.io/en/latest/changelog.html
+Project-URL: Issue Tracker, https://github.com/linhd-postdata/rantanplan/issues
+Description: ========
+        Overview
+        ========
+        
+        
+        
+        Scansion tool for Spanish texts
+        
+        * Free software: Apache Software License 2.0
+        
+        Installation
+        ============
+        
+        ::
+        
+            pip install rantanplan
+        
+        Usage
+        =====
+        
+        Install required resources
+        --------------------------
+        
+        #. Install spaCy model language for Spanish::
+        
+                python -m spacy download es_core_news_md
+        
+        #. Install Freeling rules for affixes::
+        
+                python -m spacy_affixes download es
+        
+        
+        Import rantanplan
+        -----------------
+        
+        To use rantanplan in a project::
+        
+                import rantanplan
+        
+        Usage example
+        -------------
+        .. code-block:: python
+        
+            from rantanplan.core import get_scansion
+            
+            poem = """Me gustas cuando callas porque estás como ausente,
+            y me oyes desde lejos, y mi voz no te toca.
+            Parece que los ojos se te hubieran volado
+            y parece que un beso te cerrara la boca.
+        
+            Como todas las cosas están llenas de mi alma
+            emerges de las cosas, llena del alma mía.
+            Mariposa de sueño, te pareces a mi alma,
+            y te pareces a la palabra melancolía."""
+            
+            get_scansion(poem)
+        
+        Output example
+        --------------
+        
+        .. code-block:: python
+        
+            [{'tokens': [{'word': [{'syllable': 'Me',
+              'is_stressed': False,
+              'is_word_end': True}],
+            'stress_position': 0},
+           {'word': [{'syllable': 'gus', 'is_stressed': True},
+             {'syllable': 'tas', 'is_stressed': False, 'is_word_end': True}],
+            'stress_position': -2},
+           {'word': [{'syllable': 'cuan', 'is_stressed': False},
+             {'syllable': 'do', 'is_stressed': False, 'is_word_end': True}],
+            'stress_position': 0},
+           {'word': [{'syllable': 'ca', 'is_stressed': True},
+             {'syllable': 'llas', 'is_stressed': False, 'is_word_end': True}],
+            'stress_position': -2},
+           {'word': [{'syllable': 'por', 'is_stressed': False},
+             {'syllable': 'que',
+              'is_stressed': False,
+              'has_synalepha': True,
+              'is_word_end': True}],
+            'stress_position': 0},
+           {'word': [{'syllable': 'es', 'is_stressed': False},
+             {'syllable': 'tás', 'is_stressed': True, 'is_word_end': True}],
+            'stress_position': -1},
+           {'word': [{'syllable': 'co', 'is_stressed': False},
+             {'syllable': 'mo',
+              'is_stressed': False,
+              'has_synalepha': True,
+              'is_word_end': True}],
+            'stress_position': 0},
+           {'word': [{'syllable': 'au', 'is_stressed': False},
+             {'syllable': 'sen', 'is_stressed': True},
+             {'syllable': 'te', 'is_stressed': False, 'is_word_end': True}],
+            'stress_position': -2},
+           {'symbol': ','}],
+          'phonological_groups': [{'syllable': 'Me',
+            'is_stressed': False,
+            'is_word_end': True},
+           {'syllable': 'gus', 'is_stressed': True},
+           {'syllable': 'tas', 'is_stressed': False, 'is_word_end': True},
+           {'syllable': 'cuan', 'is_stressed': False},
+           {'syllable': 'do', 'is_stressed': False, 'is_word_end': True},
+           {'syllable': 'ca', 'is_stressed': True},
+           {'syllable': 'llas', 'is_stressed': False, 'is_word_end': True},
+           {'syllable': 'por', 'is_stressed': False},
+           {'syllable': 'quees', 'is_stressed': False, 'synalepha_index': [2]},
+           {'syllable': 'tás', 'is_stressed': True, 'is_word_end': True},
+           {'syllable': 'co', 'is_stressed': False},
+           {'syllable': 'moau', 'is_stressed': False, 'synalepha_index': [1]},
+           {'syllable': 'sen', 'is_stressed': True},
+           {'syllable': 'te', 'is_stressed': False, 'is_word_end': True}],
+          'rhythm': {'stress': '-+---+---+--+-', 'type': 'pattern', 'length': 14}},
+           ...
+        
+        Documentation
+        =============
+        
+        
+        https://rantanplan.readthedocs.io/
+        
+        
+        Development
+        ===========
+        
+        To run the all tests run::
+        
+            tox
+        
+        Note, to combine the coverage data from all the tox environments run:
+        
+        .. list-table::
+            :widths: 10 90
+            :stub-columns: 1
+        
+            - - Windows
+              - ::
+        
+                    set PYTEST_ADDOPTS=--cov-append
+                    tox
+        
+            - - Other
+              - ::
+        
+                    PYTEST_ADDOPTS=--cov-append tox
+        
+        
+        Changelog
+        =========
+        
+        0.4.2 (2020-03-11)
+        ------------------
+        
+        * Added documentation
+        
+        0.4.1 (2019-12-19)
+        ------------------
+        
+        * Added 'AUX' to the split_on list for spacy affixes
+        * Fixed syllabification exceptions, support for disabling/enabling spacy_affixes
+        * Fixed multiline break
+        * Fixed splitted verb stresses and secondary stress on '-mente' adverbs
+        * Fixed some issues
+        * Added minimum length for '-mente' adverbs
+        
+        0.4.0 (2019-11-21)
+        ------------------
+        
+        * Added SpaCy Doc input support
+        * Add umlaut hyatus
+        * Added new hyatus and fixed init
+        * Refactoring code
+        * Feat/new syllabification
+        * Naming conventions
+        * Adding rhyme analaysis to scansion output
+        * Adding 'singleton' behaviour to load_pipeline
+        * Metre analysis w/ sinaeresis and synalephas
+        * Added new workflow for syllabification, with tests
+        * Post syllabification rules regexes
+        * Added unit tests for all functions
+        
+        0.3.0 (2019-06-18)
+        ------------------
+        
+        * Added SpaCy Doc input support
+        * Add umlaut hyatus
+        * Fixed syllabyfication errors, affixes and the pipeline
+        * Fixed hyphenator for diphthongs with u umlaut
+        * Added hyphenation for explicit hyatus with umlaut vowels
+        * Added new hyatus and fixed __init__
+        
+        0.2.0 (2019-06-14)
+        ------------------
+        
+        * Better hyphenator, and affixes and pipeline fixes
+        
+        0.1.2 (2019-06-10)
+        ------------------
+        
+        * Republishing on Pypi
+        
+        0.1.0 (2019-07-03)
+        ------------------
+        
+        * Project name change.
+        
+        0.0.1 (2019-02-21)
+        ------------------
+        
+        * First release on PyPI.
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: Unix
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Topic :: Utilities
+Requires-Python: >2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*
