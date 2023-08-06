@@ -1,0 +1,6 @@
+{
+    "argv": ["python",
+             "-m", "dolphindb_notebook",
+             "-f", "{connection_file}"],
+    "display_name": "DolphinDB"
+}

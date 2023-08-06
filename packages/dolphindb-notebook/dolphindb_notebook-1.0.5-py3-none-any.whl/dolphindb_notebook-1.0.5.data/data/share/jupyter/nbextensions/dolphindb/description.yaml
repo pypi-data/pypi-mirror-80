@@ -1,0 +1,6 @@
+Type: IPython Notebook Extension
+Compatibility: 3.x, 4.x, 5.x, 6.x
+Name: DolphinDB Extension
+Main: main.js
+Link: README.md
+Description: 为用户提供Jupyter Notebook连接DolphinDB Server的配置界面
