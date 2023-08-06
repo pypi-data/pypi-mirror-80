@@ -1,0 +1,89 @@
+============================================================
+   XMLStarlet v1.6.3-249-ge436ed1-dirty: ./test-suite.log
+============================================================
+
+# TOTAL: 79
+# PASS:  75
+# SKIP:  0
+# XFAIL: 3
+# FAIL:  1
+# XPASS: 0
+# ERROR: 0
+
+.. contents:: :depth: 2
+
+XFAIL: examples/bigxml-dtd
+==========================
+
+--- -	2020-09-29 16:12:34.093193382 +0300
++++ results/bigxml-dtd.out	2020-09-04 18:22:29.656473211 +0300
+@@ -1 +1 @@
+--:6553x
++-:7000x
+XFAIL examples/bigxml-dtd (exit status: 1)
+
+FAIL: examples/ed-expr
+======================
+
+xmlXPathCompOpEval: function max bound to undefined prefix math
+./ed-expr: line 6: 207575 Segmentation fault      (core dumped) ./xmlstarlet ed -u /xml/table/rec/@id -x .+1 -a /xml/table -t elem -n highest-record -v '' -u '$xstar:prev' -x '/xml/table/rec[numField=math:max(../rec/numField)]' xml/table.xml
+--- -	2020-09-29 16:12:34.580105127 +0300
++++ results/ed-expr.out	2020-09-04 18:22:29.656473211 +0300
+@@ -0,0 +1,23 @@
++<?xml version="1.0"?>
++<xml>
++  <table>
++    <rec id="2">
++      <numField>123</numField>
++      <stringField>String Value</stringField>
++    </rec>
++    <rec id="3">
++      <numField>346</numField>
++      <stringField>Text Value</stringField>
++    </rec>
++    <rec id="4">
++      <numField>-23</numField>
++      <stringField>stringValue</stringField>
++    </rec>
++  </table>
++  <highest-record>
++    <rec id="3">
++      <numField>346</numField>
++      <stringField>Text Value</stringField>
++    </rec>
++  </highest-record>
++</xml>
+FAIL examples/ed-expr (exit status: 1)
+
+XFAIL: examples/ed-namespace
+============================
+
+FIXME: can't delete namespace nodes
+--- -	2020-09-29 16:12:34.757751837 +0300
++++ results/ed-namespace.out	2020-09-04 18:22:29.656473211 +0300
+@@ -0,0 +1,3 @@
++<doc xmlns="http://www.foo.com/namespaces/my">
++  <el/>
++</doc>
+XFAIL examples/ed-namespace (exit status: 1)
+
+XFAIL: examples/exslt-ed
+========================
+
+xmlXPathCompOpEval: function day-name bound to undefined prefix date
+./exslt-ed: line 3: 207774 Done                    echo '<x/>'
+     207775 Segmentation fault      (core dumped) | ./xmlstarlet ed -O -u /x -x 'date:day-name("2011-09-24")'
+xmlXPathCompOpEval: function abs bound to undefined prefix math
+./exslt-ed: line 4: 207778 Done                    echo '<x/>'
+     207779 Segmentation fault      (core dumped) | ./xmlstarlet ed -O -u /x -x 'math:abs(-1000)'
+xmlXPathCompOpEval: function distinct bound to undefined prefix set
+./exslt-ed: line 5: 207782 Done                    echo '<x><n>a</n><n>b</n><n>a</n></x>'
+     207783 Segmentation fault      (core dumped) | ./xmlstarlet ed -O -u /x -x 'count(set:distinct(/x/*))'
+--- -	2020-09-29 16:12:34.909780533 +0300
++++ results/exslt-ed.out	2020-09-04 18:22:29.656473211 +0300
+@@ -0,0 +1,3 @@
++<x>Saturday</x>
++<x>1000</x>
++<x>2</x>
+XFAIL examples/exslt-ed (exit status: 1)
+

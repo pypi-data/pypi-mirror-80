@@ -1,0 +1,6 @@
+--- -	2020-09-29 16:12:34.093193382 +0300
++++ results/bigxml-dtd.out	2020-09-04 18:22:29.656473211 +0300
+@@ -1 +1 @@
+--:6553x
++-:7000x
+XFAIL examples/bigxml-dtd (exit status: 1)

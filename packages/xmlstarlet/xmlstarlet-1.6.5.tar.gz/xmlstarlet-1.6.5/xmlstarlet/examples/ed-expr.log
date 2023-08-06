@@ -1,0 +1,29 @@
+xmlXPathCompOpEval: function max bound to undefined prefix math
+./ed-expr: line 6: 207575 Segmentation fault      (core dumped) ./xmlstarlet ed -u /xml/table/rec/@id -x .+1 -a /xml/table -t elem -n highest-record -v '' -u '$xstar:prev' -x '/xml/table/rec[numField=math:max(../rec/numField)]' xml/table.xml
+--- -	2020-09-29 16:12:34.580105127 +0300
++++ results/ed-expr.out	2020-09-04 18:22:29.656473211 +0300
+@@ -0,0 +1,23 @@
++<?xml version="1.0"?>
++<xml>
++  <table>
++    <rec id="2">
++      <numField>123</numField>
++      <stringField>String Value</stringField>
++    </rec>
++    <rec id="3">
++      <numField>346</numField>
++      <stringField>Text Value</stringField>
++    </rec>
++    <rec id="4">
++      <numField>-23</numField>
++      <stringField>stringValue</stringField>
++    </rec>
++  </table>
++  <highest-record>
++    <rec id="3">
++      <numField>346</numField>
++      <stringField>Text Value</stringField>
++    </rec>
++  </highest-record>
++</xml>
+FAIL examples/ed-expr (exit status: 1)

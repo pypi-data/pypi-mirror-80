@@ -1,0 +1,16 @@
+xmlXPathCompOpEval: function day-name bound to undefined prefix date
+./exslt-ed: line 3: 207774 Done                    echo '<x/>'
+     207775 Segmentation fault      (core dumped) | ./xmlstarlet ed -O -u /x -x 'date:day-name("2011-09-24")'
+xmlXPathCompOpEval: function abs bound to undefined prefix math
+./exslt-ed: line 4: 207778 Done                    echo '<x/>'
+     207779 Segmentation fault      (core dumped) | ./xmlstarlet ed -O -u /x -x 'math:abs(-1000)'
+xmlXPathCompOpEval: function distinct bound to undefined prefix set
+./exslt-ed: line 5: 207782 Done                    echo '<x><n>a</n><n>b</n><n>a</n></x>'
+     207783 Segmentation fault      (core dumped) | ./xmlstarlet ed -O -u /x -x 'count(set:distinct(/x/*))'
+--- -	2020-09-29 16:12:34.909780533 +0300
++++ results/exslt-ed.out	2020-09-04 18:22:29.656473211 +0300
+@@ -0,0 +1,3 @@
++<x>Saturday</x>
++<x>1000</x>
++<x>2</x>
+XFAIL examples/exslt-ed (exit status: 1)
