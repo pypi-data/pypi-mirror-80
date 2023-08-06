@@ -1,0 +1,14 @@
+MANIFEST.in
+README.md
+setup.py
+Unalix.egg-info/PKG-INFO
+Unalix.egg-info/SOURCES.txt
+Unalix.egg-info/dependency_links.txt
+Unalix.egg-info/requires.txt
+Unalix.egg-info/top_level.txt
+unalix/__init__.py
+unalix/files.py
+unalix/http_clients.py
+unalix/patches.py
+unalix/settings.py
+unalix/utils.py
