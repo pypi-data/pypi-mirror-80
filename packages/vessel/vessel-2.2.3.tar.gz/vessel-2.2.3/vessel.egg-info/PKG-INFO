@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: vessel
+Version: 2.2.3
+Summary: Cache and contain utilities.
+Home-page: https://github.com/Exahilosys/vessel
+Author: Exahilosys
+License: MIT
+Description: Installing
+        ==========
+        
+        .. code-block:: bash
+        
+          pip3 install vessel
+        
+        Links
+        -----
+        
+        - `Documentation <https://vessel.readthedocs.io>`_
+        
+Platform: UNKNOWN
+Provides-Extra: docs
