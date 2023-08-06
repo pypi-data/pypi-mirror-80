@@ -1,0 +1,13 @@
+Click<8.0,>=7.0
+GitPython<4,>=3
+PyYAML
+click-log
+commisery<1,>=0.3
+python-dateutil
+setuptools
+
+[:python_version < "3.8"]
+importlib_metadata
+
+[interactive]
+keyring
