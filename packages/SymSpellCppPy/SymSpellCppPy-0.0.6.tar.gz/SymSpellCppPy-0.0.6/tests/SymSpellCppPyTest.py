@@ -1,0 +1,48 @@
+import unittest
+import SymSpellCppPy
+
+
+class SymSpellCppPyTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.symSpell = SymSpellCppPy.SymSpell()
+        cls.symSpell.load_dictionary("resources/frequency_dictionary_en_82_765.txt", 0, 1, " ")
+
+    def test_lookup(self):
+        self.assertEqual(self.symSpell.lookup("tke", SymSpellCppPy.Verbosity.CLOSEST)[0].term, "take")
+        self.assertEqual(self.symSpell.lookup("abolution", SymSpellCppPy.Verbosity.CLOSEST)[0].term, "abolition")
+        self.assertEqual(self.symSpell.lookup("intermedaite", SymSpellCppPy.Verbosity.CLOSEST)[0].term, "intermediate")
+
+    def test_lookup_distance(self):
+        self.assertEqual(self.symSpell.lookup("extrine", SymSpellCppPy.Verbosity.CLOSEST, 2)[0].term, "extreme")
+        self.assertListEqual(self.symSpell.lookup("extrine", SymSpellCppPy.Verbosity.CLOSEST, 1), [])
+        self.assertListEqual(self.symSpell.lookup("elipnaht", SymSpellCppPy.Verbosity.CLOSEST), [])
+        self.assertListEqual(self.symSpell.lookup("aotocrasie", SymSpellCppPy.Verbosity.CLOSEST), [])
+
+    def test_compound_mistakes(self):
+        self.assertEqual(self.symSpell.lookup_compound(
+            "whereis th elove hehad dated forImuch of thepast who couqdn'tread in sixthgrade and ins pired him")[0].term,
+                         "whereas to love head dated for much of theist who couldn't read in sixth grade and inspired "
+                         "him")
+        self.assertEqual(self.symSpell.lookup_compound(
+            "in te dhird qarter oflast jear he hadlearned ofca sekretplan")[0].term,
+                         "in to third quarter of last year he had learned of a secret plan")
+        self.assertEqual(self.symSpell.lookup_compound(
+            "the bigjest playrs in te strogsommer film slatew ith plety of funn")[0].term,
+                         "they biggest players in to strong summer film slate with plenty of fun")
+
+    def test_word_segementation(self):
+        self.assertEqual(self.symSpell.word_segmentation(
+            "thequickbrownfoxjumpsoverthelazydog").corrected_string,
+                         "they quick brown fox jumps over therapy dog")
+        self.assertEqual(self.symSpell.word_segmentation(
+            "itwasabrightcolddayinaprilandtheclockswerestrikingthirteen").corrected_string,
+                         "it was bright holiday in april another clocks were striking thirteen")
+        self.assertEqual(self.symSpell.word_segmentation(
+            "itwasthebestoftimesitwastheworstoftimesitwastheageofwisdomitwastheageoffoolishness").corrected_string,
+                         "it waste best of times it waste worst of times it was thereof wisdom it was thereof "
+                         "foolishness")
+
+
+if __name__ == '__main__':
+    unittest.main()
