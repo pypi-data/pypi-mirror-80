@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: pdf2txt-pkg-jeff
+Version: 1.0.0
+Summary: Converts a PDF to Text
+Home-page: https://github.com/jcott28/pdf2txt
+Author: Jeff Merino-Ott
+Author-email: jeff@coffeecoder.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+
+This reads in an PDF, extracts the text, and write out the text into a new file named after the input file adding .out to the end.
+
+pdf2txt.py -i <inputfile>
+
+
+
