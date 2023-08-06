@@ -1,0 +1,11 @@
+{% extends layout_data.main_layout|default:"genviews/layout.html" %}
+
+{% load i18n %}
+
+{% block content %}
+
+<h1>{{ form_title }}</h1>
+
+{% include 'genviews/templates/form.html' %}
+
+{% endblock %}
