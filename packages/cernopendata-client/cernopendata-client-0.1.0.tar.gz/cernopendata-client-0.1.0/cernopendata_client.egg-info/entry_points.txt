@@ -1,0 +1,3 @@
+[console_scripts]
+cernopendata-client = cernopendata_client.cli:cernopendata_client
+

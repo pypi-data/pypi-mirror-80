@@ -1,0 +1,97 @@
+Metadata-Version: 2.1
+Name: cernopendata-client
+Version: 0.1.0
+Summary: cernopendata-client.
+Home-page: UNKNOWN
+Author: CERN Open Data
+Author-email: opendata-team@cern.ch
+License: UNKNOWN
+Description: ###################
+        cernopendata-client
+        ###################
+        
+        .. image:: https://img.shields.io/pypi/pyversions/cernopendata-client.svg
+           :target: https://pypi.org/pypi/cernopendata-client
+        
+        .. image:: https://img.shields.io/travis/cernopendata/cernopendata-client.svg
+           :target: https://travis-ci.org/cernopendata/cernopendata-client
+        
+        .. image:: https://readthedocs.org/projects/cernopendata-client/badge/?version=latest
+           :target: https://cernopendata-client.readthedocs.io/en/latest/?badge=latest
+        
+        .. image:: https://img.shields.io/coveralls/cernopendata/cernopendata-client.svg
+           :target: https://coveralls.io/r/cernopendata/cernopendata-client
+        
+        .. image:: https://badges.gitter.im/Join%20Chat.svg
+           :target: https://gitter.im/cernopendata/opendata.cern.ch?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge
+        
+        .. image:: https://img.shields.io/github/license/cernopendata/cernopendata-client.svg
+           :target: https://github.com/cernopendata/cernopendata-client/blob/master/LICENSE
+        
+        About
+        =====
+        
+        ``cernopendata-client`` is a command-like tool to facilitate downloading files
+        from the `CERN Open Data portal <http://opendata.cern.ch/>`_. The tool enables
+        to query datasets hosted on the CERN Open Data portal and to download and
+        verify the individual data set files.
+        
+        Installation
+        ============
+        
+        .. code-block:: console
+        
+            $ pip install cernopendata-client
+        
+        Usage
+        =====
+        
+        The detailed information on how to install and use `cernopendata-client` can be
+        found in `cernopendata-client.readthedocs.io
+        <https://cernopendata-client.readthedocs.io/en/latest/>`_.
+        
+        Useful links
+        ============
+        
+        - `CERN Open Data portal <http://opendata.cern.ch/>`_
+        - `CERN Open Data user forum <https://opendata-forum.cern.ch/>`_
+        
+        
+        Changes
+        =======
+        
+        Version 0.1.0 (2020-09-24)
+        --------------------------
+        
+        - Enriches `download-files` command to optionally download only files
+          matching certain name, regexp, or range count.
+        - Adds new `verify-files` command to verify number, size, and checksum of
+          downloaded files.
+        - Improves `get-metadata` command with respect to outputting only
+          certain desired metadata field values.
+        - Enriches user documentation.
+        
+        Version 0.0.1 (2020-09-09)
+        --------------------------
+        
+        - Initial public release.
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: System :: Archiving
+Provides-Extra: docs
+Provides-Extra: tests
+Provides-Extra: all
