@@ -1,0 +1,14 @@
+wagtail<2.10,>=2.7
+django-phonenumber-field
+phonenumbers
+python-dateutil
+wagtailgeowidget
+django-honeypot>=0.6.0
+django-crispy-forms>=1.7
+bleach>=2.0.0
+
+[test]
+freezegun<0.4,>=0.3
+pytest-django<3.10,>=3.8
+pytest-xdist<1.35,>=1.29
+psycopg2-binary
