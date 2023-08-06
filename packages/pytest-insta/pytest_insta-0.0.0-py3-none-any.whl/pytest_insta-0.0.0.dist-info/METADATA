@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: pytest-insta
+Version: 0.0.0
+Summary: A flexible and user-friendly snapshot testing plugin for pytest
+Home-page: https://github.com/vberlier/pytest-insta
+License: MIT
+Keywords: pytest-plugin,pytest,testing,snapshot,snapshot-testing
+Author: Valentin Berlier
+Author-email: berlier.v@gmail.com
+Requires-Python: >=3.8,<4.0
+Classifier: Framework :: Pytest
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: pytest (>=6.0.2,<7.0.0)
+Project-URL: Documentation, https://github.com/vberlier/pytest-insta
+Project-URL: Repository, https://github.com/vberlier/pytest-insta
+Description-Content-Type: text/markdown
+
+# pytest-insta
+
+> A flexible and user-friendly snapshot testing plugin for pytest.
+
