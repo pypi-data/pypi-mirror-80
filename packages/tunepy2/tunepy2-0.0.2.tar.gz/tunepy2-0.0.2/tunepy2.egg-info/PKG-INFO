@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: tunepy2
+Version: 0.0.2
+Summary: A package containing a set of bitstring optimizers.
+Home-page: https://github.com/efortner/tunepy
+Author: Ethan Fortner
+Author-email: ethan.fortner@icloud.com
+License: UNKNOWN
+Description: [![Build Status](https://travis-ci.org/efortner/tunepy.svg?branch=master)](https://travis-ci.org/efortner/tunepy)
+        [![Coverage Status](https://coveralls.io/repos/github/efortner/tunepy/badge.svg?branch=master)](https://coveralls.io/github/efortner/tunepy?branch=master)
+        # tunepy2
+        Provides a variety of extensible and easy to use bitstring optimizers. 
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3.7
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
