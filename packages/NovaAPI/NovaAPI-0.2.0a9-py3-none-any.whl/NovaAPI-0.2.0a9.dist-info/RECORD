@@ -1,0 +1,14 @@
+nova_api/__init__.py,sha256=SSylr584nSd3pDAH1yrIcCq-ISNHL_DizQAqrcBLLSY,10458
+nova_api/auth.py,sha256=YGHwaozY8J-qTwm28Wczp5B29wn1k-FeKu82x9ipkQU,3965
+nova_api/baseapi.py,sha256=PCCi8II2ua9A9QAC_D_6BOjEOhoRrHkXv1bvaP8CvA4,10509
+nova_api/entity.py,sha256=SlwMDGhqn5aP8GBV9q7dle0DByzFXYCUJk41NHYhsnY,6421
+nova_api/exceptions.py,sha256=UKWVRqAP4VyJw05yFPYShySeNBzuzhuAwYbjESQCmYI,49
+nova_api/generic_dao.py,sha256=yWNKI-R3MAOQFdatcDShJzlaQkL27CmEywLRk54svpg,14178
+nova_api/mysql_helper.py,sha256=jTKt3GOXUab3sXppswt3Ubq2AsL4Hooamv32vLVUEog,4158
+nova_api/mysql_pool.py,sha256=Fi257K-TroW3LJQ_yL9ls1PqO4bDQ-I_ytI_sF1oi0Q,2667
+NovaAPI-0.2.0a9.dist-info/LICENSE,sha256=0xYcrEFf2K0GqFB90Mtv-FAm1rV1MQ71MxCFV4vBu4o,1046
+NovaAPI-0.2.0a9.dist-info/METADATA,sha256=IuexOFkK42hFXd5nMe7Q3fu6Y0sfEiSLtn3VQ11lkTQ,7663
+NovaAPI-0.2.0a9.dist-info/WHEEL,sha256=EVRjI69F5qVjm_YgqcTXPnTAv3BfSUr0WVAHuSP3Xoo,92
+NovaAPI-0.2.0a9.dist-info/entry_points.txt,sha256=vJLFkDLxPYznED7hPy0kyQWNbGbzpLzykALWGSd83NU,61
+NovaAPI-0.2.0a9.dist-info/top_level.txt,sha256=ZUkUajE09HQFBRPKAQJH1J8BsR4zBT2Sn_A-1--BcTM,9
+NovaAPI-0.2.0a9.dist-info/RECORD,,
