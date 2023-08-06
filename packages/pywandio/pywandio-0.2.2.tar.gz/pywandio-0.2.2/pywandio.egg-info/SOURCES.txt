@@ -1,0 +1,16 @@
+README.md
+setup.py
+pywandio.egg-info/PKG-INFO
+pywandio.egg-info/SOURCES.txt
+pywandio.egg-info/dependency_links.txt
+pywandio.egg-info/entry_points.txt
+pywandio.egg-info/requires.txt
+pywandio.egg-info/top_level.txt
+wandio/__init__.py
+wandio/compressed.py
+wandio/file.py
+wandio/http.py
+wandio/opener.py
+wandio/swift.py
+wandio/test-write.py
+wandio/test.py
