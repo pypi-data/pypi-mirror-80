@@ -1,0 +1,99 @@
+
+#        Introducing "Online Media Metadata" (OMM)
+#
+#        - media referencing for the 21st century -
+#
+#               Basic mediabyte syntax &
+#               mediabyte.Mixtape file format
+#
+#                            5th of November 2019 by d@v1d.dk
+
+
+#               What is OMM and mediabyte?
+#
+#    OMM is an original concept to succinctly reference
+#    online media ressources in mediabytes - that is, by
+#    platform-specific hash or bitly link hash, with
+#    optional explicit tags and title (a title is a
+#    title-cased tag) and YouTube format time code(s)
+#    for YouTube videos and MP3s.
+
+
+#  This textfile is a four-clip Mixtape. It will load and run
+#  using the mediabyte Python package or the online player at:
+#
+#                       skillporn.tv
+#
+#  if you input the link to this file:
+#
+#         http://v1d.dk/omm/mixtape_tutorial.omm
+#
+#  Comments like these that start with a '#' are for the
+#  file-viewing person only, they are ignored by the
+#  mediabyte parser.
+
+
+#  Okay, let's start right off with a real-world mediabyte example:
+
+y.g7L_r6zw4-c.Group Definition.socratica.mathematics.lecture.favourite
+
+
+#  and then directly to the mediabyte syntax definition:
+#
+#   1. a mediabyte consists of tags separated by . (dots)
+#   2. "y." signifies YouTube video, followed by the YouTube video hash
+#   3. tags are lowercase and titles are tags with an uppercase first letter
+#   4. YouTube time code format tags are seen as such (0-2 time codes possible)
+#   5. except y.youtubehash, tags can be ordered arbitrarily and omitted
+#   6. clips are chained using .. (dot dot) into Mixtapes
+
+
+#  Below is an example using the first four syntax elements described above,
+#  a 2 minutes 53 seconds clip starting 48 seconds in, titled 'Aesthetic
+#  Intelligence' with the tags 'hidden_forces', 'podcast' and 'book':
+
+y.5sDUCG4HvWM.Aesthetic Intelligence.hidden_forces.podcast.book.48s.3m35s
+
+
+
+#               SPECIFICALLY FOR MIXTAPE FILES
+#
+#  In a Mixtape textfile (like this), instead of chaining clips
+#  using  .. (dot dot) as described in #6 above, you can put
+#  each clip on separate lines (like you see in this file).
+#
+#  What's more, in Mixtape files you can also customize
+#  white-space to suit your needs as described in the
+#  two examples below.
+
+
+#  Tags can be separated into following lines:
+
+y.ZIv4tqJNuxs
+
+      .There is No Algorithm for Truth - with Tom Scott
+
+             .the_royal_institution
+             .lecture.uk.science
+             .7s
+
+
+#  and placed freely along the x-axis, too:
+
+y.5m7Q6uyg9Kg.Rocket Beans Live
+.live
+                        .german
+                        .language
+
+
+#  I hope this is enough to wet you interest - drop me a mail
+#  for any reason whatsoever.
+#  Also, there are several features I haven't touched upon on here.
+#  In particular, native bitly link support, MP3 remixing, Atom syntax
+#  highlighting and YouTube auto-generated subtitle-based keyword search.
+#
+#  Check out the full mediabyte feature listing here:
+#  https://github.com/taext/mediabyte/blob/master/README.md#project-status
+#
+#  and the Python API documentation here:
+#  https://github.com/taext/mediabyte/blob/master/user_guide/README.md
