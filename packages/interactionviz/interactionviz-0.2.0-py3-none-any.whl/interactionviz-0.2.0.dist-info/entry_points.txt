@@ -1,0 +1,3 @@
+[console_scripts]
+interactionviz=interactionviz.cli.viewer.__main__:main
+
