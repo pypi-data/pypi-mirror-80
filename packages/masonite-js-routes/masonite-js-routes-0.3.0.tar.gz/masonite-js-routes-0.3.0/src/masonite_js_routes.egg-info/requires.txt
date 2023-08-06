@@ -1,0 +1,12 @@
+
+[dev]
+black
+flake8
+twine>=1.5.0
+wheel
+
+[test]
+coverage
+pytest
+pytest-cov
+coveralls
