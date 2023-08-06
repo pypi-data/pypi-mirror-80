@@ -1,0 +1,16 @@
+.gitignore
+LICENSE
+ReadMe.md
+example.gif
+setup.py
+puprelease/__init__.py
+puprelease/check.py
+puprelease/pup.py
+puprelease/release.py
+puprelease/util.py
+puprelease.egg-info/PKG-INFO
+puprelease.egg-info/SOURCES.txt
+puprelease.egg-info/dependency_links.txt
+puprelease.egg-info/entry_points.txt
+puprelease.egg-info/requires.txt
+puprelease.egg-info/top_level.txt
