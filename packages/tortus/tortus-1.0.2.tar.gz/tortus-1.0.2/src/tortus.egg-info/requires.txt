@@ -1,0 +1,9 @@
+pandas>=1.0.1
+ipywidgets>=7.5.1
+ipython>=7.12.0
+jupyter-contrib-nbextensions>=0.5.1
+
+[dev]
+pytest>=3.7
+check-manifest==0.10.1
+twine==3.2.0
