@@ -1,0 +1,421 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "CDR Document",
+  "type": "object",
+  "properties": {
+    "uri": {
+      "description": "The RDF subject URI for this CDR document",
+      "type": "string"
+    },
+    "source_uri": {
+      "description": "Relative path to the extracted source file, i.e., filename of the raw document",
+      "type": "string"
+    },
+    "document_id": {
+      "description": "Unique document ID based on the MD5 sum of the source file's contents",
+      "type": "string"
+    },
+    "timestamp": {
+      "description": "Timestamp when this CDR document was created, in ISO 8601 date time format at UTC offset",
+      "type": "string",
+      "pattern": "[0-9]{4}-[0-1][0-9]-[0-3][0-9]T[0-2][0-9]:[0-6][0-9]:[0-6][0-9]\\.[0-9]{3}Z"
+    },
+    "team": {
+      "description": "Team which generated this CDR",
+      "type": "string"
+    },
+    "content_type": {
+      "description": "Detected MIME type of the source file",
+      "type": "string"
+    },
+    "extracted_metadata": {
+      "description": "Metadata pertaining to the extracted source file. Currently this is obtained only from metadata embedded in the raw document, which are not always present and can mean different things in different documents, depending on how each document is produced",
+      "type": "object",
+      "properties": {
+        "CreationDate": {
+          "type": "string",
+          "pattern": "[0-9]{4}-[0-9]{2}-[0-9]{2}"
+        },
+        "ModDate": {
+          "type": "string",
+          "pattern": "[0-9]{4}-[0-9]{2}-[0-9]{2}"
+        },
+        "Author": {
+          "type": "string"
+        },
+        "Title": {
+          "type": "string"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "URL": {
+          "description": "This metadata field is generally present only in html files that include their own source URL as a meta tag in their headers. It is not frequently populated.",
+          "type": "string"
+        },
+        "Type": {
+          "type": "string"
+        },
+        "Classification": {
+          "type": "string"
+        },
+        "OriginalLanguage": {
+          "type": "string"
+        },
+        "Pages": {
+          "type": "integer"
+        },
+        "Subject": {
+          "type": "string"
+        },
+        "Creator": {
+          "type": "string"
+        },
+        "Producer": {
+          "type": "string"
+        },
+        "StatedGenre": {
+          "description": "A user supplied value for the document's genre",
+          "type": "string"
+        },
+        "PredictedGenre": {
+          "description": "The DART system's prediction of the document's genre",
+          "type": "string"
+        },
+        "Relevance": {
+          "type": "string",
+          "description": "A user supplied value of the projected relevance of the document to the problem space",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "extracted_ntriples": {
+      "description": "Reflection of the extracted_metadata in N-Triples format using the DataProvenance ODP",
+      "type": "string"
+    },
+    "extracted_text": {
+      "description": "Text extracted from the source document. TA1 offsets start at 0 here, beginning at the value of this field (after the opening double quote character)",
+      "type": "string"
+    },
+    "extracted_numeric": {
+      "description": "Numeric data extracted from a CSV/TSV or Excel document. Key names correlate to the sheet name with values matching the contents in TSV format.",
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "labels": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "annotations": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "$ref": "#/definitions/text-annotation"
+          },
+          {
+            "$ref": "#/definitions/dictionary-annotation"
+          },
+          {
+            "$ref": "#/definitions/offset-tag-annotation"
+          },
+          {
+            "$ref": "#/definitions/facet-annotation"
+          },
+          {
+            "$ref": "#/definitions/genealogy-annotation"
+          },
+          {
+            "$ref": "#/definitions/translation-annotation"
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "text-annotation": {
+      "description": "A simple annotation consisting of only a string.",
+      "$id": "text-annotation",
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "class": {
+          "type": "string",
+          "enum": [
+            "static",
+            "derived"
+          ]
+        },
+        "content": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "text"
+          ]
+        }
+      },
+      "required": [
+        "type"
+      ]
+    },
+    "dictionary-annotation": {
+      "description": "An annotation consisting of a collection of key-value pairs of type string. (Currently unused.)",
+      "$id": "dictionary-annotation",
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "dictionary"
+          ],
+          "class": {
+            "type": "string",
+            "enum": [
+              "static",
+              "derived"
+            ]
+          }
+        },
+        "content": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "type"
+      ]
+    },
+    "offset-tag-annotation": {
+      "description": "An annotation consisting of an array of tags, each identified with a specific substring of extracted_text. Currently used by Qntfy's event and NER extraction tools.",
+      "$id": "offset-tag-annotation",
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "tags"
+          ]
+        },
+        "class": {
+          "type": "string",
+          "enum": [
+            "static",
+            "derived"
+          ]
+        },
+        "content": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "offset_start": {
+                "description": "The index of the first character in extracted_text corresponding to this annotation",
+                "type": "integer"
+              },
+              "offset_end": {
+                "description": "The index of the last character in extracted_text corresponding to this annotation",
+                "type": "integer"
+              },
+              "value": {
+                "description": "The substring of extracted_text from offset_start to offset_end",
+                "type": "string"
+              },
+              "tag": {
+                "description": "An identifier corresponding to the text contained in value. All events identified by Qntfy's event analytic are currently tagged as 'B-action'. Qntfy's named entity annotation tags are 'CARDINAL', 'DATE', 'EVENT', 'FAC', 'GPE', 'LANGUAGE', 'LAW', 'LOC', 'MONEY', 'NORP', 'ORDINAL', 'ORG', 'PERCENT', 'PERSON', 'PRODUCT', 'QUANTITY', 'TIME', and 'WORK_OF_ART'. See https://spacy.io/api/annotation to learn more.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "offset_start",
+              "offset_end",
+              "tag"
+            ]
+          }
+        }
+      },
+      "required": [
+        "type"
+      ]
+    },
+    "facet-annotation": {
+      "description": "An annotation consisting of any array of words or phrases that characterize some facet of a document, each of which has an optional confidence value between 0 and 1.",
+      "$id": "facet-annotation",
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "facets"
+          ]
+        },
+        "class": {
+          "type": "string",
+          "enum": [
+            "static",
+            "derived"
+          ]
+        },
+        "content": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "string"
+              },
+              "confidence": {
+                "description": "Confidence score of the keyword, between 0 and 1",
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            },
+            "required": [
+              "value"
+            ]
+          }
+        }
+      },
+      "required": [
+        "type"
+      ]
+    },
+    "genealogy-annotation": {
+      "description": "An annotation that describes similarity between other documents in the corpus",
+      "$id": "genealogy-annotation",
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "genealogy"
+          ]
+        },
+        "class": {
+          "type": "string",
+          "enum": [
+            "static",
+            "derived"
+          ]
+        },
+        "content": {
+          "type": "object",
+          "properties": {
+            "similar_documents": {
+              "type": "object",
+              "additionalProperties": true
+            },
+            "similarity_matrix": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      },
+      "required": [
+        "type"
+      ]
+    },
+    "translation-annotation": {
+      "description": "An that captures the original values of fields that were automatically translated",
+      "$id": "translation-annotation",
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "translation"
+          ]
+        },
+        "class": {
+          "type": "string",
+          "enum": [
+            "static",
+            "derived"
+          ]
+        },
+        "content": {
+          "type": "object",
+          "properties": {
+            "fields": {
+              "type": "object",
+              "additionalProperties": true
+            },
+            "language": {
+              "type": "string",
+              "enum": [
+                "russian",
+                "french",
+                "german"
+              ]
+            }
+          }
+        }
+      },
+      "required": [
+        "type"
+      ]
+    }
+  },
+  "required": [
+    "uri",
+    "source_uri",
+    "document_id",
+    "timestamp",
+    "content_type",
+    "extracted_metadata",
+    "extracted_ntriples"
+  ]
+}
