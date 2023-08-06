@@ -1,0 +1,12 @@
+README.md
+setup.py
+assume_mfa.egg-info/PKG-INFO
+assume_mfa.egg-info/SOURCES.txt
+assume_mfa.egg-info/dependency_links.txt
+assume_mfa.egg-info/entry_points.txt
+assume_mfa.egg-info/not-zip-safe
+assume_mfa.egg-info/requires.txt
+assume_mfa.egg-info/top_level.txt
+aws_assume_role_helper/__init__.py
+aws_assume_role_helper/__main__.py
+aws_assume_role_helper/commands.py
