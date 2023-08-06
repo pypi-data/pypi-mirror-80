@@ -1,0 +1,14 @@
+treelib
+
+[:python_version < "3.8"]
+typing_extensions
+
+[jeepney]
+jeepney
+
+[test]
+pytest
+pytest-subtests
+pytest-cov
+jeepney
+xmldiff
