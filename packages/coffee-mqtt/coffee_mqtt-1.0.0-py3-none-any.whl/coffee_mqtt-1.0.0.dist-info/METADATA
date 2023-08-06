@@ -1,0 +1,29 @@
+Metadata-Version: 2.1
+Name: coffee-mqtt
+Version: 1.0.0
+Summary: Python MQTT framework
+Home-page: https://github.com/phocs/coffee-mqtt
+Author: Alessio Volpe
+Author-email: alessio.volpe@aol.com
+License: MIT License Copyright (c) 2020 Alessio Volpe
+Keywords: coffee
+Platform: UNKNOWN
+Classifier: License :: OSI Approved
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Communications
+Classifier: Topic :: Internet
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+
+# coffee-mqtt
+Paho MQTT Python Client framework.
+
+## Credits
+
+**Eclipse Paho MQTT Python Client** [paho.mqtt](https://github.com/RangerMauve/mqtt-pattern).
+
+`Pattern` inspired by RangerMauve's [mqtt-pattern](https://github.com/RangerMauve/mqtt-pattern).
+
+
