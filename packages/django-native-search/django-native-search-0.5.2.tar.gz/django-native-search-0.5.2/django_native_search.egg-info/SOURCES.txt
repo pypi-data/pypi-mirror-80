@@ -1,0 +1,17 @@
+README.md
+setup.py
+django_native_search/__init__.py
+django_native_search/admin.py
+django_native_search/apps.py
+django_native_search/fields.py
+django_native_search/forms.py
+django_native_search/manager.py
+django_native_search/models.py
+django_native_search.egg-info/PKG-INFO
+django_native_search.egg-info/SOURCES.txt
+django_native_search.egg-info/dependency_links.txt
+django_native_search.egg-info/requires.txt
+django_native_search.egg-info/top_level.txt
+django_native_search/migrations/0001_initial.py
+django_native_search/migrations/0002_index.py
+django_native_search/migrations/__init__.py
