@@ -1,0 +1,26 @@
+Metadata-Version: 2.1
+Name: requiremental
+Version: 0.0.4
+Summary: A requirement managemet tool.
+Home-page: https://github.com/rmallow/requiremental
+Author: Robert Mallow
+Author-email: mail@rmallow.com
+License: MIT
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Python: >=3.6.0
+Description-Content-Type: text/markdown
+Requires-Dist: PyYaml
+
+
+create custom requirements groups for your projects using docstring
+
+see test.py and test files for use case
+
+pip install requiremental==0.0.3
+
