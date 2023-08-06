@@ -1,0 +1,42 @@
+Metadata-Version: 2.1
+Name: pubspec
+Version: 0.1.5
+Summary: Python script to update pubspec.yaml in flutter
+Home-page: https://github.com/prtm/pubspec
+Author: Preetam
+Author-email: contact@preetam.dev
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+Requires-Dist: lxml (==4.5.1)
+Requires-Dist: requests (==2.24.0)
+Requires-Dist: ruamel.yaml (==0.16.10)
+
+# pubspec
+
+python script helps you to update pubspec.yaml in flutter
+
+## Installation and Usage
+
+1. [Python3](https://www.python.org/downloads/) required
+2. Install pubspec
+```
+pip3 install pubspec
+```
+3. Run pubspec in same directory as pubspec.yaml file
+```
+pubspec
+```
+
+---
+## Screenshot
+![Output](https://raw.githubusercontent.com/prtm/pubspec/master/screenshots/output.png)
+
+
+## Suggestions
+Open to any suggestions.
+
+
