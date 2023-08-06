@@ -1,0 +1,13 @@
+MANIFEST.in
+README.rst
+TITLE.txt
+lh-agpl3-LICENSE.txt
+setup.py
+./bin/gcipher
+unisos/__init__.py
+unisos.gcipher.egg-info/PKG-INFO
+unisos.gcipher.egg-info/SOURCES.txt
+unisos.gcipher.egg-info/dependency_links.txt
+unisos.gcipher.egg-info/namespace_packages.txt
+unisos.gcipher.egg-info/not-zip-safe
+unisos.gcipher.egg-info/top_level.txt
