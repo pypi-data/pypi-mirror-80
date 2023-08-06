@@ -1,0 +1,17 @@
+# #!/usr/bin/env python
+
+# import wslrun
+# import sys, getopt, os
+
+# try:
+#     opts, args = getopt.getopt(sys.argv[1:],"hi:o:", ["pipeline=",""])
+# except getopt.GetoptError:
+#     print("-p 'pipeline'")
+#     sys.exit(2)
+# for opt, arg in opts:
+#     if opt in ("-p", "--pipeline"):
+#         pipeline = arg
+#     # elif opt in ("-m", "--mode"):
+#     #     mode = arg
+
+# print(wslrun.main(pipeline))
