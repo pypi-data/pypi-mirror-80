@@ -1,0 +1,60 @@
+# See https://pre-commit.com/ for usage and config
+repos:
+- repo: local
+  hooks:
+  - id: isort
+    name: isort
+    stages: [commit]
+    language: system
+    # running isort with these settings to avoid clash with black
+    # see: https://copdips.com/2020/04/making-isort-compatible-with-black.html
+    entry: pipenv run isort -m 3 -tc
+    types: [python]
+
+  - id: black
+    name: black
+    stages: [commit]
+    language: system
+    entry: pipenv run black
+    types: [python]
+
+  - id: flake8
+    name: flake8
+    stages: [commit]
+    language: system
+    entry: pipenv run flake8
+    types: [python]
+    exclude: setup.py
+
+  - id: mypy
+    name: mypy
+    stages: [commit]
+    language: system
+    entry: pipenv run mypy
+    types: [python]
+    require_serial: true
+
+    #  - id: pytest
+    #    name: pytest
+    #    stages: [commit]
+    #    language: system
+    #    entry: pipenv run pytest
+    #    types: [python]
+    #    pass_filenames: false
+
+    #  - id: bandit
+    #    name: bandit
+    #    stages: [commit]
+    #    language: system
+    #    entry: pipenv run bandit -r ./person/
+    #    types: [python]
+
+  - id: pytest-cov
+    name: pytest
+    stages: [commit]
+    language: system
+    entry: pipenv run pytest --cov --cov-append --cov-report=term-missing
+    types: [python]
+    pass_filenames: false
+
+
