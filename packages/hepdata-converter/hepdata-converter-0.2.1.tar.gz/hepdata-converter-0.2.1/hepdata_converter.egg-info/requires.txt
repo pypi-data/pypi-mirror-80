@@ -1,0 +1,8 @@
+pyyaml>=5.3
+hepdata-validator>=0.2.2
+
+[all]
+
+[docs]
+Sphinx>=1.4.2
+mock
