@@ -1,0 +1,955 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Land Application &#8212; PFAS SAT  documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Landfill" href="Landfill.html" />
+    <link rel="prev" title="Composting" href="Composting.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    min-width: 5.5ex;
+    padding-top: 0.3rem;
+    padding-right: 0.3rem;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 0.3rem;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<div class="section" id="Land-Application">
+<h1>Land Application<a class="headerlink" href="#Land-Application" title="Permalink to this headline">¶</a></h1>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">PFAS_SAT</span> <span class="k">as</span> <span class="nn">ps</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_colwidth&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="Model-document">
+<h2>Model document<a class="headerlink" href="#Model-document" title="Permalink to this headline">¶</a></h2>
+<p>Finished compost and dewatered, stabilized WWT solids are both suitable for land application. Once these materials are land applied, PFAS may volatize, be released to surface or ground- water, or sorbed to the soil/waste stream mixture. The flow of PFAS from land application is modeled using a liquid-solid partition coefficient normalized to the amount of organic carbon, combined with a water balance to track the flow of PFAS from the soil. Model predictions are based on achievement of
+equilibrium. By default, it is assumed that no volatilization occurs, but a user can enter a fraction of PFAS that volatilizes. It is further assumed that the land applied material is well mixed with the top layer of soil (thickness is a user input). The partition coefficient is used to estimate the concentration of PFAS in the liquid and solids. The concentration in the liquid changes throughout the year as PFAS runs off or is leached to the groundwater (i.e., it is assumed that annual
+precipitation is uniform throughout the year and continuously removes PFAS from the mixture). The user enters a run-off coefficient based on the soil type, land use, grade, and vegetation. The run-off is assumed to be released to surface water. Another fraction of the precipitation is removed via evapotranspiration (ET) based on the local climate and vegetation. The remaining precipitation is assumed to leach into groundwater. The PFAS remaining in the soil may be taken up by and bioaccumulate
+in plants. While PFAS uptake by plants was not modeled in this initial version of the SAT, it may be an important PFAS fate pathway as plants may enter the food chain depending on what is grown.</p>
+<div class="section" id="Assumptions-and-Limitations:">
+<h3>Assumptions and Limitations:<a class="headerlink" href="#Assumptions-and-Limitations:" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><p>The organic carbon-normalized partition coefficient assumes that the organic carbon in the soil has the same PFAS sorption capacity as the organic carbon in either the compost or the dewatered, stabilized WWT solids in the land applied material.</p></li>
+<li><p>The water balance model is averaged over a year and ignores potential effects from intense rains that may lead to substantial additional erosion and loss of solids and associated PFAS.</p></li>
+<li><p>Apart from precipitation, the water balance does not consider other external water inputs such as irrigation. This could be included by adjusting the precipitation input value.</p></li>
+<li><p>Volatilization is assumed to be zero by default due to a lack of data. However, the user may assign a fraction of the PFAS to be volatilized.</p></li>
+<li><p>Future work is also required to implement a dynamic model to account for changes in the organic C content of over time as land-applied materials decompose, and to account for episodic precipitation events.</p></li>
+<li><p>The loading rate for the land application of dewatered WWT solids will vary based on solids properties among other factors. The loading rate default values given here reflect a typical annual loading rate for application to agricultural land growing corn.</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="Input-Parameters-for-Land-Application-model">
+<h2>Input Parameters for Land Application model<a class="headerlink" href="#Input-Parameters-for-Land-Application-model" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">LandApp</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">LandApp</span><span class="p">()</span>
+<span class="n">LandApp</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[[</span><span class="s1">&#39;Category&#39;</span><span class="p">,</span><span class="s1">&#39;Dictonary_Name&#39;</span><span class="p">,</span><span class="s1">&#39;Parameter Name&#39;</span><span class="p">,</span> <span class="s1">&#39;Parameter Description&#39;</span><span class="p">,</span> <span class="s1">&#39;amount&#39;</span><span class="p">,</span> <span class="s1">&#39;unit&#39;</span><span class="p">,</span><span class="s1">&#39;minimum&#39;</span><span class="p">,</span><span class="s1">&#39;maximum&#39;</span><span class="p">,</span><span class="s1">&#39;Reference&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Category</th>
+      <th>Dictonary_Name</th>
+      <th>Parameter Name</th>
+      <th>Parameter Description</th>
+      <th>amount</th>
+      <th>unit</th>
+      <th>minimum</th>
+      <th>maximum</th>
+      <th>Reference</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Log partition coefficient</td>
+      <td>LogPartCoef</td>
+      <td>PFOA</td>
+      <td>PFOA Log Koc (soils/sediments)</td>
+      <td>2.190</td>
+      <td>log L/kg OC</td>
+      <td>1.300</td>
+      <td>4.500</td>
+      <td>[2,3,4,5]</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Log partition coefficient</td>
+      <td>LogPartCoef</td>
+      <td>PFOS</td>
+      <td>PFOS Log Koc  (soils/sediments)</td>
+      <td>3.040</td>
+      <td>log L/kg OC</td>
+      <td>2.400</td>
+      <td>4.700</td>
+      <td>[2,3,4,5]</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Log partition coefficient</td>
+      <td>LogPartCoef</td>
+      <td>PFBA</td>
+      <td>PFBA Log Koc  (soils/sediments)</td>
+      <td>1.880</td>
+      <td>log L/kg OC</td>
+      <td>1.300</td>
+      <td>1.880</td>
+      <td>[2,3,4,5]</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Log partition coefficient</td>
+      <td>LogPartCoef</td>
+      <td>PFPeA</td>
+      <td>PFPeA Log Koc (soils/sediments)</td>
+      <td>1.370</td>
+      <td>log L/kg OC</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>[2,3,4,5]</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Log partition coefficient</td>
+      <td>LogPartCoef</td>
+      <td>PFHxA</td>
+      <td>PFHxA Log Koc (soils/sediments)</td>
+      <td>1.770</td>
+      <td>log L/kg OC</td>
+      <td>1.310</td>
+      <td>2.100</td>
+      <td>[2,3,4,5]</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Log partition coefficient</td>
+      <td>LogPartCoef</td>
+      <td>PFHpA</td>
+      <td>PFHpA Log Koc (soils/sediments)</td>
+      <td>1.970</td>
+      <td>log L/kg OC</td>
+      <td>NaN</td>
+      <td>2.190</td>
+      <td>[2,3,4,5]</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Log partition coefficient</td>
+      <td>LogPartCoef</td>
+      <td>PFNA</td>
+      <td>PFNA Log Koc (soils/sediments)</td>
+      <td>2.630</td>
+      <td>log L/kg OC</td>
+      <td>2.300</td>
+      <td>3.180</td>
+      <td>[2,3,4,5]</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Log partition coefficient</td>
+      <td>LogPartCoef</td>
+      <td>PFDA</td>
+      <td>PFDA Log Koc (soils/sediments)</td>
+      <td>3.240</td>
+      <td>log L/kg OC</td>
+      <td>2.650</td>
+      <td>3.780</td>
+      <td>[2,3,4,5]</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Log partition coefficient</td>
+      <td>LogPartCoef</td>
+      <td>PFBS</td>
+      <td>PFBS Log Koc (soils/sediments)</td>
+      <td>1.510</td>
+      <td>log L/kg OC</td>
+      <td>NaN</td>
+      <td>1.790</td>
+      <td>[2,3,4,5]</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Log partition coefficient</td>
+      <td>LogPartCoef</td>
+      <td>PFHxS</td>
+      <td>PFHxS Log Koc (soils/sediments)</td>
+      <td>2.790</td>
+      <td>log L/kg OC</td>
+      <td>2.050</td>
+      <td>2.875</td>
+      <td>[2,3,4,5]</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Land application</td>
+      <td>LandApp</td>
+      <td>appl_dens</td>
+      <td>kg dry applied per area</td>
+      <td>2.000</td>
+      <td>kg TS/m2</td>
+      <td>0.800</td>
+      <td>18.000</td>
+      <td>[7]</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Land application</td>
+      <td>LandApp</td>
+      <td>depth_mix</td>
+      <td>Depth of soil mixed</td>
+      <td>0.100</td>
+      <td>m</td>
+      <td>0.050</td>
+      <td>0.200</td>
+      <td>[8]</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Soil Properties</td>
+      <td>SoilProp</td>
+      <td>bulk_dens</td>
+      <td>Soil bulk density - wet</td>
+      <td>1300.000</td>
+      <td>kg/m3</td>
+      <td>1100.000</td>
+      <td>1800.000</td>
+      <td>[9]</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Soil Properties</td>
+      <td>SoilProp</td>
+      <td>ts_cont</td>
+      <td>Soil total solids content -wet</td>
+      <td>0.850</td>
+      <td>kg TS/kg</td>
+      <td>0.700</td>
+      <td>1.000</td>
+      <td>[10]</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Soil Properties</td>
+      <td>SoilProp</td>
+      <td>C_cont</td>
+      <td>Soil organic C content -dry</td>
+      <td>0.015</td>
+      <td>fraction TS</td>
+      <td>0.005</td>
+      <td>0.050</td>
+      <td>[9]</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Precipitation Data</td>
+      <td>Precip</td>
+      <td>ann_precip</td>
+      <td>Annual precipitation</td>
+      <td>1.000</td>
+      <td>m/yr</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>[11]</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Precipitation Data</td>
+      <td>Precip</td>
+      <td>frac_runoff</td>
+      <td>Run-off fraction of precipitation</td>
+      <td>0.050</td>
+      <td>frac</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>[12]</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>Precipitation Data</td>
+      <td>Precip</td>
+      <td>frac_ET</td>
+      <td>Evapotranspiration fraction of precipitation</td>
+      <td>0.500</td>
+      <td>frac</td>
+      <td>0.033</td>
+      <td>1.000</td>
+      <td>[13]</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Volatilization</td>
+      <td>Volatilization</td>
+      <td>frac_vol_loss</td>
+      <td>Fraction of PFAS lost to volatilization</td>
+      <td>0.000</td>
+      <td>fraction</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+<div class="section" id="Incoming-Compost-to-land-application">
+<h2>Incoming Compost to land application<a class="headerlink" href="#Incoming-Compost-to-land-application" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">IncominWaste</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">IncomFlow</span><span class="p">()</span>
+<span class="n">IncominWaste</span><span class="o">.</span><span class="n">set_flow</span><span class="p">(</span><span class="s1">&#39;Compost&#39;</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">IncominWaste</span><span class="o">.</span><span class="n">calc</span><span class="p">()</span>
+<span class="n">Compost</span> <span class="o">=</span> <span class="n">IncominWaste</span><span class="o">.</span><span class="n">Inc_flow</span>
+<span class="n">Compost</span><span class="o">.</span><span class="n">report</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Parameter</th>
+      <th>Unit</th>
+      <th>Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Mass flow</td>
+      <td>kg</td>
+      <td>1000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Solids flow</td>
+      <td>kg</td>
+      <td>600</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Moisture flow</td>
+      <td>kg</td>
+      <td>400</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>VS flow</td>
+      <td>kg</td>
+      <td>360</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Carbon flow</td>
+      <td>kg</td>
+      <td>168</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>PFOA</td>
+      <td>μg</td>
+      <td>5240</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>PFOS</td>
+      <td>μg</td>
+      <td>7375</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>PFBA</td>
+      <td>μg</td>
+      <td>3267</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>PFPeA</td>
+      <td>μg</td>
+      <td>3424</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>PFHxA</td>
+      <td>μg</td>
+      <td>16407</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>PFHpA</td>
+      <td>μg</td>
+      <td>826</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>PFNA</td>
+      <td>μg</td>
+      <td>1045</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>PFDA</td>
+      <td>μg</td>
+      <td>2710</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>PFBS</td>
+      <td>μg</td>
+      <td>7360</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>PFHxS</td>
+      <td>μg</td>
+      <td>190</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+<div class="section" id="PFAS-balance-in-land-application">
+<h2>PFAS balance in land application<a class="headerlink" href="#PFAS-balance-in-land-application" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">LandApp</span><span class="o">.</span><span class="n">calc</span><span class="p">(</span><span class="n">Inc_flow</span><span class="o">=</span><span class="n">Compost</span><span class="p">)</span>
+<span class="n">LandApp</span><span class="o">.</span><span class="n">report</span><span class="p">(</span><span class="n">normalized</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Volatilized</th>
+      <th>Remaining in Soil</th>
+      <th>Leachate</th>
+      <th>Runoff</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>PFOA</th>
+      <td>0.0</td>
+      <td>25.35</td>
+      <td>67.19</td>
+      <td>7.47</td>
+    </tr>
+    <tr>
+      <th>PFOS</th>
+      <td>0.0</td>
+      <td>81.56</td>
+      <td>16.60</td>
+      <td>1.84</td>
+    </tr>
+    <tr>
+      <th>PFBA</th>
+      <td>0.0</td>
+      <td>7.10</td>
+      <td>83.61</td>
+      <td>9.29</td>
+    </tr>
+    <tr>
+      <th>PFPeA</th>
+      <td>0.0</td>
+      <td>0.10</td>
+      <td>89.91</td>
+      <td>9.99</td>
+    </tr>
+    <tr>
+      <th>PFHxA</th>
+      <td>0.0</td>
+      <td>3.68</td>
+      <td>86.69</td>
+      <td>9.63</td>
+    </tr>
+    <tr>
+      <th>PFHpA</th>
+      <td>0.0</td>
+      <td>11.14</td>
+      <td>79.98</td>
+      <td>8.89</td>
+    </tr>
+    <tr>
+      <th>PFNA</th>
+      <td>0.0</td>
+      <td>59.62</td>
+      <td>36.34</td>
+      <td>4.04</td>
+    </tr>
+    <tr>
+      <th>PFDA</th>
+      <td>0.0</td>
+      <td>87.89</td>
+      <td>10.90</td>
+      <td>1.21</td>
+    </tr>
+    <tr>
+      <th>PFBS</th>
+      <td>0.0</td>
+      <td>0.45</td>
+      <td>89.59</td>
+      <td>9.95</td>
+    </tr>
+    <tr>
+      <th>PFHxS</th>
+      <td>0.0</td>
+      <td>69.75</td>
+      <td>27.22</td>
+      <td>3.02</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">LandApp</span><span class="o">.</span><span class="n">plot_sankey</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/Notebooks_LandApp_9_0.png" src="../_images/Notebooks_LandApp_9_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">LandApp</span><span class="o">.</span><span class="n">plot_sankey_report</span><span class="p">(</span><span class="n">margin</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/Notebooks_LandApp_10_0.png" src="../_images/Notebooks_LandApp_10_0.png" />
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">PFAS SAT</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">Perfluoroalkyl Substances(PFAS) Systems Analysis Tool(SAT)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WasteMaterialsProperties.html">Waste Materials Properties</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../ProcessModels.html">Process Models</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="AD.html">Anaerobic Digestion (AD)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AdvWWT.html">Advanced WWT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Composting.html">Composting</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Land Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Landfill.html">Landfill</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SCWO.html">Supercritical water oxidation (SCWO)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Stabilization.html">Stabilization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ThermalTreatment.html">Thermal Treatment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ThermalReactivation.html">Thermal Reactivation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="WWT.html">Wastewater Treatment (WWT)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../doc_PFAS_SAT.html">Code Document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">History</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../ProcessModels.html">Process Models</a><ul>
+      <li>Previous: <a href="Composting.html" title="previous chapter">Composting</a></li>
+      <li>Next: <a href="Landfill.html" title="next chapter">Landfill</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, NORTH CAROLINA STATE UNIVERSITY.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.3.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/Notebooks/LandApp.ipynb.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

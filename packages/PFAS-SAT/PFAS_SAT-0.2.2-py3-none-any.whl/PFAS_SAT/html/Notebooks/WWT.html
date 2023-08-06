@@ -1,0 +1,1148 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Wastewater Treatment (WWT) &#8212; PFAS SAT  documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Code Document" href="../doc_PFAS_SAT.html" />
+    <link rel="prev" title="Thermal Reactivation" href="ThermalReactivation.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    min-width: 5.5ex;
+    padding-top: 0.3rem;
+    padding-right: 0.3rem;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 0.3rem;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<div class="section" id="Wastewater-Treatment-(WWT)">
+<h1>Wastewater Treatment (WWT)<a class="headerlink" href="#Wastewater-Treatment-(WWT)" title="Permalink to this headline">¶</a></h1>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">PFAS_SAT</span> <span class="k">as</span> <span class="nn">ps</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_colwidth&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="Model-document">
+<h2>Model document<a class="headerlink" href="#Model-document" title="Permalink to this headline">¶</a></h2>
+<p>The WWT process models in the SAT framework are designed so that by changing default parameters, a variety of WWT technology components and configurations can be represented. A relatively small amount of the incoming PFAS may be released in initial screen rejects and grit. Volatilization is another potential pathway, and its importance is currently poorly understood. Most PFAS entering conventional WWTPs will exit in the effluent or with the solids. In an increasing number of cases, some
+fraction of the PFAS are removed in tertiary treatment through reverse osmosis (RO), ion exchange (IX) or granular activated carbon (GAC) adsorption systems prior to release. These systems then produce new waste streams (i.e., RO concentrate and spent GAC, respectively) that must be managed.</p>
+<p>The mass flow of PFAS through the WWT processes is modeled using a water and mass balance through the system. The incoming PFAS-waste is diluted with the rest of the influent wastewater. When PFAS is partitioned between liquids and solids, it is assumed that equilibrium is achieved. The model does not consider transformations of PFAS. A relatively small fraction of the influent water leaves in the screen rejects and grit. The water lost with the material is assumed to have the same PFAS
+concentration as the influent. The remainder of the water and PFAS enters primary settling (if the WWTP has primary settling), and a fraction of the water at the influent PFAS concentration is again lost. The rest of the PFAS-containing water enters biological treatment, where PFAS partitions between the solids and liquid based on the organic carbon-normalized partition coefficient for each PFAS. The effluent from biological treatment enters secondary settling, which acts in a similar manner to
+primary settling. The effluent from secondary settling can then either be released to surface water or continue to tertiary treatment. The primary and secondary solids can then be thickened, dewatered, dried, stabilized, anaerobically digested or composted. The effluent can be treated through tertiary treatment processes designed to remove PFAS, such as GAC, RO, or IX.</p>
+<div class="section" id="Assumptions-and-Limitations">
+<h3>Assumptions and Limitations<a class="headerlink" href="#Assumptions-and-Limitations" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><p>The model assumes that liquids lost in screen rejects, grit, and settled solids have the same PFAS concentrations as the liquid entering the process.</p></li>
+<li><p>Volatilization is assumed to be zero. However, the user may assign a fraction of the PFAS that volatilizes/aerosolizes.</p></li>
+<li><p>Future work and additional data are required to include PFAS transformations during WWT processes.</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="Input-Parameters-for-WWT-model">
+<h2>Input Parameters for WWT model<a class="headerlink" href="#Input-Parameters-for-WWT-model" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">WWT</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">WWT</span><span class="p">()</span>
+<span class="n">WWT</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[[</span><span class="s1">&#39;Category&#39;</span><span class="p">,</span><span class="s1">&#39;Parameter Name&#39;</span><span class="p">,</span> <span class="s1">&#39;Parameter Description&#39;</span><span class="p">,</span> <span class="s1">&#39;amount&#39;</span><span class="p">,</span> <span class="s1">&#39;unit&#39;</span><span class="p">,</span><span class="s1">&#39;minimum&#39;</span><span class="p">,</span><span class="s1">&#39;maximum&#39;</span><span class="p">,</span><span class="s1">&#39;Reference&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Category</th>
+      <th>Parameter Name</th>
+      <th>Parameter Description</th>
+      <th>amount</th>
+      <th>unit</th>
+      <th>minimum</th>
+      <th>maximum</th>
+      <th>Reference</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>WWT Plant</td>
+      <td>Des_Cap</td>
+      <td>Design capacity of the WWT plant</td>
+      <td>7.6000</td>
+      <td>Million Liter/day</td>
+      <td>3.00</td>
+      <td>300.000</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Screen Rejects</td>
+      <td>frac_sr-grit</td>
+      <td>Mass fraction influent into screen rejects and grit</td>
+      <td>0.0001</td>
+      <td>fraction</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Screen Rejects</td>
+      <td>sol_cont_sr_grit</td>
+      <td>Solids content of the screen rejects and grit</td>
+      <td>0.6500</td>
+      <td>fraction</td>
+      <td>0.50</td>
+      <td>0.900</td>
+      <td>[1]</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Primary Settling</td>
+      <td>is_prim_set</td>
+      <td>Is there primary settling</td>
+      <td>1.0000</td>
+      <td>1:TRUE,0:FALSE</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Primary Settling</td>
+      <td>frac_prim_solids</td>
+      <td>Mass fraction influent into settling that exits in the solids</td>
+      <td>0.0040</td>
+      <td>fraction</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>[1]</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Primary Settling</td>
+      <td>sol_cont_prim_solids</td>
+      <td>Solids content of primary solids - wet</td>
+      <td>0.0600</td>
+      <td>fraction</td>
+      <td>0.04</td>
+      <td>0.080</td>
+      <td>[1]</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Biological Treatmet</td>
+      <td>sol_cont</td>
+      <td>Mixed liquor suspended solids (MLSS)</td>
+      <td>3000.0000</td>
+      <td>mg/L</td>
+      <td>2000.00</td>
+      <td>4000.000</td>
+      <td>[1]</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Biological Treatmet</td>
+      <td>C_cont</td>
+      <td>Carbon content of the MLSS</td>
+      <td>0.5000</td>
+      <td>kg TS/kg</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Biological Treatmet</td>
+      <td>VS_cont</td>
+      <td>VS content of the MLSS - dry</td>
+      <td>0.8000</td>
+      <td>kg VSS/kg TS</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Thickening</td>
+      <td>is_prim_thick</td>
+      <td>Does primary sludge go to thickening</td>
+      <td>1.0000</td>
+      <td>1:TRUE,0:FALSE</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Thickening</td>
+      <td>is_sec_thick</td>
+      <td>Does secondary sludge go to thickening</td>
+      <td>1.0000</td>
+      <td>1:TRUE,0:FALSE</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Thickening</td>
+      <td>sol_cont_thick</td>
+      <td>Solids content after thickening</td>
+      <td>0.0500</td>
+      <td>fraction</td>
+      <td>0.03</td>
+      <td>0.100</td>
+      <td>[1]</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Dewatering</td>
+      <td>is_sol_dew</td>
+      <td>Are solids dewatered</td>
+      <td>1.0000</td>
+      <td>1:TRUE,0:FALSE</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Dewatering</td>
+      <td>sol_cont_dewat</td>
+      <td>Solids content of dewatered solids</td>
+      <td>0.2200</td>
+      <td>kg TS/kg</td>
+      <td>0.15</td>
+      <td>0.300</td>
+      <td>[1]</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Secondary Settling</td>
+      <td>is_sec_set</td>
+      <td>Is there secondary settling</td>
+      <td>1.0000</td>
+      <td>1:TRUE,0:FALSE</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Secondary Settling</td>
+      <td>frac_sec_solids</td>
+      <td>Mass fraction influent into settling that exits in the solids</td>
+      <td>0.0160</td>
+      <td>fraction</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>[1]</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Drying</td>
+      <td>is_sol_dry</td>
+      <td>Are solids dried</td>
+      <td>1.0000</td>
+      <td>1:TRUE,0:FALSE</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>Drying</td>
+      <td>sol_cont_dry</td>
+      <td>Solids content of dried solids</td>
+      <td>0.9000</td>
+      <td>kg TS/kg</td>
+      <td>0.65</td>
+      <td>0.950</td>
+      <td>[1]</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Drying</td>
+      <td>frac_PFAS_to_Vol</td>
+      <td>Fraction of PFAS lost to volatilization</td>
+      <td>0.0000</td>
+      <td>fraction</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Volatilization</td>
+      <td>frac_vol_loss</td>
+      <td>Fraction of PFAS lost to volatilization</td>
+      <td>0.0000</td>
+      <td>fraction</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>Log partition coefficient</td>
+      <td>PFOA</td>
+      <td>PFOA Log Koc (WWT)</td>
+      <td>2.1900</td>
+      <td>log L/kg OC</td>
+      <td>1.30</td>
+      <td>4.500</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>Log partition coefficient</td>
+      <td>PFOS</td>
+      <td>PFOS Log Koc (WWT)</td>
+      <td>3.0400</td>
+      <td>log L/kg OC</td>
+      <td>2.40</td>
+      <td>4.700</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>Log partition coefficient</td>
+      <td>PFBA</td>
+      <td>PFBA Log Koc (WWT)</td>
+      <td>1.8800</td>
+      <td>log L/kg OC</td>
+      <td>1.30</td>
+      <td>1.880</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>Log partition coefficient</td>
+      <td>PFPeA</td>
+      <td>PFPeA Log Koc (WWT)</td>
+      <td>1.3700</td>
+      <td>log L/kg OC</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>Log partition coefficient</td>
+      <td>PFHxA</td>
+      <td>PFHxA Log Koc (WWT)</td>
+      <td>1.7700</td>
+      <td>log L/kg OC</td>
+      <td>1.31</td>
+      <td>2.100</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>Log partition coefficient</td>
+      <td>PFHpA</td>
+      <td>PFHpA Log Koc (WWT)</td>
+      <td>1.9700</td>
+      <td>log L/kg OC</td>
+      <td>NaN</td>
+      <td>2.190</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>Log partition coefficient</td>
+      <td>PFNA</td>
+      <td>PFNA Log Koc (WWT)</td>
+      <td>2.6300</td>
+      <td>log L/kg OC</td>
+      <td>2.30</td>
+      <td>3.180</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>Log partition coefficient</td>
+      <td>PFDA</td>
+      <td>PFDA Log Koc (WWT)</td>
+      <td>3.2400</td>
+      <td>log L/kg OC</td>
+      <td>2.65</td>
+      <td>3.780</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>Log partition coefficient</td>
+      <td>PFBS</td>
+      <td>PFBS Log Koc (WWT)</td>
+      <td>1.5100</td>
+      <td>log L/kg OC</td>
+      <td>NaN</td>
+      <td>1.790</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>Log partition coefficient</td>
+      <td>PFHxS</td>
+      <td>PFHxS Log Koc (WWT)</td>
+      <td>2.7900</td>
+      <td>log L/kg OC</td>
+      <td>2.05</td>
+      <td>2.875</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+<div class="section" id="Incoming-Landfill-Leachte-to-WWT">
+<h2>Incoming Landfill Leachte to WWT<a class="headerlink" href="#Incoming-Landfill-Leachte-to-WWT" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">IncomingWaste</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">IncomFlow</span><span class="p">()</span>
+<span class="n">IncomingWaste</span><span class="o">.</span><span class="n">set_flow</span><span class="p">(</span><span class="s1">&#39;LFLeachate&#39;</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">IncomingWaste</span><span class="o">.</span><span class="n">calc</span><span class="p">()</span>
+<span class="n">LFLeachate</span> <span class="o">=</span> <span class="n">IncomingWaste</span><span class="o">.</span><span class="n">Inc_flow</span>
+<span class="n">LFLeachate</span><span class="o">.</span><span class="n">report</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Parameter</th>
+      <th>Unit</th>
+      <th>Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Mass flow</td>
+      <td>kg</td>
+      <td>1000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Solids flow</td>
+      <td>kg</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Moisture flow</td>
+      <td>kg</td>
+      <td>990</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Volume flow</td>
+      <td>L</td>
+      <td>1000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Carbon flow</td>
+      <td>kg</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>PFOA</td>
+      <td>μg</td>
+      <td>5700</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>PFOS</td>
+      <td>μg</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>PFBA</td>
+      <td>μg</td>
+      <td>750</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>PFPeA</td>
+      <td>μg</td>
+      <td>680</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>PFHxA</td>
+      <td>μg</td>
+      <td>1650</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>PFHpA</td>
+      <td>μg</td>
+      <td>550</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>PFNA</td>
+      <td>μg</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>PFDA</td>
+      <td>μg</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>PFBS</td>
+      <td>μg</td>
+      <td>190</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>PFHxS</td>
+      <td>μg</td>
+      <td>270</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+<div class="section" id="PFAS-balance-in-WWT">
+<h2>PFAS balance in WWT<a class="headerlink" href="#PFAS-balance-in-WWT" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">WWT</span><span class="o">.</span><span class="n">calc</span><span class="p">(</span><span class="n">Inc_flow</span><span class="o">=</span><span class="n">LFLeachate</span><span class="p">)</span>
+<span class="n">WWT</span><span class="o">.</span><span class="n">report</span><span class="p">(</span><span class="n">normalized</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Volatilized</th>
+      <th>DryerExhaust</th>
+      <th>WWT Effluent</th>
+      <th>solids</th>
+      <th>Screen Rejects</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>PFOA</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>80.21</td>
+      <td>19.78</td>
+      <td>0.01</td>
+    </tr>
+    <tr>
+      <th>PFOS</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>37.37</td>
+      <td>62.62</td>
+      <td>0.01</td>
+    </tr>
+    <tr>
+      <th>PFBA</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>88.74</td>
+      <td>11.25</td>
+      <td>0.01</td>
+    </tr>
+    <tr>
+      <th>PFPeA</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>95.48</td>
+      <td>4.51</td>
+      <td>0.01</td>
+    </tr>
+    <tr>
+      <th>PFHxA</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>90.82</td>
+      <td>9.17</td>
+      <td>0.01</td>
+    </tr>
+    <tr>
+      <th>PFHpA</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>86.70</td>
+      <td>13.29</td>
+      <td>0.01</td>
+    </tr>
+    <tr>
+      <th>PFNA</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>60.27</td>
+      <td>39.72</td>
+      <td>0.01</td>
+    </tr>
+    <tr>
+      <th>PFDA</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>27.40</td>
+      <td>72.59</td>
+      <td>0.01</td>
+    </tr>
+    <tr>
+      <th>PFBS</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>94.26</td>
+      <td>5.73</td>
+      <td>0.01</td>
+    </tr>
+    <tr>
+      <th>PFHxS</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>51.35</td>
+      <td>48.64</td>
+      <td>0.01</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">WWT</span><span class="o">.</span><span class="n">plot_sankey</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/Notebooks_WWT_9_0.png" src="../_images/Notebooks_WWT_9_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">WWT</span><span class="o">.</span><span class="n">plot_sankey_report</span><span class="p">(</span><span class="n">margin</span><span class="o">=.</span><span class="mi">6</span><span class="p">,</span> <span class="n">gap</span><span class="o">=.</span><span class="mi">6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/Notebooks_WWT_10_0.png" src="../_images/Notebooks_WWT_10_0.png" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">A</span><span class="o">=</span><span class="n">WWT</span><span class="o">.</span><span class="n">products</span><span class="p">()[</span><span class="s1">&#39;WWTEffluent&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Effluent-and-solids-mass-flows">
+<h2>Effluent and solids mass flows<a class="headerlink" href="#Effluent-and-solids-mass-flows" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">products</span> <span class="o">=</span> <span class="n">WWT</span><span class="o">.</span><span class="n">products</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">Effluent volume (Liter) : </span><span class="si">{}</span><span class="s2"></span>
+<span class="s2">Screen Rejects mass (kg): </span><span class="si">{}</span><span class="s2"></span>
+<span class="s2">RawWWTSoilds mass (kg): </span><span class="si">{}</span><span class="s2"></span>
+<span class="s2">DewateredWWTSolids mass (kg): </span><span class="si">{}</span><span class="s2"></span>
+<span class="s2">DeriedWWTSolids mass (kg): </span><span class="si">{}</span><span class="s2"></span>
+<span class="s2">&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">products</span><span class="p">[</span><span class="s1">&#39;WWTEffluent&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">vol</span><span class="p">,</span>
+           <span class="n">products</span><span class="p">[</span><span class="s1">&#39;WWTScreenRejects&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mass</span><span class="p">,</span>
+           <span class="n">products</span><span class="p">[</span><span class="s1">&#39;RawWWTSolids&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mass</span><span class="p">,</span>
+           <span class="n">products</span><span class="p">[</span><span class="s1">&#39;DewateredWWTSolids&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mass</span><span class="p">,</span>
+           <span class="n">products</span><span class="p">[</span><span class="s1">&#39;DriedWWTSolids&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mass</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+Effluent volume (Liter) : 988.4007936272117
+Screen Rejects mass (kg): 0.2857142857142857
+RawWWTSoilds mass (kg): 0.0
+DewateredWWTSolids mass (kg): 0
+DeriedWWTSolids mass (kg): 3.6033275744680844
+
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Sensitivity-to-the-Mixed-liquor-suspended-solids-(MLSS)-(Default:-1000-mg/L)">
+<h2>Sensitivity to the Mixed liquor suspended solids (MLSS) (Default: 1000 mg/L)<a class="headerlink" href="#Sensitivity-to-the-Mixed-liquor-suspended-solids-(MLSS)-(Default:-1000-mg/L)" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">MLSS</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span><span class="mi">10000</span><span class="p">,</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">PFAS_inEffluent</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">IncomingWaste</span><span class="o">.</span><span class="n">set_flow</span><span class="p">(</span><span class="s1">&#39;LFLeachate&#39;</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">IncomingWaste</span><span class="o">.</span><span class="n">calc</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">MLSS</span><span class="p">:</span>
+    <span class="n">WWT</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">BioTrtmnt</span><span class="p">[</span><span class="s1">&#39;sol_cont&#39;</span><span class="p">][</span><span class="s1">&#39;amount&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span>
+    <span class="n">WWT</span><span class="o">.</span><span class="n">calc</span><span class="p">(</span><span class="n">IncomingWaste</span><span class="o">.</span><span class="n">Inc_flow</span><span class="p">)</span>
+    <span class="n">PFAS_inEffluent</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">WWT</span><span class="o">.</span><span class="n">report</span><span class="p">(</span><span class="n">normalized</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="s1">&#39;WWT Effluent&#39;</span><span class="p">][</span><span class="s1">&#39;PFOA&#39;</span><span class="p">]))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">MLSS</span><span class="p">,</span><span class="n">PFAS_inEffluent</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span><span class="mi">10000</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Mixed liquor suspended solids (MLSS) (mg/L)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Percent of Incoming PFAS that </span><span class="se">\n</span><span class="s1"> remains in the Effluent (%)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Text(0, 0.5, &#39;Percent of Incoming PFAS that \n remains in the Effluent (%)&#39;)
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/Notebooks_WWT_15_1.png" src="../_images/Notebooks_WWT_15_1.png" />
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">PFAS SAT</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">Perfluoroalkyl Substances(PFAS) Systems Analysis Tool(SAT)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WasteMaterialsProperties.html">Waste Materials Properties</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../ProcessModels.html">Process Models</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="AD.html">Anaerobic Digestion (AD)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AdvWWT.html">Advanced WWT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Composting.html">Composting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="LandApp.html">Land Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Landfill.html">Landfill</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SCWO.html">Supercritical water oxidation (SCWO)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Stabilization.html">Stabilization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ThermalTreatment.html">Thermal Treatment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ThermalReactivation.html">Thermal Reactivation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Wastewater Treatment (WWT)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../doc_PFAS_SAT.html">Code Document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">History</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../ProcessModels.html">Process Models</a><ul>
+      <li>Previous: <a href="ThermalReactivation.html" title="previous chapter">Thermal Reactivation</a></li>
+      <li>Next: <a href="../doc_PFAS_SAT.html" title="next chapter">Code Document</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, NORTH CAROLINA STATE UNIVERSITY.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.3.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/Notebooks/WWT.ipynb.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
