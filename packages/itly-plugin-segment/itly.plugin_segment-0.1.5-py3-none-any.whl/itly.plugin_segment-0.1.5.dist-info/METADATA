@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: itly.plugin-segment
+Version: 0.1.5
+Summary: Iteratively Analytics SDK - Segment Plugin
+License: MIT
+Author: Iteratively
+Requires-Python: >=3.6,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: analytics-python (>=1.2.9,<2.0.0)
+Requires-Dist: itly.sdk (>=0.1.0,<0.2.0)
+Description-Content-Type: text/markdown
+
+
