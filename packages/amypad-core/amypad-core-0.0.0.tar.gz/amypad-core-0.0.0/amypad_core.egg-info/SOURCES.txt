@@ -1,0 +1,12 @@
+README.rst
+setup.cfg
+setup.py
+amypad/__init__.py
+amypad/imio/__init__.py
+amypad/imio/nii.py
+amypad/utils/__init__.py
+amypad_core.egg-info/PKG-INFO
+amypad_core.egg-info/SOURCES.txt
+amypad_core.egg-info/dependency_links.txt
+amypad_core.egg-info/requires.txt
+amypad_core.egg-info/top_level.txt
