@@ -1,0 +1,25 @@
+Metadata-Version: 1.2
+Name: BadgeGenerator
+Version: 1.0.0
+Summary: A Python Badger Generator to use and automatize your projects
+Home-page: https://github.com/HugoCastroBR/BadgeGenerator
+Author: Hugo Emmanuel de Castro
+Author-email: hugocastrohc@outlook.com
+License: MIT
+Project-URL: Código fonte, https://github.com/HugoCastroBR/BadgeGenerator
+Project-URL: Download, https://github.com/HugoCastroBR/BadgeGenerator/archive/1.0.0.zip
+Description: A Python Badger Generator to use and automatize your projects
+        
+            Just use like:
+        
+                from BadgeGenerator import Badge
+        
+                Badge()
+            
+            -Ex:
+                from BadgeGenerator import Badge
+        
+                Badge(color="red",logo="python",subject="Python") 
+                
+Keywords: Badge BadgeGen BadgeGenerator Generator Brasil Brazil shield Shields
+Platform: UNKNOWN
