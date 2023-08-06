@@ -1,0 +1,171 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/empty.proto";
+
+
+import "organization.proto";
+import "account.proto";
+import "billing.proto";
+import "common.proto";
+import "conversation.proto";
+import "collaboration_entity.proto";
+import "integration_source.proto";
+import "external_domain_model.proto";
+
+option java_package = "io.calixa.domain.entity";
+option java_multiple_files = true;
+option optimize_for = SPEED;
+
+package calixa.domain.entity;
+
+message Entity {
+
+    // These fields must be populated by the call site.
+    string organization_id = 1002;
+    string canonical_id = 1003;
+    repeated calixa.domain.common.ExternalId external_ids = 1004;
+
+    // These are managed by GraphWrapper
+    google.protobuf.Timestamp internal_created_at = 1005;
+    google.protobuf.Timestamp internal_updated_at = 1006;
+    google.protobuf.Timestamp external_created_at = 1007;
+    google.protobuf.Timestamp external_updated_at = 1008;
+
+    oneof entity {
+        calixa.domain.organization.Organization organization = 1;
+        calixa.domain.organization.OrganizationUser organization_user = 2;
+        calixa.domain.organization.PushNotificationConfig push_notification_config = 3;
+        calixa.domain.organization.AccessKey access_key = 4;
+
+        calixa.domain.collaboration.Thread note_thread = 50;
+        calixa.domain.collaboration.Message note_message = 51;
+
+        calixa.domain.account.Account account = 100;
+        calixa.domain.account.AccountUser account_user = 101;
+        calixa.domain.account.AccountUserRole account_user_role = 102;
+        calixa.domain.account.Opportunity opportunity = 105;
+
+        calixa.domain.billing.Invoice invoice = 200;
+        calixa.domain.billing.Product product = 201;
+        calixa.domain.billing.Plan plan = 202;
+        calixa.domain.billing.Subscription subscription = 203;
+        calixa.domain.billing.InvoiceLineItem invoice_line_item = 204;
+        calixa.domain.billing.SubscriptionItem subscription_item = 205;
+        calixa.domain.billing.Charge charge = 206;
+        calixa.domain.billing.SavedPaymentMethod saved_payment_method = 207;
+        calixa.domain.billing.Refund refund = 208;
+
+        calixa.domain.conversation.Conversation conversation = 300;
+        calixa.domain.conversation.Message message = 301;
+        calixa.domain.conversation.Attachment attachment = 302;
+
+        // TODO: Remove this after hydrator logic is able to compile the latest message and summary
+        calixa.domain.conversation.LatestMessage latest_message = 303;
+        calixa.domain.conversation.ConversationSummary conversation_summary = 304;
+
+        Event event = 400;
+
+        // Integration Source Domain Models
+        calixa.domain.external.SalesforceAccount salesforce_account = 2000;
+        calixa.domain.external.SalesforceContact salesforce_contact = 2001;
+        calixa.domain.external.IntercomCompany intercom_company = 2002;
+        calixa.domain.external.IntercomContact intercom_contact = 2003;
+    }
+}
+
+enum RelationshipType {
+    GRAPH_EDGE_TYPE_UNSPECIFIED = 0;
+    GRAPH_EDGE_TYPE_BELONGS_TO = 1;
+    GRAPH_EDGE_TYPE_EXTERNALLY_KNOWN_AS = 2;
+}
+
+message Relationship {
+    RelationshipType type = 2;
+    calixa.domain.common.EntityType from_type = 3;
+    string from_canonical_id = 4;
+    calixa.domain.common.EntityType to_type = 5;
+    string to_canonical_id = 6;
+    map<string, string> properties = 7;
+    // there is no way. So this is the way
+    Entity from_entity = 8;
+    Entity to_entity = 9;
+    Entity edge_entity = 10;
+
+    google.protobuf.Timestamp internal_created_at = 500;
+    google.protobuf.Timestamp internal_updated_at = 501;
+}
+
+message EntityWithRelationships {
+    Entity entity = 1;
+    repeated Relationship relationships = 2;
+
+    // TODO(freds): capture pagination parameters that were used to return
+    // the relationships. For now, all relationships are returned without
+    // any filtering. In search, this won't be the case, however.
+}
+
+enum EventType {
+    EVENT_TYPE_UNSPECIFIED = 0;
+    CREATED = 1;
+    UPDATED = 2;
+    DELETED = 3;
+}
+
+// Represents bidirectional association between two entities (such as when a user is added to
+// an account).
+message RelationshipMutation {
+    calixa.domain.entity.Relationship previous = 1;
+    calixa.domain.entity.Relationship current = 2;
+}
+
+message EntityMutation {
+    // The previous state of the entity (if any). For DELETED events, this contains the previous
+    // state of an entity before it was deleted.
+    calixa.domain.entity.Entity previous = 1;
+
+    // The current state of the entity. For both CREATED or UPDATED events, this field captures the current
+    // state of the entity after all updates have been applied.
+    calixa.domain.entity.Entity current = 2;
+}
+
+message Event {
+
+    // BEGIN --
+    // Output variable for search serialization; TODO(freds|pras): DELETE WHEN SEARCH IS REBUILD
+    string organization_id = 99999; // DEPRECATED REMOVE ME
+    string event_id = 99998; // DEPRECATED REMOVE ME
+    google.protobuf.Timestamp created_at = 99997; // DEPRECATED REMOVE ME
+    string canonical_account_id = 99996; // DEPRECATED REMOVE ME
+    // END --
+
+    calixa.domain.common.RequestContext request_context = 1;
+    google.protobuf.Timestamp occurred_at = 2;
+
+    // The following fields describe the nature of the event
+    EventType type = 6;
+    google.protobuf.FieldMask update_mask = 7;
+
+    oneof mutation {
+        EntityMutation entity = 8;
+        RelationshipMutation relationship = 9;
+    }
+}
+
+service EventService {
+    rpc Evince (Entity) returns (EvinceResponse);
+    rpc EvinceBatch (EntityList) returns (EvinceResponse);
+}
+
+message GetEventsRequest {
+    string organization_id = 1;
+}
+
+message EntityList {
+    repeated Entity entities = 1;
+}
+
+message EvinceResponse {
+    // Intentionally left blank
+}

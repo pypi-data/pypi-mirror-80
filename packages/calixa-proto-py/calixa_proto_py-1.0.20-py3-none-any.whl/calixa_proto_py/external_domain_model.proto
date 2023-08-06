@@ -1,0 +1,102 @@
+syntax = "proto3";
+
+package calixa.domain.external;
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+
+option java_package = "io.calixa.domain.external";
+option java_multiple_files = true;
+option optimize_for = SPEED;
+
+message IntercomCompany {
+    // https://developers.intercom.com/intercom-api-reference/reference#company-model
+    string id = 1;
+    google.protobuf.Timestamp remote_created_at = 2;
+    google.protobuf.Timestamp last_request_at = 3;
+    string company_id = 4;
+    string name = 5;
+    int32 session_count = 6;
+    int32 monthly_spend = 7;
+    int32 user_count = 8;
+    string plan_id = 9;
+    string plan_name = 10;
+    int32 size = 11;
+    string website = 12;
+    string industry = 13;
+}
+
+
+message IntercomContact {
+    // https://developers.intercom.com/intercom-api-reference/reference#contacts-model
+    string id = 1;
+    string workspace_id = 2;
+    string external_id = 3;
+    string role = 4;
+    string email = 5;
+    string phone = 6;
+    string name = 7;
+    string avatar = 8;
+    string owner_id = 9;
+    bool has_hard_bounced = 10;
+    bool marked_email_as_spam = 11;
+    bool unsubscribed_from_emails = 12;
+    google.protobuf.Timestamp signed_up_at = 13;
+    google.protobuf.Timestamp last_seen_at = 14;
+    google.protobuf.Timestamp last_replied_at = 15;
+    google.protobuf.Timestamp last_contacted_at = 16;
+    google.protobuf.Timestamp last_email_opened_at = 17;
+    google.protobuf.Timestamp last_email_clicked_at = 18;
+    string language_override = 19;
+    repeated string company_ids = 20;
+}
+
+message SalesforceAccount {
+    // https://developer.salesforce.com/docs/atlas.en-us.object_reference.meta/object_reference/sforce_api_objects_account.htm
+    string id = 1;
+    bool is_deleted = 2;
+    string master_record_id = 3;
+    string name = 4;
+    string parent_id = 5;
+    string billing_street = 6;
+    string billing_city = 7;
+    string billing_state = 8;
+    string billing_postal_code = 9;
+    string billing_country = 10;
+    string phone = 11;
+    string fax = 12;
+    string account_number = 13;
+    string website = 14;
+    string owner_id = 15;
+    string created_by_id = 16;
+}
+
+message SalesforceContact {
+    // https://developer.salesforce.com/docs/atlas.en-us.object_reference.meta/object_reference/sforce_api_objects_contact.htm
+    string id = 1;
+    bool is_deleted = 2;
+    string master_record_id = 3;
+    string account_id = 4;
+    string first_name = 5;
+    string last_name = 6;
+    string name = 7;
+    string mailing_street = 8;
+    string mailing_city = 9;
+    string mailing_state = 10;
+    string mailing_postal_code = 11;
+    string mailing_country = 12;
+    string other_street = 13;
+    string other_city = 14;
+    string other_state = 15;
+    string other_postal_code = 16;
+    string other_country = 17;
+    string phone = 18;
+    string fax = 19;
+    string mobile_phone = 20;
+    string home_phone = 21;
+    string other_phone = 22;
+    string assistant_phone = 23;
+    string email = 24;
+    string owner_id = 25;
+    string created_by_id = 26;
+}
