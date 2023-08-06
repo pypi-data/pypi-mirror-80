@@ -1,0 +1,12 @@
+README.md
+setup.py
+bin/hpcli
+hpargparse/__init__.py
+hpargparse/config.py
+hpargparse/hputils.py
+hpargparse/pkginfo.py
+hpargparse.egg-info/PKG-INFO
+hpargparse.egg-info/SOURCES.txt
+hpargparse.egg-info/dependency_links.txt
+hpargparse.egg-info/requires.txt
+hpargparse.egg-info/top_level.txt
