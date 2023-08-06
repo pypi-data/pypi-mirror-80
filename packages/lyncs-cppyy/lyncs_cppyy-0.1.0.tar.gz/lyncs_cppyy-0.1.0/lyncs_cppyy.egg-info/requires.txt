@@ -1,0 +1,16 @@
+cppyy>=1.8.1
+numpy
+deprecated
+lyncs-setuptools
+
+[all]
+pytest
+meson
+pytest-cov
+ninja
+
+[test]
+pytest
+pytest-cov
+meson
+ninja
