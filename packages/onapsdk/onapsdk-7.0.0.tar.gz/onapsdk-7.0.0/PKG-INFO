@@ -1,0 +1,48 @@
+Metadata-Version: 2.1
+Name: onapsdk
+Version: 7.0.0
+Summary: SDK to use ONAP Programatically
+Home-page: https://gitlab.com/Orange-OpenSource/lfn/onap/python-onapsdk
+Author: Orange OpenSource
+License: Apache 2.0
+Description: # Python ONAP SDK
+        
+        an SDK to use ONAP programmatically with Python code
+        
+        [![Maintainability](https://api.codeclimate.com/v1/badges/858bb5b1aed4b42da2d2/maintainability)](https://codeclimate.com/github/Orange-OpenSource/python-onapsdk/maintainability)
+        [![Code Coverage](https://gitlab.com/Orange-OpenSource/lfn/onap/python-onapsdk/badges/master/coverage.svg)](https://gitlab.com/Orange-OpenSource/lfn/onap/python-onapsdk/)
+        [![Documentation Status](https://readthedocs.org/projects/python-onapsdk/badge/?version=latest)](https://python-onapsdk.readthedocs.io/en/latest/?badge=latest)
+        
+        ## Description
+        
+        ONAP SDK is a client library written in Python for building applications to work with ONAP. The project aims to provide a consistent and complete set of interactions with ONAP’s many services, along with complete documentation, examples, and tools.
+        
+        Using few python commands, you should be able to onboard, distribute models, instantiate xNFs and many others. Check [doc](https://python-onapsdk.readthedocs.io/en/latest/index.html) site to find out all the features.
+        
+        ## Installation
+        
+        You can install it using `pip` tool
+        
+        ```
+        $ pip install onapsdk
+        ```
+        
+        # Python ONAP SDK Changelog
+        
+        ## v1.0
+        
+        [Documentation](https://readthedocs.org/dashboard/python-onapsdk/version/v1.0)
+        
+        Main new features:
+        
+        - Onboard a simple service via SDC
+        - Instantiate a simple service via SO using GR API
+        - Instantiate a simple service via NBI
+        - create business objects in AAI
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Python: <4,>=3.7
+Description-Content-Type: text/markdown
