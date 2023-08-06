@@ -1,0 +1,15 @@
+CHANGELOG.rst
+MANIFEST.in
+README.md
+setup.py
+EasyGA/EasyGA.py
+EasyGA/__init__.py
+EasyGA/run_testing.py
+EasyGA/test_EasyGA.py
+EasyGA.egg-info/PKG-INFO
+EasyGA.egg-info/SOURCES.txt
+EasyGA.egg-info/dependency_links.txt
+EasyGA.egg-info/requires.txt
+EasyGA.egg-info/top_level.txt
+EasyGA/initialization/__init__.py
+EasyGA/initialization/random_initialization.py
