@@ -1,0 +1,37 @@
+- project:
+    vars:
+      release_python: python3
+    check:
+      jobs:
+        - zuul-tox-docs
+        - tox-linters:
+            vars:
+              tox_install_bindep: false
+        - tox-py36:
+            nodeset: ubuntu-bionic
+            timeout: 3600
+        - tox-py38:
+            nodeset: ubuntu-bionic
+            timeout: 3600
+        - build-python-release
+    gate:
+      jobs:
+        - zuul-tox-docs
+        - tox-linters:
+            vars:
+              tox_install_bindep: false
+        - tox-py36:
+            nodeset: ubuntu-bionic
+            timeout: 3600
+        - tox-py38:
+            nodeset: ubuntu-bionic
+            timeout: 3600
+        - build-python-release
+    promote:
+      jobs:
+        - opendev-promote-python
+        - zuul-promote-docs
+    release:
+      jobs:
+        - opendev-release-python
+        - zuul-publish-tox-docs
