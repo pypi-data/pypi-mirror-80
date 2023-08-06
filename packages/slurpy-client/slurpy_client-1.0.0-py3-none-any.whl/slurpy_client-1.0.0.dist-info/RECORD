@@ -1,0 +1,16 @@
+slurpy_client/__init__.py,sha256=z3ilKXBzgVtBn7ef7J1sf9MJZSG9Ix5EXKk0mvvVZP8,1164
+slurpy_client/api_client.py,sha256=xF6pBKkZVc36mxKEd8iREzXryO59qCjc7qkGjn07TpM,27396
+slurpy_client/configuration.py,sha256=mS5qNo8PL5jTZl9yErQQwEbKq5VaCdoLrWirOpEvqUs,15593
+slurpy_client/exceptions.py,sha256=7z1iaHei-0m-Ty2y-vsUU4O4ycat3DxRP1MTTIawdIA,5130
+slurpy_client/rest.py,sha256=9CWWiAZ3vq6YtBieQK8z-sRXM9hpFGQl_mQJbQdiaR0,10119
+slurpy_client/api/__init__.py,sha256=B7rijOwy76elH6a85licAu0WC_lXO_z2Bq5LuPs44gs,232
+slurpy_client/api/email_api.py,sha256=u8xF2VgahoZHPVNP-o5t2SSJ-VdNDZXKB5CM3Rhuto4,21874
+slurpy_client/api/inbox_api.py,sha256=BevbLeOOXBHYeO8eekyTxFzFtGosZ4FyqD2vdlqYKjY,17181
+slurpy_client/api/jobs_api.py,sha256=LVEuECkoRvJN-UpQv4q339Yjdv4H3amLvDnvX4bBpiU,6502
+slurpy_client/models/__init__.py,sha256=E98BxqzG0qId2GRV88OHceF_8Od3AuHv43xuZ1k2pB0,492
+slurpy_client/models/http_validation_error.py,sha256=5dV4718mCFJv74FlhOcaoRgE9WDVlKXDDIchvupmfoI,3410
+slurpy_client/models/validation_error.py,sha256=y4bxy4HZ4eoUtc3KVHnQHTh7tLqTp0CVKuiCyUMFUAM,4906
+slurpy_client-1.0.0.dist-info/METADATA,sha256=gJm0QOvULsSBY6AQcMxuT2R4BORzxhG_Arydd_4Zazc,513
+slurpy_client-1.0.0.dist-info/WHEEL,sha256=EVRjI69F5qVjm_YgqcTXPnTAv3BfSUr0WVAHuSP3Xoo,92
+slurpy_client-1.0.0.dist-info/top_level.txt,sha256=J5qxJjJDXYLZ0rjoSciLM_plMq7eljA04GDcNBMTFb0,14
+slurpy_client-1.0.0.dist-info/RECORD,,
