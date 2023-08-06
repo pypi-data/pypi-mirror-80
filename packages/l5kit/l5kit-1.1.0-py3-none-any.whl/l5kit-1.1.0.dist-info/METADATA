@@ -1,0 +1,47 @@
+Metadata-Version: 2.1
+Name: l5kit
+Version: 1.1.0
+Summary: Lyft Autonomous Vehicle Research library
+Home-page: https://github.com/lyft/l5kit
+Author: Lyft Level 5
+Author-email: l5kit@lyft.com
+License: apache2
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: imageio
+Requires-Dist: matplotlib
+Requires-Dist: numpy
+Requires-Dist: opencv-contrib-python-headless
+Requires-Dist: protobuf (>=3.12.2)
+Requires-Dist: pymap3d
+Requires-Dist: scipy
+Requires-Dist: setuptools
+Requires-Dist: torch (<2.0.0,>=1.5.0)
+Requires-Dist: torchvision (<1.0.0,>=0.6.0)
+Requires-Dist: tqdm
+Requires-Dist: transforms3d
+Requires-Dist: zarr
+Requires-Dist: pyyaml
+Requires-Dist: notebook
+Requires-Dist: ptable
+Requires-Dist: ipywidgets
+Provides-Extra: dev
+Requires-Dist: pytest ; extra == 'dev'
+Requires-Dist: mypy ; extra == 'dev'
+Requires-Dist: setuptools ; extra == 'dev'
+Requires-Dist: twine ; extra == 'dev'
+Requires-Dist: wheel ; extra == 'dev'
+Requires-Dist: pytest-cov ; extra == 'dev'
+Requires-Dist: flake8 ; extra == 'dev'
+Requires-Dist: black (==19.10b0) ; extra == 'dev'
+Requires-Dist: isort ; extra == 'dev'
+Requires-Dist: Sphinx ; extra == 'dev'
+Requires-Dist: sphinx-rtd-theme ; extra == 'dev'
+Requires-Dist: recommonmark ; extra == 'dev'
+Requires-Dist: pre-commit ; extra == 'dev'
+
+UNKNOWN
+
+
