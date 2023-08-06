@@ -1,0 +1,54 @@
+Metadata-Version: 2.1
+Name: fero
+Version: 1.0.0
+Summary: Python client for accessing Fero API
+Home-page: https://github.com/FeroLabs/fero_client
+License: UNKNOWN
+Project-URL: Bug Reports, https://github.com/pypa/sampleproject/issues
+Project-URL: Source, https://github.com/pypa/sampleproject/
+Description: # fero_client
+        
+        `fero` is a client side python library intended to help users interact with the Fero Machine Learning application. The primary entrypoint for interacting with the Fero Application is via the `Fero` client class
+        
+        ## Quickstart
+        
+        ```python
+        from fero import Fero
+        
+        # create a client
+        fero_client = Fero()
+        
+        # get an analysis
+        analysis = fero_client.get_analysis("quality-example-data")
+        
+        data = [
+            {"value": 5, "value2": 2}
+        ]
+        
+        # Make a prediction
+        prediction = analysis.make_prediction(data)
+        
+        print(prediction)
+        '''
+        [{
+            "value": 5,
+            "value2": 2,
+            "target_high": 100,
+            "target_low": 75,
+            "target_mid": 88
+        }]
+        '''
+        ```
+        
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3 :: Only
+Requires-Python: >=3.5, <4
+Description-Content-Type: text/markdown
