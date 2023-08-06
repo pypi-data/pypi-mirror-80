@@ -1,0 +1,17 @@
+MANIFEST.in
+README.rst
+setup.py
+grvlms_course_prerequisite.egg-info/PKG-INFO
+grvlms_course_prerequisite.egg-info/SOURCES.txt
+grvlms_course_prerequisite.egg-info/dependency_links.txt
+grvlms_course_prerequisite.egg-info/entry_points.txt
+grvlms_course_prerequisite.egg-info/requires.txt
+grvlms_course_prerequisite.egg-info/top_level.txt
+grvlmscourse_prerequisite/__about__.py
+grvlmscourse_prerequisite/__init__.py
+grvlmscourse_prerequisite/plugin.py
+grvlmscourse_prerequisite/patches/.gitignore
+grvlmscourse_prerequisite/patches/common-env-features
+grvlmscourse_prerequisite/templates/course-prerequisite/apps/.gitignore
+grvlmscourse_prerequisite/templates/course-prerequisite/build/.gitignore
+grvlmscourse_prerequisite/templates/course-prerequisite/hooks/.gitignore
