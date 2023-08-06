@@ -1,0 +1,8 @@
+[console_scripts]
+daily_avg = gnssrefl.daily_avg:main
+download_rinex = gnssrefl.download_rinex:main
+gnssir = gnssrefl.gnssir_cl:main
+make_json_input = gnssrefl.make_json_input:main
+quickLook = gnssrefl.quickLook_cl:main
+rinex2snr = gnssrefl.rinex2snr_cl:main
+
