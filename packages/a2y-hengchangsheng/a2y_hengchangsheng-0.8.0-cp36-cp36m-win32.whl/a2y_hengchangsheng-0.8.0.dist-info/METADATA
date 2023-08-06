@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: a2y-hengchangsheng
+Version: 0.8.0
+Summary: A module that interfaces HengChangSheng things.
+Home-page: http://www.sorobust.com/a2y/hengchangsheng.html
+Author: Yu Han
+Author-email: hanjunyu@163.com
+License: Private
+Platform: Windows
+Platform: Linux
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: Free For Educational Use
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Operating System :: Microsoft :: Windows :: Windows 10
+Classifier: Operating System :: POSIX :: Linux
+Description-Content-Type: text/markdown
+Requires-Dist: a2y-wxtoolspymssql
+
+# Python Module: a2y_ats
+a2y_ats模块提供一个自动化测试框架。
+
+
