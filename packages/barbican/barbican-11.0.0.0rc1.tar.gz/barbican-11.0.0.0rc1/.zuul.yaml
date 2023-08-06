@@ -1,0 +1,113 @@
+---
+- job:
+    name: barbican-tox-functional
+    parent: devstack-tox-functional
+    description: Functional testing
+    required-projects:
+      - name: openstack/barbican
+      - name: openstack/castellan
+      - name: openstack/openstacksdk
+    vars:
+      devstack_plugins:
+        barbican: https://opendev.org/openstack/barbican
+      tox_install_siblings: true
+
+- job:
+    name: barbican-dogtag-tox-functional
+    nodeset: devstack-single-node-fedora-latest
+    parent: barbican-tox-functional
+    description: |
+      Functional testing for DogTag backend
+    vars:
+      devstack_services:
+        barbican-dogtag: true
+
+- job:
+    name: barbican-vault-tox-functional
+    parent: barbican-tox-functional
+    description: |
+      Functional testing for Hashicorp Vault backend
+    vars:
+      devstack_services:
+        vault: true
+
+- job:
+    name: barbican-kmip-tox-functional
+    parent: devstack-tox-functional
+    description: |
+      Functional testing for KMIP backend using PyKMIP
+    vars:
+      devstack_services:
+        kmip: true
+
+- job:
+    name: barbican-simple-crypto-devstack-tempest
+    parent: barbican-tempest-plugin-simple-crypto
+    description: |
+      Compatibility alias for barbican-tempest-plugin-simple-crypto
+
+- job:
+    name: barbican-simple-crypto-devstack-tempest-ipv6-only
+    parent: barbican-tempest-plugin-simple-crypto-ipv6-only
+    description: |
+      Compatibility alias for barbican-tempest-plugin-simple-crypto-ipv6-only
+
+- job:
+    name: barbican-simple-crypto-devstack-tempest-castellan-from-git
+    parent: barbican-tempest-plugin-simple-crypto-castellan-src
+    description: |
+      Compatibility alias for barbican-tempest-plugin-simple-crypto-castellan-src
+
+- job:
+    name: barbican-simple-crypto-devstack-tempest-cursive
+    parent: barbican-tempest-plugin-simple-crypto-cursive
+    description: |
+      Compatibility alias for barbican-tempest-plugin-simple-crypto-cursive
+
+- job:
+    name: barbican-grenade
+    parent: grenade-py3
+    required-projects:
+      - openstack/grenade
+      - openstack/barbican
+      - openstack/barbican-tempest-plugin
+      - openstack/python-barbicanclient
+
+- project:
+    templates:
+      - check-requirements
+      - openstack-cover-jobs
+      - openstack-python3-victoria-jobs
+      - publish-openstack-docs-pti
+      - release-notes-jobs-python3
+    check:
+      jobs:
+        - barbican-tox-functional
+        - barbican-dogtag-tox-functional:
+            voting: false
+        - barbican-vault-tox-functional:
+            voting: false
+        - barbican-grenade:
+            voting: false
+        - barbican-tempest-plugin-simple-crypto
+        - barbican-tempest-plugin-simple-crypto-ipv6-only
+        - octavia-v2-dsvm-tls-barbican
+        # TripleO jobs that deploy Barbican.
+        # Note we don't use a project-template here, so it's easier
+        # to disable voting on one specific job if things go wrong.
+        # tripleo-ci-centos-7-scenario002-standalone will
+        # run in Pike and beyond.
+        # If you need any support to debug these jobs in case of
+        # failures, please reach us on #tripleo IRC channel.
+        - tripleo-ci-centos-7-scenario002-standalone:
+            voting: false
+        - tripleo-ci-centos-7-undercloud-containers:
+            voting: false
+    gate:
+      queue: barbican
+      jobs:
+        - barbican-tox-functional
+    experimental:
+      jobs:
+        - barbican-kmip-tox-functional
+
