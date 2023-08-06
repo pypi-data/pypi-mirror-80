@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Name: autogram-commons
+Version: 0.2.1
+Summary: 
+Author: Joscha Götzer
+Author-email: joscha.goetzer@gmail.com
+Requires-Python: >=3.8,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: pydantic[dotenv] (>=1.6.1,<2.0.0)
+Requires-Dist: ruamel.yaml (>=0.16.12,<0.17.0)
