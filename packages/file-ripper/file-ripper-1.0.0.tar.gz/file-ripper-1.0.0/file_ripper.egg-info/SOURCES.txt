@@ -1,0 +1,16 @@
+README.md
+setup.cfg
+setup.py
+file_ripper/__init__.py
+file_ripper/fileconstants.py
+file_ripper/filedefinition.py
+file_ripper/filelogger.py
+file_ripper/filerepository.py
+file_ripper/fileripper.py
+file_ripper/fileservice.py
+file_ripper.egg-info/PKG-INFO
+file_ripper.egg-info/SOURCES.txt
+file_ripper.egg-info/dependency_links.txt
+file_ripper.egg-info/top_level.txt
+tests/__init__.py
+tests/tests.py
