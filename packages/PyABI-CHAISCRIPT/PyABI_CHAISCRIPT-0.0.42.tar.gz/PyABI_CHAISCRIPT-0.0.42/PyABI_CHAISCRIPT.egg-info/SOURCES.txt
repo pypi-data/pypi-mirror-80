@@ -1,0 +1,9 @@
+.gitignore
+README.md
+setup.py
+setup_pypi.py
+PyABI_CHAISCRIPT.egg-info/PKG-INFO
+PyABI_CHAISCRIPT.egg-info/SOURCES.txt
+PyABI_CHAISCRIPT.egg-info/dependency_links.txt
+PyABI_CHAISCRIPT.egg-info/top_level.txt
+pyabi_chaiscript/__init__.py
