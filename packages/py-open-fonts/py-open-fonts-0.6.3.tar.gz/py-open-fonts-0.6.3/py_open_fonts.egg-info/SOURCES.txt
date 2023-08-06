@@ -1,0 +1,14 @@
+LICENSE
+MANIFEST.in
+README.md
+setup.py
+openfonts/__init__.py
+openfonts/cli.py
+openfonts/conda.py
+openfonts/version.py
+py_open_fonts.egg-info/PKG-INFO
+py_open_fonts.egg-info/SOURCES.txt
+py_open_fonts.egg-info/dependency_links.txt
+py_open_fonts.egg-info/entry_points.txt
+py_open_fonts.egg-info/requires.txt
+py_open_fonts.egg-info/top_level.txt
