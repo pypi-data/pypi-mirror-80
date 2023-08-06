@@ -1,0 +1,32 @@
+Metadata-Version: 1.2
+Name: c10k
+Version: 0.0.1.dev0
+Summary: Solving the C10K problem without modifying the code
+Home-page: UNKNOWN
+Author: Wilhelm Shen
+Author-email: wilhelmshen@pyforce.com
+License: GPL
+Description: ====
+        C10K
+        ====
+        
+        We're working with a solution that you can make a normal
+        program support high-concurrency without modifying the code.
+        
+        The pre-alpha version may be uploaded within a month.
+        
+        
+Keywords: gevent asynchronous c10k
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: GNU General Public License (GPL) 
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Operating System :: POSIX
+Classifier: Topic :: Internet
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Intended Audience :: Developers
+Classifier: Development Status :: 1 - Planning
+Requires-Python: >=3.6

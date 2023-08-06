@@ -1,0 +1,3 @@
+[console_scripts]
+c10k = c10k.__main__:main
+
