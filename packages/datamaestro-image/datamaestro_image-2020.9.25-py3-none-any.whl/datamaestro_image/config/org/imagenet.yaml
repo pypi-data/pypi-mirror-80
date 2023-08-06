@@ -1,0 +1,30 @@
+# URLs
+# http://www.image-net.org/challenges/LSVRC/2012/nnoupb/ILSVRC2012_devkit_t12.tar.gz
+# http://www.image-net.org/challenges/LSVRC/2012/nnoupb/ILSVRC2012_img_train.tar
+
+name: ImageNet
+description: |
+  **ImageNet** is an image database organized according to the
+  [WordNet](http://wordnet.princeton.edu) hierarchy
+  (currently only the nouns), in which each node of the hierarchy is
+  depicted by hundreds and thousands of images. Currently we have an
+  average of over five hundred images per node. We hope ImageNet will
+  become a useful resource for researchers, educators, students and all of
+  you who share our passion for pictures.
+website: http://www.image-net.org/
+
+download: !@/multiple:List
+  annotations: !@/archive:Tar
+    description: "Bounding boxes with the associated synset: [more details](http://image-net.org/download-bboxes)"
+    url: http://image-net.org/Annotation/Annotation.tar.gz
+
+  attributes: !@/single:File
+    description: "[List of attributes](http://image-net.org/download-attributes)"
+    url: http://image-net.org/downloads/attributes/attrann.mat
+
+  images: !@/manual:DownloadPath
+    name: folder
+    description: Download images from the [image net website]*(http://image-net.org/download-imageurls)
+
+
+

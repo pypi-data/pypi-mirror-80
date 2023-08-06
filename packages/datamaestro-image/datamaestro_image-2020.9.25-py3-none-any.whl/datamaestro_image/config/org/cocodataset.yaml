@@ -1,0 +1,61 @@
+# MS COCO
+
+name: Common Objects in Context
+acronym: COCO
+web: http://cocodataset.org
+
+licence: http://cocodataset.org/#termsofuse
+
+description: |
+  COCO is a large-scale object detection, segmentation, and captioning dataset. COCO has several features:
+
+  - Object segmentation
+  - Recognition in context
+  - Superpixel stuff segmentation
+  - 330K images (>200K labeled)
+  - 1.5 million object instances
+  - 80 object categories
+  - 91 stuff categories
+  - 5 captions per image
+  - 250,000 people with keypoints
+
+
+abstract: true
+
+# --- image datasets
+
+---
+id: 2014
+download: !@/multiple:List
+  images: !@/multiple:List
+    train: !@/sync:GSync
+      url: gs://images.cocodataset.org/train2014
+    val: !@/sync:GSync
+      url: gs://images.cocodataset.org/val2014
+    test: !@/sync:GSync
+      url: gs://images.cocodataset.org/test2014
+
+  annotations: !@/multiple:List
+    trainval: !@/archive:Zip
+      url: http://images.cocodataset.org/annotations/annotations_trainval2014.zip
+    test: !@/archive:Zip
+      url: http://images.cocodataset.org/annotations/image_info_test2014.zip
+---
+id: 2015
+download: !@/multiple:List
+  test: !@/sync:GSync
+    url: gs://images.cocodataset.org/test2015
+---
+id: 2017
+download: !@/multiple:List
+  train: !@/sync:GSync
+    url: gs://images.cocodataset.org/train2017
+  val: !@/sync:GSync
+    url: gs://images.cocodataset.org/val2017
+  test: !@/sync:GSync
+    url: gs://images.cocodataset.org/test2017
+  
+---
+id: 2017-unlabelled
+download: !@/sync:GSync
+  url: gs://images.cocodataset.org/unlabelled2017

@@ -1,0 +1,55 @@
+name: Visual Genome
+url: https://visualgenome.org/
+datatypes:
+  - images
+  - bounding boxes
+  - region annotation
+  - visual relationships
+description: |
+  Visual Genome is a dataset, a knowledge base, an ongoing effort to connect
+  structured image concepts to language. 
+version: "1.4"
+download: !@multiple:List
+  list:
+    readme: !@/single:File
+      url: https://visualgenome.org/static/data/dataset/readme_v1_4.txt
+    
+    images:
+      handler: /archive:Zip
+      url:
+        - https://cs.stanford.edu/people/rak248/VG_100K_2/images.zip
+        - https://cs.stanford.edu/people/rak248/VG_100K_2/images2.zip
+
+...
+---
+id: annotations
+download: !@/multiple:List
+  list:
+    objects: !@/single:File
+      url: https://visualgenome.org/static/data/dataset/objects.json.zip
+    relationships: !@/single:File
+      url: https://visualgenome.org/static/data/dataset/relationships.json.zip
+    aliases: !@/single:File
+      url: https://visualgenome.org/static/data/dataset/object_alias.txt
+    object-synsets: !@/single:File
+      url: https://visualgenome.org/static/data/dataset/object_synsets.json.zip
+    attribute-synsets: !@/single:File
+      url: https://visualgenome.org/static/data/dataset/attribute_synsets.json.zip
+    relationship-synsets: !@/single:File
+      url: https://visualgenome.org/static/data/dataset/relationship_synsets.json.zip
+    
+    scene-graph: !@/single:File
+      url: https://visualgenome.org/static/data/dataset/scene_graphs.json.zip
+
+    image-metadata: !@/single:File
+      url: https://visualgenome.org/static/data/dataset/image_data.json.zip
+
+...
+---
+
+id: question-answering
+tasks:
+  - visual question-answering
+
+download: !@archive:Zip
+  url: https://visualgenome.org/static/data/dataset/question_answers.json.zip
