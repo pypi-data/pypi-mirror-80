@@ -1,0 +1,26 @@
+bitstring
+pygatt
+pandas
+numpy
+seaborn
+pexpect
+pillow
+bleak
+kivy==2.0.0rc2
+docutils
+pygments
+pyserial
+esptool
+nest_asyncio
+
+[:platform_system != "Linux"]
+pylsl
+
+[:platform_system == "Linux"]
+pylsl==1.10.5
+
+[:platform_system == "Windows"]
+pypiwin32
+kivy.deps.glew
+kivy.deps.sdl2
+kivy.deps.gstreamer
