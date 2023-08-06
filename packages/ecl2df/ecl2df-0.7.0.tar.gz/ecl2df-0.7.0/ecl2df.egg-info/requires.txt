@@ -1,0 +1,18 @@
+libecl
+pandas
+pyyaml>=5.1
+treelib
+
+[:python_version >= "3.5"]
+opm
+
+[tests]
+flake8
+networkx
+pytest
+sphinx
+sphinx-argparse
+sphinx_rtd_theme
+
+[tests:python_version >= "3"]
+black>=20.8b0
