@@ -1,0 +1,3 @@
+[console_scripts]
+mh_lint = miss_hit.mh_lint:main
+
