@@ -1,0 +1,1356 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Advanced WWT &#8212; PFAS SAT  documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Composting" href="Composting.html" />
+    <link rel="prev" title="Anaerobic Digestion (AD)" href="AD.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    min-width: 5.5ex;
+    padding-top: 0.3rem;
+    padding-right: 0.3rem;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 0.3rem;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<div class="section" id="Advanced-WWT">
+<h1>Advanced WWT<a class="headerlink" href="#Advanced-WWT" title="Permalink to this headline">¶</a></h1>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">PFAS_SAT</span> <span class="k">as</span> <span class="nn">ps</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_colwidth&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="Model-document">
+<h2>Model document<a class="headerlink" href="#Model-document" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="Input-Parameters-for-Advanced-WWT-model">
+<h2>Input Parameters for Advanced WWT model<a class="headerlink" href="#Input-Parameters-for-Advanced-WWT-model" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">AdvWWT</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">AdvWWT</span><span class="p">()</span>
+<span class="n">AdvWWT</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[[</span><span class="s1">&#39;Category&#39;</span><span class="p">,</span><span class="s1">&#39;Dictonary_Name&#39;</span><span class="p">,</span><span class="s1">&#39;Parameter Name&#39;</span><span class="p">,</span> <span class="s1">&#39;Parameter Description&#39;</span><span class="p">,</span> <span class="s1">&#39;amount&#39;</span><span class="p">,</span> <span class="s1">&#39;unit&#39;</span><span class="p">,</span><span class="s1">&#39;Reference&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Category</th>
+      <th>Dictonary_Name</th>
+      <th>Parameter Name</th>
+      <th>Parameter Description</th>
+      <th>amount</th>
+      <th>unit</th>
+      <th>Reference</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Treatment option</td>
+      <td>Trtmnt_optn</td>
+      <td>frac_to_RO</td>
+      <td>Fraction of incoming PFAS-containing water to RO</td>
+      <td>0.000000</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Treatment option</td>
+      <td>Trtmnt_optn</td>
+      <td>frac_to_GAC</td>
+      <td>Fraction of  incoming PFAS-containing water to GAC</td>
+      <td>1.000000</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Treatment option</td>
+      <td>Trtmnt_optn</td>
+      <td>frac_to_IonEx</td>
+      <td>Fraction of  incoming PFAS-containing water to Ion Exchange</td>
+      <td>0.000000</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>RO paramteres</td>
+      <td>RO</td>
+      <td>ts_rem_med</td>
+      <td>Solids content of RO concentrate wet</td>
+      <td>0.017663</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>RO paramteres</td>
+      <td>RO</td>
+      <td>VS_rem_med</td>
+      <td>VS content of RO concentrate - dry</td>
+      <td>0.700000</td>
+      <td>kg VS/kg TS</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>RO paramteres</td>
+      <td>RO</td>
+      <td>C_rem_med</td>
+      <td>C of RO concentrate - dry</td>
+      <td>0.001207</td>
+      <td>fraction TS</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>RO paramteres</td>
+      <td>RO</td>
+      <td>frac_effl_rem_med</td>
+      <td>RO concentrate fraction relative to total water treated</td>
+      <td>0.150000</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>RO Removal Efficiency</td>
+      <td>RO_RemEff</td>
+      <td>PFOA</td>
+      <td>PFOA removal efficiency</td>
+      <td>0.990000</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>RO Removal Efficiency</td>
+      <td>RO_RemEff</td>
+      <td>PFOS</td>
+      <td>PFOS removal efficiency</td>
+      <td>0.990000</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>RO Removal Efficiency</td>
+      <td>RO_RemEff</td>
+      <td>PFBA</td>
+      <td>PFBA removal efficiency</td>
+      <td>0.990000</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>RO Removal Efficiency</td>
+      <td>RO_RemEff</td>
+      <td>PFPeA</td>
+      <td>PFPeA removal efficiency</td>
+      <td>0.990000</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>RO Removal Efficiency</td>
+      <td>RO_RemEff</td>
+      <td>PFHxA</td>
+      <td>PFHxA removal efficiency</td>
+      <td>0.990000</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>RO Removal Efficiency</td>
+      <td>RO_RemEff</td>
+      <td>PFHpA</td>
+      <td>PFHpA removal efficiency</td>
+      <td>0.990000</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>RO Removal Efficiency</td>
+      <td>RO_RemEff</td>
+      <td>PFNA</td>
+      <td>PFNA removal efficiency</td>
+      <td>0.990000</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>RO Removal Efficiency</td>
+      <td>RO_RemEff</td>
+      <td>PFDA</td>
+      <td>PFDA removal efficiency</td>
+      <td>0.990000</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>RO Removal Efficiency</td>
+      <td>RO_RemEff</td>
+      <td>PFBS</td>
+      <td>PFBS removal efficiency</td>
+      <td>0.990000</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>RO Removal Efficiency</td>
+      <td>RO_RemEff</td>
+      <td>PFHxS</td>
+      <td>PFHxS removal efficiency</td>
+      <td>0.990000</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>GAC paramteres</td>
+      <td>GAC</td>
+      <td>ts_rem_med</td>
+      <td>Solids content of removal media - wet</td>
+      <td>0.900000</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>GAC paramteres</td>
+      <td>GAC</td>
+      <td>VS_rem_med</td>
+      <td>VS content of removal media  - dry</td>
+      <td>0.900000</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>GAC paramteres</td>
+      <td>GAC</td>
+      <td>C_rem_med</td>
+      <td>C content of removal media  - dry</td>
+      <td>0.700000</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>GAC paramteres</td>
+      <td>GAC</td>
+      <td>GAC_dens</td>
+      <td>GAC bed density</td>
+      <td>435.000000</td>
+      <td>kg/m3</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>GAC paramteres</td>
+      <td>GAC</td>
+      <td>Bed_vol_ratio</td>
+      <td>Bed volumes: V(H2O)/V(GAC)</td>
+      <td>5000.000000</td>
+      <td>ratio</td>
+      <td>Woodard et al. (2017)</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>GAC Removal Efficiency</td>
+      <td>GAC_RemEff</td>
+      <td>PFOA</td>
+      <td>PFOA removal efficiency</td>
+      <td>0.900000</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>GAC Removal Efficiency</td>
+      <td>GAC_RemEff</td>
+      <td>PFOS</td>
+      <td>PFOS removal efficiency</td>
+      <td>0.900000</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>GAC Removal Efficiency</td>
+      <td>GAC_RemEff</td>
+      <td>PFBA</td>
+      <td>PFBA removal efficiency</td>
+      <td>0.900000</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>GAC Removal Efficiency</td>
+      <td>GAC_RemEff</td>
+      <td>PFPeA</td>
+      <td>PFPeA removal efficiency</td>
+      <td>0.900000</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>GAC Removal Efficiency</td>
+      <td>GAC_RemEff</td>
+      <td>PFHxA</td>
+      <td>PFHxA removal efficiency</td>
+      <td>0.900000</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>GAC Removal Efficiency</td>
+      <td>GAC_RemEff</td>
+      <td>PFHpA</td>
+      <td>PFHpA removal efficiency</td>
+      <td>0.900000</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>GAC Removal Efficiency</td>
+      <td>GAC_RemEff</td>
+      <td>PFNA</td>
+      <td>PFNA removal efficiency</td>
+      <td>0.900000</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>GAC Removal Efficiency</td>
+      <td>GAC_RemEff</td>
+      <td>PFDA</td>
+      <td>PFDA removal efficiency</td>
+      <td>0.900000</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>GAC Removal Efficiency</td>
+      <td>GAC_RemEff</td>
+      <td>PFBS</td>
+      <td>PFBS removal efficiency</td>
+      <td>0.900000</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>GAC Removal Efficiency</td>
+      <td>GAC_RemEff</td>
+      <td>PFHxS</td>
+      <td>PFHxS removal efficiency</td>
+      <td>0.900000</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>Ion Exchange paramteres</td>
+      <td>IonEx</td>
+      <td>ts_rem_med</td>
+      <td>Solids content of removal media - wet</td>
+      <td>0.900000</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>Ion Exchange paramteres</td>
+      <td>IonEx</td>
+      <td>VS_rem_med</td>
+      <td>VS content of removal media  - dry</td>
+      <td>0.900000</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>Ion Exchange paramteres</td>
+      <td>IonEx</td>
+      <td>C_rem_med</td>
+      <td>C content of removal media  - dry</td>
+      <td>0.500000</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>Ion Exchange paramteres</td>
+      <td>IonEx</td>
+      <td>IonExRes_dens</td>
+      <td>Ion Exchange Resin bed density</td>
+      <td>500.000000</td>
+      <td>kg/m3</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>Ion Exchange paramteres</td>
+      <td>IonEx</td>
+      <td>Bed_vol_ratio</td>
+      <td>Bed volumes: V(H2O)/V(Ion Exchange Resin)</td>
+      <td>20000.000000</td>
+      <td>ratio</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>Ion Exchange Removal Efficiency</td>
+      <td>IonEx_RemEff</td>
+      <td>PFOA</td>
+      <td>PFOA removal efficiency</td>
+      <td>0.990000</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>Ion Exchange Removal Efficiency</td>
+      <td>IonEx_RemEff</td>
+      <td>PFOS</td>
+      <td>PFOS removal efficiency</td>
+      <td>0.990000</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>Ion Exchange Removal Efficiency</td>
+      <td>IonEx_RemEff</td>
+      <td>PFBA</td>
+      <td>PFBA removal efficiency</td>
+      <td>0.990000</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>Ion Exchange Removal Efficiency</td>
+      <td>IonEx_RemEff</td>
+      <td>PFPeA</td>
+      <td>PFPeA removal efficiency</td>
+      <td>0.990000</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>Ion Exchange Removal Efficiency</td>
+      <td>IonEx_RemEff</td>
+      <td>PFHxA</td>
+      <td>PFHxA removal efficiency</td>
+      <td>0.990000</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>Ion Exchange Removal Efficiency</td>
+      <td>IonEx_RemEff</td>
+      <td>PFHpA</td>
+      <td>PFHpA removal efficiency</td>
+      <td>0.990000</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>Ion Exchange Removal Efficiency</td>
+      <td>IonEx_RemEff</td>
+      <td>PFNA</td>
+      <td>PFNA removal efficiency</td>
+      <td>0.990000</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>Ion Exchange Removal Efficiency</td>
+      <td>IonEx_RemEff</td>
+      <td>PFDA</td>
+      <td>PFDA removal efficiency</td>
+      <td>0.990000</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>Ion Exchange Removal Efficiency</td>
+      <td>IonEx_RemEff</td>
+      <td>PFBS</td>
+      <td>PFBS removal efficiency</td>
+      <td>0.990000</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>Ion Exchange Removal Efficiency</td>
+      <td>IonEx_RemEff</td>
+      <td>PFHxS</td>
+      <td>PFHxS removal efficiency</td>
+      <td>0.990000</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+<div class="section" id="Incoming-Waste-Water-to-WWT">
+<h2>Incoming Waste Water to WWT<a class="headerlink" href="#Incoming-Waste-Water-to-WWT" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">InputFlow</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">IncomFlow</span><span class="p">()</span>
+<span class="n">InputFlow</span><span class="o">.</span><span class="n">set_flow</span><span class="p">(</span><span class="s1">&#39;ContaminatedWater&#39;</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">InputFlow</span><span class="o">.</span><span class="n">calc</span><span class="p">()</span>
+<span class="n">ContaminatedWater</span> <span class="o">=</span> <span class="n">InputFlow</span><span class="o">.</span><span class="n">Inc_flow</span>
+<span class="n">ContaminatedWater</span><span class="o">.</span><span class="n">report</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Parameter</th>
+      <th>Unit</th>
+      <th>Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Mass flow</td>
+      <td>kg</td>
+      <td>1000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Solids flow</td>
+      <td>kg</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Moisture flow</td>
+      <td>kg</td>
+      <td>995</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Volume flow</td>
+      <td>L</td>
+      <td>1000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Carbon flow</td>
+      <td>kg</td>
+      <td>2.5</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>PFOA</td>
+      <td>μg</td>
+      <td>100000</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>PFOS</td>
+      <td>μg</td>
+      <td>100000</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>PFBA</td>
+      <td>μg</td>
+      <td>100000</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>PFPeA</td>
+      <td>μg</td>
+      <td>100000</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>PFHxA</td>
+      <td>μg</td>
+      <td>100000</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>PFHpA</td>
+      <td>μg</td>
+      <td>100000</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>PFNA</td>
+      <td>μg</td>
+      <td>100000</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>PFDA</td>
+      <td>μg</td>
+      <td>100000</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>PFBS</td>
+      <td>μg</td>
+      <td>100000</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>PFHxS</td>
+      <td>μg</td>
+      <td>100000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+<div class="section" id="PFAS-balance-in-Advanced-WWT-(Using-GAC)">
+<h2>PFAS balance in Advanced WWT (Using GAC)<a class="headerlink" href="#PFAS-balance-in-Advanced-WWT-(Using-GAC)" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">AdvWWT</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Trtmnt_optn</span><span class="p">[</span><span class="s1">&#39;frac_to_RO&#39;</span><span class="p">][</span><span class="s1">&#39;amount&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">AdvWWT</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Trtmnt_optn</span><span class="p">[</span><span class="s1">&#39;frac_to_GAC&#39;</span><span class="p">][</span><span class="s1">&#39;amount&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">AdvWWT</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Trtmnt_optn</span><span class="p">[</span><span class="s1">&#39;frac_to_IonEx&#39;</span><span class="p">][</span><span class="s1">&#39;amount&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">AdvWWT</span><span class="o">.</span><span class="n">calc</span><span class="p">(</span><span class="n">Inc_flow</span><span class="o">=</span><span class="n">ContaminatedWater</span><span class="p">)</span>
+<span class="n">AdvWWT</span><span class="o">.</span><span class="n">report</span><span class="p">(</span><span class="n">normalized</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Effluent RO</th>
+      <th>RO Concentrate</th>
+      <th>Effluent GAC</th>
+      <th>Spent GAC</th>
+      <th>Effluent IonExchange</th>
+      <th>Spent IER</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>PFOA</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>10.0</td>
+      <td>90.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>PFOS</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>10.0</td>
+      <td>90.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>PFBA</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>10.0</td>
+      <td>90.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>PFPeA</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>10.0</td>
+      <td>90.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>PFHxA</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>10.0</td>
+      <td>90.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>PFHpA</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>10.0</td>
+      <td>90.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>PFNA</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>10.0</td>
+      <td>90.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>PFDA</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>10.0</td>
+      <td>90.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>PFBS</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>10.0</td>
+      <td>90.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>PFHxS</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>10.0</td>
+      <td>90.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">AdvWWT</span><span class="o">.</span><span class="n">plot_sankey</span><span class="p">(</span><span class="n">gap</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/Notebooks_AdvWWT_9_0.png" src="../_images/Notebooks_AdvWWT_9_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">AdvWWT</span><span class="o">.</span><span class="n">plot_sankey_report</span><span class="p">(</span><span class="n">margin</span><span class="o">=.</span><span class="mi">6</span><span class="p">,</span> <span class="n">gap</span><span class="o">=.</span><span class="mi">8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/Notebooks_AdvWWT_10_0.png" src="../_images/Notebooks_AdvWWT_10_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Adv-WWT:-Spent-GAC">
+<h2>Adv WWT: Spent GAC<a class="headerlink" href="#Adv-WWT:-Spent-GAC" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">AdvWWT</span><span class="o">.</span><span class="n">SpentGAC</span><span class="o">.</span><span class="n">report</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Parameter</th>
+      <th>Unit</th>
+      <th>Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Mass flow</td>
+      <td>kg</td>
+      <td>87.00</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Solids flow</td>
+      <td>kg</td>
+      <td>78.30</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Moisture flow</td>
+      <td>kg</td>
+      <td>8.70</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>VS flow</td>
+      <td>kg</td>
+      <td>70.47</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Carbon flow</td>
+      <td>kg</td>
+      <td>54.81</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>PFOA</td>
+      <td>μg</td>
+      <td>90000.00</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>PFOS</td>
+      <td>μg</td>
+      <td>90000.00</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>PFBA</td>
+      <td>μg</td>
+      <td>90000.00</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>PFPeA</td>
+      <td>μg</td>
+      <td>90000.00</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>PFHxA</td>
+      <td>μg</td>
+      <td>90000.00</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>PFHpA</td>
+      <td>μg</td>
+      <td>90000.00</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>PFNA</td>
+      <td>μg</td>
+      <td>90000.00</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>PFDA</td>
+      <td>μg</td>
+      <td>90000.00</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>PFBS</td>
+      <td>μg</td>
+      <td>90000.00</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>PFHxS</td>
+      <td>μg</td>
+      <td>90000.00</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Flow Type: </span><span class="si">{}</span><span class="s2"> </span><span class="se">\n</span><span class="s2">GAC mass: </span><span class="si">{}</span><span class="s2"> kg&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">AdvWWT</span><span class="o">.</span><span class="n">SpentGAC</span><span class="o">.</span><span class="n">FlowType</span><span class="p">,</span><span class="n">AdvWWT</span><span class="o">.</span><span class="n">SpentGAC</span><span class="o">.</span><span class="n">GAC_mass</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Flow Type: SpentGAC
+GAC mass: 87.0 kg
+</pre></div></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">PFAS SAT</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">Perfluoroalkyl Substances(PFAS) Systems Analysis Tool(SAT)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WasteMaterialsProperties.html">Waste Materials Properties</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../ProcessModels.html">Process Models</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="AD.html">Anaerobic Digestion (AD)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Advanced WWT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Composting.html">Composting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="LandApp.html">Land Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Landfill.html">Landfill</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SCWO.html">Supercritical water oxidation (SCWO)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Stabilization.html">Stabilization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ThermalTreatment.html">Thermal Treatment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ThermalReactivation.html">Thermal Reactivation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="WWT.html">Wastewater Treatment (WWT)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../doc_PFAS_SAT.html">Code Document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">History</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../ProcessModels.html">Process Models</a><ul>
+      <li>Previous: <a href="AD.html" title="previous chapter">Anaerobic Digestion (AD)</a></li>
+      <li>Next: <a href="Composting.html" title="next chapter">Composting</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, NORTH CAROLINA STATE UNIVERSITY.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.3.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/Notebooks/AdvWWT.ipynb.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

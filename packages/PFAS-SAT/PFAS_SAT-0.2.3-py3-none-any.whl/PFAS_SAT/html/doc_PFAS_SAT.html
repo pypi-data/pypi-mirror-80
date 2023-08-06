@@ -1,0 +1,635 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Code Document &#8212; PFAS SAT  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Contributing" href="contributing.html" />
+    <link rel="prev" title="Wastewater Treatment (WWT)" href="Notebooks/WWT.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="code-document">
+<h1>Code Document<a class="headerlink" href="#code-document" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="incomflow">
+<span id="id1"></span><h2>IncomFlow<a class="headerlink" href="#incomflow" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="PFAS_SAT.IncomFlow">
+<em class="property">class </em><code class="sig-prename descclassname">PFAS_SAT.</code><code class="sig-name descname">IncomFlow</code><span class="sig-paren">(</span><em class="sig-param">input_data_path=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/IncomFlow.html#IncomFlow"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.IncomFlow" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PFAS_SAT.IncomFlow.set_flow">
+<code class="sig-name descname">set_flow</code><span class="sig-paren">(</span><em class="sig-param">flow_name</em>, <em class="sig-param">mass_flow</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/IncomFlow.html#IncomFlow.set_flow"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.IncomFlow.set_flow" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PFAS_SAT.IncomFlow.calc">
+<code class="sig-name descname">calc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/IncomFlow.html#IncomFlow.calc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.IncomFlow.calc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PFAS_SAT.IncomFlow.setup_MC">
+<code class="sig-name descname">setup_MC</code><span class="sig-paren">(</span><em class="sig-param">seed=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/IncomFlow.html#IncomFlow.setup_MC"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.IncomFlow.setup_MC" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PFAS_SAT.IncomFlow.MC_Next">
+<code class="sig-name descname">MC_Next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/IncomFlow.html#IncomFlow.MC_Next"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.IncomFlow.MC_Next" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PFAS_SAT.IncomFlow.report">
+<code class="sig-name descname">report</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/IncomFlow.html#IncomFlow.report"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.IncomFlow.report" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="inventory">
+<span id="id2"></span><h2>Inventory<a class="headerlink" href="#inventory" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="PFAS_SAT.Inventory">
+<em class="property">class </em><code class="sig-prename descclassname">PFAS_SAT.</code><code class="sig-name descname">Inventory</code><a class="reference internal" href="_modules/PFAS_SAT/Inventory.html#Inventory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.Inventory" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PFAS_SAT.Inventory.add">
+<code class="sig-name descname">add</code><span class="sig-paren">(</span><em class="sig-param">Flow_name</em>, <em class="sig-param">Source</em>, <em class="sig-param">Target</em>, <em class="sig-param">flow</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/Inventory.html#Inventory.add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.Inventory.add" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PFAS_SAT.Inventory.report_Water">
+<code class="sig-name descname">report_Water</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/Inventory.html#Inventory.report_Water"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.Inventory.report_Water" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PFAS_SAT.Inventory.report_Soil">
+<code class="sig-name descname">report_Soil</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/Inventory.html#Inventory.report_Soil"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.Inventory.report_Soil" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PFAS_SAT.Inventory.report_Air">
+<code class="sig-name descname">report_Air</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/Inventory.html#Inventory.report_Air"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.Inventory.report_Air" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PFAS_SAT.Inventory.report_Destroyed">
+<code class="sig-name descname">report_Destroyed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/Inventory.html#Inventory.report_Destroyed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.Inventory.report_Destroyed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PFAS_SAT.Inventory.report_Stored">
+<code class="sig-name descname">report_Stored</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/Inventory.html#Inventory.report_Stored"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.Inventory.report_Stored" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PFAS_SAT.Inventory.report_InjectionWell">
+<code class="sig-name descname">report_InjectionWell</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/Inventory.html#Inventory.report_InjectionWell"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.Inventory.report_InjectionWell" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PFAS_SAT.Inventory.report_ReactivatedGAC">
+<code class="sig-name descname">report_ReactivatedGAC</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/Inventory.html#Inventory.report_ReactivatedGAC"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.Inventory.report_ReactivatedGAC" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PFAS_SAT.Inventory.clear">
+<code class="sig-name descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/Inventory.html#Inventory.clear"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.Inventory.clear" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PFAS_SAT.Inventory.report">
+<code class="sig-name descname">report</code><span class="sig-paren">(</span><em class="sig-param">TypeOfPFAS='All'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/Inventory.html#Inventory.report"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.Inventory.report" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PFAS_SAT.Inventory.check_PFAS_balance">
+<code class="sig-name descname">check_PFAS_balance</code><span class="sig-paren">(</span><em class="sig-param">Start_flow</em>, <em class="sig-param">pop_up=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/Inventory.html#Inventory.check_PFAS_balance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.Inventory.check_PFAS_balance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="project">
+<span id="id3"></span><h2>Project<a class="headerlink" href="#project" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="PFAS_SAT.Project">
+<em class="property">class </em><code class="sig-prename descclassname">PFAS_SAT.</code><code class="sig-name descname">Project</code><span class="sig-paren">(</span><em class="sig-param">Inventory</em>, <em class="sig-param">CommonData</em>, <em class="sig-param">ProcessModels=None</em>, <em class="sig-param">pop_up=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/Project.html#Project"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.Project" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PFAS_SAT.Project._find_destination">
+<code class="sig-name descname">_find_destination</code><span class="sig-paren">(</span><em class="sig-param">product</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/Project.html#Project._find_destination"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.Project._find_destination" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PFAS_SAT.Project.get_process_set">
+<code class="sig-name descname">get_process_set</code><span class="sig-paren">(</span><em class="sig-param">InputFlow</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/Project.html#Project.get_process_set"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.Project.get_process_set" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PFAS_SAT.Project.set_process_set">
+<code class="sig-name descname">set_process_set</code><span class="sig-paren">(</span><em class="sig-param">ProcessSet</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/Project.html#Project.set_process_set"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.Project.set_process_set" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PFAS_SAT.Project.get_flow_params">
+<code class="sig-name descname">get_flow_params</code><span class="sig-paren">(</span><em class="sig-param">normalize=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/Project.html#Project.get_flow_params"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.Project.get_flow_params" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PFAS_SAT.Project.set_flow_params">
+<code class="sig-name descname">set_flow_params</code><span class="sig-paren">(</span><em class="sig-param">FlowParams</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/Project.html#Project.set_flow_params"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.Project.set_flow_params" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PFAS_SAT.Project.setup_network">
+<code class="sig-name descname">setup_network</code><span class="sig-paren">(</span><em class="sig-param">Cut_Off=0.001</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/Project.html#Project.setup_network"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.Project.setup_network" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PFAS_SAT.Project.calc">
+<em class="property">static </em><code class="sig-name descname">calc</code><span class="sig-paren">(</span><em class="sig-param">product</em>, <em class="sig-param">source</em>, <em class="sig-param">processmodel</em>, <em class="sig-param">FlowParams</em>, <em class="sig-param">Inventory</em>, <em class="sig-param">CuttOff</em>, <em class="sig-param">ProcessNameRef</em>, <em class="sig-param">Treatment_options</em>, <em class="sig-param">pop_up=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/Project.html#Project.calc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.Project.calc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PFAS_SAT.Project.setup_MC">
+<code class="sig-name descname">setup_MC</code><span class="sig-paren">(</span><em class="sig-param">InputFlow_object</em>, <em class="sig-param">seed=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/Project.html#Project.setup_MC"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.Project.setup_MC" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PFAS_SAT.Project.MC_Next">
+<code class="sig-name descname">MC_Next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/Project.html#Project.MC_Next"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.Project.MC_Next" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PFAS_SAT.Project.MC_Run">
+<code class="sig-name descname">MC_Run</code><span class="sig-paren">(</span><em class="sig-param">n</em>, <em class="sig-param">TypeOfPFAS='All'</em>, <em class="sig-param">signal=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/Project.html#Project.MC_Run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.Project.MC_Run" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PFAS_SAT.Project.Reset_static_Data">
+<code class="sig-name descname">Reset_static_Data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/Project.html#Project.Reset_static_Data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.Project.Reset_static_Data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PFAS_SAT.Project.Result_to_DF">
+<code class="sig-name descname">Result_to_DF</code><span class="sig-paren">(</span><em class="sig-param">results</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/Project.html#Project.Result_to_DF"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.Project.Result_to_DF" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PFAS_SAT.Project.setup_SA">
+<code class="sig-name descname">setup_SA</code><span class="sig-paren">(</span><em class="sig-param">InputFlow_object</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/Project.html#Project.setup_SA"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.Project.setup_SA" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PFAS_SAT.Project.SensitivityAnalysis">
+<code class="sig-name descname">SensitivityAnalysis</code><span class="sig-paren">(</span><em class="sig-param">Model</em>, <em class="sig-param">Category</em>, <em class="sig-param">Paramter</em>, <em class="sig-param">Start</em>, <em class="sig-param">Stop</em>, <em class="sig-param">Nstep</em>, <em class="sig-param">TypeOfPFAS='All'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/Project.html#Project.SensitivityAnalysis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.Project.SensitivityAnalysis" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PFAS_SAT.Project.plot_network">
+<code class="sig-name descname">plot_network</code><span class="sig-paren">(</span><em class="sig-param">view=True</em>, <em class="sig-param">show_vals=True</em>, <em class="sig-param">all_flow=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/Project.html#Project.plot_network"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.Project.plot_network" title="Permalink to this definition">¶</a></dt>
+<dd><p>To render the generated DOT source code, you also need to install <a class="reference external" href="https://www.graphviz.org/download">Graphviz</a>.</p>
+<p>..note:: Make sure that the directory containing the dot executable is on your systems path.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PFAS_SAT.Project.plot_sankey">
+<code class="sig-name descname">plot_sankey</code><span class="sig-paren">(</span><em class="sig-param">view=True</em>, <em class="sig-param">filename=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/Project.html#Project.plot_sankey"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.Project.plot_sankey" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="mc">
+<span id="inputdata"></span><h2>MC<a class="headerlink" href="#mc" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="PFAS_SAT.MC">
+<em class="property">class </em><code class="sig-prename descclassname">PFAS_SAT.</code><code class="sig-name descname">MC</code><span class="sig-paren">(</span><em class="sig-param">input_dict</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/MC.html#MC"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.MC" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple" id="class-mc">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>input_dict</strong> (<em>list</em>) – list of dictionaries that include input data (see the example)</p>
+</dd>
+</dl>
+<p>This class generates random number for Monte-Carlo simulations. This class is the interface to
+<a class="reference external" href="https://pypi.org/project/stats-arrays/">stats_arrays</a> package.</p>
+<p>The example below is showing the usage of <code class="docutils literal notranslate"><span class="pre">stats_arrays</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">stats_arrays</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_variables</span> <span class="o">=</span> <span class="n">UncertaintyBase</span><span class="o">.</span><span class="n">from_dicts</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s1">&#39;loc&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;scale&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;uncertainty_type&#39;</span><span class="p">:</span> <span class="n">NormalUncertainty</span><span class="o">.</span><span class="n">id</span><span class="p">},</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s1">&#39;loc&#39;</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">,</span> <span class="s1">&#39;minimum&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;maximum&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;uncertainty_type&#39;</span><span class="p">:</span> <span class="n">TriangularUncertainty</span><span class="o">.</span><span class="n">id</span><span class="p">}</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_variables</span>
+<span class="go">array([(2.0, 0.5, nan, nan, nan, False, 3),</span>
+<span class="go">       (1.5, nan, nan, 0.0, 10.0, False, 5)],</span>
+<span class="go">    dtype=[(&#39;loc&#39;, &#39;&lt;f8&#39;), (&#39;scale&#39;, &#39;&lt;f8&#39;), (&#39;shape&#39;, &#39;&lt;f8&#39;),</span>
+<span class="go">           (&#39;minimum&#39;, &#39;&lt;f8&#39;), (&#39;maximum&#39;, &#39;&lt;f8&#39;), (&#39;negative&#39;, &#39;?&#39;),</span>
+<span class="go">           (&#39;uncertainty_type&#39;, &#39;u1&#39;)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_rng</span> <span class="o">=</span> <span class="n">MCRandomNumberGenerator</span><span class="p">(</span><span class="n">my_variables</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_rng</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
+<span class="go">array([ 2.74414022,  3.54748507])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">PFAS_SAT</span> <span class="kn">import</span> <span class="n">MC</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">input_dict</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Cat1&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;Par1&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;Name&#39;</span><span class="p">:</span> <span class="s1">&#39;Name1&#39;</span><span class="p">,</span><span class="s1">&#39;amount&#39;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span><span class="s1">&#39;unit&#39;</span><span class="p">:</span> <span class="s1">&#39;Unit1&#39;</span><span class="p">,</span>
+<span class="gp">... </span>                                <span class="s1">&#39;uncertainty_type&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="s1">&#39;loc&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span><span class="s1">&#39;scale&#39;</span><span class="p">:</span><span class="mf">0.2</span> <span class="p">,</span><span class="s1">&#39;shape&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+<span class="gp">... </span>                                <span class="s1">&#39;minimum&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span><span class="s1">&#39;maximum&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+<span class="gp">... </span>                                <span class="s1">&#39;Reference&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span><span class="s1">&#39;Comment&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">},</span>
+<span class="gp">... </span>                    <span class="s1">&#39;Par2&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;Name&#39;</span><span class="p">:</span> <span class="s1">&#39;Name2&#39;</span><span class="p">,</span><span class="s1">&#39;amount&#39;</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">,</span><span class="s1">&#39;unit&#39;</span><span class="p">:</span> <span class="s1">&#39;Unit2&#39;</span><span class="p">,</span>
+<span class="gp">... </span>                                <span class="s1">&#39;uncertainty_type&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="s1">&#39;loc&#39;</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">,</span><span class="s1">&#39;scale&#39;</span><span class="p">:</span> <span class="mf">0.4</span><span class="p">,</span><span class="s1">&#39;shape&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+<span class="gp">... </span>                                <span class="s1">&#39;minimum&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span><span class="s1">&#39;maximum&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+<span class="gp">... </span>                                <span class="s1">&#39;Reference&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span><span class="s1">&#39;Comment&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">}}}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">test_MC</span> <span class="o">=</span> <span class="n">MC</span><span class="p">(</span><span class="n">input_dict</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">test_MC</span><span class="o">.</span><span class="n">setup_MC</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">test_MC</span><span class="o">.</span><span class="n">gen_MC</span><span class="p">()</span>
+<span class="go">[((&#39;Cat1&#39;, &#39;Par1&#39;), 1.0554408376879747),</span>
+<span class="go"> ((&#39;Cat1&#39;, &#39;Par2&#39;), 1.9366617123732333)]</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="PFAS_SAT.MC.setup_MC">
+<code class="sig-name descname">setup_MC</code><span class="sig-paren">(</span><em class="sig-param">seed=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/MC.html#MC.setup_MC"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.MC.setup_MC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates <cite>MCRandomNumberGenerator</cite> and store it in <code class="docutils literal notranslate"><span class="pre">MC.rand</span></code> attribute</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>seed</strong> (<em>int</em><em>, </em><em>optional</em>) – seed for random number generation</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="PFAS_SAT.MC.gen_MC">
+<code class="sig-name descname">gen_MC</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/MC.html#MC.gen_MC"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.MC.gen_MC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate random numbers and update data. It also returns a list of tuples include the name of parameter and generted number.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>List of tuples include the name of parameter and generted number: <code class="docutils literal notranslate"><span class="pre">[((parameter_category,parameter),generated_number)]</span></code></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="id4">
+<h2>InputData<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="PFAS_SAT.InputData">
+<em class="property">class </em><code class="sig-prename descclassname">PFAS_SAT.</code><code class="sig-name descname">InputData</code><span class="sig-paren">(</span><em class="sig-param">input_data_path</em>, <em class="sig-param">eval_parameter=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/InputData.html#InputData"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.InputData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PFAS_SAT.MC.MC</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">InputData</span></code> class reads the input data from the csv file and load them as class attributes. This class is inherited from the <code class="docutils literal notranslate"><span class="pre">MC</span></code> class.</p>
+<p>Main functionalities include:
+loading data, updating data and generating random number for data based on the defined probabiliy distributions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_data_path</strong> (<em>str</em>) – absolute path to the input data file</p></li>
+<li><p><strong>eval_parameter</strong> (<em>bool</em><em>, </em><em>optional</em>) – If the parameters are tuple instead of str, it will evalute their real value.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="PFAS_SAT.InputData.Update_input">
+<code class="sig-name descname">Update_input</code><span class="sig-paren">(</span><em class="sig-param">NewData</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/InputData.html#InputData.Update_input"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.InputData.Update_input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a new DataFrame and update the <code class="docutils literal notranslate"><span class="pre">data</span></code> in <code class="docutils literal notranslate"><span class="pre">InputData</span></code> class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>NewData</strong> (<em>'pandas.DataFrame'</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="PFAS_SAT.InputData.setup_MC">
+<code class="sig-name descname">setup_MC</code><span class="sig-paren">(</span><em class="sig-param">seed=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/InputData.html#InputData.setup_MC"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.InputData.setup_MC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the parent class (<code class="docutils literal notranslate"><span class="pre">MC</span></code>) and create <code class="docutils literal notranslate"><span class="pre">MCRandomNumberGenerator</span></code> based on the data for uncertainty distributions via
+calling <code class="docutils literal notranslate"><span class="pre">MC.setupMC()</span></code> method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>seed</strong> (<em>int</em><em>, </em><em>optional</em>) – seed for random number generation</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#class-mc">Class_MC</a></p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="PFAS_SAT.InputData.reset_static_vals">
+<code class="sig-name descname">reset_static_vals</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/InputData.html#InputData.reset_static_vals"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.InputData.reset_static_vals" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="commondata">
+<h2>CommonData<a class="headerlink" href="#commondata" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="PFAS_SAT.CommonData">
+<em class="property">class </em><code class="sig-prename descclassname">PFAS_SAT.</code><code class="sig-name descname">CommonData</code><span class="sig-paren">(</span><em class="sig-param">input_data_path=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/CommonData.html#CommonData"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.CommonData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PFAS_SAT.InputData.InputData</span></code></p>
+<dl class="attribute">
+<dt id="PFAS_SAT.CommonData.WasteMaterials">
+<code class="sig-name descname">WasteMaterials</code><em class="property"> = ['FoodWaste', 'Compost', 'ADLiquids', 'ADSolids', 'MSW', 'CombustionResiduals', 'CompostResiduals', 'ContaminatedSoil', 'C_DWaste', 'AFFF', 'LFLeachate', 'ContaminatedWater', 'ContactWater', 'WWTEffluent', 'RawWWTSolids', 'DewateredWWTSolids', 'DriedWWTSolids', 'WWTScreenRejects', 'SCWOSteam', 'SCWOSlurry', 'SpentGAC', 'ROConcentrate', 'StabilizedSoil', 'SpentIER']</em><a class="headerlink" href="#PFAS_SAT.CommonData.WasteMaterials" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PFAS_SAT.CommonData.PFAS_Index">
+<code class="sig-name descname">PFAS_Index</code><em class="property"> = ['PFOA', 'PFOS', 'PFBA', 'PFPeA', 'PFHxA', 'PFHpA', 'PFNA', 'PFDA', 'PFBS', 'PFHxS']</em><a class="headerlink" href="#PFAS_SAT.CommonData.PFAS_Index" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="process-model">
+<span id="processmodel"></span><h2>Process Model<a class="headerlink" href="#process-model" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="PFAS_SAT.ProcessModel">
+<em class="property">class </em><code class="sig-prename descclassname">PFAS_SAT.</code><code class="sig-name descname">ProcessModel</code><span class="sig-paren">(</span><em class="sig-param">CommonDataObjct</em>, <em class="sig-param">InventoryObject</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/ProcessModel.html#ProcessModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.ProcessModel" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PFAS_SAT.ProcessModel.ProductsType">
+<em class="property">abstract property </em><code class="sig-name descname">ProductsType</code><a class="headerlink" href="#PFAS_SAT.ProcessModel.ProductsType" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PFAS_SAT.ProcessModel.calc">
+<em class="property">abstract </em><code class="sig-name descname">calc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/ProcessModel.html#ProcessModel.calc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.ProcessModel.calc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PFAS_SAT.ProcessModel.setup_MC">
+<em class="property">abstract </em><code class="sig-name descname">setup_MC</code><span class="sig-paren">(</span><em class="sig-param">seed=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/ProcessModel.html#ProcessModel.setup_MC"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.ProcessModel.setup_MC" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PFAS_SAT.ProcessModel.MC_Next">
+<em class="property">abstract </em><code class="sig-name descname">MC_Next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/ProcessModel.html#ProcessModel.MC_Next"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.ProcessModel.MC_Next" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PFAS_SAT.ProcessModel.report">
+<em class="property">abstract </em><code class="sig-name descname">report</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/ProcessModel.html#ProcessModel.report"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.ProcessModel.report" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PFAS_SAT.ProcessModel.plot_sankey">
+<code class="sig-name descname">plot_sankey</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/ProcessModel.html#ProcessModel.plot_sankey"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.ProcessModel.plot_sankey" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PFAS_SAT.ProcessModel._abc_cache">
+<code class="sig-name descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="headerlink" href="#PFAS_SAT.ProcessModel._abc_cache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PFAS_SAT.ProcessModel._abc_negative_cache">
+<code class="sig-name descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="headerlink" href="#PFAS_SAT.ProcessModel._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PFAS_SAT.ProcessModel._abc_negative_cache_version">
+<code class="sig-name descname">_abc_negative_cache_version</code><em class="property"> = 64</em><a class="headerlink" href="#PFAS_SAT.ProcessModel._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PFAS_SAT.ProcessModel._abc_registry">
+<code class="sig-name descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="headerlink" href="#PFAS_SAT.ProcessModel._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PFAS_SAT.ProcessModel.plot_sankey_report">
+<code class="sig-name descname">plot_sankey_report</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/ProcessModel.html#ProcessModel.plot_sankey_report"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.ProcessModel.plot_sankey_report" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PFAS_SAT.ProcessModel.SA">
+<code class="sig-name descname">SA</code><span class="sig-paren">(</span><em class="sig-param">inputflow</em>, <em class="sig-param">stream</em>, <em class="sig-param">n</em>, <em class="sig-param">figsize</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/ProcessModel.html#ProcessModel.SA"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.ProcessModel.SA" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="flow">
+<span id="id5"></span><h2>Flow<a class="headerlink" href="#flow" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="PFAS_SAT.Flow">
+<em class="property">class </em><code class="sig-prename descclassname">PFAS_SAT.</code><code class="sig-name descname">Flow</code><span class="sig-paren">(</span><em class="sig-param">ZeroFlow=False</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/Flow.html#Flow"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.Flow" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="PFAS_SAT.Flow.set_flow">
+<code class="sig-name descname">set_flow</code><span class="sig-paren">(</span><em class="sig-param">mass_flow</em>, <em class="sig-param">ts_cont=None</em>, <em class="sig-param">C_cont=None</em>, <em class="sig-param">PFAS_cont=None</em>, <em class="sig-param">bulk_dens=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/Flow.html#Flow.set_flow"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.Flow.set_flow" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PFAS_SAT.Flow.get_Ccont">
+<code class="sig-name descname">get_Ccont</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/Flow.html#Flow.get_Ccont"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.Flow.get_Ccont" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PFAS_SAT.Flow.get_TScont">
+<code class="sig-name descname">get_TScont</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/Flow.html#Flow.get_TScont"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.Flow.get_TScont" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PFAS_SAT.Flow.get_Moistcont">
+<code class="sig-name descname">get_Moistcont</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/Flow.html#Flow.get_Moistcont"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.Flow.get_Moistcont" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PFAS_SAT.Flow.get_PFAScont">
+<code class="sig-name descname">get_PFAScont</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/Flow.html#Flow.get_PFAScont"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.Flow.get_PFAScont" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PFAS_SAT.Flow.set_FlowType">
+<code class="sig-name descname">set_FlowType</code><span class="sig-paren">(</span><em class="sig-param">FlowType</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/Flow.html#Flow.set_FlowType"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.Flow.set_FlowType" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PFAS_SAT.Flow.report">
+<code class="sig-name descname">report</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/Flow.html#Flow.report"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.Flow.report" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-PFAS_SAT.SubProcesses">
+<span id="sub-processes"></span><span id="subprocesses"></span><h2>Sub-Processes<a class="headerlink" href="#module-PFAS_SAT.SubProcesses" title="Permalink to this headline">¶</a></h2>
+<p>Created on Thu Jul 23 19:18:05 2020</p>
+<p>&#64;author: msmsa</p>
+<dl class="function">
+<dt id="PFAS_SAT.SubProcesses.mix">
+<code class="sig-prename descclassname">PFAS_SAT.SubProcesses.</code><code class="sig-name descname">mix</code><span class="sig-paren">(</span><em class="sig-param">*args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/SubProcesses.html#mix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.SubProcesses.mix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="PFAS_SAT.SubProcesses.split">
+<code class="sig-prename descclassname">PFAS_SAT.SubProcesses.</code><code class="sig-name descname">split</code><span class="sig-paren">(</span><em class="sig-param">InputFlow</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/SubProcesses.html#split"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.SubProcesses.split" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="PFAS_SAT.SubProcesses.solid_water_partition">
+<code class="sig-prename descclassname">PFAS_SAT.SubProcesses.</code><code class="sig-name descname">solid_water_partition</code><span class="sig-paren">(</span><em class="sig-param">mixture</em>, <em class="sig-param">water_vol</em>, <em class="sig-param">LogPartCoef_data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/SubProcesses.html#solid_water_partition"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.SubProcesses.solid_water_partition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="PFAS_SAT.SubProcesses.soil_sorption">
+<code class="sig-prename descclassname">PFAS_SAT.SubProcesses.</code><code class="sig-name descname">soil_sorption</code><span class="sig-paren">(</span><em class="sig-param">mixture</em>, <em class="sig-param">LogPartCoef_data</em>, <em class="sig-param">Leachate_vol</em>, <em class="sig-param">Runoff_vol</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/SubProcesses.html#soil_sorption"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.SubProcesses.soil_sorption" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="PFAS_SAT.SubProcesses.aerobic_composting">
+<code class="sig-prename descclassname">PFAS_SAT.SubProcesses.</code><code class="sig-name descname">aerobic_composting</code><span class="sig-paren">(</span><em class="sig-param">mixture</em>, <em class="sig-param">ProcessData</em>, <em class="sig-param">LogPartCoef_data</em>, <em class="sig-param">PrecipitationData</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/SubProcesses.html#aerobic_composting"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.SubProcesses.aerobic_composting" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="PFAS_SAT.SubProcesses.curing">
+<code class="sig-prename descclassname">PFAS_SAT.SubProcesses.</code><code class="sig-name descname">curing</code><span class="sig-paren">(</span><em class="sig-param">mixture</em>, <em class="sig-param">ProcessData</em>, <em class="sig-param">LogPartCoef_data</em>, <em class="sig-param">PrecipitationData</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/SubProcesses.html#curing"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.SubProcesses.curing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="PFAS_SAT.SubProcesses.landfil_sorption">
+<code class="sig-prename descclassname">PFAS_SAT.SubProcesses.</code><code class="sig-name descname">landfil_sorption</code><span class="sig-paren">(</span><em class="sig-param">mixture</em>, <em class="sig-param">LogPartCoef_data</em>, <em class="sig-param">LF_Leachate_Vol</em>, <em class="sig-param">Leachate_Vol</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/SubProcesses.html#landfil_sorption"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.SubProcesses.landfil_sorption" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="PFAS_SAT.SubProcesses.dewatering">
+<code class="sig-prename descclassname">PFAS_SAT.SubProcesses.</code><code class="sig-name descname">dewatering</code><span class="sig-paren">(</span><em class="sig-param">mixture</em>, <em class="sig-param">final_sol_cont</em>, <em class="sig-param">cont_PFAS_water</em>, <em class="sig-param">is_active=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/SubProcesses.html#dewatering"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.SubProcesses.dewatering" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="PFAS_SAT.SubProcesses.drying">
+<code class="sig-prename descclassname">PFAS_SAT.SubProcesses.</code><code class="sig-name descname">drying</code><span class="sig-paren">(</span><em class="sig-param">mixture</em>, <em class="sig-param">dryer_param</em>, <em class="sig-param">cont_PFAS_water</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/SubProcesses.html#drying"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.SubProcesses.drying" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="PFAS_SAT.SubProcesses.stabilization">
+<code class="sig-prename descclassname">PFAS_SAT.SubProcesses.</code><code class="sig-name descname">stabilization</code><span class="sig-paren">(</span><em class="sig-param">mixture</em>, <em class="sig-param">LogPartCoef_data</em>, <em class="sig-param">Additive_LogPartCoef</em>, <em class="sig-param">Additive_mass</em>, <em class="sig-param">Leachate_vol</em>, <em class="sig-param">Runoff_vol</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/SubProcesses.html#stabilization"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.SubProcesses.stabilization" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="PFAS_SAT.SubProcesses.AddWater">
+<code class="sig-prename descclassname">PFAS_SAT.SubProcesses.</code><code class="sig-name descname">AddWater</code><span class="sig-paren">(</span><em class="sig-param">InputFlow</em>, <em class="sig-param">Final_Moist_Cont</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PFAS_SAT/SubProcesses.html#AddWater"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PFAS_SAT.SubProcesses.AddWater" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">PFAS SAT</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="readme.html">Perfluoroalkyl Substances(PFAS) Systems Analysis Tool(SAT)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WasteMaterialsProperties.html">Waste Materials Properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ProcessModels.html">Process Models</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Code Document</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#incomflow">IncomFlow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#inventory">Inventory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#project">Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mc">MC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">InputData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#commondata">CommonData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#process-model">Process Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#flow">Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-PFAS_SAT.SubProcesses">Sub-Processes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="history.html">History</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="Notebooks/WWT.html" title="previous chapter">Wastewater Treatment (WWT)</a></li>
+      <li>Next: <a href="contributing.html" title="next chapter">Contributing</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, NORTH CAROLINA STATE UNIVERSITY.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.3.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/doc_PFAS_SAT.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

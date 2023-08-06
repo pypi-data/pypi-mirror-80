@@ -1,0 +1,906 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Thermal Treatment &#8212; PFAS SAT  documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Thermal Reactivation" href="ThermalReactivation.html" />
+    <link rel="prev" title="Stabilization" href="Stabilization.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    min-width: 5.5ex;
+    padding-top: 0.3rem;
+    padding-right: 0.3rem;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 0.3rem;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<div class="section" id="Thermal-Treatment">
+<h1>Thermal Treatment<a class="headerlink" href="#Thermal-Treatment" title="Permalink to this headline">¶</a></h1>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">PFAS_SAT</span> <span class="k">as</span> <span class="nn">ps</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_colwidth&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="Model-document">
+<h2>Model document<a class="headerlink" href="#Model-document" title="Permalink to this headline">¶</a></h2>
+<p>Combustion systems include mass burn incinerators for MSW, hazardous solid waste, and medical waste, as well as cement kilns. The combustion process model in the SAT framework was designed so that by changing default parameters, a variety of conventional and emerging thermal treatment processes can be represented. In addition to MSW incinerators, other potential thermal processes include gasification/pyrolysis systems, and thermomechanochemical systems, which may include mechanical and chemical
+processing prior to combustion. To begin, the incoming materials are partially or fully combusted. During combustion, a fraction of the PFAS may be volatilized and/or destroyed, but data on destruction and release of volatilized PFAS and/or products of incomplete combustion are limited. The volatilized compounds may be transformed into chlorofluorocarbons, which deplete stratospheric ozone and are potent greenhouse gases. The incineration process produces combustion residuals that may include
+bottom ash, fly ash, and air pollution control (APC) residues. The mass of PFAS flows are modeled using a destruction and removal efficiency (DRE), and fraction of the DRE that remains in the residual. Based on these inputs, the model calculates the PFAS destroyed, released to the air and remaining in the ash. The ash is then sent to landfill.</p>
+<div class="section" id="Assumptions-and-Limitations">
+<h3>Assumptions and Limitations<a class="headerlink" href="#Assumptions-and-Limitations" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><p>The model assumes a single DRE and fraction remaining on the residual for each material and type of PFAS. Data is relatively limited, but this can be readily updated as more data becomes available.</p></li>
+<li><p>The model assumes there is a single ash stream with a common set of parameters.</p></li>
+<li><p>The model assumes a single VS destruction efficiency, but this could vary by material.</p></li>
+<li><p>The model does not consider transformations of PFAS.</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="Input-Parameters-for-Thermal-Treatment-model">
+<h2>Input Parameters for Thermal Treatment model<a class="headerlink" href="#Input-Parameters-for-Thermal-Treatment-model" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ThermalTreatment</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">ThermalTreatment</span><span class="p">()</span>
+<span class="n">ThermalTreatment</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[[</span><span class="s1">&#39;Category&#39;</span><span class="p">,</span><span class="s1">&#39;Parameter Name&#39;</span><span class="p">,</span> <span class="s1">&#39;Parameter Description&#39;</span><span class="p">,</span> <span class="s1">&#39;amount&#39;</span><span class="p">,</span> <span class="s1">&#39;unit&#39;</span><span class="p">,</span><span class="s1">&#39;Reference&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Category</th>
+      <th>Parameter Name</th>
+      <th>Parameter Description</th>
+      <th>amount</th>
+      <th>unit</th>
+      <th>Reference</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Total destruction and removal efficiency</td>
+      <td>PFOA</td>
+      <td>DRE of PFOA</td>
+      <td>0.97</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Total destruction and removal efficiency</td>
+      <td>PFOS</td>
+      <td>DRE of PFOS</td>
+      <td>0.97</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Total destruction and removal efficiency</td>
+      <td>PFBA</td>
+      <td>DRE of PFBA</td>
+      <td>0.97</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Total destruction and removal efficiency</td>
+      <td>PFPeA</td>
+      <td>DRE of PFPeA</td>
+      <td>0.97</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Total destruction and removal efficiency</td>
+      <td>PFHxA</td>
+      <td>DRE of PFHxA</td>
+      <td>0.97</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Total destruction and removal efficiency</td>
+      <td>PFHpA</td>
+      <td>DRE of PFHpA</td>
+      <td>0.97</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Total destruction and removal efficiency</td>
+      <td>PFNA</td>
+      <td>DRE of PFNA</td>
+      <td>0.97</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Total destruction and removal efficiency</td>
+      <td>PFDA</td>
+      <td>DRE of PFDA</td>
+      <td>0.97</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Total destruction and removal efficiency</td>
+      <td>PFBS</td>
+      <td>DRE of PFBS</td>
+      <td>0.97</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Total destruction and removal efficiency</td>
+      <td>PFHxS</td>
+      <td>DRE of PFHxS</td>
+      <td>0.97</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Fraction of not destroyed and removed that remains in residuals</td>
+      <td>PFOA</td>
+      <td>Fraction of PFOA remained in residuals</td>
+      <td>0.33</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Fraction of not destroyed and removed that remains in residuals</td>
+      <td>PFOS</td>
+      <td>Fraction of PFOS remained in residuals</td>
+      <td>0.33</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Fraction of not destroyed and removed that remains in residuals</td>
+      <td>PFBA</td>
+      <td>Fraction of PFBA remained in residuals</td>
+      <td>0.33</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Fraction of not destroyed and removed that remains in residuals</td>
+      <td>PFPeA</td>
+      <td>Fraction of PFPeA remained in residuals</td>
+      <td>0.33</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Fraction of not destroyed and removed that remains in residuals</td>
+      <td>PFHxA</td>
+      <td>Fraction of PFHxA remained in residuals</td>
+      <td>0.33</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Fraction of not destroyed and removed that remains in residuals</td>
+      <td>PFHpA</td>
+      <td>Fraction of PFHpA remained in residuals</td>
+      <td>0.33</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Fraction of not destroyed and removed that remains in residuals</td>
+      <td>PFNA</td>
+      <td>Fraction of PFNA remained in residuals</td>
+      <td>0.33</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>Fraction of not destroyed and removed that remains in residuals</td>
+      <td>PFDA</td>
+      <td>Fraction of PFDA remained in residuals</td>
+      <td>0.33</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Fraction of not destroyed and removed that remains in residuals</td>
+      <td>PFBS</td>
+      <td>Fraction of PFBS remained in residuals</td>
+      <td>0.33</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Fraction of not destroyed and removed that remains in residuals</td>
+      <td>PFHxS</td>
+      <td>Fraction of PFHxS remained in residuals</td>
+      <td>0.33</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>Combustion parameters</td>
+      <td>frac_vs_to_res</td>
+      <td>Fraction of incoming Volatile Solids to Combustion Residuals</td>
+      <td>0.05</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>Combustion parameters</td>
+      <td>res_ts_cont</td>
+      <td>Solids content of residuals</td>
+      <td>0.85</td>
+      <td>fraction</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+<div class="section" id="Incoming-MSW-to-Thermal-Treatment">
+<h2>Incoming MSW to Thermal Treatment<a class="headerlink" href="#Incoming-MSW-to-Thermal-Treatment" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">IncominWaste</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">IncomFlow</span><span class="p">()</span>
+<span class="n">IncominWaste</span><span class="o">.</span><span class="n">set_flow</span><span class="p">(</span><span class="s1">&#39;MSW&#39;</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">IncominWaste</span><span class="o">.</span><span class="n">calc</span><span class="p">()</span>
+<span class="n">MSW</span> <span class="o">=</span> <span class="n">IncominWaste</span><span class="o">.</span><span class="n">Inc_flow</span>
+<span class="n">MSW</span><span class="o">.</span><span class="n">report</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Parameter</th>
+      <th>Unit</th>
+      <th>Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Mass flow</td>
+      <td>kg</td>
+      <td>1000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Solids flow</td>
+      <td>kg</td>
+      <td>254</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Moisture flow</td>
+      <td>kg</td>
+      <td>746</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>VS flow</td>
+      <td>kg</td>
+      <td>134.62</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Carbon flow</td>
+      <td>kg</td>
+      <td>84.074</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>PFOA</td>
+      <td>μg</td>
+      <td>1070</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>PFOS</td>
+      <td>μg</td>
+      <td>840</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>PFBA</td>
+      <td>μg</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>PFPeA</td>
+      <td>μg</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>PFHxA</td>
+      <td>μg</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>PFHpA</td>
+      <td>μg</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>PFNA</td>
+      <td>μg</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>PFDA</td>
+      <td>μg</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>PFBS</td>
+      <td>μg</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>PFHxS</td>
+      <td>μg</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+<div class="section" id="PFAS-balance-in-Thermal-Treatment">
+<h2>PFAS balance in Thermal Treatment<a class="headerlink" href="#PFAS-balance-in-Thermal-Treatment" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ThermalTreatment</span><span class="o">.</span><span class="n">calc</span><span class="p">(</span><span class="n">Inc_flow</span><span class="o">=</span><span class="n">MSW</span><span class="p">)</span>
+<span class="n">ThermalTreatment</span><span class="o">.</span><span class="n">report</span><span class="p">(</span><span class="n">normalized</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Air Emission</th>
+      <th>Combustion Residuals</th>
+      <th>Destructed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>PFOA</th>
+      <td>2.01</td>
+      <td>0.99</td>
+      <td>97.0</td>
+    </tr>
+    <tr>
+      <th>PFOS</th>
+      <td>2.01</td>
+      <td>0.99</td>
+      <td>97.0</td>
+    </tr>
+    <tr>
+      <th>PFBA</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>PFPeA</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>PFHxA</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>PFHpA</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>PFNA</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>PFDA</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>PFBS</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>PFHxS</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ThermalTreatment</span><span class="o">.</span><span class="n">plot_sankey</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/Notebooks_ThermalTreatment_9_0.png" src="../_images/Notebooks_ThermalTreatment_9_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ThermalTreatment</span><span class="o">.</span><span class="n">plot_sankey_report</span><span class="p">(</span><span class="n">margin</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span> <span class="n">gap</span><span class="o">=.</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/Notebooks_ThermalTreatment_10_0.png" src="../_images/Notebooks_ThermalTreatment_10_0.png" />
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">PFAS SAT</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">Perfluoroalkyl Substances(PFAS) Systems Analysis Tool(SAT)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WasteMaterialsProperties.html">Waste Materials Properties</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../ProcessModels.html">Process Models</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="AD.html">Anaerobic Digestion (AD)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AdvWWT.html">Advanced WWT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Composting.html">Composting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="LandApp.html">Land Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Landfill.html">Landfill</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SCWO.html">Supercritical water oxidation (SCWO)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Stabilization.html">Stabilization</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Thermal Treatment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ThermalReactivation.html">Thermal Reactivation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="WWT.html">Wastewater Treatment (WWT)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../doc_PFAS_SAT.html">Code Document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">History</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../ProcessModels.html">Process Models</a><ul>
+      <li>Previous: <a href="Stabilization.html" title="previous chapter">Stabilization</a></li>
+      <li>Next: <a href="ThermalReactivation.html" title="next chapter">Thermal Reactivation</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, NORTH CAROLINA STATE UNIVERSITY.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.3.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/Notebooks/ThermalTreatment.ipynb.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

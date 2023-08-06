@@ -1,0 +1,4879 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Waste Materials Properties &#8212; PFAS SAT  documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Process Models" href="../ProcessModels.html" />
+    <link rel="prev" title="Waste Materials Properties" href="../WasteMaterialsProperties.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    min-width: 5.5ex;
+    padding-top: 0.3rem;
+    padding-right: 0.3rem;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 0.3rem;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<div class="section" id="Waste-Materials-Properties">
+<h1>Waste Materials Properties<a class="headerlink" href="#Waste-Materials-Properties" title="Permalink to this headline">¶</a></h1>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">PFAS_SAT</span> <span class="k">as</span> <span class="nn">ps</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_colwidth&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="n">IncomingFlow</span><span class="o">=</span><span class="n">ps</span><span class="o">.</span><span class="n">IncomFlow</span><span class="p">()</span>
+<span class="n">categories</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Parameter Name&#39;</span><span class="p">,</span> <span class="s1">&#39;Parameter Description&#39;</span><span class="p">,</span> <span class="s1">&#39;amount&#39;</span><span class="p">,</span> <span class="s1">&#39;unit&#39;</span><span class="p">,</span> <span class="s1">&#39;uncertainty_type&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;loc&#39;</span><span class="p">,</span> <span class="s1">&#39;scale&#39;</span><span class="p">,</span> <span class="s1">&#39;minimum&#39;</span><span class="p">,</span> <span class="s1">&#39;maximum&#39;</span><span class="p">,</span> <span class="s1">&#39;Reference&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="All-the-Waste-Materials">
+<h2>All the Waste Materials<a class="headerlink" href="#All-the-Waste-Materials" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">sortkeys</span><span class="o">=</span><span class="nb">sorted</span><span class="p">(</span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">WasteMaterialsNameHelper</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">sortkeys</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">. </span><span class="si">{}</span><span class="s1">: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">IncomingFlow</span><span class="o">.</span><span class="n">WasteMaterialsNameHelper</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="n">key</span><span class="p">))</span>
+    <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1. AFFF: AFFF
+2. C_DWaste: C_D Waste
+3. CombustionResiduals: Combustion Residuals
+4. Compost: Compost
+5. CompostResiduals: Compost Residuals
+6. ContactWater: Contact Water
+7. ContaminatedSoil: Contaminated Soil
+8. ContaminatedWater: Contaminated Water
+9. DewateredWWTSolids: Dewatered WWT Solids
+10. DriedWWTSolids: Dried WWT Solids
+11. FoodWaste: Food Waste
+12. LFLeachate: LF Leachate
+13. MSW: MSW
+14. ROConcentrate: RO Concentrate
+15. RawWWTSolids: Raw WWT Solids
+16. SpentGAC: Spent GAC
+17. SpentIER: Spent IER
+18. WWTEffluent: WWT Effluent
+19. WWTScreenRejects: WWT Screen Rejects
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Aqueous-Film-Forming-Foam-Concentrate-(AFFF)">
+<h2>Aqueous Film-Forming Foam Concentrate (AFFF)<a class="headerlink" href="#Aqueous-Film-Forming-Foam-Concentrate-(AFFF)" title="Permalink to this headline">¶</a></h2>
+<p>Aqueous film-forming foam (AFFF) concentrates are used for fire suppression, and the process alternatives considered for its management are shown in following figure. Currently included alternatives for AFFF include SCWO and deep well injection. Thermal treatment and solidification followed by landfill disposal are also potential treatment options that are not included in the current version of the SAT.</p>
+<div class="section" id="Aqueous-Film-Forming-Foam-Concentrate-Properties">
+<h3>Aqueous Film-Forming Foam Concentrate Properties<a class="headerlink" href="#Aqueous-Film-Forming-Foam-Concentrate-Properties" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="Assumptions-and-Limitations">
+<h4>Assumptions and Limitations<a class="headerlink" href="#Assumptions-and-Limitations" title="Permalink to this headline">¶</a></h4>
+<ol class="arabic simple">
+<li><p>There are different formulations of AFFF that may have different material properties. Users should be aware of these potential discrepancies.</p></li>
+<li><p>The SAT does not currently allow for AFFF to be thermally treated or solidified and subsequently disposed in a landfill. Since these are conventional management systems for AFFF concentrates, they would be beneficial to add to the SAT.</p></li>
+</ol>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[(</span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;Dictonary_Name&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;AFFF&#39;</span><span class="p">)</span><span class="o">|</span>\
+                            <span class="p">(</span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;Dictonary_Name&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;AFFF_PFAS&#39;</span><span class="p">)][</span><span class="n">categories</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Parameter Name</th>
+      <th>Parameter Description</th>
+      <th>amount</th>
+      <th>unit</th>
+      <th>uncertainty_type</th>
+      <th>loc</th>
+      <th>scale</th>
+      <th>minimum</th>
+      <th>maximum</th>
+      <th>Reference</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>231</th>
+      <td>density</td>
+      <td>Density</td>
+      <td>1.012</td>
+      <td>kg/L</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>232</th>
+      <td>PFOA</td>
+      <td>PFOA concentration</td>
+      <td>6.580</td>
+      <td>10e-6g/kg</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>6.0</td>
+      <td>7.16</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>233</th>
+      <td>PFOS</td>
+      <td>PFOS concentration</td>
+      <td>45.000</td>
+      <td>10e-6g/kg</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>36.2</td>
+      <td>53.80</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>234</th>
+      <td>PFBA</td>
+      <td>PFBA concentration</td>
+      <td>24.400</td>
+      <td>10e-6g/kg</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>23.6</td>
+      <td>25.20</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>235</th>
+      <td>PFPeA</td>
+      <td>PFPeA concentration</td>
+      <td>33.000</td>
+      <td>10e-6g/kg</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>29.4</td>
+      <td>36.60</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>236</th>
+      <td>PFHxA</td>
+      <td>PFHxA concentration</td>
+      <td>50.700</td>
+      <td>10e-6g/kg</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>44.1</td>
+      <td>57.30</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>237</th>
+      <td>PFHpA</td>
+      <td>PFHpA concentration</td>
+      <td>12.300</td>
+      <td>10e-6g/kg</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.3</td>
+      <td>14.30</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>238</th>
+      <td>PFNA</td>
+      <td>PFNA concentration</td>
+      <td>0.000</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>239</th>
+      <td>PFDA</td>
+      <td>PFDA concentration</td>
+      <td>0.000</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>240</th>
+      <td>PFBS</td>
+      <td>PFBS concentration</td>
+      <td>2.000</td>
+      <td>10e-6g/kg</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.8</td>
+      <td>2.20</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>241</th>
+      <td>PFHxS</td>
+      <td>PFHxS concentration</td>
+      <td>14.500</td>
+      <td>10e-6g/kg</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>12.7</td>
+      <td>16.30</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="Construction-and-Demolition-Waste-(C_DWaste)">
+<h2>Construction and Demolition Waste (C_DWaste)<a class="headerlink" href="#Construction-and-Demolition-Waste-(C_DWaste)" title="Permalink to this headline">¶</a></h2>
+<p>Construction and Demolition (C&amp;D) waste is generated during the construction and demolition of buildings and other infrastructure. It includes a wide variety of waste components including for example, dirt, broken brick and concrete, wallboard, ceiling tile, lumber and other flooring materials, electrical wiring and conduit, plumbing pipes and fixtures, furniture, and carpet. The following figure shows the potential alternatives used to treat C&amp;D waste. C&amp;D waste can be disposed in a dedicated
+C&amp;D landfill, in MSW landfills, or sometimes by thermal treatment for wastes with a sufficiently high proportion of combustible material The disposal of C&amp;D waste in C&amp;D landfills is potentially problematic as such landfills are often unlined based on prevailing state regulations. One source of PFAS in C&amp;D waste is PFAS-treated carpet that has been shown to release PFAS in laboratory-scale landfill simulations.</p>
+<div class="section" id="Construction-and-Demolition-Waste-Properties">
+<h3>Construction and Demolition Waste Properties<a class="headerlink" href="#Construction-and-Demolition-Waste-Properties" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id1">
+<h4>Assumptions and Limitations<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<ol class="arabic simple">
+<li><p>C&amp;D waste is a heterogeneous material, and it is therefore important to update the material properties when a different composition is being managed.</p></li>
+<li><p>There are also limited PFAS concentration data on different materials in C&amp;D. The PFAS concentrations were measured using extractions and leaching tests and may be biased low due to the presence of PFAS that was not released to the aqueous phase in the test. If additional data on PFAS concentrations in C&amp;D materials becomes available, then the default can be readily updated.</p></li>
+</ol>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[(</span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;Dictonary_Name&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;C_DWaste&#39;</span><span class="p">)</span><span class="o">|</span>\
+                            <span class="p">(</span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;Dictonary_Name&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;C_DWaste_PFAS&#39;</span><span class="p">)][</span><span class="n">categories</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Parameter Name</th>
+      <th>Parameter Description</th>
+      <th>amount</th>
+      <th>unit</th>
+      <th>uncertainty_type</th>
+      <th>loc</th>
+      <th>scale</th>
+      <th>minimum</th>
+      <th>maximum</th>
+      <th>Reference</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>242</th>
+      <td>bulk_dens</td>
+      <td>Bulk density - wet</td>
+      <td>574.000</td>
+      <td>kg/m3</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>319.0000</td>
+      <td>995.000</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>243</th>
+      <td>ts_cont</td>
+      <td>Total solids content - wet</td>
+      <td>0.973</td>
+      <td>fraction wet weight</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.9210</td>
+      <td>0.958</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>244</th>
+      <td>VS_cont</td>
+      <td>VS content - dry</td>
+      <td>0.827</td>
+      <td>kg VS/kg TS</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.7692</td>
+      <td>0.880</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>245</th>
+      <td>C_cont</td>
+      <td>Organic C content - dry</td>
+      <td>0.240</td>
+      <td>fraction TS</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>246</th>
+      <td>PFOA</td>
+      <td>PFOA concentration</td>
+      <td>0.600</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>247</th>
+      <td>PFOS</td>
+      <td>PFOS concentration</td>
+      <td>1.970</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>248</th>
+      <td>PFBA</td>
+      <td>PFBA concentration</td>
+      <td>0.000</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>249</th>
+      <td>PFPeA</td>
+      <td>PFPeA concentration</td>
+      <td>0.000</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>250</th>
+      <td>PFHxA</td>
+      <td>PFHxA concentration</td>
+      <td>0.000</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>251</th>
+      <td>PFHpA</td>
+      <td>PFHpA concentration</td>
+      <td>0.000</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>252</th>
+      <td>PFNA</td>
+      <td>PFNA concentration</td>
+      <td>0.000</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>253</th>
+      <td>PFDA</td>
+      <td>PFDA concentration</td>
+      <td>0.000</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>254</th>
+      <td>PFBS</td>
+      <td>PFBS concentration</td>
+      <td>0.000</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>255</th>
+      <td>PFHxS</td>
+      <td>PFHxS concentration</td>
+      <td>0.000</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="Combustion-Residuals-(Thermal-Treatment-Residuals)">
+<h2>Combustion Residuals (Thermal Treatment Residuals)<a class="headerlink" href="#Combustion-Residuals-(Thermal-Treatment-Residuals)" title="Permalink to this headline">¶</a></h2>
+<p>Combustion residuals are produced during thermal processing and may include bottom ash, fly ash, and air pollution control (APC) residues. APC residues may include excess lime, reaction products in wet scrubber sludge, activated carbon, and gypsum. In the US, fly ash and bottom ash are typically combined and disposed in a dedicated ash landfill or in an MSW landfill. If a dry APC system is used, then the lime and salts or other residues may be added to this ash as well.</p>
+<div class="section" id="Combustion-Residuals-Properties">
+<h3>Combustion Residuals Properties<a class="headerlink" href="#Combustion-Residuals-Properties" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id2">
+<h4>Assumptions and Limitations<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<ol class="arabic simple">
+<li><p>The default modeling properties associated with combustion residuals are not currently responsive to the initial feedstocks and the type and operation of the facility (e.g., boiler type, APC system). There is currently little data on the actual disposition of PFAS entering combustion facilities including potential transformations and mineralization.</p></li>
+</ol>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[(</span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;Dictonary_Name&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;CombustionResiduals&#39;</span><span class="p">)</span><span class="o">|</span>\
+                            <span class="p">(</span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;Dictonary_Name&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;CombustionResiduals_PFAS&#39;</span><span class="p">)][</span><span class="n">categories</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Parameter Name</th>
+      <th>Parameter Description</th>
+      <th>amount</th>
+      <th>unit</th>
+      <th>uncertainty_type</th>
+      <th>loc</th>
+      <th>scale</th>
+      <th>minimum</th>
+      <th>maximum</th>
+      <th>Reference</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>82</th>
+      <td>bulk_dens</td>
+      <td>Bulk density - wet</td>
+      <td>1000.0000</td>
+      <td>kg/m3</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>83</th>
+      <td>ts_cont</td>
+      <td>Total solids content - wet</td>
+      <td>0.8500</td>
+      <td>fraction wet weight</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>84</th>
+      <td>C_cont</td>
+      <td>Organic C content - dry</td>
+      <td>0.5000</td>
+      <td>fraction TS</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>85</th>
+      <td>PFOA</td>
+      <td>PFOA concentration</td>
+      <td>0.0001</td>
+      <td>10e-6g/kg</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.003</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>86</th>
+      <td>PFOS</td>
+      <td>PFOS concentration</td>
+      <td>0.0001</td>
+      <td>10e-6g/kg</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.003</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>87</th>
+      <td>PFBA</td>
+      <td>PFBA concentration</td>
+      <td>0.0001</td>
+      <td>10e-6g/kg</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.003</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>88</th>
+      <td>PFPeA</td>
+      <td>PFPeA concentration</td>
+      <td>0.0001</td>
+      <td>10e-6g/kg</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.003</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>89</th>
+      <td>PFHxA</td>
+      <td>PFHxA concentration</td>
+      <td>0.0001</td>
+      <td>10e-6g/kg</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.003</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>90</th>
+      <td>PFHpA</td>
+      <td>PFHpA concentration</td>
+      <td>0.0001</td>
+      <td>10e-6g/kg</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.003</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>91</th>
+      <td>PFNA</td>
+      <td>PFNA concentration</td>
+      <td>0.0001</td>
+      <td>10e-6g/kg</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.003</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>92</th>
+      <td>PFDA</td>
+      <td>PFDA concentration</td>
+      <td>0.0001</td>
+      <td>10e-6g/kg</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.003</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>93</th>
+      <td>PFBS</td>
+      <td>PFBS concentration</td>
+      <td>0.0001</td>
+      <td>10e-6g/kg</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.003</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>94</th>
+      <td>PFHxS</td>
+      <td>PFHxS concentration</td>
+      <td>0.0001</td>
+      <td>10e-6g/kg</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.003</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="Compost">
+<h2>Compost<a class="headerlink" href="#Compost" title="Permalink to this headline">¶</a></h2>
+<p>Finished compost (i.e., the product) is produced in the composting process. The treatment/management alternatives for finished compost are shown in the following figure. High quality compost may be land applied, but compost may also be used in landfills as alternative daily cover. Landfilling of compost typically occurs because of high contamination rates, a lack of local markets as well as demand from landfills that sometimes need substitutes for soil as a daily cover.</p>
+<div class="section" id="Compost-Properties">
+<h3>Compost Properties<a class="headerlink" href="#Compost-Properties" title="Permalink to this headline">¶</a></h3>
+<p>There is currently limited data on PFAS in compost and given the large range of potential feedstocks and processes, the values for any specific compost are likely to vary significantly from the default data. The presence of PFAS in finished compost may be attributable to the presence of PFAS on various types of food packaging though further study is required to definitively prove this. Biosolids, if a feedstock for the composting process, are another potentially major contributor to PFAS to
+finished compost. #### Assumptions and Limitations: The default modeling properties associated with finished compost are not currently responsive to the initial feedstocks and the type and operation of the composting facility (e.g., windrows, mixed systems, Gore systems). With existing data, it is possible to create a mechanistic model for bulk density, solids content, and organic C content, but due to the limited amount of PFAS-related data on compost, it is not currently possible to develop a
+model that could reasonably estimate PFAS concentrations and partition coefficients mechanistically from incoming feedstocks.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[(</span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;Dictonary_Name&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Compost&#39;</span><span class="p">)</span><span class="o">|</span>\
+                            <span class="p">(</span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;Dictonary_Name&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Compost_PFAS&#39;</span><span class="p">)][</span><span class="n">categories</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Parameter Name</th>
+      <th>Parameter Description</th>
+      <th>amount</th>
+      <th>unit</th>
+      <th>uncertainty_type</th>
+      <th>loc</th>
+      <th>scale</th>
+      <th>minimum</th>
+      <th>maximum</th>
+      <th>Reference</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>14</th>
+      <td>bulk_dens</td>
+      <td>Bulk density - wet</td>
+      <td>500.000</td>
+      <td>kg/m3</td>
+      <td>5.0</td>
+      <td>500.000</td>
+      <td>NaN</td>
+      <td>400.00</td>
+      <td>700.00</td>
+      <td>[48]</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>ts_cont</td>
+      <td>TS content</td>
+      <td>0.600</td>
+      <td>kg TS/kg</td>
+      <td>5.0</td>
+      <td>0.600</td>
+      <td>NaN</td>
+      <td>0.45</td>
+      <td>0.65</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>VS_cont</td>
+      <td>VS content - dry</td>
+      <td>0.600</td>
+      <td>kg VS/kg TS</td>
+      <td>5.0</td>
+      <td>0.600</td>
+      <td>NaN</td>
+      <td>0.40</td>
+      <td>0.70</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>C_cont</td>
+      <td>Organic C content - dry</td>
+      <td>0.280</td>
+      <td>kg C/kg TS</td>
+      <td>5.0</td>
+      <td>0.280</td>
+      <td>NaN</td>
+      <td>0.15</td>
+      <td>0.50</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>PFOA</td>
+      <td>PFOA concentration</td>
+      <td>5.240</td>
+      <td>10e-6g/kg</td>
+      <td>5.0</td>
+      <td>5.240</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>26.00</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>PFOS</td>
+      <td>PFOS concentration</td>
+      <td>7.375</td>
+      <td>10e-6g/kg</td>
+      <td>5.0</td>
+      <td>7.375</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>88.50</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>PFBA</td>
+      <td>PFBA concentration</td>
+      <td>3.267</td>
+      <td>10e-6g/kg</td>
+      <td>5.0</td>
+      <td>3.267</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>12.04</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>PFPeA</td>
+      <td>PFPeA concentration</td>
+      <td>3.424</td>
+      <td>10e-6g/kg</td>
+      <td>5.0</td>
+      <td>3.424</td>
+      <td>NaN</td>
+      <td>0.41</td>
+      <td>8.59</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>PFHxA</td>
+      <td>PFHxA concentration</td>
+      <td>16.407</td>
+      <td>10e-6g/kg</td>
+      <td>5.0</td>
+      <td>16.407</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>61.00</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>PFHpA</td>
+      <td>PFHpA concentration</td>
+      <td>0.826</td>
+      <td>10e-6g/kg</td>
+      <td>5.0</td>
+      <td>0.826</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>6.50</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>PFNA</td>
+      <td>PFNA concentration</td>
+      <td>1.045</td>
+      <td>10e-6g/kg</td>
+      <td>5.0</td>
+      <td>1.045</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>8.10</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>PFDA</td>
+      <td>PFDA concentration</td>
+      <td>2.710</td>
+      <td>10e-6g/kg</td>
+      <td>5.0</td>
+      <td>2.710</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>20.50</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>PFBS</td>
+      <td>PFBS concentration</td>
+      <td>7.360</td>
+      <td>10e-6g/kg</td>
+      <td>5.0</td>
+      <td>7.360</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>41.90</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>PFHxS</td>
+      <td>PFHxS concentration</td>
+      <td>0.190</td>
+      <td>10e-6g/kg</td>
+      <td>5.0</td>
+      <td>0.190</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>1.90</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+</div>
+<div class="section" id="Compost-Residuals">
+<h2>Compost Residuals<a class="headerlink" href="#Compost-Residuals" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Compost-Residuals-Properties">
+<h3>Compost Residuals Properties<a class="headerlink" href="#Compost-Residuals-Properties" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[(</span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;Dictonary_Name&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;CompostResiduals&#39;</span><span class="p">)</span><span class="o">|</span>\
+                            <span class="p">(</span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;Dictonary_Name&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;CompostResiduals_PFAS&#39;</span><span class="p">)][</span><span class="n">categories</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Parameter Name</th>
+      <th>Parameter Description</th>
+      <th>amount</th>
+      <th>unit</th>
+      <th>uncertainty_type</th>
+      <th>loc</th>
+      <th>scale</th>
+      <th>minimum</th>
+      <th>maximum</th>
+      <th>Reference</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>28</th>
+      <td>bulk_dens</td>
+      <td>Bulk density - wet</td>
+      <td>500.000000</td>
+      <td>kg/m3</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>ts_cont</td>
+      <td>Total solids content - wet</td>
+      <td>0.600000</td>
+      <td>fraction wet weight</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>VS_cont</td>
+      <td>VS content - dry</td>
+      <td>0.600000</td>
+      <td>kg VS/kg TS</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>C_cont</td>
+      <td>Organic C content - dry</td>
+      <td>0.500000</td>
+      <td>fraction TS</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>PFOA</td>
+      <td>PFOA concentration</td>
+      <td>5.400000</td>
+      <td>10e-6g/kg</td>
+      <td>3.0</td>
+      <td>5.400000</td>
+      <td>3.0</td>
+      <td>2.5</td>
+      <td>10.3</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>PFOS</td>
+      <td>PFOS concentration</td>
+      <td>1.090000</td>
+      <td>10e-6g/kg</td>
+      <td>3.0</td>
+      <td>1.090000</td>
+      <td>0.4</td>
+      <td>0.4</td>
+      <td>1.6</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>PFBA</td>
+      <td>PFBA concentration</td>
+      <td>6.942857</td>
+      <td>10e-6g/kg</td>
+      <td>3.0</td>
+      <td>6.942857</td>
+      <td>3.8</td>
+      <td>2.8</td>
+      <td>12.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>PFPeA</td>
+      <td>PFPeA concentration</td>
+      <td>5.967143</td>
+      <td>10e-6g/kg</td>
+      <td>3.0</td>
+      <td>5.967143</td>
+      <td>2.3</td>
+      <td>2.7</td>
+      <td>8.6</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>PFHxA</td>
+      <td>PFHxA concentration</td>
+      <td>28.752860</td>
+      <td>10e-6g/kg</td>
+      <td>3.0</td>
+      <td>28.752860</td>
+      <td>13.1</td>
+      <td>10.5</td>
+      <td>49.8</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>PFHpA</td>
+      <td>PFHpA concentration</td>
+      <td>0.365714</td>
+      <td>10e-6g/kg</td>
+      <td>3.0</td>
+      <td>0.365714</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>2.6</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>PFNA</td>
+      <td>PFNA concentration</td>
+      <td>0.327143</td>
+      <td>10e-6g/kg</td>
+      <td>3.0</td>
+      <td>0.327143</td>
+      <td>0.4</td>
+      <td>0.0</td>
+      <td>1.1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>PFDA</td>
+      <td>PFDA concentration</td>
+      <td>0.730000</td>
+      <td>10e-6g/kg</td>
+      <td>3.0</td>
+      <td>0.730000</td>
+      <td>1.1</td>
+      <td>0.1</td>
+      <td>3.2</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>PFBS</td>
+      <td>PFBS concentration</td>
+      <td>1.631429</td>
+      <td>10e-6g/kg</td>
+      <td>3.0</td>
+      <td>1.631429</td>
+      <td>2.7</td>
+      <td>0.0</td>
+      <td>7.6</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>PFHxS</td>
+      <td>PFHxS concentration</td>
+      <td>0.201429</td>
+      <td>10e-6g/kg</td>
+      <td>3.0</td>
+      <td>0.201429</td>
+      <td>0.1</td>
+      <td>0.1</td>
+      <td>0.3</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+</div>
+<div class="section" id="Contact-Water">
+<h2>Contact Water<a class="headerlink" href="#Contact-Water" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Contact-Water-Properties">
+<h3>Contact Water Properties<a class="headerlink" href="#Contact-Water-Properties" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[(</span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;Dictonary_Name&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;ContactWater&#39;</span><span class="p">)</span><span class="o">|</span>\
+                            <span class="p">(</span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;Dictonary_Name&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;ContactWater_PFAS&#39;</span><span class="p">)][</span><span class="n">categories</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Parameter Name</th>
+      <th>Parameter Description</th>
+      <th>amount</th>
+      <th>unit</th>
+      <th>uncertainty_type</th>
+      <th>loc</th>
+      <th>scale</th>
+      <th>minimum</th>
+      <th>maximum</th>
+      <th>Reference</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>56</th>
+      <td>density</td>
+      <td>Density</td>
+      <td>1.0000</td>
+      <td>kg/L</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>ts_cont</td>
+      <td>Total solids content - wet</td>
+      <td>0.0000</td>
+      <td>fraction wet weight</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>C_cont</td>
+      <td>Organic C content - dry</td>
+      <td>0.6000</td>
+      <td>fraction TS</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>PFOA</td>
+      <td>PFOA concentration</td>
+      <td>0.2000</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>PFOS</td>
+      <td>PFOS concentration</td>
+      <td>0.0600</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>61</th>
+      <td>PFBA</td>
+      <td>PFBA concentration</td>
+      <td>1.0000</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>62</th>
+      <td>PFPeA</td>
+      <td>PFPeA concentration</td>
+      <td>0.9400</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>PFHxA</td>
+      <td>PFHxA concentration</td>
+      <td>4.7600</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>64</th>
+      <td>PFHpA</td>
+      <td>PFHpA concentration</td>
+      <td>0.2900</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>65</th>
+      <td>PFNA</td>
+      <td>PFNA concentration</td>
+      <td>0.0300</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>66</th>
+      <td>PFDA</td>
+      <td>PFDA concentration</td>
+      <td>0.0000</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>67</th>
+      <td>PFBS</td>
+      <td>PFBS concentration</td>
+      <td>2.1300</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>68</th>
+      <td>PFHxS</td>
+      <td>PFHxS concentration</td>
+      <td>0.0115</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+</div>
+<div class="section" id="Contaminated-Soil">
+<h2>Contaminated Soil<a class="headerlink" href="#Contaminated-Soil" title="Permalink to this headline">¶</a></h2>
+<p>Soils may become contaminated with PFAS through a variety of processes including AFFF application, or land application of PFAS-contaminated compost or biosolids. The following figure shows the treatment alternatives considered for the management of PFAS-contaminated soils. The soils may be stabilized in place, sent to thermal treatment, or disposed in a landfill. <strong>Given the wide range of types of potential contaminated soil, default values were not developed. To assess contaminated soil, the
+user needs to provide the necessary material properties. The contaminated material is meant to represent a general contaminated soil that the user can specify.</strong></p>
+<div class="section" id="Contaminated-Soil-Properties">
+<h3>Contaminated Soil Properties<a class="headerlink" href="#Contaminated-Soil-Properties" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id3">
+<h4>Assumptions and Limitations<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<ol class="arabic simple">
+<li><p>The PFAS concentration and properties of contaminated soil will vary based on the location, soil, type, local hydrology, and how the soil became contaminated. Thus, <strong>some user knowledge is important to properly represent this waste stream</strong>.</p></li>
+</ol>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[(</span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;Dictonary_Name&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;ContaminatedSoil&#39;</span><span class="p">)</span><span class="o">|</span>\
+                            <span class="p">(</span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;Dictonary_Name&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;ContaminatedSoil_PFAS&#39;</span><span class="p">)][</span><span class="n">categories</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Parameter Name</th>
+      <th>Parameter Description</th>
+      <th>amount</th>
+      <th>unit</th>
+      <th>uncertainty_type</th>
+      <th>loc</th>
+      <th>scale</th>
+      <th>minimum</th>
+      <th>maximum</th>
+      <th>Reference</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>69</th>
+      <td>bulk_dens</td>
+      <td>Bulk density - wet</td>
+      <td>1175.00</td>
+      <td>kg/m3</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>900.000</td>
+      <td>1400.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>70</th>
+      <td>ts_cont</td>
+      <td>Total solids content - wet</td>
+      <td>0.85</td>
+      <td>fraction wet weight</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>71</th>
+      <td>C_cont</td>
+      <td>Organic C content - dry</td>
+      <td>0.01</td>
+      <td>fraction TS</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.005</td>
+      <td>0.1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>72</th>
+      <td>PFOA</td>
+      <td>PFOA concentration</td>
+      <td>1000.00</td>
+      <td>10e-6g/kg</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.000</td>
+      <td>3000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>73</th>
+      <td>PFOS</td>
+      <td>PFOS concentration</td>
+      <td>1000.00</td>
+      <td>10e-6g/kg</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.000</td>
+      <td>3000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>74</th>
+      <td>PFBA</td>
+      <td>PFBA concentration</td>
+      <td>1000.00</td>
+      <td>10e-6g/kg</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.000</td>
+      <td>3000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>75</th>
+      <td>PFPeA</td>
+      <td>PFPeA concentration</td>
+      <td>1000.00</td>
+      <td>10e-6g/kg</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.000</td>
+      <td>3000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>76</th>
+      <td>PFHxA</td>
+      <td>PFHxA concentration</td>
+      <td>1000.00</td>
+      <td>10e-6g/kg</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.000</td>
+      <td>3000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>77</th>
+      <td>PFHpA</td>
+      <td>PFHpA concentration</td>
+      <td>1000.00</td>
+      <td>10e-6g/kg</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.000</td>
+      <td>3000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>78</th>
+      <td>PFNA</td>
+      <td>PFNA concentration</td>
+      <td>1000.00</td>
+      <td>10e-6g/kg</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.000</td>
+      <td>3000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>79</th>
+      <td>PFDA</td>
+      <td>PFDA concentration</td>
+      <td>1000.00</td>
+      <td>10e-6g/kg</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.000</td>
+      <td>3000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>80</th>
+      <td>PFBS</td>
+      <td>PFBS concentration</td>
+      <td>1000.00</td>
+      <td>10e-6g/kg</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.000</td>
+      <td>3000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>81</th>
+      <td>PFHxS</td>
+      <td>PFHxS concentration</td>
+      <td>1000.00</td>
+      <td>10e-6g/kg</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.000</td>
+      <td>3000.0</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="Contaminated-Water">
+<h2>Contaminated Water<a class="headerlink" href="#Contaminated-Water" title="Permalink to this headline">¶</a></h2>
+<p>Water may become contaminated with PFAS through a variety of processes including direct releases, AFFF application, or land application of PFAS-contaminated compost or biosolids. The following figure shows that the water may be directly injected into deep wells or treated in conventional or advanced wastewater treatment processes. <strong>Given the wide range of types of potential contaminated water, default values were not developed. To assess contaminated water, the user needs to provide the
+necessary material properties</strong>. However, landfill leachate and primary and secondary WWT effluent are described in their respective sections. The contaminated water material is meant to represent a general contaminated water stream.</p>
+<div class="section" id="Contaminated-Water-Properties">
+<h3>Contaminated Water Properties<a class="headerlink" href="#Contaminated-Water-Properties" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id4">
+<h4>Assumptions and Limitations<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<ol class="arabic simple">
+<li><p>The PFAS concentration and properties of contaminated vary based on the source. Thus, <strong>some user knowledge is important to properly represent this waste stream.</strong></p></li>
+</ol>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[(</span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;Dictonary_Name&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;ContaminatedWater&#39;</span><span class="p">)</span><span class="o">|</span>\
+                            <span class="p">(</span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;Dictonary_Name&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;ContaminatedWater_PFAS&#39;</span><span class="p">)][</span><span class="n">categories</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Parameter Name</th>
+      <th>Parameter Description</th>
+      <th>amount</th>
+      <th>unit</th>
+      <th>uncertainty_type</th>
+      <th>loc</th>
+      <th>scale</th>
+      <th>minimum</th>
+      <th>maximum</th>
+      <th>Reference</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>108</th>
+      <td>density</td>
+      <td>Density</td>
+      <td>1.000</td>
+      <td>kg/L</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>109</th>
+      <td>ts_cont</td>
+      <td>Total solids content - wet</td>
+      <td>0.005</td>
+      <td>fraction wet weight</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>110</th>
+      <td>C_cont</td>
+      <td>Organic C content - dry</td>
+      <td>0.500</td>
+      <td>kg C/kg TS</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>111</th>
+      <td>PFOA</td>
+      <td>PFOA concentration</td>
+      <td>100.000</td>
+      <td>10e-6g/kg</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.0</td>
+      <td>1000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>112</th>
+      <td>PFOS</td>
+      <td>PFOS concentration</td>
+      <td>100.000</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>113</th>
+      <td>PFBA</td>
+      <td>PFBA concentration</td>
+      <td>100.000</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>114</th>
+      <td>PFPeA</td>
+      <td>PFPeA concentration</td>
+      <td>100.000</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>115</th>
+      <td>PFHxA</td>
+      <td>PFHxA concentration</td>
+      <td>100.000</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>116</th>
+      <td>PFHpA</td>
+      <td>PFHpA concentration</td>
+      <td>100.000</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>117</th>
+      <td>PFNA</td>
+      <td>PFNA concentration</td>
+      <td>100.000</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>118</th>
+      <td>PFDA</td>
+      <td>PFDA concentration</td>
+      <td>100.000</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>119</th>
+      <td>PFBS</td>
+      <td>PFBS concentration</td>
+      <td>100.000</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>120</th>
+      <td>PFHxS</td>
+      <td>PFHxS concentration</td>
+      <td>100.000</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="Dewatered-WWT-Solids">
+<h2>Dewatered WWT Solids<a class="headerlink" href="#Dewatered-WWT-Solids" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Dewatered-WWT-Solids-Properties">
+<h3>Dewatered WWT Solids Properties<a class="headerlink" href="#Dewatered-WWT-Solids-Properties" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[(</span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;Dictonary_Name&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;DewateredWWTSolids&#39;</span><span class="p">)</span><span class="o">|</span>\
+                            <span class="p">(</span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;Dictonary_Name&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;DewateredWWTSolids_PFAS&#39;</span><span class="p">)][</span><span class="n">categories</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Parameter Name</th>
+      <th>Parameter Description</th>
+      <th>amount</th>
+      <th>unit</th>
+      <th>uncertainty_type</th>
+      <th>loc</th>
+      <th>scale</th>
+      <th>minimum</th>
+      <th>maximum</th>
+      <th>Reference</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>134</th>
+      <td>bulk_dens</td>
+      <td>Bulk density - wet</td>
+      <td>800.000000</td>
+      <td>kg/m3</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>135</th>
+      <td>ts_cont</td>
+      <td>Total solids content - wet</td>
+      <td>0.200000</td>
+      <td>fraction wet weight</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>136</th>
+      <td>VS_cont</td>
+      <td>VS content - dry</td>
+      <td>0.600000</td>
+      <td>kg VS/kg TS</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>137</th>
+      <td>C_cont</td>
+      <td>Organic C content - dry</td>
+      <td>0.380000</td>
+      <td>fraction TS</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.30000</td>
+      <td>0.45000</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>138</th>
+      <td>PFOA</td>
+      <td>PFOA concentration</td>
+      <td>0.934565</td>
+      <td>10e-6g/kg</td>
+      <td>5.0</td>
+      <td>0.934565</td>
+      <td>NaN</td>
+      <td>0.13008</td>
+      <td>3.98008</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>139</th>
+      <td>PFOS</td>
+      <td>PFOS concentration</td>
+      <td>3.678926</td>
+      <td>10e-6g/kg</td>
+      <td>5.0</td>
+      <td>3.678926</td>
+      <td>NaN</td>
+      <td>0.53208</td>
+      <td>11.30008</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>140</th>
+      <td>PFBA</td>
+      <td>PFBA concentration</td>
+      <td>0.146226</td>
+      <td>10e-6g/kg</td>
+      <td>5.0</td>
+      <td>0.146226</td>
+      <td>NaN</td>
+      <td>0.00008</td>
+      <td>0.98008</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>141</th>
+      <td>PFPeA</td>
+      <td>PFPeA concentration</td>
+      <td>0.365103</td>
+      <td>10e-6g/kg</td>
+      <td>5.0</td>
+      <td>0.365103</td>
+      <td>NaN</td>
+      <td>0.00008</td>
+      <td>4.98008</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>142</th>
+      <td>PFHxA</td>
+      <td>PFHxA concentration</td>
+      <td>0.511518</td>
+      <td>10e-6g/kg</td>
+      <td>5.0</td>
+      <td>0.511518</td>
+      <td>NaN</td>
+      <td>0.00008</td>
+      <td>2.26008</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>143</th>
+      <td>PFHpA</td>
+      <td>PFHpA concentration</td>
+      <td>0.088188</td>
+      <td>10e-6g/kg</td>
+      <td>5.0</td>
+      <td>0.088188</td>
+      <td>NaN</td>
+      <td>0.00008</td>
+      <td>0.86808</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>144</th>
+      <td>PFNA</td>
+      <td>PFNA concentration</td>
+      <td>0.373149</td>
+      <td>10e-6g/kg</td>
+      <td>5.0</td>
+      <td>0.373149</td>
+      <td>NaN</td>
+      <td>0.00008</td>
+      <td>1.34208</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>145</th>
+      <td>PFDA</td>
+      <td>PFDA concentration</td>
+      <td>1.552180</td>
+      <td>10e-6g/kg</td>
+      <td>5.0</td>
+      <td>1.552180</td>
+      <td>NaN</td>
+      <td>0.13928</td>
+      <td>16.86008</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>146</th>
+      <td>PFBS</td>
+      <td>PFBS concentration</td>
+      <td>0.125018</td>
+      <td>10e-6g/kg</td>
+      <td>5.0</td>
+      <td>0.125018</td>
+      <td>NaN</td>
+      <td>0.00008</td>
+      <td>1.59408</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>147</th>
+      <td>PFHxS</td>
+      <td>PFHxS concentration</td>
+      <td>0.107265</td>
+      <td>10e-6g/kg</td>
+      <td>5.0</td>
+      <td>0.107265</td>
+      <td>NaN</td>
+      <td>0.00008</td>
+      <td>0.55608</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+</div>
+<div class="section" id="Dried-WWT-Solids">
+<h2>Dried WWT Solids<a class="headerlink" href="#Dried-WWT-Solids" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Dried-WWT-Solids-Properties">
+<h3>Dried WWT Solids Properties<a class="headerlink" href="#Dried-WWT-Solids-Properties" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[(</span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;Dictonary_Name&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;DriedWWTSolids&#39;</span><span class="p">)</span><span class="o">|</span>\
+                            <span class="p">(</span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;Dictonary_Name&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;DriedWWTSolids_PFAS&#39;</span><span class="p">)][</span><span class="n">categories</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Parameter Name</th>
+      <th>Parameter Description</th>
+      <th>amount</th>
+      <th>unit</th>
+      <th>uncertainty_type</th>
+      <th>loc</th>
+      <th>scale</th>
+      <th>minimum</th>
+      <th>maximum</th>
+      <th>Reference</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>148</th>
+      <td>bulk_dens</td>
+      <td>Bulk density - wet</td>
+      <td>800.000000</td>
+      <td>kg/m3</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>149</th>
+      <td>ts_cont</td>
+      <td>Total solids content - wet</td>
+      <td>0.900000</td>
+      <td>fraction wet weight</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>150</th>
+      <td>VS_cont</td>
+      <td>VS content - dry</td>
+      <td>0.600000</td>
+      <td>kg VS/kg TS</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>151</th>
+      <td>C_cont</td>
+      <td>Organic C content - dry</td>
+      <td>0.380000</td>
+      <td>fraction TS</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>152</th>
+      <td>PFOA</td>
+      <td>PFOA concentration</td>
+      <td>4.205191</td>
+      <td>10e-6g/kg</td>
+      <td>5.0</td>
+      <td>4.205191</td>
+      <td>NaN</td>
+      <td>0.58501</td>
+      <td>17.91001</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>153</th>
+      <td>PFOS</td>
+      <td>PFOS concentration</td>
+      <td>16.554818</td>
+      <td>10e-6g/kg</td>
+      <td>5.0</td>
+      <td>16.554818</td>
+      <td>NaN</td>
+      <td>2.39401</td>
+      <td>50.85001</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>154</th>
+      <td>PFBA</td>
+      <td>PFBA concentration</td>
+      <td>0.657668</td>
+      <td>10e-6g/kg</td>
+      <td>5.0</td>
+      <td>0.657668</td>
+      <td>NaN</td>
+      <td>0.00001</td>
+      <td>4.41001</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>155</th>
+      <td>PFPeA</td>
+      <td>PFPeA concentration</td>
+      <td>1.642614</td>
+      <td>10e-6g/kg</td>
+      <td>5.0</td>
+      <td>1.642614</td>
+      <td>NaN</td>
+      <td>0.00001</td>
+      <td>22.41001</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>156</th>
+      <td>PFHxA</td>
+      <td>PFHxA concentration</td>
+      <td>2.301483</td>
+      <td>10e-6g/kg</td>
+      <td>5.0</td>
+      <td>2.301483</td>
+      <td>NaN</td>
+      <td>0.00001</td>
+      <td>10.17001</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>157</th>
+      <td>PFHpA</td>
+      <td>PFHpA concentration</td>
+      <td>0.396495</td>
+      <td>10e-6g/kg</td>
+      <td>5.0</td>
+      <td>0.396495</td>
+      <td>NaN</td>
+      <td>0.00001</td>
+      <td>3.90601</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>158</th>
+      <td>PFNA</td>
+      <td>PFNA concentration</td>
+      <td>1.678822</td>
+      <td>10e-6g/kg</td>
+      <td>5.0</td>
+      <td>1.678822</td>
+      <td>NaN</td>
+      <td>0.00001</td>
+      <td>6.03901</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>159</th>
+      <td>PFDA</td>
+      <td>PFDA concentration</td>
+      <td>6.984460</td>
+      <td>10e-6g/kg</td>
+      <td>5.0</td>
+      <td>6.984460</td>
+      <td>NaN</td>
+      <td>0.62641</td>
+      <td>75.87001</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>160</th>
+      <td>PFBS</td>
+      <td>PFBS concentration</td>
+      <td>0.562233</td>
+      <td>10e-6g/kg</td>
+      <td>5.0</td>
+      <td>0.562233</td>
+      <td>NaN</td>
+      <td>0.00001</td>
+      <td>7.17301</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>161</th>
+      <td>PFHxS</td>
+      <td>PFHxS concentration</td>
+      <td>0.482341</td>
+      <td>10e-6g/kg</td>
+      <td>5.0</td>
+      <td>0.482341</td>
+      <td>NaN</td>
+      <td>0.00001</td>
+      <td>2.50201</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+</div>
+<div class="section" id="Food-Waste">
+<h2>Food Waste<a class="headerlink" href="#Food-Waste" title="Permalink to this headline">¶</a></h2>
+<p>The management alternatives considered for food waste are shown in the following figure. This material can remain in the mixed MSW and be landfilled or incinerated, or it can be separated and composted or treated by anaerobic digestion (AD).</p>
+<div class="section" id="Food-Waste-Properties">
+<h3>Food Waste Properties<a class="headerlink" href="#Food-Waste-Properties" title="Permalink to this headline">¶</a></h3>
+<p>PFAS has not been measured directly in the organic fraction of MSW, but it has been found in both food packaging and finished compost, so it would be expected to be in these feedstocks as well (Kotthoff et al., 2015; Choi et al., 2019; Lazcano et al., 2020). Food waste represents a large range of materials (e.g., vegetables, meats, coffee grounds, shells) from a variety of sources (e.g., residential, commercial, and industrial). The properties (e.g., solids content, C content, nutrient content)
+of these different types of food can vary considerably, and they each have different probabilities of being contaminated with PFAS. The heterogeneity of food waste makes it difficult to develop generalized default inputs.</p>
+<div class="section" id="id5">
+<h4>Assumptions and Limitations<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<ol class="arabic simple">
+<li><p>Food waste is heterogeneous, and the current data set does not consider how changes in food waste composition will impact its physical properties and PFAS concentrations. There is also limited PFAS concentration data on food waste.</p></li>
+<li><p>Default data are based on the Netherlands and may not be representative of U.S. food waste. The concentrations provided by Noorlander et al. (2011) could be applied to U.S. dietary intake to improve the results.</p></li>
+</ol>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[(</span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;Dictonary_Name&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;FoodWaste&#39;</span><span class="p">)</span><span class="o">|</span>\
+                            <span class="p">(</span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;Dictonary_Name&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;FoodWaste_PFAS&#39;</span><span class="p">)][</span><span class="n">categories</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Parameter Name</th>
+      <th>Parameter Description</th>
+      <th>amount</th>
+      <th>unit</th>
+      <th>uncertainty_type</th>
+      <th>loc</th>
+      <th>scale</th>
+      <th>minimum</th>
+      <th>maximum</th>
+      <th>Reference</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>bulk_dens</td>
+      <td>Bulk density - wet</td>
+      <td>435.000000</td>
+      <td>kg/m3</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>200.0</td>
+      <td>900.00</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>ts_cont</td>
+      <td>Total solids content - wet</td>
+      <td>0.200000</td>
+      <td>fraction wet weight</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>VS_cont</td>
+      <td>VS content - dry</td>
+      <td>0.910000</td>
+      <td>kg VS/kg TS</td>
+      <td>5.0</td>
+      <td>0.91</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.97</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>C_cont</td>
+      <td>Organic C content - dry</td>
+      <td>0.500000</td>
+      <td>fraction TS</td>
+      <td>5.0</td>
+      <td>0.50</td>
+      <td>NaN</td>
+      <td>0.4</td>
+      <td>0.60</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>PFOA</td>
+      <td>PFOA concentration</td>
+      <td>0.005530</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>PFOS</td>
+      <td>PFOS concentration</td>
+      <td>0.009340</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>PFBA</td>
+      <td>PFBA concentration</td>
+      <td>0.071521</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>PFPeA</td>
+      <td>PFPeA concentration</td>
+      <td>0.011500</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>PFHxA</td>
+      <td>PFHxA concentration</td>
+      <td>0.001233</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>PFHpA</td>
+      <td>PFHpA concentration</td>
+      <td>0.001855</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>PFNA</td>
+      <td>PFNA concentration</td>
+      <td>0.002867</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>PFDA</td>
+      <td>PFDA concentration</td>
+      <td>0.003004</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>PFBS</td>
+      <td>PFBS concentration</td>
+      <td>0.000450</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>PFHxS</td>
+      <td>PFHxS concentration</td>
+      <td>0.002400</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="Landfill-Leachate">
+<h2>Landfill Leachate<a class="headerlink" href="#Landfill-Leachate" title="Permalink to this headline">¶</a></h2>
+<p>PFAS-contaminated landfill leachate is produced through the release and leaching of PFAS from materials disposed in landfills. The following figure shows the alternatives that are considered for the treatment of landfill leachate. The leachate may be treated by on- or off-site WWT, or it may be injected into deep wells.</p>
+<div class="section" id="Landfill-Leachate-Properties">
+<h3>Landfill Leachate Properties<a class="headerlink" href="#Landfill-Leachate-Properties" title="Permalink to this headline">¶</a></h3>
+<p>The default values represent wet, temperate, and arid landfills with waste of different ages. <strong>If the user is modeling landfill leachate, then it is recommended that they use values that are representative of their specific facility and location where available</strong>. The properties of landfill leachate will vary based on things like the type of waste accepted and the waste age.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[(</span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;Dictonary_Name&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;LFLeachate&#39;</span><span class="p">)</span><span class="o">|</span>\
+                            <span class="p">(</span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;Dictonary_Name&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;LFLeachate_PFAS&#39;</span><span class="p">)][</span><span class="n">categories</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Parameter Name</th>
+      <th>Parameter Description</th>
+      <th>amount</th>
+      <th>unit</th>
+      <th>uncertainty_type</th>
+      <th>loc</th>
+      <th>scale</th>
+      <th>minimum</th>
+      <th>maximum</th>
+      <th>Reference</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>95</th>
+      <td>density</td>
+      <td>Density</td>
+      <td>1.00</td>
+      <td>kg/L</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.995</td>
+      <td>1.005</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>ts_cont</td>
+      <td>Total solids content - wet</td>
+      <td>0.01</td>
+      <td>fraction wet weight</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.005</td>
+      <td>0.050</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>C_cont</td>
+      <td>Organic C content - dry</td>
+      <td>0.50</td>
+      <td>fraction TS</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.300</td>
+      <td>0.700</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>98</th>
+      <td>PFOA</td>
+      <td>PFOA concentration</td>
+      <td>5.70</td>
+      <td>10e-6g/kg</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.300</td>
+      <td>10.000</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>99</th>
+      <td>PFOS</td>
+      <td>PFOS concentration</td>
+      <td>0.09</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>100</th>
+      <td>PFBA</td>
+      <td>PFBA concentration</td>
+      <td>0.75</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>101</th>
+      <td>PFPeA</td>
+      <td>PFPeA concentration</td>
+      <td>0.68</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>102</th>
+      <td>PFHxA</td>
+      <td>PFHxA concentration</td>
+      <td>1.65</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>103</th>
+      <td>PFHpA</td>
+      <td>PFHpA concentration</td>
+      <td>0.55</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>104</th>
+      <td>PFNA</td>
+      <td>PFNA concentration</td>
+      <td>0.05</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>105</th>
+      <td>PFDA</td>
+      <td>PFDA concentration</td>
+      <td>0.03</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>106</th>
+      <td>PFBS</td>
+      <td>PFBS concentration</td>
+      <td>0.19</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>107</th>
+      <td>PFHxS</td>
+      <td>PFHxS concentration</td>
+      <td>0.27</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+</div>
+<div class="section" id="Municipal-Solid-Waste-(MSW)">
+<h2>Municipal Solid Waste (MSW)<a class="headerlink" href="#Municipal-Solid-Waste-(MSW)" title="Permalink to this headline">¶</a></h2>
+<p>MSW consists of wastes that are typically managed by municipalities and counties and include waste generated from residential, commercial, industrial (excluding process waste), and institutional sources. The following figure shows the alternatives considered for the management of MSW. The MSW may be landfilled or thermally treated. MSW consists of variety of different materials including food, paper, food packaging, textiles, and plastics with different material properties and the potential to
+contain different amounts and types of PFAS.</p>
+<div class="section" id="MSW-Properties">
+<h3>MSW Properties<a class="headerlink" href="#MSW-Properties" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id6">
+<h4>Assumptions and Limitations<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<ol class="arabic simple">
+<li><p>MSW is a heterogeneous material and it is therefore important to update the material properties when a different composition of MSW is being managed.</p></li>
+<li><p>There is limited PFAS concentration data on different materials in MSW. The PFAS concentrations for carpets and rugs, food, textiles and bulky concentrations were measured using extractions and leaching tests and may be biased low due to the presence of PFAS that was not released to the aqueous phase in the test. If additional data on PFAS concentrations in MSW materials becomes available, then the default data can be updated.</p></li>
+</ol>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[(</span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;Dictonary_Name&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;MSW&#39;</span><span class="p">)</span><span class="o">|</span>\
+                            <span class="p">(</span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;Dictonary_Name&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;MSW_PFAS&#39;</span><span class="p">)][</span><span class="n">categories</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Parameter Name</th>
+      <th>Parameter Description</th>
+      <th>amount</th>
+      <th>unit</th>
+      <th>uncertainty_type</th>
+      <th>loc</th>
+      <th>scale</th>
+      <th>minimum</th>
+      <th>maximum</th>
+      <th>Reference</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>42</th>
+      <td>bulk_dens</td>
+      <td>Bulk density - wet</td>
+      <td>387.000</td>
+      <td>kg/m3</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>344.000</td>
+      <td>464.000</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>ts_cont</td>
+      <td>Total solids content - wet</td>
+      <td>0.254</td>
+      <td>fraction wet weight</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.230</td>
+      <td>0.310</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>VS_cont</td>
+      <td>VS content - dry</td>
+      <td>0.530</td>
+      <td>kg VS/kg TS</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.460</td>
+      <td>0.600</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>C_cont</td>
+      <td>Organic C content - dry</td>
+      <td>0.331</td>
+      <td>fraction TS</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.259</td>
+      <td>0.334</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>PFOA</td>
+      <td>PFOA concentration</td>
+      <td>1.070</td>
+      <td>10e-6g/kg</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.000</td>
+      <td>10.000</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>PFOS</td>
+      <td>PFOS concentration</td>
+      <td>0.840</td>
+      <td>10e-6g/kg</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.000</td>
+      <td>10.000</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>PFBA</td>
+      <td>PFBA concentration</td>
+      <td>0.000</td>
+      <td>10e-6g/kg</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.000</td>
+      <td>10.000</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>PFPeA</td>
+      <td>PFPeA concentration</td>
+      <td>0.000</td>
+      <td>10e-6g/kg</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.000</td>
+      <td>10.000</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>PFHxA</td>
+      <td>PFHxA concentration</td>
+      <td>0.000</td>
+      <td>10e-6g/kg</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.000</td>
+      <td>10.000</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>PFHpA</td>
+      <td>PFHpA concentration</td>
+      <td>0.000</td>
+      <td>10e-6g/kg</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.000</td>
+      <td>10.000</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>PFNA</td>
+      <td>PFNA concentration</td>
+      <td>0.000</td>
+      <td>10e-6g/kg</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.000</td>
+      <td>10.000</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>PFDA</td>
+      <td>PFDA concentration</td>
+      <td>0.000</td>
+      <td>10e-6g/kg</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.000</td>
+      <td>10.000</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>PFBS</td>
+      <td>PFBS concentration</td>
+      <td>0.000</td>
+      <td>10e-6g/kg</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.000</td>
+      <td>10.000</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>PFHxS</td>
+      <td>PFHxS concentration</td>
+      <td>0.000</td>
+      <td>10e-6g/kg</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.000</td>
+      <td>10.000</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="Raw-WWT-Solids">
+<h2>Raw WWT Solids<a class="headerlink" href="#Raw-WWT-Solids" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Raw-WWT-Solids-Properties">
+<h3>Raw WWT Solids Properties<a class="headerlink" href="#Raw-WWT-Solids-Properties" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[(</span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;Dictonary_Name&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;RawWWTSolids&#39;</span><span class="p">)</span><span class="o">|</span>\
+                            <span class="p">(</span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;Dictonary_Name&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;RawWWTSolids_PFAS&#39;</span><span class="p">)][</span><span class="n">categories</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Parameter Name</th>
+      <th>Parameter Description</th>
+      <th>amount</th>
+      <th>unit</th>
+      <th>uncertainty_type</th>
+      <th>loc</th>
+      <th>scale</th>
+      <th>minimum</th>
+      <th>maximum</th>
+      <th>Reference</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>162</th>
+      <td>bulk_dens</td>
+      <td>Bulk density - wet</td>
+      <td>1000.000000</td>
+      <td>kg/m3</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>163</th>
+      <td>ts_cont</td>
+      <td>Total solids content - wet</td>
+      <td>0.030000</td>
+      <td>kg-TS/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.005000</td>
+      <td>0.050000</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>164</th>
+      <td>VS_cont</td>
+      <td>VS content - dry</td>
+      <td>0.600000</td>
+      <td>kg VS/kg TS</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>165</th>
+      <td>C_cont</td>
+      <td>Organic C content - dry</td>
+      <td>0.500000</td>
+      <td>fraction TS</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>166</th>
+      <td>PFOA</td>
+      <td>PFOA concentration</td>
+      <td>0.140270</td>
+      <td>10e-6g/kg</td>
+      <td>5.0</td>
+      <td>0.140270</td>
+      <td>NaN</td>
+      <td>0.019597</td>
+      <td>0.597097</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>167</th>
+      <td>PFOS</td>
+      <td>PFOS concentration</td>
+      <td>0.551924</td>
+      <td>10e-6g/kg</td>
+      <td>5.0</td>
+      <td>0.551924</td>
+      <td>NaN</td>
+      <td>0.079897</td>
+      <td>1.695097</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>168</th>
+      <td>PFBA</td>
+      <td>PFBA concentration</td>
+      <td>0.022019</td>
+      <td>10e-6g/kg</td>
+      <td>5.0</td>
+      <td>0.022019</td>
+      <td>NaN</td>
+      <td>0.000097</td>
+      <td>0.147097</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>169</th>
+      <td>PFPeA</td>
+      <td>PFPeA concentration</td>
+      <td>0.054850</td>
+      <td>10e-6g/kg</td>
+      <td>5.0</td>
+      <td>0.054850</td>
+      <td>NaN</td>
+      <td>0.000097</td>
+      <td>0.747097</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>170</th>
+      <td>PFHxA</td>
+      <td>PFHxA concentration</td>
+      <td>0.076813</td>
+      <td>10e-6g/kg</td>
+      <td>5.0</td>
+      <td>0.076813</td>
+      <td>NaN</td>
+      <td>0.000097</td>
+      <td>0.339097</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>171</th>
+      <td>PFHpA</td>
+      <td>PFHpA concentration</td>
+      <td>0.013313</td>
+      <td>10e-6g/kg</td>
+      <td>5.0</td>
+      <td>0.013313</td>
+      <td>NaN</td>
+      <td>0.000097</td>
+      <td>0.130297</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>172</th>
+      <td>PFNA</td>
+      <td>PFNA concentration</td>
+      <td>0.056057</td>
+      <td>10e-6g/kg</td>
+      <td>5.0</td>
+      <td>0.056057</td>
+      <td>NaN</td>
+      <td>0.000097</td>
+      <td>0.201397</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>173</th>
+      <td>PFDA</td>
+      <td>PFDA concentration</td>
+      <td>0.232912</td>
+      <td>10e-6g/kg</td>
+      <td>5.0</td>
+      <td>0.232912</td>
+      <td>NaN</td>
+      <td>0.020977</td>
+      <td>2.529097</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>174</th>
+      <td>PFBS</td>
+      <td>PFBS concentration</td>
+      <td>0.018838</td>
+      <td>10e-6g/kg</td>
+      <td>5.0</td>
+      <td>0.018838</td>
+      <td>NaN</td>
+      <td>0.000097</td>
+      <td>0.239197</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>175</th>
+      <td>PFHxS</td>
+      <td>PFHxS concentration</td>
+      <td>0.016175</td>
+      <td>10e-6g/kg</td>
+      <td>5.0</td>
+      <td>0.016175</td>
+      <td>NaN</td>
+      <td>0.000097</td>
+      <td>0.083497</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+</div>
+<div class="section" id="RO-Concentrate">
+<h2>RO Concentrate<a class="headerlink" href="#RO-Concentrate" title="Permalink to this headline">¶</a></h2>
+<p>RO concentrate is produced from RO systems that are used to remove PFAS and other contaminants during the treatment of contaminated water. The following figure shows the potential treatment alternatives for RO concentrate. This material may be directly released to surface water, disposed in a landfill after mixing to absorb free liquid, treated in a WWT plant, injected into a deep well, or treated through supercritical water oxidation (SCWO).</p>
+<div class="section" id="RO-Concentrate-Properties">
+<h3>RO Concentrate Properties<a class="headerlink" href="#RO-Concentrate-Properties" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id7">
+<h4>Assumptions and Limitations<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<p>The PFAS concentration in RO concentrate will vary based on PFAS concentrations in the water stream being treated and the recovery, at which the process operates. Thus, <strong>some user knowledge is important to properly represent this waste stream.</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[(</span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;Dictonary_Name&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;ROConcentrate&#39;</span><span class="p">)</span><span class="o">|</span>\
+                            <span class="p">(</span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;Dictonary_Name&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;ROConcentrate_PFAS&#39;</span><span class="p">)][</span><span class="n">categories</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Parameter Name</th>
+      <th>Parameter Description</th>
+      <th>amount</th>
+      <th>unit</th>
+      <th>uncertainty_type</th>
+      <th>loc</th>
+      <th>scale</th>
+      <th>minimum</th>
+      <th>maximum</th>
+      <th>Reference</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>203</th>
+      <td>density</td>
+      <td>Density</td>
+      <td>1.000000e+00</td>
+      <td>kg/L</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>204</th>
+      <td>ts_cont</td>
+      <td>Total solids content - wet</td>
+      <td>9.000000e-01</td>
+      <td>fraction wet weight</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>205</th>
+      <td>VS_cont</td>
+      <td>VS content - dry</td>
+      <td>9.220000e-01</td>
+      <td>kg VS/kg TS</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>206</th>
+      <td>C_cont</td>
+      <td>Organic C content - dry</td>
+      <td>7.000000e-01</td>
+      <td>fraction TS</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>207</th>
+      <td>PFOA</td>
+      <td>PFOA concentration</td>
+      <td>7.246225e+07</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>208</th>
+      <td>PFOS</td>
+      <td>PFOS concentration</td>
+      <td>1.125292e+08</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>209</th>
+      <td>PFBA</td>
+      <td>PFBA concentration</td>
+      <td>0.000000e+00</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>210</th>
+      <td>PFPeA</td>
+      <td>PFPeA concentration</td>
+      <td>0.000000e+00</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>211</th>
+      <td>PFHxA</td>
+      <td>PFHxA concentration</td>
+      <td>0.000000e+00</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>212</th>
+      <td>PFHpA</td>
+      <td>PFHpA concentration</td>
+      <td>0.000000e+00</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>213</th>
+      <td>PFNA</td>
+      <td>PFNA concentration</td>
+      <td>0.000000e+00</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>214</th>
+      <td>PFDA</td>
+      <td>PFDA concentration</td>
+      <td>0.000000e+00</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>215</th>
+      <td>PFBS</td>
+      <td>PFBS concentration</td>
+      <td>0.000000e+00</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>216</th>
+      <td>PFHxS</td>
+      <td>PFHxS concentration</td>
+      <td>0.000000e+00</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="Spent-GAC">
+<h2>Spent GAC<a class="headerlink" href="#Spent-GAC" title="Permalink to this headline">¶</a></h2>
+<p>PFAS-laden spent granular activated carbon (GAC) is generated when GAC adsorption processes are used to treat water contaminated with PFAS. The following figure shows the management alternatives considered for spent GAC. The GAC can be landfilled, combusted, or thermally reactivated to generate GAC that can be reused for contaminant removal.</p>
+<div class="section" id="Spent-GAC-Properties">
+<h3>Spent GAC Properties<a class="headerlink" href="#Spent-GAC-Properties" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id8">
+<h4>Assumptions and Limitations<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<ol class="arabic simple">
+<li><p>The PFAS concentration in GAC will vary based on PFAS concentrations in the water stream being treated. Thus, <strong>some user knowledge is important to properly represent this waste stream.</strong></p></li>
+<li><p>The default concentrations are based on isotherm data at specified equilibrium concentration of 100 ng/L. These concentrations will vary under different conditions and using site-specific data will be beneficial.</p></li>
+</ol>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[(</span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;Dictonary_Name&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;SpentGAC&#39;</span><span class="p">)</span><span class="o">|</span>\
+                            <span class="p">(</span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;Dictonary_Name&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;SpentGAC_PFAS&#39;</span><span class="p">)][</span><span class="n">categories</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Parameter Name</th>
+      <th>Parameter Description</th>
+      <th>amount</th>
+      <th>unit</th>
+      <th>uncertainty_type</th>
+      <th>loc</th>
+      <th>scale</th>
+      <th>minimum</th>
+      <th>maximum</th>
+      <th>Reference</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>189</th>
+      <td>bulk_dens</td>
+      <td>Bulk density - wet</td>
+      <td>500.000</td>
+      <td>kg/m3</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>190</th>
+      <td>ts_cont</td>
+      <td>Total solids content - wet</td>
+      <td>0.900</td>
+      <td>fraction wet weight</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>191</th>
+      <td>Ash_cont</td>
+      <td>VS content - dry</td>
+      <td>0.078</td>
+      <td>kg VS/kg TS</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.04</td>
+      <td>0.14</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>192</th>
+      <td>C_cont</td>
+      <td>Organic C content - dry</td>
+      <td>0.700</td>
+      <td>fraction TS</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>193</th>
+      <td>PFOA</td>
+      <td>PFOA concentration</td>
+      <td>900.000</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>194</th>
+      <td>PFOS</td>
+      <td>PFOS concentration</td>
+      <td>1500.000</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>195</th>
+      <td>PFBA</td>
+      <td>PFBA concentration</td>
+      <td>0.000</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>196</th>
+      <td>PFPeA</td>
+      <td>PFPeA concentration</td>
+      <td>0.000</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>197</th>
+      <td>PFHxA</td>
+      <td>PFHxA concentration</td>
+      <td>0.000</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>198</th>
+      <td>PFHpA</td>
+      <td>PFHpA concentration</td>
+      <td>0.000</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>199</th>
+      <td>PFNA</td>
+      <td>PFNA concentration</td>
+      <td>0.000</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>200</th>
+      <td>PFDA</td>
+      <td>PFDA concentration</td>
+      <td>0.000</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>201</th>
+      <td>PFBS</td>
+      <td>PFBS concentration</td>
+      <td>0.000</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>202</th>
+      <td>PFHxS</td>
+      <td>PFHxS concentration</td>
+      <td>0.000</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="Spent-Ion-Exchange-Resin-(Spent-IER)">
+<h2>Spent Ion Exchange Resin (Spent IER)<a class="headerlink" href="#Spent-Ion-Exchange-Resin-(Spent-IER)" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Spent-Ion-Exchange-Resin-Properties">
+<h3>Spent Ion Exchange Resin Properties<a class="headerlink" href="#Spent-Ion-Exchange-Resin-Properties" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[(</span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;Dictonary_Name&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;SpentIER&#39;</span><span class="p">)</span><span class="o">|</span>\
+                            <span class="p">(</span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;Dictonary_Name&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;SpentIER_PFAS&#39;</span><span class="p">)][</span><span class="n">categories</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Parameter Name</th>
+      <th>Parameter Description</th>
+      <th>amount</th>
+      <th>unit</th>
+      <th>uncertainty_type</th>
+      <th>loc</th>
+      <th>scale</th>
+      <th>minimum</th>
+      <th>maximum</th>
+      <th>Reference</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>217</th>
+      <td>density</td>
+      <td>Density</td>
+      <td>1.000000e+00</td>
+      <td>kg/L</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>218</th>
+      <td>ts_cont</td>
+      <td>Total solids content - wet</td>
+      <td>9.000000e-01</td>
+      <td>fraction wet weight</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>219</th>
+      <td>VS_cont</td>
+      <td>VS content - dry</td>
+      <td>9.220000e-01</td>
+      <td>kg VS/kg TS</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>220</th>
+      <td>C_cont</td>
+      <td>Organic C content - dry</td>
+      <td>7.000000e-01</td>
+      <td>fraction TS</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>221</th>
+      <td>PFOA</td>
+      <td>PFOA concentration</td>
+      <td>7.246225e+07</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>222</th>
+      <td>PFOS</td>
+      <td>PFOS concentration</td>
+      <td>1.125292e+08</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>223</th>
+      <td>PFBA</td>
+      <td>PFBA concentration</td>
+      <td>0.000000e+00</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>224</th>
+      <td>PFPeA</td>
+      <td>PFPeA concentration</td>
+      <td>0.000000e+00</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>225</th>
+      <td>PFHxA</td>
+      <td>PFHxA concentration</td>
+      <td>0.000000e+00</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>226</th>
+      <td>PFHpA</td>
+      <td>PFHpA concentration</td>
+      <td>0.000000e+00</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>227</th>
+      <td>PFNA</td>
+      <td>PFNA concentration</td>
+      <td>0.000000e+00</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>228</th>
+      <td>PFDA</td>
+      <td>PFDA concentration</td>
+      <td>0.000000e+00</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>229</th>
+      <td>PFBS</td>
+      <td>PFBS concentration</td>
+      <td>0.000000e+00</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>230</th>
+      <td>PFHxS</td>
+      <td>PFHxS concentration</td>
+      <td>0.000000e+00</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+</div>
+<div class="section" id="WWT-Effluent">
+<h2>WWT Effluent<a class="headerlink" href="#WWT-Effluent" title="Permalink to this headline">¶</a></h2>
+<p>The following figure shows the treatment alternatives that were considered for primary and secondary wastewater effluent. The effluent can either be released to surface water or sent to advanced physico-chemical treatment (advance WWT) for PFAS removal.</p>
+<div class="section" id="WWT-Effluent-Properties">
+<h3>WWT Effluent Properties<a class="headerlink" href="#WWT-Effluent-Properties" title="Permalink to this headline">¶</a></h3>
+<p>Existing data on PFAS in wastewater shows that the PFAS concentration will vary between treatment plants based on the source water properties, possible upstream contaminants, and potential treatment options. Therefore, if WWT effluent is the starting material in an analysis it is best for the user to understand the properties of their specific stream to improve their results.</p>
+<div class="section" id="id9">
+<h4>Assumptions and Limitations<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
+<ol class="arabic simple">
+<li><p>While there is data on PFAS in WWT influent and effluent, more research is needed on the fate of PFAS entering WWTPs including their potential transformations.</p></li>
+</ol>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[(</span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;Dictonary_Name&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;WWTEffluent&#39;</span><span class="p">)</span><span class="o">|</span>\
+                            <span class="p">(</span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;Dictonary_Name&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;WWTEffluent_PFAS&#39;</span><span class="p">)][</span><span class="n">categories</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Parameter Name</th>
+      <th>Parameter Description</th>
+      <th>amount</th>
+      <th>unit</th>
+      <th>uncertainty_type</th>
+      <th>loc</th>
+      <th>scale</th>
+      <th>minimum</th>
+      <th>maximum</th>
+      <th>Reference</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>176</th>
+      <td>density</td>
+      <td>Density</td>
+      <td>1.00000</td>
+      <td>kg/L</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>177</th>
+      <td>ts_cont</td>
+      <td>Total solids content - wet</td>
+      <td>0.00003</td>
+      <td>kg-TS/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.000045</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>178</th>
+      <td>C_cont</td>
+      <td>Organic C content - dry</td>
+      <td>0.50000</td>
+      <td>fraction TS</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>179</th>
+      <td>PFOA</td>
+      <td>PFOA concentration</td>
+      <td>0.10000</td>
+      <td>10e-6g/kg</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.500000</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>180</th>
+      <td>PFOS</td>
+      <td>PFOS concentration</td>
+      <td>0.01000</td>
+      <td>10e-6g/kg</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.500000</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>181</th>
+      <td>PFBA</td>
+      <td>PFBA concentration</td>
+      <td>0.00000</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.500000</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>182</th>
+      <td>PFPeA</td>
+      <td>PFPeA concentration</td>
+      <td>0.00000</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.500000</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>183</th>
+      <td>PFHxA</td>
+      <td>PFHxA concentration</td>
+      <td>0.00000</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.500000</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>184</th>
+      <td>PFHpA</td>
+      <td>PFHpA concentration</td>
+      <td>0.00000</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.500000</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>185</th>
+      <td>PFNA</td>
+      <td>PFNA concentration</td>
+      <td>0.00700</td>
+      <td>10e-6g/kg</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.500000</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>186</th>
+      <td>PFDA</td>
+      <td>PFDA concentration</td>
+      <td>0.00300</td>
+      <td>10e-6g/kg</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.500000</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>187</th>
+      <td>PFBS</td>
+      <td>PFBS concentration</td>
+      <td>0.00000</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.500000</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>188</th>
+      <td>PFHxS</td>
+      <td>PFHxS concentration</td>
+      <td>0.00700</td>
+      <td>10e-6g/kg</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.500000</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="WWT-Screen-Rejects">
+<h2>WWT Screen Rejects<a class="headerlink" href="#WWT-Screen-Rejects" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="WWT-Screen-Rejects-Properties">
+<h3>WWT Screen Rejects Properties<a class="headerlink" href="#WWT-Screen-Rejects-Properties" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[(</span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;Dictonary_Name&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;WWTScreenRejects&#39;</span><span class="p">)</span><span class="o">|</span>\
+                            <span class="p">(</span><span class="n">IncomingFlow</span><span class="o">.</span><span class="n">InputData</span><span class="o">.</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;Dictonary_Name&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;WWTScreenRejects_PFAS&#39;</span><span class="p">)][</span><span class="n">categories</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Parameter Name</th>
+      <th>Parameter Description</th>
+      <th>amount</th>
+      <th>unit</th>
+      <th>uncertainty_type</th>
+      <th>loc</th>
+      <th>scale</th>
+      <th>minimum</th>
+      <th>maximum</th>
+      <th>Reference</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>121</th>
+      <td>bulk_dens</td>
+      <td>Bulk density - wet</td>
+      <td>800.000000</td>
+      <td>kg/m3</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>122</th>
+      <td>ts_cont</td>
+      <td>Total solids content - wet</td>
+      <td>0.600000</td>
+      <td>fraction wet weight</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>123</th>
+      <td>C_cont</td>
+      <td>Organic C content - dry</td>
+      <td>0.500000</td>
+      <td>fraction TS</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>124</th>
+      <td>PFOA</td>
+      <td>PFOA concentration</td>
+      <td>0.000000</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>125</th>
+      <td>PFOS</td>
+      <td>PFOS concentration</td>
+      <td>0.297333</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>126</th>
+      <td>PFBA</td>
+      <td>PFBA concentration</td>
+      <td>0.164333</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>127</th>
+      <td>PFPeA</td>
+      <td>PFPeA concentration</td>
+      <td>0.414000</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>128</th>
+      <td>PFHxA</td>
+      <td>PFHxA concentration</td>
+      <td>0.481333</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>129</th>
+      <td>PFHpA</td>
+      <td>PFHpA concentration</td>
+      <td>0.065333</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>130</th>
+      <td>PFNA</td>
+      <td>PFNA concentration</td>
+      <td>0.054333</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>131</th>
+      <td>PFDA</td>
+      <td>PFDA concentration</td>
+      <td>0.176667</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>132</th>
+      <td>PFBS</td>
+      <td>PFBS concentration</td>
+      <td>0.060667</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>133</th>
+      <td>PFHxS</td>
+      <td>PFHxS concentration</td>
+      <td>0.000000</td>
+      <td>10e-6g/kg</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">PFAS SAT</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">Perfluoroalkyl Substances(PFAS) Systems Analysis Tool(SAT)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Getting_started.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../WasteMaterialsProperties.html">Waste Materials Properties</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Waste Materials Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ProcessModels.html">Process Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doc_PFAS_SAT.html">Code Document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">History</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../WasteMaterialsProperties.html">Waste Materials Properties</a><ul>
+      <li>Previous: <a href="../WasteMaterialsProperties.html" title="previous chapter">Waste Materials Properties</a></li>
+      <li>Next: <a href="../ProcessModels.html" title="next chapter">Process Models</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, NORTH CAROLINA STATE UNIVERSITY.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.3.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/Notebooks/WasteMaterials.ipynb.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
