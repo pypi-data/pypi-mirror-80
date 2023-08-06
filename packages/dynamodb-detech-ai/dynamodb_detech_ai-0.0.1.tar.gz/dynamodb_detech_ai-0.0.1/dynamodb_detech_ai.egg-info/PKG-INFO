@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: dynamodb-detech-ai
+Version: 0.0.1
+Summary: DynamoDB utils
+Home-page: https://github.com/detech-ai/Data_Pipelines
+Author: Example Author
+Author-email: j.velez2210@gmail.com
+License: UNKNOWN
+Description: # DynamoDB Package for detech.ai
+        
+        This is a simple package to access Dynamodb.
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown

@@ -1,0 +1,11 @@
+LICENSE
+README.md
+setup.py
+detech_query_pkg/__init__.py
+detech_query_pkg/dynamodb.py
+detech_query_pkg/utils/__init__.py
+detech_query_pkg/utils/dynamodb_utils.py
+dynamodb_detech_ai.egg-info/PKG-INFO
+dynamodb_detech_ai.egg-info/SOURCES.txt
+dynamodb_detech_ai.egg-info/dependency_links.txt
+dynamodb_detech_ai.egg-info/top_level.txt
