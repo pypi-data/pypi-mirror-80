@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: RiotGames
+Version: 1.1.0
+Summary: A Python wrapper for the Riot Games API
+Home-page: https://github.com/Timohiho/RiotGames
+Author: Timo Hirsch-Hoffmann
+Author-email: timohiho@yahoo.com
+License: UNKNOWN
+Description: # RiotGames
+        
+        Implementation of the RiotGames API into python.
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: Microsoft :: Windows :: Windows 10
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
