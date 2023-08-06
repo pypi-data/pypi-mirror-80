@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: DMT-core
+Version: 0.0.3
+Summary: Device Modeling Toolkit
+Home-page: https://gitlab.com/dmt-development/dmt
+Author: M.Mueller, M.Krattenmacher
+Author-email: markus.mueller3@tu-dresden.de, mario.krattenmacher@web.de
+License: GNU GPLv3+
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Operating System :: OS Independent
+Requires-Dist: scipy
+Requires-Dist: numpy
+Requires-Dist: scikit-rf
+Requires-Dist: reprint
+Requires-Dist: pandas
+Requires-Dist: numba
+Requires-Dist: h5py
+Requires-Dist: tables
+Requires-Dist: cython
+Requires-Dist: pyqtgraph
+Requires-Dist: matplotlib
+Requires-Dist: PySide2
+Requires-Dist: pylint
+Requires-Dist: pytest
+Requires-Dist: pylatex
+Requires-Dist: pylatexenc
+Requires-Dist: pint
+Requires-Dist: pyyaml
+Requires-Dist: pypandoc
+Requires-Dist: more-itertools
+
+UNKNOWN
+
+
