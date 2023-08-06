@@ -1,0 +1,15 @@
+Metadata-Version: 1.1
+Name: pi_dht_webthing
+Version: 0.0.4
+Summary: A web connected DHT sensor reading temperature and humidity values on Raspberry Pi
+Home-page: https://github.com/grro/pi_dht_webthing
+Author: Gregor Roth
+Author-email: gregor.roth@web.de
+License: MIT
+Description: UNKNOWN
+Keywords: webthings,dht,dht11,dht22,home automation,humidity sensor,temperature sensor,raspberry
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Development Status :: 3 - Alpha
