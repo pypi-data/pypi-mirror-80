@@ -1,0 +1,31 @@
+Metadata-Version: 2.1
+Name: wmflib
+Version: 0.0.2
+Summary: Generic library for common tasks in the WMF production infrastructure
+Home-page: https://github.com/wikimedia/operations-software-pywmflib
+Author: Luca Toscano
+Author-email: ltoscano@wikimedia.org
+License: GPLv3+
+Description: wmflib - Generic Python library for common tasks in the WMF production infrastructure
+        -------------------------------------------------------------------------------------
+        
+        wmflib is a library containing code that can be used in scripts or more complex
+        applications to avoid re-inventing the wheel every time. The goal of the library
+        is also to offer code that does not need any special privilege to be run (as opposed
+        to other libraries like Spicerack for example).
+Keywords: wmf,automation
+Platform: GNU/Linux
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Environment :: Console
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: POSIX :: BSD
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: System :: Systems Administration
+Description-Content-Type: text/x-rst
+Provides-Extra: tests
