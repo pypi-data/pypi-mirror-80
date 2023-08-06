@@ -1,0 +1,17 @@
+MANIFEST.in
+README.md
+setup.cfg
+setup.py
+docassemble/__init__.py
+docassemble.helloworld2.egg-info/PKG-INFO
+docassemble.helloworld2.egg-info/SOURCES.txt
+docassemble.helloworld2.egg-info/dependency_links.txt
+docassemble.helloworld2.egg-info/namespace_packages.txt
+docassemble.helloworld2.egg-info/not-zip-safe
+docassemble.helloworld2.egg-info/top_level.txt
+docassemble/helloworld2/__init__.py
+docassemble/helloworld2/data/questions/hello.yml
+docassemble/helloworld2/data/sources/README.md
+docassemble/helloworld2/data/static/README.md
+docassemble/helloworld2/data/static/globe.svg
+docassemble/helloworld2/data/templates/README.md
