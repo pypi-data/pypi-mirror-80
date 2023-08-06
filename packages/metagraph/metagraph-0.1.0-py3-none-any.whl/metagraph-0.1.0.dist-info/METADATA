@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: metagraph
+Version: 0.1.0
+Summary: Graph algorithm solver across multiple hardware backends
+Home-page: UNKNOWN
+Author: Anaconda, Inc.
+Author-email: UNKNOWN
+License: UNKNOWN
+Platform: UNKNOWN
+Requires-Dist: importlib-metadata
+Requires-Dist: numpy
+Requires-Dist: scipy
+Requires-Dist: donfig
+Requires-Dist: dask
+Requires-Dist: networkx
+Requires-Dist: pandas
+Requires-Dist: python-louvain
+Requires-Dist: nest-asyncio
+
+UNKNOWN
+
+
