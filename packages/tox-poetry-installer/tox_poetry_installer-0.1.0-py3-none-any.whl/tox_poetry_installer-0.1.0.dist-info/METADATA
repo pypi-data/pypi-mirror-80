@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: tox-poetry-installer
+Version: 0.1.0
+Summary: Tox plugin to install Tox environment dependencies using the Poetry backend and lockfile
+Home-page: https://github.com/enpaul/tox-poetry-installer/
+License: MIT
+Keywords: tox,poetry,plugin
+Author: Ethan Paul
+Author-email: e@enp.one
+Requires-Python: >=3.6,<4.0
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Plugins
+Classifier: Framework :: tox
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Requires-Dist: poetry (>=1.0.0,<2.0.0)
+Requires-Dist: tox (>=2.3.0,<4.0.0)
+Project-URL: Repository, https://github.com/enpaul/tox-poetry-installer/
