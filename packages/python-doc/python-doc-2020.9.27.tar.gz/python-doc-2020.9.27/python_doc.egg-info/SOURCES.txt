@@ -1,0 +1,10 @@
+MANIFEST.in
+README.md
+pyproject.toml
+setup.py
+python_doc.egg-info/PKG-INFO
+python_doc.egg-info/SOURCES.txt
+python_doc.egg-info/dependency_links.txt
+python_doc.egg-info/entry_points.txt
+python_doc.egg-info/requires.txt
+python_doc.egg-info/top_level.txt
