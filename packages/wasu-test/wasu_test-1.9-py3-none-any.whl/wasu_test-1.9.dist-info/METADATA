@@ -1,0 +1,24 @@
+Metadata-Version: 2.1
+Name: wasu-test
+Version: 1.9
+Summary: The Wasu Auto TestFrameWork
+Home-page: UNKNOWN
+Author: XiaoDong Chen
+Author-email: chenxiaodong@wasu.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+Requires-Dist: PyYAML (>=5.3)
+Requires-Dist: PyMySql (>=0.10.1)
+Requires-Dist: xlrd (>=1.2.0)
+Requires-Dist: requests (==2.24.0)
+Requires-Dist: selenium (==3.141.0)
+Requires-Dist: python-benedict (==0.19.0)
+Requires-Dist: Appium-Python-Client (==1.02)
+
+通过继承线程Thread类是实现多线程
+
+
