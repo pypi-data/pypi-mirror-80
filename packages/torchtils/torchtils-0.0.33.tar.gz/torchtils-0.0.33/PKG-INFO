@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: torchtils
+Version: 0.0.33
+Summary: Utility of vision methods
+Home-page: https://torchtils.surge.sh
+Author: Saandeep Aathreya
+Author-email: saandeepa.93@gmail.com
+License: UNKNOWN
+Description: 
+            Torchtils is a utility library with implementations of primitive algorithms
+            as well as intricate scholarly papers, all in PyTorch
+            
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
