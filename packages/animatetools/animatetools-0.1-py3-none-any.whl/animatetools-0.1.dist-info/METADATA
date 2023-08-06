@@ -1,0 +1,95 @@
+Metadata-Version: 2.1
+Name: animatetools
+Version: 0.1
+Summary: Tools for creating text animations.
+Home-page: https://github.com/good-coder-bad-boy/animatetools
+Author: GoodCoderBadBoy
+Author-email: 
+License: UNKNOWN
+Platform: UNKNOWN
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+
+# animatetools
+Tools for creating text animations.
+
+## examples:
+### animatetools:
+```python
+import animatetools
+
+animatetools.animateframes(["frame1", "frame2", "frame3"], 2, 1, file=open("test.py", "w"))
+
+# plays each frame in frames argument at 2 fps, repeating once.
+```
+prints the following to the file "test.py":
+```python
+{"remove all the text from the terminal and move the cursor up to the top line"}
+frame1
+{"wait 0.5 seconds"}
+{"remove all the text from the terminal and move the cursor up to the top line"}
+frame2
+{"wait 0.5 seconds"}
+{"remove all the text from the terminal and move the cursor up to the top line"}
+frame3
+{"wait 0.5 seconds"}
+{"remove all the text from the terminal and move the cursor up to the top line"}
+frame1
+{"wait 0.5 seconds"}
+{"remove all the text from the terminal and move the cursor up to the top line"}
+frame2
+{"wait 0.5 seconds"}
+{"remove all the text from the terminal and move the cursor up to the top line"}
+frame3
+{"wait 0.5 seconds"}
+```
+`{"wait 0.5 seconds"}`
+and
+`{"remove all the text from the terminal and move the cursor up to the top line"}`
+don't actually get printed, they just represent what the program does.
+### typeout:
+```python
+import animatetools
+
+animatetools.typeout("Print this out one character at a time", "This too", 5, sep=". ", end=". ", file=open("test.py", "w"), flush=True)
+
+# prints out all the values ("Print this out one character at a time" and "This too") at 5 characters per second to the file "test.py",
+# seperating each value with ". " and ending in ". ". After each character it by default; flushes the stream so the text doesn't come in
+# chunks.
+```
+prints the following to the file "test.py":
+```python
+P{"wait 0.2 seconds"}r{"wait 0.2 seconds"}i{"wait 0.2 seconds"}n{"wait 0.2 seconds"}t{"wait 0.2 seconds"}
+{"wait 0.2 seconds"}t{"wait 0.2 seconds"}h{"wait 0.2 seconds"}i{"wait 0.2 seconds"}s{"wait 0.2 seconds"}
+{"wait 0.2 seconds"}o{"wait 0.2 seconds"}u{"wait 0.2 seconds"}t{"wait 0.2 seconds"} {"wait 0.2 seconds"}o
+{"wait 0.2 seconds"}n{"wait 0.2 seconds"}e{"wait 0.2 seconds"} {"wait 0.2 seconds"}c{"wait 0.2 seconds"}h
+{"wait 0.2 seconds"}a{"wait 0.2 seconds"}r{"wait 0.2 seconds"}a{"wait 0.2 seconds"}c{"wait 0.2 seconds"}t
+{"wait 0.2 seconds"}e{"wait 0.2 seconds"}r{"wait 0.2 seconds"} {"wait 0.2 seconds"}a{"wait 0.2 seconds"}t
+{"wait 0.2 seconds"} {"wait 0.2 seconds"}a{"wait 0.2 seconds"} {"wait 0.2 seconds"}t{"wait 0.2 seconds"}i
+{"wait 0.2 seconds"}m{"wait 0.2 seconds"}e{"wait 0.2 seconds"}.{"wait 0.2 seconds"} {"wait 0.2 seconds"}T
+{"wait 0.2 seconds"}h{"wait 0.2 seconds"}i{"wait 0.2 seconds"}s{"wait 0.2 seconds"} {"wait 0.2 seconds"}
+{"wait 0.2 seconds"}t{"wait 0.2 seconds"}o{"wait 0.2 seconds"}o{"wait 0.2 seconds"}.{"wait 0.2 seconds"}
+```
+`{"wait 0.2 seconds"}`
+doesn't actually get printed, it just represents what the program does.
+### clearconsole
+```python
+import animatetools, time
+
+print("hi")
+time.sleep(1)
+clearconsole()
+
+# print "hi", wait one second and then clear the console.
+```
+results in:
+```python
+hi
+{"wait 1 second"}
+{"remove all the text from the terminal and move the cursor up to the top line"}
+```
+`{"wait 1 seconds"}`
+and
+`{"remove all the text from the terminal and move the cursor up to the top line"}`
+don't actually get printed, they just represent what the program does.
+
