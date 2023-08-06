@@ -1,0 +1,18 @@
+{% load templates %}
+<table cellspacing="1"> 
+    <tbody>
+        {% for object in object_list %}
+        {% if object.history_date %}
+            {% include "genviews/history_row.html" %}
+        {% endif %}
+
+        <tr class="">
+            {% for fieldref, fieldtext in fields %}
+            <td data-field="html_{{ fieldref }}">
+                {% include settings.LIST_FIELDMAP %}
+            </td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

@@ -1,0 +1,17 @@
+{% extends settings.LAYOUT.main_layout %}
+{% load i18n %}
+{% load templates %}
+
+{% block content %}
+
+<h1>{{ object }}</h1>
+
+{% include 'genviews/templates/form.html' %}
+
+<hr />
+
+<h2>Historique des actions</h2>
+
+{% include 'genviews/history_global.html' with object_list=history %}
+
+{% endblock %}
