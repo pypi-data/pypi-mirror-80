@@ -1,0 +1,2 @@
+class TestRailException(Exception):
+    pass
