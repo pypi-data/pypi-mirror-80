@@ -1,0 +1,13 @@
+README.md
+pyproject.toml
+setup.cfg
+setup.py
+logship/__init__.py
+logship/const.py
+logship/emitter.py
+logship/handlers.py
+py_logging_logship.egg-info/PKG-INFO
+py_logging_logship.egg-info/SOURCES.txt
+py_logging_logship.egg-info/dependency_links.txt
+py_logging_logship.egg-info/requires.txt
+py_logging_logship.egg-info/top_level.txt
