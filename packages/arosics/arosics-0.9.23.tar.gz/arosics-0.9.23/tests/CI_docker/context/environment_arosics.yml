@@ -1,0 +1,50 @@
+name: arosics
+
+channels: &id1
+  - conda-forge
+
+dependencies:
+  - python=3.*.*
+  - pip
+  - pyqt
+  - numpy
+  - gdal
+  - scikit-image
+  - pyproj>2.2.0
+  - geopandas
+  - pandas
+  - ipython
+  - shapely
+  - matplotlib
+  - basemap
+  - holoviews
+  - bokeh
+  - pykrige
+  - cmocean
+
+  - pip:
+    - dicttoxml
+    - jsmin
+    - cerberus
+    - pyprind
+    - pint
+    - iso8601
+    - tqdm
+    - mpld3
+    - sphinx-argparse
+    - six
+    - spectral
+    - folium>=0.6.0
+    - geojson
+    - flake8
+    - pycodestyle
+    - pylint
+    - pydocstyle
+    - nose
+    - nose2
+    - nose-htmloutput
+    - coverage
+    - rednose
+    - plotly
+    - geoarray>=0.8.30
+    - py_tools_ds>=0.15.0
