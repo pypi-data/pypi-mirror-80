@@ -1,0 +1,4 @@
+[console_scripts]
+pubtools-iib-add-bundles = pubtools.iib.iib_ops:add_bundles_main
+pubtools-iib-remove-operators = pubtools.iib.iib_ops:remove_operators_main
+
