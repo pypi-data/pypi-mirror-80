@@ -1,0 +1,21 @@
+include *.txt
+recursive-include tests *.py
+
+# added by check_manifest.py
+recursive-include src *.csv
+# added by check_manifest.py
+include *.lock
+include Pipfile
+
+# added by check_manifest.py
+recursive-include docs *.bat
+recursive-include docs *.py
+recursive-include docs *.rst
+recursive-include docs Makefile
+
+# added by check_manifest.py
+recursive-include docs *.rst
+
+# added by check_manifest.py
+recursive-include vbelts *.csv
+recursive-include vbelts *.py
