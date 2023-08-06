@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: colusa
+Version: 0.3.0
+Summary: Render website to ebook to make it easier to read on devices
+Home-page: http://github.com/huuhoa/colusa
+Author: Huu Hoa NGUYEN
+Author-email: huuhoa@gmail.com
+License: MIT
+Platform: UNKNOWN
+Requires-Dist: beautifulsoup4 (==4.9.1)
+Requires-Dist: certifi (==2020.6.20)
+Requires-Dist: chardet (==3.0.4)
+Requires-Dist: idna (==2.10)
+Requires-Dist: requests (==2.24.0)
+Requires-Dist: soupsieve (==2.0.1)
+Requires-Dist: urllib3 (==1.25.10)
+Requires-Dist: python-dateutil (~=2.8.1)
+
+UNKNOWN
+
+
