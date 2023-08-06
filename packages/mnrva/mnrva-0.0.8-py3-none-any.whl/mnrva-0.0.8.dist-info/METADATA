@@ -1,0 +1,46 @@
+Metadata-Version: 2.1
+Name: mnrva
+Version: 0.0.8
+Summary: Minerva Libraries
+Home-page: https://mnrva.io
+Author: Brian Salazar
+Author-email: brian@mnrva.io
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+Requires-Dist: certifi (==2019.11.28)
+Requires-Dist: elasticsearch (==7.5.1)
+Requires-Dist: PyMySQL (==0.9.3)
+Requires-Dist: redis (==3.4.1)
+Requires-Dist: urllib3 (==1.24.3)
+
+minerva
+=======
+
+Minerva Libraries
+
+Usage
+-----
+
+Installation
+------------
+
+Requirements
+------------
+
+Compatibility
+-------------
+
+Licence
+-------
+
+Authors
+-------
+
+`minerva` was written by `Brian Salazar <brian@mnrva.io>`_.
+
+
