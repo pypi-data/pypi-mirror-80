@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: MirahezeBots-jsonparser
+Version: 1.0.0
+Summary: jsonparser utility for MirahezeBots
+Home-page: https://github.com/MirahezeBots/jsonparser
+Author: MirahezeBot Contributors
+Author-email: bots@miraheze.org
+License: Eiffel Forum License, version 2
+Description: # jsonparser
+        JSON parsing utility for python that loads JSON code into a cache
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: Eiffel Forum License (EFL)
+Classifier: License :: OSI Approved :: Eiffel Forum License
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
