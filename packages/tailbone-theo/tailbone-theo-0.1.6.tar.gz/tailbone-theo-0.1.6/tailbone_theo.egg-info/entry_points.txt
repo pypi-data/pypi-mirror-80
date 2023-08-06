@@ -1,0 +1,6 @@
+[paste.app_factory]
+main = theo.web.app:main
+
+[rattail.config.extensions]
+theo = theo.config:TheoConfig
+
