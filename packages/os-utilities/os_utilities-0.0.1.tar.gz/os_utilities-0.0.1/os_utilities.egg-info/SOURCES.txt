@@ -1,0 +1,17 @@
+LICENSE
+MANIFEST.in
+README.md
+settings.ini
+setup.py
+nbdev_template/__init__.py
+nbdev_template/_nbdev.py
+nbdev_template/utils.py
+os_utilities/__init__.py
+os_utilities/_nbdev.py
+os_utilities/utils.py
+os_utilities.egg-info/PKG-INFO
+os_utilities.egg-info/SOURCES.txt
+os_utilities.egg-info/dependency_links.txt
+os_utilities.egg-info/entry_points.txt
+os_utilities.egg-info/not-zip-safe
+os_utilities.egg-info/top_level.txt
