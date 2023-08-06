@@ -1,0 +1,15 @@
+MANIFEST.in
+README.md
+requirements.txt
+setup.py
+felzenszwalb_segmentation/__init__.py
+felzenszwalb_segmentation/disjoint_set.py
+felzenszwalb_segmentation/segmentation.py
+felzenszwalb_segmentation.egg-info/PKG-INFO
+felzenszwalb_segmentation.egg-info/SOURCES.txt
+felzenszwalb_segmentation.egg-info/dependency_links.txt
+felzenszwalb_segmentation.egg-info/requires.txt
+felzenszwalb_segmentation.egg-info/top_level.txt
+felzenszwalb_segmentation/utils/__init__.py
+felzenszwalb_segmentation/utils/filter_utils.py
+felzenszwalb_segmentation/utils/utils.py
