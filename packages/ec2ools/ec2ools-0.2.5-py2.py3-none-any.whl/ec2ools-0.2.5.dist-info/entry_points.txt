@@ -1,0 +1,5 @@
+[console_scripts]
+ec2ools = ec2ools.cli:main
+ec2ools-asg = ec2ools.cli_asg:main
+ec2ools-eip = ec2ools.cli_eip:main
+
