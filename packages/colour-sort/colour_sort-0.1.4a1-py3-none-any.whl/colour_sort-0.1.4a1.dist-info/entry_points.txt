@@ -1,0 +1,3 @@
+[console_scripts]
+colour = colour_sort:cli.run
+
