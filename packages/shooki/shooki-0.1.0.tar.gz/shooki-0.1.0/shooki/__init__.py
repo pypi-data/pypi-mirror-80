@@ -1,0 +1,17 @@
+from shooki.shooki import tag_maker
+
+html = tag_maker('html')
+head = tag_maker('head')
+title = tag_maker('title')
+link = tag_maker('link')
+script = tag_maker('script')
+body = tag_maker('body')
+div = tag_maker('div')
+h1 = tag_maker('h1')
+h2 = tag_maker('h2')
+h3 = tag_maker('h3')
+h4 = tag_maker('h4')
+h5 = tag_maker('h5')
+h6 = tag_maker('h6')
+p = tag_maker('p')
+img = tag_maker('img')
