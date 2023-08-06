@@ -1,0 +1,12 @@
+Jinja2
+SQLAlchemy
+flask-mqtt
+flask==1.1.2
+keyring
+pika
+pykka
+python-dotenv
+pyyaml
+requests==2.23.0
+requests_toolbelt==0.9.1
+tabulate
