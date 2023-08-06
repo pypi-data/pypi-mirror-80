@@ -1,0 +1,60 @@
+Metadata-Version: 2.1
+Name: omron-2jcie-bu01
+Version: 0.1.0
+Summary: API for OMRON 2JCIE-BU01 Environment Sensor
+Home-page: https://github.com/nobrin/omron-2jcie-bu01
+Author: Nobuo Okazaki
+Author-email: nobrin@biokids.org
+License: MIT
+Description: 
+        Module and sample code for obtaining data with OMRON 2JCIE-BU01 Environment
+        Sensor by Python. The codes work with Python 3.6 and above. This module supports
+        USB serial communication and BLE. This module depends on pySerial(serial
+        communication) and Bleak(BLE).
+        
+        Example::
+        
+            # Obtain sensing data via serial communication
+            from omron_2jcie_bu01 import Omron2JCIE_BU01
+            sensor = Omron2JCIE_BU01.serial("/dev/ttyUSB0") # Linux
+            sensor = Omron2JCIE_BU01.serial("COM5")         # Windows
+            devinfo = sensor.info()
+            data = sensor.latest_data_long()
+        
+            # Obtain sensing data via BLE communication
+            # Read latest data with connection
+            from omron_2jcie_bu01 import Omron2JCIE_BU01
+            sensor = Omron2JCIE_BU01.ble("AA:BB:CC:DD:EE:FF")
+            data1 = sensor.latest_sensing_data()
+            data2 = sensor.latest_calculation_data()
+        
+            # Read latest data by scan
+            def on_scan(data):
+                print("SCAN", data)
+        
+            # Advertising mode: 0x01 (Passive)
+            sensor.scan(on_scan, scantime=3)
+        
+            # Advertising mode: 0x03 (Active)
+            sensor.scan(on_scan, scantime=3, active=True)
+        
+            # Notify sensing data
+            def on_notify(sender, tpl):
+                print(f"{sender} {tpl}")
+        
+            sensor.start_notify(0x5012, on_notify)
+            sensor.start_notify(0x5013, on_notify)
+            sensor.sleep(5)
+            sensor.stop_notify(0x5012)
+            sensor.stop_notify(0x5013)
+        
+Platform: any
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Topic :: Home Automation
+Classifier: Topic :: System :: Hardware
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Provides-Extra: ble
