@@ -1,0 +1,14 @@
+CHANGELOG.txt
+LICENSE.txt
+MANIFEST.in
+README.txt
+setup.py
+pypattern/__init__.py
+pypattern.egg-info/PKG-INFO
+pypattern.egg-info/SOURCES.txt
+pypattern.egg-info/dependency_links.txt
+pypattern.egg-info/top_level.txt
+pypattern/Capital_letters/__init__.py
+pypattern/Numbers/__init__.py
+pypattern/Small_letters/__init__.py
+pypattern/Special_characters/__init__.py
