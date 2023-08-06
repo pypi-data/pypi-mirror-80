@@ -1,0 +1,12 @@
+LICENSE
+MANIFEST.in
+README.md
+setup.cfg
+setup.py
+dynamodb_tools/__init__.py
+dynamodb_tools/json_utils.py
+dynamodb_tools.egg-info/PKG-INFO
+dynamodb_tools.egg-info/SOURCES.txt
+dynamodb_tools.egg-info/dependency_links.txt
+dynamodb_tools.egg-info/requires.txt
+dynamodb_tools.egg-info/top_level.txt
