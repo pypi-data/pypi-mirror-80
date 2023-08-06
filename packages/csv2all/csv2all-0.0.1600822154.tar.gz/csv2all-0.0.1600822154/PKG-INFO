@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: csv2all
+Version: 0.0.1600822154
+Summary: Memory constrained CSV to JSON and XML converter
+Home-page: https://github.com/daniel-dona/csv2all
+Author: Daniel Doña Álvarez
+Author-email: daniel.dona@xnor.ga
+License: Apache 2.0
+Description: # csv2json-lm
+        Memory constrained CSV to JSON converter
+        
+        ## Usage
+        
+        `python3 -m csv2all -f json -i file.csv -o file.json`
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
