@@ -1,0 +1,10 @@
+Metadata-Version: 2.1
+Name: bssapi-schemas
+Version: 0.1.6
+Summary: Схемы BSS
+Author: Anton Rastyazhenko
+Author-email: rastyazhenko.anton@gmail.com
+Requires-Python: >=3.8,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: pydantic (>=1.6.1,<2.0.0)
