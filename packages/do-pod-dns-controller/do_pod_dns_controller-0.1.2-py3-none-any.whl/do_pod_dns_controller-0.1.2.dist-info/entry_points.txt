@@ -1,0 +1,3 @@
+[console_scripts]
+do-pod-dns-controller = do_pod_dns_controller.controller:main
+
