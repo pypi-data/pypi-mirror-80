@@ -1,0 +1,4 @@
+
+    [console_scripts]
+    gitlab-release=src.cli:cli
+    
