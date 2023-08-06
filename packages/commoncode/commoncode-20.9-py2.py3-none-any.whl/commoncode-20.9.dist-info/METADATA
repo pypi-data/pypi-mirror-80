@@ -1,0 +1,32 @@
+Metadata-Version: 2.1
+Name: commoncode
+Version: 20.9
+Summary: UNKNOWN
+Home-page: UNKNOWN
+Author: nexB. Inc. and others
+Author-email: info@aboutcode.org
+License: Apache-2.0
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Topic :: Software Development
+Classifier: Topic :: Utilities
+Requires-Dist: future (>=0.16.0)
+Requires-Dist: text-unidecode (<2.0,>=1.0)
+Requires-Dist: saneyaml
+Requires-Dist: Beautifulsoup4 (<5.0.0,>=4.0.0)
+Requires-Dist: click (>=6.0.0)
+Requires-Dist: intbitset (<3.0,>=2.3.0)
+Requires-Dist: backports.os (==0.1.1) ; python_version < "3"
+
+commoncode
+==========
+A set of common functions and utilities for handling various things like paths, dates,
+files and hashes
+
+
