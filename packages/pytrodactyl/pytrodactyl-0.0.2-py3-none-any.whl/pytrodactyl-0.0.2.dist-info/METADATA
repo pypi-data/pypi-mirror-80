@@ -1,0 +1,66 @@
+Metadata-Version: 2.1
+Name: pytrodactyl
+Version: 0.0.2
+Summary: An API Wrapper for the Pterodactyl Panel.
+Home-page: https://github.com/INfoUpgraders/pytrodactyl
+Author: INfoUpgraders
+License: MIT
+Project-URL: Documentation, https://pytrodactyl.readthedocs.io/en/latest/
+Project-URL: Issue tracker, https://github.com/INfoUpgraders/pytrodactyl/issues
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Intended Audience :: Developers
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Topic :: Internet
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Utilities
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: requests (>=2.20.0)
+Provides-Extra: docs
+Requires-Dist: sphinx (==1.8.5) ; extra == 'docs'
+Requires-Dist: sphinxcontrib-trio (==1.1.1) ; extra == 'docs'
+Requires-Dist: sphinxcontrib-websupport ; extra == 'docs'
+
+
+# pytrodactyl
+![https://discord.gg/74VkcwV](https://discord.com/api/guilds/712539689638428713/embed.png) ![https://pypi.python.org/pypi/pytrodactyl]( https://img.shields.io/pypi/v/pytrodactyl.svg) ![https://pypi.python.org/pypi/pytrodactyl](https://img.shields.io/pypi/pyversions/pytrodactyl.svg)
+
+An API Wrapper for the Pterodactyl Panel.
+
+## Features
+- Created using requests via api
+- Customizable
+- Optimized for speed
+
+## Installing
+**Python 3.6 or higher is required**
+
+To install the library, you can just run the following command:
+```sh
+# Linux/macOS
+python3 -m pip install -U pytrodactyl
+
+# Windows
+py -3 -m pip install -U pytrodactyl
+```
+
+## Examples
+
+
+## Links
+- [Documentation](https://pytrodactyl.readthedocs.io/en/latest/)
+- [Official Discord Server](https://discord.gg/74VkcwV)
+- [PyPi](https://pypi.org/project/pytrodactyl/)
+
+## Contact & Support
+- You can contact me on Discord at `INfoUpgraders#0001`
+- [Official Support Server](https://discord.gg/Uebz9GX)
+
+
