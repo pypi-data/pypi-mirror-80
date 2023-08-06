@@ -1,0 +1,3 @@
+[console_scripts]
+ttproto-cli = ttproto.__main__:TTProtoCLI
+
