@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: PyABI-QUADRABLE
+Version: 0.42.0
+Summary: PyABI verion Quadrable an authenticated multi-version database. It is implemented as a sparse binary merkle tree with compact partial-tree proofs.
+Home-page: https://github.com/PyABI/PyABI_QUADRABLE
+Author: Scott McCallum (https github.com scott91e1)
+Author-email: 262464@195387.com
+License: UNKNOWN
+Description: # ðŸ‘» C++ PyABI
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
