@@ -1,0 +1,4 @@
+[console_scripts]
+bdrmapit = scripts.bdrmapit:main
+traceparser = scripts.traceparser:main
+
