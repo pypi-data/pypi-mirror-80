@@ -1,0 +1,15 @@
+LICENSE
+MANIFEST.in
+setup.py
+solomon/__init__.py
+solomon.egg-info/PKG-INFO
+solomon.egg-info/SOURCES.txt
+solomon.egg-info/dependency_links.txt
+solomon.egg-info/entry_points.txt
+solomon.egg-info/requires.txt
+solomon.egg-info/top_level.txt
+solomon/base/ViewController.swift
+solomon/tmpl/Contract.tmpl
+solomon/tmpl/Model.tmpl
+solomon/tmpl/Presenter.tmpl
+solomon/tmpl/UIViewController.tmpl
