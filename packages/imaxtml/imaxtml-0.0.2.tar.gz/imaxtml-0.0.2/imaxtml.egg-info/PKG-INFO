@@ -1,0 +1,22 @@
+Metadata-Version: 1.2
+Name: imaxtml
+Version: 0.0.2
+Summary: IMAXT Machine Learning Tools
+Home-page: https://github.com/IMAXT/imaxtml
+Author: Eduardo Gonzalez Solares
+Author-email: eglez@ast.cam.ac.uk
+License: GNU General Public License v3
+Download-URL: https://github.com/IMAXT/imaxtml/archive/v0.0.2.tar.gz
+Description: # IMAXT Machine Learning
+        
+        IMAXT Machine Learning
+Keywords: imaxt,ml
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.6
+Requires-Python: >=3
