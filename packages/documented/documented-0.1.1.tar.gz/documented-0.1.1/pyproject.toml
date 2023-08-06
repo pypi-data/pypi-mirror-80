@@ -1,0 +1,49 @@
+[build-system]
+requires = ["poetry>=1.0"]
+build-backend = "poetry.masonry.api"
+
+
+[tool.poetry]
+name = "documented"
+version = "0.1.1"
+description = "Templated docstrings for Python classes."
+license = "MIT"
+
+authors = ["Anatoly Scherbakov <altaisoft@gmail.com>"]
+
+readme = "README.md"
+
+repository = "https://github.com/python-platonic/documented"
+
+keywords = []
+
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "Operating System :: OS Independent",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+[tool.poetry.dependencies]
+python = "^3.6"
+
+[tool.poetry.dev-dependencies]
+mypy = "^0.782"
+
+wemake-python-styleguide = "^0.14"
+flake8-pytest-style = "^1.3"
+
+safety = "^1.9"
+
+pytest = "^5.4"
+pytest-cov = "^2.10"
+pytest-randomly = "^3.4"
+
+sphinx = "^2.2"
+sphinx-autodoc-typehints = "^1.10"
+m2r = "^0.2"
+tomlkit = "^0.7"
+
+# Python 3.6 does not have dataclasses in standard library, but we use them for testing.
+# We have to install the backport library.
+dataclasses = { version = "0.7", python = "3.6.*" }
