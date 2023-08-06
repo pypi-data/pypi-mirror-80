@@ -1,0 +1,3 @@
+[console_scripts]
+pieoffice = pieoffice.__main__:main
+
