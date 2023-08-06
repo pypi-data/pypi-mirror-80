@@ -1,0 +1,64 @@
+Metadata-Version: 2.1
+Name: testplates
+Version: 1.0.0a1
+Summary: Testing Templates
+Home-page: https://github.com/kprzybyla/testplates
+Author: Krzysztof Przybyła
+License: UNKNOWN
+Platform: linux
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Natural Language :: English
+Classifier: Operating System :: POSIX
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Topic :: Software Development :: Testing
+Classifier: Topic :: Software Development :: Libraries
+Requires-Python: ~= 3.8
+Requires-Dist: resultful (==1.0.0a2)
+Requires-Dist: mypy (~=0.782)
+Provides-Extra: black
+Requires-Dist: black (==20.8b1) ; extra == 'black'
+Provides-Extra: deploy
+Requires-Dist: wheel ; extra == 'deploy'
+Requires-Dist: twine ; extra == 'deploy'
+Provides-Extra: docs
+Requires-Dist: sphinx (~=3.0.0) ; extra == 'docs'
+Requires-Dist: sphinx-rtd-theme (~=0.4.3) ; extra == 'docs'
+Requires-Dist: sphinx-autodoc-typehints (~=1.10.0) ; extra == 'docs'
+Provides-Extra: lint
+Requires-Dist: flake8 (~=3.8.0) ; extra == 'lint'
+Provides-Extra: mypy
+Requires-Dist: mypy (~=0.782) ; extra == 'mypy'
+Requires-Dist: pytest (~=6.0.1) ; extra == 'mypy'
+Requires-Dist: hypothesis (~=5.36.0) ; extra == 'mypy'
+Provides-Extra: test
+Requires-Dist: pytest (~=6.0.1) ; extra == 'test'
+Requires-Dist: pytest-cov (~=2.8.0) ; extra == 'test'
+Requires-Dist: hypothesis (~=5.36.0) ; extra == 'test'
+
+Testing Templates
+-----------------
+
+.. image:: https://img.shields.io/badge/python-3.8-blue.svg
+
+Testing Templates. Under development.
+
+
+Bugs/Requests
+-------------
+
+Please use the `GitHub issue tracker`_ to submit bugs or request features.
+
+.. _`GitHub issue tracker`: https://github.com/kprzybyla/testplates/issues
+
+
+License
+-------
+
+Copyright Krzysztof Przybyła, 2020.
+
+Distributed under the terms of the `MIT`_ license.
+
+.. _`MIT`: https://github.com/kprzybyla/testplates/blob/master/LICENSE
+
+
