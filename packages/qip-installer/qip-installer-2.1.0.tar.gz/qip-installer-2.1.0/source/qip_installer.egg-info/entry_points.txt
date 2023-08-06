@@ -1,0 +1,3 @@
+[console_scripts]
+qip = qip.__main__:main
+
