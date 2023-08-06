@@ -1,0 +1,31 @@
+Metadata-Version: 2.1
+Name: micro-lisp-tool-amotzek
+Version: 1.0.7
+Summary: Run and upload Lisp programs and use the read-eval-print loop with ESP32 boards flashed with Micro Lisp
+Home-page: https://bitbucket.org/amotzek/micro-lisp-tool/src/master/
+Author: Andreas Motzek
+Author-email: andreas-motzek@t-online.de
+License: UNKNOWN
+Description: # Micro Lisp Tool #
+        
+        This command line tool is for ESP32 boards that are flashed with Micro Lisp.
+        The tool allows to run and upload Lisp programs to the boards and use the read-eval-print loop.
+        
+        ## Running files ##
+        
+        python -m micro_lisp_tool run <file name> --port <com port>
+        
+        ## Uploading files ##
+        
+        python -m micro_lisp_tool put <file name> --port <com port>
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Embedded Systems
+Classifier: Topic :: Terminals :: Serial
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
