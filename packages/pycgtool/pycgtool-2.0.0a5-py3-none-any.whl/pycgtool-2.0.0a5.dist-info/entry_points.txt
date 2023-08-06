@@ -1,0 +1,3 @@
+[console_scripts]
+pycgtool=pycgtool.__main__:main
+
