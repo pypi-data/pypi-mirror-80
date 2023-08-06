@@ -1,0 +1,13 @@
+MANIFEST.in
+README-jp.rst
+README.rst
+requirements.txt
+setup.py
+sundir/__init__.py
+sundir/sun_dir_calc.py
+sundir.egg-info/PKG-INFO
+sundir.egg-info/SOURCES.txt
+sundir.egg-info/dependency_links.txt
+sundir.egg-info/entry_points.txt
+sundir.egg-info/requires.txt
+sundir.egg-info/top_level.txt
