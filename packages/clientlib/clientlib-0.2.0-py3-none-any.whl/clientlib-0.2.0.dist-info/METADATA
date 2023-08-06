@@ -1,0 +1,32 @@
+Metadata-Version: 2.1
+Name: clientlib
+Version: 0.2.0
+Summary: HTTP API client framework
+Home-page: https://github.com/pmatigakis/clientlib
+Author: Panagiotis Matigakis
+Author-email: pmatigakis@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Software Development :: Libraries
+Description-Content-Type: text/markdown
+Requires-Dist: requests (<3.0.0,>=2.18.4)
+Requires-Dist: marshmallow (<4.0.0,>=3.0.0)
+
+[![Build Status](https://travis-ci.org/pmatigakis/clientlib.svg?branch=develop)](https://travis-ci.org/pmatigakis/clientlib)
+[![codecov](https://codecov.io/gh/pmatigakis/clientlib/branch/develop/graph/badge.svg)](https://codecov.io/gh/pmatigakis/clientlib)
+
+clientlib is a framework that allows the creation of HTTP API clients with only a
+few lines of code that declare the payload, response schemas and the urls of the
+endpoints.
+
+Checkout the source code from `https://github.com/pmatigakis/clientlib` and read
+the scripts in the `examples` folder for instructions on how to use clientlib.
+
