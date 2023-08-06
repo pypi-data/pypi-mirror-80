@@ -1,0 +1,6 @@
+[console_scripts]
+turb=turbulette.core.management.cli:cli
+
+[pytest11]
+turbulette=turbulette.test.pytest_plugin
+
