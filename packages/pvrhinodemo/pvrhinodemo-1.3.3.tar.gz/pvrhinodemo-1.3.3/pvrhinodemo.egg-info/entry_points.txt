@@ -1,0 +1,4 @@
+[console_scripts]
+pvrhino_demo_file = pvrhinodemo.rhino_demo_file:main
+pvrhino_demo_mic = pvrhinodemo.rhino_demo_mic:main
+
