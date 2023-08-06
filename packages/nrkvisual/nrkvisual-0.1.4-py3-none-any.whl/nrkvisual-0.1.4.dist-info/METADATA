@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: nrkvisual
+Version: 0.1.4
+Summary: 
+Author: mjaquier
+Author-email: mjaquier@mjaquier.xyz
+Requires-Python: >=3.8,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: chardet (>=3.0.4,<4.0.0)
+Requires-Dist: matplotlib (>=3.3.2,<4.0.0)
+Requires-Dist: numpy (>=1.19.2,<2.0.0)
+Requires-Dist: pandas (>=1.1.2,<2.0.0)
+Requires-Dist: xlrd (>=1.2.0,<2.0.0)
