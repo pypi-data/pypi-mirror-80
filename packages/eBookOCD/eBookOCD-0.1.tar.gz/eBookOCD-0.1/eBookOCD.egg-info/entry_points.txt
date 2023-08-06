@@ -1,0 +1,3 @@
+[console_scripts]
+ebookocd = ebookocd.__main__:main
+
