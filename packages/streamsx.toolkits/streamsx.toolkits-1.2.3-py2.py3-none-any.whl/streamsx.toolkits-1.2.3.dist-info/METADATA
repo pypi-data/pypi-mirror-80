@@ -1,0 +1,33 @@
+Metadata-Version: 2.0
+Name: streamsx.toolkits
+Version: 1.2.3
+Summary: Utility functions for IBM Streams topology applications
+Home-page: https://github.com/IBMStreams/streamsx.toolkits
+Author: IBM Streams @ github.com
+Author-email: hegermar@de.ibm.com
+License: Apache License - Version 2.0
+Keywords: streams,ibmstreams,streaming,analytics,streaming-analytics,toolkits
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Requires-Dist: pyJKS (==19.0)
+Requires-Dist: pyOpenSSL (==19.0)
+Requires-Dist: streamsx (>=1.12.10)
+Requires-Dist: wget
+
+Overview
+========
+
+Provides utility functions to work with SPL toolkits, for example for use in a Python Notebook.
+
+
+Documentation
+=============
+
+* `streamsx.toolkits package documentation <http://streamsxtoolkits.readthedocs.io/>`_
+
+
