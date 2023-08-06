@@ -1,0 +1,63 @@
+{% load i18n %}
+{% load templates %}
+
+<div class="hist-row">
+    <div>
+    </div>
+    <div>
+        {% trans 'Utilisateur' %}
+    </div>
+    <div>
+        {% trans 'Objet' %}
+    </div>
+</div>
+
+<br />
+
+{% for hist in object_list %}
+<div class="hist-row">
+    <div class="
+    {% if hist.action == 'NE' %}
+    hist-add
+    {% elif hist.action == 'ED' %}
+    hist-edit
+    {% elif hist.action == 'DE' %}
+    hist-delete
+    {% endif %}
+    "></div>
+
+    <div>
+        <div>
+            <a href="{% url 'profile' hist.user.pk %}">
+                {{ hist.user }}
+            </a>
+        </div>
+        <div class="info">{{ hist.date |date:'d/m/Y'}}</div>
+        <div class="info">{{ hist.date |date:'H:i:s'}}</div>
+
+        {% if hist.changeReason  %}
+        <div class='important'>{{ hist.changeReason }}</div>
+        {% endif %}
+    </div>
+    
+    <div>
+        <div>
+            <a href="{{ hist.history_object.instance.get_absolute_url }}">
+                {{ hist.history_object.instance.history.most_recent }}
+            </a>
+            ({{ hist.history_object.instance | to_class_name }})
+        </div>
+        {% for change in hist.get_changes %}
+        <div class = 'hist-change-row'> 
+            <div class='hist-field'>{{ change.field }} : </div> 
+            <div class='hist-old'>{{ change.old }}</div>
+            <div class='hist-arrow'>
+                <i class="fas fa-arrow-right"></i>
+            </div>
+            <div class='hist-new'>{{ change.new }}</div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+{% endfor %}

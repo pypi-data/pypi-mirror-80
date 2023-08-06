@@ -1,0 +1,39 @@
+{% extends settings.LAYOUT.main_layout %}
+{% load i18n %}
+
+{% block content %}
+<div class="heading-flex">
+
+  <h1>
+    {{ object }}
+    {% if fields %}
+    <div class="subheading">
+      <ul>
+        {% for field in fields %}
+        <li>
+            {% include settings.DETAIL_FIELDMAP %}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+  </h1>
+
+  {% for href, faclass, aclass, data in detail_menu %}
+    <a href = "{{ href }}" 
+       class = "{{ aclass }}"
+       {% for field, value in data %}
+           data-{{field}}="{{value}}"
+       {% endfor %}
+    >
+        <i class="fas {{ faclass }}"></i>
+    </a>
+  {% endfor %}
+
+</div>
+
+{% if html %}
+    {% include html %}
+{% endif %}
+
+{% endblock %}

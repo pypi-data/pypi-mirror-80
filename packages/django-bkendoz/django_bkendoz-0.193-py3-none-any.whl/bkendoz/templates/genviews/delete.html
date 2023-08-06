@@ -1,0 +1,25 @@
+{% extends layout_data.main_layout %}
+{% load i18n %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    <h2>{% trans "Etes vous sûr de vouloir supprimer" %} <strong>{{ object }}</strong> ?</h2>
+    <ul class="btn-list">
+        <li>
+            <button class="btn-submit" type="submit">{% trans "Confirmer" %}</button>
+        </li>
+        <li>
+            <a href="{{ object.get_absolute_url }}">
+                <button class="btn-cancel" type="button">{% trans "Annuler" %}</button>
+            </a>
+        </li>
+    </ul>
+</form>
+
+
+{% if html %}
+    {% include html %}
+{% endif %}
+
+{% endblock content %}

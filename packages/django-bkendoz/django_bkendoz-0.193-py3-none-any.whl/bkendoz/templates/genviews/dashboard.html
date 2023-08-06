@@ -1,0 +1,29 @@
+{% extends settings.LAYOUT.main_layout %}
+{% load i18n %}
+
+{% block content %}
+
+<div class="tile-cont">
+    <div class="tile-row">
+
+        {% for model, model_dict in models.items %}
+        <div class="tile-double-column">
+           <div class="list-cont" id="list-1">
+                <div class="heading-flex">
+                   <h1>{{ model_dict.title }}</h1>
+                   {% for link, fa in model_dict.menu %}
+                   <a href="{% url link %}">
+                       <i class="fas {{ fa }}"></i>
+                   </a>
+                   {% endfor %}
+                </div>
+                {% include model_dict.html with fields=model_dict.fields object_list=model_dict.list  %}
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+
+
+{% endblock %}
