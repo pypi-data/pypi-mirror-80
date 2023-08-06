@@ -1,0 +1,3 @@
+[console_scripts]
+qbittorrent-exporter = qbittorrent_exporter.exporter:main
+
