@@ -1,0 +1,31 @@
+attrs>=19.2
+hepunits>=1.2.0
+
+[:python_version < "3.4"]
+enum34>=1.1
+
+[:python_version < "3.5"]
+typing>=3.7
+
+[:python_version < "3.7"]
+importlib_resources>=1.0
+
+[all]
+check-manifest>=0.39
+black==19.10b0
+
+[all:python_version > "3.4"]
+pandas
+
+[dev]
+check-manifest>=0.39
+black==19.10b0
+
+[dev:python_version > "3.4"]
+pandas
+
+[test]
+pytest
+
+[test:python_version > "3.4"]
+pandas
