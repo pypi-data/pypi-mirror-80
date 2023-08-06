@@ -1,0 +1,3 @@
+[console_scripts]
+ssnapshot = ssnapshot.command_line:main
+
