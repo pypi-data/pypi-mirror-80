@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Name: pytm
+Version: 1.1.2
+Summary: A Pythonic framework for threat modeling
+License: MIT
+Author: pytm Team
+Requires-Python: >=3.8,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: pydal (>=20200714.1,<20200714.2)
