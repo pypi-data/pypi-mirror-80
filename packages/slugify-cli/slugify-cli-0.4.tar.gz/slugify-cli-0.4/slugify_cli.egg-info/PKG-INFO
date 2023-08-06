@@ -1,0 +1,40 @@
+Metadata-Version: 2.1
+Name: slugify-cli
+Version: 0.4
+Summary: Slugify CLI Tool
+Home-page: https://github.com/ermalism/slugify-cli
+Author: ermalism
+Author-email: ismajliermal@gmail.com
+License: WTFPL
+Download-URL: https://github.com/ermalism/slugify-cli/archive/v0.4.tar.gz
+Description: # Slugify CLI 0.4
+        
+        **Installation**
+        
+        ```
+        pip install slugify-cli
+        ```
+        
+        **Help Page** 
+        
+        ```
+        usage: slugify-cli [-h] [--keep-letter-case] [--separator SEPARATOR]
+                           [--decamelize]
+                           [string_to_slugify [string_to_slugify ...]]
+        
+        Slugify string CLI tool
+        
+        positional arguments:
+          string_to_slugify     string to slugify
+        
+        optional arguments:
+          -h, --help            show this help message and exit
+          --keep-letter-case    keep letter case as it is
+          --separator SEPARATOR
+                                specify separator, default is - (hyphen)
+          --decamelize          separate string in camelCase words
+        ```
+        
+Platform: UNKNOWN
+Requires-Python: >3.5.2
+Description-Content-Type: text/markdown
