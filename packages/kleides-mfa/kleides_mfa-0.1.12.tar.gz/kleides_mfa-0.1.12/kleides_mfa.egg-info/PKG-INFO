@@ -1,0 +1,222 @@
+Metadata-Version: 1.2
+Name: kleides-mfa
+Version: 0.1.12
+Summary: Interface components to configure and manage multi factor authentication
+Home-page: UNKNOWN
+Author: Harm Geerts
+Author-email: hgeerts@osso.nl
+License: GNU General Public License v3
+Description: =============================================
+        |KLEIDES| Kleides Multi Factor Authentication
+        =============================================
+        
+        .. image:: https://img.shields.io/pypi/v/kleides_mfa.svg
+                :target: https://pypi.python.org/pypi/kleides_mfa
+        
+        .. image:: https://travis-ci.org/ossobv/kleides-mfa.svg
+                :target: https://travis-ci.org/ossobv/kleides-mfa
+                :alt: Continuous Integration Status
+        
+        .. image:: https://readthedocs.org/projects/kleides-mfa/badge/?version=latest
+                :target: https://kleides-mfa.readthedocs.io/en/latest/?badge=latest
+                :alt: Documentation Status
+        
+        Kleides MFA provides a convenient interface to configure, manage and
+        authenticate with multi factor authentication for `django-otp`_ plugins.
+        Currently supported plugins are:
+        
+        * Static devices included in django-otp.
+        * TOTP devices included in django-otp.
+        * Yubikey devices using `django-otp-yubikey`_.
+        * U2F devices using `django-otp-u2f`_.
+        
+        .. _django-otp: https://github.com/django-otp/django-otp
+        .. _django-otp-yubikey: https://github.com/django-otp/django-otp-yubikey
+        .. _django-otp-u2f: https://github.com/ossobv/django-otp-u2f
+        
+        .. image:: assets/interface-w-bg.png?raw=true
+            :alt: Overview of Kleides MFA authentication method interface.
+        
+        * Free software: GNU General Public License v3
+        * Documentation: https://kleides-mfa.readthedocs.io.
+        
+        
+        Install
+        -------
+        
+        .. code-block::
+        
+           pip install kleides-mfa
+        
+        Add `kleides_mfa` to your `INSTALLED_APPS` with your preferred
+        django-otp plugins::
+        
+           INSTALLED_APPS = [
+               ...
+               'django_otp',
+               'django_otp.plugins.otp_static',
+               'django_otp.plugins.otp_totp',
+               'kleides_mfa',
+               ...
+           ]
+        
+        Add `kleides_mfa.middleware.KleidesAuthenticationMiddleware` to the
+        `MIDDLEWARE` setting after the Django AuthenticationMiddleware::
+        
+           MIDDLEWARE = [
+               ...
+               'django.contrib.auth.middleware.AuthenticationMiddleware',
+               'kleides_mfa.middleware.KleidesAuthenticationMiddleware',
+               ...
+           ]
+        
+        Do not use `django_otp.middleware.OTPMiddleware` with Kleides MFA as it
+        will not be able to load the OTP device.
+        
+        Set the LOGIN_URL::
+        
+            LOGIN_URL = 'kleides_mfa:login'
+        
+        Include `kleides_mfa.urls` in your urlpatterns::
+        
+           urlpatterns = [
+               path('', include('kleides_mfa.urls')),
+           ]
+        
+        
+        Extending Kleides MFA
+        ---------------------
+        
+        You can add or replace authentication methods using the
+        `kleides_mfa.registry.KleidesMfaPluginRegistry`. Documentation
+        is currently lacking but you can check the implementation of currently
+        supported django-otp plugins to get a basic idea.
+        
+        In short for devices using django-otp:
+        
+        * Register the django-otp model with the registration and verification
+          form in the apps ready.
+        * Device registration should be contained in the `create_form_class`.
+        * Device verification should be contained in the `verify_form_class`.
+        
+        
+        .. |KLEIDES| image:: assets/kleides-icon.png
+            :alt: Kleides
+        
+        
+        =======
+        History
+        =======
+        
+        0.1.12 (2020-09-23)
+        -------------------
+        
+        * Add python 3.8 and Django 3.1 to support matrix.
+        * Test unprintable token input.
+        * Remove future statements.
+        * Remove non-optional PATCH_USER setting.
+        
+        
+        0.1.11 (2020-06-11)
+        -------------------
+        
+        * Fix unset plugin attribute on PermissionDeniedError.
+        
+        
+        0.1.10 (2020-06-09)
+        -------------------
+        
+        * Restart authentication when accessing a bad device.
+        
+        
+        0.1.9 (2020-04-15)
+        ------------------
+        
+        * Replace deprecated Django-3.0 functions.
+        * Fix session cleanup after login as different user.
+        
+        
+        0.1.8 (2019-12-10)
+        ------------------
+        
+        * Escape the next parameter in the "Other method" device selection.
+        * Show device name in verification form.
+        
+        
+        0.1.7 (2019-11-18)
+        ------------------
+        
+        * Actually remove django-crispy-forms as a hard dependency.
+        * Add function to get the authentication method of a logged in user.
+        
+        
+        0.1.6 (2019-11-14)
+        ------------------
+        
+        * Preserve next parameter when redirecting to verification url.
+        
+        
+        0.1.5 (2019-11-14)
+        ------------------
+        
+        * Use cloudflare for all external script/style.
+        * Remove crispy forms as a hard dependency.
+        
+        
+        0.1.4 (2019-11-12)
+        ------------------
+        
+        * Add setting to disable patching of the User models.
+        * Patch AnonymousUser to share the properties of the User model.
+        * Add configurable redirect for users that login without 2 step
+          authentication.
+        * Fix 2 step test login when another user was logged in.
+        
+        
+        0.1.3 (2019-11-07)
+        ------------------
+        
+        * Cleanup plugin button/table alignment.
+        * Add Yubikey plugin for `django-otp-yubikey`_.
+        * Only patch AdminSite when admin is installed.
+        * Remove python 2 compatibility classifiers.
+        
+        .. _django-otp-yubikey: https://github.com/django-otp/django-otp-yubikey
+        
+        
+        0.1.2 (2019-11-06)
+        ------------------
+        
+        * Improve and fix documentation.
+        
+        
+        0.1.1 (2019-11-04)
+        ------------------
+        
+        * Set defaul device name if omitted from POST data.
+        
+        
+        0.1.0 (2019-11-04)
+        ------------------
+        
+        * First release on PyPI.
+        
+Keywords: kleides_mfa
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Environment :: Web Environment
+Classifier: Natural Language :: English
+Classifier: Framework :: Django
+Classifier: Framework :: Django :: 2.2
+Classifier: Framework :: Django :: 3.0
+Classifier: Framework :: Django :: 3.1
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Topic :: System :: Systems Administration :: Authentication/Directory
+Requires-Python: >=3.5, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*
