@@ -1,0 +1,23 @@
+Metadata-Version: 1.1
+Name: felicette
+Version: 0.1.12
+Summary: Satellite imagery for dummies.
+Home-page: https://github.com/plant99/felicette
+Author: Shivashis Padhi
+Author-email: shivashispadhi@gmail.com
+License: MIT
+Description: 
+        Satellite imagery for dummies.
+        
+Platform: any
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: MacOS
+Classifier: Operating System :: Unix
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
