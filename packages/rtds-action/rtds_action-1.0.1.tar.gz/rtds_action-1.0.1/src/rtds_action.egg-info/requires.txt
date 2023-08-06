@@ -1,0 +1,17 @@
+sphinx>=1.7.5
+setuptools>=40.6.0
+setuptools_scm
+requests
+
+[dev]
+pre-commit
+black
+isort
+toml
+flake8
+jupytext
+jupyterlab
+pep517
+twine
+
+[docs]

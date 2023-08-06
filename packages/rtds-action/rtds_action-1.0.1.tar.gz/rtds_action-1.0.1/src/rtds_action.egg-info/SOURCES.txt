@@ -1,0 +1,16 @@
+.gitattributes
+LICENSE
+MANIFEST.in
+README.md
+pyproject.toml
+setup.py
+compiled/index.js
+src/rtds_action/__init__.py
+src/rtds_action/rtds_action.py
+src/rtds_action/rtds_action_version.py
+src/rtds_action.egg-info/PKG-INFO
+src/rtds_action.egg-info/SOURCES.txt
+src/rtds_action.egg-info/dependency_links.txt
+src/rtds_action.egg-info/not-zip-safe
+src/rtds_action.egg-info/requires.txt
+src/rtds_action.egg-info/top_level.txt
