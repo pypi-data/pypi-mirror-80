@@ -1,0 +1,29 @@
+Metadata-Version: 2.1
+Name: pyshipupdate
+Version: 0.0.1
+Summary: self-update applications frozen/installed by pyship
+Home-page: https://github.com/jamesabel/pyshipupdate
+Author: abel
+Author-email: j@abel.co
+License: MIT License
+Download-URL: https://github.com/jamesabel/pyshipupdate
+Keywords: freezer,installer,ship
+Platform: UNKNOWN
+Description-Content-Type: text/markdown
+Requires-Dist: balsa
+Requires-Dist: requests
+Requires-Dist: attrs
+Requires-Dist: typeguard
+Requires-Dist: semver
+Requires-Dist: python-dateutil
+Requires-Dist: boto3
+Requires-Dist: awsimple
+
+
+# pyshipupdate
+self-update applications frozen/installed by pyship
+
+Use this for `pyship` apps themselves, i.e. put `pyshipupdate` in the app dependencies and
+put `pyship` itself in the app's dev requirements (only).
+
+
