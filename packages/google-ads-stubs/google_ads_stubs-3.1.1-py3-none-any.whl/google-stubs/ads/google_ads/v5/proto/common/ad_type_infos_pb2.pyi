@@ -1,0 +1,32 @@
+from typing import Any
+
+DESCRIPTOR: Any
+TextAdInfo: Any
+ExpandedTextAdInfo: Any
+CallOnlyAdInfo: Any
+ExpandedDynamicSearchAdInfo: Any
+HotelAdInfo: Any
+ShoppingSmartAdInfo: Any
+ShoppingProductAdInfo: Any
+ShoppingComparisonListingAdInfo: Any
+GmailAdInfo: Any
+GmailTeaser: Any
+DisplayCallToAction: Any
+ProductImage: Any
+ProductVideo: Any
+ImageAdInfo: Any
+VideoBumperInStreamAdInfo: Any
+VideoNonSkippableInStreamAdInfo: Any
+VideoTrueViewInStreamAdInfo: Any
+VideoOutstreamAdInfo: Any
+VideoTrueViewDiscoveryAdInfo: Any
+VideoAdInfo: Any
+VideoResponsiveAdInfo: Any
+ResponsiveSearchAdInfo: Any
+LegacyResponsiveDisplayAdInfo: Any
+AppAdInfo: Any
+AppEngagementAdInfo: Any
+LegacyAppInstallAdInfo: Any
+ResponsiveDisplayAdInfo: Any
+LocalAdInfo: Any
+DisplayUploadAdInfo: Any

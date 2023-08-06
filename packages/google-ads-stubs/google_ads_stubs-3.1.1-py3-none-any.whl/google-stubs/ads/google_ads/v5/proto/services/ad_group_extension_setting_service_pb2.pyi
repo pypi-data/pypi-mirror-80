@@ -1,0 +1,8 @@
+from typing import Any
+
+DESCRIPTOR: Any
+GetAdGroupExtensionSettingRequest: Any
+MutateAdGroupExtensionSettingsRequest: Any
+AdGroupExtensionSettingOperation: Any
+MutateAdGroupExtensionSettingsResponse: Any
+MutateAdGroupExtensionSettingResult: Any

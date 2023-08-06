@@ -1,0 +1,10 @@
+from typing import Any
+
+DESCRIPTOR: Any
+ListMerchantCenterLinksRequest: Any
+ListMerchantCenterLinksResponse: Any
+GetMerchantCenterLinkRequest: Any
+MutateMerchantCenterLinkRequest: Any
+MerchantCenterLinkOperation: Any
+MutateMerchantCenterLinkResponse: Any
+MutateMerchantCenterLinkResult: Any

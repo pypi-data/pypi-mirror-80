@@ -1,0 +1,26 @@
+from typing import Any
+
+DESCRIPTOR: Any
+GetKeywordPlanRequest: Any
+MutateKeywordPlansRequest: Any
+KeywordPlanOperation: Any
+MutateKeywordPlansResponse: Any
+MutateKeywordPlansResult: Any
+GenerateForecastCurveRequest: Any
+GenerateForecastCurveResponse: Any
+GenerateForecastTimeSeriesRequest: Any
+GenerateForecastTimeSeriesResponse: Any
+GenerateForecastMetricsRequest: Any
+GenerateForecastMetricsResponse: Any
+KeywordPlanCampaignForecast: Any
+KeywordPlanAdGroupForecast: Any
+KeywordPlanKeywordForecast: Any
+KeywordPlanCampaignForecastCurve: Any
+KeywordPlanMaxCpcBidForecastCurve: Any
+KeywordPlanMaxCpcBidForecast: Any
+KeywordPlanWeeklyTimeSeriesForecast: Any
+KeywordPlanWeeklyForecast: Any
+ForecastMetrics: Any
+GenerateHistoricalMetricsRequest: Any
+GenerateHistoricalMetricsResponse: Any
+KeywordPlanKeywordHistoricalMetrics: Any
