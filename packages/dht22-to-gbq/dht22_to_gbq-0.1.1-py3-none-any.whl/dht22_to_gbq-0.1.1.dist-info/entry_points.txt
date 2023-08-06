@@ -1,0 +1,3 @@
+[console_scripts]
+dht_to_gbq=dht_to_gbq.__init__:main
+
