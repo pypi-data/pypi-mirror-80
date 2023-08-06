@@ -1,0 +1,303 @@
+Limiting_sets:
+  - &region1
+    id: region1
+    name: us.east
+    max_vms: 20
+    max_cores: 0
+  - &region1_z1
+    id: region1_z1
+    name: us.east_a
+    max_vms: 20
+    max_cores: 0
+
+Instance_classes:
+  - &m3large_z1
+    id: m3large_z1
+    name: reserved m3.large in us.east_a
+    limiting_sets: [*region1_z1]
+    max_vms: 20
+    price: 7
+    time_unit: h
+    is_reserved: true
+    cores: 1.0
+  - &m4xlarge_r1
+    id: m4xlarge_r1
+    name: ondemand m4.xlarge in us.east
+    limiting_sets: [*region1]
+    max_vms: 10
+    price: 10
+    time_unit: h
+    is_reserved: false
+    cores: 1.0
+
+Apps:
+  - &a0
+    id: a0
+    name: Web server
+  - &a1
+    id: a1
+    name: Database
+
+Workloads:
+  - &ltwp0
+    id: ltwp0
+    description: rph to the web server
+    values: [201, 203, 180, 220, 190, 211, 199, 204, 500, 200]
+    app: *a0
+    time_unit: h
+    intra_slot_distribution: uniform
+  - &ltwp1
+    id: ltwp1
+    description: rph to the database
+    values: [2010, 2035, 1807, 2202, 1910, 2110, 1985, 2033, 5050, 1992]
+    app: *a1
+    time_unit: h
+    intra_slot_distribution: uniform
+
+Performances:
+  - &example_perfs
+    id: example_perfs
+    time_unit: h
+    values:
+      - instance_class: *m3large_z1
+        app: *a0
+        value: 12.0
+      - instance_class: *m3large_z1
+        app: *a1
+        value: 500.0
+      - instance_class: *m4xlarge_r1
+        app: *a0
+        value: 44.0
+      - instance_class: *m4xlarge_r1
+        app: *a1
+        value: 1800.0
+Problems:
+  - &example1
+    id: example1
+    name: Example problem
+    workloads: [*ltwp0, *ltwp1]
+    instance_classes: [*m3large_z1, *m4xlarge_r1]
+    performances: *example_perfs
+    description: Nondescript
+
+Solutions:
+- &solution_i_example1
+  id: solution_i_example1
+  problem: *example1
+  solving_stats:
+    creation_time: 0.0028474777936935425
+    solving_time: 0.10478705167770386
+    optimal_cost: 1450.0
+    algorithm:
+      malloovia:
+        gcd: true
+        status: optimal
+        gcd_multiplier: 1.0
+        frac_gap: null
+        max_seconds: null
+        lower_bound: null
+  reserved_allocation:
+    instance_classes: [*m3large_z1]
+    vms_number: [16.0]
+  allocation:
+    instance_classes: [*m3large_z1, *m4xlarge_r1]
+    apps: [*a0, *a1]
+    workload_tuples: [[201, 2010], [203, 2035], [180, 1807], [220, 2202], [190, 1910], [211, 2110], [199, 1985], [204, 2033], [500, 5050], [200, 1992]]
+    repeats: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    vms_number:
+      - # 0 -> (201, 2010)
+        - [(13.0, 2.0)]
+        - [(3.0, 1.0)]
+      - # 1 -> (203, 2035)
+        - [(13.0, 2.0)]
+        - [(3.0, 1.0)]
+      - # 2 -> (180, 1807)
+        - [(13.0, 1.0)]
+        - [(3.0, 1.0)]
+      - # 3 -> (220, 2202)
+        - [(13.0, 2.0)]
+        - [(3.0, 1.0)]
+      - # 4 -> (190, 1910)
+        - [(13.0, 1.0)]
+        - [(3.0, 1.0)]
+      - # 5 -> (211, 2110)
+        - [(13.0, 2.0)]
+        - [(3.0, 1.0)]
+      - # 6 -> (199, 1985)
+        - [(13.0, 1.0)]
+        - [(3.0, 1.0)]
+      - # 7 -> (204, 2033)
+        - [(13.0, 2.0)]
+        - [(3.0, 1.0)]
+      - # 8 -> (500, 5050)
+        - [(13.0, 8.0)]
+        - [(3.0, 2.0)]
+      - # 9 -> (200, 1992)
+        - [(13.0, 1.0)]
+        - [(3.0, 1.0)]
+- &solution_phase_ii_example1
+  id: solution_phase_ii_example1
+  problem: *example1
+  previous_phase: *solution_i_example1
+  global_solving_stats:
+    creation_time: 0.0050367433577775955
+    solving_time: 0.05157388001680374
+    optimal_cost: 1390.0
+    status: optimal
+  solving_stats:
+    - # 0 -> (201, 2010)
+      creation_time: 0.001242050901055336
+      solving_time: 0.004598906263709068
+      optimal_cost: 132.0
+      algorithm:
+        malloovia:
+          gcd: false
+          status: optimal
+          gcd_multiplier: 1.0
+          frac_gap: null
+          max_seconds: null
+          lower_bound: null
+    - # 1 -> (203, 2035)
+      creation_time: 0.00041015446186065674
+      solving_time: 0.013822881504893303
+      optimal_cost: 132.0
+      algorithm:
+        malloovia:
+          gcd: false
+          status: optimal
+          gcd_multiplier: 1.0
+          frac_gap: null
+          max_seconds: null
+          lower_bound: null
+    - # 2 -> (180, 1807)
+      creation_time: 0.00040473975241184235
+      solving_time: 0.003921618685126305
+      optimal_cost: 122.0
+      algorithm:
+        malloovia:
+          gcd: false
+          status: optimal
+          gcd_multiplier: 1.0
+          frac_gap: null
+          max_seconds: null
+          lower_bound: null
+    - # 3 -> (220, 2202)
+      creation_time: 0.0004909317940473557
+      solving_time: 0.00475076399743557
+      optimal_cost: 132.0
+      algorithm:
+        malloovia:
+          gcd: false
+          status: optimal
+          gcd_multiplier: 1.0
+          frac_gap: null
+          max_seconds: null
+          lower_bound: null
+    - # 4 -> (190, 1910)
+      creation_time: 0.00042293965816497803
+      solving_time: 0.00438624806702137
+      optimal_cost: 132.0
+      algorithm:
+        malloovia:
+          gcd: false
+          status: optimal
+          gcd_multiplier: 1.0
+          frac_gap: null
+          max_seconds: null
+          lower_bound: null
+    - # 5 -> (211, 2110)
+      creation_time: 0.00041703134775161743
+      solving_time: 0.004043795168399811
+      optimal_cost: 132.0
+      algorithm:
+        malloovia:
+          gcd: false
+          status: optimal
+          gcd_multiplier: 1.0
+          frac_gap: null
+          max_seconds: null
+          lower_bound: null
+    - # 6 -> (199, 1985)
+      creation_time: 0.00041702575981616974
+      solving_time: 0.003980621695518494
+      optimal_cost: 132.0
+      algorithm:
+        malloovia:
+          gcd: false
+          status: optimal
+          gcd_multiplier: 1.0
+          frac_gap: null
+          max_seconds: null
+          lower_bound: null
+    - # 7 -> (204, 2033)
+      creation_time: 0.00040926411747932434
+      solving_time: 0.004247916862368584
+      optimal_cost: 132.0
+      algorithm:
+        malloovia:
+          gcd: false
+          status: optimal
+          gcd_multiplier: 1.0
+          frac_gap: null
+          max_seconds: null
+          lower_bound: null
+    - # 8 -> (500, 5050)
+      creation_time: 0.00041446462273597717
+      solving_time: 0.0038313232362270355
+      optimal_cost: 212.0
+      algorithm:
+        malloovia:
+          gcd: false
+          status: optimal
+          gcd_multiplier: 1.0
+          frac_gap: null
+          max_seconds: null
+          lower_bound: null
+    - # 9 -> (200, 1992)
+      creation_time: 0.0004081409424543381
+      solving_time: 0.003989804536104202
+      optimal_cost: 132.0
+      algorithm:
+        malloovia:
+          gcd: false
+          status: optimal
+          gcd_multiplier: 1.0
+          frac_gap: null
+          max_seconds: null
+          lower_bound: null
+  allocation:
+    instance_classes: [*m3large_z1, *m4xlarge_r1]
+    apps: [*a0, *a1]
+    workload_tuples: [[201, 2010], [203, 2035], [180, 1807], [220, 2202], [190, 1910], [211, 2110], [199, 1985], [204, 2033], [500, 5050], [200, 1992]]
+    repeats: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    vms_number:
+      - # 0 -> (201, 2010)
+        - [(10.0, 2.0)]
+        - [(6.0, 0.0)]
+      - # 1 -> (203, 2035)
+        - [(10.0, 2.0)]
+        - [(6.0, 0.0)]
+      - # 2 -> (180, 1807)
+        - [(12.0, 1.0)]
+        - [(4.0, 0.0)]
+      - # 3 -> (220, 2202)
+        - [(15.0, 1.0)]
+        - [(1.0, 1.0)]
+      - # 4 -> (190, 1910)
+        - [(12.0, 2.0)]
+        - [(4.0, 0.0)]
+      - # 5 -> (211, 2110)
+        - [(15.0, 1.0)]
+        - [(1.0, 1.0)]
+      - # 6 -> (199, 1985)
+        - [(12.0, 2.0)]
+        - [(4.0, 0.0)]
+      - # 7 -> (204, 2033)
+        - [(10.0, 2.0)]
+        - [(6.0, 0.0)]
+      - # 8 -> (500, 5050)
+        - [(9.0, 9.0)]
+        - [(7.0, 1.0)]
+      - # 9 -> (200, 1992)
+        - [(12.0, 2.0)]
+        - [(4.0, 0.0)]
