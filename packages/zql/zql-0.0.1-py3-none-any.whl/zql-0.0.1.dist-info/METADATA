@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: zql
+Version: 0.0.1
+Summary: zQL: a SQL builder based on JSON
+License: MIT
+Author: Anthony Leontiev
+Author-email: ant@devlt.co
+Requires-Python: >=3,<4
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
