@@ -1,0 +1,17 @@
+django
+docker
+elasticsearch
+flake8
+falcon
+mock
+mockupdb
+psycopg2
+pymongo
+pymysql
+pytest
+pytest-django
+redis
+requests
+six
+tornado
+sfx-jaeger-client>=3.13.1b0.dev4
