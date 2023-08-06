@@ -1,0 +1,49 @@
+[tool.poetry]
+name = "cure"
+version = "0.2.2"
+description = "Decorator for fixing naming conventions to keys of keyword arguments - adds trailing underscores to keys using bad naming such as reserved keywords or Python built-ins"
+authors = ["Carl Oscar Aaro <hello@carloscar.com>"]
+homepage = "https://github.com/kalaspuff/cure"
+repository = "https://github.com/kalaspuff/cure"
+keywords = ["cure", "trailing underscore", "single trailing underscore", "single_trailing_underscore", "snake case"]
+readme = "README.md"
+license = "MIT"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Topic :: Software Development",
+    "Topic :: Software Development :: Libraries",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Intended Audience :: Developers",
+    "Typing :: Typed",
+    "License :: OSI Approved :: MIT License"
+]
+
+[tool.poetry.dependencies]
+python = "^3.6 || ^3.7 || ^3.8 || ^3.9"
+decorator = "^4.4.2"
+
+[tool.poetry.dev-dependencies]
+flake8 = "^3.8.3"
+flake8-black = "^0.2.0"
+flake8-isort = "^4.0.0"
+isort = { version = "^5.5.3", extras = ["pyproject"] }
+pytest = "^6.1.0"
+pytest-cov = "^2.10.1"
+black = "=20.8b1"
+mypy = "^0.782"
+codecov = "^2.1.9"
+
+[tool.black]
+line-length = 120
+target_version = ["py36", "py37", "py38"]
+
+[tool.isort]
+profile = "black"
+line_length = 120
+known_first_party = "cure"
+skip = ".mypy_cache,__pycache__"
