@@ -1,0 +1,9 @@
+{
+    "serial": "Serial_NO" , 
+    "dataset": "DatasetID" , 
+    "model":"modelId", 
+    "runnerId":"runnerId",
+    "OUTPUT_URL":"http://127.0.0.1:5000/mock/output",
+    "KC_TOKEN_URL":"http://127.0.0.1:5000/mock/getToken",
+    "CLIENT_ID": "rulSDK"
+    } 	
