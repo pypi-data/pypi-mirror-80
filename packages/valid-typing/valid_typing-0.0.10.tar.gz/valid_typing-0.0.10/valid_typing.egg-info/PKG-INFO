@@ -1,0 +1,25 @@
+Metadata-Version: 1.2
+Name: valid-typing
+Version: 0.0.10
+Summary: A simple typing validator
+Home-page: https://gitlab.com/WilliamWCYoung/valid-typing
+Author: William Young
+Author-email: william.w.c.young@hotmail.com
+License: MIT
+Download-URL: https://gitlab.com/WilliamWCYoung/valid-typing/-/archive/0.0.10/valid-typing-0.0.10.tar.gz
+Description: # Valid Typing
+        
+        
+        ## Developement
+        
+        ```shell script
+        pyenv virtualenv 3.8.0 valid_typing
+        pip install -e .
+        pip install -r ./requirements/development.txt
+        pytest
+        ```
+        
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.8
+Requires-Python: >=3.8
