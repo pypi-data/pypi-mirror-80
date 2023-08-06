@@ -1,0 +1,37 @@
+image: Visual Studio 2019
+platform: x64
+configuration: Release
+
+environment:
+  PYTHON2_EXE: "C:\\Python27\\python.exe"
+  matrix:
+    - ARCH: "x86"
+    - ARCH: "x64"
+
+init:
+  - ECHO %ARCH%
+
+install:
+  # checkout git sub-modules
+  - git submodule update --init --recursive
+
+build: false
+
+test_script:
+  # build skia.dll and place .zip archive inside dist/ folder
+  - mkdir dist
+  - "%PYTHON2_EXE% build_skia.py --target-cpu %ARCH% --shared-lib --archive-file dist\\libskia-win-%ARCH%.zip"
+  - dir /s /b dist\*.zip
+
+artifacts:
+  # archive the generated archive in the ci.appveyor.com build report
+  - path: dist\*.zip
+
+deploy:
+  provider: GitHub
+  auth_token:
+    secure: wjpQf8LbNL/qb2paDV1Rl3hYKs80Q3gevByv6cXlBN5M54Eh/OgJEC4QV27iywfy
+  draft: false
+  prerelease: false
+  on:
+    APPVEYOR_REPO_TAG: true
