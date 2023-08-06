@@ -1,0 +1,37 @@
+Metadata-Version: 2.1
+Name: marshmallow-pyfields
+Version: 0.5.1
+Summary: Automatic generation of `marshmallow` schemas from classes using `pyfields`.
+Home-page: https://github.com/smarie/python-marshmallow-pyfields
+Author: Sylvain MARIE
+Author-email: sylvain.marie@se.com
+License: BSD 3-Clause
+Download-URL: https://github.com/smarie/python-marshmallow-pyfields/tarball/0.5.1
+Keywords: marshmallow pyfields field class serialization rest json api marshal marshalling deserialization validation schema
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Description-Content-Type: text/markdown
+Requires-Dist: pyfields
+Requires-Dist: marshmallow
+Requires-Dist: marshmallow-dataclass
+
+# marshmallow-pyfields
+
+[![Python versions](https://img.shields.io/pypi/pyversions/marshmallow-pyfields.svg)](https://pypi.python.org/pypi/marshmallow-pyfields/) [![Build Status](https://travis-ci.org/smarie/python-marshmallow-pyfields.svg?branch=master)](https://travis-ci.org/smarie/python-marshmallow-pyfields) [![Tests Status](https://smarie.github.io/python-marshmallow-pyfields/junit/junit-badge.svg?dummy=8484744)](https://smarie.github.io/python-marshmallow-pyfields/junit/report.html) [![codecov](https://codecov.io/gh/smarie/python-marshmallow-pyfields/branch/master/graph/badge.svg)](https://codecov.io/gh/smarie/python-marshmallow-pyfields)
+
+[![Documentation](https://img.shields.io/badge/doc-latest-blue.svg)](https://smarie.github.io/python-marshmallow-pyfields/) [![PyPI](https://img.shields.io/pypi/v/marshmallow-pyfields.svg)](https://pypi.python.org/pypi/marshmallow-pyfields/) [![Downloads](https://pepy.tech/badge/marshmallow-pyfields)](https://pepy.tech/project/marshmallow-pyfields) [![Downloads per week](https://pepy.tech/badge/marshmallow-pyfields/week)](https://pepy.tech/project/marshmallow-pyfields) [![GitHub stars](https://img.shields.io/github/stars/smarie/python-marshmallow-pyfields.svg)](https://github.com/smarie/python-marshmallow-pyfields/stargazers)
+
+Automatic generation of `marshmallow` schemas from classes using `pyfields`.
+
+The documentation for users is available here: [https://smarie.github.io/python-marshmallow-pyfields/](https://smarie.github.io/python-marshmallow-pyfields/)
+
+A readme for developers is available here: [https://github.com/smarie/python-marshmallow-pyfields](https://github.com/smarie/python-marshmallow-pyfields)
+
+
