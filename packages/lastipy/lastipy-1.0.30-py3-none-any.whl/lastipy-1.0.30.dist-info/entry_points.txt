@@ -1,0 +1,5 @@
+[console_scripts]
+organize_favorites = scripts.organize_favorites:organize_favorites
+recommendations_playlist = scripts.recommendations_playlist:build_recommendations_playlist
+save_new_tracks = scripts.save_new_tracks:save_new_tracks
+
