@@ -1,0 +1,3 @@
+[console_scripts]
+xdcc = xdcc.__main__:main
+
