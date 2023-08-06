@@ -1,0 +1,3 @@
+[console_scripts]
+slurm_gpustat = slurm_gpustat.slurm_gpustat:main
+
