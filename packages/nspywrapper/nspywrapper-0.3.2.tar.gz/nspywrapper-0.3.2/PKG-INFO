@@ -1,0 +1,17 @@
+Metadata-Version: 1.1
+Name: nspywrapper
+Version: 0.3.2
+Summary: A python wrapper for the NationStates API
+Home-page: https://github.com/abrow425/nspy_wrapper
+Author: Andrew Brown (aka SherpDaWerp)
+Author-email: abrow425@gmail.com
+License: Apache
+Download-URL: https://github.com/abrow425/nspy_wrapper/archive/v0.3.2.tar.gz
+Description: See here for more information: https://github.com/abrow425/nspy_wrapper
+Keywords: NATIONSTATES,NS,API,WRAPPER
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3.8
