@@ -1,0 +1,14 @@
+MANIFEST.in
+README.md
+requirements.txt
+setup.cfg
+setup.py
+scripts/zapimoveis
+zapimoveis_scraper/__init__.py
+zapimoveis_scraper/enums.py
+zapimoveis_scraper/item.py
+zapimoveis_scraper.egg-info/PKG-INFO
+zapimoveis_scraper.egg-info/SOURCES.txt
+zapimoveis_scraper.egg-info/dependency_links.txt
+zapimoveis_scraper.egg-info/requires.txt
+zapimoveis_scraper.egg-info/top_level.txt
