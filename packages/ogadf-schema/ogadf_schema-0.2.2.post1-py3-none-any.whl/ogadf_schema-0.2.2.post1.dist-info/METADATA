@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: ogadf-schema
+Version: 0.2.2.post1
+Summary: Schema definitions for the Data Formats For Gamma-Ray Astronomy
+Author: Maximilian Nöthe
+Author-email: maximilian.noethe@tu-dortmund.de
+Requires-Python: >=3.6,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: fits-schema (>=0.5.4,<0.6.0)
+Description-Content-Type: text/markdown
+
+# ogadf-schema
+Definition of the open gamma ray astronomy data formats using fits-schema
+
