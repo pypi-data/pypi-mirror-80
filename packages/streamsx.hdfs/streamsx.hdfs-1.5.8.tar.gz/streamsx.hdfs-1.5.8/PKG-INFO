@@ -1,0 +1,32 @@
+Metadata-Version: 1.1
+Name: streamsx.hdfs
+Version: 1.5.8
+Summary: HDFS integration for IBM Streams
+Home-page: https://github.com/IBMStreams/streamsx.hdfs
+Author: IBM Streams @ github.com
+Author-email: hegermar@de.ibm.com
+License: Apache License - Version 2.0
+Description: Overview
+        ========
+        
+        Provides functions and classes to access files on HDFS. For example, connect to IBM Analytics Engine on IBM Cloud.
+        
+        This package exposes the `com.ibm.streamsx.hdfs <https://ibmstreams.github.io/streamsx.hdfs/>`_ toolkit as Python methods for use with Streaming Analytics service on
+        IBM Cloud and IBM Streams including IBM Cloud Pak for Data.
+        
+        * `IBM Streams <https://ibmstreams.github.io/>`_
+        * `IBM Analytics Engine <https://www.ibm.com/cloud/analytics-engine>`_
+        
+        Documentation
+        =============
+        
+        * `streamsx.hdfs package documentation <http://streamsxhdfs.readthedocs.io/>`_
+        
+Keywords: streams,ibmstreams,streaming,analytics,streaming-analytics,hdfs
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
