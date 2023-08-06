@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: onepiecepredictor
+Version: 1.2
+Summary: Hyper Paramter Tuning and Models performance comparison
+Home-page: https://github.com/vkurma/onepiecepredictor
+Author: Vineel Kurma
+Author-email: vineel.prince7@gmail.com
+License: MIT
+Keywords: onepiecepredictor,hyper parameter tuning
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: scikit-learn
+Requires-Dist: xgboost
+Requires-Dist: catboost
+Requires-Dist: category-encoders
+Requires-Dist: imblearn
+
+# onepiecepredictor Package
+
+pip install onepiecepredictor
+
+A Small package for hyper paramter tuning pipelining and comparing multiple models performance with very little code.
+
+Its a wrapper around sklearn, xgboost, catboost, imblearn packages.
+
+For examples and documentation, please check [Refer to this notebook](https://github.com/vkurma/onepiecepredictor/blob/master/Examples%20and%20Documentation.ipynb)
+
+
+
