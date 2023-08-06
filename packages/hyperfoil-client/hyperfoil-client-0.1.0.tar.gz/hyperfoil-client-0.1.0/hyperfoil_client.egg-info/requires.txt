@@ -1,0 +1,9 @@
+requests
+pyyaml
+
+[dev]
+pytest
+python-dotenv
+
+[docs]
+sphinx
