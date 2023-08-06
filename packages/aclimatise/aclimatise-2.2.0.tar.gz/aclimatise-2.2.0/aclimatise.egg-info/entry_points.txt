@@ -1,0 +1,3 @@
+[console_scripts]
+aclimatise = aclimatise.cli:main
+
