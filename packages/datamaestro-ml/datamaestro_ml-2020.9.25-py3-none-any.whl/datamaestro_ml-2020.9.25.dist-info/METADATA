@@ -1,0 +1,38 @@
+Metadata-Version: 2.1
+Name: datamaestro-ml
+Version: 2020.9.25
+Summary: "Machine learning related datasets"
+Home-page: https://github.com/experimaestro/datamaestro_ml
+Author: Benjamin Piwowarski
+Author-email: benjamin@piwowarski.fr
+License: GPL-3
+Keywords: dataset manager
+Platform: any
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+Requires-Dist: datamaestro (>=0.6.3)
+Provides-Extra: test
+Requires-Dist: tox ; extra == 'test'
+
+[![PyPI version](https://badge.fury.io/py/datamaestro-ml.svg)](https://badge.fury.io/py/datamaestro-ml)
+
+# Image-related datasets
+
+This [datamaestro](https://github.com/bpiwowar/datasets) plugin covers machine-learning related datasets (general purpose). 
+
+## List of available datasets
+
+Below is the list of available datasets along with ids. Some datasets have several versions; in this case, the dataset id is suffixed with this information.
+
+- Boston housing (UCI)
+
+
