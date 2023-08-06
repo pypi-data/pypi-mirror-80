@@ -1,0 +1,14 @@
+README.md
+setup.cfg
+setup.py
+httpx_cli/__init__.py
+httpx_cli/_cli.py
+httpx_cli/_help.py
+httpx_cli/_utils.py
+httpx_cli.egg-info/PKG-INFO
+httpx_cli.egg-info/SOURCES.txt
+httpx_cli.egg-info/dependency_links.txt
+httpx_cli.egg-info/entry_points.txt
+httpx_cli.egg-info/not-zip-safe
+httpx_cli.egg-info/requires.txt
+httpx_cli.egg-info/top_level.txt
