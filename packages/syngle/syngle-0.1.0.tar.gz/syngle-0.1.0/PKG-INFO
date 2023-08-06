@@ -1,0 +1,9 @@
+Metadata-Version: 2.1
+Name: syngle
+Version: 0.1.0
+Summary: Simple package implementing the Singleton pattern as a mixin class.
+Author: Valentin Calomme
+Author-email: dev@valentincalomme.com
+Requires-Python: >=3.8,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
