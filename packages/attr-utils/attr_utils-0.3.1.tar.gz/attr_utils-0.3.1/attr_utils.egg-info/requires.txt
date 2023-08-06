@@ -1,0 +1,11 @@
+attrs>=19.3.0
+domdf_python_tools>=0.8.1
+typing_inspect>=0.6.0
+
+[all]
+sphinx>=3.0.3
+sphinx_toolbox>=1.1.1
+
+[sphinx]
+sphinx>=3.0.3
+sphinx_toolbox>=1.1.1
