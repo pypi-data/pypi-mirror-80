@@ -1,0 +1,33 @@
+Metadata-Version: 2.1
+Name: httpx-cli
+Version: 0.1
+Summary: A command-line HTTP client.
+Home-page: https://github.com/encode/httpx-cli
+Author: Tom Christie
+Author-email: tom@tomchristie.com
+License: BSD
+Project-URL: Documentation, https://www.python-httpx.org
+Project-URL: Source, https://github.com/encode/httpx-cli
+Description: # The HTTPX command line client
+        
+        ...
+        
+        
+        # Changelog
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Framework :: AsyncIO
+Classifier: Framework :: Trio
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3 :: Only
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
