@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: ophpy
+Version: 0.0.1
+Summary: Open source project about Computer Generated Hologram
+Home-page: https://github.com/robin9804/openholo_py
+Author: YoungRok Kim
+Author-email: faller825@khu.ac.kr
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: GNU General Public License v2 (GPLv2)
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Requires-Dist: numpy
+Requires-Dist: matplotlib
+Requires-Dist: pillow
+Requires-Dist: plyfile
+Requires-Dist: numba
+
+# openholo_py
+python project by openholo
+
+
