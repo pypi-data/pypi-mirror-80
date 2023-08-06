@@ -1,0 +1,15 @@
+Metadata-Version: 1.1
+Name: secure-file-detection
+Version: 0.1.0
+Summary: Detect true types of files.
+Home-page: https://github.com/Myzel394/secure-file-detection
+Author: Myzel394
+Author-email: myzel394.xyllian@gmail.com
+License: MIT
+Download-URL: https://github.com/Myzel394/secure-file-detection/archieve/v_0.1.0.tar.gz
+Description: With this package you can easily securely detect the true type of a file. The true type is determined by analyzing the data of the type - not by just looking at the header.
+Keywords: detect-file,mimetype,detect-mime,real-type,file-type,file,type
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
