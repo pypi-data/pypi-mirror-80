@@ -1,0 +1,13 @@
+LICENSE
+MANIFEST.in
+README.md
+setup.py
+py_mathjax.egg-info/PKG-INFO
+py_mathjax.egg-info/SOURCES.txt
+py_mathjax.egg-info/dependency_links.txt
+py_mathjax.egg-info/entry_points.txt
+py_mathjax.egg-info/top_level.txt
+pymathjax/__init__.py
+pymathjax/__main__.py
+pymathjax/conda.py
+pymathjax/version.py

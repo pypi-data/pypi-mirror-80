@@ -1,0 +1,3 @@
+[console_scripts]
+py-mathjax-path = pymathjax.__main__:cli
+
