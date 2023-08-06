@@ -1,0 +1,38 @@
+Metadata-Version: 2.1
+Name: marshmallow-geojson
+Version: 0.1.4
+Summary: Marshmallow schema validation for GeoJson
+Home-page: https://github.com/folt/marshmallow-geojson
+License: MIT
+Keywords: marshmallow,validation,geojson,schema,gis
+Author: Aliaksandr Vaskevich
+Author-email: vaskevic.an@gmail.com
+Requires-Python: >=3.7,<4.0
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Operating System :: Unix
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Requires-Dist: marshmallow (>=3.8.0,<4.0.0)
+Requires-Dist: ujson (>=3.2.0,<4.0.0)
+Project-URL: Documentation, https://github.com/folt/marshmallow-geojson
+Project-URL: Repository, https://github.com/folt/marshmallow-geojson
+Description-Content-Type: text/x-rst
+
+
+.. image:: https://travis-ci.org/folt/marshmallow-geojson.svg
+   :target: https://travis-ci.org/github/folt/marshmallow-geojson
+   :alt: Travis
+
+.. image:: https://codecov.io/gh/folt/marshmallow-geojson/branch/master/graph/badge.svg?token=B5ATYXLBHO
+   :target: https://codecov.io/gh/folt/marshmallow-geojson
+   :alt: Codecov
+
+marshmallow_geojson
+===================
+
+
