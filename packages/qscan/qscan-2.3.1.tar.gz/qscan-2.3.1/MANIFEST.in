@@ -1,0 +1,4 @@
+include qscan/data/atmolines.dat
+include qscan/data/atom.dat
+include qscan/data/hydrolist.dat
+include qscan/data/metallist.dat
