@@ -1,0 +1,57 @@
+[02/27/20 15:58:18]: /Users/jon/miniconda3/envs/amptk_dev/bin/amptk illumina -i illumina_no_primers -o miseq3 -f ITS1-F -r ITS2 --require_primer off --cleanup
+
+[02/27/20 15:58:18]: OS: MacOSX 10.14.6, 8 cores, ~ 17 GB RAM. Python: 3.7.3
+[02/27/20 15:58:18]: Python Modules: numpy v1.16.4, pandas v0.25.0, matplotlib v3.1.1, psutil v5.6.3, natsort v6.0.0, biopython v1.74, edlib v1.2.4.post1, biom-format v2.1.7
+[02/27/20 15:58:18]: AMPtk v1.4.2, USEARCH v9.2.64, VSEARCH v2.13.6
+[02/27/20 15:58:18]: ITS1-F fwd primer found in AMPtk primer db, setting to: CTTGGTCATTTAGAGGAAGTAA
+[02/27/20 15:58:18]: ITS2 rev primer found in AMPtk primer db, setting to: GCTGCGTTCTTCATCGATGC
+[02/27/20 15:58:18]: Non-standard names detected, skipping mapping file
+[02/27/20 15:58:18]: Non-standard names detected, skipping mapping file
+[02/27/20 15:58:18]: Non-standard names detected, skipping mapping file
+[02/27/20 15:58:18]: Demuxing data using 8 cpus
+[02/27/20 15:58:18]: Dropping reads less than 100 bp and setting lossless trimming to 300 bp.
+[02/27/20 15:58:18]: Strip Primers and Merge PE reads. FwdPrimer: CTTGGTCATTTAGAGGAAGTAA RevPrimer: GCTGCGTTCTTCATCGATGC
+[02/27/20 15:58:18]: Sample1: illumina_no_primers/Sample1_R1.fastq illumina_no_primers/Sample1_R2.fastq
+[02/27/20 15:58:18]: Sample2: illumina_no_primers/Sample2_R1.fastq illumina_no_primers/Sample2_R2.fastq
+[02/27/20 15:58:18]: SynMock: illumina_no_primers/SynMock_R1.fastq illumina_no_primers/SynMock_R2.fastq
+[02/27/20 15:58:18]: Now merging PE reads
+[02/27/20 15:58:18]: usearch9 -fastq_mergepairs miseq3/Sample2_R1.fq -reverse miseq3/Sample2_R2.fq -fastqout miseq3/Sample2.merged.fq.merged.fq -fastq_trunctail 5 -fastqout_notmerged_fwd miseq3/Sample2.merged.fq.notmerged.R1.fq -minhsp 12 -fastq_maxdiffs 8 -report miseq3/Sample2.merged.fq.merge_report.txt -fastq_minmergelen 100 -threads 1
+[02/27/20 15:58:18]: Now merging PE reads
+[02/27/20 15:58:18]: usearch9 -fastq_mergepairs miseq3/SynMock_R1.fq -reverse miseq3/SynMock_R2.fq -fastqout miseq3/SynMock.merged.fq.merged.fq -fastq_trunctail 5 -fastqout_notmerged_fwd miseq3/SynMock.merged.fq.notmerged.R1.fq -minhsp 12 -fastq_maxdiffs 8 -report miseq3/SynMock.merged.fq.merge_report.txt -fastq_minmergelen 100 -threads 1
+[02/27/20 15:58:18]: Now merging PE reads
+[02/27/20 15:58:18]: usearch9 -fastq_mergepairs miseq3/Sample1_R1.fq -reverse miseq3/Sample1_R2.fq -fastqout miseq3/Sample1.merged.fq.merged.fq -fastq_trunctail 5 -fastqout_notmerged_fwd miseq3/Sample1.merged.fq.notmerged.R1.fq -minhsp 12 -fastq_maxdiffs 8 -report miseq3/Sample1.merged.fq.merge_report.txt -fastq_minmergelen 100 -threads 1
+[02/27/20 15:58:18]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:18]: b'\nMerging\n  Fwd miseq3/Sample2_R1.fq\n  Rev miseq3/Sample2_R2.fq\n  Keep read labels\n\n00:00 2.2Mb     0.1% 0% merged\r00:00 4.6Mb   100.0% 86.6% merged\r\n\nMerged length distribution:\n       176  Min\n       250  Low quartile\n       279  Median\n       297  High quartile\n       418  Max\n\nTotals:\n      2000  Pairs (2000)\n      1731  Merged (1731, 86.55%)\n       964  Alignments with zero diffs (48.20%)\n       263  Too many diffs (> 8) (13.15%)\n         6  No alignment found (0.30%)\n         0  Alignment too short (< 16) (0.00%)\n         0  Merged too short (< 100)\n       498  Staggered pairs (24.90%) merged & trimmed\n    217.10  Mean alignment length\n    277.78  Mean merged length\n      0.22  Mean fwd expected errors\n      1.03  Mean rev expected errors\n      0.13  Mean merged expected errors\n'
+[02/27/20 15:58:18]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:18]: b'\nMerging\n  Fwd miseq3/SynMock_R1.fq\n  Rev miseq3/SynMock_R2.fq\n  Keep read labels\n\n00:00 2.1Mb     0.1% 0% merged\r00:00 4.6Mb   100.0% 92.7% merged\r\n\nMerged length distribution:\n       124  Min\n       174  Low quartile\n       214  Median\n       224  High quartile\n       427  Max\n\nTotals:\n      2000  Pairs (2000)\n      1854  Merged (1854, 92.70%)\n      1165  Alignments with zero diffs (58.25%)\n       146  Too many diffs (> 8) (7.30%)\n         0  No alignment found (0.00%)\n         0  Alignment too short (< 16) (0.00%)\n         0  Merged too short (< 100)\n      1574  Staggered pairs (78.70%) merged & trimmed\n    189.65  Mean alignment length\n    209.98  Mean merged length\n      0.60  Mean fwd expected errors\n      1.31  Mean rev expected errors\n      0.08  Mean merged expected errors\n'
+[02/27/20 15:58:18]: Removing phix from Sample2.merged.fq
+[02/27/20 15:58:18]: Removing phix from SynMock.merged.fq
+[02/27/20 15:58:18]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:18]: b'\nMerging\n  Fwd miseq3/Sample1_R1.fq\n  Rev miseq3/Sample1_R2.fq\n  Keep read labels\n\n00:00 2.2Mb     0.1% 0% merged\r00:00 4.6Mb   100.0% 79.2% merged\r\n\nMerged length distribution:\n       143  Min\n       201  Low quartile\n       201  Median\n       202  High quartile\n       420  Max\n\nTotals:\n      2000  Pairs (2000)\n      1584  Merged (1584, 79.20%)\n       938  Alignments with zero diffs (46.90%)\n       405  Too many diffs (> 8) (20.25%)\n        11  No alignment found (0.55%)\n         0  Alignment too short (< 16) (0.00%)\n         0  Merged too short (< 100)\n      1925  Staggered pairs (96.25%) merged & trimmed\n    206.63  Mean alignment length\n    211.67  Mean merged length\n      0.37  Mean fwd expected errors\n      1.52  Mean rev expected errors\n      0.05  Mean merged expected errors\n'
+[02/27/20 15:58:18]: File Size: 1163061 bytes
+[02/27/20 15:58:18]: usearch9 -filter_phix miseq3/Sample2.merged.fq.tmp -output miseq3/Sample2.merged.fq -threads 1
+[02/27/20 15:58:18]: Removing phix from Sample1.merged.fq
+[02/27/20 15:58:18]: File Size: 918493 bytes
+[02/27/20 15:58:18]: usearch9 -filter_phix miseq3/SynMock.merged.fq.tmp -output miseq3/SynMock.merged.fq -threads 1
+[02/27/20 15:58:18]: File Size: 945465 bytes
+[02/27/20 15:58:18]: usearch9 -filter_phix miseq3/Sample1.merged.fq.tmp -output miseq3/Sample1.merged.fq -threads 1
+[02/27/20 15:58:18]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:18]: b'00:00 203Mb     0.1% Word stats\r00:00 203Mb   100.0% Word stats\r\n00:00 203Mb   100.0% Alloc rows\r\n00:00 203Mb     0.1% Build index\r00:00 203Mb   100.0% Build index\r\n00:00 138Mb   100.0% Filtering for phix, 53 hits (2.6%)\r\n'
+[02/27/20 15:58:18]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:18]: b'00:00 203Mb     0.1% Word stats\r00:00 203Mb   100.0% Word stats\r\n00:00 203Mb   100.0% Alloc rows\r\n00:00 203Mb     0.1% Build index\r00:00 203Mb   100.0% Build index\r\n00:00 138Mb   100.0% Filtering for phix, 37 hits (1.8%)\r\n'
+[02/27/20 15:58:18]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:18]: b'00:00 203Mb     0.1% Word stats\r00:00 203Mb   100.0% Word stats\r\n00:00 203Mb   100.0% Alloc rows\r\n00:00 203Mb     0.1% Build index\r00:00 203Mb   100.0% Build index\r\n00:00 140Mb   100.0% Filtering for phix, 43 hits (2.1%)\r\n'
+[02/27/20 15:58:19]: Concatenating Demuxed Files
+[02/27/20 15:58:19]: 6,000 total reads
+[02/27/20 15:58:19]: 1,684 Fwd Primer found, 2,653 Rev Primer found
+[02/27/20 15:58:19]: 0 discarded Primer incompatibility
+[02/27/20 15:58:19]: 0 discarded too short (< 100 bp)
+[02/27/20 15:58:19]: 5,867 valid output reads
+[02/27/20 15:58:19]: Found 3 barcoded samples
+                        Sample:  Count
+                       Sample1:  1963
+                       Sample2:  1957
+                       SynMock:  1947
+[02/27/20 15:58:19]: pigz -c -p 8 miseq3.demux.fq
+[02/27/20 15:58:19]: Output file:  miseq3.demux.fq.gz (252.3 KB)
+[02/27/20 15:58:19]: Mapping file: miseq3.mapping_file.txt

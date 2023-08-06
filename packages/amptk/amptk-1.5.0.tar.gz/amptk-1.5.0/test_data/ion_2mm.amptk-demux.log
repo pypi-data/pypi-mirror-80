@@ -1,0 +1,58 @@
+[02/27/20 15:58:10]: /Users/jon/miniconda3/envs/amptk_dev/bin/amptk ion -i ion.test.fastq -o ion_2mm --barcode_mismatch 2
+
+[02/27/20 15:58:10]: OS: MacOSX 10.14.6, 8 cores, ~ 17 GB RAM. Python: 3.7.3
+[02/27/20 15:58:10]: Python Modules: numpy v1.16.4, pandas v0.25.0, matplotlib v3.1.1, psutil v5.6.3, natsort v6.0.0, biopython v1.74, edlib v1.2.4.post1, biom-format v2.1.7
+[02/27/20 15:58:10]: AMPtk v1.4.2, USEARCH v9.2.64, VSEARCH v2.13.6
+[02/27/20 15:58:10]: fITS7-ion fwd primer found in AMPtk primer db, setting to: AGTGARTCATCGAATCTTTG
+[02/27/20 15:58:10]: ITS4 rev primer found in AMPtk primer db, setting to: TCCTCCGCTTATTGATATGC
+[02/27/20 15:58:10]: Foward primer: AGTGARTCATCGAATCTTTG,  Rev comp'd rev primer: GCATATCAATAAGCGGAGGA
+[02/27/20 15:58:10]: Loading FASTQ Records
+[02/27/20 15:58:10]: 2,000 reads (1.6 MB)
+[02/27/20 15:58:10]: Dropping reads less than 100 bp and setting lossless trimming to 300 bp.
+[02/27/20 15:58:10]: Splitting FASTQ files over 8 cpus
+[02/27/20 15:58:11]: Concatenating Demuxed Files
+[02/27/20 15:58:11]: 2,000 total reads
+[02/27/20 15:58:11]: 1,836 valid Barcode
+[02/27/20 15:58:11]: 1,827 Fwd Primer found, 1,222 Rev Primer found
+[02/27/20 15:58:11]: 69 discarded too short (< 100 bp)
+[02/27/20 15:58:11]: 1,758 valid output reads
+[02/27/20 15:58:11]: Found 35 barcoded samples
+                Sample:  Count
+                 BC.17:  126
+                 BC.27:  115
+                 BC.20:  107
+                 BC.28:  104
+                 BC.16:  103
+                 BC.73:  100
+                 BC.23:  98
+                 BC.15:  95
+                 BC.18:  94
+                 BC.10:  91
+                 BC.21:  90
+                 BC.11:  87
+                  BC.9:  85
+                 BC.14:  78
+                 BC.24:  78
+                 BC.22:  77
+                 BC.12:  73
+                 BC.19:  64
+                  BC.5:  57
+                 BC.61:  8
+                 BC.13:  7
+                 BC.29:  4
+                 BC.42:  2
+                  BC.7:  2
+                 BC.70:  2
+                 BC.74:  2
+                 BC.35:  1
+                 BC.95:  1
+                 BC.90:  1
+                 BC.60:  1
+                 BC.46:  1
+                 BC.78:  1
+                 BC.33:  1
+                 BC.81:  1
+                 BC.30:  1
+[02/27/20 15:58:11]: pigz -c -p 8 ion_2mm.demux.fq
+[02/27/20 15:58:11]: Output file:  ion_2mm.demux.fq.gz (325.4 KB)
+[02/27/20 15:58:11]: Mapping file: ion_2mm.mapping_file.txt

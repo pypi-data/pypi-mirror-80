@@ -1,0 +1,485 @@
+[02/27/20 15:58:19]: /Users/jon/miniconda3/envs/amptk_dev/bin/amptk illumina2 -i test_R1.fastq --reverse test_R2.fastq -f AGATATTGGAACWTTATATTTTATTTTTGG -r WACTAATCAATTWCCAAATCCTCC --barcode_fasta barcode_1.fa --full_length -o illumina2 --reverse_barcode barcode_2.fa --barcode_mismatch 4
+
+[02/27/20 15:58:19]: OS: MacOSX 10.14.6, 8 cores, ~ 17 GB RAM. Python: 3.7.3
+[02/27/20 15:58:19]: Python Modules: numpy v1.16.4, pandas v0.25.0, matplotlib v3.1.1, psutil v5.6.3, natsort v6.0.0, biopython v1.74, edlib v1.2.4.post1, biom-format v2.1.7
+[02/27/20 15:58:19]: AMPtk v1.4.2, USEARCH v9.2.64, VSEARCH v2.13.6
+[02/27/20 15:58:19]: AGATATTGGAACWTTATATTTTATTTTTGG fwd primer not found in AMPtk primer db, assuming it is actual primer sequence.
+[02/27/20 15:58:19]: WACTAATCAATTWCCAAATCCTCC rev primer not found in AMPtk primer db, assuming it is actual primer sequence.
+[02/27/20 15:58:19]: Loading FASTQ Records
+[02/27/20 15:58:19]: 1,000 reads (1.1 MB)
+[02/27/20 15:58:19]: Searching for 96 forward barcodes and 96 reverse barcodes
+[02/27/20 15:58:19]: Splitting FASTQ files over 8 cpus
+[02/27/20 15:58:19]: Demuxing PE Illumina reads; FwdPrimer: AGATATTGGAACWTTATATTTTATTTTTGG RevPrimer: WACTAATCAATTWCCAAATCCTCC
+[02/27/20 15:58:19]: Dropping reads less than 100 bp and setting lossless trimming to 300 bp.
+[02/27/20 15:58:19]: Re-oriented PE reads for chunk_22: 32 total, 13 correct, 5 flipped, 14 dropped.
+[02/27/20 15:58:19]: Re-oriented PE reads for chunk_11: 32 total, 18 correct, 2 flipped, 12 dropped.
+[02/27/20 15:58:19]: Re-oriented PE reads for chunk_1: 32 total, 11 correct, 8 flipped, 13 dropped.
+[02/27/20 15:58:19]: Re-oriented PE reads for chunk_3: 32 total, 10 correct, 8 flipped, 14 dropped.
+[02/27/20 15:58:19]: Re-oriented PE reads for chunk_20: 32 total, 7 correct, 3 flipped, 22 dropped.
+[02/27/20 15:58:19]: Re-oriented PE reads for chunk_19: 32 total, 10 correct, 8 flipped, 14 dropped.
+[02/27/20 15:58:19]: Re-oriented PE reads for chunk_13: 32 total, 7 correct, 6 flipped, 19 dropped.
+[02/27/20 15:58:19]: Re-oriented PE reads for chunk_17: 32 total, 10 correct, 5 flipped, 17 dropped.
+[02/27/20 15:58:19]: Now merging PE reads
+[02/27/20 15:58:19]: usearch9 -fastq_mergepairs illumina2_76519/chunk_20_R1.trimmed.fq -reverse illumina2_76519/chunk_20_R2.trimmed.fq -fastqout ./illumina2_76519/chunk_20.demux.fq.merged.fq -fastq_trunctail 5 -fastqout_notmerged_fwd ./illumina2_76519/chunk_20.demux.fq.notmerged.R1.fq -minhsp 12 -fastq_maxdiffs 8 -report ./illumina2_76519/chunk_20.demux.fq.merge_report.txt -fastq_minmergelen 100 -threads 1
+[02/27/20 15:58:19]: Now merging PE reads
+[02/27/20 15:58:19]: usearch9 -fastq_mergepairs illumina2_76519/chunk_13_R1.trimmed.fq -reverse illumina2_76519/chunk_13_R2.trimmed.fq -fastqout ./illumina2_76519/chunk_13.demux.fq.merged.fq -fastq_trunctail 5 -fastqout_notmerged_fwd ./illumina2_76519/chunk_13.demux.fq.notmerged.R1.fq -minhsp 12 -fastq_maxdiffs 8 -report ./illumina2_76519/chunk_13.demux.fq.merge_report.txt -fastq_minmergelen 100 -threads 1
+[02/27/20 15:58:19]: Now merging PE reads
+[02/27/20 15:58:19]: usearch9 -fastq_mergepairs illumina2_76519/chunk_17_R1.trimmed.fq -reverse illumina2_76519/chunk_17_R2.trimmed.fq -fastqout ./illumina2_76519/chunk_17.demux.fq.merged.fq -fastq_trunctail 5 -fastqout_notmerged_fwd ./illumina2_76519/chunk_17.demux.fq.notmerged.R1.fq -minhsp 12 -fastq_maxdiffs 8 -report ./illumina2_76519/chunk_17.demux.fq.merge_report.txt -fastq_minmergelen 100 -threads 1
+[02/27/20 15:58:19]: Now merging PE reads
+[02/27/20 15:58:19]: usearch9 -fastq_mergepairs illumina2_76519/chunk_22_R1.trimmed.fq -reverse illumina2_76519/chunk_22_R2.trimmed.fq -fastqout ./illumina2_76519/chunk_22.demux.fq.merged.fq -fastq_trunctail 5 -fastqout_notmerged_fwd ./illumina2_76519/chunk_22.demux.fq.notmerged.R1.fq -minhsp 12 -fastq_maxdiffs 8 -report ./illumina2_76519/chunk_22.demux.fq.merge_report.txt -fastq_minmergelen 100 -threads 1
+[02/27/20 15:58:19]: Now merging PE reads
+[02/27/20 15:58:19]: usearch9 -fastq_mergepairs illumina2_76519/chunk_1_R1.trimmed.fq -reverse illumina2_76519/chunk_1_R2.trimmed.fq -fastqout ./illumina2_76519/chunk_1.demux.fq.merged.fq -fastq_trunctail 5 -fastqout_notmerged_fwd ./illumina2_76519/chunk_1.demux.fq.notmerged.R1.fq -minhsp 12 -fastq_maxdiffs 8 -report ./illumina2_76519/chunk_1.demux.fq.merge_report.txt -fastq_minmergelen 100 -threads 1
+[02/27/20 15:58:19]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:19]: Now merging PE reads
+[02/27/20 15:58:19]: b'\nMerging\n  Fwd illumina2_76519/chunk_20_R1.trimmed.fq\n  Rev illumina2_76519/chunk_20_R2.trimmed.fq\n  Keep read labels\n\n00:00 2.2Mb     0.1% 0% merged\r00:00 2.3Mb   100.0% 10.0% merged\r\n\nMerged length distribution:\n       157  Min\n       157  Low quartile\n       157  Median\n       157  High quartile\n       157  Max\n\nTotals:\n        10  Pairs (10)\n         1  Merged (1, 10.00%)\n         1  Alignments with zero diffs (10.00%)\n         1  Too many diffs (> 8) (10.00%)\n         9  Fwd tails Q <= 5 trimmed (90.00%)\n         9  Rev tails Q <= 5 trimmed (90.00%)\n         8  No alignment found (80.00%)\n         0  Alignment too short (< 16) (0.00%)\n         0  Merged too short (< 100)\n         2  Staggered pairs (20.00%) merged & trimmed\n    157.00  Mean alignment length\n    157.00  Mean merged length\n      0.02  Mean fwd expected errors\n      0.02  Mean rev expected errors\n      0.01  Mean merged expected errors\n'
+[02/27/20 15:58:19]: usearch9 -fastq_mergepairs illumina2_76519/chunk_3_R1.trimmed.fq -reverse illumina2_76519/chunk_3_R2.trimmed.fq -fastqout ./illumina2_76519/chunk_3.demux.fq.merged.fq -fastq_trunctail 5 -fastqout_notmerged_fwd ./illumina2_76519/chunk_3.demux.fq.notmerged.R1.fq -minhsp 12 -fastq_maxdiffs 8 -report ./illumina2_76519/chunk_3.demux.fq.merge_report.txt -fastq_minmergelen 100 -threads 1
+[02/27/20 15:58:19]: Now merging PE reads
+[02/27/20 15:58:19]: Removing phix from illumina2_76519/chunk_20.demux.fq
+[02/27/20 15:58:19]: usearch9 -fastq_mergepairs illumina2_76519/chunk_19_R1.trimmed.fq -reverse illumina2_76519/chunk_19_R2.trimmed.fq -fastqout ./illumina2_76519/chunk_19.demux.fq.merged.fq -fastq_trunctail 5 -fastqout_notmerged_fwd ./illumina2_76519/chunk_19.demux.fq.notmerged.R1.fq -minhsp 12 -fastq_maxdiffs 8 -report ./illumina2_76519/chunk_19.demux.fq.merge_report.txt -fastq_minmergelen 100 -threads 1
+[02/27/20 15:58:19]: File Size: 356 bytes
+[02/27/20 15:58:19]: usearch9 -filter_phix ./illumina2_76519/chunk_20.demux.fq.tmp -output ./illumina2_76519/chunk_20.demux.fq -threads 1
+[02/27/20 15:58:19]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:19]: b'\nMerging\n  Fwd illumina2_76519/chunk_13_R1.trimmed.fq\n  Rev illumina2_76519/chunk_13_R2.trimmed.fq\n  Keep read labels\n\n00:00 2.2Mb     0.1% 0% merged\r00:00 2.4Mb   100.0% 53.8% merged\r\n\nMerged length distribution:\n       157  Min\n       157  Low quartile\n       157  Median\n       157  High quartile\n       157  Max\n\nTotals:\n        13  Pairs (13)\n         7  Merged (7, 53.85%)\n         7  Alignments with zero diffs (53.85%)\n         1  Too many diffs (> 8) (7.69%)\n         6  Fwd tails Q <= 5 trimmed (46.15%)\n         6  Rev tails Q <= 5 trimmed (46.15%)\n         5  No alignment found (38.46%)\n         0  Alignment too short (< 16) (0.00%)\n         0  Merged too short (< 100)\n         8  Staggered pairs (61.54%) merged & trimmed\n    157.00  Mean alignment length\n    157.00  Mean merged length\n      0.09  Mean fwd expected errors\n      0.39  Mean rev expected errors\n      0.01  Mean merged expected errors\n'
+[02/27/20 15:58:19]: Removing phix from illumina2_76519/chunk_13.demux.fq
+[02/27/20 15:58:19]: Now merging PE reads
+[02/27/20 15:58:19]: usearch9 -fastq_mergepairs illumina2_76519/chunk_11_R1.trimmed.fq -reverse illumina2_76519/chunk_11_R2.trimmed.fq -fastqout ./illumina2_76519/chunk_11.demux.fq.merged.fq -fastq_trunctail 5 -fastqout_notmerged_fwd ./illumina2_76519/chunk_11.demux.fq.notmerged.R1.fq -minhsp 12 -fastq_maxdiffs 8 -report ./illumina2_76519/chunk_11.demux.fq.merge_report.txt -fastq_minmergelen 100 -threads 1
+[02/27/20 15:58:19]: File Size: 2493 bytes
+[02/27/20 15:58:19]: usearch9 -filter_phix ./illumina2_76519/chunk_13.demux.fq.tmp -output ./illumina2_76519/chunk_13.demux.fq -threads 1
+[02/27/20 15:58:19]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:19]: b'\nMerging\n  Fwd illumina2_76519/chunk_17_R1.trimmed.fq\n  Rev illumina2_76519/chunk_17_R2.trimmed.fq\n  Keep read labels\n\n00:00 2.2Mb     0.1% 0% merged\r00:00 2.3Mb   100.0% 40.0% merged\r\n\nMerged length distribution:\n       147  Min\n       157  Low quartile\n       157  Median\n       157  High quartile\n       157  Max\n\nTotals:\n        15  Pairs (15)\n         6  Merged (6, 40.00%)\n         6  Alignments with zero diffs (40.00%)\n         2  Too many diffs (> 8) (13.33%)\n         8  Fwd tails Q <= 5 trimmed (53.33%)\n         9  Rev tails Q <= 5 trimmed (60.00%)\n         7  No alignment found (46.67%)\n         0  Alignment too short (< 16) (0.00%)\n         0  Merged too short (< 100)\n         8  Staggered pairs (53.33%) merged & trimmed\n    155.33  Mean alignment length\n    155.33  Mean merged length\n      0.08  Mean fwd expected errors\n      0.05  Mean rev expected errors\n      0.01  Mean merged expected errors\n'
+[02/27/20 15:58:19]: Removing phix from illumina2_76519/chunk_17.demux.fq
+[02/27/20 15:58:19]: File Size: 2117 bytes
+[02/27/20 15:58:19]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:19]: usearch9 -filter_phix ./illumina2_76519/chunk_17.demux.fq.tmp -output ./illumina2_76519/chunk_17.demux.fq -threads 1
+[02/27/20 15:58:19]: b'\nMerging\n  Fwd illumina2_76519/chunk_22_R1.trimmed.fq\n  Rev illumina2_76519/chunk_22_R2.trimmed.fq\n  Keep read labels\n\n00:00 2.1Mb     0.1% 0% merged\r00:00 2.3Mb   100.0% 33.3% merged\r\n\nMerged length distribution:\n       157  Min\n       157  Low quartile\n       157  Median\n       157  High quartile\n       158  Max\n\nTotals:\n        18  Pairs (18)\n         6  Merged (6, 33.33%)\n         6  Alignments with zero diffs (33.33%)\n         1  Too many diffs (> 8) (5.56%)\n        12  Fwd tails Q <= 5 trimmed (66.67%)\n        12  Rev tails Q <= 5 trimmed (66.67%)\n         0  Fwd too short (< 64) after tail trimming (0.00%)\n         1  Rev too short (< 64) after tail trimming (5.56%)\n         9  No alignment found (50.00%)\n         1  Alignment too short (< 16) (5.56%)\n         0  Merged too short (< 100)\n         7  Staggered pairs (38.89%) merged & trimmed\n    157.17  Mean alignment length\n    157.17  Mean merged length\n      0.03  Mean fwd expected errors\n      0.03  Mean rev expected errors\n      0.01  Mean merged expected errors\n'
+[02/27/20 15:58:19]: Removing phix from illumina2_76519/chunk_22.demux.fq
+[02/27/20 15:58:19]: File Size: 2140 bytes
+[02/27/20 15:58:19]: usearch9 -filter_phix ./illumina2_76519/chunk_22.demux.fq.tmp -output ./illumina2_76519/chunk_22.demux.fq -threads 1
+[02/27/20 15:58:19]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:19]: b'\nMerging\n  Fwd illumina2_76519/chunk_1_R1.trimmed.fq\n  Rev illumina2_76519/chunk_1_R2.trimmed.fq\n  Keep read labels\n\n00:00 2.2Mb     0.1% 0% merged\r00:00 2.4Mb   100.0% 42.1% merged\r\n\nMerged length distribution:\n       157  Min\n       157  Low quartile\n       157  Median\n       157  High quartile\n       157  Max\n\nTotals:\n        19  Pairs (19)\n         8  Merged (8, 42.11%)\n         8  Alignments with zero diffs (42.11%)\n         4  Too many diffs (> 8) (21.05%)\n        11  Fwd tails Q <= 5 trimmed (57.89%)\n        11  Rev tails Q <= 5 trimmed (57.89%)\n         6  No alignment found (31.58%)\n         0  Alignment too short (< 16) (0.00%)\n         1  Merged too short (< 100)\n        13  Staggered pairs (68.42%) merged & trimmed\n    157.00  Mean alignment length\n    157.00  Mean merged length\n      0.43  Mean fwd expected errors\n      0.36  Mean rev expected errors\n      0.02  Mean merged expected errors\n'
+[02/27/20 15:58:19]: Removing phix from illumina2_76519/chunk_1.demux.fq
+[02/27/20 15:58:19]: File Size: 2847 bytes
+[02/27/20 15:58:19]: usearch9 -filter_phix ./illumina2_76519/chunk_1.demux.fq.tmp -output ./illumina2_76519/chunk_1.demux.fq -threads 1
+[02/27/20 15:58:19]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:19]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:19]: b'\nMerging\n  Fwd illumina2_76519/chunk_3_R1.trimmed.fq\n  Rev illumina2_76519/chunk_3_R2.trimmed.fq\n  Keep read labels\n\n00:00 2.2Mb     0.1% 0% merged\r00:00 2.4Mb   100.0% 38.9% merged\r\n\nMerged length distribution:\n       157  Min\n       157  Low quartile\n       157  Median\n       157  High quartile\n       157  Max\n\nTotals:\n        18  Pairs (18)\n         7  Merged (7, 38.89%)\n         9  Alignments with zero diffs (50.00%)\n         2  Too many diffs (> 8) (11.11%)\n        11  Fwd tails Q <= 5 trimmed (61.11%)\n        11  Rev tails Q <= 5 trimmed (61.11%)\n         7  No alignment found (38.89%)\n         0  Alignment too short (< 16) (0.00%)\n         2  Merged too short (< 100)\n        11  Staggered pairs (61.11%) merged & trimmed\n    157.00  Mean alignment length\n    157.00  Mean merged length\n      0.06  Mean fwd expected errors\n      0.08  Mean rev expected errors\n      0.01  Mean merged expected errors\n'
+[02/27/20 15:58:19]: b'\nMerging\n  Fwd illumina2_76519/chunk_19_R1.trimmed.fq\n  Rev illumina2_76519/chunk_19_R2.trimmed.fq\n  Keep read labels\n\n00:00 2.2Mb     0.1% 0% merged\r00:00 2.4Mb   100.0% 38.9% merged\r\n\nMerged length distribution:\n       157  Min\n       157  Low quartile\n       157  Median\n       157  High quartile\n       157  Max\n\nTotals:\n        18  Pairs (18)\n         7  Merged (7, 38.89%)\n         7  Alignments with zero diffs (38.89%)\n         3  Too many diffs (> 8) (16.67%)\n        11  Fwd tails Q <= 5 trimmed (61.11%)\n        11  Rev tails Q <= 5 trimmed (61.11%)\n         8  No alignment found (44.44%)\n         0  Alignment too short (< 16) (0.00%)\n         0  Merged too short (< 100)\n        10  Staggered pairs (55.56%) merged & trimmed\n    157.00  Mean alignment length\n    157.00  Mean merged length\n      0.02  Mean fwd expected errors\n      0.02  Mean rev expected errors\n      0.01  Mean merged expected errors\n'
+[02/27/20 15:58:19]: Removing phix from illumina2_76519/chunk_3.demux.fq
+[02/27/20 15:58:19]: Removing phix from illumina2_76519/chunk_19.demux.fq
+[02/27/20 15:58:19]: File Size: 2491 bytes
+[02/27/20 15:58:19]: File Size: 2492 bytes
+[02/27/20 15:58:19]: usearch9 -filter_phix ./illumina2_76519/chunk_3.demux.fq.tmp -output ./illumina2_76519/chunk_3.demux.fq -threads 1
+[02/27/20 15:58:19]: usearch9 -filter_phix ./illumina2_76519/chunk_19.demux.fq.tmp -output ./illumina2_76519/chunk_19.demux.fq -threads 1
+[02/27/20 15:58:19]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:19]: b'\nMerging\n  Fwd illumina2_76519/chunk_11_R1.trimmed.fq\n  Rev illumina2_76519/chunk_11_R2.trimmed.fq\n  Keep read labels\n\n00:00 2.1Mb     0.1% 0% merged\r00:00 2.3Mb   100.0% 45.0% merged\r\n\nMerged length distribution:\n       157  Min\n       157  Low quartile\n       157  Median\n       157  High quartile\n       157  Max\n\nTotals:\n        20  Pairs (20)\n         9  Merged (9, 45.00%)\n         9  Alignments with zero diffs (45.00%)\n         2  Too many diffs (> 8) (10.00%)\n        11  Fwd tails Q <= 5 trimmed (55.00%)\n        11  Rev tails Q <= 5 trimmed (55.00%)\n         8  No alignment found (40.00%)\n         1  Alignment too short (< 16) (5.00%)\n         0  Merged too short (< 100)\n        11  Staggered pairs (55.00%) merged & trimmed\n    157.00  Mean alignment length\n    157.00  Mean merged length\n      0.02  Mean fwd expected errors\n      0.02  Mean rev expected errors\n      0.01  Mean merged expected errors\n'
+[02/27/20 15:58:19]: Removing phix from illumina2_76519/chunk_11.demux.fq
+[02/27/20 15:58:20]: File Size: 3206 bytes
+[02/27/20 15:58:20]: usearch9 -filter_phix ./illumina2_76519/chunk_11.demux.fq.tmp -output ./illumina2_76519/chunk_11.demux.fq -threads 1
+[02/27/20 15:58:20]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:20]: b'00:01 203Mb     0.1% Word stats\r00:01 203Mb   100.0% Word stats\r\n00:01 203Mb   100.0% Alloc rows\r\n00:01 203Mb     0.1% Build index\r00:01 203Mb   100.0% Build index\r\n00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)\r\n'
+[02/27/20 15:58:20]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:20]: b'00:01 203Mb     0.1% Word stats\r00:01 203Mb   100.0% Word stats\r\n00:01 203Mb   100.0% Alloc rows\r\n00:01 203Mb     0.1% Build index\r00:01 203Mb   100.0% Build index\r\n00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)\r\n'
+[02/27/20 15:58:20]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:20]: b'00:00 203Mb     0.1% Word stats\r00:00 203Mb   100.0% Word stats\r\n00:00 203Mb   100.0% Alloc rows\r\n00:00 203Mb     0.1% Build index\r00:00 203Mb   100.0% Build index\r\n00:00 136Mb   100.0% Filtering for phix, 0 hits (0.0%)\r\n'
+[02/27/20 15:58:20]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:20]: b'00:00 203Mb     0.1% Word stats\r00:00 203Mb   100.0% Word stats\r\n00:00 203Mb   100.0% Alloc rows\r\n00:00 203Mb     0.1% Build index\r00:00 203Mb   100.0% Build index\r\n00:00 136Mb   100.0% Filtering for phix, 0 hits (0.0%)\r\n'
+[02/27/20 15:58:20]: Re-oriented PE reads for chunk_7: 32 total, 14 correct, 4 flipped, 14 dropped.
+[02/27/20 15:58:20]: Re-oriented PE reads for chunk_9: 32 total, 11 correct, 8 flipped, 13 dropped.
+[02/27/20 15:58:20]: Re-oriented PE reads for chunk_31: 32 total, 15 correct, 3 flipped, 14 dropped.
+[02/27/20 15:58:20]: Re-oriented PE reads for chunk_24: 32 total, 11 correct, 11 flipped, 10 dropped.
+[02/27/20 15:58:20]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:20]: b'00:01 203Mb     0.1% Word stats\r00:01 203Mb   100.0% Word stats\r\n00:01 203Mb   100.0% Alloc rows\r\n00:01 203Mb     0.1% Build index\r00:01 203Mb   100.0% Build index\r\n00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)\r\n'
+[02/27/20 15:58:20]: Re-oriented PE reads for chunk_28: 32 total, 15 correct, 6 flipped, 11 dropped.
+[02/27/20 15:58:20]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:20]: b'00:00 203Mb     0.1% Word stats\r00:00 203Mb   100.0% Word stats\r\n00:00 203Mb   100.0% Alloc rows\r\n00:00 203Mb     0.1% Build index\r00:00 203Mb   100.0% Build index\r\n00:00 136Mb   100.0% Filtering for phix, 0 hits (0.0%)\r\n'
+[02/27/20 15:58:20]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:20]: b'00:00 203Mb     0.1% Word stats\r00:00 203Mb   100.0% Word stats\r\n00:00 203Mb   100.0% Alloc rows\r\n00:00 203Mb     0.1% Build index\r00:00 203Mb   100.0% Build index\r\n00:00 136Mb   100.0% Filtering for phix, 0 hits (0.0%)\r\n'
+[02/27/20 15:58:20]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:20]: b'00:00 203Mb     0.1% Word stats\r00:00 203Mb   100.0% Word stats\r\n00:00 203Mb   100.0% Alloc rows\r\n00:00 203Mb     0.1% Build index\r00:00 203Mb   100.0% Build index\r\n00:00 136Mb   100.0% Filtering for phix, 0 hits (0.0%)\r\n'
+[02/27/20 15:58:20]: Re-oriented PE reads for chunk_26: 32 total, 10 correct, 8 flipped, 14 dropped.
+[02/27/20 15:58:20]: Re-oriented PE reads for chunk_15: 32 total, 10 correct, 9 flipped, 13 dropped.
+[02/27/20 15:58:20]: Now merging PE reads
+[02/27/20 15:58:20]: usearch9 -fastq_mergepairs illumina2_76519/chunk_7_R1.trimmed.fq -reverse illumina2_76519/chunk_7_R2.trimmed.fq -fastqout ./illumina2_76519/chunk_7.demux.fq.merged.fq -fastq_trunctail 5 -fastqout_notmerged_fwd ./illumina2_76519/chunk_7.demux.fq.notmerged.R1.fq -minhsp 12 -fastq_maxdiffs 8 -report ./illumina2_76519/chunk_7.demux.fq.merge_report.txt -fastq_minmergelen 100 -threads 1
+[02/27/20 15:58:20]: Re-oriented PE reads for chunk_5: 32 total, 6 correct, 3 flipped, 23 dropped.
+[02/27/20 15:58:20]: Now merging PE reads
+[02/27/20 15:58:20]: usearch9 -fastq_mergepairs illumina2_76519/chunk_31_R1.trimmed.fq -reverse illumina2_76519/chunk_31_R2.trimmed.fq -fastqout ./illumina2_76519/chunk_31.demux.fq.merged.fq -fastq_trunctail 5 -fastqout_notmerged_fwd ./illumina2_76519/chunk_31.demux.fq.notmerged.R1.fq -minhsp 12 -fastq_maxdiffs 8 -report ./illumina2_76519/chunk_31.demux.fq.merge_report.txt -fastq_minmergelen 100 -threads 1
+[02/27/20 15:58:20]: Now merging PE reads
+[02/27/20 15:58:20]: usearch9 -fastq_mergepairs illumina2_76519/chunk_9_R1.trimmed.fq -reverse illumina2_76519/chunk_9_R2.trimmed.fq -fastqout ./illumina2_76519/chunk_9.demux.fq.merged.fq -fastq_trunctail 5 -fastqout_notmerged_fwd ./illumina2_76519/chunk_9.demux.fq.notmerged.R1.fq -minhsp 12 -fastq_maxdiffs 8 -report ./illumina2_76519/chunk_9.demux.fq.merge_report.txt -fastq_minmergelen 100 -threads 1
+[02/27/20 15:58:20]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:20]: b'\nMerging\n  Fwd illumina2_76519/chunk_7_R1.trimmed.fq\n  Rev illumina2_76519/chunk_7_R2.trimmed.fq\n  Keep read labels\n\n00:00 2.2Mb     0.1% 0% merged\r00:00 2.3Mb   100.0% 27.8% merged\r\n\nMerged length distribution:\n       157  Min\n       157  Low quartile\n       157  Median\n       157  High quartile\n       157  Max\n\nTotals:\n        18  Pairs (18)\n         5  Merged (5, 27.78%)\n         6  Alignments with zero diffs (33.33%)\n         1  Too many diffs (> 8) (5.56%)\n        13  Fwd tails Q <= 5 trimmed (72.22%)\n        13  Rev tails Q <= 5 trimmed (72.22%)\n        11  No alignment found (61.11%)\n         0  Alignment too short (< 16) (0.00%)\n         1  Merged too short (< 100)\n         7  Staggered pairs (38.89%) merged & trimmed\n    157.00  Mean alignment length\n    157.00  Mean merged length\n      0.20  Mean fwd expected errors\n      0.11  Mean rev expected errors\n      0.01  Mean merged expected errors\n'
+[02/27/20 15:58:20]: Now merging PE reads
+[02/27/20 15:58:20]: usearch9 -fastq_mergepairs illumina2_76519/chunk_24_R1.trimmed.fq -reverse illumina2_76519/chunk_24_R2.trimmed.fq -fastqout ./illumina2_76519/chunk_24.demux.fq.merged.fq -fastq_trunctail 5 -fastqout_notmerged_fwd ./illumina2_76519/chunk_24.demux.fq.notmerged.R1.fq -minhsp 12 -fastq_maxdiffs 8 -report ./illumina2_76519/chunk_24.demux.fq.merge_report.txt -fastq_minmergelen 100 -threads 1
+[02/27/20 15:58:20]: Removing phix from illumina2_76519/chunk_7.demux.fq
+[02/27/20 15:58:20]: File Size: 1783 bytes
+[02/27/20 15:58:20]: usearch9 -filter_phix ./illumina2_76519/chunk_7.demux.fq.tmp -output ./illumina2_76519/chunk_7.demux.fq -threads 1
+[02/27/20 15:58:20]: Now merging PE reads
+[02/27/20 15:58:20]: usearch9 -fastq_mergepairs illumina2_76519/chunk_5_R1.trimmed.fq -reverse illumina2_76519/chunk_5_R2.trimmed.fq -fastqout ./illumina2_76519/chunk_5.demux.fq.merged.fq -fastq_trunctail 5 -fastqout_notmerged_fwd ./illumina2_76519/chunk_5.demux.fq.notmerged.R1.fq -minhsp 12 -fastq_maxdiffs 8 -report ./illumina2_76519/chunk_5.demux.fq.merge_report.txt -fastq_minmergelen 100 -threads 1
+[02/27/20 15:58:20]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:20]: b'\nMerging\n  Fwd illumina2_76519/chunk_31_R1.trimmed.fq\n  Rev illumina2_76519/chunk_31_R2.trimmed.fq\n  Keep read labels\n\n00:00 2.1Mb     0.1% 0% merged\r00:00 2.3Mb   100.0% 27.8% merged\r\n\nMerged length distribution:\n       157  Min\n       157  Low quartile\n       157  Median\n       157  High quartile\n       157  Max\n\nTotals:\n        18  Pairs (18)\n         5  Merged (5, 27.78%)\n         5  Alignments with zero diffs (27.78%)\n         1  Too many diffs (> 8) (5.56%)\n        10  Fwd tails Q <= 5 trimmed (55.56%)\n        12  Rev tails Q <= 5 trimmed (66.67%)\n         0  Fwd too short (< 64) after tail trimming (0.00%)\n         1  Rev too short (< 64) after tail trimming (5.56%)\n         9  No alignment found (50.00%)\n         1  Alignment too short (< 16) (5.56%)\n         1  Merged too short (< 100)\n         7  Staggered pairs (38.89%) merged & trimmed\n    157.00  Mean alignment length\n    157.00  Mean merged length\n      0.08  Mean fwd expected errors\n      0.33  Mean rev expected errors\n      0.02  Mean merged expected errors\n'
+[02/27/20 15:58:20]: Removing phix from illumina2_76519/chunk_31.demux.fq
+[02/27/20 15:58:20]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:20]: File Size: 1782 bytes
+[02/27/20 15:58:20]: b'\nMerging\n  Fwd illumina2_76519/chunk_9_R1.trimmed.fq\n  Rev illumina2_76519/chunk_9_R2.trimmed.fq\n  Keep read labels\n\n00:00 2.2Mb     0.1% 0% merged\r00:00 2.3Mb   100.0% 52.6% merged\r\n\nMerged length distribution:\n       157  Min\n       157  Low quartile\n       157  Median\n       157  High quartile\n       157  Max\n\nTotals:\n        19  Pairs (19)\n        10  Merged (10, 52.63%)\n        10  Alignments with zero diffs (52.63%)\n         2  Too many diffs (> 8) (10.53%)\n        10  Fwd tails Q <= 5 trimmed (52.63%)\n         9  Rev tails Q <= 5 trimmed (47.37%)\n         6  No alignment found (31.58%)\n         0  Alignment too short (< 16) (0.00%)\n         1  Merged too short (< 100)\n        13  Staggered pairs (68.42%) merged & trimmed\n    157.00  Mean alignment length\n    157.00  Mean merged length\n      1.72  Mean fwd expected errors\n      0.13  Mean rev expected errors\n      0.02  Mean merged expected errors\n'
+[02/27/20 15:58:20]: usearch9 -filter_phix ./illumina2_76519/chunk_31.demux.fq.tmp -output ./illumina2_76519/chunk_31.demux.fq -threads 1
+[02/27/20 15:58:20]: Removing phix from illumina2_76519/chunk_9.demux.fq
+[02/27/20 15:58:20]: File Size: 3564 bytes
+[02/27/20 15:58:20]: usearch9 -filter_phix ./illumina2_76519/chunk_9.demux.fq.tmp -output ./illumina2_76519/chunk_9.demux.fq -threads 1
+[02/27/20 15:58:20]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:20]: b'\nMerging\n  Fwd illumina2_76519/chunk_24_R1.trimmed.fq\n  Rev illumina2_76519/chunk_24_R2.trimmed.fq\n  Keep read labels\n\n00:00 2.1Mb     0.1% 0% merged\r00:00 2.3Mb   100.0% 45.5% merged\r\n\nMerged length distribution:\n       156  Min\n       157  Low quartile\n       157  Median\n       157  High quartile\n       157  Max\n\nTotals:\n        22  Pairs (22)\n        10  Merged (10, 45.45%)\n         9  Alignments with zero diffs (40.91%)\n         0  Too many diffs (> 8) (0.00%)\n        12  Fwd tails Q <= 5 trimmed (54.55%)\n        11  Rev tails Q <= 5 trimmed (50.00%)\n        12  No alignment found (54.55%)\n         0  Alignment too short (< 16) (0.00%)\n         0  Merged too short (< 100)\n        10  Staggered pairs (45.45%) merged & trimmed\n    156.90  Mean alignment length\n    156.90  Mean merged length\n      0.28  Mean fwd expected errors\n      0.10  Mean rev expected errors\n      0.01  Mean merged expected errors\n'
+[02/27/20 15:58:20]: Removing phix from illumina2_76519/chunk_24.demux.fq
+[02/27/20 15:58:20]: File Size: 3561 bytes
+[02/27/20 15:58:20]: usearch9 -filter_phix ./illumina2_76519/chunk_24.demux.fq.tmp -output ./illumina2_76519/chunk_24.demux.fq -threads 1
+[02/27/20 15:58:20]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:20]: b'\nMerging\n  Fwd illumina2_76519/chunk_5_R1.trimmed.fq\n  Rev illumina2_76519/chunk_5_R2.trimmed.fq\n  Keep read labels\n\n00:00 2.1Mb     0.1% 0% merged\r00:00 2.3Mb   100.0% 44.4% merged\r\n\nMerged length distribution:\n       157  Min\n       157  Low quartile\n       157  Median\n       158  High quartile\n       158  Max\n\nTotals:\n         9  Pairs (9)\n         4  Merged (4, 44.44%)\n         4  Alignments with zero diffs (44.44%)\n         0  Too many diffs (> 8) (0.00%)\n         5  Fwd tails Q <= 5 trimmed (55.56%)\n         5  Rev tails Q <= 5 trimmed (55.56%)\n         5  No alignment found (55.56%)\n         0  Alignment too short (< 16) (0.00%)\n         0  Merged too short (< 100)\n         4  Staggered pairs (44.44%) merged & trimmed\n    157.25  Mean alignment length\n    157.25  Mean merged length\n      0.04  Mean fwd expected errors\n      0.13  Mean rev expected errors\n      0.01  Mean merged expected errors\n'
+[02/27/20 15:58:20]: Removing phix from illumina2_76519/chunk_5.demux.fq
+[02/27/20 15:58:20]: File Size: 1423 bytes
+[02/27/20 15:58:20]: usearch9 -filter_phix ./illumina2_76519/chunk_5.demux.fq.tmp -output ./illumina2_76519/chunk_5.demux.fq -threads 1
+[02/27/20 15:58:20]: Now merging PE reads
+[02/27/20 15:58:20]: usearch9 -fastq_mergepairs illumina2_76519/chunk_26_R1.trimmed.fq -reverse illumina2_76519/chunk_26_R2.trimmed.fq -fastqout ./illumina2_76519/chunk_26.demux.fq.merged.fq -fastq_trunctail 5 -fastqout_notmerged_fwd ./illumina2_76519/chunk_26.demux.fq.notmerged.R1.fq -minhsp 12 -fastq_maxdiffs 8 -report ./illumina2_76519/chunk_26.demux.fq.merge_report.txt -fastq_minmergelen 100 -threads 1
+[02/27/20 15:58:20]: Now merging PE reads
+[02/27/20 15:58:20]: usearch9 -fastq_mergepairs illumina2_76519/chunk_28_R1.trimmed.fq -reverse illumina2_76519/chunk_28_R2.trimmed.fq -fastqout ./illumina2_76519/chunk_28.demux.fq.merged.fq -fastq_trunctail 5 -fastqout_notmerged_fwd ./illumina2_76519/chunk_28.demux.fq.notmerged.R1.fq -minhsp 12 -fastq_maxdiffs 8 -report ./illumina2_76519/chunk_28.demux.fq.merge_report.txt -fastq_minmergelen 100 -threads 1
+[02/27/20 15:58:20]: Now merging PE reads
+[02/27/20 15:58:20]: usearch9 -fastq_mergepairs illumina2_76519/chunk_15_R1.trimmed.fq -reverse illumina2_76519/chunk_15_R2.trimmed.fq -fastqout ./illumina2_76519/chunk_15.demux.fq.merged.fq -fastq_trunctail 5 -fastqout_notmerged_fwd ./illumina2_76519/chunk_15.demux.fq.notmerged.R1.fq -minhsp 12 -fastq_maxdiffs 8 -report ./illumina2_76519/chunk_15.demux.fq.merge_report.txt -fastq_minmergelen 100 -threads 1
+[02/27/20 15:58:20]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:20]: b'\nMerging\n  Fwd illumina2_76519/chunk_26_R1.trimmed.fq\n  Rev illumina2_76519/chunk_26_R2.trimmed.fq\n  Keep read labels\n\n00:00 2.1Mb     0.1% 0% merged\r00:00 2.3Mb   100.0% 27.8% merged\r\n\nMerged length distribution:\n       157  Min\n       157  Low quartile\n       157  Median\n       157  High quartile\n       157  Max\n\nTotals:\n        18  Pairs (18)\n         5  Merged (5, 27.78%)\n         5  Alignments with zero diffs (27.78%)\n         3  Too many diffs (> 8) (16.67%)\n        13  Fwd tails Q <= 5 trimmed (72.22%)\n        13  Rev tails Q <= 5 trimmed (72.22%)\n         9  No alignment found (50.00%)\n         0  Alignment too short (< 16) (0.00%)\n         1  Merged too short (< 100)\n         9  Staggered pairs (50.00%) merged & trimmed\n    157.00  Mean alignment length\n    157.00  Mean merged length\n      0.27  Mean fwd expected errors\n      0.15  Mean rev expected errors\n      0.11  Mean merged expected errors\n'
+[02/27/20 15:58:20]: Removing phix from illumina2_76519/chunk_26.demux.fq
+[02/27/20 15:58:20]: File Size: 1781 bytes
+[02/27/20 15:58:20]: usearch9 -filter_phix ./illumina2_76519/chunk_26.demux.fq.tmp -output ./illumina2_76519/chunk_26.demux.fq -threads 1
+[02/27/20 15:58:20]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:20]: b'\nMerging\n  Fwd illumina2_76519/chunk_28_R1.trimmed.fq\n  Rev illumina2_76519/chunk_28_R2.trimmed.fq\n  Keep read labels\n\n00:00 2.2Mb     0.1% 0% merged\r00:00 2.3Mb   100.0% 61.9% merged\r\n\nMerged length distribution:\n       157  Min\n       157  Low quartile\n       157  Median\n       157  High quartile\n       157  Max\n\nTotals:\n        21  Pairs (21)\n        13  Merged (13, 61.90%)\n        13  Alignments with zero diffs (61.90%)\n         1  Too many diffs (> 8) (4.76%)\n         8  Fwd tails Q <= 5 trimmed (38.10%)\n         8  Rev tails Q <= 5 trimmed (38.10%)\n         7  No alignment found (33.33%)\n         0  Alignment too short (< 16) (0.00%)\n         0  Merged too short (< 100)\n        14  Staggered pairs (66.67%) merged & trimmed\n    157.00  Mean alignment length\n    157.00  Mean merged length\n      0.04  Mean fwd expected errors\n      0.06  Mean rev expected errors\n      0.01  Mean merged expected errors\n'
+[02/27/20 15:58:20]: Removing phix from illumina2_76519/chunk_28.demux.fq
+[02/27/20 15:58:20]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:20]: b'\nMerging\n  Fwd illumina2_76519/chunk_15_R1.trimmed.fq\n  Rev illumina2_76519/chunk_15_R2.trimmed.fq\n  Keep read labels\n\n00:00 2.1Mb     0.1% 0% merged\r00:00 2.3Mb   100.0% 31.6% merged\r\n\nMerged length distribution:\n       157  Min\n       157  Low quartile\n       157  Median\n       157  High quartile\n       157  Max\n\nTotals:\n        19  Pairs (19)\n         6  Merged (6, 31.58%)\n         6  Alignments with zero diffs (31.58%)\n         3  Too many diffs (> 8) (15.79%)\n        13  Fwd tails Q <= 5 trimmed (68.42%)\n        11  Rev tails Q <= 5 trimmed (57.89%)\n         1  Fwd too short (< 64) after tail trimming (5.26%)\n         1  Rev too short (< 64) after tail trimming (5.26%)\n         8  No alignment found (42.11%)\n         0  Alignment too short (< 16) (0.00%)\n         0  Merged too short (< 100)\n         8  Staggered pairs (42.11%) merged & trimmed\n    157.00  Mean alignment length\n    157.00  Mean merged length\n      0.05  Mean fwd expected errors\n      0.02  Mean rev expected errors\n      0.01  Mean merged expected errors\n'
+[02/27/20 15:58:20]: Removing phix from illumina2_76519/chunk_15.demux.fq
+[02/27/20 15:58:20]: File Size: 4628 bytes
+[02/27/20 15:58:20]: usearch9 -filter_phix ./illumina2_76519/chunk_28.demux.fq.tmp -output ./illumina2_76519/chunk_28.demux.fq -threads 1
+[02/27/20 15:58:20]: File Size: 2135 bytes
+[02/27/20 15:58:20]: usearch9 -filter_phix ./illumina2_76519/chunk_15.demux.fq.tmp -output ./illumina2_76519/chunk_15.demux.fq -threads 1
+[02/27/20 15:58:21]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:21]: b'00:00 203Mb     0.1% Word stats\r00:00 203Mb   100.0% Word stats\r\n00:00 203Mb   100.0% Alloc rows\r\n00:00 203Mb     0.1% Build index\r00:00 203Mb   100.0% Build index\r\n00:01 136Mb     0.2% Filtering for phix, 0 hits (0.0%)\r00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)\r\n'
+[02/27/20 15:58:21]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:21]: b'00:00 203Mb     0.1% Word stats\r00:00 203Mb   100.0% Word stats\r\n00:00 203Mb   100.0% Alloc rows\r\n00:00 203Mb     0.1% Build index\r00:00 203Mb   100.0% Build index\r\n00:01 136Mb     0.2% Filtering for phix, 0 hits (0.0%)\r00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)\r\n'
+[02/27/20 15:58:21]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:21]: b'00:00 203Mb     0.1% Word stats\r00:00 203Mb   100.0% Word stats\r\n00:00 203Mb   100.0% Alloc rows\r\n00:00 203Mb     0.1% Build index\r00:00 203Mb   100.0% Build index\r\n00:01 136Mb     0.2% Filtering for phix, 0 hits (0.0%)\r00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)\r\n'
+[02/27/20 15:58:21]: Re-oriented PE reads for chunk_21: 32 total, 15 correct, 6 flipped, 11 dropped.
+[02/27/20 15:58:21]: Re-oriented PE reads for chunk_12: 32 total, 15 correct, 8 flipped, 9 dropped.
+[02/27/20 15:58:21]: Re-oriented PE reads for chunk_2: 32 total, 14 correct, 6 flipped, 12 dropped.
+[02/27/20 15:58:21]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:21]: b'00:00 203Mb     0.1% Word stats\r00:00 203Mb   100.0% Word stats\r\n00:00 203Mb   100.0% Alloc rows\r\n00:00 203Mb     0.1% Build index\r00:00 203Mb   100.0% Build index\r\n00:01 136Mb     0.2% Filtering for phix, 0 hits (0.0%)\r00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)\r\n'
+[02/27/20 15:58:21]: Re-oriented PE reads for chunk_10: 32 total, 12 correct, 3 flipped, 17 dropped.
+[02/27/20 15:58:21]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:21]: b'00:00 203Mb     0.1% Word stats\r00:00 203Mb   100.0% Word stats\r\n00:00 203Mb   100.0% Alloc rows\r\n00:00 203Mb     0.1% Build index\r00:00 203Mb   100.0% Build index\r\n00:01 136Mb     0.2% Filtering for phix, 0 hits (0.0%)\r00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)\r\n'
+[02/27/20 15:58:21]: Re-oriented PE reads for chunk_23: 32 total, 16 correct, 5 flipped, 11 dropped.
+[02/27/20 15:58:21]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:21]: b'00:00 203Mb     0.1% Word stats\r00:00 203Mb   100.0% Word stats\r\n00:00 203Mb   100.0% Alloc rows\r\n00:01 203Mb     0.1% Build index\r00:01 203Mb   100.0% Build index\r\n00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)\r\n'
+[02/27/20 15:58:21]: Re-oriented PE reads for chunk_30: 32 total, 13 correct, 9 flipped, 10 dropped.
+[02/27/20 15:58:21]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:21]: b'00:00 203Mb     0.1% Word stats\r00:00 203Mb   100.0% Word stats\r\n00:00 203Mb   100.0% Alloc rows\r\n00:00 203Mb     0.1% Build index\r00:01 203Mb   100.0% Build index\r\n00:01 136Mb     0.2% Filtering for phix, 0 hits (0.0%)\r00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)\r\n'
+[02/27/20 15:58:21]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:21]: b'00:00 203Mb     0.1% Word stats\r00:00 203Mb   100.0% Word stats\r\n00:00 203Mb   100.0% Alloc rows\r\n00:00 203Mb     0.1% Build index\r00:01 203Mb   100.0% Build index\r\n00:01 136Mb     0.2% Filtering for phix, 0 hits (0.0%)\r00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)\r\n'
+[02/27/20 15:58:21]: Re-oriented PE reads for chunk_4: 32 total, 11 correct, 8 flipped, 13 dropped.
+[02/27/20 15:58:21]: Re-oriented PE reads for chunk_14: 32 total, 18 correct, 4 flipped, 10 dropped.
+[02/27/20 15:58:21]: Now merging PE reads
+[02/27/20 15:58:21]: usearch9 -fastq_mergepairs illumina2_76519/chunk_10_R1.trimmed.fq -reverse illumina2_76519/chunk_10_R2.trimmed.fq -fastqout ./illumina2_76519/chunk_10.demux.fq.merged.fq -fastq_trunctail 5 -fastqout_notmerged_fwd ./illumina2_76519/chunk_10.demux.fq.notmerged.R1.fq -minhsp 12 -fastq_maxdiffs 8 -report ./illumina2_76519/chunk_10.demux.fq.merge_report.txt -fastq_minmergelen 100 -threads 1
+[02/27/20 15:58:21]: Now merging PE reads
+[02/27/20 15:58:21]: usearch9 -fastq_mergepairs illumina2_76519/chunk_2_R1.trimmed.fq -reverse illumina2_76519/chunk_2_R2.trimmed.fq -fastqout ./illumina2_76519/chunk_2.demux.fq.merged.fq -fastq_trunctail 5 -fastqout_notmerged_fwd ./illumina2_76519/chunk_2.demux.fq.notmerged.R1.fq -minhsp 12 -fastq_maxdiffs 8 -report ./illumina2_76519/chunk_2.demux.fq.merge_report.txt -fastq_minmergelen 100 -threads 1
+[02/27/20 15:58:21]: Now merging PE reads
+[02/27/20 15:58:21]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:21]: usearch9 -fastq_mergepairs illumina2_76519/chunk_12_R1.trimmed.fq -reverse illumina2_76519/chunk_12_R2.trimmed.fq -fastqout ./illumina2_76519/chunk_12.demux.fq.merged.fq -fastq_trunctail 5 -fastqout_notmerged_fwd ./illumina2_76519/chunk_12.demux.fq.notmerged.R1.fq -minhsp 12 -fastq_maxdiffs 8 -report ./illumina2_76519/chunk_12.demux.fq.merge_report.txt -fastq_minmergelen 100 -threads 1
+[02/27/20 15:58:21]: b'\nMerging\n  Fwd illumina2_76519/chunk_10_R1.trimmed.fq\n  Rev illumina2_76519/chunk_10_R2.trimmed.fq\n  Keep read labels\n\n00:00 2.1Mb     0.1% 0% merged\r00:00 2.3Mb   100.0% 26.7% merged\r\n\nMerged length distribution:\n       156  Min\n       157  Low quartile\n       157  Median\n       157  High quartile\n       157  Max\n\nTotals:\n        15  Pairs (15)\n         4  Merged (4, 26.67%)\n         5  Alignments with zero diffs (33.33%)\n         2  Too many diffs (> 8) (13.33%)\n        11  Fwd tails Q <= 5 trimmed (73.33%)\n        11  Rev tails Q <= 5 trimmed (73.33%)\n         8  No alignment found (53.33%)\n         0  Alignment too short (< 16) (0.00%)\n         1  Merged too short (< 100)\n         7  Staggered pairs (46.67%) merged & trimmed\n    156.75  Mean alignment length\n    156.75  Mean merged length\n      0.02  Mean fwd expected errors\n      0.02  Mean rev expected errors\n      0.01  Mean merged expected errors\n'
+[02/27/20 15:58:21]: Removing phix from illumina2_76519/chunk_10.demux.fq
+[02/27/20 15:58:21]: File Size: 1423 bytes
+[02/27/20 15:58:21]: usearch9 -filter_phix ./illumina2_76519/chunk_10.demux.fq.tmp -output ./illumina2_76519/chunk_10.demux.fq -threads 1
+[02/27/20 15:58:21]: Now merging PE reads
+[02/27/20 15:58:21]: usearch9 -fastq_mergepairs illumina2_76519/chunk_21_R1.trimmed.fq -reverse illumina2_76519/chunk_21_R2.trimmed.fq -fastqout ./illumina2_76519/chunk_21.demux.fq.merged.fq -fastq_trunctail 5 -fastqout_notmerged_fwd ./illumina2_76519/chunk_21.demux.fq.notmerged.R1.fq -minhsp 12 -fastq_maxdiffs 8 -report ./illumina2_76519/chunk_21.demux.fq.merge_report.txt -fastq_minmergelen 100 -threads 1
+[02/27/20 15:58:21]: Now merging PE reads
+[02/27/20 15:58:21]: usearch9 -fastq_mergepairs illumina2_76519/chunk_23_R1.trimmed.fq -reverse illumina2_76519/chunk_23_R2.trimmed.fq -fastqout ./illumina2_76519/chunk_23.demux.fq.merged.fq -fastq_trunctail 5 -fastqout_notmerged_fwd ./illumina2_76519/chunk_23.demux.fq.notmerged.R1.fq -minhsp 12 -fastq_maxdiffs 8 -report ./illumina2_76519/chunk_23.demux.fq.merge_report.txt -fastq_minmergelen 100 -threads 1
+[02/27/20 15:58:21]: Now merging PE reads
+[02/27/20 15:58:21]: usearch9 -fastq_mergepairs illumina2_76519/chunk_4_R1.trimmed.fq -reverse illumina2_76519/chunk_4_R2.trimmed.fq -fastqout ./illumina2_76519/chunk_4.demux.fq.merged.fq -fastq_trunctail 5 -fastqout_notmerged_fwd ./illumina2_76519/chunk_4.demux.fq.notmerged.R1.fq -minhsp 12 -fastq_maxdiffs 8 -report ./illumina2_76519/chunk_4.demux.fq.merge_report.txt -fastq_minmergelen 100 -threads 1
+[02/27/20 15:58:21]: Now merging PE reads
+[02/27/20 15:58:21]: usearch9 -fastq_mergepairs illumina2_76519/chunk_30_R1.trimmed.fq -reverse illumina2_76519/chunk_30_R2.trimmed.fq -fastqout ./illumina2_76519/chunk_30.demux.fq.merged.fq -fastq_trunctail 5 -fastqout_notmerged_fwd ./illumina2_76519/chunk_30.demux.fq.notmerged.R1.fq -minhsp 12 -fastq_maxdiffs 8 -report ./illumina2_76519/chunk_30.demux.fq.merge_report.txt -fastq_minmergelen 100 -threads 1
+[02/27/20 15:58:21]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:21]: b'\nMerging\n  Fwd illumina2_76519/chunk_2_R1.trimmed.fq\n  Rev illumina2_76519/chunk_2_R2.trimmed.fq\n  Keep read labels\n\n00:00 2.1Mb     0.1% 0% merged\r00:00 2.3Mb   100.0% 50.0% merged\r\n\nMerged length distribution:\n       157  Min\n       157  Low quartile\n       157  Median\n       157  High quartile\n       157  Max\n\nTotals:\n        20  Pairs (20)\n        10  Merged (10, 50.00%)\n         9  Alignments with zero diffs (45.00%)\n         2  Too many diffs (> 8) (10.00%)\n        10  Fwd tails Q <= 5 trimmed (50.00%)\n        10  Rev tails Q <= 5 trimmed (50.00%)\n         0  Fwd too short (< 64) after tail trimming (0.00%)\n         1  Rev too short (< 64) after tail trimming (5.00%)\n         7  No alignment found (35.00%)\n         0  Alignment too short (< 16) (0.00%)\n         0  Merged too short (< 100)\n        12  Staggered pairs (60.00%) merged & trimmed\n    157.00  Mean alignment length\n    157.00  Mean merged length\n      0.22  Mean fwd expected errors\n      0.04  Mean rev expected errors\n      0.06  Mean merged expected errors\n'
+[02/27/20 15:58:21]: Removing phix from illumina2_76519/chunk_2.demux.fq
+[02/27/20 15:58:21]: File Size: 3561 bytes
+[02/27/20 15:58:21]: usearch9 -filter_phix ./illumina2_76519/chunk_2.demux.fq.tmp -output ./illumina2_76519/chunk_2.demux.fq -threads 1
+[02/27/20 15:58:21]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:21]: b'\nMerging\n  Fwd illumina2_76519/chunk_12_R1.trimmed.fq\n  Rev illumina2_76519/chunk_12_R2.trimmed.fq\n  Keep read labels\n\n00:00 2.1Mb     0.1% 0% merged\r00:00 2.3Mb   100.0% 39.1% merged\r\n\nMerged length distribution:\n       156  Min\n       157  Low quartile\n       157  Median\n       157  High quartile\n       157  Max\n\nTotals:\n        23  Pairs (23)\n         9  Merged (9, 39.13%)\n        11  Alignments with zero diffs (47.83%)\n         2  Too many diffs (> 8) (8.70%)\n        14  Fwd tails Q <= 5 trimmed (60.87%)\n        14  Rev tails Q <= 5 trimmed (60.87%)\n        10  No alignment found (43.48%)\n         0  Alignment too short (< 16) (0.00%)\n         2  Merged too short (< 100)\n        13  Staggered pairs (56.52%) merged & trimmed\n    156.89  Mean alignment length\n    156.89  Mean merged length\n      0.13  Mean fwd expected errors\n      0.07  Mean rev expected errors\n      0.01  Mean merged expected errors\n'
+[02/27/20 15:58:21]: Removing phix from illumina2_76519/chunk_12.demux.fq
+[02/27/20 15:58:21]: Now merging PE reads
+[02/27/20 15:58:21]: File Size: 3203 bytes
+[02/27/20 15:58:21]: usearch9 -fastq_mergepairs illumina2_76519/chunk_14_R1.trimmed.fq -reverse illumina2_76519/chunk_14_R2.trimmed.fq -fastqout ./illumina2_76519/chunk_14.demux.fq.merged.fq -fastq_trunctail 5 -fastqout_notmerged_fwd ./illumina2_76519/chunk_14.demux.fq.notmerged.R1.fq -minhsp 12 -fastq_maxdiffs 8 -report ./illumina2_76519/chunk_14.demux.fq.merge_report.txt -fastq_minmergelen 100 -threads 1
+[02/27/20 15:58:21]: usearch9 -filter_phix ./illumina2_76519/chunk_12.demux.fq.tmp -output ./illumina2_76519/chunk_12.demux.fq -threads 1
+[02/27/20 15:58:21]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:21]: b'\nMerging\n  Fwd illumina2_76519/chunk_21_R1.trimmed.fq\n  Rev illumina2_76519/chunk_21_R2.trimmed.fq\n  Keep read labels\n\n00:00 2.1Mb     0.1% 0% merged\r00:00 2.3Mb   100.0% 38.1% merged\r\n\nMerged length distribution:\n       157  Min\n       157  Low quartile\n       157  Median\n       157  High quartile\n       157  Max\n\nTotals:\n        21  Pairs (21)\n         8  Merged (8, 38.10%)\n         8  Alignments with zero diffs (38.10%)\n         6  Too many diffs (> 8) (28.57%)\n        13  Fwd tails Q <= 5 trimmed (61.90%)\n        13  Rev tails Q <= 5 trimmed (61.90%)\n         7  No alignment found (33.33%)\n         0  Alignment too short (< 16) (0.00%)\n         0  Merged too short (< 100)\n        14  Staggered pairs (66.67%) merged & trimmed\n    157.00  Mean alignment length\n    157.00  Mean merged length\n      0.02  Mean fwd expected errors\n      0.02  Mean rev expected errors\n      0.01  Mean merged expected errors\n'
+[02/27/20 15:58:21]: Removing phix from illumina2_76519/chunk_21.demux.fq
+[02/27/20 15:58:21]: File Size: 2846 bytes
+[02/27/20 15:58:21]: usearch9 -filter_phix ./illumina2_76519/chunk_21.demux.fq.tmp -output ./illumina2_76519/chunk_21.demux.fq -threads 1
+[02/27/20 15:58:21]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:21]: b'\nMerging\n  Fwd illumina2_76519/chunk_23_R1.trimmed.fq\n  Rev illumina2_76519/chunk_23_R2.trimmed.fq\n  Keep read labels\n\n00:00 2.2Mb     0.1% 0% merged\r00:00 2.3Mb   100.0% 42.9% merged\r\n\nMerged length distribution:\n       156  Min\n       157  Low quartile\n       157  Median\n       157  High quartile\n       157  Max\n\nTotals:\n        21  Pairs (21)\n         9  Merged (9, 42.86%)\n        10  Alignments with zero diffs (47.62%)\n         1  Too many diffs (> 8) (4.76%)\n        12  Fwd tails Q <= 5 trimmed (57.14%)\n        12  Rev tails Q <= 5 trimmed (57.14%)\n        10  No alignment found (47.62%)\n         0  Alignment too short (< 16) (0.00%)\n         1  Merged too short (< 100)\n        10  Staggered pairs (47.62%) merged & trimmed\n    156.89  Mean alignment length\n    156.89  Mean merged length\n      0.02  Mean fwd expected errors\n      0.02  Mean rev expected errors\n      0.01  Mean merged expected errors\n'
+[02/27/20 15:58:21]: Removing phix from illumina2_76519/chunk_23.demux.fq
+[02/27/20 15:58:21]: File Size: 3204 bytes
+[02/27/20 15:58:21]: usearch9 -filter_phix ./illumina2_76519/chunk_23.demux.fq.tmp -output ./illumina2_76519/chunk_23.demux.fq -threads 1
+[02/27/20 15:58:21]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:21]: b'\nMerging\n  Fwd illumina2_76519/chunk_4_R1.trimmed.fq\n  Rev illumina2_76519/chunk_4_R2.trimmed.fq\n  Keep read labels\n\n00:00 2.1Mb     0.1% 0% merged\r00:00 2.3Mb   100.0% 36.8% merged\r\n\nMerged length distribution:\n       157  Min\n       157  Low quartile\n       157  Median\n       157  High quartile\n       157  Max\n\nTotals:\n        19  Pairs (19)\n         7  Merged (7, 36.84%)\n         9  Alignments with zero diffs (47.37%)\n         2  Too many diffs (> 8) (10.53%)\n        12  Fwd tails Q <= 5 trimmed (63.16%)\n        12  Rev tails Q <= 5 trimmed (63.16%)\n         8  No alignment found (42.11%)\n         0  Alignment too short (< 16) (0.00%)\n         2  Merged too short (< 100)\n        11  Staggered pairs (57.89%) merged & trimmed\n    157.00  Mean alignment length\n    157.00  Mean merged length\n      0.10  Mean fwd expected errors\n      0.02  Mean rev expected errors\n      0.01  Mean merged expected errors\n'
+[02/27/20 15:58:21]: Removing phix from illumina2_76519/chunk_4.demux.fq
+[02/27/20 15:58:21]: File Size: 2493 bytes
+[02/27/20 15:58:21]: usearch9 -filter_phix ./illumina2_76519/chunk_4.demux.fq.tmp -output ./illumina2_76519/chunk_4.demux.fq -threads 1
+[02/27/20 15:58:21]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:21]: b'\nMerging\n  Fwd illumina2_76519/chunk_30_R1.trimmed.fq\n  Rev illumina2_76519/chunk_30_R2.trimmed.fq\n  Keep read labels\n\n00:00 2.1Mb     0.1% 0% merged\r00:00 2.3Mb   100.0% 27.3% merged\r\n\nMerged length distribution:\n       156  Min\n       157  Low quartile\n       157  Median\n       157  High quartile\n       157  Max\n\nTotals:\n        22  Pairs (22)\n         6  Merged (6, 27.27%)\n         8  Alignments with zero diffs (36.36%)\n         2  Too many diffs (> 8) (9.09%)\n        16  Fwd tails Q <= 5 trimmed (72.73%)\n        16  Rev tails Q <= 5 trimmed (72.73%)\n        12  No alignment found (54.55%)\n         0  Alignment too short (< 16) (0.00%)\n         2  Merged too short (< 100)\n        10  Staggered pairs (45.45%) merged & trimmed\n    156.83  Mean alignment length\n    156.83  Mean merged length\n      0.42  Mean fwd expected errors\n      0.03  Mean rev expected errors\n      0.01  Mean merged expected errors\n'
+[02/27/20 15:58:21]: Removing phix from illumina2_76519/chunk_30.demux.fq
+[02/27/20 15:58:21]: File Size: 2134 bytes
+[02/27/20 15:58:21]: usearch9 -filter_phix ./illumina2_76519/chunk_30.demux.fq.tmp -output ./illumina2_76519/chunk_30.demux.fq -threads 1
+[02/27/20 15:58:21]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:21]: b'\nMerging\n  Fwd illumina2_76519/chunk_14_R1.trimmed.fq\n  Rev illumina2_76519/chunk_14_R2.trimmed.fq\n  Keep read labels\n\n00:00 2.2Mb     0.1% 0% merged\r00:00 2.4Mb   100.0% 13.6% merged\r\n\nMerged length distribution:\n       157  Min\n       157  Low quartile\n       157  Median\n       158  High quartile\n       158  Max\n\nTotals:\n        22  Pairs (22)\n         3  Merged (3, 13.64%)\n         3  Alignments with zero diffs (13.64%)\n         3  Too many diffs (> 8) (13.64%)\n        19  Fwd tails Q <= 5 trimmed (86.36%)\n        19  Rev tails Q <= 5 trimmed (86.36%)\n        16  No alignment found (72.73%)\n         0  Alignment too short (< 16) (0.00%)\n         0  Merged too short (< 100)\n         6  Staggered pairs (27.27%) merged & trimmed\n    157.33  Mean alignment length\n    157.33  Mean merged length\n      0.02  Mean fwd expected errors\n      0.05  Mean rev expected errors\n      0.01  Mean merged expected errors\n'
+[02/27/20 15:58:21]: Removing phix from illumina2_76519/chunk_14.demux.fq
+[02/27/20 15:58:21]: File Size: 1070 bytes
+[02/27/20 15:58:21]: usearch9 -filter_phix ./illumina2_76519/chunk_14.demux.fq.tmp -output ./illumina2_76519/chunk_14.demux.fq -threads 1
+[02/27/20 15:58:21]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:21]: b'00:00 203Mb     0.1% Word stats\r00:00 203Mb   100.0% Word stats\r\n00:00 203Mb   100.0% Alloc rows\r\n00:00 203Mb     0.1% Build index\r00:00 203Mb   100.0% Build index\r\n00:00 136Mb   100.0% Filtering for phix, 0 hits (0.0%)\r\n'
+[02/27/20 15:58:21]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:21]: b'00:00 203Mb     0.1% Word stats\r00:00 203Mb   100.0% Word stats\r\n00:00 203Mb   100.0% Alloc rows\r\n00:00 203Mb     0.1% Build index\r00:00 203Mb   100.0% Build index\r\n00:00 136Mb   100.0% Filtering for phix, 0 hits (0.0%)\r\n'
+[02/27/20 15:58:21]: Re-oriented PE reads for chunk_29: 32 total, 9 correct, 10 flipped, 13 dropped.
+[02/27/20 15:58:21]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:21]: b'00:00 203Mb     0.1% Word stats\r00:00 203Mb   100.0% Word stats\r\n00:00 203Mb   100.0% Alloc rows\r\n00:00 203Mb     0.1% Build index\r00:00 203Mb   100.0% Build index\r\n00:00 136Mb   100.0% Filtering for phix, 0 hits (0.0%)\r\n'
+[02/27/20 15:58:21]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:21]: b'00:00 203Mb     0.1% Word stats\r00:00 203Mb   100.0% Word stats\r\n00:00 203Mb   100.0% Alloc rows\r\n00:00 203Mb     0.1% Build index\r00:00 203Mb   100.0% Build index\r\n00:00 136Mb   100.0% Filtering for phix, 0 hits (0.0%)\r\n'
+[02/27/20 15:58:21]: Re-oriented PE reads for chunk_27: 32 total, 16 correct, 4 flipped, 12 dropped.
+[02/27/20 15:58:21]: Re-oriented PE reads for chunk_25: 32 total, 8 correct, 10 flipped, 14 dropped.
+[02/27/20 15:58:21]: Re-oriented PE reads for chunk_6: 32 total, 16 correct, 5 flipped, 11 dropped.
+[02/27/20 15:58:21]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:21]: b'00:00 203Mb     0.1% Word stats\r00:00 203Mb   100.0% Word stats\r\n00:00 203Mb   100.0% Alloc rows\r\n00:00 203Mb     0.1% Build index\r00:00 203Mb   100.0% Build index\r\n00:00 136Mb   100.0% Filtering for phix, 0 hits (0.0%)\r\n'
+[02/27/20 15:58:21]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:21]: b'00:00 203Mb     0.1% Word stats\r00:00 203Mb   100.0% Word stats\r\n00:00 203Mb   100.0% Alloc rows\r\n00:00 203Mb     0.1% Build index\r00:00 203Mb   100.0% Build index\r\n00:00 136Mb   100.0% Filtering for phix, 0 hits (0.0%)\r\n'
+[02/27/20 15:58:21]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:21]: b'00:00 203Mb     0.1% Word stats\r00:00 203Mb   100.0% Word stats\r\n00:00 203Mb   100.0% Alloc rows\r\n00:00 203Mb     0.1% Build index\r00:00 203Mb   100.0% Build index\r\n00:00 136Mb   100.0% Filtering for phix, 0 hits (0.0%)\r\n'
+[02/27/20 15:58:21]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:21]: b'00:00 203Mb     0.1% Word stats\r00:00 203Mb   100.0% Word stats\r\n00:00 203Mb   100.0% Alloc rows\r\n00:00 203Mb     0.1% Build index\r00:00 203Mb   100.0% Build index\r\n00:00 136Mb   100.0% Filtering for phix, 0 hits (0.0%)\r\n'
+[02/27/20 15:58:21]: Re-oriented PE reads for chunk_8: 32 total, 12 correct, 9 flipped, 11 dropped.
+[02/27/20 15:58:21]: Re-oriented PE reads for chunk_18: 32 total, 11 correct, 10 flipped, 11 dropped.
+[02/27/20 15:58:21]: Re-oriented PE reads for chunk_32: 8 total, 1 correct, 3 flipped, 4 dropped.
+[02/27/20 15:58:21]: Re-oriented PE reads for chunk_16: 32 total, 12 correct, 6 flipped, 14 dropped.
+[02/27/20 15:58:21]: Now merging PE reads
+[02/27/20 15:58:21]: usearch9 -fastq_mergepairs illumina2_76519/chunk_32_R1.trimmed.fq -reverse illumina2_76519/chunk_32_R2.trimmed.fq -fastqout ./illumina2_76519/chunk_32.demux.fq.merged.fq -fastq_trunctail 5 -fastqout_notmerged_fwd ./illumina2_76519/chunk_32.demux.fq.notmerged.R1.fq -minhsp 12 -fastq_maxdiffs 8 -report ./illumina2_76519/chunk_32.demux.fq.merge_report.txt -fastq_minmergelen 100 -threads 1
+[02/27/20 15:58:21]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:21]: b'\nMerging\n  Fwd illumina2_76519/chunk_32_R1.trimmed.fq\n  Rev illumina2_76519/chunk_32_R2.trimmed.fq\n  Keep read labels\n\n00:00 2.1Mb     0.1% 0% merged\r00:00 2.2Mb   100.0% 0.0% merged\r\n\nMerged length distribution:\n         0  Min\n         0  Low quartile\n         0  Median\n         0  High quartile\n         0  Max\n\nTotals:\n         4  Pairs (4)\n         0  Merged (0, 0.00%)\n         0  Alignments with zero diffs (0.00%)\n         0  Too many diffs (> 8) (0.00%)\n         4  Fwd tails Q <= 5 trimmed (100.00%)\n         4  Rev tails Q <= 5 trimmed (100.00%)\n         4  No alignment found (100.00%)\n         0  Alignment too short (< 16) (0.00%)\n         0  Merged too short (< 100)\n         0  Staggered pairs (0.00%) merged & trimmed\n'
+[02/27/20 15:58:21]: Removing phix from illumina2_76519/chunk_32.demux.fq
+[02/27/20 15:58:21]: File Size: 0 bytes
+[02/27/20 15:58:21]: usearch9 -filter_phix ./illumina2_76519/chunk_32.demux.fq.tmp -output ./illumina2_76519/chunk_32.demux.fq -threads 1
+[02/27/20 15:58:21]: Now merging PE reads
+[02/27/20 15:58:21]: usearch9 -fastq_mergepairs illumina2_76519/chunk_25_R1.trimmed.fq -reverse illumina2_76519/chunk_25_R2.trimmed.fq -fastqout ./illumina2_76519/chunk_25.demux.fq.merged.fq -fastq_trunctail 5 -fastqout_notmerged_fwd ./illumina2_76519/chunk_25.demux.fq.notmerged.R1.fq -minhsp 12 -fastq_maxdiffs 8 -report ./illumina2_76519/chunk_25.demux.fq.merge_report.txt -fastq_minmergelen 100 -threads 1
+[02/27/20 15:58:21]: Now merging PE reads
+[02/27/20 15:58:21]: usearch9 -fastq_mergepairs illumina2_76519/chunk_29_R1.trimmed.fq -reverse illumina2_76519/chunk_29_R2.trimmed.fq -fastqout ./illumina2_76519/chunk_29.demux.fq.merged.fq -fastq_trunctail 5 -fastqout_notmerged_fwd ./illumina2_76519/chunk_29.demux.fq.notmerged.R1.fq -minhsp 12 -fastq_maxdiffs 8 -report ./illumina2_76519/chunk_29.demux.fq.merge_report.txt -fastq_minmergelen 100 -threads 1
+[02/27/20 15:58:21]: Now merging PE reads
+[02/27/20 15:58:21]: usearch9 -fastq_mergepairs illumina2_76519/chunk_27_R1.trimmed.fq -reverse illumina2_76519/chunk_27_R2.trimmed.fq -fastqout ./illumina2_76519/chunk_27.demux.fq.merged.fq -fastq_trunctail 5 -fastqout_notmerged_fwd ./illumina2_76519/chunk_27.demux.fq.notmerged.R1.fq -minhsp 12 -fastq_maxdiffs 8 -report ./illumina2_76519/chunk_27.demux.fq.merge_report.txt -fastq_minmergelen 100 -threads 1
+[02/27/20 15:58:21]: Now merging PE reads
+[02/27/20 15:58:21]: usearch9 -fastq_mergepairs illumina2_76519/chunk_16_R1.trimmed.fq -reverse illumina2_76519/chunk_16_R2.trimmed.fq -fastqout ./illumina2_76519/chunk_16.demux.fq.merged.fq -fastq_trunctail 5 -fastqout_notmerged_fwd ./illumina2_76519/chunk_16.demux.fq.notmerged.R1.fq -minhsp 12 -fastq_maxdiffs 8 -report ./illumina2_76519/chunk_16.demux.fq.merge_report.txt -fastq_minmergelen 100 -threads 1
+[02/27/20 15:58:21]: Now merging PE reads
+[02/27/20 15:58:21]: usearch9 -fastq_mergepairs illumina2_76519/chunk_6_R1.trimmed.fq -reverse illumina2_76519/chunk_6_R2.trimmed.fq -fastqout ./illumina2_76519/chunk_6.demux.fq.merged.fq -fastq_trunctail 5 -fastqout_notmerged_fwd ./illumina2_76519/chunk_6.demux.fq.notmerged.R1.fq -minhsp 12 -fastq_maxdiffs 8 -report ./illumina2_76519/chunk_6.demux.fq.merge_report.txt -fastq_minmergelen 100 -threads 1
+[02/27/20 15:58:21]: Now merging PE reads
+[02/27/20 15:58:21]: usearch9 -fastq_mergepairs illumina2_76519/chunk_8_R1.trimmed.fq -reverse illumina2_76519/chunk_8_R2.trimmed.fq -fastqout ./illumina2_76519/chunk_8.demux.fq.merged.fq -fastq_trunctail 5 -fastqout_notmerged_fwd ./illumina2_76519/chunk_8.demux.fq.notmerged.R1.fq -minhsp 12 -fastq_maxdiffs 8 -report ./illumina2_76519/chunk_8.demux.fq.merge_report.txt -fastq_minmergelen 100 -threads 1
+[02/27/20 15:58:21]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:21]: b'\nMerging\n  Fwd illumina2_76519/chunk_25_R1.trimmed.fq\n  Rev illumina2_76519/chunk_25_R2.trimmed.fq\n  Keep read labels\n\n00:00 2.1Mb     0.1% 0% merged\r00:00 2.3Mb   100.0% 11.1% merged\r\n\nMerged length distribution:\n       157  Min\n       157  Low quartile\n       157  Median\n       157  High quartile\n       157  Max\n\nTotals:\n        18  Pairs (18)\n         2  Merged (2, 11.11%)\n         2  Alignments with zero diffs (11.11%)\n         2  Too many diffs (> 8) (11.11%)\n        16  Fwd tails Q <= 5 trimmed (88.89%)\n        16  Rev tails Q <= 5 trimmed (88.89%)\n        14  No alignment found (77.78%)\n         0  Alignment too short (< 16) (0.00%)\n         0  Merged too short (< 100)\n         4  Staggered pairs (22.22%) merged & trimmed\n    157.00  Mean alignment length\n    157.00  Mean merged length\n      0.02  Mean fwd expected errors\n      0.02  Mean rev expected errors\n      0.01  Mean merged expected errors\n'
+[02/27/20 15:58:21]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:21]: b'\nMerging\n  Fwd illumina2_76519/chunk_29_R1.trimmed.fq\n  Rev illumina2_76519/chunk_29_R2.trimmed.fq\n  Keep read labels\n\n00:00 2.2Mb     0.1% 0% merged\r00:00 2.3Mb   100.0% 47.4% merged\r\n\nMerged length distribution:\n       157  Min\n       157  Low quartile\n       157  Median\n       157  High quartile\n       160  Max\n\nTotals:\n        19  Pairs (19)\n         9  Merged (9, 47.37%)\n        11  Alignments with zero diffs (57.89%)\n         0  Too many diffs (> 8) (0.00%)\n        10  Fwd tails Q <= 5 trimmed (52.63%)\n         9  Rev tails Q <= 5 trimmed (47.37%)\n         1  Fwd too short (< 64) after tail trimming (5.26%)\n         0  Rev too short (< 64) after tail trimming (0.00%)\n         7  No alignment found (36.84%)\n         0  Alignment too short (< 16) (0.00%)\n         2  Merged too short (< 100)\n        11  Staggered pairs (57.89%) merged & trimmed\n    157.33  Mean alignment length\n    157.33  Mean merged length\n      0.18  Mean fwd expected errors\n      0.07  Mean rev expected errors\n      0.01  Mean merged expected errors\n'
+[02/27/20 15:58:21]: Removing phix from illumina2_76519/chunk_25.demux.fq
+[02/27/20 15:58:21]: Removing phix from illumina2_76519/chunk_29.demux.fq
+[02/27/20 15:58:21]: File Size: 713 bytes
+[02/27/20 15:58:21]: usearch9 -filter_phix ./illumina2_76519/chunk_25.demux.fq.tmp -output ./illumina2_76519/chunk_25.demux.fq -threads 1
+[02/27/20 15:58:21]: File Size: 3213 bytes
+[02/27/20 15:58:21]: usearch9 -filter_phix ./illumina2_76519/chunk_29.demux.fq.tmp -output ./illumina2_76519/chunk_29.demux.fq -threads 1
+[02/27/20 15:58:21]: Now merging PE reads
+[02/27/20 15:58:21]: usearch9 -fastq_mergepairs illumina2_76519/chunk_18_R1.trimmed.fq -reverse illumina2_76519/chunk_18_R2.trimmed.fq -fastqout ./illumina2_76519/chunk_18.demux.fq.merged.fq -fastq_trunctail 5 -fastqout_notmerged_fwd ./illumina2_76519/chunk_18.demux.fq.notmerged.R1.fq -minhsp 12 -fastq_maxdiffs 8 -report ./illumina2_76519/chunk_18.demux.fq.merge_report.txt -fastq_minmergelen 100 -threads 1
+[02/27/20 15:58:21]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:21]: b'\nMerging\n  Fwd illumina2_76519/chunk_27_R1.trimmed.fq\n  Rev illumina2_76519/chunk_27_R2.trimmed.fq\n  Keep read labels\n\n00:00 2.2Mb     0.1% 0% merged\r00:00 2.3Mb   100.0% 45.0% merged\r\n\nMerged length distribution:\n       157  Min\n       157  Low quartile\n       157  Median\n       157  High quartile\n       157  Max\n\nTotals:\n        20  Pairs (20)\n         9  Merged (9, 45.00%)\n         9  Alignments with zero diffs (45.00%)\n         1  Too many diffs (> 8) (5.00%)\n        11  Fwd tails Q <= 5 trimmed (55.00%)\n        11  Rev tails Q <= 5 trimmed (55.00%)\n        10  No alignment found (50.00%)\n         0  Alignment too short (< 16) (0.00%)\n         0  Merged too short (< 100)\n        10  Staggered pairs (50.00%) merged & trimmed\n    157.00  Mean alignment length\n    157.00  Mean merged length\n      0.02  Mean fwd expected errors\n      0.03  Mean rev expected errors\n      0.01  Mean merged expected errors\n'
+[02/27/20 15:58:21]: Removing phix from illumina2_76519/chunk_27.demux.fq
+[02/27/20 15:58:21]: File Size: 3206 bytes
+[02/27/20 15:58:21]: usearch9 -filter_phix ./illumina2_76519/chunk_27.demux.fq.tmp -output ./illumina2_76519/chunk_27.demux.fq -threads 1
+[02/27/20 15:58:21]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:21]: b'\nMerging\n  Fwd illumina2_76519/chunk_16_R1.trimmed.fq\n  Rev illumina2_76519/chunk_16_R2.trimmed.fq\n  Keep read labels\n\n00:00 2.2Mb     0.1% 0% merged\r00:00 2.3Mb   100.0% 27.8% merged\r\n\nMerged length distribution:\n       157  Min\n       157  Low quartile\n       157  Median\n       157  High quartile\n       157  Max\n\nTotals:\n        18  Pairs (18)\n         5  Merged (5, 27.78%)\n         6  Alignments with zero diffs (33.33%)\n         1  Too many diffs (> 8) (5.56%)\n        13  Fwd tails Q <= 5 trimmed (72.22%)\n        13  Rev tails Q <= 5 trimmed (72.22%)\n        11  No alignment found (61.11%)\n         0  Alignment too short (< 16) (0.00%)\n         1  Merged too short (< 100)\n         7  Staggered pairs (38.89%) merged & trimmed\n    157.00  Mean alignment length\n    157.00  Mean merged length\n      0.28  Mean fwd expected errors\n      0.16  Mean rev expected errors\n      0.01  Mean merged expected errors\n'
+[02/27/20 15:58:21]: Removing phix from illumina2_76519/chunk_16.demux.fq
+[02/27/20 15:58:21]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:21]: File Size: 1781 bytes
+[02/27/20 15:58:21]: b'\nMerging\n  Fwd illumina2_76519/chunk_6_R1.trimmed.fq\n  Rev illumina2_76519/chunk_6_R2.trimmed.fq\n  Keep read labels\n\n00:00 2.2Mb     0.1% 0% merged\r00:00 2.3Mb   100.0% 38.1% merged\r\n\nMerged length distribution:\n       157  Min\n       157  Low quartile\n       157  Median\n       157  High quartile\n       157  Max\n\nTotals:\n        21  Pairs (21)\n         8  Merged (8, 38.10%)\n         8  Alignments with zero diffs (38.10%)\n         1  Too many diffs (> 8) (4.76%)\n        13  Fwd tails Q <= 5 trimmed (61.90%)\n        13  Rev tails Q <= 5 trimmed (61.90%)\n        12  No alignment found (57.14%)\n         0  Alignment too short (< 16) (0.00%)\n         0  Merged too short (< 100)\n         9  Staggered pairs (42.86%) merged & trimmed\n    157.00  Mean alignment length\n    157.00  Mean merged length\n      0.02  Mean fwd expected errors\n      0.04  Mean rev expected errors\n      0.01  Mean merged expected errors\n'
+[02/27/20 15:58:21]: usearch9 -filter_phix ./illumina2_76519/chunk_16.demux.fq.tmp -output ./illumina2_76519/chunk_16.demux.fq -threads 1
+[02/27/20 15:58:21]: Removing phix from illumina2_76519/chunk_6.demux.fq
+[02/27/20 15:58:21]: File Size: 2851 bytes
+[02/27/20 15:58:21]: usearch9 -filter_phix ./illumina2_76519/chunk_6.demux.fq.tmp -output ./illumina2_76519/chunk_6.demux.fq -threads 1
+[02/27/20 15:58:21]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:21]: b'\nMerging\n  Fwd illumina2_76519/chunk_8_R1.trimmed.fq\n  Rev illumina2_76519/chunk_8_R2.trimmed.fq\n  Keep read labels\n\n00:00 2.2Mb     0.1% 0% merged\r00:00 2.4Mb   100.0% 33.3% merged\r\n\nMerged length distribution:\n       156  Min\n       157  Low quartile\n       157  Median\n       157  High quartile\n       157  Max\n\nTotals:\n        21  Pairs (21)\n         7  Merged (7, 33.33%)\n         7  Alignments with zero diffs (33.33%)\n         2  Too many diffs (> 8) (9.52%)\n        13  Fwd tails Q <= 5 trimmed (61.90%)\n        14  Rev tails Q <= 5 trimmed (66.67%)\n        12  No alignment found (57.14%)\n         0  Alignment too short (< 16) (0.00%)\n         0  Merged too short (< 100)\n         9  Staggered pairs (42.86%) merged & trimmed\n    156.86  Mean alignment length\n    156.86  Mean merged length\n      0.02  Mean fwd expected errors\n      0.05  Mean rev expected errors\n      0.01  Mean merged expected errors\n'
+[02/27/20 15:58:21]: Removing phix from illumina2_76519/chunk_8.demux.fq
+[02/27/20 15:58:21]: File Size: 2489 bytes
+[02/27/20 15:58:21]: usearch9 -filter_phix ./illumina2_76519/chunk_8.demux.fq.tmp -output ./illumina2_76519/chunk_8.demux.fq -threads 1
+[02/27/20 15:58:21]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:21]: b'\nMerging\n  Fwd illumina2_76519/chunk_18_R1.trimmed.fq\n  Rev illumina2_76519/chunk_18_R2.trimmed.fq\n  Keep read labels\n\n00:00 2.2Mb     0.1% 0% merged\r00:00 2.3Mb   100.0% 42.9% merged\r\n\nMerged length distribution:\n       156  Min\n       157  Low quartile\n       157  Median\n       157  High quartile\n       157  Max\n\nTotals:\n        21  Pairs (21)\n         9  Merged (9, 42.86%)\n        10  Alignments with zero diffs (47.62%)\n         1  Too many diffs (> 8) (4.76%)\n        13  Fwd tails Q <= 5 trimmed (61.90%)\n        12  Rev tails Q <= 5 trimmed (57.14%)\n         0  Fwd too short (< 64) after tail trimming (0.00%)\n         1  Rev too short (< 64) after tail trimming (4.76%)\n         9  No alignment found (42.86%)\n         0  Alignment too short (< 16) (0.00%)\n         1  Merged too short (< 100)\n        11  Staggered pairs (52.38%) merged & trimmed\n    156.89  Mean alignment length\n    156.89  Mean merged length\n      0.65  Mean fwd expected errors\n      0.03  Mean rev expected errors\n      0.01  Mean merged expected errors\n'
+[02/27/20 15:58:21]: Removing phix from illumina2_76519/chunk_18.demux.fq
+[02/27/20 15:58:21]: File Size: 3203 bytes
+[02/27/20 15:58:21]: usearch9 -filter_phix ./illumina2_76519/chunk_18.demux.fq.tmp -output ./illumina2_76519/chunk_18.demux.fq -threads 1
+[02/27/20 15:58:22]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:22]: b'00:00 203Mb     0.1% Word stats\r00:00 203Mb   100.0% Word stats\r\n00:00 203Mb   100.0% Alloc rows\r\n00:01 203Mb     0.1% Build index\r00:01 203Mb   100.0% Build index\r\n\n\nusearch9 -filter_phix ./illumina2_76519/chunk_32.demux.fq.tmp -output ./illumina2_76519/chunk_32.demux.fq -threads 1\n\n---Fatal error---\nEmpty file ./illumina2_76519/chunk_32.demux.fq.tmp\n'
+[02/27/20 15:58:22]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:22]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:22]: b'00:00 203Mb     0.1% Word stats\r00:00 203Mb   100.0% Word stats\r\n00:00 203Mb   100.0% Alloc rows\r\n00:01 203Mb     0.1% Build index\r00:01 203Mb   100.0% Build index\r\n00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)\r\n'
+[02/27/20 15:58:22]: b'00:00 203Mb     0.1% Word stats\r00:00 203Mb   100.0% Word stats\r\n00:00 203Mb   100.0% Alloc rows\r\n00:01 203Mb     0.1% Build index\r00:01 203Mb   100.0% Build index\r\n00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)\r\n'
+[02/27/20 15:58:22]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:22]: b'00:00 203Mb     0.1% Word stats\r00:00 203Mb   100.0% Word stats\r\n00:01 203Mb   100.0% Alloc rows\r\n00:01 203Mb     0.1% Build index\r00:01 203Mb   100.0% Build index\r\n00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)\r\n'
+[02/27/20 15:58:22]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:22]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:22]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:22]: b'00:00 203Mb     0.1% Word stats\r00:00 203Mb   100.0% Word stats\r\n00:01 203Mb   100.0% Alloc rows\r\n00:01 203Mb     0.1% Build index\r00:01 203Mb   100.0% Build index\r\n00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)\r\n'
+[02/27/20 15:58:22]: b'00:00 203Mb     0.1% Word stats\r00:00 203Mb   100.0% Word stats\r\n00:01 203Mb   100.0% Alloc rows\r\n00:01 203Mb     0.1% Build index\r00:01 203Mb   100.0% Build index\r\n00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)\r\n'
+[02/27/20 15:58:22]: b'00:00 203Mb     0.1% Word stats\r00:00 203Mb   100.0% Word stats\r\n00:01 203Mb   100.0% Alloc rows\r\n00:01 203Mb     0.1% Build index\r00:01 203Mb   100.0% Build index\r\n00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)\r\n'
+[02/27/20 15:58:22]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:22]: b'00:00 203Mb     0.1% Word stats\r00:00 203Mb   100.0% Word stats\r\n00:01 203Mb   100.0% Alloc rows\r\n00:01 203Mb     0.1% Build index\r00:01 203Mb   100.0% Build index\r\n00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)\r\n'
+[02/27/20 15:58:22]: Concatenating Demuxed Files
+[02/27/20 15:58:22]: 580 total reads
+[02/27/20 15:58:22]: 580 valid Barcodes
+[02/27/20 15:58:22]: 580 valid output reads (Barcodes and Primers)
+[02/27/20 15:58:22]: Found 143 barcoded samples
+                Sample:  Count
+     oro01.553:-:Tag96:  10
+    oro01.2333:-:Tag85:  10
+    oro01.2030:-:Tag81:  6
+    oro01.1647:-:Tag59:  6
+     oro01.485:-:Tag93:  6
+    oro01.2040:-:Tag66:  5
+     oro01.457:-:Tag74:  4
+    oro01.2350:-:Tag68:  4
+     oro01.472:-:Tag67:  4
+     oro01.253:-:Tag90:  4
+    oro01.2088:-:Tag70:  4
+    oro01.2358:-:Tag54:  4
+     oro01.565:-:Tag53:  3
+    oro01.2368:-:Tag88:  3
+     oro01.469:-:Tag96:  2
+     oro01.485:-:Tag66:  2
+     oro01.553:-:Tag65:  2
+    oro01.1647:-:Tag66:  2
+    oro01.2089:-:Tag94:  2
+     oro01.264:-:Tag84:  2
+    oro01.2385:-:Tag48:  2
+    oro01.2254:-:Tag21:  2
+    oro01.2153:-:Tag87:  2
+     oro01.vt5:-:Tag63:  2
+    oro01.2333:-:Tag87:  2
+    oro01.1885:-:Tag60:  2
+     oro01.242:-:Tag59:  1
+    oro01.2110:-:Tag45:  1
+    oro01.1962:-:Tag14:  1
+     oro01.543:-:Tag65:  1
+     oro01.361:-:Tag66:  1
+    oro01.2385:-:Tag67:  1
+     oro01.456:-:Tag81:  1
+    oro01.2088:-:Tag23:  1
+     oro01.553:-:Tag93:  1
+     oro01.543:-:Tag44:  1
+    oro01.1880:-:Tag66:  1
+    oro01.2088:-:Tag88:  1
+    oro01.2040:-:Tag59:  1
+    oro01.1997:-:Tag40:  1
+     oro01.472:-:Tag44:  1
+     oro01.270:-:Tag59:  1
+    oro01.1997:-:Tag52:  1
+    oro01.2358:-:Tag96:  1
+     oro01.455:-:Tag75:  1
+    oro01.2385:-:Tag59:  1
+     oro01.484:-:Tag86:  1
+     oro01.264:-:Tag17:  1
+    oro01.1967:-:Tag59:  1
+    oro01.2040:-:Tag77:  1
+   blank01.g10:-:Tag32:  1
+     oro01.253:-:Tag41:  1
+     oro01.491:-:Tag65:  1
+    oro01.vt37:-:Tag27:  1
+     oro01.522:-:Tag64:  1
+     oro01.362:-:Tag21:  1
+    oro01.1997:-:Tag23:  1
+    oro01.2254:-:Tag77:  1
+     oro01.469:-:Tag37:  1
+     oro01.242:-:Tag66:  1
+    oro01.1997:-:Tag50:  1
+     oro01.361:-:Tag95:  1
+    oro01.1647:-:Tag85:  1
+    oro01.2040:-:Tag65:  1
+    oro01.2146:-:Tag10:  1
+     oro01.485:-:Tag47:  1
+    oro01.1997:-:Tag87:  1
+     oro01.vt6:-:Tag61:  1
+     oro01.469:-:Tag44:  1
+     oro01.455:-:Tag95:  1
+    oro01.1967:-:Tag78:  1
+     oro01.485:-:Tag15:  1
+    oro01.2385:-:Tag53:  1
+     oro01.560:-:Tag44:  1
+     oro01.554:-:Tag65:  1
+     oro01.484:-:Tag23:  1
+    oro01.vt16:-:Tag50:  1
+     oro01.496:-:Tag56:  1
+    oro01.1880:-:Tag87:  1
+    oro01.2040:-:Tag31:  1
+    oro01.2254:-:Tag66:  1
+    oro01.1647:-:Tag84:  1
+    oro01.2153:-:Tag22:  1
+     oro01.553:-:Tag85:  1
+     oro01.472:-:Tag87:  1
+     oro01.251:-:Tag48:  1
+     oro01.264:-:Tag77:  1
+    oro01.2050:-:Tag91:  1
+     oro01.469:-:Tag91:  1
+    oro01.1646:-:Tag19:  1
+    oro01.2358:-:Tag41:  1
+    oro01.2263:-:Tag20:  1
+     oro01.490:-:Tag44:  1
+    oro01.vt28:-:Tag37:  1
+    oro01.2385:-:Tag17:  1
+    oro01.1967:-:Tag88:  1
+   blank01.g11:-:Tag14:  1
+    oro01.vt15:-:Tag56:  1
+     oro01.429:-:Tag69:  1
+    oro01.2387:-:Tag52:  1
+    oro01.2358:-:Tag19:  1
+     oro01.553:-:Tag59:  1
+     oro01.543:-:Tag50:  1
+     oro01.554:-:Tag47:  1
+     oro01.553:-:Tag87:  1
+    oro01.2040:-:Tag09:  1
+     oro01.490:-:Tag36:  1
+    oro01.2153:-:Tag40:  1
+    oro01.2040:-:Tag08:  1
+      oro01.26:-:Tag94:  1
+    oro01.2040:-:Tag21:  1
+    oro01.1997:-:Tag67:  1
+    oro01.1880:-:Tag47:  1
+    oro01.1879:-:Tag76:  1
+    oro01.vt15:-:Tag57:  1
+     oro01.553:-:Tag44:  1
+    oro01.2368:-:Tag74:  1
+     oro01.484:-:Tag54:  1
+    oro01.1962:-:Tag59:  1
+    oro01.2254:-:Tag75:  1
+     oro01.362:-:Tag57:  1
+     oro01.542:-:Tag89:  1
+    oro01.1962:-:Tag42:  1
+    oro01.2385:-:Tag18:  1
+    blank01.d6:-:Tag75:  1
+    oro01.1879:-:Tag74:  1
+    oro01.2333:-:Tag65:  1
+    oro01.2385:-:Tag93:  1
+     oro01.485:-:Tag90:  1
+    oro01.2254:-:Tag18:  1
+    oro01.2254:-:Tag37:  1
+     oro01.501:-:Tag66:  1
+    oro01.1880:-:Tag88:  1
+     oro01.260:-:Tag22:  1
+     oro01.543:-:Tag96:  1
+    oro01.2153:-:Tag96:  1
+    oro01.vt39:-:Tag25:  1
+    oro01.2153:-:Tag85:  1
+    oro01.1647:-:Tag47:  1
+    oro01.2358:-:Tag71:  1
+    oro01.2333:-:Tag25:  1
+    oro01.1646:-:Tag72:  1
+    oro01.1880:-:Tag15:  1
+[02/27/20 15:58:22]: pigz -c -p 8 illumina2.demux.fq
+[02/27/20 15:58:22]: Output file:  illumina2.demux.fq.gz (5.1 KB)
+[02/27/20 15:58:22]: Mapping file: illumina2.mapping_file.txt

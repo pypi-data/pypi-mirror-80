@@ -1,0 +1,10 @@
+[01/26/20 18:20:47]: /Users/jon/miniconda3/envs/amptk_dev/bin/amptk dada2 -i ../ion.demux.fq.gz -o dada2 --pseudopool
+
+[01/26/20 18:20:47]: OS: MacOSX 10.14.6, 8 cores, ~ 17 GB RAM. Python: 3.7.3
+[01/26/20 18:20:47]: Python Modules: numpy v1.16.4, pandas v0.25.0, matplotlib v3.1.1, psutil v5.6.3, natsort v6.0.0, biopython v1.74, edlib v1.2.4.post1, biom-format v2.1.7
+[01/26/20 18:20:47]: AMPtk v1.4.2, USEARCH v9.2.64, VSEARCH v2.13.6
+[01/26/20 18:20:48]: R v3.6.1; DADA2 v1.12.1
+[01/26/20 18:20:48]: Loading FASTQ Records
+[01/26/20 18:20:48]: pigz --decompress -c -p 8 /Users/jon/amptk/ion.demux.fq.gz
+[01/26/20 18:20:48]: vsearch --fastq_filter /Users/jon/amptk/test_data/dada2.cleaned_input.fq --fastq_qmax 55 --fastaout dada2.original.fa --threads 8
+[01/26/20 18:20:48]: b'WARNING: The fastq_filter command does not support multithreading.\nOnly 1 thread used.\nvsearch v2.13.6_macos_x86_64, 16.0GB RAM, 8 cores\nhttps://github.com/torognes/vsearch\n\n\n\nFatal error: Unable to read from file (/Users/jon/amptk/test_data/dada2.cleaned_input.fq)\n'

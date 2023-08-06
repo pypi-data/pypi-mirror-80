@@ -1,0 +1,52 @@
+[02/27/20 15:58:13]: /Users/jon/miniconda3/envs/amptk_dev/bin/amptk illumina -i alt_illumina -o miseq_map -m miseq.mapping_file.txt --cleanup
+
+[02/27/20 15:58:13]: OS: MacOSX 10.14.6, 8 cores, ~ 17 GB RAM. Python: 3.7.3
+[02/27/20 15:58:13]: Python Modules: numpy v1.16.4, pandas v0.25.0, matplotlib v3.1.1, psutil v5.6.3, natsort v6.0.0, biopython v1.74, edlib v1.2.4.post1, biom-format v2.1.7
+[02/27/20 15:58:13]: AMPtk v1.4.2, USEARCH v9.2.64, VSEARCH v2.13.6
+[02/27/20 15:58:13]: Demuxing data using 8 cpus
+[02/27/20 15:58:13]: Dropping reads less than 100 bp and setting lossless trimming to 300 bp.
+[02/27/20 15:58:13]: Strip Primers and Merge PE reads. FwdPrimer: GTGARTCATCGAATCTTTG RevPrimer: TCCTCCGCTTATTGATATGC
+[02/27/20 15:58:13]: 301-1: alt_illumina/301-1_TCCGGAGA-CCTATCCT_L001_R1_001.fastq alt_illumina/301-1_TCCGGAGA-CCTATCCT_L001_R2_001.fastq
+[02/27/20 15:58:13]: 301-2: alt_illumina/301-2_TCCGGAGA-GGCTCTGA_L001_R1_001.fastq alt_illumina/301-2_TCCGGAGA-GGCTCTGA_L001_R2_001.fastq
+[02/27/20 15:58:13]: spike: alt_illumina/spike_CGCTCATT-GGCTCTGA_L001_R1_001.fastq alt_illumina/spike_CGCTCATT-GGCTCTGA_L001_R2_001.fastq
+[02/27/20 15:58:13]: Now merging PE reads
+[02/27/20 15:58:13]: Now merging PE reads
+[02/27/20 15:58:13]: usearch9 -fastq_mergepairs miseq_map/301-1_R1.fq -reverse miseq_map/301-1_R2.fq -fastqout miseq_map/301-1.merged.fq.merged.fq -fastq_trunctail 5 -fastqout_notmerged_fwd miseq_map/301-1.merged.fq.notmerged.R1.fq -minhsp 12 -fastq_maxdiffs 8 -report miseq_map/301-1.merged.fq.merge_report.txt -fastq_minmergelen 100 -threads 1
+[02/27/20 15:58:13]: usearch9 -fastq_mergepairs miseq_map/301-2_R1.fq -reverse miseq_map/301-2_R2.fq -fastqout miseq_map/301-2.merged.fq.merged.fq -fastq_trunctail 5 -fastqout_notmerged_fwd miseq_map/301-2.merged.fq.notmerged.R1.fq -minhsp 12 -fastq_maxdiffs 8 -report miseq_map/301-2.merged.fq.merge_report.txt -fastq_minmergelen 100 -threads 1
+[02/27/20 15:58:13]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:13]: b'\nMerging\n  Fwd miseq_map/301-2_R1.fq\n  Rev miseq_map/301-2_R2.fq\n  Keep read labels\n\n00:00 2.1Mb     0.1% 0% merged\r00:00 2.5Mb   100.0% 75.0% merged\r\n\nMerged length distribution:\n       234  Min\n       277  Low quartile\n       277  Median\n       277  High quartile\n       310  Max\n\nTotals:\n       100  Pairs (100)\n        75  Merged (75, 75.00%)\n         8  Alignments with zero diffs (8.00%)\n        20  Too many diffs (> 8) (20.00%)\n        64  Fwd tails Q <= 5 trimmed (64.00%)\n       100  Rev tails Q <= 5 trimmed (100.00%)\n         0  Fwd too short (< 64) after tail trimming (0.00%)\n         2  Rev too short (< 64) after tail trimming (2.00%)\n         3  No alignment found (3.00%)\n         0  Alignment too short (< 16) (0.00%)\n         0  Merged too short (< 100)\n         2  Staggered pairs (2.00%) merged & trimmed\n    189.17  Mean alignment length\n    273.65  Mean merged length\n     13.18  Mean fwd expected errors\n     47.81  Mean rev expected errors\n      0.21  Mean merged expected errors\n'
+[02/27/20 15:58:13]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:13]: b'\nMerging\n  Fwd miseq_map/301-1_R1.fq\n  Rev miseq_map/301-1_R2.fq\n  Keep read labels\n\n00:00 2.2Mb     0.1% 0% merged\r00:00 2.5Mb   100.0% 69.7% merged\r\n\nMerged length distribution:\n       234  Min\n       269  Low quartile\n       298  Median\n       302  High quartile\n       309  Max\n\nTotals:\n        99  Pairs (99)\n        69  Merged (69, 69.70%)\n         9  Alignments with zero diffs (9.09%)\n        21  Too many diffs (> 8) (21.21%)\n        81  Fwd tails Q <= 5 trimmed (81.82%)\n        98  Rev tails Q <= 5 trimmed (98.99%)\n         0  Fwd too short (< 64) after tail trimming (0.00%)\n         1  Rev too short (< 64) after tail trimming (1.01%)\n         8  No alignment found (8.08%)\n         0  Alignment too short (< 16) (0.00%)\n         0  Merged too short (< 100)\n         5  Staggered pairs (5.05%) merged & trimmed\n    186.20  Mean alignment length\n    283.65  Mean merged length\n     14.06  Mean fwd expected errors\n     41.49  Mean rev expected errors\n      0.26  Mean merged expected errors\n'
+[02/27/20 15:58:13]: Removing phix from 301-2.merged.fq
+[02/27/20 15:58:13]: Removing phix from 301-1.merged.fq
+[02/27/20 15:58:13]: File Size: 58090 bytes
+[02/27/20 15:58:13]: usearch9 -filter_phix miseq_map/301-2.merged.fq.tmp -output miseq_map/301-2.merged.fq -threads 1
+[02/27/20 15:58:13]: File Size: 58965 bytes
+[02/27/20 15:58:13]: usearch9 -filter_phix miseq_map/301-1.merged.fq.tmp -output miseq_map/301-1.merged.fq -threads 1
+[02/27/20 15:58:13]: Now merging PE reads
+[02/27/20 15:58:13]: usearch9 -fastq_mergepairs miseq_map/spike_R1.fq -reverse miseq_map/spike_R2.fq -fastqout miseq_map/spike.merged.fq.merged.fq -fastq_trunctail 5 -fastqout_notmerged_fwd miseq_map/spike.merged.fq.notmerged.R1.fq -minhsp 12 -fastq_maxdiffs 8 -report miseq_map/spike.merged.fq.merge_report.txt -fastq_minmergelen 100 -threads 1
+[02/27/20 15:58:13]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:13]: b'\nMerging\n  Fwd miseq_map/spike_R1.fq\n  Rev miseq_map/spike_R2.fq\n  Keep read labels\n\n00:00 2.1Mb     0.1% 0% merged\r00:00 2.9Mb   100.0% 68.0% merged\r\n\nMerged length distribution:\n       237  Min\n       260  Low quartile\n       292  Median\n       300  High quartile\n       379  Max\n\nTotals:\n       400  Pairs (400)\n       272  Merged (272, 68.00%)\n        39  Alignments with zero diffs (9.75%)\n        82  Too many diffs (> 8) (20.50%)\n       297  Fwd tails Q <= 5 trimmed (74.25%)\n       398  Rev tails Q <= 5 trimmed (99.50%)\n         2  Fwd too short (< 64) after tail trimming (0.50%)\n         6  Rev too short (< 64) after tail trimming (1.50%)\n        37  No alignment found (9.25%)\n         1  Alignment too short (< 16) (0.25%)\n         0  Merged too short (< 100)\n         4  Staggered pairs (1.00%) merged & trimmed\n    174.18  Mean alignment length\n    284.33  Mean merged length\n     14.82  Mean fwd expected errors\n     48.44  Mean rev expected errors\n      0.20  Mean merged expected errors\n'
+[02/27/20 15:58:13]: Removing phix from spike.merged.fq
+[02/27/20 15:58:13]: File Size: 238908 bytes
+[02/27/20 15:58:13]: usearch9 -filter_phix miseq_map/spike.merged.fq.tmp -output miseq_map/spike.merged.fq -threads 1
+[02/27/20 15:58:13]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:13]: b'00:00 203Mb     0.1% Word stats\r00:00 203Mb   100.0% Word stats\r\n00:00 203Mb   100.0% Alloc rows\r\n00:00 203Mb     0.1% Build index\r00:00 203Mb   100.0% Build index\r\n00:00 136Mb   100.0% Filtering for phix, 0 hits (0.0%)\r\n'
+[02/27/20 15:58:13]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:13]: b'00:00 203Mb     0.1% Word stats\r00:00 203Mb   100.0% Word stats\r\n00:00 203Mb   100.0% Alloc rows\r\n00:00 203Mb     0.1% Build index\r00:00 203Mb   100.0% Build index\r\n00:00 136Mb   100.0% Filtering for phix, 0 hits (0.0%)\r\n'
+[02/27/20 15:58:13]: b'usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores\n(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.\nhttp://drive5.com/usearch\n\nLicense: palmer.jona@gmail.com\n\n'
+[02/27/20 15:58:13]: b'00:00 203Mb     0.1% Word stats\r00:00 203Mb   100.0% Word stats\r\n00:00 203Mb   100.0% Alloc rows\r\n00:00 203Mb     0.1% Build index\r00:00 203Mb   100.0% Build index\r\n00:00 136Mb   100.0% Filtering for phix, 0 hits (0.0%)\r\n'
+[02/27/20 15:58:14]: Concatenating Demuxed Files
+[02/27/20 15:58:14]: 600 total reads
+[02/27/20 15:58:14]: 600 Fwd Primer found, 599 Rev Primer found
+[02/27/20 15:58:14]: 0 discarded Primer incompatibility
+[02/27/20 15:58:14]: 0 discarded too short (< 100 bp)
+[02/27/20 15:58:14]: 599 valid output reads
+[02/27/20 15:58:14]: Found 3 barcoded samples
+                        Sample:  Count
+                         spike:  400
+                         301-2:  100
+                         301-1:  99
+[02/27/20 15:58:14]: pigz -c -p 8 miseq_map.demux.fq
+[02/27/20 15:58:14]: Output file:  miseq_map.demux.fq.gz (53.1 KB)
+[02/27/20 15:58:14]: Mapping file: miseq_map.mapping_file.txt

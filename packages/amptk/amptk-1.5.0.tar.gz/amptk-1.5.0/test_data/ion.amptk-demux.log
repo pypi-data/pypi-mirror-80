@@ -1,0 +1,42 @@
+[02/27/20 15:58:06]: /Users/jon/miniconda3/envs/amptk_dev/bin/amptk ion -i ion.test.fastq -o ion
+
+[02/27/20 15:58:06]: OS: MacOSX 10.14.6, 8 cores, ~ 17 GB RAM. Python: 3.7.3
+[02/27/20 15:58:06]: Python Modules: numpy v1.16.4, pandas v0.25.0, matplotlib v3.1.1, psutil v5.6.3, natsort v6.0.0, biopython v1.74, edlib v1.2.4.post1, biom-format v2.1.7
+[02/27/20 15:58:06]: AMPtk v1.4.2, USEARCH v9.2.64, VSEARCH v2.13.6
+[02/27/20 15:58:06]: fITS7-ion fwd primer found in AMPtk primer db, setting to: AGTGARTCATCGAATCTTTG
+[02/27/20 15:58:06]: ITS4 rev primer found in AMPtk primer db, setting to: TCCTCCGCTTATTGATATGC
+[02/27/20 15:58:06]: Foward primer: AGTGARTCATCGAATCTTTG,  Rev comp'd rev primer: GCATATCAATAAGCGGAGGA
+[02/27/20 15:58:06]: Loading FASTQ Records
+[02/27/20 15:58:06]: 2,000 reads (1.6 MB)
+[02/27/20 15:58:06]: Dropping reads less than 100 bp and setting lossless trimming to 300 bp.
+[02/27/20 15:58:06]: Splitting FASTQ files over 8 cpus
+[02/27/20 15:58:08]: Concatenating Demuxed Files
+[02/27/20 15:58:08]: 2,000 total reads
+[02/27/20 15:58:08]: 1,409 valid Barcode
+[02/27/20 15:58:08]: 1,406 Fwd Primer found, 1,151 Rev Primer found
+[02/27/20 15:58:08]: 34 discarded too short (< 100 bp)
+[02/27/20 15:58:08]: 1,372 valid output reads
+[02/27/20 15:58:08]: Found 19 barcoded samples
+                Sample:  Count
+                 BC.27:  95
+                 BC.17:  90
+                 BC.23:  90
+                 BC.28:  88
+                 BC.20:  82
+                 BC.73:  80
+                 BC.18:  77
+                 BC.21:  72
+                 BC.15:  72
+                 BC.16:  72
+                 BC.10:  71
+                 BC.22:  68
+                 BC.11:  66
+                  BC.9:  65
+                 BC.14:  65
+                 BC.24:  62
+                 BC.12:  60
+                 BC.19:  53
+                  BC.5:  44
+[02/27/20 15:58:08]: pigz -c -p 8 ion.demux.fq
+[02/27/20 15:58:08]: Output file:  ion.demux.fq.gz (241.9 KB)
+[02/27/20 15:58:08]: Mapping file: ion.mapping_file.txt
