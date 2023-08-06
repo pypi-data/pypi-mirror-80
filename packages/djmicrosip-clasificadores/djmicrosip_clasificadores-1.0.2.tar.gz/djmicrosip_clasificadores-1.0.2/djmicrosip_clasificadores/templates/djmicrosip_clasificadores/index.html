@@ -1,0 +1,477 @@
+{% extends 'djmicrosip_clasificadores/base.html' %}
+{% load humanize %}
+{% block title %}
+Pedidos Web
+{% endblock %}
+{% block style_css %}
+<style type="text/css"> 
+.input-group {
+    position: relative;
+    display: flex;
+    border-collapse: separate;
+}
+label{
+  width: 100%;
+}
+.btn_{
+	padding: 0;
+	float: right;
+	color: #c1c1c1;
+}
+.modal-dialog {
+    width: 25vw;
+    margin: 35vh auto;
+}
+.modal-dialog.compatibilidad {
+    width: 70vw;
+    margin: 35vh auto;
+}
+.secundario2{
+	text-align: right;
+}
+.secundario3{
+	text-align: right;
+}
+.table>tbody>tr>td{
+	padding: 0px;
+}
+</style>
+{% endblock %}
+{% block js_code %}
+<script src='{{STATIC_URL}}djmicrosip_clasificadores/js/bootstrap-input-spinner.js?v=1.0.1'></script>
+<script>
+	$("input[type='number']").inputSpinner();
+	$(document).ready(function(){
+
+		$('input[name="clasificador_val"]').click(function(){
+			list_ids();
+		});
+		function list_ids() {
+			var lista_id = [];
+			$( 'input[name="clasificador_val"]' ).each(function() {
+				var id= parseInt($(this).attr("id"));
+				var clase=$(this).attr("class");
+				if($(this).prop("checked") == true){
+					lista_id.push(id);
+				}
+
+			});
+			if (lista_id != [])
+			{
+
+				location.href = "?{%if articulos.has_previous %}page={{ articulos.previous_page_number }}&{%endif%}{%if clasificador_padre_valor %}clasificador_padre_valor={{ clasificador_padre_valor }}&{%endif%}clas_val="+JSON.stringify(lista_id)+"";
+				console.log(lista_id)
+			}
+		}
+
+	});
+	function ready(callback){
+	    // in case the document is already rendered
+	    if (document.readyState!='loading') callback();
+	    // modern browsers
+	    else if (document.addEventListener) document.addEventListener('DOMContentLoaded', callback);
+	    // IE <= 8
+	    else document.attachEvent('onreadystatechange', function(){
+	        if (document.readyState=='complete') callback();
+	    });
+	}
+
+	ready(function(){
+
+		$( '.lista-clasificadores' ).each(function() {
+			var id=$(this).attr("id");
+			// var content=document.getElementById(id);
+		  	let arry =$(this).children();
+		  	console.log(arry.length)
+		  	if(arry.length <= 0)
+		  	{
+		  		$('li#'+id+'.contenedor-clasificador').addClass("hidden");
+			}
+		});
+	});
+
+	function handleClick(myRadio) {
+
+		location.href = "?{%if articulos.has_previous %}page={{ articulos.previous_page_number }}&{%endif%}clasificador_padre_valor="+ myRadio.id+"";
+
+	}
+	$( ".clasificador" ).click(function() {
+		var id=$(this).attr("id");
+		console.log(id)
+		if($("ul#"+id).hasClass( "hidden" ))
+		{
+			$("ul#"+id).removeClass("hidden");
+			$("a#"+id+" i").removeClass("glyphicon-plus");
+			$("a#"+id+" i").addClass("glyphicon-minus");
+		}
+		else
+		{
+			$("ul#"+id).addClass("hidden");
+			$("a#"+id+" i").removeClass("glyphicon-minus");
+			$("a#"+id+" i").addClass("glyphicon-plus");
+		}
+
+	});
+	$(document).on('click','.input-group-append',function(){
+	  get_cantidad();
+
+	});
+	$(document).on('click','.input-group-prepend',function(){
+	  get_cantidad();
+
+	});
+
+	function get_cantidad() {        	
+		var lista_articulos=[];
+		var pedido_id=$("#pedido_id").val();
+		$( 'input[type="number"]' ).each(function() {
+			var id= parseInt($(this).attr("id"));
+			console.log(id)
+			var obj = new Object();
+			var val=parseInt($(this).val());
+			var precio=parseFloat(($('#'+id+'.precio_unitario').text()).replace(/,/g, ''));
+			var clave=$('#'+id+'.clave_articulo').text();
+			if(val > 0)
+			{
+				obj.id = id;
+				obj.cantidad  = val;
+				obj.precio=precio
+				obj.clave=clave
+				lista_articulos.push(obj);
+			}
+
+		});
+		console.log(JSON.stringify(lista_articulos));
+		$.ajax({
+			url: '/pedidos_web/crear_pedido_temporal/',
+			type: 'get',
+			data: {
+				'lista_articulos': JSON.stringify(lista_articulos),
+				'pedido_id':pedido_id,
+			},
+			success: function (data) {
+
+			}
+		});
+	}
+
+	$( ".det_progreso" ).click(function() {
+		var id_articulo=$(this).attr("id");
+
+		$.ajax({
+			url: '/pedidos_web/get_todos_almacenes/',
+			type: 'get',
+			data: {
+				'id_articulo': id_articulo,
+			},
+			success: function (data) {
+				var contenedor = document.getElementById("tableExistencia"+id_articulo+"");
+				var child = contenedor.lastElementChild;  
+				while (child) { 
+					contenedor.removeChild(child); 
+					child = contenedor.lastElementChild; 
+				} 
+				for (var i = 0; i < data.length; i++) {
+					var principal = document.createElement("div"); 
+					var secundario1 = document.createElement("div");
+					var secundario2 = document.createElement("div");
+					principal.className="col-md-12";
+					secundario1.className="col-md-6 secundario1"
+					secundario1.innerHTML=data[i]["almacen"];
+					secundario2.innerHTML=data[i]["existencia"];
+					secundario2.className="col-md-6 secundario2"
+					principal.appendChild(secundario1)
+					principal.appendChild(secundario2)
+					contenedor.appendChild(principal)
+					console.log("tableExistencia"+id_articulo+"");
+				}
+
+			}
+		});
+	});
+	$( ".compatibilidades" ).click(function() {
+		var id_articulo=$(this).attr("id");
+		
+		var id_pedido=$("#pedido_id").val();
+		$.ajax({
+			url: '/pedidos_web/compatibilidad_articulo/',
+			type: 'get',
+			data: {
+				'id_articulo': id_articulo,
+				'id_pedido': id_pedido,
+			},
+			success: function (data) {
+				var contenedor = document.getElementById("tableCompatibilidad"+id_articulo+"");
+				var child = contenedor.lastElementChild;  
+				while (child) { 
+					contenedor.removeChild(child); 
+					child = contenedor.lastElementChild; 
+				} 
+				for (var i = 0; i < data.length; i++) {
+					var principal = document.createElement("div"); 
+					var secundario0 = document.createElement("div");
+					var secundario1 = document.createElement("div");
+					var secundario2 = document.createElement("div");
+					var secundario3 = document.createElement("div");
+					var secundario4 = document.createElement("div");
+					principal.className="col-md-12";
+					secundario0.className="col-md-2 secundario0"
+					secundario0.innerHTML=data[i]["clave"];
+					secundario1.className="col-md-4 secundario1"
+					secundario1.innerHTML=data[i]["articulo"];
+					secundario2.innerHTML=data[i]["existencia"];
+					secundario2.className="col-md-2 secundario2"
+					secundario3.innerHTML=data[i]["precio"];
+					secundario3.className="col-md-2 secundario3";
+					secundario4.innerHTML='<input type="number" value="'+data[i]["cantidad"]+'" min="0" id="'+data[i]["id"]+'" max="'+data[i]["existencia"]+'" class="cantidad '+data[i]["id"]+'">'
+					secundario4.className="col-md-2 secundario4";
+					$(secundario4.children[0]).inputSpinner();
+					principal.appendChild(secundario0);
+					principal.appendChild(secundario1);
+					principal.appendChild(secundario2);
+					principal.appendChild(secundario3);
+					principal.appendChild(secundario4);
+					contenedor.appendChild(principal);
+				}
+				
+			}
+		});
+	});
+	$('#id_sin_existencia').change(function() {
+	$('.form').submit();
+});
+</script>
+{% endblock %}
+{% block content %}
+
+<div class="row">
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8" align="center">
+			<div class="pagination">
+			    <span class="step-links">
+			        {% if articulos.has_previous %}
+			        	
+			            <a href="?page={{ articulos.previous_page_number }}{%if clasificadores%}&clas_val={{clasificadores}}{%endif%}{%if busqueda%}&busqueda={{busqueda}}{%endif%}{%if clasificador_padre_valor %}&clasificador_padre_valor={{clasificador_padre_valor}}{%endif%}&existencia={{existencia}}" class="glyphicon glyphicon-triangle-left"></a>
+			        	
+			        {% endif %}
+
+			        <span class="current">
+			            Page {{ articulos.number }} of {{ articulos.paginator.num_pages }}.
+			        </span>
+
+			        {% if articulos.has_next %}
+			            <a href="?page={{ articulos.next_page_number }}{%if clasificadores%}&clas_val={{clasificadores}}{%endif%}{%if busqueda%}&busqueda={{busqueda}}{%endif%}{%if clasificador_padre_valor %}&clasificador_padre_valor={{clasificador_padre_valor}}{%endif%}&existencia={{existencia}}" class="glyphicon glyphicon-triangle-right"></a>
+			        {% endif %}
+			    </span>
+			</div>
+
+		</div>
+		<div class="col-md-2">
+			<a style="font-size: 14px; color:#000;" href="/pedidos_web/view_pedido/{{pedido.id}}/" class="glyphicon glyphicon-shopping-cart">({{cantidad_pedido}})</a>
+		</div>
+	</div>
+	<div class="col-md-12">
+		<div class="col-md-2">
+			<input type="text" class="hidden" id="pedido_id" value="{{pedido.folio}}" name="">
+			<form method="post" class="form" action="" id="myForm"  enctype='multipart/form-data'>
+				{% csrf_token %}
+				  {{form_busqueda}}
+
+				  <li style="list-style: none;">
+				  	<label ><span>{{clasificador_padre}}</span></label>
+			      	<ul style="list-style: none; padding: 0 10px;" id="{{clasificador_padre}}">
+					    <fieldset id="group1">
+				        {% for clas_val in clasificadores_padre %}
+					      		<li>
+									<label ><input class="clasificador_valor_padre" id="{{clas_val.valor_clasif_id}}" onclick="handleClick(this);"  type="radio" value="{{clas_val}}" {%if clas_val.valor_clasif_id == clasificador_padre_valor %}checked{%endif%} name="group1"> 
+										{{clas_val}}
+									</label>
+					      		</li>
+						{% endfor %}
+						</fieldset>
+					</ul>
+				  </li> 
+				  <div class="{%if not clasificador_padre_valor %}hidden{%endif%}" id="otros_clasificadores">
+			      {% for clas in clas_all %}
+			      <li style="list-style: none;" id="{{clas}}" class="contenedor-clasificador">
+			      	<label ><span>{{clas}}</span> <a class="btn_ btn btn-light clasificador" id="{{clas}}"><i class="glyphicon glyphicon-plus"></i></a></label>
+			      	<ul style="list-style: none; padding: 0 10px;" id="{{clas}}" class="{% if not clas.clasificador_id in valores %}hidden{% endif %} lista-clasificadores">
+			        {% for clas_val in clas_val_all %}
+				      	{% if clas == clas_val.clasificador %}
+				      		<li>
+								<label ><input class="clasificador_valor" id="{{clas_val.valor_clasif_id}}" name="clasificador_val"  type="checkbox" value="{{clas_val}}" {%if clas_val.valor_clasif_id in clasificadores %}checked{%endif%} > 
+									{{clas_val}}
+								</label>
+				      		</li>
+						{% endif %}
+					{% endfor %}
+					</ul>
+				  </li>
+			      {% endfor %}
+			      </div>
+					
+					<input type="submit" class="btn btn-success hidden" value="Buscar"  id="guardar" />
+			</form>		
+		</div>
+
+		<div class="col-md-10" >
+			<table class="table">
+				<thead>
+					<th>No.</th>
+					<th>Nombre</th>
+					<th style="text-align: right;">Existencia </th>
+					<th style="text-align: right;">Precio</th>
+				</thead>
+				<tbody>
+					{% for item in articulos%}
+					{% if existencia == 'True' %}
+					<tr>
+						<td id="{{item.articulo.id}}" class="clave_articulo">{{item.clave}}</td>
+						<td>
+							<a id="{{item.articulo.id}}" class="hidden-print det_progreso" href="#" data-toggle="modal" data-target="#myModal{{item.articulo.id}}">{{item.articulo.nombre}}</a>
+							<sup style="border: 1px solid #000; border-radius: 20px; background-color: #000;"><a id="{{item.articulo.id}}" class="hidden-print compatibilidades" href="#" data-toggle="modal" data-target="#Modal{{item.articulo.id}}" style="color: #fff;">Compatibile</a></sup></td>
+						    <div class="modal fade {{item.articulo.id}}" id="Modal{{item.articulo.id}}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+						      <div class="modal-dialog compatibilidad">
+						        <div class="modal-content">
+						          <div class="modal-header">
+						            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						            <h4 class="modal-title" id="ModalLabel">Articulos Compatibles</h4>
+						          </div>
+						          <div class="modal-body  ">						         	
+									<div>
+										<div class="row" id="header">
+											<div class="col-md-12">
+												<div class="col-md-2"><strong>Clave</strong></div>
+												<div class="col-md-4"><strong>Articulo</strong></div>
+												<div class="col-md-2" style="text-align: right;"><strong>Existencias</strong></div>
+												<div class="col-md-2" style="text-align: right;"><strong>Precio</strong></div>
+												<div class="col-md-2" ><strong></strong></div>
+											</div>
+										</div>
+										<div class="row" id="tableCompatibilidad{{item.articulo.id}}">
+											
+										</div>
+									</div>
+						          </div>
+						          <div class="modal-footer">
+						            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+						            <!-- <button type="button" class="btn btn-primary">OK</button> -->
+						          </div> 
+						        </div>
+						     </div>
+						    </div>
+
+						</td>
+						    <div class="modal fade {{item.articulo.id}}" id="myModal{{item.articulo.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						      <div class="modal-dialog">
+						        <div class="modal-content">
+						          <div class="modal-header">
+						            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						            <h4 class="modal-title" id="myModalLabel">{{item.articulo.nombre}}</h4>
+						          </div>
+						          <div class="modal-body  ">						         	
+									<div>
+										<div class="row" id="header">
+											<div class="col-md-12">
+												<div class="col-md-6"><strong>Almacen</strong></div>
+												<div class="col-md-6" style="text-align: right;"><strong>Existencias</strong></div>
+											</div>
+										</div>
+										<div class="row" id="tableExistencia{{item.articulo.id}}">
+											
+										</div>
+									</div>
+						          </div>
+						          <div class="modal-footer">
+						            <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+						            <!-- <button type="button" class="btn btn-primary">OK</button> -->
+						          </div>
+						        </div>
+						     </div>
+						    </div>
+						<td style="text-align: right;"><label>{{item.existencia}}</label></td>
+						<td style="text-align: right;"><label id="{{item.articulo.id}}" class="precio_unitario">{{item.precio|floatformat:2|intcomma}}</label></td>
+						<td><input type="number" value="{%if item.cantidad %}{{item.cantidad}}{%else%}0{%endif%}" min="0" id="{{item.articulo.id}}" max="{%if limite_existencia == 'True' %}{{item.existencia}}{%else%}10000{%endif%}" class="cantidad {{item.articulo.id}}"></td>
+					</tr>
+					{%else%}
+						{% if item.existencia > 0 %}
+							<tr>
+								<td id="{{item.articulo.id}}" class="clave_articulo">{{item.clave}}</td>
+								<td>
+									<a id="{{item.articulo.id}}" class="hidden-print det_progreso" href="#" data-toggle="modal" data-target="#myModal{{item.articulo.id}}">{{item.articulo.nombre}}</a>
+									<sup style="border: 1px solid #000; border-radius: 20px; background-color: #000;"><a id="{{item.articulo.id}}" class="hidden-print compatibilidades" href="#" data-toggle="modal" data-target="#Modal{{item.articulo.id}}" style="color: #fff;">Compatibile</a></sup></td>
+								    <div class="modal fade {{item.articulo.id}}" id="Modal{{item.articulo.id}}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+								      <div class="modal-dialog compatibilidad">
+								        <div class="modal-content">
+								          <div class="modal-header">
+								            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								            <h4 class="modal-title" id="ModalLabel">Articulos Compatibles</h4>
+								          </div>
+								          <div class="modal-body  ">						         	
+											<div>
+												<div class="row" id="header">
+													<div class="col-md-12">
+														<div class="col-md-2"><strong>Clave</strong></div>
+														<div class="col-md-4"><strong>Articulo</strong></div>
+														<div class="col-md-2" style="text-align: right;"><strong>Existencias</strong></div>
+														<div class="col-md-2" style="text-align: right;"><strong>Precio</strong></div>
+														<div class="col-md-2" ><strong></strong></div>
+													</div>
+												</div>
+												<div class="row" id="tableCompatibilidad{{item.articulo.id}}">
+													
+												</div>
+											</div>
+								          </div>
+								          <div class="modal-footer">
+								            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+								            <!-- <button type="button" class="btn btn-primary">OK</button> -->
+								          </div> 
+								        </div>
+								     </div>
+								    </div>
+
+								</td>
+								    <div class="modal fade {{item.articulo.id}}" id="myModal{{item.articulo.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+								      <div class="modal-dialog">
+								        <div class="modal-content">
+								          <div class="modal-header">
+								            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								            <h4 class="modal-title" id="myModalLabel">{{item.articulo.nombre}}</h4>
+								          </div>
+								          <div class="modal-body  ">						         	
+											<div>
+												<div class="row" id="header">
+													<div class="col-md-12">
+														<div class="col-md-6"><strong>Almacen</strong></div>
+														<div class="col-md-6" style="text-align: right;"><strong>Existencias</strong></div>
+													</div>
+												</div>
+												<div class="row" id="tableExistencia{{item.articulo.id}}">
+													
+												</div>
+											</div>
+								          </div>
+								          <div class="modal-footer">
+								            <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+								            <!-- <button type="button" class="btn btn-primary">OK</button> -->
+								          </div>
+								        </div>
+								     </div>
+								    </div>
+								<td style="text-align: right;"><label>{{item.existencia}}</label></td>
+								<td style="text-align: right;"><label id="{{item.articulo.id}}" class="precio_unitario">{{item.precio|floatformat:2|intcomma}}</label></td>
+								<td><input type="number" value="{%if item.cantidad %}{{item.cantidad}}{%else%}0{%endif%}" min="0" id="{{item.articulo.id}}" max="{%if limite_existencia == 'True' %}{{item.existencia}}{%else%}10000{%endif%}" class="cantidad {{item.articulo.id}}"></td>
+							</tr>
+						{% endif %}
+					{% endif %}
+					{% endfor %}
+				</tbody>
+			</table>
+			
+			
+		</div>
+	</div>
+</div>
+{% endblock %}
