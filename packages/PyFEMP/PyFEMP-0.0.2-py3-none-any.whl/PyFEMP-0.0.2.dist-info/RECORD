@@ -1,0 +1,17 @@
+PyFEMP/FEM_SOLVER.py,sha256=__7IJYY-ZqHxN9Cln4KmvaU9Rv8Ua4m9DkssRc8iRL0,25288
+PyFEMP/__init__.py,sha256=pLD2Vq6GEuYEIaT8dXuEPJC-bZIeP2jnO2vMev4BQac,210
+PyFEMP/elements/Elmt_BaMo_2D.py,sha256=tWhU1vGPALdeyRJoVt8PMPiWJfywKAONtHJkadiCYPs,7490
+PyFEMP/elements/Elmt_BaMo_2D_Dy.py,sha256=HmT5qnixhdsD30Wi-N6cdTNuNqEWwt4gJoMIkF9D2rM,10566
+PyFEMP/elements/Elmt_BaMo_BaEn_Coupled_1D.py,sha256=ZyzYLiDDCx5hsP96zY0lB5H-AlDvM0Odxs3G4rJRL4w,6668
+PyFEMP/elements/LE_T1.py,sha256=NKJznSsv_hQkvYIV6xf2VOhdK_wEoIiH0GkH7H95_1Y,7577
+PyFEMP/elements/LE_T_Q1.py,sha256=FYjdNHqaB61SjAprYuK8aI3lW9ZNeDCHkbKrN9Rz8n0,8524
+PyFEMP/elements/Laplace_Q1.py,sha256=zzTAUvrPt9usLJLB-pbbyFFYxx6mL56jBsBW-eSEfLA,4223
+PyFEMP/elements/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+PyFEMP/meshing/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+PyFEMP/meshing/mesh_1d.py,sha256=GymBRui3uaH0uXY5w0T6-d6oD2jG1w13Mxyg8hujj4A,827
+PyFEMP/meshing/mesh_2d.py,sha256=oDUtjpA2bd6MOzaIr2qKyiduyPruGpg4uQKTwZECpLU,4027
+PyFEMP-0.0.2.dist-info/LICENSE,sha256=2bm9uFabQZ3Ykb_SaSU_uUbAj2-htc6WJQmS_65qD00,1073
+PyFEMP-0.0.2.dist-info/METADATA,sha256=yvhpUO_26nL6qHc-FwlZotYwkRBaP2RNc8Mw5f0kWMg,4235
+PyFEMP-0.0.2.dist-info/WHEEL,sha256=EVRjI69F5qVjm_YgqcTXPnTAv3BfSUr0WVAHuSP3Xoo,92
+PyFEMP-0.0.2.dist-info/top_level.txt,sha256=3DcanilwvkJkHDU81fQJ7WYfAH8dnNSqs5JUX2CQ7fU,7
+PyFEMP-0.0.2.dist-info/RECORD,,
