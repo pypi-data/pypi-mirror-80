@@ -1,0 +1,89 @@
+Metadata-Version: 2.1
+Name: sentivi
+Version: 0.1.0
+Summary: A simple tool for Vietnamese Sentiment Analysis
+Home-page: https://github.com/vndee/sentivi
+Author: Duy V. Huynh
+Author-email: hvd.huynhduy@gmail.com
+License: MIT
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Description-Content-Type: text/markdown
+Requires-Dist: blis (==0.4.1)
+Requires-Dist: catalogue (==1.0.0)
+Requires-Dist: certifi (==2020.6.20)
+Requires-Dist: chardet (==3.0.4)
+Requires-Dist: cymem (==2.0.3)
+Requires-Dist: gensim (==3.8.3)
+Requires-Dist: idna (==2.10)
+Requires-Dist: joblib (==0.16.0)
+Requires-Dist: murmurhash (==1.0.2)
+Requires-Dist: numpy (==1.19.2)
+Requires-Dist: plac (==1.1.3)
+Requires-Dist: preshed (==3.0.2)
+Requires-Dist: python-crfsuite (==0.9.7)
+Requires-Dist: pyvi (==0.1)
+Requires-Dist: requests (==2.24.0)
+Requires-Dist: scikit-learn (==0.23.2)
+Requires-Dist: scipy (==1.5.2)
+Requires-Dist: six (==1.15.0)
+Requires-Dist: sklearn-crfsuite (==0.3.6)
+Requires-Dist: smart-open (==2.2.0)
+Requires-Dist: spacy (==2.3.2)
+Requires-Dist: srsly (==1.0.2)
+Requires-Dist: tabulate (==0.8.7)
+Requires-Dist: thinc (==7.4.1)
+Requires-Dist: threadpoolctl (==2.1.0)
+Requires-Dist: tqdm (==4.49.0)
+Requires-Dist: urllib3 (==1.25.10)
+Requires-Dist: wasabi (==0.8.0)
+
+## A Simple Tool For Vietnamese Sentiment Analysis
+
+**Sentivi** - a simple tool for sentiment analysis which is a wrapper of [scikit-learn](https://scikit-learn.org) and
+[PyTorch](https://pytorch.org/) models. It is made for easy and faster pipeline to train and evaluate several
+classification algorithms.
+
+### Install
+Install legacy version from PyPI:
+```bash
+pip install sentivi
+```
+
+Install latest version from source:
+```bash
+git clone https://github.com/vndee/sentivi
+cd sentivi
+pip install .
+```
+
+### Example
+
+```python
+from sentivi import Pipeline
+from sentivi.data import DataLoader, TextEncoder
+from sentivi.classifier import SVMClassifier
+from sentivi.text_processor import TextProcessor
+
+text_processor = TextProcessor(methods=['word_segmentation', 'remove_punctuation', 'lower'])
+
+pipeline = Pipeline(DataLoader(text_processor=text_processor, n_grams=3),
+                    TextEncoder(encode_type='one-hot'),
+                    SVMClassifier(num_labels=3))
+
+train_results = pipeline(train='./data/dev.vi', test='./data/dev_test.vi',
+                         save_path='./weights/svm.sentivi')
+print(train_results)
+
+predict_results = pipeline.predict(['hàng ok đầu tuýp có một số không vừa ốc siết.'
+                                    'chỉ được một số đầu thôi .cần nhất đầu tuýp 14'
+                                    'mà không có. không đạt yêu cầu của mình sử dụng',
+                                    'Son đẹpppp, mùi hương vali thơm nhưng hơi nồng,'
+                                    'chất son mịn, màu lên chuẩn, đẹppppp'])
+print(predict_results)
+print(f'Decoded results: {pipeline.decode_polarity(predict_results)}')
+```
+Take a look at more examples in [example/](https://github.com/vndee/sentivi/tree/master/example).
+
