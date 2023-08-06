@@ -1,0 +1,25 @@
+[aiida.calculations]
+dynaphopy = aiida_lammps.calculations.dynaphopy:DynaphopyCalculation
+lammps.combinate = aiida_lammps.calculations.lammps.combinate:CombinateCalculation
+lammps.force = aiida_lammps.calculations.lammps.force:ForceCalculation
+lammps.md = aiida_lammps.calculations.lammps.md:MdCalculation
+lammps.md.multi = aiida_lammps.calculations.lammps.md_multi:MdMultiCalculation
+lammps.optimize = aiida_lammps.calculations.lammps.optimize:OptimizeCalculation
+
+[aiida.data]
+lammps.potential = aiida_lammps.data.potential:EmpiricalPotential
+lammps.trajectory = aiida_lammps.data.trajectory:LammpsTrajectory
+
+[aiida.parsers]
+dynaphopy = aiida_lammps.parsers.dynaphopy:DynaphopyParser
+lammps.force = aiida_lammps.parsers.lammps.force:ForceParser
+lammps.md = aiida_lammps.parsers.lammps.md:MdParser
+lammps.md.multi = aiida_lammps.parsers.lammps.md_multi:MdMultiParser
+lammps.optimize = aiida_lammps.parsers.lammps.optimize:OptimizeParser
+
+[lammps.potentials]
+eam = aiida_lammps.data.pot_plugins.eam:EAM
+lennard_jones = aiida_lammps.data.pot_plugins.lennard_jones:LennardJones
+reaxff = aiida_lammps.data.pot_plugins.reaxff:Reaxff
+tersoff = aiida_lammps.data.pot_plugins.tersoff:Tersoff
+
