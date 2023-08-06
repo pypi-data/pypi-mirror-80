@@ -1,0 +1,11 @@
+MANIFEST.in
+README.md
+setup.py
+msdlib/__init__.py
+msdlib/dataset.py
+msdlib/msd.py
+msdlib/msdExceptions.py
+msdlib.egg-info/PKG-INFO
+msdlib.egg-info/SOURCES.txt
+msdlib.egg-info/dependency_links.txt
+msdlib.egg-info/top_level.txt
