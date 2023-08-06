@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: bhaskar-kernel-easy-skype
+Version: 0.0.2
+Summary: A simple skype file downloader
+Home-page: https://github.com/algorithmgeeker/easy_skype
+Author: Bhaskar Singh
+Author-email: bhaskar.kernel@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: requests
+Requires-Dist: tqdm
+Requires-Dist: argparse
+Requires-Dist: skpy
+Requires-Dist: rich
+
+TODO
+https://github.com/algorithmgeeker/easy_skype
+
