@@ -1,0 +1,32 @@
+Metadata-Version: 2.1
+Name: apifairy
+Version: 0.5.0
+Summary: A minimalistic API framework built on top of Flask, Marshmallow and friends.
+Home-page: https://github.com/miguelgrinberg/apifairy
+Author: Miguel Grinberg
+Author-email: miguel.grinberg@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: flask
+Requires-Dist: flask-marshmallow
+Requires-Dist: webargs
+Requires-Dist: flask-httpauth
+Requires-Dist: apispec
+
+# APIFairy
+
+[![Build Status](https://travis-ci.org/miguelgrinberg/APIFairy.png?branch=master)](https://travis-ci.org/miguelgrinberg/APIFairy)
+
+Resources
+---------
+
+- [Documentation](http://apifairy.readthedocs.io/en/latest/)
+- [PyPI](https://pypi.python.org/pypi/APIFairy)
+- [Change Log](https://github.com/miguelgrinberg/APIFairy/blob/master/CHANGES.md)
+
+
