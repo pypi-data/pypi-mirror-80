@@ -1,0 +1,133 @@
+- job:
+    name: networking-bgpvpn-functional-bagpipe
+    parent: neutron-functional
+    required-projects:
+      - openstack/neutron
+      - openstack/networking-bgpvpn
+      - openstack/networking-bagpipe
+    vars:
+      project_name: networking-bgpvpn
+      devstack_localrc:
+        NETWORKING_BGPVPN_DRIVER: BGPVPN:BaGPipe:networking_bgpvpn.neutron.services.service_drivers.bagpipe.bagpipe_v2.BaGPipeBGPVPNDriver:default
+        BAGPIPE_DATAPLANE_DRIVER_IPVPN: ovs
+        BAGPIPE_BGP_PEERS: "-"
+      devstack_plugins:
+        networking-bagpipe: https://opendev.org/openstack/networking-bagpipe
+        networking-bgpvpn: https://opendev.org/openstack/networking-bgpvpn
+        neutron: https://opendev.org/openstack/neutron
+
+- job:
+    name: networking-bgpvpn-functional-full
+    parent: neutron-functional
+    required-projects:
+      - openstack/neutron
+      - openstack/networking-bgpvpn
+      - openstack/networking-bagpipe
+      - openstack/horizon
+    vars:
+      project_name: networking-bgpvpn
+      # NOTE(lajoskatona): neutron-functional sets tox_install_siblings to
+      # false. This needs to be true so for example neutron is installed into
+      # tox env from source.
+      tox_install_siblings: true
+      devstack_plugins:
+        networking-bgpvpn: https://opendev.org/openstack/networking-bgpvpn
+        neutron: https://opendev.org/openstack/neutron
+
+- job:
+    name: networking-bgpvpn-bagpipe-install
+    parent: devstack-tempest
+    timeout: 7800
+    required-projects:
+      - openstack/networking-bagpipe
+      - openstack/networking-bgpvpn
+    vars:
+      devstack_plugins:
+        networking-bgpvpn https://opendev.org/openstack/networking-bgpvpn
+        networking-bagpipe https://opendev.org/openstack/networking-bagpipe
+
+- job:
+    name: networking-bgpvpn-install
+    parent: devstack-tempest
+    timeout: 7800
+    required-projects:
+      - openstack/networking-bgpvpn
+    vars:
+      devstack_plugins:
+        networking-bgpvpn https://opendev.org/openstack/networking-bgpvpn
+
+- project:
+    templates:
+      - openstack-python3-victoria-jobs-neutron
+      - publish-openstack-docs-pti
+      - release-notes-jobs-python3
+      - periodic-stable-jobs-neutron
+      - check-requirements
+      - horizon-non-primary-django-jobs
+    check:
+      jobs:
+        # TripleO jobs that deploy networking-bgpvpn.
+        # Note we don't use a project-template here, so it's easier
+        # to disable voting on one specific job if things go wrong.
+        # tripleo-ci-centos-7-scenario004-multinode-oooq-container will
+        # run in Pike and beyond.
+        # If you need any support to debug these jobs in case of
+        # failures, please reach us on #tripleo IRC channel.
+        - tripleo-ci-centos-7-scenario004-standalone:
+            voting: false
+        - openstack-tox-lower-constraints:
+            required-projects:
+              - openstack/neutron
+              - openstack/networking-bagpipe
+              - openstack/horizon
+        - openstack-tox-pep8:
+            required-projects:
+              - openstack/networking-bagpipe
+              - openstack/horizon
+        - openstack-tox-py36:
+            required-projects:
+              - openstack/networking-bagpipe
+              - openstack/horizon
+        - openstack-tox-py38:
+            required-projects:
+              - openstack/networking-bagpipe
+              - openstack/horizon
+        - neutron-tempest-plugin-bgpvpn-bagpipe:
+            irrelevant-files:
+              - ^(test-|)requirements.txt$
+              - ^setup.cfg$
+        - openstack-tox-cover:
+            required-projects:
+              - openstack/neutron
+              - openstack/networking-bagpipe
+              - openstack/horizon
+        - networking-bgpvpn-functional-full
+    gate:
+      jobs:
+        - openstack-tox-lower-constraints:
+            required-projects:
+              - openstack/neutron
+              - openstack/networking-bagpipe
+              - openstack/horizon
+        - openstack-tox-pep8:
+            required-projects:
+              - openstack/networking-bagpipe
+              - openstack/horizon
+        - openstack-tox-py36:
+            required-projects:
+              - openstack/networking-bagpipe
+              - openstack/horizon
+        - openstack-tox-py38:
+            required-projects:
+              - openstack/networking-bagpipe
+              - openstack/horizon
+        - neutron-tempest-plugin-bgpvpn-bagpipe:
+            irrelevant-files:
+              - ^(test-|)requirements.txt$
+              - ^setup.cfg$
+        - networking-bgpvpn-functional-full
+    experimental:
+      jobs:
+        - networking-bgpvpn-dsvm-install
+        - networking-bgpvpn-bagpipe-dsvm-install
+        - networking-bgpvpn-functional-bagpipe
