@@ -1,0 +1,3 @@
+include geoip2_data/data/GeoLite2-ASN.mmdb
+include geoip2_data/data/GeoLite2-City.mmdb
+include geoip2_data/data/GeoLite2-Country.mmdb

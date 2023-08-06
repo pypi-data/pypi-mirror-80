@@ -1,0 +1,13 @@
+MANIFEST.in
+README.md
+setup.py
+geoip2_data/__init__.py
+geoip2_data/files.py
+geoip2_data/version.py
+geoip2_data.egg-info/PKG-INFO
+geoip2_data.egg-info/SOURCES.txt
+geoip2_data.egg-info/dependency_links.txt
+geoip2_data.egg-info/top_level.txt
+geoip2_data/data/GeoLite2-ASN.mmdb
+geoip2_data/data/GeoLite2-City.mmdb
+geoip2_data/data/GeoLite2-Country.mmdb
