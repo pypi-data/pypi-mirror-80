@@ -1,0 +1,3 @@
+[console_scripts]
+tuneup = tuneup.__main__:main
+
