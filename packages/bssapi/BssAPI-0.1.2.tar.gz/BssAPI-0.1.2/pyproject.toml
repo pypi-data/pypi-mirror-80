@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "BssAPI"
+version = "0.1.2"
+description = "Функционал перефирийного взаимодействия корпоративной учетной системы BSS"
+authors = ["Anton Rastyazhenko <rastyazhenko.anton@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+fastapi = {extras = ["all"], version = "^0.61.1"}
+orjson = "^3.3.1"
+attr = "^0.3.1"
+python-multipart = "^0.0.5"
+aioftp = "^0.18.0"
+lz4 = "^3.1.0"
+std-hash = "^0.1.0"
+bssapi-schemas = "^0.1.0"
+pytest-asyncio = "^0.14.0"
+bssapi-dbfread = "^0.1.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[tool.poetry.scripts]
+bapi = 'bssapi:app'
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
+
