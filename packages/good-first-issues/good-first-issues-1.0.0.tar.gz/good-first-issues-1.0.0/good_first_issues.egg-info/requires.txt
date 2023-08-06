@@ -1,0 +1,11 @@
+halo
+requests
+click
+tabulate
+rich<=7.1.0
+
+[dev]
+pytest<=4.*
+black<=20.8b1
+pre-commit
+mypy
