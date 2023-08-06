@@ -1,0 +1,8 @@
+[console_scripts]
+cassini-vims = opus.cli.cassini:vims
+opus = opus.cli:data
+opus-field = opus.cli:field
+opus-files = opus.cli:files
+opus-meta = opus.cli:metadata
+opus-preview = opus.cli:image
+
