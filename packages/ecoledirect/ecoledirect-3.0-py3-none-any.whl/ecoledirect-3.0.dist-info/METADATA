@@ -1,0 +1,42 @@
+Metadata-Version: 2.1
+Name: ecoledirect
+Version: 3.0
+Summary: With this package you can get the data from the website www.ecoledirect.com.
+Home-page: https://github.com/Snowy-27/EcoleDirect
+Author: Dan Habib
+Author-email: dan.habib@yahoo.fr
+License: unlicense
+Platform: UNKNOWN
+Description-Content-Type: text/markdown
+
+# EcoleDirect
+Ecole direct is a script that can get data from the website https://www.ecoledirecte.com/
+### Installation
+```sh
+pip install scrap-ecoledirect
+```
+or 
+```sh
+pip install git+https://github.com/Snowy-27/ecoledirect
+```
+
+### Documentation
+
+First Tab:
+```py
+from ecoledirect import EcoleDirect
+user = EcoleDirect('username', 'password')
+user.login()
+```
+```py
+print(user.get_homework())
+```
+The function get notes is currently in developement. 
+```py
+print(user.get_notes()) 
+```
+```py
+user.close()
+```
+
+
