@@ -1,0 +1,3 @@
+[console_scripts]
+boip = boip.cli:_main
+
