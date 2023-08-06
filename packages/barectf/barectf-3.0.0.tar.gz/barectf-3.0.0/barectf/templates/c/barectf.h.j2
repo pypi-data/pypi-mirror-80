@@ -1,0 +1,179 @@
+{#
+ # The MIT License (MIT)
+ #
+ # Copyright (c) 2020 Philippe Proulx <pproulx@efficios.com>
+ #
+ # Permission is hereby granted, free of charge, to any person obtaining
+ # a copy of this software and associated documentation files (the
+ # "Software"), to deal in the Software without restriction, including
+ # without limitation the rights to use, copy, modify, merge, publish,
+ # distribute, sublicense, and/or sell copies of the Software, and to
+ # permit persons to whom the Software is furnished to do so, subject to
+ # the following conditions:
+ #
+ # The above copyright notice and this permission notice shall be
+ # included in all copies or substantial portions of the Software.
+ #
+ # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ # EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ # MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ # IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+ # CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ # TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+ # SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ #}
+{% import 'common.j2' as common %}
+{% import 'c/common.j2' as c_common %}
+{% set prefix = common.prefix %}
+{% set ucprefix = common.ucprefix %}
+{% set trace_type = cfg.trace.type %}
+{% set cg_opts = cfg.options.code_generation_options %}
+{% set def_dst = cg_opts.default_data_stream_type %}
+{% set header_opts = cg_opts.header_options %}
+{% set const_params = false %}
+#ifndef _{{ ucprefix }}H
+#define _{{ ucprefix }}H
+
+{% include 'license-header.j2' %}
+
+
+#include <stdint.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+{% if header_opts.identifier_prefix_definition %}
+/* Backward compatibility */
+#define _BARECTF_PREFIX {{ prefix }}
+
+#define _BARECTF_IDENTIFIER_PREFIX {{ prefix }}
+{% endif %}
+{% if def_dst and header_opts.default_data_stream_type_name_definition %}
+/* Backward compatibility */
+#define _BARECTF_DEFAULT_STREAM {{ def_dst.name }}
+
+#define _BARECTF_DEFAULT_DATA_STREAM_TYPE_NAME {{ def_dst.name }}
+{% endif %}
+{% if def_dst %}
+
+	{% for ert in def_dst.event_record_types | sort %}
+#define {{ prefix }}trace_{{ ert.name }} {{ c_common.trace_func_name(def_dst, ert) }}
+	{% endfor %}
+{% endif %}
+
+struct {{ prefix }}ctx;
+
+uint32_t {{ prefix }}packet_size(const void *vctx);
+int {{ prefix }}packet_is_full(const void *vctx);
+int {{ prefix }}packet_is_empty(const void *vctx);
+uint32_t {{ prefix }}packet_events_discarded(const void *vctx);
+uint32_t {{ prefix }}discarded_event_records_count(const void * const vctx);
+uint8_t *{{ prefix }}packet_buf(const void *vctx);
+uint8_t *{{ prefix }}packet_buf_addr(const void * const vctx);
+void {{ prefix }}packet_set_buf(void *vctx, uint8_t *buf, uint32_t buf_size);
+uint32_t {{ prefix }}packet_buf_size(const void *vctx);
+int {{ prefix }}packet_is_open(const void *vctx);
+int {{ prefix }}is_in_tracing_section(const void *vctx);
+volatile const int *{{ prefix }}is_in_tracing_section_ptr(const void *vctx);
+int {{ prefix }}is_tracing_enabled(const void *vctx);
+void {{ prefix }}enable_tracing(void *vctx, int enable);
+
+/* barectf platform callbacks */
+struct {{ prefix }}platform_callbacks {
+{% set clk_types = trace_type.clock_types %}
+{% if clk_types %}
+	/* Clock source callbacks */
+	{% for clk_type in clk_types | sort %}
+	{{ cg_opts.clock_type_c_types[clk_type] }} (*{{ clk_type.name }}_clock_get_value)(void *);
+	{% endfor %}
+
+{% endif %}
+	/* Is the back end full? */
+	int (*is_backend_full)(void *);
+
+	/* Open packet */
+	void (*open_packet)(void *);
+
+	/* Close packet */
+	void (*close_packet)(void *);
+};
+
+/* Common barectf context */
+struct {{ prefix }}ctx {
+	/* Platform callbacks */
+	struct {{ prefix }}platform_callbacks cbs;
+
+	/* Platform data (passed to callbacks) */
+	void *data;
+
+	/* Output buffer (will contain a CTF binary packet) */
+	uint8_t *buf;
+
+	/* Packet's total size (bits) */
+	uint32_t packet_size;
+
+	/* Packet's content size (bits) */
+	uint32_t content_size;
+
+	/* Current position from beginning of packet (bits) */
+	uint32_t at;
+
+	/* Size of packet header + context fields (content offset) */
+	uint32_t off_content;
+
+	/* Discarded event records counter snapshot */
+	uint32_t events_discarded;
+
+	/* Current packet is open? */
+	int packet_is_open;
+
+	/* In tracing code? */
+	volatile int in_tracing_section;
+
+	/* Tracing is enabled? */
+	volatile int is_tracing_enabled;
+
+	/* Use current/last event record timestamp when opening/closing packets */
+	int use_cur_last_event_ts;
+};
+
+{% for dst in trace_type.data_stream_types | sort %}
+/* Context for data stream type `{{ dst.name }}` */
+struct {{ prefix }}{{ dst.name }}_ctx {
+	/* Parent */
+	struct {{ prefix }}ctx parent;
+
+	/* Config-specific members follow */
+	{% if trace_type._pkt_header_ft %}
+		{% for member_name in trace_type._pkt_header_ft.members %}
+	uint32_t off_ph_{{ member_name }};
+		{% endfor %}
+	{% endif %}
+	{% for member_name in dst._pkt_ctx_ft.members %}
+	uint32_t off_pc_{{ member_name }};
+	{% endfor %}
+	{% if dst.default_clock_type %}
+	{{ cg_opts.clock_type_c_types[dst.default_clock_type] }} cur_last_event_ts;
+	{% endif %}
+};
+
+{% endfor %}
+{% include 'c/ctx-init-func-proto.j2' %};
+
+{% for dst in trace_type.data_stream_types | sort %}
+	{% include 'c/open-func-proto.j2' %};
+
+	{% include 'c/close-func-proto.j2' %};
+
+	{% for ert in dst.event_record_types | sort %}
+		{% include 'c/trace-func-proto.j2' %};
+		{% if not loop.last %}{{ '\n' }}{% endif %}
+	{% endfor %}
+{% endfor %}
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* _{{ ucprefix }}H */
