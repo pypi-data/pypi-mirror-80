@@ -1,0 +1,10 @@
+MANIFEST.in
+README.MD
+setup.py
+packagepg/__init__.py
+packagepg/namespg.py
+packagepg.egg-info/PKG-INFO
+packagepg.egg-info/SOURCES.txt
+packagepg.egg-info/dependency_links.txt
+packagepg.egg-info/requires.txt
+packagepg.egg-info/top_level.txt
