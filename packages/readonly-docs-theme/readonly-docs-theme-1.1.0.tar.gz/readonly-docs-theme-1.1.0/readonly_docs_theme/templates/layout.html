@@ -1,0 +1,49 @@
+{% extends "!layout.html" %}
+{% set css_files = css_files + ["_static/readonlydocs.css"] %}
+{% set script_files = script_files + ["_static/readonlydocs.js"] %}
+
+    <link href="https://file.myfontastic.com/3H9gwc6MQYZ7NLxJoCq9AX/icons.css" rel="stylesheet">
+
+{% block sidebartitle %}
+    <div id="ro-logo-container" class="page-scroll">
+        <a class="logo" href="{{ pathto(master_doc) }}">
+            <img src="{{ pathto('_static/readonly-mark.svg', 1) }}">
+            <span></span>
+            <i class="fa fa-fw fa-chevron-down"></i>
+        </a>
+        <div id="ro-logo-menu">
+            <ul id="ro-logo-dropdown">
+                <li><a href="https://mods.romvoid.dev"><i class="icon-readonly-mark"></i>Homepage</a></li>
+                <li><a href="https://projects.romvoid.dev"><i class="icon-curse-flame"></i>Projects</a></li>
+                <li><a href="https://github.com/ReadOnly-Mods"><i class="icon-mark-github"></i>Code</a></li>
+                <li class="active"><a href="https://docs.romvoid.dev"><i class="fa-fw fa fa-book"></i>Docs</a></li>
+                <li><a href="https:/romvoid.dev/downloads"><i class="fa-fw fa fa-download"></i>Downloads</a></li>
+                <li><a href="https://discord.romvoid.dev"><i class="icon-comment-discussion"></i>Chat</a></li>
+            </ul>
+        </div>
+    </div>
+
+    {% include "searchbox.html" %}
+{% endblock %}
+
+{% block extrahead %}
+    {% if language == 'translate' %}
+        {# Include Crowdin In-Context Localization JS app if this is the translation build #}
+        <script>
+            // Set Crowdin project context for In-Context Localization
+            var _jipt = [['project', 'readonly-mods-documentation']];
+        </script>
+        <script src="https://cdn.crowdin.com/jipt/jipt.js"></script>
+    {% endif %}
+
+    <!-- Google Analytics -->
+    <script>
+        (function(S,p,o,n,g,i,e){S['GoogleAnalyticsObject']=g;S[g]=S[g]||function(){
+        (S[g].q=S[g].q||[]).push(arguments)},S[g].l=1*new Date();i=p.createElement(o),
+        e=p.getElementsByTagName(o)[0];i.async=1;i.src=n;e.parentNode.insertBefore(i,e)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-177906763-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+{% endblock %}
