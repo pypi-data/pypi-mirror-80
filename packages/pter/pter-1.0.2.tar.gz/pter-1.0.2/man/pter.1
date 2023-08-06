@@ -1,0 +1,930 @@
+.\" Man page generated from reStructuredText.
+.
+.TH PTER  "" "" ""
+.SH NAME
+pter \- Personal Task Entropy Reducer
+.
+.nr rst2man-indent-level 0
+.
+.de1 rstReportMargin
+\\$1 \\n[an-margin]
+level \\n[rst2man-indent-level]
+level margin: \\n[rst2man-indent\\n[rst2man-indent-level]]
+-
+\\n[rst2man-indent0]
+\\n[rst2man-indent1]
+\\n[rst2man-indent2]
+..
+.de1 INDENT
+.\" .rstReportMargin pre:
+. RS \\$1
+. nr rst2man-indent\\n[rst2man-indent-level] \\n[an-margin]
+. nr rst2man-indent-level +1
+.\" .rstReportMargin post:
+..
+.de UNINDENT
+. RE
+.\" indent \\n[an-margin]
+.\" old: \\n[rst2man-indent\\n[rst2man-indent-level]]
+.nr rst2man-indent-level -1
+.\" new: \\n[rst2man-indent\\n[rst2man-indent-level]]
+.in \\n[rst2man-indent\\n[rst2man-indent-level]]u
+..
+.SH SYNOPSIS
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+pter [\-h] [\-c configuration] filename [filename ...]
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SH DESCRIPTION
+.sp
+pter is a tool to manage your tasks when they are stored in the todo.txt
+file format. pter is targeted at users applying the \fI\%Getting Things Done\fP
+method, but can be used by anyone that uses todo.txt files.
+.sp
+pter offers these features:
+.INDENT 0.0
+.INDENT 3.5
+.INDENT 0.0
+.IP \(bu 2
+Fully compatible to the todo.txt standard
+.IP \(bu 2
+Support for \fIdue:\fP, \fIh:\fP, \fIt:\fP
+.IP \(bu 2
+Save search queries for quick access (see \fI\%Searching\fP and \fI\%Named Searches\fP)
+.IP \(bu 2
+Convenient entering of dates (see \fI\%Relative Dates\fP)
+.IP \(bu 2
+Configurable behaviour, shortcuts, and colors (see \fI\%Files\fP)
+.IP \(bu 2
+Time tracking
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SH OPTIONS
+.INDENT 0.0
+.INDENT 3.5
+.INDENT 0.0
+.TP
+.B \fB\-c configuration\fP
+Path to the configuration file you wish to use. The default is
+\fB$XDG_CONFIG_HOME/pter/pter.conf\fP (usually
+\fB~/.config/pter/pter.conf\fP).
+.TP
+.B \fB\-h\fP
+Show the help.
+.TP
+.B \fBfilename\fP
+Path to your todo.txt file. The first file that you provide is the one
+where new tasks will be created in.
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SH FILES
+.sp
+Aside from the data files in the todo.txt format (see \fI\%Conforming to\fP),
+pter\(aqs behaviour can be configured through a configuration file.
+.sp
+The configuration file\(aqs default location is at \fB~/.config/pter/pter.conf\fP\&.
+.sp
+There should have been an example configuration file, \fBexample.conf\fP distributed with your copy of pter that can give you an idea on how that works. In this documentation you will find the full explanation.
+.sp
+The configuration file is entirely optional and each option has a default
+value. That allows you to run pter just fine without ever configuring
+anything.
+.sp
+The configuration file has four sections (the names are case\-sensitive):
+.INDENT 0.0
+.INDENT 3.5
+.INDENT 0.0
+.IP \(bu 2
+\fI\%General\fP, for general behaviour,
+.IP \(bu 2
+\fI\%Symbols\fP, for icons used in the (task) display,
+.IP \(bu 2
+\fI\%Keys\fP, to override default keyboard controls in lists,
+.IP \(bu 2
+Editor:Keys, to override the default keyboard controls in edit fields (detailed in \fI\%Keys\fP),
+.IP \(bu 2
+\fI\%Colors\fP, for coloring the TUI,
+.IP \(bu 2
+\fI\%Highlight\fP, for coloring specific tags of tasks.
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SS General
+.INDENT 0.0
+.INDENT 3.5
+.INDENT 0.0
+.TP
+.B \fBuse\-colors\fP
+Whether or not to use colors. Defaults to \(aqyes\(aq.
+.TP
+.B \fBscroll\-margin\fP
+How many lines to show at the lower and upper margin of lists. Defaults
+to \(aq5\(aq.
+.TP
+.B \fBsafe\-save\fP
+Safe save means that changes are written to a temporary file and that
+file is moved over the actual file after writing was completed.
+Defaults to \(aqyes\(aq.
+.sp
+This can be problematic if your files are in folders synchronised with
+cloud services.
+.TP
+.B \fBsearch\-case\-sensitive\fP
+Whether or not to search case\-sensitive. Defaults to \(aqyes\(aq.
+.TP
+.B \fBhuman\-friendly\-dates\fP
+Here you can define what fields of a task, that are known to contain a
+date, should be displayed in a more human\-friendly way. By default no
+dates are translated.
+.sp
+Human\-friendly means that instead of a \(aqYYYY\-MM\-DD\(aq format it might
+show \(aqnext wednesday\(aq, \(aqtomorrow\(aq, or \(aqin 2 weeks\(aq. It means that
+dates, that are further away (in the future or the past) will be less
+precise.
+.sp
+Possible values are \fBdue\fP (for due dates), \fBt\fP (for the
+threshold/tickler dates), \fBcompleted\fP (for completion dates),
+\fBcreated\fP (for creation dates), or \fBall\fP (for all of the above).
+You can also combine these values by comma separating them like this:
+.INDENT 7.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+[General]
+human\-friendly\-dates = due, t
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.TP
+.B \fBtask\-format\fP
+The format string to use for displaying tasks. Defaults to "\fB{selection: >} {nr: >} {done} {tracking }{due }{(pri) }{description}\fP".
+.sp
+See \fI\%Task Format\fP below for more details.
+.TP
+.B \fBclear\-contexts\fP
+A list of comma separated contexts (without the leading \fB@\fP) to remove from a task
+when it is being marked as done.
+.sp
+For example, you might want to remove the \fB@in\fP context or any
+\fB@today\fP tags when marking a task as done. In that case
+\fBclear\-contexts\fP should be set to \fBin, today\fP\&.
+.TP
+.B \fBdefault\-threshold\fP
+The default \fBt:\fP search value to use, even when no other search has
+been defined. Defaults to \(aqtoday\(aq.
+.sp
+This option supports \fI\%Relative Dates\fP\&.
+.TP
+.B \fBdelegation\-marker\fP
+Marker to add to a task when delegating it. Defaults to \fB@delegated\fP\&.
+.TP
+.B \fBdelegation\-action\fP
+Action to take when delegating a task.
+One of \(aqnone\(aq, or \(aqmail\-to\(aq (defaulting to \(aqmail\-to\(aq).
+.sp
+\(aqnone\(aq does nothing, but \(aqmail\-to\(aq will attempt to start your email
+program to write an email. If your task has a \(aqto:\(aq attribute, it will
+be used as the recipient for the email.
+.TP
+.B \fBdelegation\-to\fP
+Attribute name to use when delegating a task via email. Defaults to
+\fBto\fP\&. Eg. "clean the dishes to:bob" will compose the email to "bob"
+when delegating a task and the delegation action is "mail\-to".
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SS Symbols
+.sp
+The following symbols (single unicode characters or even longer strings of
+unicode characters) can be defined:
+.INDENT 0.0
+.INDENT 3.5
+.INDENT 0.0
+.IP \(bu 2
+\fBselection\fP, what symbol or string to use to indicate the selected item of a list
+.IP \(bu 2
+\fBnot\-done\fP, what symbol or string to use for tasks that are not done
+.IP \(bu 2
+\fBdone\fP, what symbol or string to use for tasks that are done
+.IP \(bu 2
+\fBoverflow\-left\fP, what symbol or string to use to indicate that there is more text to the left
+.IP \(bu 2
+\fBoverflow\-right\fP, what symbol or string to use to indicate that there is more text to the right
+.IP \(bu 2
+\fBoverdue\fP, the symbol or string for tasks with a due date in the past
+.IP \(bu 2
+\fBdue\-today\fP, the symbol or string for tasks with a due date today
+.IP \(bu 2
+\fBdue\-tomorrow\fP, the symbol or string for tasks with a due date tomorrow
+.IP \(bu 2
+\fBtracking\fP, the symbol or string to show that this task is currently being tracked
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.sp
+If you want to use spaces around your symbols, you have to quote them either
+with \fB\(aq\fP or \fB"\fP\&.
+.sp
+An example could be:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+[Symbols]
+not\-done = " "
+done = ✔
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SS Keys
+.sp
+In the configuration file you can assign keyboard shortcuts to the various
+functions in pter.
+.sp
+There are two main distinct groups of functions. The first, for general
+lists and the task list:
+.INDENT 0.0
+.INDENT 3.5
+.INDENT 0.0
+.IP \(bu 2
+\fBcreate\-task\fP: create a new task
+.IP \(bu 2
+\fBedit\-task\fP: edit the selected task
+.IP \(bu 2
+\fBfirst\-item\fP: jump to the first item in a list
+.IP \(bu 2
+\fBhalf\-page\-down\fP: scroll down by half a page
+.IP \(bu 2
+\fBhalf\-page\-up\fP: scroll up by half a page
+.IP \(bu 2
+\fBjump\-to\fP: enter a number to jump to that item in the list
+.IP \(bu 2
+\fBlast\-item\fP: jump to the last item in a list
+.IP \(bu 2
+\fBload\-search\fP: show the saved searches to load one
+.IP \(bu 2
+\fBnext\-item\fP: select the next item in a list
+.IP \(bu 2
+\fBnop\fP: nothing (in case you want to unbind keys)
+.IP \(bu 2
+\fBopen\-url\fP: open a URL of the selected task
+.IP \(bu 2
+\fBprev\-item\fP: select the previous item in a list
+.IP \(bu 2
+\fBquit\fP: quit the program
+.IP \(bu 2
+\fBrefresh\-screen\fP: rebuild the GUI
+.IP \(bu 2
+\fBreload\-tasks\fP: enforce reloading of all tasks from all sources
+.IP \(bu 2
+\fBsave\-search\fP: save the current search
+.IP \(bu 2
+\fBsearch\fP: enter a new search query
+.IP \(bu 2
+\fBsearch\-context\fP: select a context from the selected task and search for it
+.IP \(bu 2
+\fBsearch\-project\fP: select a project from the selected task and search for it
+.IP \(bu 2
+\fBshow\-help\fP: show the full screen help (only key bindings so far)
+.IP \(bu 2
+\fBopen\-manual\fP: open this manual in a browser
+.IP \(bu 2
+\fBtoggle\-done\fP: toggle the "done" state of a task
+.IP \(bu 2
+\fBtoggle\-hidden\fP: toggle the "hidden" state of a task
+.IP \(bu 2
+\fBtoggle\-tracking\fP: start or stop time tracking for the selected task
+.IP \(bu 2
+\fBdelegate\fP: delegate a task
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.sp
+And the second list of functions for edit fields:
+.INDENT 0.0
+.INDENT 3.5
+.INDENT 0.0
+.IP \(bu 2
+\fBcancel\fP, cancel editing, leave the editor (reverts any changes)
+.IP \(bu 2
+\fBdel\-left\fP, delete the character left of the cursor
+.IP \(bu 2
+\fBdel\-right\fP, delete the character right of the cursor
+.IP \(bu 2
+\fBdel\-to\-bol\fP, delete all characters from the cursor to the beginning of the line
+.IP \(bu 2
+\fBgo\-bol\fP, move the cursor to the beginning of the line
+.IP \(bu 2
+\fBgo\-eol\fP, move the cursor to the end of the line
+.IP \(bu 2
+\fBgo\-left\fP, move the cursor one character to the left
+.IP \(bu 2
+\fBgo\-right\fP, move the cursor one charackter to the right
+.IP \(bu 2
+\fBsubmit\-input\fP, accept the changes, leave the editor (applies the changes)
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.sp
+Keyboard shortcuts are given by their character, for example \fBd\fP\&.
+To indicate the shift key, use the upper\-case of that letter (\fBD\fP in this
+example).
+.sp
+To express that the control key should be held down for this shortcut,
+prefix the letter with \fB^\fP, like \fB^d\fP (for control key and the letter
+"d").
+.sp
+Additionally there are some special keys understood by pter:
+.INDENT 0.0
+.INDENT 3.5
+.INDENT 0.0
+.IP \(bu 2
+\fB<backspace>\fP
+.IP \(bu 2
+\fB<del>\fP
+.IP \(bu 2
+\fB<left>\fP left cursor key
+.IP \(bu 2
+\fB<right>\fP right cursor key
+.IP \(bu 2
+\fB<up>\fP cursor key up
+.IP \(bu 2
+\fB<down>\fP cursor key down
+.IP \(bu 2
+\fB<pgup>\fP page up
+.IP \(bu 2
+\fB<pgdn>\fP page down
+.IP \(bu 2
+\fB<home>\fP
+.IP \(bu 2
+\fB<end>\fP
+.IP \(bu 2
+\fB<escape>\fP
+.IP \(bu 2
+\fB<return>\fP
+.IP \(bu 2
+\fB<tab>\fP
+.IP \(bu 2
+\fB<f1>\fP through \fB<f12>\fP
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.sp
+An example could look like this:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+[Keys]
+^k = quit
+<F3> = search
+C = create\-task
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SS Colors
+.sp
+Colors are defined in pairs, separated by comma: foreground and background
+color. Some color\(aqs names come with a \fBsel\-\fP prefix so you can define the
+color when it is a selected list item.
+.sp
+You may decide to only define one value, which will then be used as the text
+color. The background color will then be taken from \fBnormal\fP or \fBsel\-normal\fP
+respectively.
+.sp
+If you do not define the \fBsel\-\fP version of a color, pter will use the
+normal version and put the \fBsel\-normal\fP background to it.
+.sp
+If you specify a special background for the normal version, but none for the
+selected version, the special background of the normal version will be used
+for the selected version, too!
+.INDENT 0.0
+.INDENT 3.5
+.INDENT 0.0
+.IP \(bu 2
+\fBnormal\fP, any normal text and borders
+.IP \(bu 2
+\fBsel\-normal\fP, selected items in a list
+.IP \(bu 2
+\fBerror\fP, error messages
+.IP \(bu 2
+\fBsel\-overflow\fP, \fBoverflow\fP, color for the scrolling indicators when editing tasks (and when selected)
+.IP \(bu 2
+\fBsel\-overdue\fP, \fBoverdue\fP, color for a task when it’s due date is in the past (and when selected)
+.IP \(bu 2
+\fBsel\-due\-today\fP, \fBdue\-today\fP, color for a task that’s due today (and when selected)
+.IP \(bu 2
+\fBsel\-due\-tomorrow\fP, \fBdue\-tomorrow\fP, color for a task that’s due tomorrow (and when selected)
+.IP \(bu 2
+\fBinactive\fP, color for indication of inactive texts
+.IP \(bu 2
+\fBhelp\fP, help text at the bottom of the screen
+.IP \(bu 2
+\fBhelp\-key\fP, color highlighting for the keys in the help
+.IP \(bu 2
+\fBpri\-a\fP, \fBsel\-pri\-a\fP, color for priority A (and when selected)
+.IP \(bu 2
+\fBpri\-b\fP, \fBsel\-pri\-b\fP, color for priority B (and when selected)
+.IP \(bu 2
+\fBpri\-c\fP, \fBsel\-pri\-c\fP, color for priority C (and when selected)
+.IP \(bu 2
+\fBcontext\fP, \fBsel\-context\fP, color for contexts (and when selected)
+.IP \(bu 2
+\fBproject\fP, \fBsel\-project\fP, color for projects (and when selected)
+.IP \(bu 2
+\fBtracking\fP, \fBsel\-tracking\fP, color for tasks that are being tracked right now (and when selected)
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.sp
+If you prefer a red background with green text and a blue context, you could define your
+colors like this:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+[Colors]
+normal = 2, 1
+sel\-normal = 1, 2
+context = 4
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SS Highlight
+.sp
+Highlights work exactly like colors, but the color name is whatever tag you
+want to have colored.
+.sp
+If you wanted to highlight the \fBdue:\fP tag of a task, you could define
+this:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+[Highlight]
+due = 8, 0
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SS Task Format
+.sp
+The task formatting is a mechanism that allows you to configure how tasks are
+being displayed. It uses placeholders for elements of a task that you can
+order and align using a mini language similar to \fI\%Python’s format
+specification
+mini\-language\fP, but
+much less complete. Let’s go by example.
+.sp
+If you want to show the task’s age and description, this is your
+task format:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+task\-format = {age} {description}
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+The space between the two fields is printed! If you don’t want a space
+between, this is your format:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+task\-format = {age}{description}
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+You might want to left align the age, to make sure all task descriptions start
+below each other:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+task\-format = {age: <}{description}
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+Now the age field will be left aligned and the right side is filled with
+spaces. You prefer to fill it with dots?:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+task\-format = {age:.<}{description}
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+Right align works the same way, just with \fB>\fP\&. There is currently no
+centering.
+.sp
+Suppose you want to surround the age with brackets, then you would want to use
+this:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+task\-format = {[age]:.<}{description}
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+Even if no age is available, you will always see the \fB[...]\fP (the amount of
+periods depends on the age of the oldest visible task; in this example some
+task is at least 100 days old).
+.sp
+If you don’t want to show a field, if it does not exist, for example the
+completion date when a task is not completed, then you must not align it:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+task\-format = {[age]:.<}{completed}{description}
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+You can still add extra characters left or right to the field. They will not
+be shown if the field is missing:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+task\-format = {[age}:.<}{ completed 😃 }{description}
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+Now there will be an emoji next to the completion date, or none if the task has
+no completion date.
+.sp
+The following fields exist:
+.INDENT 0.0
+.INDENT 3.5
+.INDENT 0.0
+.IP \(bu 2
+\fBdescription\fP, the full description text of the task
+.IP \(bu 2
+\fBcreated\fP, the creation date (might be missing)
+.IP \(bu 2
+\fBage\fP, the age of the task in days (might be missing)
+.IP \(bu 2
+\fBcompleted\fP, the completion date (might be missing, even if the task is completed)
+.IP \(bu 2
+\fBdone\fP, the symbol for a completed or not completed task (see below)
+.IP \(bu 2
+\fBpri\fP, the character for the priority (might not be defined)
+.IP \(bu 2
+\fBdue\fP, the symbol for the due status (overdue, due today, due tomorrow; might not be defined)
+.IP \(bu 2
+\fBduedays\fP, in how many days a task is due (negative number when overdue tasks)
+.IP \(bu 2
+\fBselection\fP, the symbol that’s shown when this task is selected in the list
+.IP \(bu 2
+\fBnr\fP, the number of the task in the list
+.IP \(bu 2
+\fBtracking\fP, the symbol to indicate that you started time tracking of this task (might not be there)
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.sp
+\fBdescription\fP is potentially consuming the whole line, so you might want to
+put it last in your \fBtask\-format\fP\&.
+.SH KEYBOARD CONTROLS
+.sp
+These default keyboard controls are available in any list:
+.INDENT 0.0
+.INDENT 3.5
+.INDENT 0.0
+.IP \(bu 2
+"↓", "↑" (cursor keys): select the next or previous item in the list
+.IP \(bu 2
+"j", "k": select the next or previous item in the list
+.IP \(bu 2
+"Home": go to the first item
+.IP \(bu 2
+"End": go the last item
+.IP \(bu 2
+":": jump to a list item by number (works even if list numbers are not shown)
+.IP \(bu 2
+"1".."9": jump to the list item with this number
+.IP \(bu 2
+"Esc", "^C": cancel the selection (this does nothing in the list of tasks)
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.sp
+In the list of tasks, the following controls are also available:
+.INDENT 0.0
+.INDENT 3.5
+.INDENT 0.0
+.IP \(bu 2
+"?": Show help
+.IP \(bu 2
+"m": open this manual in a browser
+.IP \(bu 2
+"e": edit the currently selected task
+.IP \(bu 2
+"n": create a new task
+.IP \(bu 2
+"/": edit the search query
+.IP \(bu 2
+"c": search for a context of the currently selected task
+.IP \(bu 2
+"p": search for a project of the currently selected task
+.IP \(bu 2
+"q": quit the program
+.IP \(bu 2
+"l": load a named search
+.IP \(bu 2
+"s": save the current search
+.IP \(bu 2
+"u": open a URL listed in the selected task
+.IP \(bu 2
+"t": Start/stop time tracking of the selected task
+.IP \(bu 2
+">": Delegate the selected task
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.sp
+In edit fields the following keyboard controls are available:
+.INDENT 0.0
+.INDENT 3.5
+.INDENT 0.0
+.IP \(bu 2
+"←", "→" (cursor keys): move the cursor one character to the left or right
+.IP \(bu 2
+"Home": move the cursor to the first charater
+.IP \(bu 2
+"End": move the cursor to the last character
+.IP \(bu 2
+"Backspace", "^H": delete the character to the left of the cursor
+.IP \(bu 2
+"Del": delete the character under the cursor
+.IP \(bu 2
+"^U": delete from before the cursor to the start of the line
+.IP \(bu 2
+"Escape", "^C": cancel editing
+.IP \(bu 2
+"Enter", "Return": accept input and submit changes
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SH RELATIVE DATES
+.sp
+Instead of providing full dates for searches or for \fBdue:\fP or \fBt:\fP when
+editing tasks, you may write things like \fBdue:+4d\fP, for example, to specify
+a date in 4 days.
+.sp
+A relative date will be expanded into the actual date when editing a task
+or when being used in a search.
+.sp
+The suffix \fBd\fP stands for days, \fBw\fP for weeks, \fBm\fP for months, \fBy\fP for years.
+The leading \fB+\fP is implied when left out and if you don’t specify it, \fBd\fP is
+assumed.
+.sp
+\fBdue\fP and \fBt\fP tags can be as simple as \fBdue:1\fP (short for \fBdue:+1d\fP, ie.
+tomorrow) or as complicated as \fBdue:+15y\-2m+1w+3d\fP (two months before the date
+that is in 15 years, 1 week and 3 days).
+.sp
+\fBdue\fP and \fBt\fP also support relative weekdays. If you specify \fBdue:sun\fP it is
+understood that you mean the next Sunday. If today is Sunday, this is
+equivalent to \fBdue:1w\fP or \fBdue:+7d\fP\&.
+.sp
+Finally there are \fBtoday\fP and \fBtomorrow\fP as shortcuts for the current day and
+the day after that, respectively. These terms exist for readability only, as
+they are equivalent to \fB0d\fP (or even just \fB0\fP) and \fB+1d\fP (or \fB1d\fP, or even
+just \fB1\fP), respectively.
+.SH SEARCHING
+.sp
+One of the most important parts of pter is the search. You can search for
+tasks by means of search queries. These queries can become very long at
+which point you can save and restore them (see below in \fI\%Named Searches\fP).
+.sp
+Unless configured otherwise by you, the search is case\-sensitive.
+.sp
+Here\(aqs a detailed explanation of search queries.
+.sp
+Some fxample search queries are listed in \fI\%Named Searches\fP\&.
+.SS Search for phrases
+.sp
+The easiest way to search is by phrase in tasks.
+.sp
+For example, you could search for \fBread\fP to find any task containing the word
+\fBread\fP or \fBbread\fP or \fBreading\fP\&.
+.sp
+To filter out tasks that do \fInot\fP contain a certain phrase, you can search with
+\fBnot:word\fP or, abbreviated, \fB\-word\fP\&.
+.SS Search for tasks that are completed
+.sp
+By default all tasks are shown, but you can show only tasks that are not
+completed by searching for \fBdone:no\fP\&.
+.sp
+To only show tasks that you already marked as completed, you can search for
+\fBdone:yes\fP instead.
+.SS Hidden tasks
+.sp
+Even though not specified by the todotxt standard, some tools provide the
+“hide” flag for tasks: \fBh:1\fP\&. pytodoweb understands this, too, and by default
+hides these tasks.
+.sp
+To show hidden tasks, search for \fBhidden:yes\fP\&. Instead of searching for
+\fBhidden:\fP you can also search for \fBh:\fP (it’s a synonym).
+.SS Projects and Contexts
+.sp
+To search for a specific project or context, just search using the
+corresponding prefix, ie. \fB+\fP or \fB@\fP\&.
+.sp
+For example, to search for all tasks for project "FindWaldo", you could search
+for \fB+FindWaldo\fP\&.
+.sp
+If you want to find all tasks that you filed to the context "email", search
+for \fB@email\fP\&.
+.sp
+Similar to the search for phrases, you can filter out contexts or projects by
+search for \fBnot:@context\fP, \fBnot:+project\fP, or use the abbreviation \fB\-@context\fP
+or \fB\-+project\fP respectively.
+.SS Priority
+.sp
+Searching for priority is supported in two different ways: you can either
+search for all tasks of a certain priority, eg. \fBpri:a\fP to find all tasks of
+priority \fB(A)\fP\&.
+Or you can search for tasks that are more important or less important than a
+certain priority level.
+.sp
+Say you want to see all tasks that are more important than priority \fB(C)\fP, you
+could search for \fBmoreimportant:c\fP\&. The keyword for “less important” is
+\fBlessimportant\fP\&.
+.sp
+\fBmoreimportant\fP and \fBlessimportant\fP can be abbreviated with \fBmi\fP and \fBli\fP
+respectively.
+.SS Due date
+.sp
+Searching for due dates can be done in two ways: either by exact due date or
+by defining “before” or “after”.
+.sp
+If you just want to know what tasks are due on 2018\-08\-03, you can search for
+\fBdue:2018\-08\-03\fP\&.
+.sp
+But if you want to see all tasks that have a due date set \fIafter\fP 2018\-08\-03,
+you search for \fBdueafter:2018\-08\-03\fP\&.
+.sp
+Similarly you can search with \fBduebefore\fP for tasks with a due date before a
+certain date.
+.sp
+\fBdueafter\fP and \fBduebefore\fP can be abbreviated with \fBda\fP and \fBdb\fP respectively.
+.sp
+If you only want to see tasks that have a due date, you can search for
+\fBdue:yes\fP\&. \fBdue:no\fP also works if you don’t want to see any due dates.
+.sp
+Searching for due dates supports \fI\%Relative Dates\fP\&.
+.SS Creation date
+.sp
+The search for task with a certain creation date is similar to the search
+query for due date: \fBcreated:2017\-11\-01\fP\&.
+.sp
+You can also search for tasks created before a date with \fBcreatedbefore\fP (can
+be abbreviated with \fBcrb\fP) and for tasks created after a date with
+\fBcreatedafter\fP (or short \fBcra\fP).
+.sp
+To search for tasks created in the year 2008 you could search for
+\fBcreatedafter:2007\-12\-31 createdbefore:2009\-01\-01\fP or short \fBcra:2007\-12\-31
+crb:2009\-01\-01\fP\&.
+.sp
+Searching for creation dates supports \fI\%Relative Dates\fP\&.
+.SS Completion date
+.sp
+The search for tasks with a certain completion date is pretty much identical
+to the search for tasks with a certain creation date (see above), but using
+the search phrases \fBcompleted\fP, \fBcompletedbefore\fP (the short version is \fBcob\fP), or
+\fBcompletedafter\fP (short form is \fBcoa\fP).
+.sp
+Searching for completion dates supports \fI\%Relative Dates\fP\&.
+.SS Threshold or Tickler search
+.sp
+pter understand the the non\-standard suggestion to use \fBt:\fP tags to
+indicate that a task should not be active prior to the defined date.
+.sp
+If you still want to see all tasks, even those with a threshold in the future,
+you can search for \fBthreshold:\fP (or, short, \fBt:\fP). See also the
+\fI\%General\fP configuration option \(aqdefault\-threshold\(aq.
+.sp
+You can also pretend it’s a certain date in the future (eg. 2042\-02\-14) and
+see what tasks become available then by searching for \fBthreshold:2042\-02\-14\fP\&.
+.sp
+\fBthreshold\fP can be abbreviated with \fBt\fP\&. \fBtickler\(ga is also a synonym for
+\(ga\(gathreshold\fP\&.
+.sp
+Searching for \fBthreshold\fP supports \fI\%Relative Dates\fP\&.
+.SH NAMED SEARCHES
+.sp
+Search queries can become very long and it would be tedious to type them
+again each time.
+.sp
+To get around it, you can save search queries and give each one a name. The
+default keyboard shortcut to save a search is "s" and to load a search is
+"l".
+.sp
+The named queries are stored in your configuration folder in the file
+\fB~/.config/pter/searches.txt\fP\&.
+.sp
+Each line in that file is one saved search query in the form \fBname = search
+query\fP\&.
+.sp
+Here are some useful example search queries:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+Due this week = done:no duebefore:mon
+Done today = done:yes completed:0
+Open tasks = done:no
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SH TIME TRACKING
+.sp
+pter can track the time you spend on a task. By default, type "t" to
+start tracking. This will add a \fBtracking:\fP attribute with the current local
+date and time to the task.
+.sp
+When you select that task again and type "t", the \fBtracking:\fP tag will be
+removed and the time spent will be saved in the tag \fBspent:\fP as hours and
+minutes.
+.sp
+If you start and stop tracking multiple times, the time in \fBspent:\fP will
+accumulate accordingly. The smallest amount of time tracked is one minute.
+.sp
+This feature is non\-standard for todo.txt but compatible with every other
+implementation.
+.SH DELEGATING TASKS
+.sp
+The \fBdelegate\fP function (on shortcut \fB>\fP by default) can be used to
+mark a task as delegated and trigger the delegation action.
+.sp
+When delegating a task the configured marker is being added to the task
+(configured by \fBdelegation\-marker\fP in the configuration file).
+.sp
+The delegation action is configured by setting the \fBdelegation\-action\fP in
+the configuration file to \fBmail\-to\fP\&. In that case an attempt is made to
+open your email program and start a new email. In case you defined a
+\fBto:\fP (configurable by defining \fBdelegation\-to\fP) in your task
+description, that will be used as the recipient for the email.
+.SH GETTING THINGS DONE
+.sp
+With pter you can apply the Getting Things Done method to a single todo.txt
+file by using context and project tags, avoiding multiple lists.
+.sp
+For example, you could have a \fB@in\fP context for the list of all tasks
+that are new. Now you can just search for \fB@in\fP (and save it as a named search) to find all new tasks.
+.sp
+To see all tasks that are on your "Next task" list, a good start is to
+search for "\fBdone:no not:@in\fP" (and save this search query, too).
+.SH CONFORMING TO
+.sp
+pter works with and uses the todo.txt file format and strictly adheres to the format
+as described at \fI\%http://todotxt.org/\fP\&.
+.SH BUGS
+.sp
+Probably plenty. Please report your findings at \fI\%https://github.com/vonshednob/pter\fP or via email to the authors.
+.\" Generated by docutils manpage writer.
+.
