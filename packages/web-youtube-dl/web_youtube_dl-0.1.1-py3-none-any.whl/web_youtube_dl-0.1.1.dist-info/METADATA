@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: web-youtube-dl
+Version: 0.1.1
+Summary: A web version of youtube-dl
+Author: Uriel Mandujano
+Author-email: uriel.mandujano14@gmail.com
+Requires-Python: >=3.7,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: Werkzeug (>=1.0.1,<2.0.0)
+Requires-Dist: aiofiles (>=0.5.0,<0.6.0)
+Requires-Dist: cachetools (>=4.1.1,<5.0.0)
+Requires-Dist: fastapi (>=0.61.0,<0.62.0)
+Requires-Dist: janus (>=0.5.0,<0.6.0)
+Requires-Dist: jinja2 (>=2.11.2,<3.0.0)
+Requires-Dist: python-multipart (>=0.0.5,<0.0.6)
+Requires-Dist: uvicorn (>=0.11.8,<0.12.0)
+Requires-Dist: youtube-dl (>=2020.7.28,<2021.0.0)
