@@ -1,0 +1,741 @@
+,occ_code,occ_title,o_group,tot_emp,area
+1889,11-0000,Management Occupations,major,122150,55
+1890,13-0000,Business and Financial Operations Occupations,major,151820,55
+1891,15-0000,Computer and Mathematical Occupations,major,78540,55
+1892,17-0000,Architecture and Engineering Occupations,major,54510,55
+1893,19-0000,"Life, Physical, and Social Science Occupations",major,23410,55
+1894,21-0000,Community and Social Service Occupations,major,39250,55
+1895,23-0000,Legal Occupations,major,14510,55
+1896,25-0000,Educational Instruction and Library Occupations,major,166120,55
+1897,27-0000,"Arts, Design, Entertainment, Sports, and Media Occupations",major,31750,55
+1898,29-0000,Healthcare Practitioners and Technical Occupations,major,175730,55
+1899,31-0000,Healthcare Support Occupations,major,137810,55
+1900,33-0000,Protective Service Occupations,major,52420,55
+1901,35-0000,Food Preparation and Serving Related Occupations,major,243010,55
+1902,37-0000,Building and Grounds Cleaning and Maintenance Occupations,major,80640,55
+1903,39-0000,Personal Care and Service Occupations,major,56020,55
+1904,41-0000,Sales and Related Occupations,major,263380,55
+1905,43-0000,Office and Administrative Support Occupations,major,365140,55
+1906,45-0000,"Farming, Fishing, and Forestry Occupations",major,5790,55
+1907,47-0000,Construction and Extraction Occupations,major,110160,55
+1908,49-0000,"Installation, Maintenance, and Repair Occupations",major,112300,55
+1909,51-0000,Production Occupations,major,335380,55
+1910,53-0000,Transportation and Material Moving Occupations,major,250230,55
+34954,11-1011,Chief Executives,detailed,4290,55
+34955,11-1021,General and Operations Managers,detailed,31490,55
+34956,11-1031,Legislators,detailed,2520,55
+34957,11-2011,Advertising and Promotions Managers,detailed,80,55
+34958,11-2021,Marketing Managers,detailed,2720,55
+34959,11-2022,Sales Managers,detailed,4570,55
+34960,11-2030,Public Relations and Fundraising Managers,detailed,870,55
+34961,11-3010,Administrative Services and Facilities Managers,detailed,6450,55
+34962,11-3021,Computer and Information Systems Managers,detailed,5850,55
+34963,11-3031,Financial Managers,detailed,7150,55
+34964,11-3051,Industrial Production Managers,detailed,6310,55
+34965,11-3061,Purchasing Managers,detailed,1200,55
+34966,11-3071,"Transportation, Storage, and Distribution Managers",detailed,2300,55
+34967,11-3111,Compensation and Benefits Managers,detailed,240,55
+34968,11-3121,Human Resources Managers,detailed,2560,55
+34969,11-3131,Training and Development Managers,detailed,590,55
+34970,11-9013,"Farmers, Ranchers, and Other Agricultural Managers",detailed,80,55
+34971,11-9021,Construction Managers,detailed,3570,55
+34972,11-9031,"Education and Childcare Administrators, Preschool and Daycare",detailed,770,55
+34973,11-9032,"Education Administrators, Kindergarten through Secondary",detailed,4380,55
+34974,11-9033,"Education Administrators, Postsecondary",detailed,2730,55
+34975,11-9039,"Education Administrators, All Other",detailed,330,55
+34976,11-9041,Architectural and Engineering Managers,detailed,3780,55
+34977,11-9051,Food Service Managers,detailed,3900,55
+34978,11-9071,Gambling Managers,detailed,40,55
+34979,11-9081,Lodging Managers,detailed,400,55
+34980,11-9111,Medical and Health Services Managers,detailed,5800,55
+34981,11-9121,Natural Sciences Managers,detailed,770,55
+34982,11-9131,Postmasters and Mail Superintendents,detailed,330,55
+34983,11-9141,"Property, Real Estate, and Community Association Managers",detailed,1080,55
+34984,11-9151,Social and Community Service Managers,detailed,2750,55
+34985,11-9161,Emergency Management Directors,detailed,160,55
+34986,11-9171,Funeral Home Managers,detailed,140,55
+34987,11-9198,"Personal Service Managers, All Other; Entertainment and Recreation Managers, Except Gambling; and Managers, All Other",detailed,11950,55
+34988,13-1020,Buyers and Purchasing Agents,detailed,9540,55
+34989,13-1031,"Claims Adjusters, Examiners, and Investigators",detailed,6840,55
+34990,13-1032,"Insurance Appraisers, Auto Damage",detailed,**,55
+34991,13-1041,Compliance Officers,detailed,4000,55
+34992,13-1051,Cost Estimators,detailed,4460,55
+34993,13-1071,Human Resources Specialists,detailed,15250,55
+34994,13-1075,Labor Relations Specialists,detailed,3060,55
+34995,13-1081,Logisticians,detailed,4080,55
+34996,13-1111,Management Analysts,detailed,13160,55
+34997,13-1121,"Meeting, Convention, and Event Planners",detailed,1860,55
+34998,13-1131,Fundraisers,detailed,1660,55
+34999,13-1141,"Compensation, Benefits, and Job Analysis Specialists",detailed,1460,55
+35000,13-1151,Training and Development Specialists,detailed,5650,55
+35001,13-1161,Market Research Analysts and Marketing Specialists,detailed,13140,55
+35002,13-1198,"Project Management Specialists and Business Operations Specialists, All Other",detailed,18190,55
+35003,13-2011,Accountants and Auditors,detailed,22390,55
+35004,13-2020,Property Appraisers and Assessors,detailed,720,55
+35005,13-2031,Budget Analysts,detailed,1110,55
+35006,13-2041,Credit Analysts,detailed,1480,55
+35007,13-2052,Personal Financial Advisors,detailed,5320,55
+35008,13-2053,Insurance Underwriters,detailed,2010,55
+35009,13-2061,Financial Examiners,detailed,1520,55
+35010,13-2071,Credit Counselors,detailed,740,55
+35011,13-2072,Loan Officers,detailed,6810,55
+35012,13-2081,"Tax Examiners and Collectors, and Revenue Agents",detailed,500,55
+35013,13-2082,Tax Preparers,detailed,900,55
+35014,13-2098,"Financial and Investment Analysts, Financial Risk Specialists, and Financial Specialists, All Other",detailed,5860,55
+35015,15-1211,Computer Systems Analysts,detailed,13640,55
+35016,15-1212,Information Security Analysts,detailed,1590,55
+35017,15-1221,Computer and Information Research Scientists,detailed,620,55
+35018,15-1231,Computer Network Support Specialists,detailed,3210,55
+35019,15-1232,Computer User Support Specialists,detailed,9970,55
+35020,15-1241,Computer Network Architects,detailed,2060,55
+35021,15-1244,Network and Computer Systems Administrators,detailed,7080,55
+35022,15-1245,Database Administrators and Architects,detailed,1990,55
+35023,15-1251,Computer Programmers,detailed,4110,55
+35024,15-1256,Software Developers and Software Quality Assurance Analysts and Testers,detailed,23120,55
+35025,15-1257,Web Developers and Digital Interface Designers,detailed,4340,55
+35026,15-1299,"Computer Occupations, All Other",detailed,3560,55
+35027,15-2011,Actuaries,detailed,630,55
+35028,15-2031,Operations Research Analysts,detailed,1670,55
+35029,15-2041,Statisticians,detailed,480,55
+35030,15-2098,"Data Scientists and Mathematical Science Occupations, All Other",detailed,460,55
+35031,17-1011,"Architects, Except Landscape and Naval",detailed,1500,55
+35032,17-1012,Landscape Architects,detailed,430,55
+35033,17-1021,Cartographers and Photogrammetrists,detailed,240,55
+35034,17-1022,Surveyors,detailed,560,55
+35035,17-2011,Aerospace Engineers,detailed,60,55
+35036,17-2031,Bioengineers and Biomedical Engineers,detailed,510,55
+35037,17-2041,Chemical Engineers,detailed,420,55
+35038,17-2051,Civil Engineers,detailed,6470,55
+35039,17-2061,Computer Hardware Engineers,detailed,610,55
+35040,17-2071,Electrical Engineers,detailed,4370,55
+35041,17-2072,"Electronics Engineers, Except Computer",detailed,680,55
+35042,17-2081,Environmental Engineers,detailed,820,55
+35043,17-2111,"Health and Safety Engineers, Except Mining Safety Engineers and Inspectors",detailed,770,55
+35044,17-2112,Industrial Engineers,detailed,10760,55
+35045,17-2131,Materials Engineers,detailed,380,55
+35046,17-2141,Mechanical Engineers,detailed,12090,55
+35047,17-2161,Nuclear Engineers,detailed,**,55
+35048,17-2199,"Engineers, All Other",detailed,1070,55
+35049,17-3011,Architectural and Civil Drafters,detailed,2060,55
+35050,17-3012,Electrical and Electronics Drafters,detailed,390,55
+35051,17-3013,Mechanical Drafters,detailed,1930,55
+35052,17-3019,"Drafters, All Other",detailed,130,55
+35053,17-3022,Civil Engineering Technologists and Technicians,detailed,1630,55
+35054,17-3023,Electrical and Electronic Engineering Technologists and Technicians,detailed,1640,55
+35055,17-3024,Electro-Mechanical and Mechatronics Technologists and Technicians,detailed,250,55
+35056,17-3025,Environmental Engineering Technologists and Technicians,detailed,170,55
+35057,17-3026,Industrial Engineering Technologists and Technicians,detailed,870,55
+35058,17-3027,Mechanical Engineering Technologists and Technicians,detailed,1900,55
+35059,17-3031,Surveying and Mapping Technicians,detailed,440,55
+35060,17-3098,"Calibration Technologists and Technicians and Engineering Technologists and Technicians, Except Drafters, All Other",detailed,1240,55
+35061,19-1011,Animal Scientists,detailed,400,55
+35062,19-1012,Food Scientists and Technologists,detailed,500,55
+35063,19-1013,Soil and Plant Scientists,detailed,560,55
+35064,19-1021,Biochemists and Biophysicists,detailed,490,55
+35065,19-1022,Microbiologists,detailed,290,55
+35066,19-1023,Zoologists and Wildlife Biologists,detailed,310,55
+35067,19-1029,"Biological Scientists, All Other",detailed,610,55
+35068,19-1031,Conservation Scientists,detailed,750,55
+35069,19-1032,Foresters,detailed,500,55
+35070,19-1041,Epidemiologists,detailed,120,55
+35071,19-1042,"Medical Scientists, Except Epidemiologists",detailed,1900,55
+35072,19-2021,Atmospheric and Space Scientists,detailed,80,55
+35073,19-2031,Chemists,detailed,2170,55
+35074,19-2041,"Environmental Scientists and Specialists, Including Health",detailed,990,55
+35075,19-2042,"Geoscientists, Except Hydrologists and Geographers",detailed,70,55
+35076,19-2043,Hydrologists,detailed,170,55
+35077,19-2099,"Physical Scientists, All Other",detailed,60,55
+35078,19-3011,Economists,detailed,280,55
+35079,19-3022,Survey Researchers,detailed,80,55
+35080,19-3031,"Clinical, Counseling, and School Psychologists",detailed,3250,55
+35081,19-3039,"Psychologists, All Other",detailed,220,55
+35082,19-3041,Sociologists,detailed,60,55
+35083,19-3051,Urban and Regional Planners,detailed,680,55
+35084,19-3091,Anthropologists and Archeologists,detailed,40,55
+35085,19-3099,"Social Scientists and Related Workers, All Other",detailed,250,55
+35086,19-4010,Agricultural and Food Science Technicians,detailed,1140,55
+35087,19-4021,Biological Technicians,detailed,1140,55
+35088,19-4031,Chemical Technicians,detailed,1380,55
+35089,19-4042,"Environmental Science and Protection Technicians, Including Health",detailed,540,55
+35090,19-4045,Geological and Hydrologic Technicians,detailed,40,55
+35091,19-4061,Social Science Research Assistants,detailed,**,55
+35092,19-4071,Forest and Conservation Technicians,detailed,670,55
+35093,19-4092,Forensic Science Technicians,detailed,250,55
+35094,19-4099,"Life, Physical, and Social Science Technicians, All Other",detailed,720,55
+35095,19-5011,Occupational Health and Safety Specialists,detailed,1020,55
+35096,19-5012,Occupational Health and Safety Technicians,detailed,380,55
+35097,21-1012,"Educational, Guidance, and Career Counselors and Advisors",detailed,3600,55
+35098,21-1013,Marriage and Family Therapists,detailed,550,55
+35099,21-1015,Rehabilitation Counselors,detailed,3270,55
+35100,21-1018,"Substance Abuse, Behavioral Disorder, and Mental Health Counselors",detailed,6100,55
+35101,21-1019,"Counselors, All Other",detailed,400,55
+35102,21-1021,"Child, Family, and School Social Workers",detailed,4570,55
+35103,21-1022,Healthcare Social Workers,detailed,3850,55
+35104,21-1023,Mental Health and Substance Abuse Social Workers,detailed,2340,55
+35105,21-1029,"Social Workers, All Other",detailed,1660,55
+35106,21-1091,Health Education Specialists,detailed,840,55
+35107,21-1092,Probation Officers and Correctional Treatment Specialists,detailed,**,55
+35108,21-1093,Social and Human Service Assistants,detailed,8680,55
+35109,21-1094,Community Health Workers,detailed,410,55
+35110,21-1099,"Community and Social Service Specialists, All Other",detailed,910,55
+35111,21-2011,Clergy,detailed,540,55
+35112,21-2021,"Directors, Religious Activities and Education",detailed,120,55
+35113,23-1011,Lawyers,detailed,7970,55
+35114,23-1012,Judicial Law Clerks,detailed,140,55
+35115,23-1021,"Administrative Law Judges, Adjudicators, and Hearing Officers",detailed,50,55
+35116,23-1022,"Arbitrators, Mediators, and Conciliators",detailed,200,55
+35117,23-1023,"Judges, Magistrate Judges, and Magistrates",detailed,150,55
+35118,23-2011,Paralegals and Legal Assistants,detailed,4670,55
+35119,23-2093,"Title Examiners, Abstractors, and Searchers",detailed,750,55
+35120,23-2099,"Legal Support Workers, All Other",detailed,570,55
+35121,25-1011,"Business Teachers, Postsecondary",detailed,1320,55
+35122,25-1021,"Computer Science Teachers, Postsecondary",detailed,580,55
+35123,25-1022,"Mathematical Science Teachers, Postsecondary",detailed,820,55
+35124,25-1031,"Architecture Teachers, Postsecondary",detailed,40,55
+35125,25-1032,"Engineering Teachers, Postsecondary",detailed,630,55
+35126,25-1041,"Agricultural Sciences Teachers, Postsecondary",detailed,400,55
+35127,25-1042,"Biological Science Teachers, Postsecondary",detailed,970,55
+35128,25-1043,"Forestry and Conservation Science Teachers, Postsecondary",detailed,80,55
+35129,25-1051,"Atmospheric, Earth, Marine, and Space Sciences Teachers, Postsecondary",detailed,300,55
+35130,25-1052,"Chemistry Teachers, Postsecondary",detailed,410,55
+35131,25-1053,"Environmental Science Teachers, Postsecondary",detailed,**,55
+35132,25-1054,"Physics Teachers, Postsecondary",detailed,240,55
+35133,25-1061,"Anthropology and Archeology Teachers, Postsecondary",detailed,130,55
+35134,25-1062,"Area, Ethnic, and Cultural Studies Teachers, Postsecondary",detailed,170,55
+35135,25-1063,"Economics Teachers, Postsecondary",detailed,230,55
+35136,25-1064,"Geography Teachers, Postsecondary",detailed,170,55
+35137,25-1065,"Political Science Teachers, Postsecondary",detailed,190,55
+35138,25-1066,"Psychology Teachers, Postsecondary",detailed,530,55
+35139,25-1067,"Sociology Teachers, Postsecondary",detailed,280,55
+35140,25-1069,"Social Sciences Teachers, Postsecondary, All Other",detailed,230,55
+35141,25-1071,"Health Specialties Teachers, Postsecondary",detailed,6560,55
+35142,25-1072,"Nursing Instructors and Teachers, Postsecondary",detailed,1020,55
+35143,25-1081,"Education Teachers, Postsecondary",detailed,1950,55
+35144,25-1111,"Criminal Justice and Law Enforcement Teachers, Postsecondary",detailed,280,55
+35145,25-1112,"Law Teachers, Postsecondary",detailed,160,55
+35146,25-1113,"Social Work Teachers, Postsecondary",detailed,80,55
+35147,25-1121,"Art, Drama, and Music Teachers, Postsecondary",detailed,1870,55
+35148,25-1122,"Communications Teachers, Postsecondary",detailed,580,55
+35149,25-1123,"English Language and Literature Teachers, Postsecondary",detailed,850,55
+35150,25-1124,"Foreign Language and Literature Teachers, Postsecondary",detailed,450,55
+35151,25-1125,"History Teachers, Postsecondary",detailed,300,55
+35152,25-1126,"Philosophy and Religion Teachers, Postsecondary",detailed,310,55
+35153,25-1193,"Recreation and Fitness Studies Teachers, Postsecondary",detailed,270,55
+35154,25-1194,"Career/Technical Education Teachers, Postsecondary",detailed,1660,55
+35155,25-1199,"Postsecondary Teachers, All Other",detailed,2020,55
+35156,25-2011,"Preschool Teachers, Except Special Education",detailed,10260,55
+35157,25-2012,"Kindergarten Teachers, Except Special Education",detailed,1470,55
+35158,25-2021,"Elementary School Teachers, Except Special Education",detailed,28240,55
+35159,25-2022,"Middle School Teachers, Except Special and Career/Technical Education",detailed,13800,55
+35160,25-2023,"Career/Technical Education Teachers, Middle School",detailed,280,55
+35161,25-2031,"Secondary School Teachers, Except Special and Career/Technical Education",detailed,17880,55
+35162,25-2032,"Career/Technical Education Teachers, Secondary School",detailed,940,55
+35163,25-2051,"Special Education Teachers, Preschool",detailed,100,55
+35164,25-2052,"Special Education Teachers, Kindergarten and Elementary School",detailed,1980,55
+35165,25-2057,"Special Education Teachers, Middle School",detailed,1020,55
+35166,25-2058,"Special Education Teachers, Secondary School",detailed,1450,55
+35167,25-2059,"Special Education Teachers, All Other",detailed,130,55
+35168,25-3011,"Adult Basic Education, Adult Secondary Education, and English as a Second Language Instructors",detailed,440,55
+35169,25-3021,Self-Enrichment Teachers,detailed,5360,55
+35170,25-3031,"Substitute Teachers, Short-Term",detailed,12840,55
+35171,25-3097,"Tutors and Teachers and Instructors, All Other",detailed,5110,55
+35172,25-4011,Archivists,detailed,110,55
+35173,25-4012,Curators,detailed,230,55
+35174,25-4013,Museum Technicians and Conservators,detailed,90,55
+35175,25-4022,Librarians and Media Collections Specialists,detailed,2290,55
+35176,25-4031,Library Technicians,detailed,2890,55
+35177,25-9021,Farm and Home Management Educators,detailed,40,55
+35178,25-9031,Instructional Coordinators,detailed,1740,55
+35179,25-9044,"Teaching Assistants, Postsecondary",detailed,**,55
+35180,25-9045,"Teaching Assistants, Except Postsecondary",detailed,25760,55
+35181,25-9099,"Educational Instruction and Library Workers, All Other",detailed,1610,55
+35182,27-1011,Art Directors,detailed,520,55
+35183,27-1012,Craft Artists,detailed,70,55
+35184,27-1014,Special Effects Artists and Animators,detailed,140,55
+35185,27-1019,"Artists and Related Workers, All Other",detailed,50,55
+35186,27-1021,Commercial and Industrial Designers,detailed,320,55
+35187,27-1022,Fashion Designers,detailed,120,55
+35188,27-1023,Floral Designers,detailed,830,55
+35189,27-1024,Graphic Designers,detailed,5480,55
+35190,27-1025,Interior Designers,detailed,1010,55
+35191,27-1026,Merchandise Displayers and Window Trimmers,detailed,2800,55
+35192,27-2011,Actors,detailed,370,55
+35193,27-2012,Producers and Directors,detailed,1390,55
+35194,27-2021,Athletes and Sports Competitors,detailed,230,55
+35195,27-2022,Coaches and Scouts,detailed,4660,55
+35196,27-2023,"Umpires, Referees, and Other Sports Officials",detailed,650,55
+35197,27-2031,Dancers,detailed,50,55
+35198,27-2041,Music Directors and Composers,detailed,80,55
+35199,27-2042,Musicians and Singers,detailed,570,55
+35200,27-2090,"Miscellaneous Entertainers and Performers, Sports and Related Workers",detailed,230,55
+35201,27-3011,Broadcast Announcers and Radio Disc Jockeys,detailed,700,55
+35202,27-3023,"News Analysts, Reporters, and Journalists",detailed,590,55
+35203,27-3031,Public Relations Specialists,detailed,3950,55
+35204,27-3041,Editors,detailed,1690,55
+35205,27-3042,Technical Writers,detailed,710,55
+35206,27-3043,Writers and Authors,detailed,560,55
+35207,27-3091,Interpreters and Translators,detailed,1110,55
+35208,27-3092,Court Reporters and Simultaneous Captioners,detailed,70,55
+35209,27-3099,"Media and Communication Workers, All Other",detailed,180,55
+35210,27-4011,Audio and Video Technicians,detailed,590,55
+35211,27-4012,Broadcast Technicians,detailed,470,55
+35212,27-4014,Sound Engineering Technicians,detailed,60,55
+35213,27-4021,Photographers,detailed,880,55
+35214,27-4031,"Camera Operators, Television, Video, and Film",detailed,150,55
+35215,27-4032,Film and Video Editors,detailed,140,55
+35216,27-4098,"Lighting Technicians and Media and Communication Equipment Workers, All Other",detailed,40,55
+35217,29-1011,Chiropractors,detailed,1080,55
+35218,29-1021,"Dentists, General",detailed,1730,55
+35219,29-1022,Oral and Maxillofacial Surgeons,detailed,80,55
+35220,29-1023,Orthodontists,detailed,100,55
+35221,29-1024,Prosthodontists,detailed,**,55
+35222,29-1029,"Dentists, All Other Specialists",detailed,**,55
+35223,29-1031,Dietitians and Nutritionists,detailed,1340,55
+35224,29-1041,Optometrists,detailed,700,55
+35225,29-1051,Pharmacists,detailed,5490,55
+35226,29-1071,Physician Assistants,detailed,2420,55
+35227,29-1081,Podiatrists,detailed,140,55
+35228,29-1122,Occupational Therapists,detailed,3550,55
+35229,29-1123,Physical Therapists,detailed,5590,55
+35230,29-1124,Radiation Therapists,detailed,1050,55
+35231,29-1125,Recreational Therapists,detailed,730,55
+35232,29-1126,Respiratory Therapists,detailed,2270,55
+35233,29-1127,Speech-Language Pathologists,detailed,2360,55
+35234,29-1128,Exercise Physiologists,detailed,310,55
+35235,29-1129,"Therapists, All Other",detailed,730,55
+35236,29-1131,Veterinarians,detailed,1720,55
+35237,29-1141,Registered Nurses,detailed,61930,55
+35238,29-1151,Nurse Anesthetists,detailed,760,55
+35239,29-1161,Nurse Midwives,detailed,100,55
+35240,29-1171,Nurse Practitioners,detailed,**,55
+35241,29-1181,Audiologists,detailed,310,55
+35242,29-1211,Anesthesiologists,detailed,410,55
+35243,29-1215,Family Medicine Physicians,detailed,1200,55
+35244,29-1216,General Internal Medicine Physicians,detailed,510,55
+35245,29-1218,Obstetricians and Gynecologists,detailed,220,55
+35246,29-1221,"Pediatricians, General",detailed,450,55
+35247,29-1223,Psychiatrists,detailed,460,55
+35248,29-1228,"Physicians, All Other; and Ophthalmologists, Except Pediatric",detailed,8280,55
+35249,29-1248,"Surgeons, Except Ophthalmologists",detailed,650,55
+35250,29-1292,Dental Hygienists,detailed,5070,55
+35251,29-1298,"Acupuncturists and Healthcare Diagnosing or Treating Practitioners, All Other",detailed,440,55
+35252,29-2010,Clinical Laboratory Technologists and Technicians,detailed,7290,55
+35253,29-2031,Cardiovascular Technologists and Technicians,detailed,860,55
+35254,29-2032,Diagnostic Medical Sonographers,detailed,1440,55
+35255,29-2033,Nuclear Medicine Technologists,detailed,360,55
+35256,29-2034,Radiologic Technologists and Technicians,detailed,4650,55
+35257,29-2035,Magnetic Resonance Imaging Technologists,detailed,890,55
+35258,29-2040,Emergency Medical Technicians and Paramedics,detailed,6240,55
+35259,29-2051,Dietetic Technicians,detailed,190,55
+35260,29-2052,Pharmacy Technicians,detailed,7990,55
+35261,29-2053,Psychiatric Technicians,detailed,3790,55
+35262,29-2055,Surgical Technologists,detailed,2530,55
+35263,29-2056,Veterinary Technologists and Technicians,detailed,2400,55
+35264,29-2057,Ophthalmic Medical Technicians,detailed,1420,55
+35265,29-2061,Licensed Practical and Licensed Vocational Nurses,detailed,7890,55
+35266,29-2081,"Opticians, Dispensing",detailed,1570,55
+35267,29-2091,Orthotists and Prosthetists,detailed,270,55
+35268,29-2092,Hearing Aid Specialists,detailed,200,55
+35269,29-2098,"Medical Dosimetrists, Medical Records Specialists, and Health Technologists and Technicians, All Other",detailed,7260,55
+35270,29-9091,Athletic Trainers,detailed,870,55
+35271,29-9092,Genetic Counselors,detailed,60,55
+35272,29-9098,"Health Information Technologists, Medical Registrars, Surgical Assistants, and Healthcare Practitioners and Technical Workers, All Other",detailed,1040,55
+35273,31-1120,Home Health and Personal Care Aides,detailed,72060,55
+35274,31-1131,Nursing Assistants,detailed,30880,55
+35275,31-1132,Orderlies,detailed,710,55
+35276,31-2011,Occupational Therapy Assistants,detailed,1570,55
+35277,31-2012,Occupational Therapy Aides,detailed,140,55
+35278,31-2021,Physical Therapist Assistants,detailed,1600,55
+35279,31-2022,Physical Therapist Aides,detailed,510,55
+35280,31-9011,Massage Therapists,detailed,2130,55
+35281,31-9091,Dental Assistants,detailed,6280,55
+35282,31-9092,Medical Assistants,detailed,12420,55
+35283,31-9093,Medical Equipment Preparers,detailed,910,55
+35284,31-9094,Medical Transcriptionists,detailed,1260,55
+35285,31-9095,Pharmacy Aides,detailed,490,55
+35286,31-9096,Veterinary Assistants and Laboratory Animal Caretakers,detailed,1820,55
+35287,31-9097,Phlebotomists,detailed,2250,55
+35288,31-9099,"Healthcare Support Workers, All Other",detailed,**,55
+35289,33-1011,First-Line Supervisors of Correctional Officers,detailed,830,55
+35290,33-1012,First-Line Supervisors of Police and Detectives,detailed,1370,55
+35291,33-1021,First-Line Supervisors of Firefighting and Prevention Workers,detailed,900,55
+35292,33-1090,"Miscellaneous First-Line Supervisors, Protective Service Workers",detailed,1020,55
+35293,33-2011,Firefighters,detailed,9450,55
+35294,33-2021,Fire Inspectors and Investigators,detailed,130,55
+35295,33-3011,Bailiffs,detailed,220,55
+35296,33-3012,Correctional Officers and Jailers,detailed,6680,55
+35297,33-3021,Detectives and Criminal Investigators,detailed,1360,55
+35298,33-3031,Fish and Game Wardens,detailed,180,55
+35299,33-3041,Parking Enforcement Workers,detailed,120,55
+35300,33-3051,Police and Sheriff's Patrol Officers,detailed,11860,55
+35301,33-9011,Animal Control Workers,detailed,90,55
+35302,33-9021,Private Detectives and Investigators,detailed,340,55
+35303,33-9031,Gambling Surveillance Officers and Gambling Investigators,detailed,260,55
+35304,33-9032,Security Guards,detailed,10530,55
+35305,33-9091,Crossing Guards and Flaggers,detailed,1040,55
+35306,33-9092,"Lifeguards, Ski Patrol, and Other Recreational Protective Service Workers",detailed,4100,55
+35307,33-9093,Transportation Security Screeners,detailed,450,55
+35308,33-9098,"School Bus Monitors and Protective Service Workers, All Other",detailed,1470,55
+35309,35-1011,Chefs and Head Cooks,detailed,2170,55
+35310,35-1012,First-Line Supervisors of Food Preparation and Serving Workers,detailed,18520,55
+35311,35-2011,"Cooks, Fast Food",detailed,5030,55
+35312,35-2012,"Cooks, Institution and Cafeteria",detailed,10510,55
+35313,35-2014,"Cooks, Restaurant",detailed,23540,55
+35314,35-2015,"Cooks, Short Order",detailed,3110,55
+35315,35-2019,"Cooks, All Other",detailed,**,55
+35316,35-2021,Food Preparation Workers,detailed,12010,55
+35317,35-3011,Bartenders,detailed,26290,55
+35318,35-3023,Fast Food and Counter Workers,detailed,73620,55
+35319,35-3031,Waiters and Waitresses,detailed,40050,55
+35320,35-3041,"Food Servers, Nonrestaurant",detailed,4190,55
+35321,35-9011,Dining Room and Cafeteria Attendants and Bartender Helpers,detailed,5360,55
+35322,35-9021,Dishwashers,detailed,9700,55
+35323,35-9031,"Hosts and Hostesses, Restaurant, Lounge, and Coffee Shop",detailed,8410,55
+35324,35-9099,"Food Preparation and Serving Related Workers, All Other",detailed,410,55
+35325,37-1011,First-Line Supervisors of Housekeeping and Janitorial Workers,detailed,2650,55
+35326,37-1012,"First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers",detailed,1540,55
+35327,37-2011,"Janitors and Cleaners, Except Maids and Housekeeping Cleaners",detailed,41160,55
+35328,37-2012,Maids and Housekeeping Cleaners,detailed,17290,55
+35329,37-2021,Pest Control Workers,detailed,580,55
+35330,37-3011,Landscaping and Groundskeeping Workers,detailed,16150,55
+35331,37-3012,"Pesticide Handlers, Sprayers, and Applicators, Vegetation",detailed,470,55
+35332,37-3013,Tree Trimmers and Pruners,detailed,460,55
+35333,37-3019,"Grounds Maintenance Workers, All Other",detailed,**,55
+35334,39-1013,First-Line Supervisors of Gambling Services Workers,detailed,390,55
+35335,39-1098,"First-Line Supervisors of Personal Service and Entertainment and Recreation Workers, Except Gambling Services",detailed,5710,55
+35336,39-2011,Animal Trainers,detailed,300,55
+35337,39-2021,Animal Caretakers,detailed,4160,55
+35338,39-3011,Gambling Dealers,detailed,970,55
+35339,39-3021,Motion Picture Projectionists,detailed,**,55
+35340,39-3031,"Ushers, Lobby Attendants, and Ticket Takers",detailed,2880,55
+35341,39-3091,Amusement and Recreation Attendants,detailed,4050,55
+35342,39-3092,Costume Attendants,detailed,40,55
+35343,39-3093,"Locker Room, Coatroom, and Dressing Room Attendants",detailed,250,55
+35344,39-4011,Embalmers,detailed,**,55
+35345,39-4021,Funeral Attendants,detailed,620,55
+35346,39-4031,"Morticians, Undertakers, and Funeral Arrangers",detailed,720,55
+35347,39-5011,Barbers,detailed,**,55
+35348,39-5012,"Hairdressers, Hairstylists, and Cosmetologists",detailed,8960,55
+35349,39-5092,Manicurists and Pedicurists,detailed,2070,55
+35350,39-5094,Skincare Specialists,detailed,590,55
+35351,39-6011,Baggage Porters and Bellhops,detailed,250,55
+35352,39-6012,Concierges,detailed,160,55
+35353,39-7010,Tour and Travel Guides,detailed,900,55
+35354,39-9011,Childcare Workers,detailed,5800,55
+35355,39-9031,Exercise Trainers and Group Fitness Instructors,detailed,6200,55
+35356,39-9032,Recreation Workers,detailed,9030,55
+35357,39-9041,Residential Advisors,detailed,1510,55
+35358,39-9098,"Crematory Operators and Personal Care and Service Workers, All Other",detailed,90,55
+35359,41-1011,First-Line Supervisors of Retail Sales Workers,detailed,17450,55
+35360,41-1012,First-Line Supervisors of Non-Retail Sales Workers,detailed,6370,55
+35361,41-2011,Cashiers,detailed,65280,55
+35362,41-2012,Gambling Change Persons and Booth Cashiers,detailed,450,55
+35363,41-2021,Counter and Rental Clerks,detailed,6150,55
+35364,41-2022,Parts Salespersons,detailed,5800,55
+35365,41-2031,Retail Salespersons,detailed,78410,55
+35366,41-3011,Advertising Sales Agents,detailed,2170,55
+35367,41-3021,Insurance Sales Agents,detailed,8380,55
+35368,41-3031,"Securities, Commodities, and Financial Services Sales Agents",detailed,4220,55
+35369,41-3041,Travel Agents,detailed,1010,55
+35370,41-3091,"Sales Representatives of Services, Except Advertising, Insurance, Financial Services, and Travel",detailed,17350,55
+35371,41-4011,"Sales Representatives, Wholesale and Manufacturing, Technical and Scientific Products",detailed,4370,55
+35372,41-4012,"Sales Representatives, Wholesale and Manufacturing, Except Technical and Scientific Products",detailed,36640,55
+35373,41-9011,Demonstrators and Product Promoters,detailed,790,55
+35374,41-9021,Real Estate Brokers,detailed,690,55
+35375,41-9022,Real Estate Sales Agents,detailed,2620,55
+35376,41-9031,Sales Engineers,detailed,1010,55
+35377,41-9041,Telemarketers,detailed,2200,55
+35378,41-9091,"Door-to-Door Sales Workers, News and Street Vendors, and Related Workers",detailed,**,55
+35379,41-9099,"Sales and Related Workers, All Other",detailed,1880,55
+35380,43-1011,First-Line Supervisors of Office and Administrative Support Workers,detailed,23780,55
+35381,43-2011,"Switchboard Operators, Including Answering Service",detailed,980,55
+35382,43-2099,"Communications Equipment Operators, All Other",detailed,50,55
+35383,43-3011,Bill and Account Collectors,detailed,3300,55
+35384,43-3021,Billing and Posting Clerks,detailed,7650,55
+35385,43-3031,"Bookkeeping, Accounting, and Auditing Clerks",detailed,38170,55
+35386,43-3041,Gambling Cage Workers,detailed,160,55
+35387,43-3051,Payroll and Timekeeping Clerks,detailed,2090,55
+35388,43-3061,Procurement Clerks,detailed,770,55
+35389,43-3071,Tellers,detailed,11010,55
+35390,43-3099,"Financial Clerks, All Other",detailed,270,55
+35391,43-4011,Brokerage Clerks,detailed,490,55
+35392,43-4021,Correspondence Clerks,detailed,**,55
+35393,43-4031,"Court, Municipal, and License Clerks",detailed,1010,55
+35394,43-4041,"Credit Authorizers, Checkers, and Clerks",detailed,340,55
+35395,43-4051,Customer Service Representatives,detailed,69460,55
+35396,43-4061,"Eligibility Interviewers, Government Programs",detailed,1320,55
+35397,43-4071,File Clerks,detailed,1610,55
+35398,43-4081,"Hotel, Motel, and Resort Desk Clerks",detailed,5110,55
+35399,43-4111,"Interviewers, Except Eligibility and Loan",detailed,850,55
+35400,43-4121,"Library Assistants, Clerical",detailed,930,55
+35401,43-4131,Loan Interviewers and Clerks,detailed,4160,55
+35402,43-4141,New Accounts Clerks,detailed,1920,55
+35403,43-4151,Order Clerks,detailed,4090,55
+35404,43-4161,"Human Resources Assistants, Except Payroll and Timekeeping",detailed,2000,55
+35405,43-4171,Receptionists and Information Clerks,detailed,26910,55
+35406,43-4181,Reservation and Transportation Ticket Agents and Travel Clerks,detailed,1100,55
+35407,43-4199,"Information and Record Clerks, All Other",detailed,3130,55
+35408,43-5011,Cargo and Freight Agents,detailed,880,55
+35409,43-5021,Couriers and Messengers,detailed,2120,55
+35410,43-5031,Public Safety Telecommunicators,detailed,1390,55
+35411,43-5032,"Dispatchers, Except Police, Fire, and Ambulance",detailed,3770,55
+35412,43-5041,"Meter Readers, Utilities",detailed,240,55
+35413,43-5051,Postal Service Clerks,detailed,1590,55
+35414,43-5052,Postal Service Mail Carriers,detailed,6910,55
+35415,43-5053,"Postal Service Mail Sorters, Processors, and Processing Machine Operators",detailed,1550,55
+35416,43-5061,"Production, Planning, and Expediting Clerks",detailed,7100,55
+35417,43-5071,"Shipping, Receiving, and Inventory Clerks",detailed,13120,55
+35418,43-5111,"Weighers, Measurers, Checkers, and Samplers, Recordkeeping",detailed,740,55
+35419,43-6011,Executive Secretaries and Executive Administrative Assistants,detailed,4470,55
+35420,43-6012,Legal Secretaries and Administrative Assistants,detailed,1230,55
+35421,43-6013,Medical Secretaries and Administrative Assistants,detailed,5620,55
+35422,43-6014,"Secretaries and Administrative Assistants, Except Legal, Medical, and Executive",detailed,25650,55
+35423,43-9021,Data Entry Keyers,detailed,2500,55
+35424,43-9022,Word Processors and Typists,detailed,550,55
+35425,43-9031,Desktop Publishers,detailed,150,55
+35426,43-9041,Insurance Claims and Policy Processing Clerks,detailed,7430,55
+35427,43-9051,"Mail Clerks and Mail Machine Operators, Except Postal Service",detailed,1760,55
+35428,43-9061,"Office Clerks, General",detailed,58930,55
+35429,43-9071,"Office Machine Operators, Except Computer",detailed,1270,55
+35430,43-9081,Proofreaders and Copy Markers,detailed,120,55
+35431,43-9111,Statistical Assistants,detailed,**,55
+35432,43-9199,"Office and Administrative Support Workers, All Other",detailed,3290,55
+35433,45-1011,"First-Line Supervisors of Farming, Fishing, and Forestry Workers",detailed,270,55
+35434,45-2011,Agricultural Inspectors,detailed,**,55
+35435,45-2021,Animal Breeders,detailed,260,55
+35436,45-2041,"Graders and Sorters, Agricultural Products",detailed,600,55
+35437,45-2091,Agricultural Equipment Operators,detailed,680,55
+35438,45-2092,"Farmworkers and Laborers, Crop, Nursery, and Greenhouse",detailed,1850,55
+35439,45-2093,"Farmworkers, Farm, Ranch, and Aquacultural Animals",detailed,930,55
+35440,45-4011,Forest and Conservation Workers,detailed,340,55
+35441,45-4022,Logging Equipment Operators,detailed,510,55
+35442,45-4023,Log Graders and Scalers,detailed,130,55
+35443,47-1011,First-Line Supervisors of Construction Trades and Extraction Workers,detailed,10740,55
+35444,47-2011,Boilermakers,detailed,80,55
+35445,47-2021,Brickmasons and Blockmasons,detailed,1320,55
+35446,47-2022,Stonemasons,detailed,90,55
+35447,47-2031,Carpenters,detailed,16050,55
+35448,47-2041,Carpet Installers,detailed,470,55
+35449,47-2042,"Floor Layers, Except Carpet, Wood, and Hard Tiles",detailed,620,55
+35450,47-2043,Floor Sanders and Finishers,detailed,430,55
+35451,47-2044,Tile and Stone Setters,detailed,500,55
+35452,47-2051,Cement Masons and Concrete Finishers,detailed,5590,55
+35453,47-2053,Terrazzo Workers and Finishers,detailed,**,55
+35454,47-2061,Construction Laborers,detailed,16280,55
+35455,47-2071,"Paving, Surfacing, and Tamping Equipment Operators",detailed,560,55
+35456,47-2073,Operating Engineers and Other Construction Equipment Operators,detailed,8370,55
+35457,47-2081,Drywall and Ceiling Tile Installers,detailed,1080,55
+35458,47-2082,Tapers,detailed,100,55
+35459,47-2111,Electricians,detailed,12170,55
+35460,47-2121,Glaziers,detailed,870,55
+35461,47-2131,"Insulation Workers, Floor, Ceiling, and Wall",detailed,600,55
+35462,47-2132,"Insulation Workers, Mechanical",detailed,610,55
+35463,47-2141,"Painters, Construction and Maintenance",detailed,3710,55
+35464,47-2151,Pipelayers,detailed,490,55
+35465,47-2152,"Plumbers, Pipefitters, and Steamfitters",detailed,8210,55
+35466,47-2161,Plasterers and Stucco Masons,detailed,360,55
+35467,47-2171,Reinforcing Iron and Rebar Workers,detailed,220,55
+35468,47-2181,Roofers,detailed,2610,55
+35469,47-2211,Sheet Metal Workers,detailed,3000,55
+35470,47-2221,Structural Iron and Steel Workers,detailed,1020,55
+35471,47-3011,"Helpers--Brickmasons, Blockmasons, Stonemasons, and Tile and Marble Setters",detailed,60,55
+35472,47-3012,Helpers--Carpenters,detailed,240,55
+35473,47-3013,Helpers--Electricians,detailed,1250,55
+35474,47-3014,"Helpers--Painters, Paperhangers, Plasterers, and Stucco Masons",detailed,60,55
+35475,47-3015,"Helpers--Pipelayers, Plumbers, Pipefitters, and Steamfitters",detailed,1040,55
+35476,47-3016,Helpers--Roofers,detailed,70,55
+35477,47-4011,Construction and Building Inspectors,detailed,1300,55
+35478,47-4021,Elevator and Escalator Installers and Repairers,detailed,260,55
+35479,47-4031,Fence Erectors,detailed,240,55
+35480,47-4041,Hazardous Materials Removal Workers,detailed,400,55
+35481,47-4051,Highway Maintenance Workers,detailed,5950,55
+35482,47-4061,Rail-Track Laying and Maintenance Equipment Operators,detailed,60,55
+35483,47-4071,Septic Tank Servicers and Sewer Pipe Cleaners,detailed,930,55
+35484,47-4090,Miscellaneous Construction and Related Workers,detailed,190,55
+35485,47-5022,"Excavating and Loading Machine and Dragline Operators, Surface Mining",detailed,1290,55
+35486,47-5051,"Rock Splitters, Quarry",detailed,**,55
+35487,47-5097,"Earth Drillers, Except Oil and Gas; and Explosives Workers, Ordnance Handling Experts, and Blasters",detailed,290,55
+35488,47-5098,"Underground Mining Machine Operators and Extraction Workers, All Other",detailed,**,55
+35489,49-1011,"First-Line Supervisors of Mechanics, Installers, and Repairers",detailed,9490,55
+35490,49-2011,"Computer, Automated Teller, and Office Machine Repairers",detailed,2110,55
+35491,49-2021,"Radio, Cellular, and Tower Equipment Installers and Repairers",detailed,150,55
+35492,49-2022,"Telecommunications Equipment Installers and Repairers, Except Line Installers",detailed,3500,55
+35493,49-2091,Avionics Technicians,detailed,80,55
+35494,49-2092,"Electric Motor, Power Tool, and Related Repairers",detailed,230,55
+35495,49-2093,"Electrical and Electronics Installers and Repairers, Transportation Equipment",detailed,40,55
+35496,49-2094,"Electrical and Electronics Repairers, Commercial and Industrial Equipment",detailed,440,55
+35497,49-2095,"Electrical and Electronics Repairers, Powerhouse, Substation, and Relay",detailed,350,55
+35498,49-2096,"Electronic Equipment Installers and Repairers, Motor Vehicles",detailed,60,55
+35499,49-2097,Audiovisual Equipment Installers and Repairers,detailed,520,55
+35500,49-2098,Security and Fire Alarm Systems Installers,detailed,770,55
+35501,49-3011,Aircraft Mechanics and Service Technicians,detailed,880,55
+35502,49-3021,Automotive Body and Related Repairers,detailed,3300,55
+35503,49-3022,Automotive Glass Installers and Repairers,detailed,250,55
+35504,49-3023,Automotive Service Technicians and Mechanics,detailed,12080,55
+35505,49-3031,Bus and Truck Mechanics and Diesel Engine Specialists,detailed,6070,55
+35506,49-3041,Farm Equipment Mechanics and Service Technicians,detailed,1580,55
+35507,49-3042,"Mobile Heavy Equipment Mechanics, Except Engines",detailed,2080,55
+35508,49-3043,Rail Car Repairers,detailed,160,55
+35509,49-3051,Motorboat Mechanics and Service Technicians,detailed,640,55
+35510,49-3052,Motorcycle Mechanics,detailed,820,55
+35511,49-3053,Outdoor Power Equipment and Other Small Engine Mechanics,detailed,760,55
+35512,49-3091,Bicycle Repairers,detailed,130,55
+35513,49-3092,Recreational Vehicle Service Technicians,detailed,260,55
+35514,49-3093,Tire Repairers and Changers,detailed,1630,55
+35515,49-9011,Mechanical Door Repairers,detailed,400,55
+35516,49-9012,"Control and Valve Installers and Repairers, Except Mechanical Door",detailed,660,55
+35517,49-9021,"Heating, Air Conditioning, and Refrigeration Mechanics and Installers",detailed,4660,55
+35518,49-9031,Home Appliance Repairers,detailed,410,55
+35519,49-9041,Industrial Machinery Mechanics,detailed,10350,55
+35520,49-9043,"Maintenance Workers, Machinery",detailed,2510,55
+35521,49-9044,Millwrights,detailed,910,55
+35522,49-9051,Electrical Power-Line Installers and Repairers,detailed,2110,55
+35523,49-9052,Telecommunications Line Installers and Repairers,detailed,1320,55
+35524,49-9061,Camera and Photographic Equipment Repairers,detailed,130,55
+35525,49-9062,Medical Equipment Repairers,detailed,860,55
+35526,49-9063,Musical Instrument Repairers and Tuners,detailed,270,55
+35527,49-9064,Watch and Clock Repairers,detailed,70,55
+35528,49-9069,"Precision Instrument and Equipment Repairers, All Other",detailed,60,55
+35529,49-9071,"Maintenance and Repair Workers, General",detailed,34080,55
+35530,49-9091,"Coin, Vending, and Amusement Machine Servicers and Repairers",detailed,940,55
+35531,49-9094,Locksmiths and Safe Repairers,detailed,300,55
+35532,49-9095,Manufactured Building and Mobile Home Installers,detailed,**,55
+35533,49-9096,Riggers,detailed,120,55
+35534,49-9097,Signal and Track Switch Repairers,detailed,**,55
+35535,49-9098,"Helpers--Installation, Maintenance, and Repair Workers",detailed,1440,55
+35536,49-9099,"Installation, Maintenance, and Repair Workers, All Other",detailed,2220,55
+35537,51-1011,First-Line Supervisors of Production and Operating Workers,detailed,24910,55
+35538,51-2021,"Coil Winders, Tapers, and Finishers",detailed,670,55
+35539,51-2028,"Electrical, Electronic, and Electromechanical Assemblers, Except Coil Winders, Tapers, and Finishers",detailed,10830,55
+35540,51-2031,Engine and Other Machine Assemblers,detailed,1480,55
+35541,51-2041,Structural Metal Fabricators and Fitters,detailed,5030,55
+35542,51-2051,Fiberglass Laminators and Fabricators,detailed,390,55
+35543,51-2090,Miscellaneous Assemblers and Fabricators,detailed,48030,55
+35544,51-3011,Bakers,detailed,3550,55
+35545,51-3021,Butchers and Meat Cutters,detailed,1800,55
+35546,51-3022,"Meat, Poultry, and Fish Cutters and Trimmers",detailed,3810,55
+35547,51-3023,Slaughterers and Meat Packers,detailed,2640,55
+35548,51-3091,"Food and Tobacco Roasting, Baking, and Drying Machine Operators and Tenders",detailed,1480,55
+35549,51-3092,Food Batchmakers,detailed,8390,55
+35550,51-3093,Food Cooking Machine Operators and Tenders,detailed,1290,55
+35551,51-3099,"Food Processing Workers, All Other",detailed,870,55
+35552,51-4021,"Extruding and Drawing Machine Setters, Operators, and Tenders, Metal and Plastic",detailed,4690,55
+35553,51-4022,"Forging Machine Setters, Operators, and Tenders, Metal and Plastic",detailed,310,55
+35554,51-4023,"Rolling Machine Setters, Operators, and Tenders, Metal and Plastic",detailed,**,55
+35555,51-4031,"Cutting, Punching, and Press Machine Setters, Operators, and Tenders, Metal and Plastic",detailed,10600,55
+35556,51-4032,"Drilling and Boring Machine Tool Setters, Operators, and Tenders, Metal and Plastic",detailed,150,55
+35557,51-4033,"Grinding, Lapping, Polishing, and Buffing Machine Tool Setters, Operators, and Tenders, Metal and Plastic",detailed,4360,55
+35558,51-4034,"Lathe and Turning Machine Tool Setters, Operators, and Tenders, Metal and Plastic",detailed,970,55
+35559,51-4035,"Milling and Planing Machine Setters, Operators, and Tenders, Metal and Plastic",detailed,190,55
+35560,51-4041,Machinists,detailed,11670,55
+35561,51-4051,Metal-Refining Furnace Operators and Tenders,detailed,550,55
+35562,51-4052,"Pourers and Casters, Metal",detailed,**,55
+35563,51-4061,"Model Makers, Metal and Plastic",detailed,**,55
+35564,51-4062,"Patternmakers, Metal and Plastic",detailed,390,55
+35565,51-4071,Foundry Mold and Coremakers,detailed,1490,55
+35566,51-4072,"Molding, Coremaking, and Casting Machine Setters, Operators, and Tenders, Metal and Plastic",detailed,9600,55
+35567,51-4081,"Multiple Machine Tool Setters, Operators, and Tenders, Metal and Plastic",detailed,3720,55
+35568,51-4111,Tool and Die Makers,detailed,3740,55
+35569,51-4121,"Welders, Cutters, Solderers, and Brazers",detailed,15730,55
+35570,51-4122,"Welding, Soldering, and Brazing Machine Setters, Operators, and Tenders",detailed,470,55
+35571,51-4191,"Heat Treating Equipment Setters, Operators, and Tenders, Metal and Plastic",detailed,730,55
+35572,51-4192,"Layout Workers, Metal and Plastic",detailed,**,55
+35573,51-4193,"Plating Machine Setters, Operators, and Tenders, Metal and Plastic",detailed,1650,55
+35574,51-4194,"Tool Grinders, Filers, and Sharpeners",detailed,110,55
+35575,51-4199,"Metal Workers and Plastic Workers, All Other",detailed,320,55
+35576,51-5111,Prepress Technicians and Workers,detailed,1570,55
+35577,51-5112,Printing Press Operators,detailed,9370,55
+35578,51-5113,Print Binding and Finishing Workers,detailed,3440,55
+35579,51-6011,Laundry and Dry-Cleaning Workers,detailed,3510,55
+35580,51-6021,"Pressers, Textile, Garment, and Related Materials",detailed,590,55
+35581,51-6031,Sewing Machine Operators,detailed,3080,55
+35582,51-6041,Shoe and Leather Workers and Repairers,detailed,230,55
+35583,51-6042,Shoe Machine Operators and Tenders,detailed,**,55
+35584,51-6051,"Sewers, Hand",detailed,**,55
+35585,51-6052,"Tailors, Dressmakers, and Custom Sewers",detailed,410,55
+35586,51-6062,"Textile Cutting Machine Setters, Operators, and Tenders",detailed,100,55
+35587,51-6063,"Textile Knitting and Weaving Machine Setters, Operators, and Tenders",detailed,760,55
+35588,51-6064,"Textile Winding, Twisting, and Drawing Out Machine Setters, Operators, and Tenders",detailed,80,55
+35589,51-6091,"Extruding and Forming Machine Setters, Operators, and Tenders, Synthetic and Glass Fibers",detailed,140,55
+35590,51-6093,Upholsterers,detailed,**,55
+35591,51-6099,"Textile, Apparel, and Furnishings Workers, All Other",detailed,80,55
+35592,51-7011,Cabinetmakers and Bench Carpenters,detailed,3430,55
+35593,51-7021,Furniture Finishers,detailed,440,55
+35594,51-7041,"Sawing Machine Setters, Operators, and Tenders, Wood",detailed,1830,55
+35595,51-7042,"Woodworking Machine Setters, Operators, and Tenders, Except Sawing",detailed,5630,55
+35596,51-7099,"Woodworkers, All Other",detailed,120,55
+35597,51-8012,Power Distributors and Dispatchers,detailed,180,55
+35598,51-8013,Power Plant Operators,detailed,710,55
+35599,51-8021,Stationary Engineers and Boiler Operators,detailed,260,55
+35600,51-8031,Water and Wastewater Treatment Plant and System Operators,detailed,2220,55
+35601,51-8091,Chemical Plant and System Operators,detailed,340,55
+35602,51-8093,"Petroleum Pump System Operators, Refinery Operators, and Gaugers",detailed,**,55
+35603,51-8099,"Plant and System Operators, All Other",detailed,140,55
+35604,51-9011,Chemical Equipment Operators and Tenders,detailed,2200,55
+35605,51-9012,"Separating, Filtering, Clarifying, Precipitating, and Still Machine Setters, Operators, and Tenders",detailed,1550,55
+35606,51-9021,"Crushing, Grinding, and Polishing Machine Setters, Operators, and Tenders",detailed,590,55
+35607,51-9022,"Grinding and Polishing Workers, Hand",detailed,2950,55
+35608,51-9023,"Mixing and Blending Machine Setters, Operators, and Tenders",detailed,5230,55
+35609,51-9031,"Cutters and Trimmers, Hand",detailed,280,55
+35610,51-9032,"Cutting and Slicing Machine Setters, Operators, and Tenders",detailed,2340,55
+35611,51-9041,"Extruding, Forming, Pressing, and Compacting Machine Setters, Operators, and Tenders",detailed,1950,55
+35612,51-9051,"Furnace, Kiln, Oven, Drier, and Kettle Operators and Tenders",detailed,630,55
+35613,51-9061,"Inspectors, Testers, Sorters, Samplers, and Weighers",detailed,17950,55
+35614,51-9071,Jewelers and Precious Stone and Metal Workers,detailed,360,55
+35615,51-9081,Dental Laboratory Technicians,detailed,1210,55
+35616,51-9082,Medical Appliance Technicians,detailed,460,55
+35617,51-9083,Ophthalmic Laboratory Technicians,detailed,520,55
+35618,51-9111,Packaging and Filling Machine Operators and Tenders,detailed,24360,55
+35619,51-9123,"Painting, Coating, and Decorating Workers",detailed,80,55
+35620,51-9124,"Coating, Painting, and Spraying Machine Setters, Operators, and Tenders",detailed,6470,55
+35621,51-9151,Photographic Process Workers and Processing Machine Operators,detailed,380,55
+35622,51-9161,Computer Numerically Controlled Tool Operators,detailed,13710,55
+35623,51-9162,Computer Numerically Controlled Tool Programmers,detailed,1200,55
+35624,51-9191,Adhesive Bonding Machine Operators and Tenders,detailed,240,55
+35625,51-9192,"Cleaning, Washing, and Metal Pickling Equipment Operators and Tenders",detailed,440,55
+35626,51-9193,Cooling and Freezing Equipment Operators and Tenders,detailed,90,55
+35627,51-9194,Etchers and Engravers,detailed,270,55
+35628,51-9195,"Molders, Shapers, and Casters, Except Metal and Plastic",detailed,1230,55
+35629,51-9196,"Paper Goods Machine Setters, Operators, and Tenders",detailed,9260,55
+35630,51-9197,Tire Builders,detailed,80,55
+35631,51-9198,Helpers--Production Workers,detailed,7040,55
+35632,51-9199,"Production Workers, All Other",detailed,3810,55
+35633,53-1041,Aircraft Cargo Handling Supervisors,detailed,120,55
+35634,53-1047,"First-Line Supervisors of Transportation and Material Moving Workers, Except Aircraft Cargo Handling Supervisors",detailed,8120,55
+35635,53-2011,"Airline Pilots, Copilots, and Flight Engineers",detailed,**,55
+35636,53-2012,Commercial Pilots,detailed,350,55
+35637,53-2021,Air Traffic Controllers,detailed,120,55
+35638,53-2022,Airfield Operations Specialists,detailed,40,55
+35639,53-3011,"Ambulance Drivers and Attendants, Except Emergency Medical Technicians",detailed,340,55
+35640,53-3031,Driver/Sales Workers,detailed,7230,55
+35641,53-3032,Heavy and Tractor-Trailer Truck Drivers,detailed,51440,55
+35642,53-3033,Light Truck Drivers,detailed,16210,55
+35643,53-3052,"Bus Drivers, Transit and Intercity",detailed,2190,55
+35644,53-3058,"Passenger Vehicle Drivers, Except Bus Drivers, Transit and Intercity",detailed,16260,55
+35645,53-3099,"Motor Vehicle Operators, All Other",detailed,420,55
+35646,53-4011,Locomotive Engineers,detailed,830,55
+35647,53-4013,"Rail Yard Engineers, Dinkey Operators, and Hostlers",detailed,**,55
+35648,53-4022,"Railroad Brake, Signal, and Switch Operators and Locomotive Firers",detailed,430,55
+35649,53-4031,Railroad Conductors and Yardmasters,detailed,740,55
+35650,53-5011,Sailors and Marine Oilers,detailed,50,55
+35651,53-5021,"Captains, Mates, and Pilots of Water Vessels",detailed,80,55
+35652,53-5022,Motorboat Operators,detailed,40,55
+35653,53-6011,Bridge and Lock Tenders,detailed,140,55
+35654,53-6021,Parking Attendants,detailed,1270,55
+35655,53-6031,Automotive and Watercraft Service Attendants,detailed,2330,55
+35656,53-6041,Traffic Technicians,detailed,60,55
+35657,53-6051,Transportation Inspectors,detailed,160,55
+35658,53-6061,Passenger Attendants,detailed,30,55
+35659,53-6098,"Aircraft Service Attendants and Transportation Workers, All Other",detailed,**,55
+35660,53-7011,Conveyor Operators and Tenders,detailed,330,55
+35661,53-7021,Crane and Tower Operators,detailed,460,55
+35662,53-7051,Industrial Truck and Tractor Operators,detailed,13530,55
+35663,53-7061,Cleaners of Vehicles and Equipment,detailed,6790,55
+35664,53-7062,"Laborers and Freight, Stock, and Material Movers, Hand",detailed,56750,55
+35665,53-7063,Machine Feeders and Offbearers,detailed,1490,55
+35666,53-7064,"Packers and Packagers, Hand",detailed,16030,55
+35667,53-7065,Stockers and Order Fillers,detailed,41200,55
+35668,53-7081,Refuse and Recyclable Material Collectors,detailed,1800,55
+35669,53-7121,"Tank Car, Truck, and Ship Loaders",detailed,290,55
+35670,53-7199,"Material Moving Workers, All Other",detailed,1380,55
+394657,00-0000,All Occupations,total,2870050,55

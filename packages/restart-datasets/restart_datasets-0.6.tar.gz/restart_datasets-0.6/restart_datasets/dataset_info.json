@@ -1,0 +1,168 @@
+{
+  "co-est2019-alldata": {
+    "description": "US census data with 2019 estimates included."
+  },
+  "all_data_M_2019": {
+    "description": "BLS OES statistics."
+  },
+  "covid-surge-who": {
+    "description": "Original restart COVID model containing risk-level mappings."
+  },
+  "list1_2020": {
+    "description": "Dataset containing counties within each FIPS code."
+  },
+  "counties": {
+    "description": "OES counties dataset"
+  },
+  "Georgia": {
+    "description": "OES data for Georgia"
+  },
+  "NorthCarolina": {
+    "description": "OES data for North Carolina"
+  },
+  "Wyoming": {
+    "description": "OES data for Wyoming"
+  },
+  "NewHampshire": {
+    "description": "OES data for New Hampshire"
+  },
+  "Wisconsin": {
+    "description": "OES data for Wisconsin"
+  },
+  "Minnesota": {
+    "description": "OES data for Minnesota"
+  },
+  "Maryland": {
+    "description": "OES data for Maryland"
+  },
+  "Pennsylvania": {
+    "description": "OES data for Pennsylvania"
+  },
+  "Texas": {
+    "description": "OES data for Texas"
+  },
+  "Florida": {
+    "description": "OES data for Florida"
+  },
+  "Michigan": {
+    "description": "OES data for Michigan"
+  },
+  "Hawaii": {
+    "description": "OES data for Hawaii"
+  },
+  "Tennessee": {
+    "description": "OES data for Tennessee"
+  },
+  "DistrictOfColumbia": {
+    "description": "OES data for District of Columbia"
+  },
+  "Arkansas": {
+    "description": "OES data for Arkansas"
+  },
+  "Ohio": {
+    "description": "OES data for Ohio"
+  },
+  "Nebraska": {
+    "description": "OES data for Nebraska"
+  },
+  "Montana": {
+    "description": "OES data for Montana"
+  },
+  "Indiana": {
+    "description": "OES data for Indiana"
+  },
+  "SouthDakota": {
+    "description": "OES data for South Dakota"
+  },
+  "Mississippi": {
+    "description": "OES data for Mississippi"
+  },
+  "Connecticut": {
+    "description": "OES data for Connecticut"
+  },
+  "Oklahoma": {
+    "description": "OES data for Oklahoma"
+  },
+  "Colorado": {
+    "description": "OES data for Colorado"
+  },
+  "Maine": {
+    "description": "OES data for Maine"
+  },
+  "SouthCarolina": {
+    "description": "OES data for South Carolina"
+  },
+  "NorthDakota": {
+    "description": "OES data for North Dakota"
+  },
+  "Louisiana": {
+    "description": "OES data for Louisiana"
+  },
+  "Utah": {"description": "OES data for Utah"
+  },
+  "Virginia": {
+    "description": "OES data for Virginia"
+  },
+  "NewYork": {
+    "description": "OES data for New York"
+  },
+  "NewMexico": {"description": "OES data for New Mexico"
+  },
+  "Delaware": {
+    "description": "OES data for Delaware"
+  },
+  "Kentucky": {"description": "OES data for Kentucky"
+  },
+  "Massachusetts": {
+    "description": "OES data for Massachusetts"
+  },
+  "Alabama": {
+    "description": "OES data for Alabama"
+  },
+  "Arizona": {
+    "description": "OES data for Arizona"
+  },
+  "California": {"description": "OES data for California"
+  },
+  "Nevada": {"description": "OES data for Nevada"
+  },
+  "Alaska": {"description": "OES data for Alaska"
+  },
+  "Illinois": {
+    "description": "OES data for Illinois"
+  },
+  "Idaho": {
+    "description": "OES data for Idaho"
+  },
+  "Oregon": {
+    "description": "OES data for Oregon"
+  },
+  "Iowa": {"description": "OES data for Iowa"
+  },
+  "Vermont": {
+    "description": "OES data for Vermont"
+  },
+  "WestVirginia": {
+    "description": "OES data for West Virginia"
+  },
+  "Kansas": {"description": "OES data for Kansas"
+  },
+  "NewJersey": {
+    "description": "OES data for New Jersey"
+  },
+  "Washington": {
+    "description": "OES data for Washington"
+  },
+  "Missouri": {
+    "description": "OES data for Missouri"
+  },
+  "RhodeIsland": {
+    "description": "OES data for Rhode Island"
+  },
+  "us": {
+    "description": "OES data for US"
+  },
+  "epi_ranges": {
+    "description": "CA epidemiological estimates"
+  }
+}

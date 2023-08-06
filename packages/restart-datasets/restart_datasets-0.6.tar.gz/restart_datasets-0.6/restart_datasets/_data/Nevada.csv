@@ -1,0 +1,675 @@
+,occ_code,occ_title,o_group,tot_emp,area
+1427,11-0000,Management Occupations,major,69500,32
+1428,13-0000,Business and Financial Operations Occupations,major,53780,32
+1429,15-0000,Computer and Mathematical Occupations,major,21770,32
+1430,17-0000,Architecture and Engineering Occupations,major,14550,32
+1431,19-0000,"Life, Physical, and Social Science Occupations",major,9330,32
+1432,21-0000,Community and Social Service Occupations,major,13270,32
+1433,23-0000,Legal Occupations,major,8220,32
+1434,25-0000,Educational Instruction and Library Occupations,major,54780,32
+1435,27-0000,"Arts, Design, Entertainment, Sports, and Media Occupations",major,20360,32
+1436,29-0000,Healthcare Practitioners and Technical Occupations,major,64510,32
+1437,31-0000,Healthcare Support Occupations,major,41110,32
+1438,33-0000,Protective Service Occupations,major,43660,32
+1439,35-0000,Food Preparation and Serving Related Occupations,major,189200,32
+1440,37-0000,Building and Grounds Cleaning and Maintenance Occupations,major,70720,32
+1441,39-0000,Personal Care and Service Occupations,major,70630,32
+1442,41-0000,Sales and Related Occupations,major,144680,32
+1443,43-0000,Office and Administrative Support Occupations,major,185580,32
+1444,45-0000,"Farming, Fishing, and Forestry Occupations",major,1050,32
+1445,47-0000,Construction and Extraction Occupations,major,80540,32
+1446,49-0000,"Installation, Maintenance, and Repair Occupations",major,53020,32
+1447,51-0000,Production Occupations,major,55000,32
+1448,53-0000,Transportation and Material Moving Occupations,major,127440,32
+20787,11-1011,Chief Executives,detailed,1170,32
+20788,11-1021,General and Operations Managers,detailed,20030,32
+20789,11-1031,Legislators,detailed,150,32
+20790,11-2011,Advertising and Promotions Managers,detailed,220,32
+20791,11-2021,Marketing Managers,detailed,1830,32
+20792,11-2022,Sales Managers,detailed,3740,32
+20793,11-2030,Public Relations and Fundraising Managers,detailed,470,32
+20794,11-3010,Administrative Services and Facilities Managers,detailed,1600,32
+20795,11-3021,Computer and Information Systems Managers,detailed,2140,32
+20796,11-3031,Financial Managers,detailed,6060,32
+20797,11-3051,Industrial Production Managers,detailed,840,32
+20798,11-3061,Purchasing Managers,detailed,480,32
+20799,11-3071,"Transportation, Storage, and Distribution Managers",detailed,1120,32
+20800,11-3111,Compensation and Benefits Managers,detailed,120,32
+20801,11-3121,Human Resources Managers,detailed,1030,32
+20802,11-3131,Training and Development Managers,detailed,280,32
+20803,11-9013,"Farmers, Ranchers, and Other Agricultural Managers",detailed,60,32
+20804,11-9021,Construction Managers,detailed,4080,32
+20805,11-9031,"Education and Childcare Administrators, Preschool and Daycare",detailed,160,32
+20806,11-9032,"Education Administrators, Kindergarten through Secondary",detailed,1650,32
+20807,11-9033,"Education Administrators, Postsecondary",detailed,700,32
+20808,11-9039,"Education Administrators, All Other",detailed,230,32
+20809,11-9041,Architectural and Engineering Managers,detailed,990,32
+20810,11-9051,Food Service Managers,detailed,3230,32
+20811,11-9071,Gambling Managers,detailed,580,32
+20812,11-9081,Lodging Managers,detailed,600,32
+20813,11-9111,Medical and Health Services Managers,detailed,2600,32
+20814,11-9121,Natural Sciences Managers,detailed,250,32
+20815,11-9131,Postmasters and Mail Superintendents,detailed,70,32
+20816,11-9141,"Property, Real Estate, and Community Association Managers",detailed,3150,32
+20817,11-9151,Social and Community Service Managers,detailed,780,32
+20818,11-9161,Emergency Management Directors,detailed,30,32
+20819,11-9198,"Personal Service Managers, All Other; Entertainment and Recreation Managers, Except Gambling; and Managers, All Other",detailed,9040,32
+20820,13-1011,"Agents and Business Managers of Artists, Performers, and Athletes",detailed,220,32
+20821,13-1020,Buyers and Purchasing Agents,detailed,3110,32
+20822,13-1031,"Claims Adjusters, Examiners, and Investigators",detailed,1640,32
+20823,13-1032,"Insurance Appraisers, Auto Damage",detailed,580,32
+20824,13-1041,Compliance Officers,detailed,2340,32
+20825,13-1051,Cost Estimators,detailed,1970,32
+20826,13-1071,Human Resources Specialists,detailed,3950,32
+20827,13-1075,Labor Relations Specialists,detailed,900,32
+20828,13-1081,Logisticians,detailed,530,32
+20829,13-1111,Management Analysts,detailed,4680,32
+20830,13-1121,"Meeting, Convention, and Event Planners",detailed,1060,32
+20831,13-1131,Fundraisers,detailed,280,32
+20832,13-1141,"Compensation, Benefits, and Job Analysis Specialists",detailed,530,32
+20833,13-1151,Training and Development Specialists,detailed,2480,32
+20834,13-1161,Market Research Analysts and Marketing Specialists,detailed,3360,32
+20835,13-1198,"Project Management Specialists and Business Operations Specialists, All Other",detailed,9500,32
+20836,13-2011,Accountants and Auditors,detailed,8140,32
+20837,13-2020,Property Appraisers and Assessors,detailed,370,32
+20838,13-2031,Budget Analysts,detailed,270,32
+20839,13-2041,Credit Analysts,detailed,420,32
+20840,13-2052,Personal Financial Advisors,detailed,990,32
+20841,13-2053,Insurance Underwriters,detailed,260,32
+20842,13-2061,Financial Examiners,detailed,**,32
+20843,13-2071,Credit Counselors,detailed,100,32
+20844,13-2072,Loan Officers,detailed,3240,32
+20845,13-2082,Tax Preparers,detailed,870,32
+20846,13-2098,"Financial and Investment Analysts, Financial Risk Specialists, and Financial Specialists, All Other",detailed,1630,32
+20847,15-1211,Computer Systems Analysts,detailed,1740,32
+20848,15-1212,Information Security Analysts,detailed,500,32
+20849,15-1221,Computer and Information Research Scientists,detailed,40,32
+20850,15-1231,Computer Network Support Specialists,detailed,1450,32
+20851,15-1232,Computer User Support Specialists,detailed,5120,32
+20852,15-1241,Computer Network Architects,detailed,740,32
+20853,15-1244,Network and Computer Systems Administrators,detailed,1500,32
+20854,15-1245,Database Administrators and Architects,detailed,700,32
+20855,15-1251,Computer Programmers,detailed,1030,32
+20856,15-1256,Software Developers and Software Quality Assurance Analysts and Testers,detailed,5390,32
+20857,15-1257,Web Developers and Digital Interface Designers,detailed,810,32
+20858,15-1299,"Computer Occupations, All Other",detailed,2360,32
+20859,15-2021,Mathematicians,detailed,40,32
+20860,15-2031,Operations Research Analysts,detailed,170,32
+20861,15-2041,Statisticians,detailed,90,32
+20862,15-2098,"Data Scientists and Mathematical Science Occupations, All Other",detailed,**,32
+20863,17-1011,"Architects, Except Landscape and Naval",detailed,360,32
+20864,17-1012,Landscape Architects,detailed,50,32
+20865,17-1021,Cartographers and Photogrammetrists,detailed,210,32
+20866,17-1022,Surveyors,detailed,450,32
+20867,17-2011,Aerospace Engineers,detailed,**,32
+20868,17-2031,Bioengineers and Biomedical Engineers,detailed,50,32
+20869,17-2041,Chemical Engineers,detailed,60,32
+20870,17-2051,Civil Engineers,detailed,2690,32
+20871,17-2061,Computer Hardware Engineers,detailed,80,32
+20872,17-2071,Electrical Engineers,detailed,640,32
+20873,17-2072,"Electronics Engineers, Except Computer",detailed,560,32
+20874,17-2081,Environmental Engineers,detailed,550,32
+20875,17-2111,"Health and Safety Engineers, Except Mining Safety Engineers and Inspectors",detailed,170,32
+20876,17-2112,Industrial Engineers,detailed,910,32
+20877,17-2131,Materials Engineers,detailed,140,32
+20878,17-2141,Mechanical Engineers,detailed,1210,32
+20879,17-2151,"Mining and Geological Engineers, Including Mining Safety Engineers",detailed,390,32
+20880,17-2199,"Engineers, All Other",detailed,660,32
+20881,17-3011,Architectural and Civil Drafters,detailed,1110,32
+20882,17-3012,Electrical and Electronics Drafters,detailed,260,32
+20883,17-3013,Mechanical Drafters,detailed,260,32
+20884,17-3019,"Drafters, All Other",detailed,200,32
+20885,17-3022,Civil Engineering Technologists and Technicians,detailed,810,32
+20886,17-3023,Electrical and Electronic Engineering Technologists and Technicians,detailed,930,32
+20887,17-3024,Electro-Mechanical and Mechatronics Technologists and Technicians,detailed,60,32
+20888,17-3025,Environmental Engineering Technologists and Technicians,detailed,210,32
+20889,17-3026,Industrial Engineering Technologists and Technicians,detailed,200,32
+20890,17-3027,Mechanical Engineering Technologists and Technicians,detailed,410,32
+20891,17-3031,Surveying and Mapping Technicians,detailed,430,32
+20892,17-3098,"Calibration Technologists and Technicians and Engineering Technologists and Technicians, Except Drafters, All Other",detailed,310,32
+20893,19-1013,Soil and Plant Scientists,detailed,40,32
+20894,19-1022,Microbiologists,detailed,40,32
+20895,19-1023,Zoologists and Wildlife Biologists,detailed,170,32
+20896,19-1029,"Biological Scientists, All Other",detailed,220,32
+20897,19-1031,Conservation Scientists,detailed,200,32
+20898,19-1042,"Medical Scientists, Except Epidemiologists",detailed,230,32
+20899,19-1099,"Life Scientists, All Other",detailed,90,32
+20900,19-2021,Atmospheric and Space Scientists,detailed,80,32
+20901,19-2031,Chemists,detailed,250,32
+20902,19-2032,Materials Scientists,detailed,40,32
+20903,19-2041,"Environmental Scientists and Specialists, Including Health",detailed,480,32
+20904,19-2042,"Geoscientists, Except Hydrologists and Geographers",detailed,540,32
+20905,19-2043,Hydrologists,detailed,140,32
+20906,19-3011,Economists,detailed,60,32
+20907,19-3031,"Clinical, Counseling, and School Psychologists",detailed,430,32
+20908,19-3039,"Psychologists, All Other",detailed,90,32
+20909,19-3051,Urban and Regional Planners,detailed,210,32
+20910,19-3091,Anthropologists and Archeologists,detailed,320,32
+20911,19-3099,"Social Scientists and Related Workers, All Other",detailed,130,32
+20912,19-4010,Agricultural and Food Science Technicians,detailed,40,32
+20913,19-4021,Biological Technicians,detailed,330,32
+20914,19-4031,Chemical Technicians,detailed,1150,32
+20915,19-4042,"Environmental Science and Protection Technicians, Including Health",detailed,**,32
+20916,19-4045,Geological and Hydrologic Technicians,detailed,150,32
+20917,19-4061,Social Science Research Assistants,detailed,80,32
+20918,19-4071,Forest and Conservation Technicians,detailed,280,32
+20919,19-4092,Forensic Science Technicians,detailed,380,32
+20920,19-4099,"Life, Physical, and Social Science Technicians, All Other",detailed,820,32
+20921,19-5011,Occupational Health and Safety Specialists,detailed,1050,32
+20922,19-5012,Occupational Health and Safety Technicians,detailed,290,32
+20923,21-1012,"Educational, Guidance, and Career Counselors and Advisors",detailed,1720,32
+20924,21-1013,Marriage and Family Therapists,detailed,400,32
+20925,21-1015,Rehabilitation Counselors,detailed,560,32
+20926,21-1018,"Substance Abuse, Behavioral Disorder, and Mental Health Counselors",detailed,1180,32
+20927,21-1019,"Counselors, All Other",detailed,80,32
+20928,21-1021,"Child, Family, and School Social Workers",detailed,3010,32
+20929,21-1022,Healthcare Social Workers,detailed,800,32
+20930,21-1023,Mental Health and Substance Abuse Social Workers,detailed,850,32
+20931,21-1029,"Social Workers, All Other",detailed,280,32
+20932,21-1091,Health Education Specialists,detailed,420,32
+20933,21-1092,Probation Officers and Correctional Treatment Specialists,detailed,920,32
+20934,21-1093,Social and Human Service Assistants,detailed,2100,32
+20935,21-1094,Community Health Workers,detailed,240,32
+20936,21-1099,"Community and Social Service Specialists, All Other",detailed,540,32
+20937,21-2011,Clergy,detailed,150,32
+20938,23-1011,Lawyers,detailed,4630,32
+20939,23-1012,Judicial Law Clerks,detailed,110,32
+20940,23-1021,"Administrative Law Judges, Adjudicators, and Hearing Officers",detailed,140,32
+20941,23-1023,"Judges, Magistrate Judges, and Magistrates",detailed,230,32
+20942,23-2011,Paralegals and Legal Assistants,detailed,2130,32
+20943,23-2093,"Title Examiners, Abstractors, and Searchers",detailed,570,32
+20944,23-2099,"Legal Support Workers, All Other",detailed,380,32
+20945,25-1011,"Business Teachers, Postsecondary",detailed,**,32
+20946,25-1021,"Computer Science Teachers, Postsecondary",detailed,120,32
+20947,25-1022,"Mathematical Science Teachers, Postsecondary",detailed,270,32
+20948,25-1042,"Biological Science Teachers, Postsecondary",detailed,270,32
+20949,25-1051,"Atmospheric, Earth, Marine, and Space Sciences Teachers, Postsecondary",detailed,50,32
+20950,25-1052,"Chemistry Teachers, Postsecondary",detailed,100,32
+20951,25-1053,"Environmental Science Teachers, Postsecondary",detailed,50,32
+20952,25-1054,"Physics Teachers, Postsecondary",detailed,70,32
+20953,25-1061,"Anthropology and Archeology Teachers, Postsecondary",detailed,50,32
+20954,25-1063,"Economics Teachers, Postsecondary",detailed,80,32
+20955,25-1066,"Psychology Teachers, Postsecondary",detailed,250,32
+20956,25-1067,"Sociology Teachers, Postsecondary",detailed,40,32
+20957,25-1071,"Health Specialties Teachers, Postsecondary",detailed,1250,32
+20958,25-1072,"Nursing Instructors and Teachers, Postsecondary",detailed,560,32
+20959,25-1081,"Education Teachers, Postsecondary",detailed,560,32
+20960,25-1111,"Criminal Justice and Law Enforcement Teachers, Postsecondary",detailed,150,32
+20961,25-1112,"Law Teachers, Postsecondary",detailed,60,32
+20962,25-1121,"Art, Drama, and Music Teachers, Postsecondary",detailed,620,32
+20963,25-1122,"Communications Teachers, Postsecondary",detailed,140,32
+20964,25-1123,"English Language and Literature Teachers, Postsecondary",detailed,390,32
+20965,25-1124,"Foreign Language and Literature Teachers, Postsecondary",detailed,160,32
+20966,25-1125,"History Teachers, Postsecondary",detailed,110,32
+20967,25-1126,"Philosophy and Religion Teachers, Postsecondary",detailed,**,32
+20968,25-1193,"Recreation and Fitness Studies Teachers, Postsecondary",detailed,60,32
+20969,25-1194,"Career/Technical Education Teachers, Postsecondary",detailed,810,32
+20970,25-1199,"Postsecondary Teachers, All Other",detailed,840,32
+20971,25-2011,"Preschool Teachers, Except Special Education",detailed,1790,32
+20972,25-2012,"Kindergarten Teachers, Except Special Education",detailed,1360,32
+20973,25-2021,"Elementary School Teachers, Except Special Education",detailed,10480,32
+20974,25-2022,"Middle School Teachers, Except Special and Career/Technical Education",detailed,4000,32
+20975,25-2023,"Career/Technical Education Teachers, Middle School",detailed,120,32
+20976,25-2031,"Secondary School Teachers, Except Special and Career/Technical Education",detailed,5760,32
+20977,25-2032,"Career/Technical Education Teachers, Secondary School",detailed,220,32
+20978,25-2051,"Special Education Teachers, Preschool",detailed,480,32
+20979,25-2052,"Special Education Teachers, Kindergarten and Elementary School",detailed,750,32
+20980,25-2057,"Special Education Teachers, Middle School",detailed,330,32
+20981,25-2058,"Special Education Teachers, Secondary School",detailed,460,32
+20982,25-2059,"Special Education Teachers, All Other",detailed,480,32
+20983,25-3011,"Adult Basic Education, Adult Secondary Education, and English as a Second Language Instructors",detailed,160,32
+20984,25-3021,Self-Enrichment Teachers,detailed,1210,32
+20985,25-3031,"Substitute Teachers, Short-Term",detailed,5790,32
+20986,25-3097,"Tutors and Teachers and Instructors, All Other",detailed,1640,32
+20987,25-4011,Archivists,detailed,30,32
+20988,25-4012,Curators,detailed,90,32
+20989,25-4013,Museum Technicians and Conservators,detailed,30,32
+20990,25-4022,Librarians and Media Collections Specialists,detailed,580,32
+20991,25-4031,Library Technicians,detailed,610,32
+20992,25-9031,Instructional Coordinators,detailed,310,32
+20993,25-9044,"Teaching Assistants, Postsecondary",detailed,1050,32
+20994,25-9045,"Teaching Assistants, Except Postsecondary",detailed,5890,32
+20995,25-9099,"Educational Instruction and Library Workers, All Other",detailed,3110,32
+20996,27-1011,Art Directors,detailed,170,32
+20997,27-1014,Special Effects Artists and Animators,detailed,260,32
+20998,27-1019,"Artists and Related Workers, All Other",detailed,**,32
+20999,27-1021,Commercial and Industrial Designers,detailed,70,32
+21000,27-1023,Floral Designers,detailed,340,32
+21001,27-1024,Graphic Designers,detailed,1620,32
+21002,27-1025,Interior Designers,detailed,520,32
+21003,27-1026,Merchandise Displayers and Window Trimmers,detailed,1060,32
+21004,27-1027,Set and Exhibit Designers,detailed,330,32
+21005,27-1029,"Designers, All Other",detailed,80,32
+21006,27-2011,Actors,detailed,**,32
+21007,27-2012,Producers and Directors,detailed,760,32
+21008,27-2022,Coaches and Scouts,detailed,1730,32
+21009,27-2031,Dancers,detailed,570,32
+21010,27-2032,Choreographers,detailed,**,32
+21011,27-2042,Musicians and Singers,detailed,460,32
+21012,27-2090,"Miscellaneous Entertainers and Performers, Sports and Related Workers",detailed,840,32
+21013,27-3011,Broadcast Announcers and Radio Disc Jockeys,detailed,**,32
+21014,27-3023,"News Analysts, Reporters, and Journalists",detailed,340,32
+21015,27-3031,Public Relations Specialists,detailed,1360,32
+21016,27-3041,Editors,detailed,390,32
+21017,27-3042,Technical Writers,detailed,220,32
+21018,27-3043,Writers and Authors,detailed,330,32
+21019,27-3091,Interpreters and Translators,detailed,1220,32
+21020,27-3092,Court Reporters and Simultaneous Captioners,detailed,180,32
+21021,27-3099,"Media and Communication Workers, All Other",detailed,1050,32
+21022,27-4011,Audio and Video Technicians,detailed,2110,32
+21023,27-4012,Broadcast Technicians,detailed,160,32
+21024,27-4014,Sound Engineering Technicians,detailed,150,32
+21025,27-4021,Photographers,detailed,1100,32
+21026,27-4031,"Camera Operators, Television, Video, and Film",detailed,300,32
+21027,27-4032,Film and Video Editors,detailed,160,32
+21028,27-4098,"Lighting Technicians and Media and Communication Equipment Workers, All Other",detailed,340,32
+21029,29-1011,Chiropractors,detailed,300,32
+21030,29-1021,"Dentists, General",detailed,1010,32
+21031,29-1029,"Dentists, All Other Specialists",detailed,**,32
+21032,29-1031,Dietitians and Nutritionists,detailed,420,32
+21033,29-1041,Optometrists,detailed,**,32
+21034,29-1051,Pharmacists,detailed,2470,32
+21035,29-1071,Physician Assistants,detailed,700,32
+21036,29-1122,Occupational Therapists,detailed,830,32
+21037,29-1123,Physical Therapists,detailed,1570,32
+21038,29-1124,Radiation Therapists,detailed,**,32
+21039,29-1125,Recreational Therapists,detailed,120,32
+21040,29-1126,Respiratory Therapists,detailed,1410,32
+21041,29-1127,Speech-Language Pathologists,detailed,1070,32
+21042,29-1129,"Therapists, All Other",detailed,80,32
+21043,29-1131,Veterinarians,detailed,530,32
+21044,29-1141,Registered Nurses,detailed,22940,32
+21045,29-1151,Nurse Anesthetists,detailed,60,32
+21046,29-1171,Nurse Practitioners,detailed,**,32
+21047,29-1211,Anesthesiologists,detailed,460,32
+21048,29-1215,Family Medicine Physicians,detailed,710,32
+21049,29-1216,General Internal Medicine Physicians,detailed,390,32
+21050,29-1221,"Pediatricians, General",detailed,90,32
+21051,29-1223,Psychiatrists,detailed,40,32
+21052,29-1228,"Physicians, All Other; and Ophthalmologists, Except Pediatric",detailed,2850,32
+21053,29-1248,"Surgeons, Except Ophthalmologists",detailed,150,32
+21054,29-1292,Dental Hygienists,detailed,2540,32
+21055,29-1298,"Acupuncturists and Healthcare Diagnosing or Treating Practitioners, All Other",detailed,**,32
+21056,29-2010,Clinical Laboratory Technologists and Technicians,detailed,1910,32
+21057,29-2031,Cardiovascular Technologists and Technicians,detailed,320,32
+21058,29-2032,Diagnostic Medical Sonographers,detailed,380,32
+21059,29-2033,Nuclear Medicine Technologists,detailed,100,32
+21060,29-2034,Radiologic Technologists and Technicians,detailed,1210,32
+21061,29-2035,Magnetic Resonance Imaging Technologists,detailed,560,32
+21062,29-2040,Emergency Medical Technicians and Paramedics,detailed,1720,32
+21063,29-2051,Dietetic Technicians,detailed,140,32
+21064,29-2052,Pharmacy Technicians,detailed,3750,32
+21065,29-2053,Psychiatric Technicians,detailed,**,32
+21066,29-2055,Surgical Technologists,detailed,1100,32
+21067,29-2056,Veterinary Technologists and Technicians,detailed,640,32
+21068,29-2057,Ophthalmic Medical Technicians,detailed,**,32
+21069,29-2061,Licensed Practical and Licensed Vocational Nurses,detailed,2920,32
+21070,29-2081,"Opticians, Dispensing",detailed,**,32
+21071,29-2091,Orthotists and Prosthetists,detailed,70,32
+21072,29-2098,"Medical Dosimetrists, Medical Records Specialists, and Health Technologists and Technicians, All Other",detailed,3000,32
+21073,29-9091,Athletic Trainers,detailed,**,32
+21074,29-9092,Genetic Counselors,detailed,**,32
+21075,29-9098,"Health Information Technologists, Medical Registrars, Surgical Assistants, and Healthcare Practitioners and Technical Workers, All Other",detailed,490,32
+21076,31-1120,Home Health and Personal Care Aides,detailed,14760,32
+21077,31-1131,Nursing Assistants,detailed,7220,32
+21078,31-1132,Orderlies,detailed,240,32
+21079,31-1133,Psychiatric Aides,detailed,380,32
+21080,31-2011,Occupational Therapy Assistants,detailed,310,32
+21081,31-2012,Occupational Therapy Aides,detailed,30,32
+21082,31-2021,Physical Therapist Assistants,detailed,470,32
+21083,31-2022,Physical Therapist Aides,detailed,500,32
+21084,31-9011,Massage Therapists,detailed,1800,32
+21085,31-9091,Dental Assistants,detailed,2770,32
+21086,31-9092,Medical Assistants,detailed,6800,32
+21087,31-9093,Medical Equipment Preparers,detailed,350,32
+21088,31-9094,Medical Transcriptionists,detailed,1040,32
+21089,31-9095,Pharmacy Aides,detailed,390,32
+21090,31-9096,Veterinary Assistants and Laboratory Animal Caretakers,detailed,1380,32
+21091,31-9097,Phlebotomists,detailed,990,32
+21092,31-9099,"Healthcare Support Workers, All Other",detailed,1660,32
+21093,33-1011,First-Line Supervisors of Correctional Officers,detailed,310,32
+21094,33-1012,First-Line Supervisors of Police and Detectives,detailed,970,32
+21095,33-1021,First-Line Supervisors of Firefighting and Prevention Workers,detailed,720,32
+21096,33-1090,"Miscellaneous First-Line Supervisors, Protective Service Workers",detailed,1850,32
+21097,33-2011,Firefighters,detailed,2020,32
+21098,33-2021,Fire Inspectors and Investigators,detailed,130,32
+21099,33-3011,Bailiffs,detailed,180,32
+21100,33-3012,Correctional Officers and Jailers,detailed,2940,32
+21101,33-3021,Detectives and Criminal Investigators,detailed,510,32
+21102,33-3031,Fish and Game Wardens,detailed,40,32
+21103,33-3041,Parking Enforcement Workers,detailed,80,32
+21104,33-3051,Police and Sheriff's Patrol Officers,detailed,5250,32
+21105,33-3052,Transit and Railroad Police,detailed,**,32
+21106,33-9011,Animal Control Workers,detailed,80,32
+21107,33-9021,Private Detectives and Investigators,detailed,340,32
+21108,33-9031,Gambling Surveillance Officers and Gambling Investigators,detailed,870,32
+21109,33-9032,Security Guards,detailed,22310,32
+21110,33-9091,Crossing Guards and Flaggers,detailed,510,32
+21111,33-9092,"Lifeguards, Ski Patrol, and Other Recreational Protective Service Workers",detailed,1810,32
+21112,33-9093,Transportation Security Screeners,detailed,1180,32
+21113,33-9098,"School Bus Monitors and Protective Service Workers, All Other",detailed,1390,32
+21114,35-1011,Chefs and Head Cooks,detailed,3350,32
+21115,35-1012,First-Line Supervisors of Food Preparation and Serving Workers,detailed,11260,32
+21116,35-2011,"Cooks, Fast Food",detailed,10700,32
+21117,35-2012,"Cooks, Institution and Cafeteria",detailed,1660,32
+21118,35-2014,"Cooks, Restaurant",detailed,22510,32
+21119,35-2015,"Cooks, Short Order",detailed,1730,32
+21120,35-2019,"Cooks, All Other",detailed,240,32
+21121,35-2021,Food Preparation Workers,detailed,9280,32
+21122,35-3011,Bartenders,detailed,14440,32
+21123,35-3023,Fast Food and Counter Workers,detailed,43310,32
+21124,35-3031,Waiters and Waitresses,detailed,37300,32
+21125,35-3041,"Food Servers, Nonrestaurant",detailed,1420,32
+21126,35-9011,Dining Room and Cafeteria Attendants and Bartender Helpers,detailed,14980,32
+21127,35-9021,Dishwashers,detailed,8310,32
+21128,35-9031,"Hosts and Hostesses, Restaurant, Lounge, and Coffee Shop",detailed,5930,32
+21129,35-9099,"Food Preparation and Serving Related Workers, All Other",detailed,2780,32
+21130,37-1011,First-Line Supervisors of Housekeeping and Janitorial Workers,detailed,3130,32
+21131,37-1012,"First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers",detailed,940,32
+21132,37-2011,"Janitors and Cleaners, Except Maids and Housekeeping Cleaners",detailed,29360,32
+21133,37-2012,Maids and Housekeeping Cleaners,detailed,25140,32
+21134,37-2019,"Building Cleaning Workers, All Other",detailed,**,32
+21135,37-2021,Pest Control Workers,detailed,640,32
+21136,37-3011,Landscaping and Groundskeeping Workers,detailed,10940,32
+21137,37-3012,"Pesticide Handlers, Sprayers, and Applicators, Vegetation",detailed,**,32
+21138,37-3013,Tree Trimmers and Pruners,detailed,**,32
+21139,37-3019,"Grounds Maintenance Workers, All Other",detailed,40,32
+21140,39-1013,First-Line Supervisors of Gambling Services Workers,detailed,6790,32
+21141,39-1098,"First-Line Supervisors of Personal Service and Entertainment and Recreation Workers, Except Gambling Services",detailed,2680,32
+21142,39-2011,Animal Trainers,detailed,50,32
+21143,39-2021,Animal Caretakers,detailed,1570,32
+21144,39-3011,Gambling Dealers,detailed,22580,32
+21145,39-3012,Gambling and Sports Book Writers and Runners,detailed,1400,32
+21146,39-3019,"Gambling Service Workers, All Other",detailed,3310,32
+21147,39-3021,Motion Picture Projectionists,detailed,**,32
+21148,39-3031,"Ushers, Lobby Attendants, and Ticket Takers",detailed,3500,32
+21149,39-3091,Amusement and Recreation Attendants,detailed,5100,32
+21150,39-3092,Costume Attendants,detailed,340,32
+21151,39-3093,"Locker Room, Coatroom, and Dressing Room Attendants",detailed,190,32
+21152,39-3099,"Entertainment Attendants and Related Workers, All Other",detailed,380,32
+21153,39-4011,Embalmers,detailed,**,32
+21154,39-4021,Funeral Attendants,detailed,40,32
+21155,39-4031,"Morticians, Undertakers, and Funeral Arrangers",detailed,220,32
+21156,39-5011,Barbers,detailed,**,32
+21157,39-5012,"Hairdressers, Hairstylists, and Cosmetologists",detailed,3200,32
+21158,39-5091,"Makeup Artists, Theatrical and Performance",detailed,40,32
+21159,39-5092,Manicurists and Pedicurists,detailed,360,32
+21160,39-5094,Skincare Specialists,detailed,690,32
+21161,39-6011,Baggage Porters and Bellhops,detailed,2120,32
+21162,39-6012,Concierges,detailed,1080,32
+21163,39-7010,Tour and Travel Guides,detailed,830,32
+21164,39-9011,Childcare Workers,detailed,4070,32
+21165,39-9031,Exercise Trainers and Group Fitness Instructors,detailed,3500,32
+21166,39-9032,Recreation Workers,detailed,3160,32
+21167,39-9041,Residential Advisors,detailed,320,32
+21168,39-9098,"Crematory Operators and Personal Care and Service Workers, All Other",detailed,2760,32
+21169,41-1011,First-Line Supervisors of Retail Sales Workers,detailed,12060,32
+21170,41-1012,First-Line Supervisors of Non-Retail Sales Workers,detailed,1750,32
+21171,41-2011,Cashiers,detailed,37060,32
+21172,41-2012,Gambling Change Persons and Booth Cashiers,detailed,2350,32
+21173,41-2021,Counter and Rental Clerks,detailed,5180,32
+21174,41-2022,Parts Salespersons,detailed,2480,32
+21175,41-2031,Retail Salespersons,detailed,46920,32
+21176,41-3011,Advertising Sales Agents,detailed,640,32
+21177,41-3021,Insurance Sales Agents,detailed,3320,32
+21178,41-3031,"Securities, Commodities, and Financial Services Sales Agents",detailed,2520,32
+21179,41-3041,Travel Agents,detailed,880,32
+21180,41-3091,"Sales Representatives of Services, Except Advertising, Insurance, Financial Services, and Travel",detailed,11130,32
+21181,41-4011,"Sales Representatives, Wholesale and Manufacturing, Technical and Scientific Products",detailed,1300,32
+21182,41-4012,"Sales Representatives, Wholesale and Manufacturing, Except Technical and Scientific Products",detailed,7710,32
+21183,41-9011,Demonstrators and Product Promoters,detailed,1560,32
+21184,41-9021,Real Estate Brokers,detailed,460,32
+21185,41-9022,Real Estate Sales Agents,detailed,2230,32
+21186,41-9031,Sales Engineers,detailed,**,32
+21187,41-9041,Telemarketers,detailed,3190,32
+21188,41-9091,"Door-to-Door Sales Workers, News and Street Vendors, and Related Workers",detailed,**,32
+21189,41-9099,"Sales and Related Workers, All Other",detailed,1280,32
+21190,43-1011,First-Line Supervisors of Office and Administrative Support Workers,detailed,12420,32
+21191,43-2011,"Switchboard Operators, Including Answering Service",detailed,1550,32
+21192,43-2099,"Communications Equipment Operators, All Other",detailed,260,32
+21193,43-3011,Bill and Account Collectors,detailed,2220,32
+21194,43-3021,Billing and Posting Clerks,detailed,3610,32
+21195,43-3031,"Bookkeeping, Accounting, and Auditing Clerks",detailed,11320,32
+21196,43-3041,Gambling Cage Workers,detailed,2410,32
+21197,43-3051,Payroll and Timekeeping Clerks,detailed,1370,32
+21198,43-3061,Procurement Clerks,detailed,500,32
+21199,43-3071,Tellers,detailed,3440,32
+21200,43-3099,"Financial Clerks, All Other",detailed,1100,32
+21201,43-4011,Brokerage Clerks,detailed,290,32
+21202,43-4031,"Court, Municipal, and License Clerks",detailed,1470,32
+21203,43-4041,"Credit Authorizers, Checkers, and Clerks",detailed,380,32
+21204,43-4051,Customer Service Representatives,detailed,28200,32
+21205,43-4061,"Eligibility Interviewers, Government Programs",detailed,400,32
+21206,43-4071,File Clerks,detailed,1510,32
+21207,43-4081,"Hotel, Motel, and Resort Desk Clerks",detailed,5270,32
+21208,43-4111,"Interviewers, Except Eligibility and Loan",detailed,3390,32
+21209,43-4121,"Library Assistants, Clerical",detailed,560,32
+21210,43-4131,Loan Interviewers and Clerks,detailed,2850,32
+21211,43-4141,New Accounts Clerks,detailed,100,32
+21212,43-4151,Order Clerks,detailed,1760,32
+21213,43-4161,"Human Resources Assistants, Except Payroll and Timekeeping",detailed,1360,32
+21214,43-4171,Receptionists and Information Clerks,detailed,9740,32
+21215,43-4181,Reservation and Transportation Ticket Agents and Travel Clerks,detailed,3160,32
+21216,43-4199,"Information and Record Clerks, All Other",detailed,2220,32
+21217,43-5011,Cargo and Freight Agents,detailed,1090,32
+21218,43-5021,Couriers and Messengers,detailed,1220,32
+21219,43-5031,Public Safety Telecommunicators,detailed,510,32
+21220,43-5032,"Dispatchers, Except Police, Fire, and Ambulance",detailed,2390,32
+21221,43-5041,"Meter Readers, Utilities",detailed,80,32
+21222,43-5051,Postal Service Clerks,detailed,490,32
+21223,43-5052,Postal Service Mail Carriers,detailed,2530,32
+21224,43-5053,"Postal Service Mail Sorters, Processors, and Processing Machine Operators",detailed,790,32
+21225,43-5061,"Production, Planning, and Expediting Clerks",detailed,2140,32
+21226,43-5071,"Shipping, Receiving, and Inventory Clerks",detailed,6930,32
+21227,43-5111,"Weighers, Measurers, Checkers, and Samplers, Recordkeeping",detailed,610,32
+21228,43-6011,Executive Secretaries and Executive Administrative Assistants,detailed,2190,32
+21229,43-6012,Legal Secretaries and Administrative Assistants,detailed,2170,32
+21230,43-6013,Medical Secretaries and Administrative Assistants,detailed,3310,32
+21231,43-6014,"Secretaries and Administrative Assistants, Except Legal, Medical, and Executive",detailed,16530,32
+21232,43-9021,Data Entry Keyers,detailed,1360,32
+21233,43-9022,Word Processors and Typists,detailed,110,32
+21234,43-9041,Insurance Claims and Policy Processing Clerks,detailed,1530,32
+21235,43-9051,"Mail Clerks and Mail Machine Operators, Except Postal Service",detailed,610,32
+21236,43-9061,"Office Clerks, General",detailed,28800,32
+21237,43-9071,"Office Machine Operators, Except Computer",detailed,370,32
+21238,43-9081,Proofreaders and Copy Markers,detailed,90,32
+21239,43-9199,"Office and Administrative Support Workers, All Other",detailed,6360,32
+21240,45-1011,"First-Line Supervisors of Farming, Fishing, and Forestry Workers",detailed,150,32
+21241,45-2011,Agricultural Inspectors,detailed,30,32
+21242,45-2092,"Farmworkers and Laborers, Crop, Nursery, and Greenhouse",detailed,560,32
+21243,45-2093,"Farmworkers, Farm, Ranch, and Aquacultural Animals",detailed,150,32
+21244,45-2099,"Agricultural Workers, All Other",detailed,100,32
+21245,47-1011,First-Line Supervisors of Construction Trades and Extraction Workers,detailed,6480,32
+21246,47-2011,Boilermakers,detailed,80,32
+21247,47-2021,Brickmasons and Blockmasons,detailed,900,32
+21248,47-2022,Stonemasons,detailed,430,32
+21249,47-2031,Carpenters,detailed,12400,32
+21250,47-2041,Carpet Installers,detailed,1150,32
+21251,47-2042,"Floor Layers, Except Carpet, Wood, and Hard Tiles",detailed,330,32
+21252,47-2043,Floor Sanders and Finishers,detailed,**,32
+21253,47-2044,Tile and Stone Setters,detailed,1490,32
+21254,47-2051,Cement Masons and Concrete Finishers,detailed,2640,32
+21255,47-2061,Construction Laborers,detailed,11220,32
+21256,47-2071,"Paving, Surfacing, and Tamping Equipment Operators",detailed,450,32
+21257,47-2073,Operating Engineers and Other Construction Equipment Operators,detailed,4060,32
+21258,47-2081,Drywall and Ceiling Tile Installers,detailed,2930,32
+21259,47-2082,Tapers,detailed,740,32
+21260,47-2111,Electricians,detailed,7200,32
+21261,47-2121,Glaziers,detailed,650,32
+21262,47-2132,"Insulation Workers, Mechanical",detailed,130,32
+21263,47-2141,"Painters, Construction and Maintenance",detailed,3890,32
+21264,47-2142,Paperhangers,detailed,110,32
+21265,47-2151,Pipelayers,detailed,600,32
+21266,47-2152,"Plumbers, Pipefitters, and Steamfitters",detailed,4690,32
+21267,47-2161,Plasterers and Stucco Masons,detailed,2010,32
+21268,47-2171,Reinforcing Iron and Rebar Workers,detailed,380,32
+21269,47-2181,Roofers,detailed,1940,32
+21270,47-2211,Sheet Metal Workers,detailed,1210,32
+21271,47-2221,Structural Iron and Steel Workers,detailed,670,32
+21272,47-2231,Solar Photovoltaic Installers,detailed,210,32
+21273,47-3011,"Helpers--Brickmasons, Blockmasons, Stonemasons, and Tile and Marble Setters",detailed,430,32
+21274,47-3012,Helpers--Carpenters,detailed,360,32
+21275,47-3013,Helpers--Electricians,detailed,580,32
+21276,47-3014,"Helpers--Painters, Paperhangers, Plasterers, and Stucco Masons",detailed,470,32
+21277,47-3015,"Helpers--Pipelayers, Plumbers, Pipefitters, and Steamfitters",detailed,470,32
+21278,47-3016,Helpers--Roofers,detailed,**,32
+21279,47-3019,"Helpers, Construction Trades, All Other",detailed,100,32
+21280,47-4011,Construction and Building Inspectors,detailed,850,32
+21281,47-4031,Fence Erectors,detailed,440,32
+21282,47-4041,Hazardous Materials Removal Workers,detailed,260,32
+21283,47-4051,Highway Maintenance Workers,detailed,640,32
+21284,47-4061,Rail-Track Laying and Maintenance Equipment Operators,detailed,70,32
+21285,47-4071,Septic Tank Servicers and Sewer Pipe Cleaners,detailed,170,32
+21286,47-4090,Miscellaneous Construction and Related Workers,detailed,530,32
+21287,47-5022,"Excavating and Loading Machine and Dragline Operators, Surface Mining",detailed,230,32
+21288,47-5041,Continuous Mining Machine Operators,detailed,2530,32
+21289,47-5081,Helpers--Extraction Workers,detailed,560,32
+21290,47-5097,"Earth Drillers, Except Oil and Gas; and Explosives Workers, Ordnance Handling Experts, and Blasters",detailed,1320,32
+21291,47-5098,"Underground Mining Machine Operators and Extraction Workers, All Other",detailed,880,32
+21292,49-1011,"First-Line Supervisors of Mechanics, Installers, and Repairers",detailed,4090,32
+21293,49-2011,"Computer, Automated Teller, and Office Machine Repairers",detailed,1100,32
+21294,49-2021,"Radio, Cellular, and Tower Equipment Installers and Repairers",detailed,140,32
+21295,49-2022,"Telecommunications Equipment Installers and Repairers, Except Line Installers",detailed,1230,32
+21296,49-2091,Avionics Technicians,detailed,310,32
+21297,49-2092,"Electric Motor, Power Tool, and Related Repairers",detailed,190,32
+21298,49-2093,"Electrical and Electronics Installers and Repairers, Transportation Equipment",detailed,40,32
+21299,49-2094,"Electrical and Electronics Repairers, Commercial and Industrial Equipment",detailed,420,32
+21300,49-2095,"Electrical and Electronics Repairers, Powerhouse, Substation, and Relay",detailed,140,32
+21301,49-2097,Audiovisual Equipment Installers and Repairers,detailed,**,32
+21302,49-2098,Security and Fire Alarm Systems Installers,detailed,510,32
+21303,49-3011,Aircraft Mechanics and Service Technicians,detailed,2010,32
+21304,49-3021,Automotive Body and Related Repairers,detailed,1070,32
+21305,49-3022,Automotive Glass Installers and Repairers,detailed,290,32
+21306,49-3023,Automotive Service Technicians and Mechanics,detailed,4890,32
+21307,49-3031,Bus and Truck Mechanics and Diesel Engine Specialists,detailed,1890,32
+21308,49-3041,Farm Equipment Mechanics and Service Technicians,detailed,70,32
+21309,49-3042,"Mobile Heavy Equipment Mechanics, Except Engines",detailed,2180,32
+21310,49-3051,Motorboat Mechanics and Service Technicians,detailed,80,32
+21311,49-3052,Motorcycle Mechanics,detailed,180,32
+21312,49-3053,Outdoor Power Equipment and Other Small Engine Mechanics,detailed,**,32
+21313,49-3091,Bicycle Repairers,detailed,50,32
+21314,49-3092,Recreational Vehicle Service Technicians,detailed,290,32
+21315,49-3093,Tire Repairers and Changers,detailed,1230,32
+21316,49-9011,Mechanical Door Repairers,detailed,270,32
+21317,49-9012,"Control and Valve Installers and Repairers, Except Mechanical Door",detailed,230,32
+21318,49-9021,"Heating, Air Conditioning, and Refrigeration Mechanics and Installers",detailed,2600,32
+21319,49-9031,Home Appliance Repairers,detailed,**,32
+21320,49-9041,Industrial Machinery Mechanics,detailed,2190,32
+21321,49-9043,"Maintenance Workers, Machinery",detailed,390,32
+21322,49-9044,Millwrights,detailed,**,32
+21323,49-9051,Electrical Power-Line Installers and Repairers,detailed,710,32
+21324,49-9052,Telecommunications Line Installers and Repairers,detailed,1120,32
+21325,49-9062,Medical Equipment Repairers,detailed,460,32
+21326,49-9069,"Precision Instrument and Equipment Repairers, All Other",detailed,100,32
+21327,49-9071,"Maintenance and Repair Workers, General",detailed,15780,32
+21328,49-9091,"Coin, Vending, and Amusement Machine Servicers and Repairers",detailed,1510,32
+21329,49-9094,Locksmiths and Safe Repairers,detailed,310,32
+21330,49-9096,Riggers,detailed,350,32
+21331,49-9098,"Helpers--Installation, Maintenance, and Repair Workers",detailed,910,32
+21332,49-9099,"Installation, Maintenance, and Repair Workers, All Other",detailed,2260,32
+21333,51-1011,First-Line Supervisors of Production and Operating Workers,detailed,3620,32
+21334,51-2028,"Electrical, Electronic, and Electromechanical Assemblers, Except Coil Winders, Tapers, and Finishers",detailed,5790,32
+21335,51-2031,Engine and Other Machine Assemblers,detailed,**,32
+21336,51-2041,Structural Metal Fabricators and Fitters,detailed,330,32
+21337,51-2051,Fiberglass Laminators and Fabricators,detailed,70,32
+21338,51-2090,Miscellaneous Assemblers and Fabricators,detailed,5100,32
+21339,51-3011,Bakers,detailed,2200,32
+21340,51-3021,Butchers and Meat Cutters,detailed,900,32
+21341,51-3022,"Meat, Poultry, and Fish Cutters and Trimmers",detailed,590,32
+21342,51-3023,Slaughterers and Meat Packers,detailed,**,32
+21343,51-3091,"Food and Tobacco Roasting, Baking, and Drying Machine Operators and Tenders",detailed,**,32
+21344,51-3092,Food Batchmakers,detailed,1440,32
+21345,51-3093,Food Cooking Machine Operators and Tenders,detailed,**,32
+21346,51-4021,"Extruding and Drawing Machine Setters, Operators, and Tenders, Metal and Plastic",detailed,510,32
+21347,51-4023,"Rolling Machine Setters, Operators, and Tenders, Metal and Plastic",detailed,120,32
+21348,51-4031,"Cutting, Punching, and Press Machine Setters, Operators, and Tenders, Metal and Plastic",detailed,580,32
+21349,51-4033,"Grinding, Lapping, Polishing, and Buffing Machine Tool Setters, Operators, and Tenders, Metal and Plastic",detailed,260,32
+21350,51-4034,"Lathe and Turning Machine Tool Setters, Operators, and Tenders, Metal and Plastic",detailed,40,32
+21351,51-4035,"Milling and Planing Machine Setters, Operators, and Tenders, Metal and Plastic",detailed,**,32
+21352,51-4041,Machinists,detailed,1170,32
+21353,51-4051,Metal-Refining Furnace Operators and Tenders,detailed,160,32
+21354,51-4072,"Molding, Coremaking, and Casting Machine Setters, Operators, and Tenders, Metal and Plastic",detailed,500,32
+21355,51-4081,"Multiple Machine Tool Setters, Operators, and Tenders, Metal and Plastic",detailed,2710,32
+21356,51-4111,Tool and Die Makers,detailed,180,32
+21357,51-4121,"Welders, Cutters, Solderers, and Brazers",detailed,1650,32
+21358,51-4122,"Welding, Soldering, and Brazing Machine Setters, Operators, and Tenders",detailed,110,32
+21359,51-4193,"Plating Machine Setters, Operators, and Tenders, Metal and Plastic",detailed,**,32
+21360,51-4199,"Metal Workers and Plastic Workers, All Other",detailed,80,32
+21361,51-5111,Prepress Technicians and Workers,detailed,220,32
+21362,51-5112,Printing Press Operators,detailed,1910,32
+21363,51-5113,Print Binding and Finishing Workers,detailed,120,32
+21364,51-6011,Laundry and Dry-Cleaning Workers,detailed,4090,32
+21365,51-6021,"Pressers, Textile, Garment, and Related Materials",detailed,620,32
+21366,51-6031,Sewing Machine Operators,detailed,910,32
+21367,51-6041,Shoe and Leather Workers and Repairers,detailed,**,32
+21368,51-6052,"Tailors, Dressmakers, and Custom Sewers",detailed,220,32
+21369,51-6062,"Textile Cutting Machine Setters, Operators, and Tenders",detailed,60,32
+21370,51-6093,Upholsterers,detailed,290,32
+21371,51-6099,"Textile, Apparel, and Furnishings Workers, All Other",detailed,**,32
+21372,51-7011,Cabinetmakers and Bench Carpenters,detailed,960,32
+21373,51-7021,Furniture Finishers,detailed,70,32
+21374,51-7041,"Sawing Machine Setters, Operators, and Tenders, Wood",detailed,**,32
+21375,51-7042,"Woodworking Machine Setters, Operators, and Tenders, Except Sawing",detailed,410,32
+21376,51-8012,Power Distributors and Dispatchers,detailed,140,32
+21377,51-8013,Power Plant Operators,detailed,410,32
+21378,51-8021,Stationary Engineers and Boiler Operators,detailed,50,32
+21379,51-8031,Water and Wastewater Treatment Plant and System Operators,detailed,**,32
+21380,51-8091,Chemical Plant and System Operators,detailed,60,32
+21381,51-8099,"Plant and System Operators, All Other",detailed,100,32
+21382,51-9011,Chemical Equipment Operators and Tenders,detailed,50,32
+21383,51-9012,"Separating, Filtering, Clarifying, Precipitating, and Still Machine Setters, Operators, and Tenders",detailed,350,32
+21384,51-9021,"Crushing, Grinding, and Polishing Machine Setters, Operators, and Tenders",detailed,230,32
+21385,51-9022,"Grinding and Polishing Workers, Hand",detailed,190,32
+21386,51-9023,"Mixing and Blending Machine Setters, Operators, and Tenders",detailed,1060,32
+21387,51-9032,"Cutting and Slicing Machine Setters, Operators, and Tenders",detailed,330,32
+21388,51-9041,"Extruding, Forming, Pressing, and Compacting Machine Setters, Operators, and Tenders",detailed,230,32
+21389,51-9051,"Furnace, Kiln, Oven, Drier, and Kettle Operators and Tenders",detailed,40,32
+21390,51-9061,"Inspectors, Testers, Sorters, Samplers, and Weighers",detailed,3540,32
+21391,51-9071,Jewelers and Precious Stone and Metal Workers,detailed,230,32
+21392,51-9081,Dental Laboratory Technicians,detailed,210,32
+21393,51-9082,Medical Appliance Technicians,detailed,110,32
+21394,51-9083,Ophthalmic Laboratory Technicians,detailed,240,32
+21395,51-9111,Packaging and Filling Machine Operators and Tenders,detailed,2150,32
+21396,51-9124,"Coating, Painting, and Spraying Machine Setters, Operators, and Tenders",detailed,720,32
+21397,51-9151,Photographic Process Workers and Processing Machine Operators,detailed,250,32
+21398,51-9161,Computer Numerically Controlled Tool Operators,detailed,580,32
+21399,51-9162,Computer Numerically Controlled Tool Programmers,detailed,180,32
+21400,51-9191,Adhesive Bonding Machine Operators and Tenders,detailed,40,32
+21401,51-9192,"Cleaning, Washing, and Metal Pickling Equipment Operators and Tenders",detailed,70,32
+21402,51-9194,Etchers and Engravers,detailed,40,32
+21403,51-9195,"Molders, Shapers, and Casters, Except Metal and Plastic",detailed,650,32
+21404,51-9196,"Paper Goods Machine Setters, Operators, and Tenders",detailed,330,32
+21405,51-9198,Helpers--Production Workers,detailed,680,32
+21406,51-9199,"Production Workers, All Other",detailed,**,32
+21407,53-1041,Aircraft Cargo Handling Supervisors,detailed,110,32
+21408,53-1047,"First-Line Supervisors of Transportation and Material Moving Workers, Except Aircraft Cargo Handling Supervisors",detailed,4070,32
+21409,53-2011,"Airline Pilots, Copilots, and Flight Engineers",detailed,1680,32
+21410,53-2012,Commercial Pilots,detailed,670,32
+21411,53-2021,Air Traffic Controllers,detailed,230,32
+21412,53-2022,Airfield Operations Specialists,detailed,70,32
+21413,53-2031,Flight Attendants,detailed,3180,32
+21414,53-3011,"Ambulance Drivers and Attendants, Except Emergency Medical Technicians",detailed,60,32
+21415,53-3031,Driver/Sales Workers,detailed,3100,32
+21416,53-3032,Heavy and Tractor-Trailer Truck Drivers,detailed,12320,32
+21417,53-3033,Light Truck Drivers,detailed,5870,32
+21418,53-3052,"Bus Drivers, Transit and Intercity",detailed,2620,32
+21419,53-3058,"Passenger Vehicle Drivers, Except Bus Drivers, Transit and Intercity",detailed,10370,32
+21420,53-3099,"Motor Vehicle Operators, All Other",detailed,770,32
+21421,53-4011,Locomotive Engineers,detailed,190,32
+21422,53-4031,Railroad Conductors and Yardmasters,detailed,180,32
+21423,53-6021,Parking Attendants,detailed,3220,32
+21424,53-6031,Automotive and Watercraft Service Attendants,detailed,1340,32
+21425,53-6051,Transportation Inspectors,detailed,**,32
+21426,53-6061,Passenger Attendants,detailed,300,32
+21427,53-6098,"Aircraft Service Attendants and Transportation Workers, All Other",detailed,1330,32
+21428,53-7011,Conveyor Operators and Tenders,detailed,**,32
+21429,53-7021,Crane and Tower Operators,detailed,240,32
+21430,53-7051,Industrial Truck and Tractor Operators,detailed,4850,32
+21431,53-7061,Cleaners of Vehicles and Equipment,detailed,4390,32
+21432,53-7062,"Laborers and Freight, Stock, and Material Movers, Hand",detailed,37000,32
+21433,53-7063,Machine Feeders and Offbearers,detailed,220,32
+21434,53-7064,"Packers and Packagers, Hand",detailed,5500,32
+21435,53-7065,Stockers and Order Fillers,detailed,21630,32
+21436,53-7081,Refuse and Recyclable Material Collectors,detailed,980,32
+21437,53-7199,"Material Moving Workers, All Other",detailed,170,32
+394636,00-0000,All Occupations,total,1392680,32

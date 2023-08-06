@@ -1,0 +1,747 @@
+,occ_code,occ_title,o_group,tot_emp,area
+1317,11-0000,Management Occupations,major,170650,27
+1318,13-0000,Business and Financial Operations Occupations,major,171550,27
+1319,15-0000,Computer and Mathematical Occupations,major,97960,27
+1320,17-0000,Architecture and Engineering Occupations,major,55520,27
+1321,19-0000,"Life, Physical, and Social Science Occupations",major,27070,27
+1322,21-0000,Community and Social Service Occupations,major,57200,27
+1323,23-0000,Legal Occupations,major,20050,27
+1324,25-0000,Educational Instruction and Library Occupations,major,165310,27
+1325,27-0000,"Arts, Design, Entertainment, Sports, and Media Occupations",major,38540,27
+1326,29-0000,Healthcare Practitioners and Technical Occupations,major,190800,27
+1327,31-0000,Healthcare Support Occupations,major,163160,27
+1328,33-0000,Protective Service Occupations,major,45030,27
+1329,35-0000,Food Preparation and Serving Related Occupations,major,244300,27
+1330,37-0000,Building and Grounds Cleaning and Maintenance Occupations,major,83860,27
+1331,39-0000,Personal Care and Service Occupations,major,70290,27
+1332,41-0000,Sales and Related Occupations,major,277000,27
+1333,43-0000,Office and Administrative Support Occupations,major,363800,27
+1334,45-0000,"Farming, Fishing, and Forestry Occupations",major,4060,27
+1335,47-0000,Construction and Extraction Occupations,major,104900,27
+1336,49-0000,"Installation, Maintenance, and Repair Occupations",major,100060,27
+1337,51-0000,Production Occupations,major,212650,27
+1338,53-0000,Transportation and Material Moving Occupations,major,216890,27
+17431,11-1011,Chief Executives,detailed,5630,27
+17432,11-1021,General and Operations Managers,detailed,44010,27
+17433,11-1031,Legislators,detailed,1450,27
+17434,11-2011,Advertising and Promotions Managers,detailed,390,27
+17435,11-2021,Marketing Managers,detailed,8350,27
+17436,11-2022,Sales Managers,detailed,10700,27
+17437,11-2030,Public Relations and Fundraising Managers,detailed,1900,27
+17438,11-3010,Administrative Services and Facilities Managers,detailed,6630,27
+17439,11-3021,Computer and Information Systems Managers,detailed,10300,27
+17440,11-3031,Financial Managers,detailed,15750,27
+17441,11-3051,Industrial Production Managers,detailed,5370,27
+17442,11-3061,Purchasing Managers,detailed,2050,27
+17443,11-3071,"Transportation, Storage, and Distribution Managers",detailed,2550,27
+17444,11-3111,Compensation and Benefits Managers,detailed,**,27
+17445,11-3121,Human Resources Managers,detailed,4560,27
+17446,11-3131,Training and Development Managers,detailed,1100,27
+17447,11-9013,"Farmers, Ranchers, and Other Agricultural Managers",detailed,40,27
+17448,11-9021,Construction Managers,detailed,5880,27
+17449,11-9031,"Education and Childcare Administrators, Preschool and Daycare",detailed,690,27
+17450,11-9032,"Education Administrators, Kindergarten through Secondary",detailed,3780,27
+17451,11-9033,"Education Administrators, Postsecondary",detailed,2380,27
+17452,11-9039,"Education Administrators, All Other",detailed,950,27
+17453,11-9041,Architectural and Engineering Managers,detailed,3960,27
+17454,11-9051,Food Service Managers,detailed,3870,27
+17455,11-9071,Gambling Managers,detailed,90,27
+17456,11-9081,Lodging Managers,detailed,540,27
+17457,11-9111,Medical and Health Services Managers,detailed,8330,27
+17458,11-9121,Natural Sciences Managers,detailed,1390,27
+17459,11-9131,Postmasters and Mail Superintendents,detailed,330,27
+17460,11-9141,"Property, Real Estate, and Community Association Managers",detailed,3960,27
+17461,11-9151,Social and Community Service Managers,detailed,4010,27
+17462,11-9161,Emergency Management Directors,detailed,230,27
+17463,11-9171,Funeral Home Managers,detailed,150,27
+17464,11-9198,"Personal Service Managers, All Other; Entertainment and Recreation Managers, Except Gambling; and Managers, All Other",detailed,8800,27
+17465,13-1011,"Agents and Business Managers of Artists, Performers, and Athletes",detailed,200,27
+17466,13-1020,Buyers and Purchasing Agents,detailed,10250,27
+17467,13-1031,"Claims Adjusters, Examiners, and Investigators",detailed,5930,27
+17468,13-1041,Compliance Officers,detailed,**,27
+17469,13-1051,Cost Estimators,detailed,4480,27
+17470,13-1071,Human Resources Specialists,detailed,13000,27
+17471,13-1075,Labor Relations Specialists,detailed,2530,27
+17472,13-1081,Logisticians,detailed,3280,27
+17473,13-1111,Management Analysts,detailed,14050,27
+17474,13-1121,"Meeting, Convention, and Event Planners",detailed,2750,27
+17475,13-1131,Fundraisers,detailed,1990,27
+17476,13-1141,"Compensation, Benefits, and Job Analysis Specialists",detailed,**,27
+17477,13-1151,Training and Development Specialists,detailed,6770,27
+17478,13-1161,Market Research Analysts and Marketing Specialists,detailed,15120,27
+17479,13-1198,"Project Management Specialists and Business Operations Specialists, All Other",detailed,27110,27
+17480,13-2011,Accountants and Auditors,detailed,23210,27
+17481,13-2020,Property Appraisers and Assessors,detailed,1560,27
+17482,13-2031,Budget Analysts,detailed,510,27
+17483,13-2041,Credit Analysts,detailed,2080,27
+17484,13-2052,Personal Financial Advisors,detailed,3900,27
+17485,13-2053,Insurance Underwriters,detailed,1750,27
+17486,13-2061,Financial Examiners,detailed,1660,27
+17487,13-2071,Credit Counselors,detailed,510,27
+17488,13-2072,Loan Officers,detailed,8550,27
+17489,13-2081,"Tax Examiners and Collectors, and Revenue Agents",detailed,1170,27
+17490,13-2082,Tax Preparers,detailed,1350,27
+17491,13-2098,"Financial and Investment Analysts, Financial Risk Specialists, and Financial Specialists, All Other",detailed,9460,27
+17492,15-1211,Computer Systems Analysts,detailed,20240,27
+17493,15-1212,Information Security Analysts,detailed,2230,27
+17494,15-1221,Computer and Information Research Scientists,detailed,210,27
+17495,15-1231,Computer Network Support Specialists,detailed,4260,27
+17496,15-1232,Computer User Support Specialists,detailed,12270,27
+17497,15-1241,Computer Network Architects,detailed,2780,27
+17498,15-1244,Network and Computer Systems Administrators,detailed,6570,27
+17499,15-1245,Database Administrators and Architects,detailed,2690,27
+17500,15-1251,Computer Programmers,detailed,3940,27
+17501,15-1256,Software Developers and Software Quality Assurance Analysts and Testers,detailed,30520,27
+17502,15-1257,Web Developers and Digital Interface Designers,detailed,2790,27
+17503,15-1299,"Computer Occupations, All Other",detailed,4810,27
+17504,15-2011,Actuaries,detailed,460,27
+17505,15-2031,Operations Research Analysts,detailed,2680,27
+17506,15-2041,Statisticians,detailed,920,27
+17507,15-2098,"Data Scientists and Mathematical Science Occupations, All Other",detailed,600,27
+17508,17-1011,"Architects, Except Landscape and Naval",detailed,1660,27
+17509,17-1012,Landscape Architects,detailed,470,27
+17510,17-1021,Cartographers and Photogrammetrists,detailed,430,27
+17511,17-1022,Surveyors,detailed,900,27
+17512,17-2011,Aerospace Engineers,detailed,220,27
+17513,17-2031,Bioengineers and Biomedical Engineers,detailed,1310,27
+17514,17-2041,Chemical Engineers,detailed,190,27
+17515,17-2051,Civil Engineers,detailed,6260,27
+17516,17-2061,Computer Hardware Engineers,detailed,610,27
+17517,17-2071,Electrical Engineers,detailed,3930,27
+17518,17-2072,"Electronics Engineers, Except Computer",detailed,1050,27
+17519,17-2081,Environmental Engineers,detailed,870,27
+17520,17-2111,"Health and Safety Engineers, Except Mining Safety Engineers and Inspectors",detailed,450,27
+17521,17-2112,Industrial Engineers,detailed,9950,27
+17522,17-2131,Materials Engineers,detailed,320,27
+17523,17-2141,Mechanical Engineers,detailed,7480,27
+17524,17-2151,"Mining and Geological Engineers, Including Mining Safety Engineers",detailed,50,27
+17525,17-2161,Nuclear Engineers,detailed,180,27
+17526,17-2171,Petroleum Engineers,detailed,50,27
+17527,17-2199,"Engineers, All Other",detailed,2190,27
+17528,17-3011,Architectural and Civil Drafters,detailed,1970,27
+17529,17-3012,Electrical and Electronics Drafters,detailed,310,27
+17530,17-3013,Mechanical Drafters,detailed,1690,27
+17531,17-3019,"Drafters, All Other",detailed,640,27
+17532,17-3022,Civil Engineering Technologists and Technicians,detailed,2220,27
+17533,17-3023,Electrical and Electronic Engineering Technologists and Technicians,detailed,1960,27
+17534,17-3024,Electro-Mechanical and Mechatronics Technologists and Technicians,detailed,510,27
+17535,17-3025,Environmental Engineering Technologists and Technicians,detailed,350,27
+17536,17-3026,Industrial Engineering Technologists and Technicians,detailed,3500,27
+17537,17-3027,Mechanical Engineering Technologists and Technicians,detailed,1330,27
+17538,17-3031,Surveying and Mapping Technicians,detailed,750,27
+17539,17-3098,"Calibration Technologists and Technicians and Engineering Technologists and Technicians, Except Drafters, All Other",detailed,1610,27
+17540,19-1011,Animal Scientists,detailed,200,27
+17541,19-1012,Food Scientists and Technologists,detailed,630,27
+17542,19-1013,Soil and Plant Scientists,detailed,650,27
+17543,19-1021,Biochemists and Biophysicists,detailed,900,27
+17544,19-1022,Microbiologists,detailed,370,27
+17545,19-1023,Zoologists and Wildlife Biologists,detailed,690,27
+17546,19-1029,"Biological Scientists, All Other",detailed,270,27
+17547,19-1031,Conservation Scientists,detailed,630,27
+17548,19-1032,Foresters,detailed,330,27
+17549,19-1041,Epidemiologists,detailed,240,27
+17550,19-1042,"Medical Scientists, Except Epidemiologists",detailed,2910,27
+17551,19-1099,"Life Scientists, All Other",detailed,120,27
+17552,19-2012,Physicists,detailed,160,27
+17553,19-2021,Atmospheric and Space Scientists,detailed,240,27
+17554,19-2031,Chemists,detailed,1910,27
+17555,19-2032,Materials Scientists,detailed,60,27
+17556,19-2041,"Environmental Scientists and Specialists, Including Health",detailed,1800,27
+17557,19-2042,"Geoscientists, Except Hydrologists and Geographers",detailed,230,27
+17558,19-2043,Hydrologists,detailed,300,27
+17559,19-3011,Economists,detailed,160,27
+17560,19-3022,Survey Researchers,detailed,490,27
+17561,19-3031,"Clinical, Counseling, and School Psychologists",detailed,2850,27
+17562,19-3039,"Psychologists, All Other",detailed,430,27
+17563,19-3041,Sociologists,detailed,60,27
+17564,19-3051,Urban and Regional Planners,detailed,950,27
+17565,19-3091,Anthropologists and Archeologists,detailed,30,27
+17566,19-3092,Geographers,detailed,50,27
+17567,19-3099,"Social Scientists and Related Workers, All Other",detailed,500,27
+17568,19-4010,Agricultural and Food Science Technicians,detailed,870,27
+17569,19-4021,Biological Technicians,detailed,660,27
+17570,19-4031,Chemical Technicians,detailed,1580,27
+17571,19-4042,"Environmental Science and Protection Technicians, Including Health",detailed,360,27
+17572,19-4045,Geological and Hydrologic Technicians,detailed,40,27
+17573,19-4061,Social Science Research Assistants,detailed,**,27
+17574,19-4071,Forest and Conservation Technicians,detailed,700,27
+17575,19-4092,Forensic Science Technicians,detailed,90,27
+17576,19-4099,"Life, Physical, and Social Science Technicians, All Other",detailed,630,27
+17577,19-5011,Occupational Health and Safety Specialists,detailed,1910,27
+17578,19-5012,Occupational Health and Safety Technicians,detailed,190,27
+17579,21-1012,"Educational, Guidance, and Career Counselors and Advisors",detailed,4610,27
+17580,21-1013,Marriage and Family Therapists,detailed,1380,27
+17581,21-1015,Rehabilitation Counselors,detailed,3490,27
+17582,21-1018,"Substance Abuse, Behavioral Disorder, and Mental Health Counselors",detailed,7750,27
+17583,21-1019,"Counselors, All Other",detailed,450,27
+17584,21-1021,"Child, Family, and School Social Workers",detailed,8430,27
+17585,21-1022,Healthcare Social Workers,detailed,4390,27
+17586,21-1023,Mental Health and Substance Abuse Social Workers,detailed,2490,27
+17587,21-1029,"Social Workers, All Other",detailed,1030,27
+17588,21-1091,Health Education Specialists,detailed,2170,27
+17589,21-1092,Probation Officers and Correctional Treatment Specialists,detailed,1580,27
+17590,21-1093,Social and Human Service Assistants,detailed,12970,27
+17591,21-1094,Community Health Workers,detailed,1370,27
+17592,21-1099,"Community and Social Service Specialists, All Other",detailed,3180,27
+17593,21-2011,Clergy,detailed,1360,27
+17594,21-2021,"Directors, Religious Activities and Education",detailed,380,27
+17595,21-2099,"Religious Workers, All Other",detailed,170,27
+17596,23-1011,Lawyers,detailed,11420,27
+17597,23-1012,Judicial Law Clerks,detailed,400,27
+17598,23-1021,"Administrative Law Judges, Adjudicators, and Hearing Officers",detailed,170,27
+17599,23-1023,"Judges, Magistrate Judges, and Magistrates",detailed,550,27
+17600,23-2011,Paralegals and Legal Assistants,detailed,5580,27
+17601,23-2093,"Title Examiners, Abstractors, and Searchers",detailed,1600,27
+17602,23-2099,"Legal Support Workers, All Other",detailed,300,27
+17603,25-1011,"Business Teachers, Postsecondary",detailed,1250,27
+17604,25-1021,"Computer Science Teachers, Postsecondary",detailed,390,27
+17605,25-1022,"Mathematical Science Teachers, Postsecondary",detailed,760,27
+17606,25-1032,"Engineering Teachers, Postsecondary",detailed,570,27
+17607,25-1042,"Biological Science Teachers, Postsecondary",detailed,780,27
+17608,25-1051,"Atmospheric, Earth, Marine, and Space Sciences Teachers, Postsecondary",detailed,100,27
+17609,25-1052,"Chemistry Teachers, Postsecondary",detailed,390,27
+17610,25-1053,"Environmental Science Teachers, Postsecondary",detailed,80,27
+17611,25-1054,"Physics Teachers, Postsecondary",detailed,250,27
+17612,25-1061,"Anthropology and Archeology Teachers, Postsecondary",detailed,80,27
+17613,25-1062,"Area, Ethnic, and Cultural Studies Teachers, Postsecondary",detailed,260,27
+17614,25-1063,"Economics Teachers, Postsecondary",detailed,300,27
+17615,25-1064,"Geography Teachers, Postsecondary",detailed,100,27
+17616,25-1065,"Political Science Teachers, Postsecondary",detailed,230,27
+17617,25-1066,"Psychology Teachers, Postsecondary",detailed,700,27
+17618,25-1067,"Sociology Teachers, Postsecondary",detailed,280,27
+17619,25-1069,"Social Sciences Teachers, Postsecondary, All Other",detailed,90,27
+17620,25-1071,"Health Specialties Teachers, Postsecondary",detailed,3920,27
+17621,25-1072,"Nursing Instructors and Teachers, Postsecondary",detailed,1250,27
+17622,25-1081,"Education Teachers, Postsecondary",detailed,1020,27
+17623,25-1082,"Library Science Teachers, Postsecondary",detailed,110,27
+17624,25-1111,"Criminal Justice and Law Enforcement Teachers, Postsecondary",detailed,160,27
+17625,25-1112,"Law Teachers, Postsecondary",detailed,**,27
+17626,25-1113,"Social Work Teachers, Postsecondary",detailed,490,27
+17627,25-1121,"Art, Drama, and Music Teachers, Postsecondary",detailed,1610,27
+17628,25-1122,"Communications Teachers, Postsecondary",detailed,560,27
+17629,25-1123,"English Language and Literature Teachers, Postsecondary",detailed,1040,27
+17630,25-1124,"Foreign Language and Literature Teachers, Postsecondary",detailed,460,27
+17631,25-1125,"History Teachers, Postsecondary",detailed,330,27
+17632,25-1126,"Philosophy and Religion Teachers, Postsecondary",detailed,600,27
+17633,25-1193,"Recreation and Fitness Studies Teachers, Postsecondary",detailed,340,27
+17634,25-1194,"Career/Technical Education Teachers, Postsecondary",detailed,2570,27
+17635,25-1199,"Postsecondary Teachers, All Other",detailed,560,27
+17636,25-2011,"Preschool Teachers, Except Special Education",detailed,9180,27
+17637,25-2012,"Kindergarten Teachers, Except Special Education",detailed,3590,27
+17638,25-2021,"Elementary School Teachers, Except Special Education",detailed,22420,27
+17639,25-2022,"Middle School Teachers, Except Special and Career/Technical Education",detailed,9730,27
+17640,25-2023,"Career/Technical Education Teachers, Middle School",detailed,220,27
+17641,25-2031,"Secondary School Teachers, Except Special and Career/Technical Education",detailed,20130,27
+17642,25-2032,"Career/Technical Education Teachers, Secondary School",detailed,1080,27
+17643,25-2051,"Special Education Teachers, Preschool",detailed,1020,27
+17644,25-2052,"Special Education Teachers, Kindergarten and Elementary School",detailed,4170,27
+17645,25-2057,"Special Education Teachers, Middle School",detailed,1610,27
+17646,25-2058,"Special Education Teachers, Secondary School",detailed,5000,27
+17647,25-2059,"Special Education Teachers, All Other",detailed,730,27
+17648,25-3011,"Adult Basic Education, Adult Secondary Education, and English as a Second Language Instructors",detailed,800,27
+17649,25-3021,Self-Enrichment Teachers,detailed,8060,27
+17650,25-3031,"Substitute Teachers, Short-Term",detailed,5850,27
+17651,25-3097,"Tutors and Teachers and Instructors, All Other",detailed,3220,27
+17652,25-4011,Archivists,detailed,**,27
+17653,25-4012,Curators,detailed,280,27
+17654,25-4013,Museum Technicians and Conservators,detailed,220,27
+17655,25-4022,Librarians and Media Collections Specialists,detailed,2320,27
+17656,25-4031,Library Technicians,detailed,1210,27
+17657,25-9021,Farm and Home Management Educators,detailed,180,27
+17658,25-9031,Instructional Coordinators,detailed,3860,27
+17659,25-9044,"Teaching Assistants, Postsecondary",detailed,**,27
+17660,25-9045,"Teaching Assistants, Except Postsecondary",detailed,36020,27
+17661,25-9099,"Educational Instruction and Library Workers, All Other",detailed,1170,27
+17662,27-1011,Art Directors,detailed,1000,27
+17663,27-1012,Craft Artists,detailed,90,27
+17664,27-1013,"Fine Artists, Including Painters, Sculptors, and Illustrators",detailed,**,27
+17665,27-1014,Special Effects Artists and Animators,detailed,220,27
+17666,27-1019,"Artists and Related Workers, All Other",detailed,**,27
+17667,27-1021,Commercial and Industrial Designers,detailed,590,27
+17668,27-1022,Fashion Designers,detailed,170,27
+17669,27-1023,Floral Designers,detailed,660,27
+17670,27-1024,Graphic Designers,detailed,5900,27
+17671,27-1025,Interior Designers,detailed,1800,27
+17672,27-1026,Merchandise Displayers and Window Trimmers,detailed,2610,27
+17673,27-1027,Set and Exhibit Designers,detailed,130,27
+17674,27-1029,"Designers, All Other",detailed,290,27
+17675,27-2011,Actors,detailed,420,27
+17676,27-2012,Producers and Directors,detailed,1360,27
+17677,27-2021,Athletes and Sports Competitors,detailed,60,27
+17678,27-2022,Coaches and Scouts,detailed,4880,27
+17679,27-2023,"Umpires, Referees, and Other Sports Officials",detailed,450,27
+17680,27-2032,Choreographers,detailed,420,27
+17681,27-2041,Music Directors and Composers,detailed,140,27
+17682,27-2042,Musicians and Singers,detailed,480,27
+17683,27-2090,"Miscellaneous Entertainers and Performers, Sports and Related Workers",detailed,140,27
+17684,27-3011,Broadcast Announcers and Radio Disc Jockeys,detailed,810,27
+17685,27-3023,"News Analysts, Reporters, and Journalists",detailed,980,27
+17686,27-3031,Public Relations Specialists,detailed,5780,27
+17687,27-3041,Editors,detailed,1600,27
+17688,27-3042,Technical Writers,detailed,1250,27
+17689,27-3043,Writers and Authors,detailed,860,27
+17690,27-3091,Interpreters and Translators,detailed,1600,27
+17691,27-3092,Court Reporters and Simultaneous Captioners,detailed,280,27
+17692,27-3099,"Media and Communication Workers, All Other",detailed,250,27
+17693,27-4011,Audio and Video Technicians,detailed,1070,27
+17694,27-4012,Broadcast Technicians,detailed,430,27
+17695,27-4014,Sound Engineering Technicians,detailed,150,27
+17696,27-4021,Photographers,detailed,730,27
+17697,27-4031,"Camera Operators, Television, Video, and Film",detailed,180,27
+17698,27-4032,Film and Video Editors,detailed,190,27
+17699,27-4098,"Lighting Technicians and Media and Communication Equipment Workers, All Other",detailed,160,27
+17700,29-1011,Chiropractors,detailed,1170,27
+17701,29-1021,"Dentists, General",detailed,1800,27
+17702,29-1023,Orthodontists,detailed,**,27
+17703,29-1029,"Dentists, All Other Specialists",detailed,120,27
+17704,29-1031,Dietitians and Nutritionists,detailed,1140,27
+17705,29-1041,Optometrists,detailed,900,27
+17706,29-1051,Pharmacists,detailed,6520,27
+17707,29-1071,Physician Assistants,detailed,2360,27
+17708,29-1081,Podiatrists,detailed,150,27
+17709,29-1122,Occupational Therapists,detailed,3020,27
+17710,29-1123,Physical Therapists,detailed,4670,27
+17711,29-1124,Radiation Therapists,detailed,390,27
+17712,29-1125,Recreational Therapists,detailed,410,27
+17713,29-1126,Respiratory Therapists,detailed,1840,27
+17714,29-1127,Speech-Language Pathologists,detailed,3240,27
+17715,29-1128,Exercise Physiologists,detailed,250,27
+17716,29-1129,"Therapists, All Other",detailed,200,27
+17717,29-1131,Veterinarians,detailed,1460,27
+17718,29-1141,Registered Nurses,detailed,71000,27
+17719,29-1151,Nurse Anesthetists,detailed,1900,27
+17720,29-1161,Nurse Midwives,detailed,220,27
+17721,29-1171,Nurse Practitioners,detailed,3970,27
+17722,29-1181,Audiologists,detailed,260,27
+17723,29-1211,Anesthesiologists,detailed,370,27
+17724,29-1215,Family Medicine Physicians,detailed,2790,27
+17725,29-1216,General Internal Medicine Physicians,detailed,1390,27
+17726,29-1218,Obstetricians and Gynecologists,detailed,660,27
+17727,29-1221,"Pediatricians, General",detailed,**,27
+17728,29-1223,Psychiatrists,detailed,530,27
+17729,29-1228,"Physicians, All Other; and Ophthalmologists, Except Pediatric",detailed,9130,27
+17730,29-1248,"Surgeons, Except Ophthalmologists",detailed,950,27
+17731,29-1292,Dental Hygienists,detailed,5070,27
+17732,29-1298,"Acupuncturists and Healthcare Diagnosing or Treating Practitioners, All Other",detailed,840,27
+17733,29-2010,Clinical Laboratory Technologists and Technicians,detailed,6820,27
+17734,29-2031,Cardiovascular Technologists and Technicians,detailed,1420,27
+17735,29-2032,Diagnostic Medical Sonographers,detailed,1190,27
+17736,29-2033,Nuclear Medicine Technologists,detailed,240,27
+17737,29-2034,Radiologic Technologists and Technicians,detailed,4690,27
+17738,29-2035,Magnetic Resonance Imaging Technologists,detailed,510,27
+17739,29-2040,Emergency Medical Technicians and Paramedics,detailed,5390,27
+17740,29-2051,Dietetic Technicians,detailed,210,27
+17741,29-2052,Pharmacy Technicians,detailed,8120,27
+17742,29-2053,Psychiatric Technicians,detailed,**,27
+17743,29-2055,Surgical Technologists,detailed,2460,27
+17744,29-2056,Veterinary Technologists and Technicians,detailed,3000,27
+17745,29-2057,Ophthalmic Medical Technicians,detailed,1150,27
+17746,29-2061,Licensed Practical and Licensed Vocational Nurses,detailed,15210,27
+17747,29-2081,"Opticians, Dispensing",detailed,2000,27
+17748,29-2091,Orthotists and Prosthetists,detailed,130,27
+17749,29-2092,Hearing Aid Specialists,detailed,**,27
+17750,29-2098,"Medical Dosimetrists, Medical Records Specialists, and Health Technologists and Technicians, All Other",detailed,5760,27
+17751,29-9091,Athletic Trainers,detailed,720,27
+17752,29-9092,Genetic Counselors,detailed,**,27
+17753,29-9098,"Health Information Technologists, Medical Registrars, Surgical Assistants, and Healthcare Practitioners and Technical Workers, All Other",detailed,660,27
+17754,31-1120,Home Health and Personal Care Aides,detailed,103830,27
+17755,31-1131,Nursing Assistants,detailed,30350,27
+17756,31-1132,Orderlies,detailed,700,27
+17757,31-1133,Psychiatric Aides,detailed,900,27
+17758,31-2011,Occupational Therapy Assistants,detailed,690,27
+17759,31-2012,Occupational Therapy Aides,detailed,40,27
+17760,31-2021,Physical Therapist Assistants,detailed,1590,27
+17761,31-2022,Physical Therapist Aides,detailed,280,27
+17762,31-9011,Massage Therapists,detailed,2180,27
+17763,31-9091,Dental Assistants,detailed,5740,27
+17764,31-9092,Medical Assistants,detailed,9950,27
+17765,31-9093,Medical Equipment Preparers,detailed,1310,27
+17766,31-9094,Medical Transcriptionists,detailed,530,27
+17767,31-9095,Pharmacy Aides,detailed,240,27
+17768,31-9096,Veterinary Assistants and Laboratory Animal Caretakers,detailed,1290,27
+17769,31-9097,Phlebotomists,detailed,1610,27
+17770,31-9099,"Healthcare Support Workers, All Other",detailed,1940,27
+17771,33-1011,First-Line Supervisors of Correctional Officers,detailed,450,27
+17772,33-1012,First-Line Supervisors of Police and Detectives,detailed,1510,27
+17773,33-1021,First-Line Supervisors of Firefighting and Prevention Workers,detailed,680,27
+17774,33-1090,"Miscellaneous First-Line Supervisors, Protective Service Workers",detailed,1060,27
+17775,33-2011,Firefighters,detailed,7390,27
+17776,33-2021,Fire Inspectors and Investigators,detailed,120,27
+17777,33-3011,Bailiffs,detailed,160,27
+17778,33-3012,Correctional Officers and Jailers,detailed,4860,27
+17779,33-3021,Detectives and Criminal Investigators,detailed,1390,27
+17780,33-3031,Fish and Game Wardens,detailed,140,27
+17781,33-3041,Parking Enforcement Workers,detailed,40,27
+17782,33-3051,Police and Sheriff's Patrol Officers,detailed,9820,27
+17783,33-3052,Transit and Railroad Police,detailed,**,27
+17784,33-9011,Animal Control Workers,detailed,40,27
+17785,33-9031,Gambling Surveillance Officers and Gambling Investigators,detailed,220,27
+17786,33-9032,Security Guards,detailed,10890,27
+17787,33-9091,Crossing Guards and Flaggers,detailed,120,27
+17788,33-9092,"Lifeguards, Ski Patrol, and Other Recreational Protective Service Workers",detailed,3020,27
+17789,33-9098,"School Bus Monitors and Protective Service Workers, All Other",detailed,1780,27
+17790,35-1011,Chefs and Head Cooks,detailed,1600,27
+17791,35-1012,First-Line Supervisors of Food Preparation and Serving Workers,detailed,17270,27
+17792,35-2011,"Cooks, Fast Food",detailed,3870,27
+17793,35-2012,"Cooks, Institution and Cafeteria",detailed,7650,27
+17794,35-2014,"Cooks, Restaurant",detailed,29240,27
+17795,35-2015,"Cooks, Short Order",detailed,960,27
+17796,35-2019,"Cooks, All Other",detailed,280,27
+17797,35-2021,Food Preparation Workers,detailed,8950,27
+17798,35-3011,Bartenders,detailed,17970,27
+17799,35-3023,Fast Food and Counter Workers,detailed,78860,27
+17800,35-3031,Waiters and Waitresses,detailed,47340,27
+17801,35-3041,"Food Servers, Nonrestaurant",detailed,9950,27
+17802,35-9011,Dining Room and Cafeteria Attendants and Bartender Helpers,detailed,4750,27
+17803,35-9021,Dishwashers,detailed,8170,27
+17804,35-9031,"Hosts and Hostesses, Restaurant, Lounge, and Coffee Shop",detailed,7080,27
+17805,35-9099,"Food Preparation and Serving Related Workers, All Other",detailed,360,27
+17806,37-1011,First-Line Supervisors of Housekeeping and Janitorial Workers,detailed,2010,27
+17807,37-1012,"First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers",detailed,2010,27
+17808,37-2011,"Janitors and Cleaners, Except Maids and Housekeeping Cleaners",detailed,44880,27
+17809,37-2012,Maids and Housekeeping Cleaners,detailed,17120,27
+17810,37-2019,"Building Cleaning Workers, All Other",detailed,**,27
+17811,37-2021,Pest Control Workers,detailed,490,27
+17812,37-3011,Landscaping and Groundskeeping Workers,detailed,15130,27
+17813,37-3012,"Pesticide Handlers, Sprayers, and Applicators, Vegetation",detailed,1480,27
+17814,37-3013,Tree Trimmers and Pruners,detailed,530,27
+17815,37-3019,"Grounds Maintenance Workers, All Other",detailed,170,27
+17816,39-1013,First-Line Supervisors of Gambling Services Workers,detailed,750,27
+17817,39-1098,"First-Line Supervisors of Personal Service and Entertainment and Recreation Workers, Except Gambling Services",detailed,4330,27
+17818,39-2011,Animal Trainers,detailed,330,27
+17819,39-2021,Animal Caretakers,detailed,3250,27
+17820,39-3011,Gambling Dealers,detailed,1990,27
+17821,39-3012,Gambling and Sports Book Writers and Runners,detailed,940,27
+17822,39-3019,"Gambling Service Workers, All Other",detailed,420,27
+17823,39-3021,Motion Picture Projectionists,detailed,**,27
+17824,39-3031,"Ushers, Lobby Attendants, and Ticket Takers",detailed,3050,27
+17825,39-3091,Amusement and Recreation Attendants,detailed,7840,27
+17826,39-3092,Costume Attendants,detailed,210,27
+17827,39-3093,"Locker Room, Coatroom, and Dressing Room Attendants",detailed,230,27
+17828,39-4021,Funeral Attendants,detailed,500,27
+17829,39-4031,"Morticians, Undertakers, and Funeral Arrangers",detailed,330,27
+17830,39-5011,Barbers,detailed,**,27
+17831,39-5012,"Hairdressers, Hairstylists, and Cosmetologists",detailed,9630,27
+17832,39-5092,Manicurists and Pedicurists,detailed,2110,27
+17833,39-5094,Skincare Specialists,detailed,580,27
+17834,39-6011,Baggage Porters and Bellhops,detailed,660,27
+17835,39-6012,Concierges,detailed,540,27
+17836,39-7010,Tour and Travel Guides,detailed,960,27
+17837,39-9011,Childcare Workers,detailed,12150,27
+17838,39-9031,Exercise Trainers and Group Fitness Instructors,detailed,6490,27
+17839,39-9032,Recreation Workers,detailed,8640,27
+17840,39-9041,Residential Advisors,detailed,2560,27
+17841,39-9098,"Crematory Operators and Personal Care and Service Workers, All Other",detailed,880,27
+17842,41-1011,First-Line Supervisors of Retail Sales Workers,detailed,19370,27
+17843,41-1012,First-Line Supervisors of Non-Retail Sales Workers,detailed,3470,27
+17844,41-2011,Cashiers,detailed,69350,27
+17845,41-2012,Gambling Change Persons and Booth Cashiers,detailed,560,27
+17846,41-2021,Counter and Rental Clerks,detailed,4740,27
+17847,41-2022,Parts Salespersons,detailed,5260,27
+17848,41-2031,Retail Salespersons,detailed,84960,27
+17849,41-3011,Advertising Sales Agents,detailed,2500,27
+17850,41-3021,Insurance Sales Agents,detailed,8090,27
+17851,41-3031,"Securities, Commodities, and Financial Services Sales Agents",detailed,9240,27
+17852,41-3041,Travel Agents,detailed,1060,27
+17853,41-3091,"Sales Representatives of Services, Except Advertising, Insurance, Financial Services, and Travel",detailed,21380,27
+17854,41-4011,"Sales Representatives, Wholesale and Manufacturing, Technical and Scientific Products",detailed,5830,27
+17855,41-4012,"Sales Representatives, Wholesale and Manufacturing, Except Technical and Scientific Products",detailed,33470,27
+17856,41-9011,Demonstrators and Product Promoters,detailed,380,27
+17857,41-9021,Real Estate Brokers,detailed,370,27
+17858,41-9022,Real Estate Sales Agents,detailed,2540,27
+17859,41-9031,Sales Engineers,detailed,1060,27
+17860,41-9041,Telemarketers,detailed,1640,27
+17861,41-9099,"Sales and Related Workers, All Other",detailed,1740,27
+17862,43-1011,First-Line Supervisors of Office and Administrative Support Workers,detailed,21470,27
+17863,43-2011,"Switchboard Operators, Including Answering Service",detailed,760,27
+17864,43-2021,Telephone Operators,detailed,**,27
+17865,43-3011,Bill and Account Collectors,detailed,4120,27
+17866,43-3021,Billing and Posting Clerks,detailed,7770,27
+17867,43-3031,"Bookkeeping, Accounting, and Auditing Clerks",detailed,29260,27
+17868,43-3041,Gambling Cage Workers,detailed,240,27
+17869,43-3051,Payroll and Timekeeping Clerks,detailed,2480,27
+17870,43-3061,Procurement Clerks,detailed,1120,27
+17871,43-3071,Tellers,detailed,8590,27
+17872,43-3099,"Financial Clerks, All Other",detailed,930,27
+17873,43-4011,Brokerage Clerks,detailed,2050,27
+17874,43-4031,"Court, Municipal, and License Clerks",detailed,7290,27
+17875,43-4041,"Credit Authorizers, Checkers, and Clerks",detailed,570,27
+17876,43-4051,Customer Service Representatives,detailed,60340,27
+17877,43-4061,"Eligibility Interviewers, Government Programs",detailed,**,27
+17878,43-4071,File Clerks,detailed,1090,27
+17879,43-4081,"Hotel, Motel, and Resort Desk Clerks",detailed,5280,27
+17880,43-4111,"Interviewers, Except Eligibility and Loan",detailed,3400,27
+17881,43-4121,"Library Assistants, Clerical",detailed,2370,27
+17882,43-4131,Loan Interviewers and Clerks,detailed,5760,27
+17883,43-4141,New Accounts Clerks,detailed,980,27
+17884,43-4151,Order Clerks,detailed,2550,27
+17885,43-4161,"Human Resources Assistants, Except Payroll and Timekeeping",detailed,3170,27
+17886,43-4171,Receptionists and Information Clerks,detailed,16900,27
+17887,43-4181,Reservation and Transportation Ticket Agents and Travel Clerks,detailed,2430,27
+17888,43-4199,"Information and Record Clerks, All Other",detailed,1590,27
+17889,43-5011,Cargo and Freight Agents,detailed,1610,27
+17890,43-5021,Couriers and Messengers,detailed,660,27
+17891,43-5031,Public Safety Telecommunicators,detailed,1550,27
+17892,43-5032,"Dispatchers, Except Police, Fire, and Ambulance",detailed,4290,27
+17893,43-5041,"Meter Readers, Utilities",detailed,180,27
+17894,43-5051,Postal Service Clerks,detailed,1530,27
+17895,43-5052,Postal Service Mail Carriers,detailed,6250,27
+17896,43-5053,"Postal Service Mail Sorters, Processors, and Processing Machine Operators",detailed,2140,27
+17897,43-5061,"Production, Planning, and Expediting Clerks",detailed,5580,27
+17898,43-5071,"Shipping, Receiving, and Inventory Clerks",detailed,14020,27
+17899,43-5111,"Weighers, Measurers, Checkers, and Samplers, Recordkeeping",detailed,710,27
+17900,43-6011,Executive Secretaries and Executive Administrative Assistants,detailed,10720,27
+17901,43-6012,Legal Secretaries and Administrative Assistants,detailed,3390,27
+17902,43-6013,Medical Secretaries and Administrative Assistants,detailed,13790,27
+17903,43-6014,"Secretaries and Administrative Assistants, Except Legal, Medical, and Executive",detailed,32660,27
+17904,43-9021,Data Entry Keyers,detailed,2030,27
+17905,43-9022,Word Processors and Typists,detailed,320,27
+17906,43-9031,Desktop Publishers,detailed,410,27
+17907,43-9041,Insurance Claims and Policy Processing Clerks,detailed,6790,27
+17908,43-9051,"Mail Clerks and Mail Machine Operators, Except Postal Service",detailed,2450,27
+17909,43-9061,"Office Clerks, General",detailed,52080,27
+17910,43-9071,"Office Machine Operators, Except Computer",detailed,1300,27
+17911,43-9081,Proofreaders and Copy Markers,detailed,270,27
+17912,43-9111,Statistical Assistants,detailed,50,27
+17913,43-9199,"Office and Administrative Support Workers, All Other",detailed,3650,27
+17914,45-1011,"First-Line Supervisors of Farming, Fishing, and Forestry Workers",detailed,220,27
+17915,45-2011,Agricultural Inspectors,detailed,370,27
+17916,45-2041,"Graders and Sorters, Agricultural Products",detailed,350,27
+17917,45-2091,Agricultural Equipment Operators,detailed,780,27
+17918,45-2092,"Farmworkers and Laborers, Crop, Nursery, and Greenhouse",detailed,940,27
+17919,45-2093,"Farmworkers, Farm, Ranch, and Aquacultural Animals",detailed,730,27
+17920,45-2099,"Agricultural Workers, All Other",detailed,**,27
+17921,45-4011,Forest and Conservation Workers,detailed,40,27
+17922,45-4021,Fallers,detailed,**,27
+17923,45-4022,Logging Equipment Operators,detailed,360,27
+17924,47-1011,First-Line Supervisors of Construction Trades and Extraction Workers,detailed,6680,27
+17925,47-2011,Boilermakers,detailed,40,27
+17926,47-2021,Brickmasons and Blockmasons,detailed,2150,27
+17927,47-2022,Stonemasons,detailed,100,27
+17928,47-2031,Carpenters,detailed,18330,27
+17929,47-2041,Carpet Installers,detailed,670,27
+17930,47-2042,"Floor Layers, Except Carpet, Wood, and Hard Tiles",detailed,**,27
+17931,47-2044,Tile and Stone Setters,detailed,650,27
+17932,47-2051,Cement Masons and Concrete Finishers,detailed,4170,27
+17933,47-2061,Construction Laborers,detailed,12400,27
+17934,47-2071,"Paving, Surfacing, and Tamping Equipment Operators",detailed,840,27
+17935,47-2072,Pile Driver Operators,detailed,70,27
+17936,47-2073,Operating Engineers and Other Construction Equipment Operators,detailed,10240,27
+17937,47-2081,Drywall and Ceiling Tile Installers,detailed,1070,27
+17938,47-2082,Tapers,detailed,480,27
+17939,47-2111,Electricians,detailed,10530,27
+17940,47-2121,Glaziers,detailed,1090,27
+17941,47-2131,"Insulation Workers, Floor, Ceiling, and Wall",detailed,850,27
+17942,47-2132,"Insulation Workers, Mechanical",detailed,740,27
+17943,47-2141,"Painters, Construction and Maintenance",detailed,4000,27
+17944,47-2151,Pipelayers,detailed,720,27
+17945,47-2152,"Plumbers, Pipefitters, and Steamfitters",detailed,9950,27
+17946,47-2161,Plasterers and Stucco Masons,detailed,320,27
+17947,47-2171,Reinforcing Iron and Rebar Workers,detailed,280,27
+17948,47-2181,Roofers,detailed,1910,27
+17949,47-2211,Sheet Metal Workers,detailed,2860,27
+17950,47-2221,Structural Iron and Steel Workers,detailed,830,27
+17951,47-3011,"Helpers--Brickmasons, Blockmasons, Stonemasons, and Tile and Marble Setters",detailed,300,27
+17952,47-3012,Helpers--Carpenters,detailed,490,27
+17953,47-3013,Helpers--Electricians,detailed,80,27
+17954,47-3014,"Helpers--Painters, Paperhangers, Plasterers, and Stucco Masons",detailed,160,27
+17955,47-3015,"Helpers--Pipelayers, Plumbers, Pipefitters, and Steamfitters",detailed,190,27
+17956,47-3019,"Helpers, Construction Trades, All Other",detailed,180,27
+17957,47-4011,Construction and Building Inspectors,detailed,1310,27
+17958,47-4021,Elevator and Escalator Installers and Repairers,detailed,420,27
+17959,47-4031,Fence Erectors,detailed,290,27
+17960,47-4041,Hazardous Materials Removal Workers,detailed,590,27
+17961,47-4051,Highway Maintenance Workers,detailed,5030,27
+17962,47-4061,Rail-Track Laying and Maintenance Equipment Operators,detailed,300,27
+17963,47-4071,Septic Tank Servicers and Sewer Pipe Cleaners,detailed,690,27
+17964,47-4090,Miscellaneous Construction and Related Workers,detailed,920,27
+17965,47-5022,"Excavating and Loading Machine and Dragline Operators, Surface Mining",detailed,430,27
+17966,47-5041,Continuous Mining Machine Operators,detailed,50,27
+17967,47-5051,"Rock Splitters, Quarry",detailed,130,27
+17968,47-5081,Helpers--Extraction Workers,detailed,50,27
+17969,47-5097,"Earth Drillers, Except Oil and Gas; and Explosives Workers, Ordnance Handling Experts, and Blasters",detailed,500,27
+17970,47-5098,"Underground Mining Machine Operators and Extraction Workers, All Other",detailed,410,27
+17971,49-1011,"First-Line Supervisors of Mechanics, Installers, and Repairers",detailed,7460,27
+17972,49-2011,"Computer, Automated Teller, and Office Machine Repairers",detailed,1980,27
+17973,49-2021,"Radio, Cellular, and Tower Equipment Installers and Repairers",detailed,180,27
+17974,49-2022,"Telecommunications Equipment Installers and Repairers, Except Line Installers",detailed,3550,27
+17975,49-2091,Avionics Technicians,detailed,160,27
+17976,49-2092,"Electric Motor, Power Tool, and Related Repairers",detailed,300,27
+17977,49-2093,"Electrical and Electronics Installers and Repairers, Transportation Equipment",detailed,**,27
+17978,49-2094,"Electrical and Electronics Repairers, Commercial and Industrial Equipment",detailed,1110,27
+17979,49-2095,"Electrical and Electronics Repairers, Powerhouse, Substation, and Relay",detailed,390,27
+17980,49-2096,"Electronic Equipment Installers and Repairers, Motor Vehicles",detailed,210,27
+17981,49-2097,Audiovisual Equipment Installers and Repairers,detailed,490,27
+17982,49-2098,Security and Fire Alarm Systems Installers,detailed,1240,27
+17983,49-3011,Aircraft Mechanics and Service Technicians,detailed,1830,27
+17984,49-3021,Automotive Body and Related Repairers,detailed,2570,27
+17985,49-3022,Automotive Glass Installers and Repairers,detailed,470,27
+17986,49-3023,Automotive Service Technicians and Mechanics,detailed,11830,27
+17987,49-3031,Bus and Truck Mechanics and Diesel Engine Specialists,detailed,7100,27
+17988,49-3041,Farm Equipment Mechanics and Service Technicians,detailed,1770,27
+17989,49-3042,"Mobile Heavy Equipment Mechanics, Except Engines",detailed,3310,27
+17990,49-3043,Rail Car Repairers,detailed,1190,27
+17991,49-3051,Motorboat Mechanics and Service Technicians,detailed,510,27
+17992,49-3052,Motorcycle Mechanics,detailed,410,27
+17993,49-3053,Outdoor Power Equipment and Other Small Engine Mechanics,detailed,750,27
+17994,49-3091,Bicycle Repairers,detailed,**,27
+17995,49-3092,Recreational Vehicle Service Technicians,detailed,400,27
+17996,49-3093,Tire Repairers and Changers,detailed,1800,27
+17997,49-9011,Mechanical Door Repairers,detailed,540,27
+17998,49-9012,"Control and Valve Installers and Repairers, Except Mechanical Door",detailed,690,27
+17999,49-9021,"Heating, Air Conditioning, and Refrigeration Mechanics and Installers",detailed,3920,27
+18000,49-9031,Home Appliance Repairers,detailed,770,27
+18001,49-9041,Industrial Machinery Mechanics,detailed,7050,27
+18002,49-9043,"Maintenance Workers, Machinery",detailed,490,27
+18003,49-9044,Millwrights,detailed,1090,27
+18004,49-9051,Electrical Power-Line Installers and Repairers,detailed,2520,27
+18005,49-9052,Telecommunications Line Installers and Repairers,detailed,1950,27
+18006,49-9061,Camera and Photographic Equipment Repairers,detailed,40,27
+18007,49-9062,Medical Equipment Repairers,detailed,1270,27
+18008,49-9063,Musical Instrument Repairers and Tuners,detailed,110,27
+18009,49-9069,"Precision Instrument and Equipment Repairers, All Other",detailed,180,27
+18010,49-9071,"Maintenance and Repair Workers, General",detailed,22750,27
+18011,49-9081,Wind Turbine Service Technicians,detailed,500,27
+18012,49-9091,"Coin, Vending, and Amusement Machine Servicers and Repairers",detailed,530,27
+18013,49-9094,Locksmiths and Safe Repairers,detailed,230,27
+18014,49-9096,Riggers,detailed,190,27
+18015,49-9097,Signal and Track Switch Repairers,detailed,80,27
+18016,49-9098,"Helpers--Installation, Maintenance, and Repair Workers",detailed,1070,27
+18017,49-9099,"Installation, Maintenance, and Repair Workers, All Other",detailed,2520,27
+18018,51-1011,First-Line Supervisors of Production and Operating Workers,detailed,12030,27
+18019,51-2021,"Coil Winders, Tapers, and Finishers",detailed,500,27
+18020,51-2028,"Electrical, Electronic, and Electromechanical Assemblers, Except Coil Winders, Tapers, and Finishers",detailed,8150,27
+18021,51-2041,Structural Metal Fabricators and Fitters,detailed,740,27
+18022,51-2051,Fiberglass Laminators and Fabricators,detailed,80,27
+18023,51-2090,Miscellaneous Assemblers and Fabricators,detailed,31730,27
+18024,51-3011,Bakers,detailed,3140,27
+18025,51-3021,Butchers and Meat Cutters,detailed,2440,27
+18026,51-3022,"Meat, Poultry, and Fish Cutters and Trimmers",detailed,4140,27
+18027,51-3023,Slaughterers and Meat Packers,detailed,5220,27
+18028,51-3091,"Food and Tobacco Roasting, Baking, and Drying Machine Operators and Tenders",detailed,430,27
+18029,51-3092,Food Batchmakers,detailed,3700,27
+18030,51-3093,Food Cooking Machine Operators and Tenders,detailed,380,27
+18031,51-3099,"Food Processing Workers, All Other",detailed,920,27
+18032,51-4021,"Extruding and Drawing Machine Setters, Operators, and Tenders, Metal and Plastic",detailed,1830,27
+18033,51-4022,"Forging Machine Setters, Operators, and Tenders, Metal and Plastic",detailed,220,27
+18034,51-4023,"Rolling Machine Setters, Operators, and Tenders, Metal and Plastic",detailed,720,27
+18035,51-4031,"Cutting, Punching, and Press Machine Setters, Operators, and Tenders, Metal and Plastic",detailed,5400,27
+18036,51-4032,"Drilling and Boring Machine Tool Setters, Operators, and Tenders, Metal and Plastic",detailed,320,27
+18037,51-4033,"Grinding, Lapping, Polishing, and Buffing Machine Tool Setters, Operators, and Tenders, Metal and Plastic",detailed,2720,27
+18038,51-4034,"Lathe and Turning Machine Tool Setters, Operators, and Tenders, Metal and Plastic",detailed,410,27
+18039,51-4035,"Milling and Planing Machine Setters, Operators, and Tenders, Metal and Plastic",detailed,140,27
+18040,51-4041,Machinists,detailed,10980,27
+18041,51-4051,Metal-Refining Furnace Operators and Tenders,detailed,420,27
+18042,51-4052,"Pourers and Casters, Metal",detailed,260,27
+18043,51-4061,"Model Makers, Metal and Plastic",detailed,60,27
+18044,51-4062,"Patternmakers, Metal and Plastic",detailed,80,27
+18045,51-4071,Foundry Mold and Coremakers,detailed,450,27
+18046,51-4072,"Molding, Coremaking, and Casting Machine Setters, Operators, and Tenders, Metal and Plastic",detailed,4070,27
+18047,51-4081,"Multiple Machine Tool Setters, Operators, and Tenders, Metal and Plastic",detailed,3060,27
+18048,51-4111,Tool and Die Makers,detailed,1840,27
+18049,51-4121,"Welders, Cutters, Solderers, and Brazers",detailed,10020,27
+18050,51-4122,"Welding, Soldering, and Brazing Machine Setters, Operators, and Tenders",detailed,1180,27
+18051,51-4191,"Heat Treating Equipment Setters, Operators, and Tenders, Metal and Plastic",detailed,340,27
+18052,51-4192,"Layout Workers, Metal and Plastic",detailed,**,27
+18053,51-4193,"Plating Machine Setters, Operators, and Tenders, Metal and Plastic",detailed,1010,27
+18054,51-4194,"Tool Grinders, Filers, and Sharpeners",detailed,100,27
+18055,51-4199,"Metal Workers and Plastic Workers, All Other",detailed,720,27
+18056,51-5111,Prepress Technicians and Workers,detailed,1190,27
+18057,51-5112,Printing Press Operators,detailed,6180,27
+18058,51-5113,Print Binding and Finishing Workers,detailed,2490,27
+18059,51-6011,Laundry and Dry-Cleaning Workers,detailed,3370,27
+18060,51-6021,"Pressers, Textile, Garment, and Related Materials",detailed,550,27
+18061,51-6031,Sewing Machine Operators,detailed,1900,27
+18062,51-6041,Shoe and Leather Workers and Repairers,detailed,**,27
+18063,51-6051,"Sewers, Hand",detailed,60,27
+18064,51-6052,"Tailors, Dressmakers, and Custom Sewers",detailed,280,27
+18065,51-6061,Textile Bleaching and Dyeing Machine Operators and Tenders,detailed,30,27
+18066,51-6062,"Textile Cutting Machine Setters, Operators, and Tenders",detailed,160,27
+18067,51-6063,"Textile Knitting and Weaving Machine Setters, Operators, and Tenders",detailed,100,27
+18068,51-6064,"Textile Winding, Twisting, and Drawing Out Machine Setters, Operators, and Tenders",detailed,40,27
+18069,51-6092,Fabric and Apparel Patternmakers,detailed,**,27
+18070,51-6093,Upholsterers,detailed,200,27
+18071,51-6099,"Textile, Apparel, and Furnishings Workers, All Other",detailed,**,27
+18072,51-7011,Cabinetmakers and Bench Carpenters,detailed,3040,27
+18073,51-7021,Furniture Finishers,detailed,560,27
+18074,51-7041,"Sawing Machine Setters, Operators, and Tenders, Wood",detailed,670,27
+18075,51-7042,"Woodworking Machine Setters, Operators, and Tenders, Except Sawing",detailed,**,27
+18076,51-7099,"Woodworkers, All Other",detailed,**,27
+18077,51-8012,Power Distributors and Dispatchers,detailed,180,27
+18078,51-8013,Power Plant Operators,detailed,930,27
+18079,51-8021,Stationary Engineers and Boiler Operators,detailed,1520,27
+18080,51-8031,Water and Wastewater Treatment Plant and System Operators,detailed,3130,27
+18081,51-8091,Chemical Plant and System Operators,detailed,1460,27
+18082,51-8092,Gas Plant Operators,detailed,170,27
+18083,51-8093,"Petroleum Pump System Operators, Refinery Operators, and Gaugers",detailed,**,27
+18084,51-8099,"Plant and System Operators, All Other",detailed,120,27
+18085,51-9011,Chemical Equipment Operators and Tenders,detailed,1020,27
+18086,51-9012,"Separating, Filtering, Clarifying, Precipitating, and Still Machine Setters, Operators, and Tenders",detailed,1060,27
+18087,51-9021,"Crushing, Grinding, and Polishing Machine Setters, Operators, and Tenders",detailed,1130,27
+18088,51-9022,"Grinding and Polishing Workers, Hand",detailed,260,27
+18089,51-9023,"Mixing and Blending Machine Setters, Operators, and Tenders",detailed,2130,27
+18090,51-9031,"Cutters and Trimmers, Hand",detailed,140,27
+18091,51-9032,"Cutting and Slicing Machine Setters, Operators, and Tenders",detailed,1730,27
+18092,51-9041,"Extruding, Forming, Pressing, and Compacting Machine Setters, Operators, and Tenders",detailed,1200,27
+18093,51-9051,"Furnace, Kiln, Oven, Drier, and Kettle Operators and Tenders",detailed,730,27
+18094,51-9061,"Inspectors, Testers, Sorters, Samplers, and Weighers",detailed,10860,27
+18095,51-9071,Jewelers and Precious Stone and Metal Workers,detailed,230,27
+18096,51-9081,Dental Laboratory Technicians,detailed,730,27
+18097,51-9082,Medical Appliance Technicians,detailed,430,27
+18098,51-9083,Ophthalmic Laboratory Technicians,detailed,1010,27
+18099,51-9111,Packaging and Filling Machine Operators and Tenders,detailed,9220,27
+18100,51-9123,"Painting, Coating, and Decorating Workers",detailed,250,27
+18101,51-9124,"Coating, Painting, and Spraying Machine Setters, Operators, and Tenders",detailed,4010,27
+18102,51-9141,Semiconductor Processing Technicians,detailed,140,27
+18103,51-9151,Photographic Process Workers and Processing Machine Operators,detailed,740,27
+18104,51-9161,Computer Numerically Controlled Tool Operators,detailed,4280,27
+18105,51-9162,Computer Numerically Controlled Tool Programmers,detailed,1170,27
+18106,51-9191,Adhesive Bonding Machine Operators and Tenders,detailed,320,27
+18107,51-9192,"Cleaning, Washing, and Metal Pickling Equipment Operators and Tenders",detailed,290,27
+18108,51-9193,Cooling and Freezing Equipment Operators and Tenders,detailed,420,27
+18109,51-9194,Etchers and Engravers,detailed,300,27
+18110,51-9195,"Molders, Shapers, and Casters, Except Metal and Plastic",detailed,790,27
+18111,51-9196,"Paper Goods Machine Setters, Operators, and Tenders",detailed,2010,27
+18112,51-9198,Helpers--Production Workers,detailed,7420,27
+18113,51-9199,"Production Workers, All Other",detailed,5340,27
+18114,53-1041,Aircraft Cargo Handling Supervisors,detailed,80,27
+18115,53-1047,"First-Line Supervisors of Transportation and Material Moving Workers, Except Aircraft Cargo Handling Supervisors",detailed,6170,27
+18116,53-2011,"Airline Pilots, Copilots, and Flight Engineers",detailed,3520,27
+18117,53-2012,Commercial Pilots,detailed,380,27
+18118,53-2021,Air Traffic Controllers,detailed,580,27
+18119,53-2031,Flight Attendants,detailed,3420,27
+18120,53-3011,"Ambulance Drivers and Attendants, Except Emergency Medical Technicians",detailed,100,27
+18121,53-3031,Driver/Sales Workers,detailed,11020,27
+18122,53-3032,Heavy and Tractor-Trailer Truck Drivers,detailed,35150,27
+18123,53-3033,Light Truck Drivers,detailed,15680,27
+18124,53-3052,"Bus Drivers, Transit and Intercity",detailed,3350,27
+18125,53-3058,"Passenger Vehicle Drivers, Except Bus Drivers, Transit and Intercity",detailed,17940,27
+18126,53-3099,"Motor Vehicle Operators, All Other",detailed,420,27
+18127,53-4011,Locomotive Engineers,detailed,840,27
+18128,53-4013,"Rail Yard Engineers, Dinkey Operators, and Hostlers",detailed,60,27
+18129,53-4022,"Railroad Brake, Signal, and Switch Operators and Locomotive Firers",detailed,110,27
+18130,53-4031,Railroad Conductors and Yardmasters,detailed,1170,27
+18131,53-5011,Sailors and Marine Oilers,detailed,110,27
+18132,53-5021,"Captains, Mates, and Pilots of Water Vessels",detailed,**,27
+18133,53-5022,Motorboat Operators,detailed,**,27
+18134,53-5031,Ship Engineers,detailed,**,27
+18135,53-6011,Bridge and Lock Tenders,detailed,60,27
+18136,53-6021,Parking Attendants,detailed,2390,27
+18137,53-6031,Automotive and Watercraft Service Attendants,detailed,2850,27
+18138,53-6051,Transportation Inspectors,detailed,510,27
+18139,53-6098,"Aircraft Service Attendants and Transportation Workers, All Other",detailed,500,27
+18140,53-7011,Conveyor Operators and Tenders,detailed,660,27
+18141,53-7021,Crane and Tower Operators,detailed,460,27
+18142,53-7031,Dredge Operators,detailed,90,27
+18143,53-7041,Hoist and Winch Operators,detailed,110,27
+18144,53-7051,Industrial Truck and Tractor Operators,detailed,8430,27
+18145,53-7061,Cleaners of Vehicles and Equipment,detailed,5840,27
+18146,53-7062,"Laborers and Freight, Stock, and Material Movers, Hand",detailed,45070,27
+18147,53-7063,Machine Feeders and Offbearers,detailed,820,27
+18148,53-7064,"Packers and Packagers, Hand",detailed,9200,27
+18149,53-7065,Stockers and Order Fillers,detailed,36740,27
+18150,53-7072,"Pump Operators, Except Wellhead Pumpers",detailed,100,27
+18151,53-7081,Refuse and Recyclable Material Collectors,detailed,1960,27
+18152,53-7121,"Tank Car, Truck, and Ship Loaders",detailed,150,27
+18153,53-7199,"Material Moving Workers, All Other",detailed,300,27
+394631,00-0000,All Occupations,total,2880650,27
