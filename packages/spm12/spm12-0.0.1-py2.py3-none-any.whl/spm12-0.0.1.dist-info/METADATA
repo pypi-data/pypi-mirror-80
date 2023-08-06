@@ -1,0 +1,50 @@
+Metadata-Version: 2.1
+Name: spm12
+Version: 0.0.1
+Summary: Statistical Parametric Mapping
+Home-page: https://www.fil.ion.ucl.ac.uk/spm/
+Maintainer: Casper da Costa-Luis
+Maintainer-email: casper.dcl@physics.org
+License: Apache 2.0
+Keywords: fMRI,PET,SPECT,EEG,MEG
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Requires-Dist: amypad-core[nii] (>=0.0.2)
+Provides-Extra: dev
+Requires-Dist: Pygments ; extra == 'dev'
+Requires-Dist: docutils (>=0.3) ; extra == 'dev'
+Requires-Dist: flake8 ; extra == 'dev'
+Requires-Dist: pytest ; extra == 'dev'
+Requires-Dist: pytest-cov ; extra == 'dev'
+Requires-Dist: pytest-timeout ; extra == 'dev'
+Requires-Dist: pytest-xdist ; extra == 'dev'
+Requires-Dist: black ; (python_version >= "3.0") and extra == 'dev'
+
+SPM12
+=====
+
+|Tests|
+
+Thin Python wrappers around `Statistical Parametric Mapping <https://www.fil.ion.ucl.ac.uk/spm>`_.
+
+
+Install
+-------
+
+.. code:: sh
+
+    pip install -U spm12
+
+
+.. |Tests| image:: https://img.shields.io/github/workflow/status/AMYPAD/SPM12/Test
+   :target: https://github.com/AMYPAD/SPM12/actions
+
+
