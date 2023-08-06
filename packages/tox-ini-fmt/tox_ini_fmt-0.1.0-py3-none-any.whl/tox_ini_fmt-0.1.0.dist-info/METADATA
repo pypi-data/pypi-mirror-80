@@ -1,0 +1,40 @@
+Metadata-Version: 2.1
+Name: tox-ini-fmt
+Version: 0.1.0
+Summary: tox-ini-fmt formats your tox file for you
+Home-page: https://github.com/gaborbernat/tox-ini-fmt
+Author: Bernat Gabor
+Maintainer: Bernat Gabor
+Maintainer-email: gaborjbernat@gmail.com
+License: MIT
+Project-URL: Source, https://github.com/gaborbernat/tox-ini-fmt
+Project-URL: Tracker, https://github.com/gaborbernat/tox-ini-fmt/issues
+Keywords: pytest,print,debug
+Platform: any
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Framework :: tox
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Topic :: Utilities
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: pytest (>=5)
+Provides-Extra: docs
+Requires-Dist: Sphinx (>=3) ; extra == 'docs'
+Provides-Extra: test
+Requires-Dist: coverage (>=5) ; extra == 'test'
+Requires-Dist: coverage-enable-subprocess (>=1) ; extra == 'test'
+Requires-Dist: pytest (>=4) ; extra == 'test'
+
+# tox-ini-fmt
+
+Work in progress, but will beutify your `tox.ini` file once ready.
+
+![check](https://github.com/tox-dev/tox-ini-fmt/workflows/check/badge.svg?branch=main)
+
+
