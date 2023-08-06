@@ -1,0 +1,134 @@
+Metadata-Version: 1.2
+Name: csvviz
+Version: 0.2.0a0
+Summary: Create visualizations from CSV files and the command line
+Home-page: https://github.com/dannguyen/csvviz
+Author: Dan Nguyen
+Author-email: dansonguyen@gmail.com
+License: MIT license
+Description: ======
+        csvviz
+        ======
+        
+        
+        .. .. image:: https://img.shields.io/pypi/v/csvviz.svg
+        ..         :target: https://pypi.python.org/pypi/csvviz
+        
+        .. .. image:: https://img.shields.io/travis/dannguyen/csvviz.svg
+        ..         :target: https://travis-ci.com/dannguyen/csvviz
+        
+        .. .. image:: https://readthedocs.org/projects/csvviz/badge/?version=latest
+        ..         :target: https://csvviz.readthedocs.io/en/latest/?badge=latest
+        ..         :alt: Documentation Status
+        
+        
+        Create visualizations from CSV files and the command line
+        
+        
+        Current status
+        --------------
+        
+        Nothing to see here, just a random idea related to another side-project library that I'm struggling to make :D
+        
+        
+        
+        * Free software: MIT license
+        * Documentation: https://csvviz.readthedocs.io.
+        
+        
+        Features
+        --------
+        
+        * TODO
+        
+        Credits
+        -------
+        
+        This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
+        
+        .. _Cookiecutter: https://github.com/audreyr/cookiecutter
+        .. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
+        
+        
+        
+        Dev instructions
+        ----------------
+        
+        To install on your own machine for development::
+        
+            $ make install
+        
+        
+        
+        (note to self) To publish on pypi::
+        
+            $ make release
+        
+        
+        =======
+        History
+        =======
+        
+        0.2 (2020-09-23)
+        ----------------
+        
+        General
+        ^^^^^^^
+        
+        - ``csvviz --version`` prints out version
+        - viz options
+            - --theme to set chart theme
+            - --json to output Vegalite chart specification in JSON
+            - --no-preview to not preview chart in browser (useful for testing)
+            - --interactive/--static to show an interactive chart or not (default is 'static')
+        
+        cli.info
+        ^^^^^^^^
+        
+        - a command for general help and listing
+        - Show list of colors, colorschemes, themes, etc
+        
+        
+        cli.bars
+        ^^^^^^^^
+        
+        - arguments and options
+            - x,y options accept integers (as strings)
+            - --fill/-s
+            - -H/--horizontal for horizontal bars (vertical columns is default)
+        
+        - --colors/-c to set colors
+        - --color-scheme/-C to specify a color scheme
+        
+        
+        
+        
+        0.1.1-alpha (2020-09-15 16:30)
+        ------------------------------
+        
+        cli.bars
+        ^^^^^^^^
+        
+        - Minimally functional: ``$ csvviz bars -x name -y things examples/tings.csv``
+        
+        
+        
+        0.1.0-alpha (2020-09-15)
+        ------------------------
+        
+        First release on PyPI. Just a cookiecutter-pypackage skeleton stub.
+        
+        
+        
+Keywords: csvviz
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Python: >=3.5
