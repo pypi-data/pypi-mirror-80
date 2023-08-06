@@ -1,0 +1,29 @@
+<RCC>
+  <qresource>
+    <file>mondo.ico</file>
+  </qresource>
+  <qresource prefix="icons/suprock">
+    <file alias="index.theme">icons/suprock/index.theme</file>
+
+    <file alias="16x16/document_chart.png">icons/suprock/16x16/document_chart.png</file>
+    <file alias="24x24/document_chart.png">icons/suprock/24x24/document_chart.png</file>
+    <file alias="32x32/document_chart.png">icons/suprock/32x32/document_chart.png</file>
+    <file alias="48x48/document_chart.png">icons/suprock/48x48/document_chart.png</file>
+    <file alias="64x64/document_chart.png">icons/suprock/64x64/document_chart.png</file>
+    <file alias="256x256/document_chart.png">icons/suprock/256x256/document_chart.png</file>
+
+    <file alias="16x16/multimeter_analog.png">icons/suprock/16x16/multimeter_analog.png</file>
+    <file alias="24x24/multimeter_analog.png">icons/suprock/24x24/multimeter_analog.png</file>
+    <file alias="32x32/multimeter_analog.png">icons/suprock/32x32/multimeter_analog.png</file>
+    <file alias="48x48/multimeter_analog.png">icons/suprock/48x48/multimeter_analog.png</file>
+    <file alias="64x64/multimeter_analog.png">icons/suprock/64x64/multimeter_analog.png</file>
+    <file alias="256x256/multimeter_analog.png">icons/suprock/256x256/multimeter_analog.png</file>
+
+    <file alias="16x16/scroll.png">icons/suprock/16x16/scroll.png</file>
+    <file alias="24x24/scroll.png">icons/suprock/24x24/scroll.png</file>
+    <file alias="32x32/scroll.png">icons/suprock/32x32/scroll.png</file>
+    <file alias="48x48/scroll.png">icons/suprock/48x48/scroll.png</file>
+    <file alias="64x64/scroll.png">icons/suprock/64x64/scroll.png</file>
+    <file alias="256x256/scroll.png">icons/suprock/256x256/scroll.png</file>
+  </qresource>
+</RCC>
