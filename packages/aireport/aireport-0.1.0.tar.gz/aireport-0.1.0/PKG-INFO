@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Name: aireport
+Version: 0.1.0
+Summary: 
+Author: None
+Requires-Python: >=3.8,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: black (>=19.10b0,<20.0)
+Requires-Dist: numpy
+Requires-Dist: pandas (>=1.0.5,<2.0.0)
