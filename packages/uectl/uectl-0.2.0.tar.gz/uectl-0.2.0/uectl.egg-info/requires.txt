@@ -1,0 +1,13 @@
+emoji
+markovify
+neologdn
+pyyaml
+
+[bot]
+tweepy
+
+[preprocessing]
+mecab-python3==0.996.5
+
+[tests]
+pytest

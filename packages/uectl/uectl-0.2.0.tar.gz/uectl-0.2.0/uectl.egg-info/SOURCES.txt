@@ -1,0 +1,16 @@
+LICENSE
+MANIFEST.in
+README.md
+setup.py
+tests/__init__.py
+tests/test_models.py
+tests/test_text_filter.py
+uectl/__init__.py
+uectl/models.py
+uectl/text_filter.py
+uectl.egg-info/PKG-INFO
+uectl.egg-info/SOURCES.txt
+uectl.egg-info/dependency_links.txt
+uectl.egg-info/requires.txt
+uectl.egg-info/top_level.txt
+uectl/data/orthographic_variants.yml
