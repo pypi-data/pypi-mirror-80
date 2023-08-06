@@ -1,0 +1,32 @@
+JMQSClient.Endpoints=default
+JMQSClientServer.Proxy.Locator=JMQServerIceGrid/Locator:tcp -h 172.17.9.222 -p 19056
+JMQSClientServer.Proxy=JMQSPrxTest
+
+
+JMQSClient.LogDir=/home/chengxz/jmqs_cpp_test/bin/mylog
+Ice.ACM.Client.Heartbeat=1
+Ice.MessageSizeMax=0
+
+
+Ice.ACM.Close=0
+Ice.ACM.Heartbeat=3
+Ice.ACM.Timeout=60
+Ice.Trace.Slicing=1
+Ice.Trace.Network=3
+Ice.LogFile=./client.log
+#Ice.MessageSizeMax=0
+
+
+Ice.ThreadPool.Server.Size=8
+Ice.ThreadPool.Server.SizeMax=64
+Ice.ThreadPool.Client.Size=8
+Ice.ThreadPool.Client.SizeMax=64
+
+###support fail store file 2020/8/3
+#JMQSClient.Fail.CacheDir=/home/chengxz/jmqs_cpp_test/bin/mycache1
+#JMQSClient.Fail.CacheSize=10
+#0:fail return 200 
+#1:fail return 0
+JMQSClient.Fail.EnableSucc=0
+JMQSClient.LogLevel=DEBUG
+
