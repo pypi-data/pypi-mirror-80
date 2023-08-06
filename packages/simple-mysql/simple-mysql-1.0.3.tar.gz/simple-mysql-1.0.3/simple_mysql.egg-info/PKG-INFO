@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: simple-mysql
+Version: 1.0.3
+Summary: sql query for humans
+Home-page: https://github.com/Yaphp/simple-mysql
+Author: Yaphp
+Author-email: yaphp960907@gmail.com
+License: MIT
+Download-URL: https://github.com/Yaphp/simple-mysql.git
+Description: # mysql orm for humans
+Keywords: help,simple,mysql,orm
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
