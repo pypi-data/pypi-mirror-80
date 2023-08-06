@@ -1,0 +1,8 @@
+authlib
+django>=3.0
+python-ioc
+marshmallow
+pyyaml
+requests
+unimatrix
+unimatrix.ext.django>=0.1.35
