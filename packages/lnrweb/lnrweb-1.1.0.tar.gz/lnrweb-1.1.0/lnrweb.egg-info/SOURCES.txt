@@ -1,0 +1,13 @@
+LICENSE.txt
+MANIFEST.in
+README.txt
+pyproject.toml
+setup.cfg
+setup.py
+lnrweb/__init__.py
+lnrweb/lpp_graphical.py
+lnrweb/two_phase_simplex.py
+lnrweb.egg-info/PKG-INFO
+lnrweb.egg-info/SOURCES.txt
+lnrweb.egg-info/dependency_links.txt
+lnrweb.egg-info/top_level.txt
