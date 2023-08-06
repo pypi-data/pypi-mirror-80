@@ -1,0 +1,70 @@
+Metadata-Version: 2.1
+Name: alaska
+Version: 0.0.3
+Summary: Automated well log mnemonics parser
+Home-page: https://github.com/FRI-Energy-Analytics/alaska
+Author: The alaska Developers
+Author-email: destinydong@utexas.edu
+Maintainer: Destiny Dong
+Maintainer-email: destinydong@utexas.edu
+License: MIT License
+Keywords: geophysics,geology,reservoir engineering
+Platform: Any
+Classifier: Intended Audience :: Science/Research
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Education
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: License :: OSI Approved :: MIT License
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: lasio
+Requires-Dist: pandas
+Requires-Dist: torch
+Requires-Dist: numpy
+Requires-Dist: matplotlib
+Requires-Dist: backports.functools-lru-cache
+Requires-Dist: seaborn
+
+# AlasKA: The las file aliaser
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4047049.svg)](https://doi.org/10.5281/zenodo.4047049)
+
+AlasKA is a Python package that reads mnemonics from LAS files and outputs an aliased dictionary of mnemonics and its aliases, as well as a list of mnemonics that cannot be found. It uses three different methods to find aliases to mnemonics: locates exact matches of a mnemonic in an alias dictionary, identifies keywords in mnemonics' description then returns alias from the keyword extractor, and predicts alias using all attributes of the curves.
+
+#### Sample Usage
+
+```python
+from alaska import Alias
+from welly import Project
+import lasio
+
+path = "testcase.las"
+a = Alias()
+parsed, not_found = a.parse(path)
+```
+
+In this case, parsed is the aliased dictionary that contains mnemonics and its aliases, and not_found is the list of mnemonics that the aliaser did not find. Users can manually alias mnemonics in the not_found list and add them to the dictionary of aliased mnemonics
+
+Parameters of the Alias class can be changed, and the defaults are the following
+
+```python
+a = Alias(dictionary=True, keyword_extractor=True, model=True, prob_cutoff=.5)
+```
+
+Users can choose which parser to use/not to use by setting the parsers to True/False. The prob_cutoff is the confidence the user wants the predictions made by model parser to have.
+
+Then, the aliased mnemonics can be inputted into welly as demonstrated below.
+
+```python
+from welly import Project
+p = Project.from_las(path)
+data = p.df(keys=list(parsed.keys()), alias=parsed)
+print(data)
+```
+
+
