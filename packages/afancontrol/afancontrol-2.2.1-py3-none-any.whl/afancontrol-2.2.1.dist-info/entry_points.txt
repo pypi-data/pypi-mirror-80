@@ -1,0 +1,3 @@
+[console_scripts]
+afancontrol = afancontrol.__main__:main
+
