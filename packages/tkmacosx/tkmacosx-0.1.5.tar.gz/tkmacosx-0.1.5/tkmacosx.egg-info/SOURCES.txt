@@ -1,0 +1,17 @@
+LICENSE
+MANIFEST.in
+README.md
+information.md
+setup.py
+tkmacosx/__init__.py
+tkmacosx/__main__.py
+tkmacosx/basewidget.py
+tkmacosx/colors.py
+tkmacosx/colorscale.py
+tkmacosx/variables.py
+tkmacosx/widget.py
+tkmacosx.egg-info/PKG-INFO
+tkmacosx.egg-info/SOURCES.txt
+tkmacosx.egg-info/dependency_links.txt
+tkmacosx.egg-info/requires.txt
+tkmacosx.egg-info/top_level.txt
