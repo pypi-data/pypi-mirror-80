@@ -1,0 +1,8 @@
+requests
+geopandas
+arcgis2geojson
+
+[dev]
+pytest
+pytest-cov
+coveralls

@@ -1,0 +1,13 @@
+LICENSE
+MANIFEST.in
+README.md
+requirements.dev.txt
+requirements.txt
+setup.py
+esri2gpd/__init__.py
+esri2gpd/core.py
+esri2gpd.egg-info/PKG-INFO
+esri2gpd.egg-info/SOURCES.txt
+esri2gpd.egg-info/dependency_links.txt
+esri2gpd.egg-info/requires.txt
+esri2gpd.egg-info/top_level.txt
