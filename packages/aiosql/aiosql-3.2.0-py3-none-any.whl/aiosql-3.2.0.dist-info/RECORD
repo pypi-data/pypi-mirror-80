@@ -1,0 +1,17 @@
+aiosql/__init__.py,sha256=bI8hAmr6y6GBBotZirrvvUyH4HIx5soGi79hJnb7SZ4,178
+aiosql/adapters/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+aiosql/adapters/aiosqlite.py,sha256=PqWcAyza6q57iUaWcfOgh2Xr_nf_YwLqt-tvLFrLuUQ,2543
+aiosql/adapters/asyncpg.py,sha256=ev7oNMR6RGcygmMWXxN08mpqY60mfMBP26Lxp9Fq0do,4880
+aiosql/adapters/psycopg2.py,sha256=rYCa2gPvG01vDr6vFiD-Qa5cgmI55qYlP6ar6m8XD4Y,2544
+aiosql/adapters/sqlite3.py,sha256=Dqiy5Y3m7eMoy5WT5h_nTYpcRabX3gQ_Bf8M_2YvSjw,2574
+aiosql/aioctxlib.py,sha256=dWSlo8UofwDetPALdax2GyuDTZf52dc6h7dU_Y6MW4I,2175
+aiosql/aiosql.py,sha256=eV2YPv3aPy04YMkO170IkQHP_lnHgv9HkCqPH5sLrGY,4750
+aiosql/exceptions.py,sha256=v9TakkIPWpXmW-Ne--b1HbcypFetF_z10exwk7PAvmc,268
+aiosql/patterns.py,sha256=6SSUoVy7CE-kdKPTU-4ZgaCNNsds-5ueTIO7WEZZ-ls,777
+aiosql/queries.py,sha256=7HDOhlBBJdoq6RQyp5KoHgOkAScjXw5D0LoxZQzIVl0,6145
+aiosql/query_loader.py,sha256=QzWGDjOxtgOQ4QtJpuQrXvtwwMMsWltxm_WRwbtm-2I,4636
+aiosql/types.py,sha256=b7HFJUMw28GgmWqQjQcLxnnltjoTjgd8J5k9QQQF_WI,4027
+aiosql-3.2.0.dist-info/LICENSE,sha256=onV3QVUFSkO_9XDeDGKWhpkfDBcFNNLtxUVlzMndpdY,1552
+aiosql-3.2.0.dist-info/WHEEL,sha256=Q99itqWYDhV793oHzqzi24q7L7Kdiz6cb55YDfTXphE,84
+aiosql-3.2.0.dist-info/METADATA,sha256=Mio_Ju9WvpAk-sejzkcTUU_UU6WCIFtw8mrC4C6Yd9Q,3557
+aiosql-3.2.0.dist-info/RECORD,,
