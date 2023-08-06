@@ -1,0 +1,41 @@
+Metadata-Version: 2.1
+Name: MapDatumTrans
+Version: 1.0.0
+Summary: A Transformer for different map datum, include WGS84, GCJ-02, BD-09
+Home-page: https://github.com/bluicezhen/MapDatumTrans
+Author: Bluice Zhen
+Author-email: bluice.zhen@gmail.com
+License: MIT
+Description: # MapDatumTrans
+        
+        [简体中文](https://github.com/bluicezhen/MapDatumTrans/blob/master/README-cn.md)
+        
+        > MapDatumTranss is a transformer for map datum，include WGS84, GCJ-02 and BD-09.
+        
+        ## Install：
+        
+        ```bash
+        pip install MapDatumTrans
+        ```
+        
+        ## Demo：
+        
+        ```bash
+        import MapDatumTrans
+        
+        MapDatumTrans.gcj02_to_bd09(lat, lon)   # GCJ02 to BD-09
+        MapDatumTrans.bd09_to_gcj02(lat, lon)   # BD-09 to GCJ02
+        MapDatumTrans.wgs84_to_gcj02(lat, lon)  # WGS84 to GCJ02
+        MapDatumTrans.gcj02_to_wgs84(lat, lon)  # GCJ02 to WGS84
+        MapDatumTrans.bd09_to_wgs84(lat, lon)   # BD-09 to WGS84
+        MapDatumTrans.wgs84_to_bd09(lat, lon)   # WGS84 to BD-09
+        ```
+Keywords: WGS84,GCJ-02,BD-09
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Description-Content-Type: text/markdown
