@@ -1,0 +1,11 @@
+# Contributors (alphabetical)
+
+- [@augb](https://github.com/augb)
+- [Daniel Elero](https://github.com/danixeee)
+- [DeathAxe](https://github.com/deathaxe)
+- [Denis Loginov](https://github.com/dinvlad)
+- [Jérome Perrin](https://github.com/perrinjerome)
+- [Max O'Cull](https://github.com/Maxattax97)
+- [Samuel Roeca](https://github.com/pappasam)
+- [Tomoya Tanjo](https://github.com/tom-tan)
+- [yorodm](https://github.com/yorodm)
