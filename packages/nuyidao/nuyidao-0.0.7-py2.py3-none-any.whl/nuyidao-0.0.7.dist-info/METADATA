@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: nuyidao
+Version: 0.0.7
+Summary: Astro support
+Home-page: https://nuyidao.com
+License: MIT
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: POSIX
+Requires-Python: >3.6
+Requires-Dist: ephem (==3.7.6.0)
+
+NU YI DAO utils support + SVG + FONT
+
+
