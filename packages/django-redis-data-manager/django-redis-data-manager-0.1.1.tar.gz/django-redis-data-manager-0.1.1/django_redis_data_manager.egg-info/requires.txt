@@ -1,0 +1,8 @@
+django~=2.2.15
+django-static-jquery3>=5.1.0
+django-static-fontawesome>=5.14.0.0
+django-server-controller>=0.2.1
+django-object-toolbar-admin>=0.1.1
+django-safe-fields>=0.1.5
+django-app-requires>=0.1.0
+redis>=3.5.3
