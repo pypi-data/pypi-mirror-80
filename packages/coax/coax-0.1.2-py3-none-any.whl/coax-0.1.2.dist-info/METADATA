@@ -1,0 +1,62 @@
+Metadata-Version: 2.1
+Name: coax
+Version: 0.1.2
+Summary: Plug-n-play reinforcement learning with OpenAI Gym and JAX
+Home-page: https://coax.readthedocs.io
+Author: Kristian Holsheimer
+Author-email: kristian.holsheimer@gmail.com
+License: MIT
+Platform: UNKNOWN
+Classifier: Development Status :: 1 - Planning
+Classifier: Environment :: GPU :: NVIDIA CUDA
+Classifier: Framework :: Flake8
+Classifier: Framework :: IPython
+Classifier: Framework :: Jupyter
+Classifier: Framework :: Pytest
+Classifier: Framework :: Sphinx
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Requires-Python: ~=3.6
+Requires-Dist: Pillow (>=7.2.0)
+Requires-Dist: gym (>=0.17.2)
+Requires-Dist: numpy (>=1.19.2)
+Requires-Dist: scipy (>=1.5.2)
+Requires-Dist: pandas (>=1.1.2)
+Requires-Dist: dm-haiku (>=0.0.2)
+Requires-Dist: optax (>=0.0.1)
+Requires-Dist: tensorboard (>=2.3.0)
+Requires-Dist: tensorboardX (>=2.1)
+Provides-Extra: dev
+Requires-Dist: flake8 (>=3.8.3) ; extra == 'dev'
+Requires-Dist: pylint (>=2.6.0) ; extra == 'dev'
+Requires-Dist: pur (>=5.3.0) ; extra == 'dev'
+Requires-Dist: pytest (>=6.0.2) ; extra == 'dev'
+Requires-Dist: pytest-cov (>=2.10.1) ; extra == 'dev'
+Requires-Dist: pytest-xdist (>=2.1.0) ; extra == 'dev'
+Requires-Dist: twine (>=3.2.0) ; extra == 'dev'
+Requires-Dist: gym[atari,box2d] (>=0.17.2) ; extra == 'dev'
+Requires-Dist: jax (>=0.2.0) ; extra == 'dev'
+Requires-Dist: jaxlib (>=0.1.55) ; extra == 'dev'
+Requires-Dist: jupyter (>=1.0.0) ; extra == 'dev'
+Requires-Dist: sphinx-autobuild (>=2020.9.1) ; extra == 'dev'
+
+
+coax: Plug-n-play reinforcement learning in python with OpenAI Gym and JAX.
+
+For full documentation, go to:
+
+    https://coax.readthedocs.io
+
+You can find the source code at:
+
+    https://github.com/microsoft/coax
+
+
+
