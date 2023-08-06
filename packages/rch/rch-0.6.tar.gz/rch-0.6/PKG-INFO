@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: rch
+Version: 0.6
+Summary: A package containing the personal python utilities of Riley Hales
+Home-page: https://rileyhales.com
+Author: Riley Hales
+Author-email: rchales@byu.edu
+License: BSD 3-Clause Clear License
+Project-URL: Documentation, https://pyrch.readthedocs.io
+Project-URL: Source, https://github.com/rileyhales/pyrch
+Project-URL: License, https://choosealicense.com/licenses/bsd-3-clause-clear
+Description: # pyrch
+        
+        The `rch` python package contains various utility functions which were packaged for the convenience and ease of 
+        portability to the author.  
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Scientific/Engineering
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Natural Language :: English
+Description-Content-Type: text/markdown
