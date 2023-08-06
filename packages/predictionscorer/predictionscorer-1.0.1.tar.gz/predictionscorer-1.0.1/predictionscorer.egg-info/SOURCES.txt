@@ -1,0 +1,13 @@
+CONTRIBUTING.md
+MANIFEST.in
+README.md
+setup.cfg
+setup.py
+predictionscorer/__init__.py
+predictionscorer/_common.py
+predictionscorer/rules.py
+predictionscorer.egg-info/PKG-INFO
+predictionscorer.egg-info/SOURCES.txt
+predictionscorer.egg-info/dependency_links.txt
+predictionscorer.egg-info/not-zip-safe
+predictionscorer.egg-info/top_level.txt
