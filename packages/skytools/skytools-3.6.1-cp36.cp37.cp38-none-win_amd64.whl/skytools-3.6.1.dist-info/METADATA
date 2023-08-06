@@ -1,0 +1,55 @@
+Metadata-Version: 2.1
+Name: skytools
+Version: 3.6.1
+Summary: Utilities for database scripts
+Home-page: https://github.com/pgq/python-skytools
+Maintainer: Marko Kreen
+Maintainer-email: markokr@gmail.com
+License: ISC
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: ISC License (ISCL)
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: POSIX
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Database
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Utilities
+
+Skytools - Utilities for writing Python scripts
+===============================================
+
+This is the low-level utility module split out from
+old Skytools meta-package.  It contains various
+utilities for writing database scripts.
+
+Database specific utilites are mainly meant for PostgreSQL.
+
+Features
+--------
+
+* Support for background scripts
+  - Daemonizing
+  - logging
+  - config parsing
+* Database tools
+  - Tuned connection
+  - DB structure examining
+  - SQL parsing
+  - COPY I/O
+* Time utilities
+  - ISO timestamp parsing
+  - datetime to timestamp
+* Text utilities
+  - Natural sort
+  - Fast urlencode I/O
+
+TODO
+----
+
+* Move from optparse to argparse
+* Doc cleanup
+
