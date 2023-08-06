@@ -1,0 +1,15 @@
+README.md
+setup.py
+simple_elmo/__init__.py
+simple_elmo/data.py
+simple_elmo/elmo.py
+simple_elmo/elmo_helpers.py
+simple_elmo/get_elmo_vectors.py
+simple_elmo/model.py
+simple_elmo/text_classification.py
+simple_elmo/vocabulary.py
+simple_elmo.egg-info/PKG-INFO
+simple_elmo.egg-info/SOURCES.txt
+simple_elmo.egg-info/dependency_links.txt
+simple_elmo.egg-info/requires.txt
+simple_elmo.egg-info/top_level.txt

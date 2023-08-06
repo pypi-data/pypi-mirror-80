@@ -1,0 +1,11 @@
+h5py
+numpy
+smart_open>1.8.1
+pandas
+scikit-learn
+
+[tf]
+tensorflow>=1.14.0
+
+[tf_gpu]
+tensorflow-gpu>=1.14.0
