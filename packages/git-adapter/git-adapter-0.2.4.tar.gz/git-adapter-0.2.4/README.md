@@ -1,0 +1,209 @@
+*Git-Adapter*: A Python interface to the Git command line.
+
+[[_TOC_]]
+
+# Overview
+
+*Git-Adapter* provides Python bindings to the Git command line (and also
+to other command-line applications).
+It is useful when you know exactly what Git commands you would call from
+the shell prompt or in a shell script.
+
+Calling a `git` command returns a `str` generator representing the lines
+of output.
+
+Note that in `git` commands and command-line flags, hyphens are replaced
+by underscores.
+Also, Python reserved keywords have to be escaped with a trailing
+underscore.
+E.g.
+
+```python
+    git.cherry_pick(commit)
+    for line in git.grep("keyword", ignore_case=True, break_=True):
+        print(line)
+```
+
+corresponds to
+
+```sh
+    git cherry-pick $commit
+    git grep --ignore-case --break keyword
+```
+
+in the shell.
+
+
+## Example
+
+```python
+    git = Git.clone_repo("git@git.host:test-repo")
+    log_lines = git.log(first_parent=True, max_count=20, author="me")
+    # do something with the log_lines generator …
+    
+    for file_ in git.ls_files():
+        print("Git file: " + file_)
+    
+    with open("greeting.txt", "w") as fh:
+        fh.write("Hello world\n")
+    git.commit("greeting.txt", m="Greet the world.", author="me")
+    
+    origin = git.remote().first_line()
+    branch = git.current_branch()
+    git.push(origin, branch)
+```
+
+
+## The `Git` class
+
+The *Git* class has a few specific commands, like `git.hard_reset()` or
+`git.current_branch()`; any other method call '`git.<CMD>(…)`' is converted
+to a system call '`git CMD …`', e.g.
+
+```python
+    from git_adapter.git import Git
+    git = Git(".")
+    git.log()       ↦ git log
+    git.ls_files()  ↦ git ls-files
+    git.commit(m="T'was brillig.", author="me")
+                    ↦ git commit -m "T'was brillig." --author=me
+    git.log(first_parent=True, max_count=20, author="me")
+                    ↦ git log --first-parent --max-count=20 --author=me
+    git.worktree.add(PATH, BRANCH)
+                    ↦ git worktree add PATH BRANCH
+```
+
+Calling a git command returns a generator of `str` representing the lines of
+output from the command:
+
+```python
+    files = list(git.ls_files())
+```
+
+To retrieve just the first line of output, the generator has an extra
+method `first_line()`:
+
+```python
+    head = git.rev_parse("HEAD").first_line()
+```
+
+Note that in the command name and in the `kwargs`, underscores are mapped to
+hyphens, so there currently is no way to call
+`git strange_command --strange_option`, because git\_adapter would try to
+call `git strange-command --strange-option` instead.
+
+
+## The `Command` class
+
+The `Command` class can be used pretty much like `Git` for other shell
+commands:
+
+```python
+      Command(["ls"])("-l")         ↦ run 'ls -l'
+
+      ip = Command(["ip"])
+      ip.address.show()             ↦ ip address show
+      ip.address.show("dev", "lo")  ↦ ip address show dev lo
+      ip.address.show.dev("lo")     ↦ ditto
+      ip.address.show.dev.lo()      ↦ ditto
+
+      Command(["git"]).log()        ↦ run 'git log'
+```
+
+Again, the result is a generator of `str` representing the lines ouf
+output from the command.
+
+
+## Logging
+
+When using *Git-Adapter* from long-running scripts, the user may want to
+get output from commands without long delays, but also all output being
+logged to a file.
+This can be achieved with the `FileLogger` class in *Git-Adapter*:
+
+```python
+    from git_adapter.git import Git, FileLogger, run_cmd
+    
+    # Run a long-running shell command, refreshing output each time a line is
+    # printed:
+    run_cmd(
+        ["sh", "-c", "for i in $(seq 5); do echo $i; sleep 1; done"],
+        verbose=True
+        )
+    
+    # The same, but also log to a file:
+    run_cmd(
+        ["sh", "-c", "for i in $(seq 5); do echo $i; sleep 1; done"],
+        logger=FileLogger(log_dir=".", log_file="cmd.log")
+        )
+    
+    # Run a long-running git command, refreshing output each time a line is
+    # printed:
+    git = Git(".", verbose=True)
+    import time, sys
+    for ref in git.ls_remote():
+        time.sleep(0.01)
+        print(".", end="")
+        sys.stdout.flush()
+    print()
+    
+    # The same, but also log to a file:
+    git = Git(".", FileLogger(log_dir=".", log_file="git.log"))
+    import time, sys
+    for ref in git.ls_remote():
+        time.sleep(0.01)
+        print(".", end="")
+        sys.stdout.flush()
+    print()
+```
+
+If you cannot open the log file when you create the `Git` object (e.g.
+because you want to log to the directory that `git clone` will create), you
+can use the `set_logger()` method later:
+
+```python
+    sandbox = "./sandbox"
+    git = Git.clone_repo(repository_url, sandbox=sandbox)
+    git.set_logger(FileLogger(sandbox, "git.log"))
+```
+
+
+# Alternatives
+
+There are a number of ways to run `git` commands directly from Python:
+
+- Using `subprocess`:
+
+```python
+        import subprocess
+        subprocess.check_call(["git", "rev-parse", "HEAD"])
+        subprocess.check_call(["git", "ls-files"])
+```
+
+- Using [GitPython](https://gitpython.readthedocs.io/en/stable/tutorial.html#using-git-directly):
+
+  ```python
+      from git import Repo
+      git = Repo(".").git
+      git.rev_parse('HEAD')
+      git.ls_files()
+  ```
+
+- Using [sh](https://github.com/amoffat/sh) (as recommended in [this post](https://stackoverflow.com/a/8578096)):
+   
+  ```python 
+      import sh
+      git = sh.git
+      print(git("rev-parse", "HEAD"))
+      print(git("ls-files"))
+  ```
+
+*Git-Adapter* differs from these solutions in
+
+-   Output handling
+-   Logging
+
+
+# Requirements
+
+*Git-Adapter* currently requires Python 3.6.9 or later.
