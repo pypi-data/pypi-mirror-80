@@ -1,0 +1,4 @@
+
+    [console_scripts]
+    mediaserver_processor=mediaserver_processor.__main__:main
+    
