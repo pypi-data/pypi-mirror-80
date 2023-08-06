@@ -1,0 +1,4 @@
+import os
+
+SWITCH_JWT_SECRET = os.getenv("SWITCH_JWT_SECRET")
+SWITCH_BASE_URL = os.getenv("SWITCH_JWT_SECRET")
