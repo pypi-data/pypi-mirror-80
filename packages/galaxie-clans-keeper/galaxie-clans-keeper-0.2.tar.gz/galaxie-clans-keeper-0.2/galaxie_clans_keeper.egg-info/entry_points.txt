@@ -1,0 +1,3 @@
+[console_scripts]
+clans-keeper = GLXClansKeeper.__main__:keeper
+

@@ -1,0 +1,24 @@
+Metadata-Version: 2.1
+Name: galaxie-clans-keeper
+Version: 0.2
+Summary: Galaxie Clans Keeper is a TUI application based on GLXCurses ToolKit to manage a Galaxie-Clans Ansible collection
+Home-page: https://gitlab.com/aurelien.maury/galaxie-clans-keeper
+Author: Tuuux
+Author-email: tuxa@rtnp.org
+License: GNU GENERAL PUBLIC LICENSE Version 3
+Description: [![pipeline status](https://gitlab.com/aurelien.maury/galaxie-clans-keeper/badges/master/pipeline.svg)](https://gitlab.com/aurelien.maury/galaxie-clans-keeper/-/commits/master) [![coverage report](https://gitlab.com/aurelien.maury/galaxie-clans-keeper/badges/master/coverage.svg)](https://gitlab.com/aurelien.maury/galaxie-clans-keeper/-/commits/master) 
+        # Galaxie-Clans-Keeper
+        
+        
+        
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Description-Content-Type: text/markdown; charset=UTF-8
