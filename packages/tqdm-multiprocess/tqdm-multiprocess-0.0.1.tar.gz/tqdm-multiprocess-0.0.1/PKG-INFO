@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: tqdm-multiprocess
+Version: 0.0.1
+Summary: Easy multiprocessing with tqdm and logging redirected to main process.
+Home-page: https://github.com/EleutherAI/tqdm-multiprocess
+Author: researcher2
+Author-email: 2researcher2@gmail.com
+License: UNKNOWN
+Description: # tqdm-multiprocess
+        Using queues, tqdm-multiprocess supports multiple worker processes, each with multiple tqdm progress bars, displaying them cleanly through the main process. It offers similar functionality for python logging. 
+        
+        Currently doesn't support tqdm(iterator), you will need to intialize tqdm with a total and update manually.
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Provides-Extra: dev
