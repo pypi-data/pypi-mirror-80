@@ -1,0 +1,29 @@
+{
+  "description": "Enter a description for this Unimatrix package",
+  "author": "Cochise Ruhulessin",
+  "author_email": "cochise.ruhulessin@wizardsofindustry.com",
+  "url": "https://gitlab.com/unimatrixone/libraries/python-unimatrix",
+  "licenses": "Proprietary",
+  "install_requires": [],
+  "classifiers": [
+     "Development Status :: 4 - Beta",
+     "Environment :: Console",
+     "Environment :: Web Environment",
+     "Framework :: Django",
+     "Framework :: Django CMS",
+     "Framework :: Flask",
+     "Intended Audience :: Developers",
+     "Intended Audience :: Financial and Insurance Industry",
+     "Intended Audience :: Healthcare Industry",
+     "License :: Other/Proprietary License",
+     "Operating System :: POSIX",
+     "Operating System :: POSIX :: Linux",
+     "Programming Language :: Python :: 3.5",
+     "Programming Language :: Python :: 3.6",
+     "Programming Language :: Python :: 3.7",
+     "Programming Language :: Python :: 3.8",
+     "Programming Language :: Python :: 3.9",
+     "Programming Language :: Python :: 3 :: Only",
+     "Topic :: Internet"
+  ]
+}
