@@ -1,0 +1,1 @@
+from tokko_permission_tools.client import TokkoPermissionClient as Client
