@@ -1,0 +1,24 @@
+Metadata-Version: 2.1
+Name: storage-manager
+Version: 0.1.0
+Summary: Storage - a load-balanced storage manager
+Home-page: https://github.com/mandarons/storage-manager
+Author: Mandar Patil
+Author-email: mandarons@pm.me
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: click (==7.1.2)
+Requires-Dist: python-dotenv (==0.14.0)
+Requires-Dist: tinydb (==4.1.1)
+Requires-Dist: humanfriendly (==8.2)
+Requires-Dist: tabulate (==0.8.7)
+Requires-Dist: tqdm (==4.48.2)
+
+# storage-manager
+Storage manager
+
+
