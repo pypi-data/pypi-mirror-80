@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: PyWatermark
+Version: 0.1.3
+Summary: A library to watermark your images easily.
+Home-page: https://github.com/ieshaan12/watermark
+Author: Ieshaan Saxena
+Author-email: ieshaan1999@gmail.com
+License: MIT
+Download-URL: https://github.com/ieshaan12/watermark/archive/v0.1.3.tar.gz
+Description: ## PyWatermark
+        
+        A python library to watermark your images!
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
