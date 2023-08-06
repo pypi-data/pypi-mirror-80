@@ -1,0 +1,52 @@
+Metadata-Version: 2.1
+Name: slacktivate
+Version: 0.2.6
+Summary: Slacktivate is a Python library and Command-Line Interface to assist in the provisioning of a Slack workspace.
+Home-page: https://github.com/jlumbroso/slacktivate
+License: LGPL-3.0-or-later
+Keywords: Slack,user provisioning,Slack API,Slack SCIM API,Slack configuration
+Author: Jérémie Lumbroso
+Author-email: lumbroso@cs.princeton.edu
+Requires-Python: >=3.8,<4.0
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+)
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: Office/Business
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Dist: Pillow (>=7.2.0,<8.0.0)
+Requires-Dist: backoff (>=1.10.0,<2.0.0)
+Requires-Dist: click (>=7.1.2,<8.0.0)
+Requires-Dist: click-option-group (>=0.5.1,<0.6.0)
+Requires-Dist: click_help_colors (>=0.8,<0.9)
+Requires-Dist: click_spinner (>=0.1.10,<0.2.0)
+Requires-Dist: comma (>=0.5.3,<0.6.0)
+Requires-Dist: jinja2 (>=2.11.2,<3.0.0)
+Requires-Dist: python-dotenv (>=0.14.0,<0.15.0)
+Requires-Dist: pyyaml (>=5.3.1,<6.0.0)
+Requires-Dist: requests (>=2.24.0,<3.0.0)
+Requires-Dist: slack-scim (>=1.1.0,<2.0.0)
+Requires-Dist: slackclient (>=2.8.0,<3.0.0)
+Requires-Dist: yaql (>=1.1.3,<2.0.0)
+Project-URL: Repository, https://github.com/jlumbroso/slacktivate
+Description-Content-Type: text/markdown
+
+# Slacktivate
+
+Slacktivate is a Python library and Command-Line Interface
+to assist in the provisioning of a Slack workspace, using
+both the Slack API and the Slack SCIM API.
+
+## Prerequisites: Having Owner Access and Getting an API Token
+
+In order to use the SCIM API, you need to be an owner of the workspace, and obtain an API token with `admin` scope.
+
+As explained in [the official Slack SCIM API documentation](https://api.slack.com/scim#access), the easiest way to obtain a valid token for the purposes of SCIM provisioning is as follows:
+1. As *a Workspace/Organization Owner*, create [a new app for your workspace](https://api.slack.com/apps?new_app=1) (see [here](https://api.slack.com/start/overview#creating) for the documentation).
+2. Add the `admin` OAuth scope to [the "User Token Scopes" section](https://api.slack.com/authentication/quickstart#configuring).
+3. Install the app to your workspace (see [here](https://api.slack.com/start/overview#installing_distributing) for the documentation).
+4. Use the generated token (if you are provided with multiple tokens, use the "OAuth Access Token" not the "Bot User OAuth Access Token").
+
+Note that you can easily *reinstall your app* with different permissions if it turns out you did not select all the necessary permissions.
+
