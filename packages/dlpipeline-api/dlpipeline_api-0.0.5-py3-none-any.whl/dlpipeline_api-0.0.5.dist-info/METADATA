@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: dlpipeline-api
+Version: 0.0.5
+Summary: A pip-installable pipeline service provider
+Home-page: UNKNOWN
+Author: Akshay Tigga
+Author-email: akshay.tigga@syncron.com
+License: UNKNOWN
+Keywords: dlpplnsvc
+Platform: UNKNOWN
+Requires-Dist: workflow-upa
+Requires-Dist: boto3
+Requires-Dist: pandas
+Requires-Dist: numpy
+Requires-Dist: kfp (==1.0.0)
+Requires-Dist: requests
+
+UNKNOWN
+
+
