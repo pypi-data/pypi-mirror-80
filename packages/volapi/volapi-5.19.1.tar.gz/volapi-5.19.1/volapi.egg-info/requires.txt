@@ -1,0 +1,3 @@
+autobahn==19.3.3
+orjson<4,>=3
+requests
