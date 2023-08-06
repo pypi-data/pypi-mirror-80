@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>{{ config['title'] }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta charset="utf-8"/>
+
+  <link href="//fonts.googleapis.com/css?family=Dosis:500&amp;text=LabelStudio" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="static/favicon.ico"/>
+  <link rel="stylesheet" href="static/css/reset.css">
+  <link rel="stylesheet" href="static/css/fontall.min.css">
+
+  <style>
+    body {
+      background-color: #f6f6f6;
+      font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+    }
+
+    #header {
+      display: flex;
+      align-items: center;
+      background-color: #fff;
+      height: 60px;
+      z-index: 100;
+      box-shadow: 0 4px 3px -2px rgba(0, 0, 0, 0.0474);
+      width: 100%;
+      line-height: 40px;
+    }
+
+    #logo img {
+      vertical-align: middle;
+      margin-right: 6px;
+      width: 40px;
+      height: 40px;
+    }
+
+    #logo {
+      font-size: 1.5em;
+      color: #273849 !important;
+      font-family: "Dosis", "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+      font-weight: 400;
+      display: flex;
+      margin-right: 3em;
+      min-width: 200px;
+      margin-top: -3px !important;
+      margin-left: 1em;
+    }
+
+    a {
+      text-decoration: none !important;
+      color: #797979;
+    }
+
+    #header a {
+      margin-top: 5px;
+      margin-right: 3em;
+    }
+
+    #header a:hover {
+      text-decoration: underline;
+    }
+
+    #header a.active {
+      color: #2493FB !important;
+      border-bottom: 3px #2493FB solid;
+      padding-top: 9px;
+      padding-bottom: 6px;
+    }
+
+    .dm-panel {
+      display: flex;
+      margin: 2em 2em;
+      width: auto;
+      color: #333;
+      font-size: 14px;
+    }
+    .dm-stat {
+      margin-right: 2em;
+      color: #555;
+    }
+    .dm-stat b {
+      font-weight: 700;
+    }
+
+    .dm-button {
+      font-size: 13px;
+      border: none;
+      border-radius: 4px;
+      background-color: #2493FB;
+      color: #fff;
+      padding: 0.6em 1em;
+      margin-right: 0.5em;
+    }
+    .dm-button i {
+      margin-right: 0.5em;
+    }
+
+    .dm-divider {
+      width: auto;
+      border: 1px solid #eee;
+      margin: 1em 1em;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+<!-- Header -->
+<div id="header">
+  <a id="logo" href="welcome">
+    <img src="static/images/ls_logo.png" alt="label studio logo" class="img-logo"
+         style="width: 30px; height: 30px; margin-top: 5px">
+    <span class="img-text" style="font-size: 24px; margin-left: 0.25em">{{ config['title'] }}</span>
+  </a>
+
+  <a href="dm" class="nav active">Task Manager</a>
+
+  <a href="setup">Settings</a>
+
+  <span style="margin-left: auto; display: flex">
+    <a href="https://labelstud.io/guide/" target="_blank" style="margin-right: 2em">Docs</a>
+
+    <a href="https://github.com/heartexlabs/label-studio" target="_blank" style="margin-right: 1em">
+      <img src="static/images/github.svg" height="26"/>
+    </a>
+
+    <a href="https://join.slack.com/t/label-studio/shared_invite/zt-cr8b7ygm-6L45z7biEBw4HXa5A2b5pw"
+       style="margin-right: 1em"
+       data-tooltip="If you have found a bug or have questions ping us in Slack" data-position="bottom right"
+       target="_blank"><img src="static/images/slack.png" height="26"/>
+    </a>
+  </span>
+
+</div>
+
+<div class="ui container">
+  <div class="dm-panel">
+    <div class="dm-stat">
+      Total tasks: <b>{{ serialized_project.task_count }}</b>
+    </div>
+    <div class="dm-stat">
+      Total completions: <b>{{ serialized_project.completion_count }}</b>
+    </div>
+    <div class="dm-stat">
+      Skipped: <b>{{ serialized_project.skipped_count }}</b>
+    </div>
+    <div class="dm-stat">
+      Task sampling: <b>{{ serialized_project.config.sampling }}</b>
+    </div>
+
+    <span style="margin-left: auto">
+      <a href="import" class="dm-button"><i class="fa fa-arrow-down"></i>Import</a>
+      <a href="export" class="dm-button"><i class="fa fa-arrow-up"></i>Export</a>
+    </span>
+  </div>
+
+  <div class="dm-divider"></div>
+
+  <center>
+    <img src="static/images/dm-fake.png">
+  </center>
+</div>
+
+
+<br>
+</body>
+</html>
