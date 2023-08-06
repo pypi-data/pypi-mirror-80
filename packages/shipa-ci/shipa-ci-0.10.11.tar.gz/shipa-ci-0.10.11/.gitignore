@@ -1,0 +1,11 @@
+app
+enva
+env2
+env3
+.idea
+*.pyc
+shipa_ci.egg-info/
+.eggs/
+dist/
+build/
+build.sh

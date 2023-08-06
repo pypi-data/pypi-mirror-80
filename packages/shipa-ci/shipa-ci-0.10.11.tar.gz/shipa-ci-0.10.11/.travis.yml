@@ -1,0 +1,29 @@
+language: python
+
+python:
+  - '2.7'
+  - '3.5'
+  - '3.6'
+  - '3.7'
+
+install:
+  - pip install -r requirements.txt
+
+script:
+  - python -m unittest discover
+
+jobs:
+  include:
+    - stage: build
+      python: "3.7"
+      script: echo "Starting build for pypi"
+      deploy:
+        provider: pypi
+        user: __token__
+        password:
+          secure: ndRfmCLUITxXEi4kTDlBryChjGDIjIbgBqPSRlYoVgTABX0ch4jEZj/AlzqE5NHqsxIPMn0OeJvlEzFSRPzqe0EUiZM2rcfk5p3+coMij6Z3/RfreVKk9WOFzzxZA3/UHdLMtRzYBZFmIR22lOBmJPwuCGwpXTPQ+Ip/xBuL3TrL91DALvrbUBsVwHgLEZIBGHwux5PHIKExfeYr3N3ozJBF9zF+Z0BedqqiYIzlWxfOQFDtht2JPz8lUVcXgG242fuY5Qa6QmeyfT6t++0klsB0Jq150054dck8TlgZFmpbSY9NMCBNvugVHiK22uu8dvIa1QdAj+YzpLUyrtWW8SySg/HYbbPEM8lvH2QqciBfdMOwWU8WNDfYL9aCnVW+N5kyQ7fu+6typxKgIw/97shl9C+LxtmHypz3ig6EPCLAydVaeCwx8w46C8Pdo4L84/OhqPs+QXYaTyFPn3wh1SEH/E/ExLpdVpqhUbtFBjlHVfJSjEA+UTS3BBunbFalci8HofmaRklmRdSvk4dR/WCKrE45IxQYonNkVPWntwod/BXy7URRT4SiWlaaTFSdq9B5mMDSolS1LrUZ2/O4Ve0/C4VrFFLiCYMY+wKz3M2c3gcP6I2L3SOyQIEiOx+TsTSX5fFCoKdGxLheRRr9KGWTsy8yhKNNNv3xOWolDbo=
+        skip_cleanup: true
+        on:
+          tags: true
+
+
