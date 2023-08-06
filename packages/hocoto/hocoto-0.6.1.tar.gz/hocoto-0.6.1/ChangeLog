@@ -1,0 +1,181 @@
+CHANGES
+=======
+
+v0.6.1
+------
+
+* add --mode and --temp parameters
+* add profile summer
+* default setting of the house
+* update name of hocoto executable
+* remove peak after work
+* start the weekend earlier
+* add pip install docs
+
+v0.6
+----
+
+* fix obtaining device list
+* install -U
+* fix day vs fromday
+* uppercase all day params
+* smll fixes
+* rename hocoto\_manager to hocoto
+* add --in --out and --list
+* add documentation
+* minor plotting fix
+* make all days uppercase, to enforce case insensitivity
+* remove stale comments
+* remove stale debug output
+* type of dev and todev can now be arbitrary
+* add fuzzy search for device name
+* other profile for weekend
+* adapt ramp
+* undo changed
+* exchange weekend and homeoffice
+* flanke abflachen
+* flanken abflachen. Abends früher aus
+* pass
+* rename profiler to manager
+* soften ramp on workdays
+* catch indexError
+* rewrite plot to allow dynamic width and fix steepnes bug
+* soften raise
+* ignore dist
+* test profile
+* set profiles for all thermostats
+
+v0.5.5
+------
+
+* accept non weekdays
+* add main()
+* fix typo
+* fix typo
+* get rid of disturbances
+
+v0.5.4
+------
+
+* increase ignorance
+* increase ignorance
+
+v0.5.3
+------
+
+* uninstall old version before installing new one
+* fix manager <-> profiler again
+* formatting
+* add modesetter
+
+v0.5.2
+------
+
+* mqtt=>hocoo
+* new
+* fix names
+
+v0.5
+----
+
+* allow more choice on fromday
+* unify profiles
+* add profiles
+* logic fixes
+* ignore profiles, too
+* replace -w with writetofile
+* make same as formatting a little less sick
+* formatting
+* fix missing lines on the bottom
+* make sure each profile is full and complete
+* tweaks to enable writing and reading in the same way
+* tweaks to enable writing and reading in the same way
+* enable reading with "same as" and all that
+* enable reading with "same as" and all that
+* adjust position
+* new
+* ignore logs
+* add deduplication and improve drawing
+* mv ensure is list out
+* hm\_prifle=>slef
+* internediate in restructure
+* new path
+* ignore data
+* restructure all
+* restructure folders
+* add reading / writing to file; deduplication
+* add --start-in option
+* fix display bug; add --start-in option
+* remove debug output
+* test.py
+* add shorter parameters
+* add support for party mode
+* remove blang lines and clear up formatting
+* add --dump option; does not have implementation yet
+* copying works; add tables\_multi
+* intermediate commit
+* add dry-mode
+* minor ouptut formatting changes
+* add visualisation
+* add copying function for whole devices or individual days
+* overcome missing devices
+* chmod
+* add folds
+* new
+* add new kueche
+* code cleanup
+* only set temperature if user intends to do that
+* fix for temperature
+* improve formatting
+* add more features
+* winter
+* initial
+* testing
+* sort keys on output
+* remove superfluous device check
+* winter-profile
+* change default for log
+* add device-get-t
+* add commented debug code
+* fix formatting error
+* improve logging
+* temps was missing
+* improvie output
+* add --get-profile option
+* add option --store-profile to store a profile in the database
+* add --pull-from-device option
+* add option --pull-from-device
+* add --get-all
+* add --get-all
+* more logging
+* more logging
+* add --put-all option
+* add time to log
+* change logfile location
+* change logfile location
+* add option for adding temperatures
+* now also store weekdays
+* make sql writes less noisy
+* be more flexible
+* split temps and profile also for writing to db
+* fix update problem
+* properly log commandline
+* separate temps from profiles
+* show profile name also on set
+* silence eventhandler
+* change location of logfile
+* change db dfeault location
+* add temps to database
+* create profile also for put
+* rename config files
+* fix typo
+* align
+* make temperatures configurable; make initialisation nicer
+* ignore
+* add sqlite support; add parameters --put --get
+* cleanup code structure
+* finalise profiles
+* added profiles
+* evolved from test.py;
+* initial testing
+* initial testing
