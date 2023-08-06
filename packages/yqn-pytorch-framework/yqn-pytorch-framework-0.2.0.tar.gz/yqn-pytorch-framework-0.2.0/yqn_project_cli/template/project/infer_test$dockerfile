@@ -1,0 +1,12 @@
+FROM uhub.service.ucloud.cn/ucloud_image/bc_env_base:0.2
+ENV LANG C.UTF-8
+WORKDIR /opt/web/ws-${app_id}
+COPY requirements_infer.txt \
+    model_url_config_local.yml \
+    model_url_config_online.yml \
+    ./
+RUN pip install --no-cache-dir -r requirements_infer.txt -i https://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com
+RUN yqn-model -e local -F
+COPY . ./
+ENV CODE_VERSION=${today}-test
+ENTRYPOINT  ["/opt/web/ws-${app_id}/entrypoint_test.sh"]

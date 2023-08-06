@@ -1,0 +1,25 @@
+import os
+import numpy as np
+from yqn_common.image_util import load_image
+
+CHAR_TO_INT = {}
+INT_TO_CHAR = {}
+
+
+def get_label_int(char_info):
+    return CHAR_TO_INT[char_info]
+
+
+def get_int_char(int_index):
+    return INT_TO_CHAR[int_index]
+
+
+def load_files(config, file_dir):
+    labels_path = os.path.join(file_dir)
+    labels = []
+    input_files = []
+    for root, dirs, files in os.walk(labels_path):
+        for file_name in files:
+            pass
+        pass
+    return input_files, labels
