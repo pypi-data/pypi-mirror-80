@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d4945239-4ed7-4ab4-92a2-9d3de9a2d7bb" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1ZFlSs4xVGoMMyiOV9gOvVjxfok" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/disk_test/test" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Python3\Lib\site-packages\quarchpy\disk_test\test" />
+      <recent name="C:\Python3\Lib\site-packages\quarchpy\disk_test" />
+      <recent name="C:\Python3\Lib\site-packages\quarchpy\fio" />
+      <recent name="C:\Python3\Lib\site-packages\quarchpy" />
+      <recent name="C:\Python3\Lib\site-packages\quarchpy\proto\proto_server" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Python3\Lib\site-packages\quarchpy\disk_test\test" />
+      <recent name="C:\Python3\Lib\site-packages\quarchpy\disk_test\certs" />
+      <recent name="C:\Python3\Lib\site-packages\quarchpy\device" />
+      <recent name="C:\Python37\Lib\site-packages\quarchpy\disk_test" />
+      <recent name="C:\Python37\Lib\site-packages\quarchpy" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Python.driveTestCore">
+    <configuration name="Dummy_testing" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="quarchpy" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/disk_test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/disk_test/Dummy_testing.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="PowerVsPerformance" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="quarchpy" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/disk_test/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/disk_test/test/PowerVsPerformance.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="configparser" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="quarchpy" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/config_files" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/config_files/configparser.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="driveTestCore" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="quarchpy" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/disk_test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/disk_test/driveTestCore.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="testing_pre_reqs" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="quarchpy" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/disk_test/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/disk_test/test/testing_pre_reqs.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.driveTestCore" />
+        <item itemvalue="Python.PowerVsPerformance" />
+        <item itemvalue="Python.testing_pre_reqs" />
+        <item itemvalue="Python.Dummy_testing" />
+        <item itemvalue="Python.configparser" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d4945239-4ed7-4ab4-92a2-9d3de9a2d7bb" name="Default Changelist" comment="" />
+      <created>1568193526311</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1568193526311</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.ini" />
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.log" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="510" y="216" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1598020568846">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="510" y="216" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1598020568846" />
+    <state x="499" y="160" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1598020617317">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="499" y="160" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1598020617317" />
+    <state width="1178" height="466" key="DebuggerActiveHint" timestamp="1600870531031">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1178" height="466" key="DebuggerActiveHint/0.0.1536.824@0.0.1536.824" timestamp="1600870531031" />
+    <state x="827" y="200" key="FileChooserDialogImpl" timestamp="1596538101853">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="827" y="200" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1596538101853" />
+    <state width="1515" height="264" key="GridCell.Tab.0.bottom" timestamp="1600905297148">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1515" height="264" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1600905297148" />
+    <state width="1515" height="264" key="GridCell.Tab.0.center" timestamp="1600905297148">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1515" height="264" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1600905297148" />
+    <state width="1515" height="264" key="GridCell.Tab.0.left" timestamp="1600905297147">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1515" height="264" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1600905297147" />
+    <state width="1515" height="264" key="GridCell.Tab.0.right" timestamp="1600905297148">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1515" height="264" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1600905297148" />
+    <state width="1515" height="264" key="GridCell.Tab.1.bottom" timestamp="1600905296992">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1515" height="264" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1600905296992" />
+    <state width="1515" height="264" key="GridCell.Tab.1.center" timestamp="1600905296991">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1515" height="264" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1600905296991" />
+    <state width="1515" height="264" key="GridCell.Tab.1.left" timestamp="1600905296991">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1515" height="264" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1600905296991" />
+    <state width="1515" height="264" key="GridCell.Tab.1.right" timestamp="1600905296991">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1515" height="264" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1600905296991" />
+    <state x="584" y="347" key="ReplaceDuplicatesPrompt" timestamp="1592394599132">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="584" y="347" key="ReplaceDuplicatesPrompt/0.0.1536.824@0.0.1536.824" timestamp="1592394599132" />
+    <state x="555" y="68" key="SettingsEditor" timestamp="1598343571475">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="555" y="68" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1598343571475" />
+    <state width="775" height="419" key="XDebugger.FullValuePopup" timestamp="1598611059668">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="775" height="419" key="XDebugger.FullValuePopup/0.0.1536.824@0.0.1536.824" timestamp="1598611059668" />
+    <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1599739230612">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1599739230612" />
+    <state x="849" y="241" key="com.intellij.ide.util.TipDialog" timestamp="1600869820191">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="849" y="241" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1600869820191" />
+    <state x="408" y="28" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1593082450489">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="408" y="28" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1593082450489" />
+    <state x="463" y="10" width="611" height="804" key="find.popup" timestamp="1598606262434">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="463" y="10" width="611" height="804" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1598606262434" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1593516639667">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1593516639667" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/calibration/calibrationUtil.py</url>
+          <line>124</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$USER_HOME$/Desktop/BoonCave/Python Scripts/nicetableTest.py</url>
+          <line>22</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/device/hotplug_test_revised.py</url>
+          <line>49</line>
+          <option name="timeStamp" value="74" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
