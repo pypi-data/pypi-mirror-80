@@ -1,0 +1,12 @@
+include AUTHORS.rst
+include CONTRIBUTING.rst
+include HISTORY.rst
+include LICENSE
+include README.rst
+
+include pyinduct/tests/test_data/*.dat
+recursive-include docs *.rst conf.py Makefile make.bat
+
+prune __pycache__
+global-exclude *.py[co]
+
