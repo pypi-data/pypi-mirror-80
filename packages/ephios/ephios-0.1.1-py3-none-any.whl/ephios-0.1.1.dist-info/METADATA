@@ -1,0 +1,51 @@
+Metadata-Version: 2.1
+Name: ephios
+Version: 0.1.1
+Summary: ephios is a tool to manage shifts for medical services.
+Home-page: https://ephios.de
+License: MIT
+Author: Julian Baumann
+Author-email: julian@ephios.de
+Requires-Python: >=3.8,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Provides-Extra: mysql
+Provides-Extra: pgsql
+Requires-Dist: bleach (>=3.2.1,<4.0.0)
+Requires-Dist: django (>=3.1,<4.0)
+Requires-Dist: django-bootstrap4 (>=2.2.0,<3.0.0)
+Requires-Dist: django-csp (>=3.7,<4.0)
+Requires-Dist: django-environ (>=0.4.5,<0.5.0)
+Requires-Dist: django-formset-js-improved (>=0.5.0,<0.6.0)
+Requires-Dist: django-guardian (>=2.3.0,<3.0.0)
+Requires-Dist: django-ical (>=1.7.1,<2.0.0)
+Requires-Dist: django-polymorphic (>=3.0.0,<4.0.0)
+Requires-Dist: django-select2 (>=7.4.2,<8.0.0)
+Requires-Dist: markdown (>=3.2.2,<4.0.0)
+Requires-Dist: mysqlclient (>=2.0.1,<3.0.0); extra == "mysql"
+Requires-Dist: psycopg2 (>=2.8.6,<3.0.0); extra == "pgsql"
+Requires-Dist: reportlab (>=3.5.51,<4.0.0)
+Project-URL: Repository, https://github.com/ephios-dev/ephios
+Description-Content-Type: text/markdown
+
+![ephios](https://github.com/ephios-dev/ephios/workflows/ephios/badge.svg)
+# ephios
+ephios is a tool to manage shifts for medical services.
+
+## Development setup
+
+To set up a development version on your local machine, you need to execute the following steps:
+1. Check out repository and cd to it
+2. Set up a virtualenv for the project with Python >=3.8 and activate it
+3. Install poetry (if not already installed): `curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python`
+4. Install dependencies with `poetry install`
+5. Create env file with `cp .env.example .env`
+6. Migrate the database with `python manage.py migrate`
+7. Compile translations with `python manage.py compilemessages`
+8. Load data for testing with `python manage.py setupdata debug`
+9. Start the development server with `python manage.py runserver`
+10. Open your web browser, visit `http://localhost:8000` and log in with the default credentials (user `admin@localhost` and password `admin`)
+
+Before committing, make sure to lint your changes with `black .`. You can also check the [IDE integration](https://github.com/psf/black#editor-integration) or install a pre-commit hook with `pre-commit install` (recommended). You also need to to test the code with `pytest`.
+
