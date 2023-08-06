@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: ratsnlp
+Version: 0.0.9
+Summary: tools for Natural Language Processing
+Home-page: https://github.com/ratsgo/ratsnlp
+Author: ratsgo
+Author-email: ratsgo@naver.com
+License: MIT
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3.7
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Dist: torch (>=1.5.1)
+Requires-Dist: pytorch-lightning (==0.8.5)
+Requires-Dist: transformers (==3.0.2)
+Requires-Dist: Korpora (>=0.1.0)
+Requires-Dist: flask (==1.1.2)
+Requires-Dist: flask-cors (==3.0.8)
+
+# ratsnlp
+tools for Natural Language Processing
+
+
