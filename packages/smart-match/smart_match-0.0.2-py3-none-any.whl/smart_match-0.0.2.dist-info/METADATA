@@ -1,0 +1,32 @@
+Metadata-Version: 2.1
+Name: smart-match
+Version: 0.0.2
+Summary: A smart match package
+Home-page: https://github.com/jiayingwang/smart_match
+Author: Jiaying Wang
+Author-email: jiaying@sjzu.edu.cn
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+
+# Introduction
+
+The smart-match module contains functions for functions for calculating string similarity.
+
+# Installation
+
+```python
+    pip install smart-match
+```
+
+# License
+
+smart-match is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+See the file COPYING for the full text of GNU General Public License version 2.
+
+
