@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: Epiphyte
+Version: 0.1.0
+Summary: a Python toolkit for high-dimensional neural data recorded during naturalistic, continuous stimuli
+Home-page: https://github.com/mackelab/Epiphyte
+Author: Alana Darcher, Tamara Mueller
+Author-email: alana.darcher@gmail.com
+License: UNKNOWN
+Description: a Python toolkit for high-dimensional neural data recorded during naturalistic, continuous stimuli
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
