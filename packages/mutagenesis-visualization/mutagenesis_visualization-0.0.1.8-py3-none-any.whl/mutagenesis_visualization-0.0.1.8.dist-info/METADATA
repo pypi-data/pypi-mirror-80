@@ -1,0 +1,47 @@
+Metadata-Version: 2.1
+Name: mutagenesis-visualization
+Version: 0.0.1.8
+Summary: A package for analysis and visualization of saturation mutagenesis data
+Home-page: https://github.com/fhidalgor/mutagenesis_visualization
+Author: Frank Hidalgo
+Author-email: fhidalgoruiz@berkeley.edu
+License: UNKNOWN
+Project-URL: Documentation, https://mutagenesis-visualization.readthedocs.io/
+Project-URL: Source, https://github.com/fhidalgor/mutagenesis_visualization
+Keywords: saturation,mutagenesis,deepsequencing,ras
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Operating System :: OS Independent
+Classifier: Intended Audience :: Science/Research
+Classifier: Topic :: Scientific/Engineering :: Bio-Informatics
+Requires-Python: >=3.6
+Requires-Dist: numpy (>=1.18.5)
+Requires-Dist: seaborn (>=0.10.1)
+Requires-Dist: pandas (>=1.0.5)
+Requires-Dist: scipy (>=1.5.0)
+Requires-Dist: matplotlib (>=3.2)
+Requires-Dist: scikit-learn (>=0.23.1)
+Requires-Dist: adjustText (>=0.7.3)
+Requires-Dist: biopython (>=1.77)
+Requires-Dist: logomaker (>=0.8)
+Requires-Dist: freesasa (>=2.1.0)
+
+# Mutagenesis Visualization
+Python package to analyze and plot saturation mutagenesis data
+
+
+## Installation
+
+Mutagenesis Visualization can be installed from PyPI by executing
+
+```
+pip install mutagenesis-visualization
+```
+
+## Documentation
+
+[![Documentation Status](https://readthedocs.org/projects/mutagenesis-visualization/badge/?version=latest)](https://mutagenesis-visualization.readthedocs.io/en/latest/?badge=latest)
+
+mutagenesis-visualization.readthedocs.io
+
