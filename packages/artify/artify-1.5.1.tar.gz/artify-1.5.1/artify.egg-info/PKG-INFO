@@ -1,0 +1,131 @@
+Metadata-Version: 2.1
+Name: artify
+Version: 1.5.1
+Summary: Upload to Nexus, Upload files to hooks, Modify version number, Sync to GitLab type repository
+Home-page: https://github.com/stewiejnr
+Author: Stewartium
+Author-email: stewartium1@gmail.com
+License: MIT
+Description: 
+        Upload to Nexus, Upload files to hooks, Modify version number, Sync to GitLab type repository, Generate template files, Extract commands from Git commit messages
+        
+        Installation
+        ============
+        You can download and install the latest version of this software from the Python package index (PyPI) as follows::
+        
+            pip install --upgrade artify
+        
+        Usage
+        =====
+            python -m artify --help=
+        
+            python -m artify --command <command> [Options]
+        or
+        
+        `python -m artify -c <command> [Options]`
+        
+        
+        **Params**
+        
+        command &nbsp; &nbsp; &nbsp; &nbsp; nexus, syncrepo, deploy, deltav, create
+        <br>
+        
+        Upload to Nexus
+        ===============
+        
+            python -m artify -c nexus -f <format> -n <artifact_name> -h <nexus_repository_base_url>
+        
+        **Important**
+        
+        Artifact name should include artifact id and version number. E.g example-ws-1.0.0.war
+        
+        **Params**
+        
+        -f, format &nbsp; &nbsp; &nbsp; &nbsp; Nexus upload format. Types supported: raw, npm, maven
+        
+        ### Environment variables need
+        **NEXUS_GROUP_ID** &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Group ID of the project e.g com.testing.testapplication
+        **NEXUS_USERNAME** &nbsp; &nbsp; &nbsp; &nbsp; Username of nexus user that will upload artifact
+        **NExUS_PASSWORD** &nbsp; &nbsp; &nbsp; &nbsp; Password of nexus user that will upload artifact
+        
+        <br>
+        
+        Deploy App using custom AWX host
+        ================================
+        
+            python -m artify -c deploy -f <manifest_file.yml> -h <awx_host>
+        
+        ### Environment variables need
+        **DEPLOY_TOKEN** &nbsp; &nbsp; &nbsp; &nbsp; Token used to deploy application
+        <br>
+        
+        Change Package version
+        ======================
+        
+        Artify uses semantic version 2.0.
+        
+        `python -m artify -c deltav -t patch -a npm`
+        
+        **Params**
+        
+        -a, --archtype &nbsp; &nbsp; &nbsp; &nbsp; npm, gradle, flutter, maven, dotnet
+        
+        -t, --type &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; major, minor, patch, prerelease
+        
+        **Optional Params**
+        For Prerelease version change
+        --preValue          Prerelease version value e.g SNAPHOT, RELEASE, BUILD, beta, alpa
+        <br>
+        
+        Push changes to GitLab repository
+        =================================
+        
+        ### Recommendation: You can create a feature branch, then perform your code changes before pushing changes to remote
+            python -m artify -c syncrepo -m <message> -b 
+        
+        **Params**
+         
+         -c, --message &nbsp; &nbsp; &nbsp; &nbsp; Commit message
+         -b, --branch &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Optional, by default, it will push to 'develop' branch
+        
+        ### Environment variables need
+        **PRIVATE_TOKEN**, popularly known as personal access token is needed to perform the push. This can be created by following this guide:
+        [Creating a personal access token](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html)
+        
+        N.B A commit is performed automatically followed by a push
+        
+        Generate Template files
+        =======================
+        
+        ### Generate template .gitlab-ci.yml file
+        `python -m artify -c create -f gitlabci` 
+        
+        ### Geneate template manifest.yml file
+        `python -m artify -c create -f manifest`
+        
+        **Params**
+        -f, --file &nbsp; &nbsp; &nbsp; &nbsp; File template to generate
+        
+        **Supported files**
+        - .gitlab-ci.yml
+        - manifest.yml
+        
+        Extract commands from GIT message
+        =================================
+        `python -m artify -c extract`
+        
+        **Sample commit messages**
+        
+        1. Added login functionality {"version": "patch", "archtype": "npm" } - Updates the patch version of npm type project
+        
+        2. Added search functionality {"deltav": "major", "archtype": "gradle" } - Updates the major version of a java project with Gradle build tool
+        
+        3. Added edit functionality {"version": "minor", "a": "flutter" } - Updates the minor version of a flutter project
+        
+        
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Description-Content-Type: text/markdown
