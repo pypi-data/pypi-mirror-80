@@ -1,0 +1,20 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[[source]]
+name = "testpypi"
+url = "https://test.pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+flit = "*"
+pylint = "*"
+pytest = "*"
+
+[packages]
+slackclient = "~=2.9"
+
+[requires]
+python_version = "3.8"
