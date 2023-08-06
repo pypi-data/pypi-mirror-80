@@ -1,0 +1,3 @@
+[console_scripts]
+guiabolso2csv = guiabolso2csv.__main__:main
+
