@@ -1,0 +1,7 @@
+[console_scripts]
+feynman_sr1 = aifeynman._symbolic_regress1:go
+feynman_sr2 = aifeynman._symbolic_regress2:go
+feynman_sr3 = aifeynman._symbolic_regress3:go
+feynman_sr_mdl4 = aifeynman._symbolic_regress_mdl4:go
+feynman_sr_mdl5 = aifeynman._symbolic_regress_mdl5:go
+
