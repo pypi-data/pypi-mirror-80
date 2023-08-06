@@ -1,0 +1,283 @@
+Metadata-Version: 2.1
+Name: iqvia-e360
+Version: 0.3.3
+Summary: E360 Clients Wrapper for Python
+Home-page: UNKNOWN
+Author: IQVIA
+Author-email: e360pypi@iqvia.com
+License: Apache License 2.0
+Platform: UNKNOWN
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: clients-core (<3,>=2.1.1)
+Requires-Dist: sd-clients (>=2.0.0)
+Requires-Dist: adt-clients (>=1.1.0)
+Requires-Dist: file-service-client
+Requires-Dist: vrs-clients
+Requires-Dist: workspace-clients (>=1.1.1)
+Requires-Dist: dataclasses ; python_version == "3.6"
+
+E360 Clients Wrapper
+===
+
+[![pipeline status](http://rwes-gitlab01.internal.imsglobal.com/python-microservice-clients/e360-clients-wrapper/badges/master/pipeline.svg)](http://rwes-gitlab01.internal.imsglobal.com/python-microservice-clients/e360-clients-wrapper/commits/master)
+
+
+E360 Clients Wrapper for Python
+
+
+## Introduction
+`iqvia_e360` is a Python library allowing for IQVIA E360 users to connect to E360 Workspaces, download datasets, retrieve and create assets.
+
+
+## Features
+* Authentication using OIDC (internal network only ) and Api Gateway (internal and external network)
+* Handles the creation of E360  clients
+* Provides convinient functions for the following usecases:
+    * List ADT reports
+    * Download an ADT report
+    * Upload an ADT
+    * List workspace containers
+    * Create a workspace container
+    * Create a workspace asset
+    * Upload a document to workspaces
+    * Move and rename a workspace asset
+    * Create an E360 visualization from a Plotly figure
+
+## Usage
+
+To get started you will need to get hold of the appropriate credentials for authentication. These will be provided to you by E360 support.
+The credentials can be stored in a settings file and reused between ClientStore instances, or passed directly to ClientStore at creation time.
+
+A settings file can be provided using the `create_from_settings` classmethod:
+
+
+```
+from iqvia_e360 import ClientStore
+store = ClientStore.create_from_settings("<path-to-settings>")
+```
+
+### Connecting using Api Gateway
+
+If you are using Api Gateway, create a file (default file name: **e360.ini**), and include the following configuration:
+
+```
+[e360]
+api_gateway_url = http://api-gateway-url.com
+api_gateway_key = my-key
+verify_ssl = yes
+```
+
+Alternatively, the configuration can be passed directly to the helper class methods as seen below:
+
+```
+from iqvia_e360 import ClientStore
+client_store = ClientStore.create_with_gateway("<my-apikey>")  # Optionally can pass gateway_url and verify_ssl
+```
+
+
+### Connecting from internal network
+If you are using OIDC, it is recommended to use a settings file. This is an example OIDC settings file:
+
+```
+[e360]
+verify_ssl = yes
+service_directory_url = https://e360-sd-service.dev.com
+oidc_client_id =client-id
+oidc_client_secret =client-secret
+oidc_endpoint_url =https://e360-oidc-endpoint.dev.com
+use_oidc_mode = yes
+oidc_user_id = user-id
+```
+
+---
+
+## Available ClientStore methods
+
+
+Once instantiated, ClientStore can be used for retrieving instances of E360 clients, or the convinience functions can be called directly.
+Following is a list with examples for those functions:
+
+```
+*ClientStore.get_adt_reports*
+    Retrieve a list of ADT Report assets the user can access through workspaces.
+    Args:
+        metadata_key (Optional): A metadata key to filter for. must be provided together with metadata_value
+        metadata_value (Optional): A metadata value to filter for
+    Returns:
+        The list of ADT report assets using `iqvia_e360.models.AdtReportAssetModel`
+```
+
+
+```
+*ClientStore.get_adt_report_by_id*
+    Retrieve an ADT Report asset using its ADT id
+    Args:
+        id_: The ID of the analytic dataset report
+    Returns:
+        The ADT report asset using `iqvia_e360.models.AdtReportAssetModel`
+```
+
+```
+*ClientStore.get_workspace_containers*
+    Retrieve a list of available workspace containers
+
+    Args:
+        name (Optional): Filter returned containers by name
+    Returns:
+        List of available workspace containers `iqvia_e360.models.ContainerAssetModel`
+```
+
+
+```
+*ClientStore.move_workspace_asset*
+    Change location of a workspace asset. Also allows to optionally rename, and to make an asset visibe or hidden
+
+    Args:
+        asset: The id of the asset to move, or an instance of iqvia_360.AssetModel
+        target_container: The id of the container the asset is being moved to, or an instance of iqvia_360.ContainerAssetModel
+        new_name (Optional): The new name of the asset.
+        hidden (Optional): A boolean indicating if the asset should not be visible in workspaces. Defaults to False
+    Returns:
+        The edited iqvia_e360.AssetModel instance
+```
+
+
+```
+*ClientStore.create_workspace_container*
+    Create a new workspace container
+
+    Args:
+        target_container: The id or a iqvia_360.ContainerAssetModel instance of the parent of the new container
+        name: The name of the new container
+        description (Optional): A description of this container
+    Returns:
+        The `iqvia_e360.models.ContainerAssetModel` instance of the new container
+```
+
+```
+*ClientStore.download_adt_report*
+    Download the requested analytic dataset report to the local environment. The format of the report is pre-determined at the time of generation from its definition.
+
+    Args:
+        asset: The workspace asset instance for the required report, or the asset id
+        location (Optional): The directory where the report should be downloaded. Defaults to current working directory
+    Returns:
+        A Path object pointing to the downloaded report, or None if the download failed
+```
+
+
+
+
+```
+*ClientStore.download_adt_report_by_id*
+    Download the requested analytic dataset report to the local environment. The format of the report is pre-determined at the time of generation from its definition.
+
+    Args:
+        report_id: The id of the analytic dataset report to download
+        location (Optional): The directory where the report should be downloaded. Defaults to current working directory
+    Returns:
+        A Path object pointing to the downloaded report, or None if the download failed
+```
+
+```
+*ClientStore.create_workspace_asset*
+    Given an instance of iqvia_e360.AssetModel, create it on workspaces
+
+    Args:
+        report_id: The id of the analytic dataset report to download
+        location (Optional): The directory where the report should be downloaded. Defaults to current working directory
+    Returns:
+        A Path object pointing to the downloaded report, or None if the download failed
+```
+
+```
+*ClientStore.upload_document_file*
+	Upload a local document file into E360 workspaces
+
+    Args:
+        target_container: The id of the container the asset is created in, or an instance of iqvia_360.ContainerAssetModel
+        file_path: The path to the document to upload
+        name: The asset name for the uploaded document
+        description (Optional): An asset description for the uploaded document
+    Returns:
+        An `iqvia_e360.AssetModel` for the newly created asset, or None if creation failed
+```
+
+
+```
+*ClientStore.upload_adt_file*
+	Upload a local document file into E360 workspaces
+
+    Args:
+        target_container: The id of the container the ADT asset is created in, or an instance of iqvia_360.ContainerAssetModel
+        file_path: The path to report that will be uploaded
+        name: The asset name for the uploaded report
+        granularity: The granularity of the data. Values can be selected from `iqvia_e360.Granularity`
+        format_: The format of the data uploaded. Values can be selected from `iqvia_e360.AnalyticDatasetFormat`
+        dataset_release_id (Optional): The dataset_release_id that should be associated with this data.
+    Returns:
+        An instance of`iqvia_e360.AnalyticDatasetModel` for the newly created report
+```
+
+
+```
+*ClientStore.create_plotly_visualization*
+	Provided a plotly figure object, create an E360 visualization
+
+    Args:
+    	plotly_obj: A plotly figure object
+        target_container: The id of the container the visualization asset is created in, or an instance of iqvia_360.ContainerAssetModel
+        name: The asset name for the uploaded visualization
+        description (Optional): An asset description for the uploaded visualization
+    Returns:
+        An `iqvia_e360.AssetModel` for the newly created asset
+
+Example:
+import plotly.graph_objects as go
+from iqvia_e360 import ClientStore
+fig = go.Figure(go.Scatter(x=[1,2,3], y=[1,2,3]))
+store = ClientStore.create_from_settings()
+containers = store.get_workspace_containers("Personal Workspace")
+store.create_plotly_visualization(fig, containers[0], "Asset title", "I hope this works")
+```
+
+## Available *AssetModel methods
+
+
+The following models are created by calling ClientStore methods (e.g `ClientStore.get_adt_reports`), and provide some convinience functions to other ClientStore functionality.
+
+```
+*AdtReportAssetModel.download*
+    Convinience method for `ClientStore.download_adt_report`. Will automatically provide the `asset` parameter
+```
+
+```
+*ContainerAssetModel.upload_adt_file*
+    Convinience method for `ClientStore.upload_adt_file`. Will automatically provide the `target_container` parameter
+```
+
+
+```
+*ContainerAssetModel.create_child_container*
+    Convinience method for `ClientStore.create_workspace_container`. Will automatically provide the `target_container` parameter
+```
+
+
+```
+*ContainerAssetModel.upload_document_file*
+    Convinience method for `ClientStore.create_workspace_container`. Will automatically provide the `target_container` parameter
+```
+
+
+
