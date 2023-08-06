@@ -1,0 +1,4 @@
+
+    [console_scripts]
+    attendancemarker=attendancemarker.cli:cli
+    

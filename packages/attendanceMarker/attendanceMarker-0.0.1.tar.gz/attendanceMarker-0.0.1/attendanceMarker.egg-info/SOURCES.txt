@@ -1,0 +1,15 @@
+MANIFEST.in
+README.rst
+setup.cfg
+setup.py
+attendanceMarker.egg-info/PKG-INFO
+attendanceMarker.egg-info/SOURCES.txt
+attendanceMarker.egg-info/dependency_links.txt
+attendanceMarker.egg-info/entry_points.txt
+attendanceMarker.egg-info/requires.txt
+attendanceMarker.egg-info/top_level.txt
+attendancemarker/__init__.py
+attendancemarker/cli.py
+attendancemarker/version.py
+attendancemarker/core/__init__.py
+attendancemarker/core/core.py
