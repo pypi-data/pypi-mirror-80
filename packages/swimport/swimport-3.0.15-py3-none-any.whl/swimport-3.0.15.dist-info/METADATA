@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: swimport
+Version: 3.0.15
+Summary: UNKNOWN
+Home-page: https://github.com/talos-gis/swimport
+Author: Ben Avrahami
+Author-email: avrahami.ben@gmail.com
+License: MIT
+Platform: UNKNOWN
+Requires-Python: >=3.6.0
+Requires-Dist: CppHeaderParser (>=2)
+Provides-Extra: memory_testing
+Requires-Dist: psutil ; extra == 'memory_testing'
+
+UNKNOWN
+
+
