@@ -1,0 +1,134 @@
+Metadata-Version: 2.1
+Name: markdownmaker
+Version: 0.3.0
+Summary: An easy-to-use Python to Markdown generator.
+Home-page: https://gitlab.com/MoritzBrueckner/markdownmaker
+Author: Moritz Brückner
+License: zlib
+Project-URL: Documentation, https://gitlab.com/MoritzBrueckner/markdownmaker
+Project-URL: Source, https://gitlab.com/MoritzBrueckner/markdownmaker
+Project-URL: Tracker, https://gitlab.com/MoritzBrueckner/markdownmaker/-/issues
+Description: # ![](https://gitlab.com/MoritzBrueckner/markdownmaker/-/raw/master/logo/markdownmaker_icon.png)markdownmaker
+        
+        **markdownmaker** is an easy-to-use Python to Markdown converter. Actually, this document you are reading right now was generated with markdownmaker for demonstration purposes ([source](https://gitlab.com/MoritzBrueckner/markdownmaker/-/blob/master/readmegen.py)). Currently it uses Github Flavored Markdown but more flavors might follow.
+        
+        This library was developed to aid with generating a reference for [Armory3D](https://github.com/armory3d/armory)'s [logic nodes](https://github.com/armory3d/armory/wiki/reference), thus it's feature scope is rather small and the output might have some bugsfor complex documents. If you encounter problems, please open an issue.
+        
+        ## Usage (API)
+        
+        Import the following:
+        
+        ```python
+        from markdownmaker.document import Document
+        from markdownmaker.markdownmaker import *
+        ```
+        After you finished your document, use `Document.write()`.
+        
+        ### Emphasis
+        
+        ```python
+        Document.add(Paragraph(Italic("This text will be italic!")))
+        Document.add(Paragraph(Bold("This text will be bold!")))
+        
+        Document.add(Paragraph(f"You can also combine {Bold(Italic('bold and italic text!'))}"))
+        ```
+        *This text will be italic!*
+        
+        **This text will be bold!**
+        
+        You can also combine ***bold and italic text!***
+        
+        ### Headers
+        
+        ```python
+        Document.add(Header("This is a header"))
+        with HeaderSubLevel():
+            Document.add(Header("This is a sub-header"))
+            with HeaderSubLevel():
+                Document.add(Header("This is a sub-sub-header"))
+        ```
+        ### This is a header
+        
+        #### This is a sub-header
+        
+        ##### This is a sub-sub-header
+        
+        ### Lists
+        
+        ```python
+        Document.add(OrderedList(
+            ("Item 1", 
+             "Item 2", 
+             UnorderedList(
+                 (Bold("Test A"), 
+                  Italic("Test B"))), 
+             "Item 4")))
+        ```
+        1. Item 1
+        2. Item 2
+          - **Test A**
+          - *Test B*
+        
+        3. Item 4
+        
+        ### Horizontal Rule
+        
+        ```python
+        Document.add(HorizontalRule())
+        ```
+        ---
+        ### Links and Images
+        
+        ```python
+        Document.add(Link(label='Go to top', url='#markdownmaker'))
+        Document.add(Image(url='https://gitlab.com/uploads/-/system/project/avatar/21351489/markdownmaker.png?width=40', alt_text='logo'))
+        ```
+        [Go to top](#markdownmaker)
+        
+        ![logo](https://gitlab.com/uploads/-/system/project/avatar/21351489/markdownmaker.png?width=40)
+        
+        ### Code
+        
+        ```python
+        Document.add(CodeBlock("""import this
+        import __hello__""", language="python"))
+        
+        Document.add(Paragraph(f"{InlineCode('Inline code')} is also supported!"))
+        ```
+        ```python
+        import this
+        import __hello__
+        ```
+        `Inline code` is also supported!
+        
+        ### Quotes
+        
+        ```python
+        Document.add(Quote("Lorem ipsum dolor sit amet."))
+        ```
+        > Lorem ipsum dolor sit amet.
+        
+        ## License
+        
+        markdownmaker is licensed under the [zlib license.](https://gitlab.com/MoritzBrueckner/markdownmaker/-/blob/master/LICENSE.md).
+        
+        
+Keywords: markdownmaker Markdown Syntax Layout Library Utility Generator Converter Tool
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: zlib/libpng License
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: Text Processing
+Classifier: Topic :: Text Processing :: Markup
+Classifier: Topic :: Text Processing :: Markup :: Markdown
+Classifier: Topic :: Utilities
+Classifier: Typing :: Typed
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
