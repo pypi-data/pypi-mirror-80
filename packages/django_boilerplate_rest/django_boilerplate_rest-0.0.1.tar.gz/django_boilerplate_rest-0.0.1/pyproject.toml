@@ -1,0 +1,39 @@
+[build-system]
+requires = ["flit_core >=2,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.flit.metadata]
+module = "django_boilerplate_rest"
+author = "Ravuthz"
+author-email = "ravuthz@gmail.com"
+home-page = "https://github.com/ravuthz/django_boilerplate/tree/rest"
+
+requires=[
+    'constance',
+    'dj_database_url',
+    'django_extensions',
+    'rest_framework',
+    'rest_auth',
+    'oauth2_provider',
+    'corsheaders',
+    'drf_yasg',
+]
+requires-python=">=3.5"
+description-file="README.md"
+
+#classifiers = ["License :: OSI Approved :: MIT License"]
+classifiers=[
+    "Environment :: Web Environment",
+    "Framework :: Django",
+    "Framework :: Django :: 3.1",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+]
