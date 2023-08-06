@@ -1,0 +1,43 @@
+Metadata-Version: 2.1
+Name: ig-profile-client
+Version: 0.0.4
+Summary: A common client to get instagram profile (public data)
+Home-page: https://github.com/Panchorn/ig-profile-client.git
+Author: Panchorn Lertvipada
+Author-email: nonpcn@gmail.com
+License: MIT
+Description: # IG-PROFILE-CLIENT
+        [![codecov](https://codecov.io/gh/Panchorn/ig-profile-client/branch/master/graph/badge.svg)](https://codecov.io/gh/Panchorn/ig-profile-client)
+        [![PyPI](https://img.shields.io/pypi/v/ig-profile-client.svg)](https://pypi.org/project/ig-profile-client/)
+        
+        This library is a client to get Instagram profile data (public data).
+        
+        ###### I have made this for publishing a package to PyPI only!
+        
+        ## Usage
+        Install package by using pip:
+        ```bash
+        pip install -U ig-profile-client
+        ```
+        
+        ## Example
+        ```python
+        from IgProfileClient import Client
+        
+        client = Client()
+        profile = client.get_common_profile("username")
+        
+        print(profile.__dict__)
+        print(profile.follower)
+        ```
+        
+        ## Uninstall package
+        ```bash
+        pip uninstall ig-profile-client 
+        ```
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Development Status :: 3 - Alpha
+Description-Content-Type: text/markdown
