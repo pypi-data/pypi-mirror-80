@@ -1,0 +1,3 @@
+[console_scripts]
+xappt-browser = xappt_qt.browser:entry_point
+
