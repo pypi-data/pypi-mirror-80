@@ -1,0 +1,3 @@
+[console_scripts]
+qbittorrentui = qbittorrentui.__main__:main
+
