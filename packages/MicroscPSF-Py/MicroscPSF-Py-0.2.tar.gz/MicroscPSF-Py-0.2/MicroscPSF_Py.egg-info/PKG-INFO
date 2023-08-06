@@ -1,0 +1,54 @@
+Metadata-Version: 2.1
+Name: MicroscPSF-Py
+Version: 0.2
+Summary: Gibson-Lanni PSF calculation code.
+Home-page: https://github.com/MicroscPSF/MicroscPSF-Py
+Author: Kyle Douglass, Hazen Babcock
+Author-email: hbabcock@mac.com
+License: MIT
+Description: ## MicroscPSF-Py ##
+        
+        This is a Python implementation of the fast microscope PSF generation tool (using the Gibson-Lanni model).
+        Technical details can be found [here](http://www.ee.cuhk.edu.hk/~jzli/MicroscPSF/).
+        
+        [![Linux Build Status](https://travis-ci.org/MicroscPSF/MicroscPSF-Py.svg?branch=master)](https://travis-ci.org/MicroscPSF/MicroscPSF-Py)
+        [![PyPI version](https://badge.fury.io/py/MicroscPSF-Py.svg)](https://badge.fury.io/py/MicroscPSF-Py)
+        
+        ### Install ###
+        
+        #### PyPI ####
+        
+        ```
+        $ python -m pip install MicroscPSF-Py
+        ````
+        
+        #### Source ####
+        
+        ```
+        $ git clone https://github.com/MicroscPSF/MicroscPSF-Py.git
+        $ cd MicroscPSF-Py
+        $ python setup.py install
+        ```
+        
+        ### Usage ###
+        
+        Please see the [examples.ipynb](https://github.com/MicroscPSF/MicroscPSF-Py/blob/master/examples.ipynb) Jupyter notebook.
+        
+        ### Acknowledgements ###
+        
+        - Original algorithm Li, J., Xue, F., & Blu, T. (2017). Fast and accurate three-dimensional point spread function computation for fluorescence microscopy. JOSA A, 34(6), 1029-1034. [link](https://doi.org/10.1364/JOSAA.34.001029).
+        
+        - Python implementation by Kyle Douglass and Hazen Babcock.
+        
+Keywords: PSF,microscopy
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: C
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Description-Content-Type: text/markdown
