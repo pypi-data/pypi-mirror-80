@@ -1,0 +1,55 @@
+Metadata-Version: 2.1
+Name: sleuth-pr
+Version: 0.0.4
+Summary: Pull request automation Django app
+Home-page: https://github.com/sleuth-io/sleuth-pr
+Author: Don Brown
+Author-email: don@sleuth.io
+Maintainer: Don Brown
+Maintainer-email: don@sleuth.io
+License: APLv2 License
+Description: ```
+          _________.__                 __  .__      ____________________ 
+         /   _____/|  |   ____  __ ___/  |_|  |__   \______   \______   \
+         \_____  \ |  | _/ __ \|  |  \   __\  |  \   |     ___/|       _/
+         /        \|  |_\  ___/|  |  /|  | |   Y  \  |    |    |    |   \
+        /_______  /|____/\___  >____/ |__| |___|  /  |____|    |____|_  /
+                \/           \/                 \/                    \/ 
+        ```
+        
+        Sleuth PR is a pull request automation application to help developers waste less time in the PR process.
+        
+        - Automate merges based on your team's requirements
+        - Run standalone or embed in another Django application
+        - Apache v2 license
+        
+        
+        Quickstart Guide
+        ----------------
+        
+        - python3.8 -m venv venv && source venv/bin/activate
+        - pip install -r requirements.txt
+        - make run
+        
+        Release Guide
+        -------------
+        
+        - Tag as vMAJOR.MINOR.PATCH (either via the CLI or GitHub UI)
+        - Sit back and relax by watching some [Sleuth TV](https://www.youtube.com/channel/UCmIIOHKgJnGQruIVD_Zx71g)
+        
+        Contributors
+        ------------
+        
+        - Deni1111
+        
+Keywords: pull request,automation,bot
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Topic :: Software Development
+Classifier: Programming Language :: Python :: 3.8
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Provides-Extra: dev
+Provides-Extra: test
+Provides-Extra: doc
