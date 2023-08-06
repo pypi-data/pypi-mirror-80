@@ -1,0 +1,36 @@
+Metadata-Version: 2.1
+Name: fesdql
+Version: 1.0.1b3
+Summary: MongoDB同步异步基础封装库
+Home-page: https://github.com/tinybees/fesdql
+Author: TinyBees
+Author-email: a598824322@qq.com
+License: MIT
+Keywords: mongo,asyncio,sync,crud,session
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: Chinese (Simplified)
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Utilities
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Python: >=3.5
+Description-Content-Type: text/markdown
+Requires-Dist: aelog (>=1.0.3)
+Requires-Dist: motor (>=1.2.2)
+Requires-Dist: pymongo (>=3.8.0)
+Requires-Dist: marshmallow (>=3.0.0)
+
+# fesdql
+
+mongo数据库异步crud，Faster, easier, simpler coding，同步支持flask、异步支持sanic
+
+
