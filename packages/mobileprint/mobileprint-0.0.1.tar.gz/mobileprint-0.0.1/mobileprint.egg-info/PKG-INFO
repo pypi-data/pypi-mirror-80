@@ -1,0 +1,95 @@
+Metadata-Version: 2.1
+Name: mobileprint
+Version: 0.0.1
+Summary: GUI for measuring human performance on mobile construction task
+Home-page: http://pypi.python.org/pypi/mobileprint/
+Author: NYU AI4CE
+Author-email: alexandergao@nyu.edu
+License: UNKNOWN
+Description: # Setup
+        
+        * Python >= 3.6 installed on your machine
+        
+        Start in interactive python shell:
+        
+        ~~~sh
+        $ python
+        ~~~
+        
+        ```python
+        import mobileprint
+        mobileprint.run()
+        ```
+        
+        # Instructions
+        
+        The goal of this game is to move around an environment and lay bricks in the environment such that they match a given plan.
+        
+        <img src="https://i.imgur.com/aOEBD2L.png"      alt="Markdown Monster icon"      style="float: left; margin-right: 10px;" />
+        
+        _Example of a plan._
+        
+        
+        
+        ## Environments
+        
+        There are 8 different environment configurations to choose from:
+        
+        * 1D Static (Plan 1)
+        * 1D Static (Plan 2)
+        * 1D Static (Plan 3)
+        * 1D Dynamic
+        * 2D Static (Dense)
+        * 2D Static (Sparse)
+        * 2D Dynamic (Dense)
+        * 2D Dynamic (Sparse)
+        
+        Static plans are fixed, pre-determined plans.  You can not view the overall plan for static environments, but you can use 'Training Mode', and infer the plan layout by interacting with the environment and examining the rewards.
+        
+        Dynamic plans morph with each new episode, but you can see the overall plan layout.
+        
+        Each environment has a predetermined maximum number of steps and number of bricks that you may use.
+        
+        
+        
+        ## Controls
+        
+        <kbd>LEFT</kbd> : Move Left
+        
+        <kbd>RIGHT</kbd> : Move Right
+        
+        <kbd>UP</kbd> : Move Up
+        
+        <kbd>DOWN</kbd> : Move Down
+        
+        <kbd>SPACE </kbd> : Drop a brick
+        
+        
+        
+        ## Game Mode
+        
+        You can either play in 'Training Mode' or 'Evaluation Mode'.
+        
+        In 'Training Mode', you will be able to see the reward for each move you make, as well as your total cumulative score.  This will allow you to learn what leads you to a good or bad score.
+        
+        <img src="https://i.imgur.com/qsBER6z.png"      alt="Markdown Monster icon"      style="float: left; margin-right: 10px;" />
+        
+        
+        
+        In 'Evaluation Mode', you will no longer be able to view your score, and will simply have to rely on your memory of the plan (or in Dynamic plan environements, you will be able to see the overall plan, but still have no access to your score).
+        
+        <img src="https://i.imgur.com/X4b0ZpT.png"      alt="Markdown Monster icon"      style="float: left; margin-right: 10px;" />
+        
+        
+        
+        ## Results
+        
+        At the end of each episode, you will be prompted to save your results for that episode.  Assuming the episode was an honest attempt to complete the task, please choose 'Yes'.  Your results will be logged into a directory 'results' in a .csv file.  When you have finished playing the game / played as many episodes as you wish to, please send us your .csv results files so that we can compile the results and build a good benchmark!
+        
+        <img src="https://i.imgur.com/K8hhJOU.png"      alt="Markdown Monster icon"      style="float: left; margin-right: 10px;" />
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
