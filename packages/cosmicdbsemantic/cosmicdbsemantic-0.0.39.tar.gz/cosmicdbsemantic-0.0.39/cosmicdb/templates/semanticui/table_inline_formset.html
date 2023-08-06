@@ -1,0 +1,73 @@
+{% load crispy_forms_tags %}
+{% load crispy_forms_utils %}
+{% load crispy_forms_field %}
+{% load cosmic_tags %}
+
+{% specialspaceless %}
+{% if formset_tag %}
+<form {{ flat_attrs|safe }} method="{{ form_method }}" {% if formset.is_multipart %} enctype="multipart/form-data"{% endif %}>
+{% endif %}
+    {% if formset_method|lower == 'post' and not disable_csrf %}
+        {% csrf_token %}
+    {% endif %}
+
+    <div class="{{ formset.get_default_prefix }}_empty_row" style="display: none;">
+        <div class="ui form equal width __prefix___table_container">
+            <div class="ui divider"></div>
+            <div class="fields">
+
+                {% for field in formset.empty_form %}
+                    {% include 'semanticui/field.html' %}
+                {% endfor %}
+
+                <div class="field remove-row-field" style="cursor: pointer;" onclick="deleteRow(this, '{{ formset.get_default_prefix }}');"><label>Remove</label><i class="close icon"></i></div>
+
+                {% if formset.empty_form.media %}{{ formset.empty_form.media }}{% endif %}
+
+            </div>
+        </div>
+    </div>
+
+    <div>
+        {{ formset.management_form }}
+    </div>
+
+    {% get_formset_label formset.get_default_prefix %}
+    <div class="ui segment {{ formset.get_default_prefix }}_segment_container">
+        {% for form in formset %}
+            <div class="ui form equal width {{ formset.get_default_prefix }}_table_container">
+                <div class="fields">
+                
+                    {% for field in form %}
+                        {% include 'semanticui/field.html' %}
+                    {% endfor %}
+
+                    {% if form.instance.pk == None %}<div class="field remove-row-field" style="cursor: pointer;" onclick="deleteRow(this, '{{ formset.get_default_prefix }}');"><label>Remove</label><i class="close icon"></i></div>{% else %}<div class="field remove-row-field"></div>{% endif %}
+
+                    {% if form.media %}{{ form.media }}{% endif %}
+
+                    {% include "semanticui/errors.html" %}
+                    
+                </div>
+                {% if not forloop.last %}<div class="ui divider"></div>{% endif %}
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="add-another-container"><a class="add-another" onclick="addAnother('{{ formset.get_default_prefix }}');">Add another <i class="plus icon"></i></a></div>
+
+    {% if inputs %}
+        {% for input in inputs %}
+        <input type="{{ input.input_type }}"
+        name="{% if input.name|wordcount > 1 %}{{ input.name|slugify }}{% else %}{{ input.name }}{% endif %}"
+        value="{{ input.value }}"
+        {% if input.input_type != "hidden" %} 
+        class="{{ input.field_classes }}" 
+        id="{% if input.id %}{{ input.id }}{% else %}{{ input.input_type }}-id-{{ input.name|slugify }}{% endif %}"{% endif %}
+        {{ input.flat_attrs|safe }}
+        />
+        {% endfor %}
+    {% endif %}
+
+{% if formset_tag %}</form>{% endif %}
+{% endspecialspaceless %}
