@@ -1,0 +1,12 @@
+MANIFEST.in
+README.md
+setup.py
+bin/get_name_kkubiak.bat
+bin/get_name_kkubiak.py
+my_package_kk.egg-info/PKG-INFO
+my_package_kk.egg-info/SOURCES.txt
+my_package_kk.egg-info/dependency_links.txt
+my_package_kk.egg-info/requires.txt
+my_package_kk.egg-info/top_level.txt
+nameskkubiak/__init__.py
+nameskkubiak/nameskkubiak.py
