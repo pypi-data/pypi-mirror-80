@@ -1,0 +1,3 @@
+[console_scripts]
+obpc = obplib.compiler.__main__:OBPC
+
