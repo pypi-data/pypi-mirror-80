@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: train-test-plot-def
+Version: 0.2.8
+Summary: Python package to train, test, evaluate and plot confusion matrices, feature importance for classification problem using default settings of classifiers
+Home-page: https://github.com/debdarsan/train_test_plot_def
+Author: Dr Debdarsan Niyogi
+Author-email: debdarsan.niyogi@gmail.com
+License: MIT License
+Platform: UNKNOWN
+Description-Content-Type: text/markdown
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: matplotlib
+Requires-Dist: seaborn
+Requires-Dist: sklearn
+Requires-Dist: xgboost
+
+# train_test_plot_def
+Python package to train, test, evaluate and plot confusion matrices, feature importance for classification problem using default settings of classifiers
+
+
