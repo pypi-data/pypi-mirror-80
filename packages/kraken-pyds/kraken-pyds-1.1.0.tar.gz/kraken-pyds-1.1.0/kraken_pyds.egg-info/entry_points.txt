@@ -1,0 +1,5 @@
+[console_scripts]
+kraken-client = kraken.master.client.__main__:main
+kraken-master = kraken.master.server.__main__:main
+kraken-worker = kraken.worker.server.__main__:main
+
