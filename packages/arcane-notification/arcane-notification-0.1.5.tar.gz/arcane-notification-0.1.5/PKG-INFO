@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: arcane-notification
+Version: 0.1.5
+Summary: Defines notification tools
+Author: Arcane
+Author-email: product@arcane.run
+Requires-Python: >=3.6,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Requires-Dist: python-dateutil (>=2.7,<3.0)
+Description-Content-Type: text/markdown
+
+# Arcane notification
+
