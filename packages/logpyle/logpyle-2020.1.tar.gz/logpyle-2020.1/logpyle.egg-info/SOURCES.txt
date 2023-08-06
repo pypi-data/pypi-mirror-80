@@ -1,0 +1,14 @@
+README.md
+setup.cfg
+setup.py
+bin/logtool
+bin/runalyzer
+bin/runalyzer-gather
+logpyle/__init__.py
+logpyle/runalyzer.py
+logpyle/version.py
+logpyle.egg-info/PKG-INFO
+logpyle.egg-info/SOURCES.txt
+logpyle.egg-info/dependency_links.txt
+logpyle.egg-info/requires.txt
+logpyle.egg-info/top_level.txt
