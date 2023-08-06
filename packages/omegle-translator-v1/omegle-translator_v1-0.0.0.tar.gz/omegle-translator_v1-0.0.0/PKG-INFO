@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: omegle-translator_v1
+Version: 0.0.0
+Summary: A small example package,to communicate on omegle in any language
+Home-page: https://githuself.b.com/frozenmafia/omego_transo.git
+Author: Shivank Anchal
+Author-email: shivajay295@gmail.com
+License: UNKNOWN
+Download-URL: https://github.com/frozenmafia/omegle_translator/archive/0.0.1.tar.gz
+Description: if the program Crashes,restart the program by killing the terminal.
+        
+        enter exit() to start new Chat
+        
+        select your language and the language in which you want to translate.
+        
+        language will be translated irrespective of the stranger's language.
+        
+        'Type 'exit()' to exit the chat.'
+        'Type 'change()' to change the language.'
+        'Type 'change(a,b)',where 'a' means user lang code and 'b' means stranger lang code '
+        'Type 'kill()' to exit the chat.'
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
