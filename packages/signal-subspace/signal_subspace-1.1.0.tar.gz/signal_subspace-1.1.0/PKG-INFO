@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: signal_subspace
+Version: 1.1.0
+Summary: 1-D & 2-D signal subspace estimation methods
+Home-page: https://github.com/scivision/signal_subspace
+Author: Michael Hirsch, Ph.D.
+Author-email: scivision@users.noreply.github.com
+License: UNKNOWN
+Description: UNKNOWN
+Keywords: esprit,MUSIC,RootMusic
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Scientific/Engineering
+Requires-Python: >=3.6
+Provides-Extra: tests
+Provides-Extra: lint
+Provides-Extra: plot
