@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: meerschaum
+Version: 0.0.23
+Summary: Create and Manage Pipes with Meerschaum
+Home-page: https://github.com/bmeares/Meerschaum
+Author: Bennett Meares
+Author-email: bennett.meares@gmail.com
+License: MIT
+Description: # Build Pipes with Meerschaum
+        Meerschaum is a platform for quickly creating and managing time-series data streams called Pipes.
+        
+        ## Setup and Installation
+        To install Meerschaum and all its features, install the following with `pip`:
+        ```pip install meerschaum[full]```
+        
+        To install the minimal installation without all the extra dependencies, install the base package:
+        ```pip install meerschaum```
+        
+        
+Platform: UNKNOWN
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Provides-Extra: full
