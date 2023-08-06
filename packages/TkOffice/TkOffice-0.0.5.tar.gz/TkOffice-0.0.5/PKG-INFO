@@ -1,0 +1,121 @@
+Metadata-Version: 2.1
+Name: TkOffice
+Version: 0.0.5
+Summary: A Mordernised version of Tkinter, HighDPI for Windows 10, contains some new functions and widgets, Windows 10 exe development with Windows 10 looks 
+Home-page: UNKNOWN
+Author: Zin-Lin-Htun
+Author-email: zinlinhtun34@gmail.com
+License: UNKNOWN
+Description: 
+        #Tk Office 
+        
+        An Extended framework for `Tkinter/Python`
+        
+        `TK-Office` is a technology that allows you to code and develope `.exe` for windows machines. Everything is based on Csharp' s
+        graphic like appearance...
+        Graphics will be native with `Microsoft Windows Workspace`
+        
+        ####Requirements
+        
+            Windows OS
+            Resolution - 1920x1080 p (1080p)
+            Windows 10 and its newer versions (for performance)
+        
+        ####Installaion 
+        
+        ```python
+        
+        >>>pip install TkOffice 
+        
+        
+        ```
+        
+        ####Use
+        
+        ![picture]("d:/TkOffice/TkOffice/userkit.jpg")
+        
+        `built with TkOffice`
+        
+        
+        ######In Order To Build this kind of App Let's get into the widgets
+        
+        #####Widget - Main Window
+        
+        There are plenty of ways yoou can instantiate the window in TkOffice.
+        
+        ######Way - 1: ModTkinterApp(ModTk())
+        
+        ```python 
+        
+        #Declaring ModTk in honor of my other package ModTkinter
+        
+        root   =  ModTk()
+        
+        '''This here will be your app
+           <Contents>
+           <Contents>
+           <Contents>
+        '''
+        
+        root.mainloop()
+        
+        ```
+        
+        ######Way - 2: TkOffice's App
+        
+        ```python 
+        
+        #Declaring App
+        #App Comes with TkOffice
+        
+        import TkOffice
+        from TkOffice import App
+        
+        root   =  App()
+        
+        '''This here will be your app
+           <Contents>
+           <Contents>
+           <Contents>
+        '''
+        
+        root.mainloop()
+        
+        ```
+        
+        As Tk-Office's main workspace will be creating apps for Windows 10 UIs, these instances will create a high DPI app
+        `i.e: The highest available resolution`
+        
+        This will also maintain the problem of all DPI problem
+        Say , a website when resize has some problem with bigger and smaller buttons and html elements, but `TkOffice` will handle these kinds of problems for you...
+        
+        #####Widget - Button
+        This is a native Button widget of `TkOffice`. It's a megawidget with a frame and a button component..
+        But you can do all the configurations- do let's get into it...
+        
+        ```python 
+        
+        #importing the button
+        
+        import TkOffice
+        from TkOffice import Button
+        
+        
+        root =  App()
+        
+        #root's Button 
+        
+        b = Button(root )
+        b.pack()
+        
+        
+        
+        root.mainloop()
+        
+Keywords: tkinter
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: Microsoft :: Windows :: Windows 10
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
