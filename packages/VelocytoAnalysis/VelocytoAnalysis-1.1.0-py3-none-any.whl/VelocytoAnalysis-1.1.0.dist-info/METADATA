@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: VelocytoAnalysis
+Version: 1.1.0
+Summary: Python library for using RNA velocity in single-cell analysis
+Home-page: https://github.com/RuishanLiu/VelocytoAnalysis
+Author: Ruishan Liu
+Author-email: ruishan@stanford.edu
+License: MIT
+Platform: UNKNOWN
+Requires-Dist: numpy
+Requires-Dist: sklearn
+
+UNKNOWN
+
+
