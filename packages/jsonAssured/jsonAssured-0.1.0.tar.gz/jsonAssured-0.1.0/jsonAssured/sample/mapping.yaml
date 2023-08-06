@@ -1,0 +1,9 @@
+ignore:
+- "author"
+is_allflag: true
+
+keyMappings:
+- source: price
+  target: cost
+- source: title
+  target: bookTitle
