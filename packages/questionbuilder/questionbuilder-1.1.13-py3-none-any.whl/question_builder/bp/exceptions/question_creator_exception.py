@@ -1,0 +1,2 @@
+class QuestionCreatorException(Exception):
+    pass
