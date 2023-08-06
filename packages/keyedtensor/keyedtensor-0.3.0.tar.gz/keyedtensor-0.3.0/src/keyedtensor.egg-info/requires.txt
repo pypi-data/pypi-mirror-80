@@ -1,0 +1,6 @@
+collectionish>=0.3.0
+torch
+
+[:python_version < "3.8"]
+typing_extensions
+cached-property
