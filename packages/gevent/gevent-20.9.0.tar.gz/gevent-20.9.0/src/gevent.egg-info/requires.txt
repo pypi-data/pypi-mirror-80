@@ -1,0 +1,67 @@
+zope.event
+zope.interface
+setuptools
+
+[:platform_python_implementation == "CPython"]
+greenlet>=0.4.17
+
+[:platform_python_implementation == "CPython" and sys_platform == "win32"]
+cffi>=1.12.2
+
+[dnspython]
+dnspython<2.0,>=1.16.0
+idna
+
+[docs]
+repoze.sphinx.autointerface
+sphinxcontrib-programoutput
+
+[events]
+
+[monitor]
+
+[monitor:sys_platform != "win32" or platform_python_implementation == "CPython"]
+psutil>=5.7.0
+
+[recommended]
+dnspython<2.0,>=1.16.0
+idna
+
+[recommended:platform_python_implementation == "CPython"]
+cffi>=1.12.2
+
+[recommended:python_version == "2.7"]
+selectors2
+
+[recommended:python_version == "2.7" and sys_platform == "win32"]
+backports.socketpair
+
+[recommended:sys_platform != "win32" or platform_python_implementation == "CPython"]
+psutil>=5.7.0
+
+[test]
+dnspython<2.0,>=1.16.0
+idna
+requests
+objgraph
+
+[test:platform_python_implementation == "CPython"]
+cffi>=1.12.2
+
+[test:python_version == "2.7"]
+selectors2
+futures
+mock
+
+[test:python_version == "2.7" and sys_platform == "win32"]
+backports.socketpair
+
+[test:python_version > "3.0" and python_version < "3.7"]
+contextvars==2.4
+
+[test:sys_platform != "win32"]
+coverage<5.0
+coveralls>=1.7.0
+
+[test:sys_platform != "win32" or platform_python_implementation == "CPython"]
+psutil>=5.7.0
