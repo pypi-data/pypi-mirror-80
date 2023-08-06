@@ -1,0 +1,14 @@
+LICENSE
+MANIFEST.in
+README.md
+setup.py
+esp_trainer/__init__.py
+esp_trainer/__main__.py
+esp_trainer/__version__.py
+esp_trainer/cli.py
+esp_trainer.egg-info/PKG-INFO
+esp_trainer.egg-info/SOURCES.txt
+esp_trainer.egg-info/dependency_links.txt
+esp_trainer.egg-info/entry_points.txt
+esp_trainer.egg-info/requires.txt
+esp_trainer.egg-info/top_level.txt
