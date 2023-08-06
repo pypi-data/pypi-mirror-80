@@ -1,0 +1,125 @@
+{
+  "rulRunner": "5f18086a3a94960013f42a22",
+  "metadata": [
+    {
+      "_id": "5efefc5529110e0013a3a071",
+      "type": "timestamp",
+      "order": 0
+    },
+    {
+      "_id": "5efefc5529110e0013a3a070",
+      "order": 1,
+      "type": "flightNo",
+      "parameter": null
+    },
+    {
+      "_id": "5efefc5529110e0013a3a06f",
+      "order": 2,
+      "type": "flightPhase",
+      "parameter": null
+    },
+    {
+      "_id": "5efefc5529110e0013a3a06e",
+      "order": 3,
+      "type": "number",
+      "parameter": {
+        "_id": "5efefb8c29110e0013a3a062",
+        "component": {
+          "_id": "5efefb8629110e0013a3a061",
+          "partNo": "partNo",
+          "name": "name",
+          "ATACode": "ataCode",
+          "serial": "serial",
+          "replacementTimestamp": "2016-07-12T22:00:00.000Z",
+          "aircraft": {
+            "aircraftType": {
+              "maker": "maker",
+              "model": "model"
+            },
+            "_id": "5efefb6c29110e0013a3a060",
+            "tailNumber": "tail",
+            "airline": "airline",
+            "__v": 0
+          },
+          "__v": 0
+        },
+        "name": "param1",
+        "unit": "1",
+        "precision": 1,
+        "sampleFrequency": 1,
+        "__v": 0
+      }
+    },
+    {
+      "_id": "5efefc5529110e0013a3a06d",
+      "order": 4,
+      "type": "number",
+      "parameter": {
+        "_id": "5efefb8f29110e0013a3a063",
+        "component": {
+          "_id": "5efefb8629110e0013a3a061",
+          "partNo": "partNo",
+          "name": "name",
+          "ATACode": "ataCode",
+          "serial": "serial",
+          "replacementTimestamp": "2016-07-12T22:00:00.000Z",
+          "aircraft": {
+            "aircraftType": {
+              "maker": "maker",
+              "model": "model"
+            },
+            "_id": "5efefb6c29110e0013a3a060",
+            "tailNumber": "tail",
+            "airline": "airline",
+            "__v": 0
+          },
+          "__v": 0
+        },
+        "name": "param2",
+        "unit": "2",
+        "precision": 2,
+        "sampleFrequency": 2,
+        "__v": 0
+      }
+    }
+  ],
+  "startTime": "2016-01-02T23:00:00.000Z",
+  "endTime": "2020-07-03T09:40:22.834Z",
+  "tailNumber": "tail",
+  "components": [
+    {
+      "_id": "5efefb8629110e0013a3a061",
+      "partNo": "partNo",
+      "name": "name",
+      "ATACode": "ataCode",
+      "serial": "serial",
+      "replacementTimestamp": "2016-07-12T22:00:00.000Z",
+      "aircraft": {
+        "aircraftType": {
+          "maker": "maker",
+          "model": "model"
+        },
+        "_id": "5efefb6c29110e0013a3a060",
+        "tailNumber": "tail",
+        "airline": "airline",
+        "__v": 0
+      },
+      "__v": 0
+    }
+  ],
+  "replacements": [
+    {
+      "component": "5efefb8629110e0013a3a061",
+      "replacements": [
+        {
+          "_id": "5f11a4c17855de001be62fc6",
+          "component": "5efefb8629110e0013a3a061",
+          "serial": "serial",
+          "installationTimestamp": "2015-07-12T22:00:00.000Z",
+          "replacementTimestamp": "2016-07-13T22:00:00.000Z",
+          "__v": 0
+        }
+      ]
+    }
+  ]
+}
