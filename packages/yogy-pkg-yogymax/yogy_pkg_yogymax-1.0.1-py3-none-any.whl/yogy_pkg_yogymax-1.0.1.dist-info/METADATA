@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: yogy-pkg-yogymax
+Version: 1.0.1
+Summary: This is just test package,created for demo purpose
+Home-page: https://github.com/pypa/sampleproject
+Author: Yogesh C.
+Author-email: yogymax@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+
+# Example Package
+
+This is a simple python package,created for demo purpose,
+You can use [Github-flavored Markdown](https://guides.github.com/features/mastering-markdown/) to write your content.
+
+
