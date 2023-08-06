@@ -1,0 +1,6 @@
+numpy>=1.18.0
+requests>=2.0.0
+craygraph>=0.3.0
+
+[test]
+pytest>=5.3.2

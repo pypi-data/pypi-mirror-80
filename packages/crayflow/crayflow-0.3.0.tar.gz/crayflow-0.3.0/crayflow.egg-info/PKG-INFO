@@ -1,0 +1,30 @@
+Metadata-Version: 2.1
+Name: crayflow
+Version: 0.3.0
+Summary: Yet another neural network toolkit - dataflow module
+Home-page: https://gitlab.com/craynn/crayflow
+Author: Maxim Borisyak
+Author-email: maximus.been@gmail.com
+Maintainer: Maxim Borisyak and contributors
+Maintainer-email: maximus.been@gmail.com
+License: MIT
+Description: # crayflow
+        
+        ```python
+        import crayflow as flow
+        
+        data_train, labels_train, data_test, labels_test = flow.dataflow(
+          flow.instances.download_mnist('MNIST/'),
+          flow.instances.read_mnist() @ flow.pickled('MNIST/mnist.pickled')
+        )('/data/directory/')
+        ```
+        
+        
+Keywords: dataflow
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Description-Content-Type: text/markdown
+Provides-Extra: test
