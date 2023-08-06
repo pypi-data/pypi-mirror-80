@@ -1,0 +1,32 @@
+Metadata-Version: 2.1
+Name: torchtils
+Version: 0.0.32
+Summary: Utility of vision methods
+Home-page: https://torchtils.surge.sh
+Author: Saandeep Aathreya
+Author-email: saandeepa.93@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: cycler (==0.10.0)
+Requires-Dist: future (==0.18.2)
+Requires-Dist: kiwisolver (==1.2.0)
+Requires-Dist: matplotlib (==3.2.1)
+Requires-Dist: numpy (==1.18.5)
+Requires-Dist: opencv-python (==4.2.0.34)
+Requires-Dist: Pillow (==7.1.2)
+Requires-Dist: pyparsing (==2.4.7)
+Requires-Dist: python-dateutil (==2.8.1)
+Requires-Dist: six (==1.15.0)
+Requires-Dist: torch (==1.5.0)
+Requires-Dist: torchvision (==0.6.0)
+
+
+Torchtils is a utility library with implementations of primitive algorithms
+as well as intricate scholarly papers, all in PyTorch
+
+
