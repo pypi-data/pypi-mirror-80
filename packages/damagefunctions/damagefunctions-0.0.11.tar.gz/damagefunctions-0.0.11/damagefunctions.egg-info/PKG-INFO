@@ -1,0 +1,29 @@
+Metadata-Version: 2.1
+Name: damagefunctions
+Version: 0.0.11
+Summary: Flood residential damage functions
+Home-page: https://github.com/Pranavesh-Panakkal/damagefunctions
+Author: Pranavesh Panakkal
+Author-email: ppranavesh@gmail.com
+License: UNKNOWN
+Project-URL: GitHub, https://github.com/Pranavesh-Panakkal/damagefunctions
+Description: # Damage Functions
+        
+        This library provides a suit of residential damage functions for facilitating flood risk assessment. 
+        
+        The following functions are available:
+        
+        | Damage function | Regions applicable | Applicable building typology | Reference  | Comments |
+        |-----------------|--------------------|------------------------------|------------|-----------|
+        |pistrika_US_2010_block_group|New Orleans|N/A|[Pristrika and Jonkman (2010)](https://link.springer.com/article/10.1007/s11069-009-9476-y)|Based on Hurricane Katrina New Orleans residential damage data|
+        |pistrika_US_2010_block|New Orleans|N/A|[Pristrika and Jonkman (2010)](https://link.springer.com/article/10.1007/s11069-009-9476-y)|Based on Hurricane Katrina New Orleans residential damage data|
+        
+         
+Keywords: residential,damage functions
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
