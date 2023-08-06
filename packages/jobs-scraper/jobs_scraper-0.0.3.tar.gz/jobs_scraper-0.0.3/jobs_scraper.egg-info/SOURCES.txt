@@ -1,0 +1,11 @@
+README.md
+setup.py
+jobs_scraper/__init__.py
+jobs_scraper/scraping.py
+jobs_scraper.egg-info/PKG-INFO
+jobs_scraper.egg-info/SOURCES.txt
+jobs_scraper.egg-info/dependency_links.txt
+jobs_scraper.egg-info/requires.txt
+jobs_scraper.egg-info/top_level.txt
+tests/__init__.py
+tests/test_scraping.py
