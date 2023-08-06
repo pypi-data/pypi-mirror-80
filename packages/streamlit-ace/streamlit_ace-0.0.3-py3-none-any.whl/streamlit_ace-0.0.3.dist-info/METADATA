@@ -1,0 +1,36 @@
+Metadata-Version: 2.1
+Name: streamlit-ace
+Version: 0.0.3
+Summary: React Ace component for Streamlit
+Home-page: https://github.com/Ghasel/streamlit-ace
+Author: Synode
+Author-email: 
+License: UNKNOWN
+Platform: UNKNOWN
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: streamlit (>=0.63)
+
+# Streamlit Ace
+
+[React Ace](https://github.com/securingsincity/react-ace) component for [Streamlit](https://www.streamlit.io/).
+
+## Installation
+
+In a python virtual environment, run:
+
+```sh
+pip install streamlit-ace
+```
+
+## Demo
+
+To test this component, you can run the demo script:
+
+```sh
+streamlit run https://raw.githubusercontent.com/Ghasel/streamlit-ace/master/examples/streamlit_ace_demo.py
+```
+
+![Demo](examples/streamlit_ace_demo.gif)
+
+
