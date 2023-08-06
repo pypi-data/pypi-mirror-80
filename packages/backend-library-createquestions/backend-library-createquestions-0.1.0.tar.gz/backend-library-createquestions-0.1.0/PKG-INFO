@@ -1,0 +1,13 @@
+Metadata-Version: 2.1
+Name: backend-library-createquestions
+Version: 0.1.0
+Summary: 
+Author: Cesar Juarez
+Author-email: cesar@wordbox.ai
+Requires-Python: >=3.8,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: editdistance (>=0.5.3,<0.6.0)
+Requires-Dist: neo4j (==1.7.6)
+Requires-Dist: setuptools (>=50.3.0,<51.0.0)
+Requires-Dist: wheel (>=0.35.1,<0.36.0)
