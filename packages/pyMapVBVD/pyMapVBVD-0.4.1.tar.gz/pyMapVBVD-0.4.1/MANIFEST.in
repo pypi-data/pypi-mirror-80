@@ -1,0 +1,4 @@
+include requirements.txt
+include versioneer.py
+include mapvbvd/_version.py
+include LICENSE
