@@ -1,0 +1,10 @@
+wrapt>=1.11.2
+oarepo_validate
+deepmerge
+
+[tests]
+oarepo[tests]
+pytest-cov
+
+[tests_files]
+invenio-files-rest
