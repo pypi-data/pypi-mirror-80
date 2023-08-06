@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: codekeeper
+Version: 1.1.1
+Summary: An interface for importing your code from AWS S3
+Home-page: https://github.com/mwatrak1/CodeKeeper
+Author: Michal Watrak
+Author-email: mwatrak1@protonmail.com
+License: MIT
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Description-Content-Type: text/markdown
+Requires-Dist: boto3
+
+IT WAS POSTED JUST FOR EDUCATIONAL PURPOSES!
+
+Interface for getting your saved code from AWS S3 straingt into the module - 
+like import but for anything non-local
+Can be configured with .configure file containing your AWS credentials
+or by passing access_key_id and secret_access_id to constructor
+
