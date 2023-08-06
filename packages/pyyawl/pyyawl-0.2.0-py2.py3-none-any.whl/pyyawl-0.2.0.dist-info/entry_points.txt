@@ -1,0 +1,3 @@
+[console_scripts]
+yawl = pyyawl.cli:main
+
