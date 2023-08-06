@@ -1,0 +1,3 @@
+[console_scripts]
+gitlab-clone = gitlab_clone.clonner:main
+

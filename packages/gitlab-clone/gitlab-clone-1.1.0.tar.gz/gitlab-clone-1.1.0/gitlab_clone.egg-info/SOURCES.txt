@@ -1,0 +1,15 @@
+AUTHORS.rst
+LICENSE
+MANIFEST.in
+README.rst
+setup.cfg
+setup.py
+gitlab_clone/__init__.py
+gitlab_clone/clonner.py
+gitlab_clone.egg-info/PKG-INFO
+gitlab_clone.egg-info/SOURCES.txt
+gitlab_clone.egg-info/dependency_links.txt
+gitlab_clone.egg-info/entry_points.txt
+gitlab_clone.egg-info/not-zip-safe
+gitlab_clone.egg-info/requires.txt
+gitlab_clone.egg-info/top_level.txt
