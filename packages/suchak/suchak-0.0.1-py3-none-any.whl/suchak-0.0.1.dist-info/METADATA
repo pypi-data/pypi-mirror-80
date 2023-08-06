@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: suchak
+Version: 0.0.1
+Summary: UNKNOWN
+Home-page: https://github.com/Agnee-Transmissions/suchak
+Author: Dev Aggarwal
+Author-email: devxpy@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Requires-Python: >=3.8.0
+Requires-Dist: numpy
+Requires-Dist: numba
+Provides-Extra: dev
+Requires-Dist: pytest ; extra == 'dev'
+Requires-Dist: tulipy ; extra == 'dev'
+Requires-Dist: jupyter ; extra == 'dev'
+
+UNKNOWN
+
+
