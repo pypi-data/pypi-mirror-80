@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Name: seebuoy
+Version: 0.1.0
+Summary: Remote data access for oceanographic data.
+Author: nickc1
+Author-email: nickcortale@gmail.com
+Requires-Python: >=3.8,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: pandas (>=1.1.2,<2.0.0)
+Requires-Dist: requests (>=2.24.0,<3.0.0)
