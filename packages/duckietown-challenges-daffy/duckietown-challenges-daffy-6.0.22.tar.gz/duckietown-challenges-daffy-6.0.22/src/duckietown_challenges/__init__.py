@@ -1,0 +1,56 @@
+# coding=utf-8
+__version__ = "6.0.22"
+
+from subprocess import CalledProcessError, check_output
+import sys
+
+
+def check_no_incompatible():
+    cmd = ["pip", "list"]
+    try:
+        res = check_output(cmd)
+    except CalledProcessError:
+        tb = traceback.format_exc()
+        msg = f"Cannot get list of installed packages:\n\n{tb}"
+        sys.stderr.write(msg)
+    else:
+        packages = res.decode().split()
+        forbidden = [
+            "duckietown-challenges",
+            "zuper-commons-z5",
+        ]
+        for f in forbidden:
+            if f in packages:
+                msg = f"""
+                    Found incompatible package "{f}" installed.
+
+                    Please uninstall using
+
+                        pip uninstall "{f}"
+
+                """
+                sys.stderr.write(msg)
+                raise ValueError(msg)
+
+
+check_no_incompatible()
+
+
+from zuper_commons.logs import ZLogger
+
+dclogger = logger = ZLogger(__name__)
+logger.info(f"version: {__version__}")
+
+from .challenges_constants import ChallengesConstants
+from .solution_interface import *
+from .constants import *
+from .exceptions import *
+from .challenge import *
+from .challenge_evaluator import *
+from .challenge_solution import *
+from .challenge_results import *
+from .cie_concrete import *
+from .follow import *
+
+from .make_readmes import make_readmes_main as make_readmes_main
+from .make_readme_templates import make_readmes_templates_main
