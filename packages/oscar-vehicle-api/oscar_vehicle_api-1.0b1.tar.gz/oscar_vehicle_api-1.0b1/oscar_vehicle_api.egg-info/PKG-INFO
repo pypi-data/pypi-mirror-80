@@ -1,0 +1,43 @@
+Metadata-Version: 2.1
+Name: oscar-vehicle-api
+Version: 1.0b1
+Summary: OSCAR Vehicle API
+Home-page: https://gitlab.com/starline/oscar_vehicle_api
+Author: Nikolay Dema
+Author-email: ndema2301@gmail.com
+License: UNKNOWN
+Description: ### OSCAR vehicle API
+        
+        Репозиторий содержит API низкоуровневой системы управления, разрабатываемой в рамках проекта [OSCAR](https://gitlab.com/starline/oscar), для беспилотных транспортных средств.
+        
+        
+        #### Установка с PyPI
+        
+        ```
+        pip install --user oscar_vehicle_api
+        ```
+        
+        
+        #### Установка из исходников
+        
+        ```
+        git clone https://gitlab.com/starline/oscar_vehicle_api.git && cd oscar_vehicle_api
+        pip install --user -e .
+        ```
+        
+        #### Использование
+        
+        ```
+        import oscar_vehicle_api
+        vehicle = oscar_vehicle_api.LexusRX450H()
+        vehicle.led_blink()
+        ```
+        
+Keywords: oscar,vehicle,api
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=2.6
+Description-Content-Type: text/markdown
