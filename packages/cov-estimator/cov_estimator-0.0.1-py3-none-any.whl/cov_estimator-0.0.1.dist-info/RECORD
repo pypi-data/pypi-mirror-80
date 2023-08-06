@@ -1,0 +1,15 @@
+cov_estimator/__init__.py,sha256=OOMBQM8bd9f_PRpa-NgqeP6qFm_ZuVJKLGGaeE7VFJc,30
+cov_estimator/pipeline.py,sha256=sCkErFP2qSfmGtszY2q9CRIQ6fwcyRfNWK3NNDcrn-0,1201
+cov_estimator/nodes/__init__.py,sha256=mQbGiQovKLtGqnUjnotgBJYoavPy4_A8hrddM-8Mk8w,32
+cov_estimator/nodes/abstract_estimator.py,sha256=6bkTsZmu4IDmyV3P8vNeCd66qU3iTErE2IVerOFq8Jw,622
+cov_estimator/nodes/estimator.py,sha256=u8DLYbCIEOzRc2VpTfgbTE3QRHQszgOBekcrdx2_c50,718
+cov_estimator/nodes/keras_estimator.py,sha256=GVSINb4vdIO6k6cfM1oGWjvOxpLtLSSmVllnFLqcOIA,1781
+cov_estimator/nodes/sklearn_estimator.py,sha256=aGrCrpjil3I8HJZ-sr56dwe_iyvKLxLa6aq5h-kKfis,1611
+cov_estimator/nodes/transformation_node.py,sha256=N5Nf2J7S4yxX15EDjiuVs2vIJkMVZ07CWkPl822HQcY,2353
+tests/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+tests/estimator_test.py,sha256=gbtEP7I9ILVi7ZxPFeUPTWj1lK1gXPh0nRQIPCuVWnk,4239
+tests/transform_test.py,sha256=t_qeOEYl8DJfLLJF69khMgbPWl_dgGHJGRkAA0X-FCY,806
+cov_estimator-0.0.1.dist-info/METADATA,sha256=YVVZz6mzBBxsEOQKGdxKix-pzIi5ZdhwAgrksTGNpgA,2143
+cov_estimator-0.0.1.dist-info/WHEEL,sha256=EVRjI69F5qVjm_YgqcTXPnTAv3BfSUr0WVAHuSP3Xoo,92
+cov_estimator-0.0.1.dist-info/top_level.txt,sha256=8sUEgWPzfpl0k8hndR7YPADy__lhgk6Jafz8VP4XZr0,20
+cov_estimator-0.0.1.dist-info/RECORD,,
