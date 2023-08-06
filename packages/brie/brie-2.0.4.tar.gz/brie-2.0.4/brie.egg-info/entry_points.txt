@@ -1,0 +1,6 @@
+[console_scripts]
+brie-count = brie.bin.count:main
+brie-quant = brie.bin.quant:main
+brie1 = brie.version1.brie:main
+brie1-diff = brie.version1.brie_diff:main
+
