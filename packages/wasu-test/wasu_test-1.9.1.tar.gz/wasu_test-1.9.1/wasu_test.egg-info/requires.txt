@@ -1,0 +1,7 @@
+PyYAML>=5.3
+PyMySql>=0.10.1
+xlrd>=1.2.0
+requests==2.24.0
+selenium==3.141.0
+python-benedict==0.19.0
+Appium-Python-Client~=1.0.2
