@@ -1,0 +1,5 @@
+[console_scripts]
+jira = b_jira_filter.commands.jira.main:main
+jira.sprints = b_jira_filter.commands.jira.sprints.main:main
+jira.sprints.storypoints = b_jira_filter.commands.jira.sprints.storypoints:main
+

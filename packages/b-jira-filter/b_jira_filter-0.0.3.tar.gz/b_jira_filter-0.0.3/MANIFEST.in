@@ -1,0 +1,5 @@
+include VERSION
+include README.md
+include HISTORY.md
+
+recursive-include b_jira_filter *.py
