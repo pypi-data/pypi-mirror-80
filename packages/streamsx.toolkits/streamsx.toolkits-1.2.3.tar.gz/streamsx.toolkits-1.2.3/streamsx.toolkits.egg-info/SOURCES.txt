@@ -1,0 +1,11 @@
+LICENSE.txt
+MANIFEST.in
+setup.cfg
+setup.py
+streamsx.toolkits.egg-info/PKG-INFO
+streamsx.toolkits.egg-info/SOURCES.txt
+streamsx.toolkits.egg-info/dependency_links.txt
+streamsx.toolkits.egg-info/requires.txt
+streamsx.toolkits.egg-info/top_level.txt
+streamsx/toolkits/__init__.py
+streamsx/toolkits/_toolkits.py
