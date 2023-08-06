@@ -1,0 +1,16 @@
+py_tools_ds>=0.14.35
+numpy
+matplotlib
+six
+gdal>=2.1.0
+shapely
+pandas
+dill
+mpld3
+geojson
+folium
+scikit-image
+basemap
+
+[interactive_plotting]
+holoviews
