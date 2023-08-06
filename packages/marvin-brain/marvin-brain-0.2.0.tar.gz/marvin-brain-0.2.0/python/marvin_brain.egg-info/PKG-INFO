@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: marvin-brain
+Version: 0.2.0
+Summary: Core Marvin Brain for SDSS
+Home-page: https://github.com/sdss/marvin_brain
+Author: Brian Cherinka
+Author-email: bcherinka@stsci.edu
+License: BSD 3-Clause License
+Project-URL: Repository, https://github.com/sdss/marvin_brain
+Description: This repository is mainly a dependency for https://github.com/sdss/marvin, containing some core
+        logic and functions pertaining to Flask API infrastructure for the Marvin API.  It is not useable as a product or python package by itself.  The original ideas behind ``marvin_brain`` has largely been expanded into [sdss_brain](https://github.com/sdss/sdss_brain) and [valis](https://github.com/sdss/valis).
+        
+        
+        Useful links
+        ------------
+        
+        - GitHub: https://github.com/sdss/marvin_brain
+        - Issues: https://github.com/sdss/marvin_brain/issues
+        
+Keywords: astronomy,software
+Platform: UNKNOWN
+Classifier: Intended Audience :: Science/Research
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Topic :: Documentation :: Sphinx
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=2.7
+Description-Content-Type: text/markdown
+Provides-Extra: extra
+Provides-Extra: dev
+Provides-Extra: docs
