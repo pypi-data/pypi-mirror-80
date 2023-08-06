@@ -1,0 +1,3 @@
+[console_scripts]
+landsat-cogeo-mosaic = landsat_cogeo_mosaic.cli:main
+

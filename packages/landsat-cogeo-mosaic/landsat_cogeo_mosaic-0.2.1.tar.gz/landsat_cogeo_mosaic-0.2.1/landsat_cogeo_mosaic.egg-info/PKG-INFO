@@ -1,0 +1,80 @@
+Metadata-Version: 2.1
+Name: landsat-cogeo-mosaic
+Version: 0.2.1
+Summary: Create mosaicJSON for Landsat imagery
+Home-page: https://github.com/kylebarron/landsat-cogeo-mosaic
+Author: Kyle Barron
+Author-email: kylebarron2@gmail.com
+License: MIT license
+Description: # landsat-cogeo-mosaic
+        
+        Tools to create MosaicJSONs for Landsat imagery.
+        
+        ## Overview
+        
+        A [MosaicJSON][mosaicjson-spec] is a file that defines how to combine multiple
+        (satellite) imagery assets across time and space into a web mercator tile. This
+        repository is designed to be used to create such files, so that they can be used
+        for on-the-fly satellite tile generation, such as with
+        [`landsat-mosaic-tiler`][landsat-mosaic-tiler].
+        
+        [mosaicjson-spec]: https://github.com/developmentseed/mosaicjson-spec
+        [landsat-mosaic-tiler]: https://github.com/kylebarron/landsat-mosaic-tiler
+        
+        ## Install
+        
+        ```bash
+        pip install landsat-cogeo-mosaic
+        ```
+        
+        For CLI commands and some modules, you need additional dependencies:
+        
+        ```bash
+        pip install 'landsat-cogeo-mosaic[cli]'
+        ```
+        
+        ## Create Mosaics
+        
+        In order to create the mosaic, you need the metadata on where and when Landsat
+        took images, and also the cloud cover of each image. There are a couple ways to
+        get this data. One is to ping the [Sat
+        API](https://sat-utils.github.io/sat-api/) hosted by Development Seed. This
+        allows you to find the metadata from specific regions and times, and is easier
+        when you're creating a mosaic for a specific region.
+        
+        Alternatively, for large mosaics it's easier to do bulk processing. In order to
+        not overload the Sat API, I download a file from AWS with metadata from all
+        images.
+        
+        
+        # Changelog
+        
+        ## [0.2.1] - 2020-09-21
+        
+        - Reproject to web mercator for intersection computations when creating index file
+        
+        ## [0.2.0] - 2020-09-13
+        
+        - Update for rio-tiler v2
+        - Look in commit history for more detailed changes here
+        
+        ## [0.1.1] - 2020-05-19
+        
+        - Initial release on PyPI
+        
+Keywords: landsat,cogeo,geotiff
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Provides-Extra: docs
+Provides-Extra: cli
+Provides-Extra: extras
