@@ -1,0 +1,13 @@
+README.md
+setup.py
+gitlab2zenodo/__init__.py
+gitlab2zenodo/deposit.py
+gitlab2zenodo/main.py
+gitlab2zenodo.egg-info/PKG-INFO
+gitlab2zenodo.egg-info/SOURCES.txt
+gitlab2zenodo.egg-info/dependency_links.txt
+gitlab2zenodo.egg-info/entry_points.txt
+gitlab2zenodo.egg-info/requires.txt
+gitlab2zenodo.egg-info/top_level.txt
+tests/__init__.py
+tests/test_gitlab2zenodo.py
