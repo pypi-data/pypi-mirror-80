@@ -1,0 +1,6 @@
+asyncpg>=0.18.3
+
+[docs]
+sphinx==3.2.1
+sphinxcontrib_trio==1.1.2
+sphinxcontrib-websupport
