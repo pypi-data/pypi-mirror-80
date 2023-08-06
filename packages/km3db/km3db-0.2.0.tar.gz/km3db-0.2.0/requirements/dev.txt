@@ -1,0 +1,13 @@
+black
+km3net_testdata>=0.2.7
+memory_profiler
+mock
+numpydoc
+pytest
+pytest-cov
+pytest-watch
+sphinx
+sphinx-autoapi
+sphinx_rtd_theme
+sphinxcontrib-versioning
+wheel
