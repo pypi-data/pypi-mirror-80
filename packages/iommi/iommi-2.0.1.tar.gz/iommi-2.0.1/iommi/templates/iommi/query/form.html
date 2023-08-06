@@ -1,0 +1,144 @@
+<div id="iommi_{{ query.iommi_dunder_path }}">
+    <form{{ query.form.attrs }}>
+        {{ query.advanced_simple_toggle }}
+
+        <div style="width: 100%">
+            <div class="iommi_query_form_advanced" style="display: none">
+                <label for="iommi_{{ query.iommi_dunder_path }}_query">Search query:</label>
+                <input id="iommi_{{ query.iommi_dunder_path }}_query" name="{{ query.get_advanced_query_param }}" type="text" style="width:70%" data-query="{{ query.query_advanced_value }}"/>
+
+                <div class="iommi_query_toggle_help">
+                    <span>Show help</span> <i class="fa fa-chevron-down"></i>
+                </div>
+
+                <div class="iommi_query_help" style="display: none">
+                    <div class="iommi_query_available_fields">
+                        <h3>Available fields</h3>
+                        <ul>
+                            {% for name in query.filters %}
+                                <li>{{ name }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="iommi_query_available_query_commands">
+                        <h3>Queries</h3>
+                        <ul>
+                            <li>Search for an exact value: field_name=value</li>
+                            <li>Search for an exact value containing space: field_name="value with space"</li>
+                            <li>Containing a text: field_name:val</li>
+                            <li>Exclude a value: field_name!=value</li>
+                            <li>You can also use &lt;, &gt;, &lt;= and &gt;= to find ranges of values: field_name&lt;10</li>
+                            <li>To search for dates, use ISO8601 format: field_name>1969-07-20</li>
+                            <li>You can filter for relative dates: field_name < "10 days ago". Supported fields are days, months, years, quarters and weekdays. They can be negative and abbreviated from "10 days ago" to "-10d".</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {# form-row align-items-center is bootstrap specific, ui form fields is semantic ui, grid-x is foundation #}
+        <span class="iommi_query_form_simple form-row align-items-center ui form fields grid-x grid-padding-x">
+            {{ query.form.render_fields }}
+        </span>
+
+        {{ query.form.errors }}
+
+        <div class="iommi_query_error">
+            {% if query.query_error %}
+                {{ query.query_error }}
+            {% endif %}
+        </div>
+
+        <style type="text/css" scoped>
+            .iommi_query_available_fields,
+            .iommi_query_available_query_commands {
+                display: inline-block;
+                vertical-align: top;
+                margin-right: 10px;
+                max-width: 45%;
+            }
+            .iommi_query_available_fields {
+                padding-right: 20px;
+            }
+            .iommi_query_available_fields ul,
+            .iommi_query_available_query_commands ul {
+
+            }
+            .iommi_query_toggle_help,
+            .iommi_query_help {
+                margin-left: 3px;
+            }
+            .iommi_query_toggle_help {
+                cursor: pointer;
+                width: 100px;
+            }
+            .iommi_query_toggle_simple_mode {
+                float: right;
+            }
+            .iommi_query_error {
+                color: red;
+            }
+        </style>
+
+        {{ query.form.render_actions }}
+   </form>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var base = document.getElementById('iommi_{{ query.iommi_dunder_path }}');
+        var q = document.getElementById('iommi_{{ query.iommi_dunder_path }}_query');
+        var help = base.getElementsByClassName('iommi_query_toggle_help')[0];
+
+        function toggle_simple_advanced() {
+            var toggle_simple_mode = base.getElementsByClassName("iommi_query_toggle_simple_mode")[0];
+            var simple = base.getElementsByClassName("iommi_query_form_simple")[0];
+            var adv = base.getElementsByClassName("iommi_query_form_advanced")[0];
+            if (toggle_simple_mode.getAttribute('data-advanced-mode') === 'simple') {
+                q.value = q.getAttribute('data-query');
+                toggle_simple_mode.setAttribute('data-advanced-mode', 'advanced');
+                adv.style.display = '';
+                simple.style.display = 'none';
+                toggle_simple_mode.innerHTML = 'Switch to basic search';
+                help.style.display = '';
+            }
+            else {
+                q.setAttribute('data-query', q.value);
+                q.value = '';
+                toggle_simple_mode.setAttribute('data-advanced-mode', 'simple');
+                adv.style.display = 'none';
+                simple.style.display = '';
+                toggle_simple_mode.innerHTML = 'Switch to advanced search';
+                help.style.display = 'none';
+                if (help.style.display === '') {
+                    toggle_help();
+                }
+            }
+            return false;
+        }
+
+        function toggle_help() {
+            var icon = help.querySelector('i');
+            var help_text = base.getElementsByClassName('iommi_query_help')[0];
+            if (icon.classList.contains('fa-chevron-down')) {
+                help_text.style.display = '';
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+                help.querySelector('span').innerText = 'Hide help';
+            }
+            else {
+                help_text.style.display = 'none';
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+                help.querySelector('span').innerText = 'Show help';
+            }
+        }
+
+        if (q.getAttribute('data-query') !== '') {
+            toggle_simple_advanced();
+        }
+
+        base.getElementsByClassName("iommi_query_toggle_simple_mode")[0].addEventListener('click', toggle_simple_advanced);
+        help.addEventListener('click', toggle_help);
+    });
+</script>
