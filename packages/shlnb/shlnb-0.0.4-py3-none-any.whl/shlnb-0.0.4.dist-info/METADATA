@@ -1,0 +1,57 @@
+Metadata-Version: 2.1
+Name: shlnb
+Version: 0.0.4
+Summary: Beamforming and signal analysis of microphone ULA
+Home-page: https://github.com/butterlyn/SHLNB
+Author: Nicholas Butterly
+Author-email: butterlyn888@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: arlpy
+Requires-Dist: numpy (>=1.11.3)
+Requires-Dist: setuptools
+Requires-Dist: soundfile
+
+# SHLNB
+Module for beamforming and analysis of microphone data (.wav file format) collected from a microphone ULA.
+
+## INSTALLATION:
+
+MAC OS & Linux:
+
+```sh
+sudo apt-get update | sudo apt-get install python3 python3-pip | python3 -m pip install shlnb
+```
+
+## USAGE EXAMPLE:
+
+```python
+from shlnb.shlnb import *
+```
+
+## RELEASE HISTORY:
+
+* 0.0.4 - 2020-09-30
+    * FIXED: Removed non-existent PyPI module 'pybnk' from list of required python modules in setup.py
+* 0.0.3 - 2020-09-11
+    * FIXED: find_extrema(), standard deviation threshold for outliers increased from 3 to 8
+* 0.0.2 - 2020-09-11
+    * Bug fixes
+* 0.0.1 - 2020-09-10
+    * Initial release
+
+## META:
+
+Nicholas Butterly – butterlyn888@gmail.com
+
+Copyright (c) 2020 Nicholas Butterly. Distributed under the MIT license. See [LICENSE](LICENSE) for more information.
+
+[https://github.com/butterlyn/SHLNB](https://github.com/butterlyn/SHLNB/)
+[https://pypi.org/project/shlnb/](https://pypi.org/project/shlnb)
+
+
