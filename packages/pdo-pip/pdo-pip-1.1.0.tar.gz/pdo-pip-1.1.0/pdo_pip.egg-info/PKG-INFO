@@ -1,0 +1,48 @@
+Metadata-Version: 2.1
+Name: pdo-pip
+Version: 1.1.0
+Summary: An interface to access a database from Python.
+Home-page: https://github.com/AlexisHuvier/PDO
+Author: AlexisHuvier
+Author-email: lavapower84@gmail.com
+License: GNU GPLv3
+Description: # PDO
+        
+        An interface to access a database from Python.
+        
+        ## Install
+        
+        -> Launch in cmd : `pip install pdo-pip`
+        -> Enjoy
+        
+        ## Supported
+        
+        |  Database  |  Python Module  | Supported Since PDO Version |
+        |:----------:|:---------------:|:---------------------------:|
+        |   SQLite   |     sqlite3     |            1.1.0            |
+        |    MySQL   | mysql.connector |            1.1.0            |
+        | PostgreSQL |     pysopg2     |            1.1.0            |
+        
+        See examples in examples directory.
+        
+        ## Changelog
+        
+        ### V 1.1.0 : 24 Sept 2020 (LATEST)
+        
+        - Add support of SQLite
+        - Add support of MySQL
+        - Add support of PostgreSQL
+        
+        ### V 1.0.0 : 23 Sept 2020
+        
+        - First Version
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Database
+Description-Content-Type: text/markdown
