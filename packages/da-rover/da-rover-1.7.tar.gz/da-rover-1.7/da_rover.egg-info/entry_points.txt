@@ -1,0 +1,3 @@
+[console_scripts]
+rover = da_rover.runner:main
+
