@@ -1,0 +1,1 @@
+This package will give you a random funny joke in hebrew.
