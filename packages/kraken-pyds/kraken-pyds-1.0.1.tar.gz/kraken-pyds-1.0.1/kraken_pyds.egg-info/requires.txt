@@ -1,0 +1,4 @@
+docopt
+pywhdfs>=1.0.0
+thrift>=0.9
+pyrsistent<=0.15.0
