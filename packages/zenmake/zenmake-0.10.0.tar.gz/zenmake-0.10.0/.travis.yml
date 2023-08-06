@@ -1,0 +1,201 @@
+
+dist: bionic
+
+branches:
+  only:
+  - master
+  # Release branches
+  #- /^[0-9]+\.[0-9]+\.[0-9]+$/
+  - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
+
+os:
+  - linux
+
+language: python
+
+cache:
+  pip: true
+
+compiler:
+  - clang
+  - gcc
+
+addons:
+  apt:
+    #update: true
+    packages:
+    - build-essential
+    - bison
+    - nasm
+    - yasm
+    - gdc
+    - ldc
+    - libboost-all-dev
+    - lua5.1
+    - libdbus-glib-1-dev
+    - gfortran
+    - libgtk-3-dev
+    - libsdl2-dev
+  # homebrew addon is unstable
+  # https://travis-ci.community/t/macos-build-fails-because-of-homebrew-bundle-unknown-command/7296
+  # https://github.com/travis-ci/packer-templates-mac/pull/13
+  #homebrew:
+  #  packages:
+  #    - boost
+  #    - boost-python
+  #    - dmd
+  #    - ldc
+  #  # https://travis-ci.community/t/macos-build-fails-because-of-homebrew-bundle-unknown-command/7296
+  #  # https://github.com/travis-ci/packer-templates-mac/pull/13
+  #  update: true
+
+# most problematic jobs are at first places
+jobs:
+  include:
+  - name: Python 2.7 on Ubuntu (bionic)
+    python: 2.7
+    env: NAME='Python 2.7 on Linux'
+  - name: Python 3.4 on Ubuntu (xenial)
+    dist: xenial
+    python: 3.4
+    env: NAME='Python 3.4 on Linux'
+  - name: Python 3.7 on Windows 10
+    # https://docs.travis-ci.com/user/reference/windows/
+    # https://github.com/cclauss/Travis-CI-Python-on-three-OSes
+    os: windows
+    language: shell
+    env:
+      - PATH=/c/Python37:/c/Python37/Scripts:$PATH
+      - PYTHON_VER=3.7.4
+      - NAME='Python 3.7 on Windows'
+    cache:
+      directories:
+        - $HOME/AppData/Local/Temp/chocolatey
+  - name: Python 2.7 on macOS 10.13
+    os: osx
+    osx_image: xcode9.4
+    language: shell
+    env:
+      - PYENV_VERSION=2.7.17
+      - NAME='Python 2.7 on macOS'
+
+  #- name: Python 3.4 on macOS 10.13
+  #  os: osx
+  #  osx_image: xcode9.4
+  #  language: shell
+  #  env:
+  #    - PYENV_VERSION=3.4.9
+  #    - NAME='Python 3.4 on macOS'
+  - name: PyPy (with python 3.5) on Ubuntu (xenial)
+    # https://docs.travis-ci.com/user/languages/python/#pypy-support
+    # https://travis-ci.community/t/confusing-pypy-versions/2505
+    # https://travis-ci.community/t/pypy-2-7-on-xenial/889
+    dist: xenial
+    python: pypy3.5
+    env: NAME='PyPy (with python 3.5) on Linux'
+
+########################################################
+  #- name: Python 3.5 on macOS 10.13
+  #  os: osx
+  #  osx_image: xcode9.4
+  #  language: shell
+  #  env:
+  #    - PYENV_VERSION=3.5.8
+  #    - NAME='Python 3.5 on macOS'
+  #- name: Python 3.6 on macOS 10.13
+  #  os: osx
+  #  osx_image: xcode9.4
+  #  language: shell
+  #  env:
+  #    - PYENV_VERSION=3.6.9
+  #    - NAME='Python 3.6 on macOS'
+  - name: Python 3.7 on macOS 10.14
+    os: osx
+    osx_image: xcode11
+    language: shell
+    env:
+      - PYENV_VERSION=3.7.4
+      - NAME='Python 3.7 on macOS'
+  #- name: Python 3.5 on Ubuntu (xenial)
+  #  dist: xenial
+  #  python: 3.5
+  #  env: NAME='Python 3.5 on Linux'
+  - name: Python 3.6 on Ubuntu (bionic)
+    python: 3.6
+    env: NAME='Python 3.6 on Linux'
+  - name: Python 3.7 on Ubuntu (bionic)
+    python: 3.7
+    env: NAME='Python 3.7 on Linux'
+  - name: Python 3.8 on Ubuntu (bionic)
+    python: 3.8
+    env: NAME='Python 3.8 on Linux'
+
+before_install:
+  - |
+    if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
+      # by default choco installs last version of python
+      choco install python --version $PYTHON_VER
+      choco install boost-msvc-14.1
+      #choco install ldc
+    elif [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+      #set -ex
+      #pip3 install --upgrade pip
+      #eval "$(pyenv init -)"
+      export PATH="$(pyenv root)/shims:${PATH}"
+      #pyenv install --list
+      #CFLAGS="-I$(brew --prefix openssl)/include" \
+      #LDFLAGS="-L$(brew --prefix openssl)/lib" \
+      pyenv install -s $PYENV_VERSION
+      #pyenv versions
+      # A manual check that the correct version of Python is running.
+      python --version
+      #set +ex
+
+      # homebrew packages
+      export HOMEBREW_NO_INSTALL_CLEANUP=1
+      export HOMEBREW_NO_AUTO_UPDATE=1
+      brew install boost
+      brew install boost-python
+      brew install dmd
+      brew install ldc
+    fi
+
+install:
+  - |
+      #python -m pip install --upgrade pip
+      if [[ "$TRAVIS_OS_NAME" != "windows" ]]; then
+        PYTHON_VERSION=`python -c "import sys; print(''.join([str(x) for x in sys.version_info[:2]]))"`
+        if [[ "$PYTHON_VERSION" == "34" ]]; then
+          python -m pip install 'pyyaml<5.3'
+        else
+          python -m pip install pyyaml
+        fi
+      else
+        python -m pip install pyyaml
+      fi
+      python -m pip install msgpack
+      python -m pip install pytest
+      python -m pip install pytest-cov
+      python -m pip install pytest-mock
+      python -m pip install coveralls
+
+script:
+  - |
+    # pytest-xdist is too unstable and has no effect on travis ci
+
+    python -m pytest --cov zm tests -v -k "not zipapp" --maxfail=2
+    RESULT=$?
+    if [[ $RESULT -eq 0 ]]; then
+      python -m pytest tests -v -k "zipapp" --maxfail=2
+    else
+      exit $RESULT
+    fi
+
+after_success:
+  - COVERALLS_PARALLEL=true python -m coveralls
+
+notifications:
+  webhooks: https://coveralls.io/webhook
+  email:
+    on_success: always # default: change
+    on_failure: always # default: always

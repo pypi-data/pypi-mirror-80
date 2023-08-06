@@ -1,0 +1,5 @@
+
+subdirs = [
+    'core',
+    'engine',
+]
