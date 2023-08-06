@@ -1,0 +1,12 @@
+requests
+
+[dev]
+flake8
+black
+pytest
+pytest-cov
+mypy
+twine
+
+[docs]
+sphinx

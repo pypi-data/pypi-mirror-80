@@ -1,0 +1,75 @@
+Metadata-Version: 2.1
+Name: censys
+Version: 1.0.0
+Summary: An easy-to-use and lightweight API wrapper for the Censys Search Engine (censys.io).
+Home-page: https://github.com/censys/censys-python
+Author: Censys Team
+Author-email: support@censys.io
+License: Apache License, Version 2.0
+Description: 
+        # Censys Python Library ![PyPI](https://img.shields.io/pypi/v/censys) ![Python Versions](https://img.shields.io/pypi/pyversions/censys) [![License](https://img.shields.io/github/license/censys/censys-python)](LICENSE) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com) [![Documentation Status](https://readthedocs.org/projects/censys-python/badge/?version=latest)](https://censys-python.readthedocs.io/en/latest/?badge=latest)
+        
+        An easy-to-use and lightweight API wrapper for the Censys Search Engine ([censys.io](https://censys.io/)). Python 3.6+ is currently supported.
+        
+        ## Getting Started
+        
+        The library can be installed using `pip`.
+        
+        ```bash
+        $ pip install censys
+        ```
+        
+        To configure your credentials run `censys config` or set both `CENSYS_API_ID` and `CENSYS_API_SECRET` environment variables.
+        
+        ```bash
+        $ censys config
+        
+        Censys API ID: XXX
+        Censys API Secret: XXX
+        
+        Successfully authenticated for your@email.com
+        ```
+        
+        ## Resources
+        
+        - [Official Website](https://censys.io/)
+        - [Documentation](https://censys-python.rtfd.io)
+        - [Issue Tracker](https://github.com/censys/censys-python/issues)
+        
+        ## Contributing
+        
+        All contributions (no matter how small) are always welcome.
+        
+        ## Development
+        
+        ```bash
+        $ git clone git@github.com:censys/censys-python.git
+        $ pip install -e ".[dev]"
+        ```
+        
+        ## Testing
+        
+        Testing requires credentials to be set.
+        
+        ```bash
+        $ pytest
+        ```
+        
+Keywords: censys
+Platform: UNKNOWN
+Classifier: Typing :: Typed
+Classifier: Topic :: Internet
+Classifier: Topic :: Security
+Classifier: Framework :: Pytest
+Classifier: Framework :: Flake8
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Classifier: License :: OSI Approved :: Apache Software License
+Requires-Python: >=3.6.0
+Description-Content-Type: text/markdown
+Provides-Extra: dev
+Provides-Extra: docs
