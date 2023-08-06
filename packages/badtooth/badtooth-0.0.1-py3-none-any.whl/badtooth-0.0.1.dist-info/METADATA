@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: badtooth
+Version: 0.0.1
+Summary: A memory hacking package for windows games.
+Home-page: https://github.com/samsonpianofingers/BadTooth
+Author: Samson PianoFingers
+Author-email: itsthatguyagain3@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Intended Audience :: Other Audience
+Classifier: Topic :: Games/Entertainment
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: Microsoft :: Windows :: Windows 10
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: capstone
+Requires-Dist: keystone-engine
+Requires-Dist: pefile
+
+# BadTooth
+Python Game Cheat Framework
+
+# Development Goals
+- Interactive shell script system
+- Flexibility
+- Scriptability
+
+# Prototype Dev Goals
+- Implement portions of Windows API using ctypes
+- Each seperate by DLL e.g. kernel32.py
+- A Wrapper accesses dll directly, e.g. memory.py
+- Windows constants stored in its own .py file
+
