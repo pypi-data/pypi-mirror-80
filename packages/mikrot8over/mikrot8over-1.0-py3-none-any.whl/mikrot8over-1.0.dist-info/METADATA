@@ -1,0 +1,36 @@
+Metadata-Version: 2.1
+Name: mikrot8over
+Version: 1.0
+Summary: Command line Mikrotik exploitation tool for RouterOS up to 6.38.4
+Home-page: https://github.com/vulnersCom/mikrot8over
+Author: Kir Ermakov
+Author-email: isox@vulners.com
+Maintainer: Kir Ermakov
+License: MIT
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Information Technology
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Topic :: Security
+Description-Content-Type: text/plain
+Requires-Dist: six
+Requires-Dist: texttable
+Requires-Dist: tqdm
+Requires-Dist: futures
+Requires-Dist: ipcalc
+
+
+mikrot8over
+=========
+
+Command line Mikrotik exploitation tool.
+It's using Mikrotik exploit from Vault 7 CIA Leaks automation tool
+Takeovers up to RouterOS 6.38.4.
+
+
