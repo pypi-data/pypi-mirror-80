@@ -1,0 +1,12 @@
+LICENSE
+MANIFEST.in
+README.md
+setup.py
+testflows.connect.egg-info/PKG-INFO
+testflows.connect.egg-info/SOURCES.txt
+testflows.connect.egg-info/dependency_links.txt
+testflows.connect.egg-info/not-zip-safe
+testflows.connect.egg-info/requires.txt
+testflows.connect.egg-info/top_level.txt
+testflows/connect/__init__.py
+testflows/connect/shell.py
