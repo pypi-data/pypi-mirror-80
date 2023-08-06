@@ -1,0 +1,27 @@
+tcib_actions:
+- run: dnf -y install {{ tcib_packages['common'] | join(' ') }} && dnf clean all && rm -rf /var/cache/dnf
+# this need to happen after installing nova-compute because the distgit does usermod to add libvirt/qemu groups
+- run: bash /usr/local/bin/uid_gid_manage nova
+- run: rm -f /etc/machine-id
+- run: ln -s /usr/share/openstack-tripleo-common/healthcheck/nova-compute /openstack/healthcheck &&  chmod a+rx /openstack/healthcheck
+tcib_packages:
+  common:
+  - ceph-common
+  - device-mapper-multipath
+  - e2fsprogs
+  - genisoimage
+  - iscsi-initiator-utils
+  - nfs-utils
+  - nvme-cli
+  - openssh-server
+  - openstack-nova-compute
+  - openstack-nova-migration
+  - openvswitch
+  - parted
+  - python3-libguestfs
+  - python3-oslo-vmware
+  - python3-rtslib
+  - sysfsutils
+  - targetcli
+  - xfsprogs
+tcib_user: nova
