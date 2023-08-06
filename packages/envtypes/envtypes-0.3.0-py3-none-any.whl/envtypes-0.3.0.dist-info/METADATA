@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: envtypes
+Version: 0.3.0
+Summary: Return the values of the envs with the correct type.
+Home-page: https://github.com/ionut-badea/env-types
+Author: YazeeMe
+Author-email: ionut.badea@yazee.me
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+Requires-Dist: python-dotenv
+
+UNKNOWN
+
+
