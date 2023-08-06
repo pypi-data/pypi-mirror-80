@@ -1,0 +1,623 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>microspeclib.datatypes.bridge module &mdash; microspec  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="microspeclib.datatypes.command module" href="microspeclib.datatypes.command.html" />
+    <link rel="prev" title="microspeclib.datatypes package" href="microspeclib.datatypes.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> microspec
+          
+
+          
+            
+            <img src="_static/CHROMATION.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-read-this-documentation.html">How To Read This Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="writing-applications.html">Writing Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="microspeclib.simple.html">Dev-kit API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev-kit-API-guide.html">Dev-kit API Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-handle-timeouts.html">How to handle timeouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="under-the-hood.html">Under The Hood (How microspeclib works)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="microspec-dev.html">Contributing to MicroSpec</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">microspeclib</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="microspeclib.html">microspeclib package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="microspeclib.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="microspeclib.datatypes.html">microspeclib.datatypes package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="microspeclib.internal.html">microspeclib.internal package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="microspeclib.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="bin.html">bin package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cfg.html">cfg package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tests.html">tests package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bin.html">bin package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cfg.html">cfg package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tests.html">tests package</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">microspec</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="modules.html">microspeclib</a> &raquo;</li>
+        
+          <li><a href="microspeclib.html">microspeclib package</a> &raquo;</li>
+        
+          <li><a href="microspeclib.datatypes.html">microspeclib.datatypes package</a> &raquo;</li>
+        
+      <li>microspeclib.datatypes.bridge module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/microspeclib.datatypes.bridge.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-microspeclib.datatypes.bridge">
+<span id="microspeclib-datatypes-bridge-module"></span><h1>microspeclib.datatypes.bridge module<a class="headerlink" href="#module-microspeclib.datatypes.bridge" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="microspeclib.datatypes.bridge.BridgeAutoExposure">
+<em class="property">class </em><code class="sig-prename descclassname">microspeclib.datatypes.bridge.</code><code class="sig-name descname">BridgeAutoExposure</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="n">status</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#microspeclib.datatypes.bridge.BridgeAutoExposure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Contains a transitory status of the
+<a class="reference internal" href="microspeclib.datatypes.command.html#microspeclib.datatypes.command.CommandAutoExposure" title="microspeclib.datatypes.command.CommandAutoExposure"><code class="xref py py-class docutils literal notranslate"><span class="pre">CommandAutoExposure</span></code></a> command as it passes
+through the Bridge. This is not the final payload for this command type. If the Simple or Expert API returns this object, then the command failed in the Bridge and did not even make it to the Sensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>status</strong> (<a class="reference internal" href="microspeclib.internal.util.html#microspeclib.internal.util.MicroSpecInteger" title="microspeclib.internal.util.MicroSpecInteger"><code class="xref py py-class docutils literal notranslate"><span class="pre">MicroSpecInteger</span></code></a>) – <dl>
+<dt>0: <a class="reference internal" href="microspeclib.datatypes.types.html#microspeclib.datatypes.types.StatusOK" title="microspeclib.datatypes.types.StatusOK"><code class="xref py py-data docutils literal notranslate"><span class="pre">StatusOK</span></code></a></dt><dd><p>The dev-kit successfully executed the command.</p>
+</dd>
+<dt>1: <a class="reference internal" href="microspeclib.datatypes.types.html#microspeclib.datatypes.types.StatusError" title="microspeclib.datatypes.types.StatusError"><code class="xref py py-data docutils literal notranslate"><span class="pre">StatusError</span></code></a></dt><dd><p>The dev-kit failed to execute the command for one of the following reasons:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>serial communication failed</p></li>
+<li><p>the command is invalid</p></li>
+<li><p>one or more command parameters are invalid</p></li>
+</ul>
+</div></blockquote>
+</dd>
+</dl>
+<p>If status is <a class="reference internal" href="microspeclib.datatypes.types.html#microspeclib.datatypes.types.StatusError" title="microspeclib.datatypes.types.StatusError"><code class="xref py py-data docutils literal notranslate"><span class="pre">StatusError</span></code></a> the other attributes are not valid.</p>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="microspeclib.datatypes.bridge.BridgeCaptureFrame">
+<em class="property">class </em><code class="sig-prename descclassname">microspeclib.datatypes.bridge.</code><code class="sig-name descname">BridgeCaptureFrame</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="n">status</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#microspeclib.datatypes.bridge.BridgeCaptureFrame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Contains a transitory status of the
+<a class="reference internal" href="microspeclib.datatypes.command.html#microspeclib.datatypes.command.CommandCaptureFrame" title="microspeclib.datatypes.command.CommandCaptureFrame"><code class="xref py py-class docutils literal notranslate"><span class="pre">CommandCaptureFrame</span></code></a> command as it passes
+through the Bridge. This is not the final payload for this command type. If the Simple or Expert API returns this object, then the command failed in the Bridge and did not even make it to the Sensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>status</strong> (<a class="reference internal" href="microspeclib.internal.util.html#microspeclib.internal.util.MicroSpecInteger" title="microspeclib.internal.util.MicroSpecInteger"><code class="xref py py-class docutils literal notranslate"><span class="pre">MicroSpecInteger</span></code></a>) – <dl>
+<dt>0: <a class="reference internal" href="microspeclib.datatypes.types.html#microspeclib.datatypes.types.StatusOK" title="microspeclib.datatypes.types.StatusOK"><code class="xref py py-data docutils literal notranslate"><span class="pre">StatusOK</span></code></a></dt><dd><p>The dev-kit successfully executed the command.</p>
+</dd>
+<dt>1: <a class="reference internal" href="microspeclib.datatypes.types.html#microspeclib.datatypes.types.StatusError" title="microspeclib.datatypes.types.StatusError"><code class="xref py py-data docutils literal notranslate"><span class="pre">StatusError</span></code></a></dt><dd><p>The dev-kit failed to execute the command for one of the following reasons:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>serial communication failed</p></li>
+<li><p>the command is invalid</p></li>
+<li><p>one or more command parameters are invalid</p></li>
+</ul>
+</div></blockquote>
+</dd>
+</dl>
+<p>If status is <a class="reference internal" href="microspeclib.datatypes.types.html#microspeclib.datatypes.types.StatusError" title="microspeclib.datatypes.types.StatusError"><code class="xref py py-data docutils literal notranslate"><span class="pre">StatusError</span></code></a> the other attributes are not valid.</p>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="microspeclib.datatypes.bridge.BridgeGetAutoExposeConfig">
+<em class="property">class </em><code class="sig-prename descclassname">microspeclib.datatypes.bridge.</code><code class="sig-name descname">BridgeGetAutoExposeConfig</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="n">status</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#microspeclib.datatypes.bridge.BridgeGetAutoExposeConfig" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt id="microspeclib.datatypes.bridge.BridgeGetBridgeLED">
+<em class="property">class </em><code class="sig-prename descclassname">microspeclib.datatypes.bridge.</code><code class="sig-name descname">BridgeGetBridgeLED</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="n">status</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">led_setting</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#microspeclib.datatypes.bridge.BridgeGetBridgeLED" title="Permalink to this definition">¶</a></dt>
+<dd><p>Contains result of command
+<a class="reference internal" href="microspeclib.simple.html#microspeclib.simple.MicroSpecSimpleInterface.getBridgeLED" title="microspeclib.simple.MicroSpecSimpleInterface.getBridgeLED"><code class="xref py py-func docutils literal notranslate"><span class="pre">getBridgeLED()</span></code></a>.</p>
+<dl class="py attribute">
+<dt id="microspeclib.datatypes.bridge.BridgeGetBridgeLED.status">
+<code class="sig-name descname">status</code><a class="headerlink" href="#microspeclib.datatypes.bridge.BridgeGetBridgeLED.status" title="Permalink to this definition">¶</a></dt>
+<dd><dl>
+<dt>0: <a class="reference internal" href="microspeclib.datatypes.types.html#microspeclib.datatypes.types.StatusOK" title="microspeclib.datatypes.types.StatusOK"><code class="xref py py-data docutils literal notranslate"><span class="pre">StatusOK</span></code></a></dt><dd><p>The dev-kit successfully executed the command.</p>
+</dd>
+<dt>1: <a class="reference internal" href="microspeclib.datatypes.types.html#microspeclib.datatypes.types.StatusError" title="microspeclib.datatypes.types.StatusError"><code class="xref py py-data docutils literal notranslate"><span class="pre">StatusError</span></code></a></dt><dd><p>The dev-kit failed to execute the command for one of the following reasons:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>serial communication failed</p></li>
+<li><p>the command is invalid</p></li>
+<li><p>one or more command parameters are invalid</p></li>
+</ul>
+</div></blockquote>
+</dd>
+</dl>
+<p>If status is <a class="reference internal" href="microspeclib.datatypes.types.html#microspeclib.datatypes.types.StatusError" title="microspeclib.datatypes.types.StatusError"><code class="xref py py-data docutils literal notranslate"><span class="pre">StatusError</span></code></a> the other attributes are not valid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="microspeclib.internal.util.html#microspeclib.internal.util.MicroSpecInteger" title="microspeclib.internal.util.MicroSpecInteger"><code class="xref py py-class docutils literal notranslate"><span class="pre">MicroSpecInteger</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="microspeclib.datatypes.bridge.BridgeGetBridgeLED.led_num">
+<code class="sig-name descname">led_num</code><a class="headerlink" href="#microspeclib.datatypes.bridge.BridgeGetBridgeLED.led_num" title="Permalink to this definition">¶</a></dt>
+<dd><p>Which LED the setting applies to.
+Valid range: 0 (only one LED on the Bridge)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="microspeclib.internal.util.html#microspeclib.internal.util.MicroSpecInteger" title="microspeclib.internal.util.MicroSpecInteger"><code class="xref py py-class docutils literal notranslate"><span class="pre">MicroSpecInteger</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="microspeclib.datatypes.bridge.BridgeGetBridgeLED.led_setting">
+<code class="sig-name descname">led_setting</code><a class="headerlink" href="#microspeclib.datatypes.bridge.BridgeGetBridgeLED.led_setting" title="Permalink to this definition">¶</a></dt>
+<dd><p>State of the LED:
+<a class="reference internal" href="microspeclib.datatypes.types.html#microspeclib.datatypes.types.LEDOff" title="microspeclib.datatypes.types.LEDOff"><code class="xref py py-data docutils literal notranslate"><span class="pre">LEDOff</span></code></a>, <a class="reference internal" href="microspeclib.datatypes.types.html#microspeclib.datatypes.types.LEDGreen" title="microspeclib.datatypes.types.LEDGreen"><code class="xref py py-data docutils literal notranslate"><span class="pre">LEDGreen</span></code></a>, or <a class="reference internal" href="microspeclib.datatypes.types.html#microspeclib.datatypes.types.LEDRed" title="microspeclib.datatypes.types.LEDRed"><code class="xref py py-data docutils literal notranslate"><span class="pre">LEDRed</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="microspeclib.internal.util.html#microspeclib.internal.util.MicroSpecInteger" title="microspeclib.internal.util.MicroSpecInteger"><code class="xref py py-class docutils literal notranslate"><span class="pre">MicroSpecInteger</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="microspeclib.datatypes.bridge.BridgeGetExposure">
+<em class="property">class </em><code class="sig-prename descclassname">microspeclib.datatypes.bridge.</code><code class="sig-name descname">BridgeGetExposure</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="n">status</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#microspeclib.datatypes.bridge.BridgeGetExposure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Contains a transitory status of the <a class="reference internal" href="microspeclib.datatypes.command.html#microspeclib.datatypes.command.CommandGetExposure" title="microspeclib.datatypes.command.CommandGetExposure"><code class="xref py py-class docutils literal notranslate"><span class="pre">CommandGetExposure</span></code></a>
+command as it passes through the Bridge. This is not the final payload for this command type. If the Simple or Expert API returns this object, then the command failed in the Bridge and did not even make it to the Sensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>status</strong> (<a class="reference internal" href="microspeclib.internal.util.html#microspeclib.internal.util.MicroSpecInteger" title="microspeclib.internal.util.MicroSpecInteger"><code class="xref py py-class docutils literal notranslate"><span class="pre">MicroSpecInteger</span></code></a>) – <dl>
+<dt>0: <a class="reference internal" href="microspeclib.datatypes.types.html#microspeclib.datatypes.types.StatusOK" title="microspeclib.datatypes.types.StatusOK"><code class="xref py py-data docutils literal notranslate"><span class="pre">StatusOK</span></code></a></dt><dd><p>The dev-kit successfully executed the command.</p>
+</dd>
+<dt>1: <a class="reference internal" href="microspeclib.datatypes.types.html#microspeclib.datatypes.types.StatusError" title="microspeclib.datatypes.types.StatusError"><code class="xref py py-data docutils literal notranslate"><span class="pre">StatusError</span></code></a></dt><dd><p>The dev-kit failed to execute the command for one of the following reasons:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>serial communication failed</p></li>
+<li><p>the command is invalid</p></li>
+<li><p>one or more command parameters are invalid</p></li>
+</ul>
+</div></blockquote>
+</dd>
+</dl>
+<p>If status is <a class="reference internal" href="microspeclib.datatypes.types.html#microspeclib.datatypes.types.StatusError" title="microspeclib.datatypes.types.StatusError"><code class="xref py py-data docutils literal notranslate"><span class="pre">StatusError</span></code></a> the other attributes are not valid.</p>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="microspeclib.datatypes.bridge.BridgeGetSensorConfig">
+<em class="property">class </em><code class="sig-prename descclassname">microspeclib.datatypes.bridge.</code><code class="sig-name descname">BridgeGetSensorConfig</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="n">status</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#microspeclib.datatypes.bridge.BridgeGetSensorConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Contains a transitory status of the
+<a class="reference internal" href="microspeclib.datatypes.command.html#microspeclib.datatypes.command.CommandGetSensorConfig" title="microspeclib.datatypes.command.CommandGetSensorConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">CommandGetSensorConfig</span></code></a> command as it
+passes through the Bridge. This is not the final payload for this command type. If the Simple or Expert API returns this object, then the command failed in the Bridge and did not even make it to the Sensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>status</strong> (<a class="reference internal" href="microspeclib.internal.util.html#microspeclib.internal.util.MicroSpecInteger" title="microspeclib.internal.util.MicroSpecInteger"><code class="xref py py-class docutils literal notranslate"><span class="pre">MicroSpecInteger</span></code></a>) – <dl>
+<dt>0: <a class="reference internal" href="microspeclib.datatypes.types.html#microspeclib.datatypes.types.StatusOK" title="microspeclib.datatypes.types.StatusOK"><code class="xref py py-data docutils literal notranslate"><span class="pre">StatusOK</span></code></a></dt><dd><p>The dev-kit successfully executed the command.</p>
+</dd>
+<dt>1: <a class="reference internal" href="microspeclib.datatypes.types.html#microspeclib.datatypes.types.StatusError" title="microspeclib.datatypes.types.StatusError"><code class="xref py py-data docutils literal notranslate"><span class="pre">StatusError</span></code></a></dt><dd><p>The dev-kit failed to execute the command for one of the following reasons:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>serial communication failed</p></li>
+<li><p>the command is invalid</p></li>
+<li><p>one or more command parameters are invalid</p></li>
+</ul>
+</div></blockquote>
+</dd>
+</dl>
+<p>If status is <a class="reference internal" href="microspeclib.datatypes.types.html#microspeclib.datatypes.types.StatusError" title="microspeclib.datatypes.types.StatusError"><code class="xref py py-data docutils literal notranslate"><span class="pre">StatusError</span></code></a> the other attributes are not valid.</p>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="microspeclib.datatypes.bridge.BridgeGetSensorLED">
+<em class="property">class </em><code class="sig-prename descclassname">microspeclib.datatypes.bridge.</code><code class="sig-name descname">BridgeGetSensorLED</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="n">status</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#microspeclib.datatypes.bridge.BridgeGetSensorLED" title="Permalink to this definition">¶</a></dt>
+<dd><p>Contains a transitory status of the
+<a class="reference internal" href="microspeclib.datatypes.command.html#microspeclib.datatypes.command.CommandGetSensorLED" title="microspeclib.datatypes.command.CommandGetSensorLED"><code class="xref py py-class docutils literal notranslate"><span class="pre">CommandGetSensorLED</span></code></a> command as it passes
+through the Bridge. This is not the final payload for this command type. If the Simple or Expert API returns this object, then the command failed in the Bridge and did not even make it to the Sensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>status</strong> (<a class="reference internal" href="microspeclib.internal.util.html#microspeclib.internal.util.MicroSpecInteger" title="microspeclib.internal.util.MicroSpecInteger"><code class="xref py py-class docutils literal notranslate"><span class="pre">MicroSpecInteger</span></code></a>) – <dl>
+<dt>0: <a class="reference internal" href="microspeclib.datatypes.types.html#microspeclib.datatypes.types.StatusOK" title="microspeclib.datatypes.types.StatusOK"><code class="xref py py-data docutils literal notranslate"><span class="pre">StatusOK</span></code></a></dt><dd><p>The dev-kit successfully executed the command.</p>
+</dd>
+<dt>1: <a class="reference internal" href="microspeclib.datatypes.types.html#microspeclib.datatypes.types.StatusError" title="microspeclib.datatypes.types.StatusError"><code class="xref py py-data docutils literal notranslate"><span class="pre">StatusError</span></code></a></dt><dd><p>The dev-kit failed to execute the command for one of the following reasons:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>serial communication failed</p></li>
+<li><p>the command is invalid</p></li>
+<li><p>one or more command parameters are invalid</p></li>
+</ul>
+</div></blockquote>
+</dd>
+</dl>
+<p>If status is <a class="reference internal" href="microspeclib.datatypes.types.html#microspeclib.datatypes.types.StatusError" title="microspeclib.datatypes.types.StatusError"><code class="xref py py-data docutils literal notranslate"><span class="pre">StatusError</span></code></a> the other attributes are not valid.</p>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="microspeclib.datatypes.bridge.BridgeNull">
+<em class="property">class </em><code class="sig-prename descclassname">microspeclib.datatypes.bridge.</code><code class="sig-name descname">BridgeNull</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#microspeclib.datatypes.bridge.BridgeNull" title="Permalink to this definition">¶</a></dt>
+<dd><p>This packet doesn’t actually exist, as the request for a Null
+has no reply. However, to distinguish between an error, when a <a class="reference internal" href="microspeclib.datatypes.command.html#microspeclib.datatypes.command.CommandNull" title="microspeclib.datatypes.command.CommandNull"><code class="xref py py-class docutils literal notranslate"><span class="pre">CommandNull</span></code></a> is requested, the
+API returns this object rather than None.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="microspeclib.datatypes.bridge.BridgeReset">
+<em class="property">class </em><code class="sig-prename descclassname">microspeclib.datatypes.bridge.</code><code class="sig-name descname">BridgeReset</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="n">status</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#microspeclib.datatypes.bridge.BridgeReset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Contains status status of the <a class="reference internal" href="microspeclib.datatypes.command.html#microspeclib.datatypes.command.CommandReset" title="microspeclib.datatypes.command.CommandReset"><code class="xref py py-class docutils literal notranslate"><span class="pre">CommandReset</span></code></a>
+command.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>status</strong> (<a class="reference internal" href="microspeclib.internal.util.html#microspeclib.internal.util.MicroSpecInteger" title="microspeclib.internal.util.MicroSpecInteger"><code class="xref py py-class docutils literal notranslate"><span class="pre">MicroSpecInteger</span></code></a>) – <dl>
+<dt>0: <a class="reference internal" href="microspeclib.datatypes.types.html#microspeclib.datatypes.types.StatusOK" title="microspeclib.datatypes.types.StatusOK"><code class="xref py py-data docutils literal notranslate"><span class="pre">StatusOK</span></code></a></dt><dd><p>The dev-kit successfully executed the command.</p>
+</dd>
+<dt>1: <a class="reference internal" href="microspeclib.datatypes.types.html#microspeclib.datatypes.types.StatusError" title="microspeclib.datatypes.types.StatusError"><code class="xref py py-data docutils literal notranslate"><span class="pre">StatusError</span></code></a></dt><dd><p>The dev-kit failed to execute the command for one of the following reasons:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>serial communication failed</p></li>
+<li><p>the command is invalid</p></li>
+<li><p>one or more command parameters are invalid</p></li>
+</ul>
+</div></blockquote>
+</dd>
+</dl>
+<p>If status is <a class="reference internal" href="microspeclib.datatypes.types.html#microspeclib.datatypes.types.StatusError" title="microspeclib.datatypes.types.StatusError"><code class="xref py py-data docutils literal notranslate"><span class="pre">StatusError</span></code></a> the other attributes are not valid.</p>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="microspeclib.datatypes.bridge.BridgeSetAutoExposeConfig">
+<em class="property">class </em><code class="sig-prename descclassname">microspeclib.datatypes.bridge.</code><code class="sig-name descname">BridgeSetAutoExposeConfig</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="n">status</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#microspeclib.datatypes.bridge.BridgeSetAutoExposeConfig" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt id="microspeclib.datatypes.bridge.BridgeSetBridgeLED">
+<em class="property">class </em><code class="sig-prename descclassname">microspeclib.datatypes.bridge.</code><code class="sig-name descname">BridgeSetBridgeLED</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="n">status</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#microspeclib.datatypes.bridge.BridgeSetBridgeLED" title="Permalink to this definition">¶</a></dt>
+<dd><p>Contains the status of the <a class="reference internal" href="microspeclib.datatypes.command.html#microspeclib.datatypes.command.CommandSetBridgeLED" title="microspeclib.datatypes.command.CommandSetBridgeLED"><code class="xref py py-class docutils literal notranslate"><span class="pre">CommandSetBridgeLED</span></code></a>
+command.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>status</strong> (<a class="reference internal" href="microspeclib.internal.util.html#microspeclib.internal.util.MicroSpecInteger" title="microspeclib.internal.util.MicroSpecInteger"><code class="xref py py-class docutils literal notranslate"><span class="pre">MicroSpecInteger</span></code></a>) – <dl>
+<dt>0: <a class="reference internal" href="microspeclib.datatypes.types.html#microspeclib.datatypes.types.StatusOK" title="microspeclib.datatypes.types.StatusOK"><code class="xref py py-data docutils literal notranslate"><span class="pre">StatusOK</span></code></a></dt><dd><p>The dev-kit successfully executed the command.</p>
+</dd>
+<dt>1: <a class="reference internal" href="microspeclib.datatypes.types.html#microspeclib.datatypes.types.StatusError" title="microspeclib.datatypes.types.StatusError"><code class="xref py py-data docutils literal notranslate"><span class="pre">StatusError</span></code></a></dt><dd><p>The dev-kit failed to execute the command for one of the following reasons:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>serial communication failed</p></li>
+<li><p>the command is invalid</p></li>
+<li><p>one or more command parameters are invalid</p></li>
+</ul>
+</div></blockquote>
+</dd>
+</dl>
+<p>If status is <a class="reference internal" href="microspeclib.datatypes.types.html#microspeclib.datatypes.types.StatusError" title="microspeclib.datatypes.types.StatusError"><code class="xref py py-data docutils literal notranslate"><span class="pre">StatusError</span></code></a> the other attributes are not valid.</p>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="microspeclib.datatypes.bridge.BridgeSetExposure">
+<em class="property">class </em><code class="sig-prename descclassname">microspeclib.datatypes.bridge.</code><code class="sig-name descname">BridgeSetExposure</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="n">status</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#microspeclib.datatypes.bridge.BridgeSetExposure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Contains a transitory status of the
+<a class="reference internal" href="microspeclib.datatypes.command.html#microspeclib.datatypes.command.CommandSetExposure" title="microspeclib.datatypes.command.CommandSetExposure"><code class="xref py py-class docutils literal notranslate"><span class="pre">CommandSetExposure</span></code></a> command as it passes
+through the Bridge. This is not the final payload for this command type. If the Simple or Expert API returns this object, then the command failed in the Bridge and did not even make it to the Sensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>status</strong> (<a class="reference internal" href="microspeclib.internal.util.html#microspeclib.internal.util.MicroSpecInteger" title="microspeclib.internal.util.MicroSpecInteger"><code class="xref py py-class docutils literal notranslate"><span class="pre">MicroSpecInteger</span></code></a>) – <dl>
+<dt>0: <a class="reference internal" href="microspeclib.datatypes.types.html#microspeclib.datatypes.types.StatusOK" title="microspeclib.datatypes.types.StatusOK"><code class="xref py py-data docutils literal notranslate"><span class="pre">StatusOK</span></code></a></dt><dd><p>The dev-kit successfully executed the command.</p>
+</dd>
+<dt>1: <a class="reference internal" href="microspeclib.datatypes.types.html#microspeclib.datatypes.types.StatusError" title="microspeclib.datatypes.types.StatusError"><code class="xref py py-data docutils literal notranslate"><span class="pre">StatusError</span></code></a></dt><dd><p>The dev-kit failed to execute the command for one of the following reasons:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>serial communication failed</p></li>
+<li><p>the command is invalid</p></li>
+<li><p>one or more command parameters are invalid</p></li>
+</ul>
+</div></blockquote>
+</dd>
+</dl>
+<p>If status is <a class="reference internal" href="microspeclib.datatypes.types.html#microspeclib.datatypes.types.StatusError" title="microspeclib.datatypes.types.StatusError"><code class="xref py py-data docutils literal notranslate"><span class="pre">StatusError</span></code></a> the other attributes are not valid.</p>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="microspeclib.datatypes.bridge.BridgeSetSensorConfig">
+<em class="property">class </em><code class="sig-prename descclassname">microspeclib.datatypes.bridge.</code><code class="sig-name descname">BridgeSetSensorConfig</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="n">status</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#microspeclib.datatypes.bridge.BridgeSetSensorConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Contains a transitory status of the
+<a class="reference internal" href="microspeclib.datatypes.command.html#microspeclib.datatypes.command.CommandSetSensorConfig" title="microspeclib.datatypes.command.CommandSetSensorConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">CommandSetSensorConfig</span></code></a> command as it
+passes through the Bridge. This is not the final payload for this command type. If the Simple or Expert API returns this object, then the command failed in the Bridge and did not even make it to the Sensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>status</strong> (<a class="reference internal" href="microspeclib.internal.util.html#microspeclib.internal.util.MicroSpecInteger" title="microspeclib.internal.util.MicroSpecInteger"><code class="xref py py-class docutils literal notranslate"><span class="pre">MicroSpecInteger</span></code></a>) – <dl>
+<dt>0: <a class="reference internal" href="microspeclib.datatypes.types.html#microspeclib.datatypes.types.StatusOK" title="microspeclib.datatypes.types.StatusOK"><code class="xref py py-data docutils literal notranslate"><span class="pre">StatusOK</span></code></a></dt><dd><p>The dev-kit successfully executed the command.</p>
+</dd>
+<dt>1: <a class="reference internal" href="microspeclib.datatypes.types.html#microspeclib.datatypes.types.StatusError" title="microspeclib.datatypes.types.StatusError"><code class="xref py py-data docutils literal notranslate"><span class="pre">StatusError</span></code></a></dt><dd><p>The dev-kit failed to execute the command for one of the following reasons:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>serial communication failed</p></li>
+<li><p>the command is invalid</p></li>
+<li><p>one or more command parameters are invalid</p></li>
+</ul>
+</div></blockquote>
+</dd>
+</dl>
+<p>If status is <a class="reference internal" href="microspeclib.datatypes.types.html#microspeclib.datatypes.types.StatusError" title="microspeclib.datatypes.types.StatusError"><code class="xref py py-data docutils literal notranslate"><span class="pre">StatusError</span></code></a> the other attributes are not valid.</p>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="microspeclib.datatypes.bridge.BridgeSetSensorLED">
+<em class="property">class </em><code class="sig-prename descclassname">microspeclib.datatypes.bridge.</code><code class="sig-name descname">BridgeSetSensorLED</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="n">status</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#microspeclib.datatypes.bridge.BridgeSetSensorLED" title="Permalink to this definition">¶</a></dt>
+<dd><p>Contains a transitory status of the
+<a class="reference internal" href="microspeclib.datatypes.command.html#microspeclib.datatypes.command.CommandGetSensorLED" title="microspeclib.datatypes.command.CommandGetSensorLED"><code class="xref py py-class docutils literal notranslate"><span class="pre">CommandGetSensorLED</span></code></a> command as it passes
+through the Bridge. This is not the final payload for this command type. If the Simple or Expert API returns this object, then the command failed in the Bridge and did not even make it to the Sensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>status</strong> (<a class="reference internal" href="microspeclib.internal.util.html#microspeclib.internal.util.MicroSpecInteger" title="microspeclib.internal.util.MicroSpecInteger"><code class="xref py py-class docutils literal notranslate"><span class="pre">MicroSpecInteger</span></code></a>) – <dl>
+<dt>0: <a class="reference internal" href="microspeclib.datatypes.types.html#microspeclib.datatypes.types.StatusOK" title="microspeclib.datatypes.types.StatusOK"><code class="xref py py-data docutils literal notranslate"><span class="pre">StatusOK</span></code></a></dt><dd><p>The dev-kit successfully executed the command.</p>
+</dd>
+<dt>1: <a class="reference internal" href="microspeclib.datatypes.types.html#microspeclib.datatypes.types.StatusError" title="microspeclib.datatypes.types.StatusError"><code class="xref py py-data docutils literal notranslate"><span class="pre">StatusError</span></code></a></dt><dd><p>The dev-kit failed to execute the command for one of the following reasons:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>serial communication failed</p></li>
+<li><p>the command is invalid</p></li>
+<li><p>one or more command parameters are invalid</p></li>
+</ul>
+</div></blockquote>
+</dd>
+</dl>
+<p>If status is <a class="reference internal" href="microspeclib.datatypes.types.html#microspeclib.datatypes.types.StatusError" title="microspeclib.datatypes.types.StatusError"><code class="xref py py-data docutils literal notranslate"><span class="pre">StatusError</span></code></a> the other attributes are not valid.</p>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="microspeclib.datatypes.bridge.BridgeVerify">
+<em class="property">class </em><code class="sig-prename descclassname">microspeclib.datatypes.bridge.</code><code class="sig-name descname">BridgeVerify</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="n">status</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#microspeclib.datatypes.bridge.BridgeVerify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Contains the status of the <a class="reference internal" href="microspeclib.datatypes.command.html#microspeclib.datatypes.command.CommandVerify" title="microspeclib.datatypes.command.CommandVerify"><code class="xref py py-class docutils literal notranslate"><span class="pre">CommandVerify</span></code></a>
+command.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>status</strong> (<a class="reference internal" href="microspeclib.internal.util.html#microspeclib.internal.util.MicroSpecInteger" title="microspeclib.internal.util.MicroSpecInteger"><code class="xref py py-class docutils literal notranslate"><span class="pre">MicroSpecInteger</span></code></a>) – <dl>
+<dt>0: <a class="reference internal" href="microspeclib.datatypes.types.html#microspeclib.datatypes.types.StatusOK" title="microspeclib.datatypes.types.StatusOK"><code class="xref py py-data docutils literal notranslate"><span class="pre">StatusOK</span></code></a></dt><dd><p>The dev-kit successfully executed the command.</p>
+</dd>
+<dt>1: <a class="reference internal" href="microspeclib.datatypes.types.html#microspeclib.datatypes.types.StatusError" title="microspeclib.datatypes.types.StatusError"><code class="xref py py-data docutils literal notranslate"><span class="pre">StatusError</span></code></a></dt><dd><p>The dev-kit failed to execute the command for one of the following reasons:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>serial communication failed</p></li>
+<li><p>the command is invalid</p></li>
+<li><p>one or more command parameters are invalid</p></li>
+</ul>
+</div></blockquote>
+</dd>
+</dl>
+<p>If status is <a class="reference internal" href="microspeclib.datatypes.types.html#microspeclib.datatypes.types.StatusError" title="microspeclib.datatypes.types.StatusError"><code class="xref py py-data docutils literal notranslate"><span class="pre">StatusError</span></code></a> the other attributes are not valid.</p>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="microspeclib.datatypes.bridge.getBridgeReplyByID">
+<code class="sig-prename descclassname">microspeclib.datatypes.bridge.</code><code class="sig-name descname">getBridgeReplyByID</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#microspeclib.datatypes.bridge.getBridgeReplyByID" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="microspeclib.datatypes.bridge.getBridgeReplyByName">
+<code class="sig-prename descclassname">microspeclib.datatypes.bridge.</code><code class="sig-name descname">getBridgeReplyByName</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#microspeclib.datatypes.bridge.getBridgeReplyByName" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="microspeclib.datatypes.command.html" class="btn btn-neutral float-right" title="microspeclib.datatypes.command module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="microspeclib.datatypes.html" class="btn btn-neutral float-left" title="microspeclib.datatypes package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Chromation Inc
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

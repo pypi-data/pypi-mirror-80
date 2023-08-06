@@ -1,0 +1,20 @@
+include *.in
+include *.md
+recursive-include bin *.py
+recursive-include cfg *.json
+recursive-include doc *.bat
+recursive-include doc *.buildinfo
+recursive-include doc *.css
+recursive-include doc *.eot
+recursive-include doc *.js
+recursive-include doc *.md
+recursive-include doc *.otf
+recursive-include doc *.png
+recursive-include doc *.py
+recursive-include doc *.rst
+recursive-include doc *.svg
+recursive-include doc *.ttf
+recursive-include doc *.txt
+recursive-include doc *.woff
+recursive-include doc *.woff2
+recursive-include doc Makefile

@@ -1,0 +1,12 @@
+pyserial
+
+[dev]
+sphinx
+sphinx-rtd-theme
+recommonmark
+m2r
+sphinxcontrib-argdoc
+pytest
+pytest-testdox
+tabulate
+psutil
