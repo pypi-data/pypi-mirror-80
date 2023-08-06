@@ -1,0 +1,58 @@
+Metadata-Version: 2.1
+Name: pycreator
+Version: 0.1.1
+Summary: Automatically create a command application
+Home-page: https://github.com/NexSabre/pycreator
+Author: Nex Sabre
+Author-email: nexsabre@protonmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: jinja2 (~=2.11)
+
+# pycreator
+Create boilerplate application thru the command-line!
+
+## TLDR; 
+```
+pip install pycreator       # to install pycreator
+pycreator goes -n brrr      # where brr is the name
+```
+
+It create a command line, Python application with structure:
+```
+brrr
+â”‚   LICENSE.md
+â”‚   README.md
+â”‚   VERSION
+â”‚
+â””â”€â”€â”€src
+    â””â”€â”€â”€brrr
+        â”‚   setup.py
+        â”‚   __init__.py
+        â”‚
+        â”śâ”€â”€â”€actions
+        â”‚   â”‚   action.py
+        â”‚   â”‚   action_dispatcher.py
+        â”‚   â”‚   version.py
+        â”‚   â”‚   __init__.py
+        â”‚   â”‚
+        â”‚   â””â”€â”€â”€example_action
+        â”‚           example_action.py
+        â”‚           __init__.py
+        â”‚
+        â”śâ”€â”€â”€core
+        â”‚       __init__.py
+        â”‚
+        â”śâ”€â”€â”€framework
+        â”‚       messages.py
+        â”‚       __init__.py
+        â”‚
+        â””â”€â”€â”€main
+                main.py
+                __init__.py
+```
+
