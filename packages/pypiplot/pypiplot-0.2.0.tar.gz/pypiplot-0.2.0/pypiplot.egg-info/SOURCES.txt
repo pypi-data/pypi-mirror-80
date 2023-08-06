@@ -1,0 +1,13 @@
+MANIFEST.in
+README.md
+setup.py
+pypiplot/__init__.py
+pypiplot/examples.py
+pypiplot/pypiplot.py
+pypiplot.egg-info/PKG-INFO
+pypiplot.egg-info/SOURCES.txt
+pypiplot.egg-info/dependency_links.txt
+pypiplot.egg-info/requires.txt
+pypiplot.egg-info/top_level.txt
+pypiplot/data/__init__.py
+pypiplot/utils/__init__.py
