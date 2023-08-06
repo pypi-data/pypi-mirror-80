@@ -1,0 +1,94 @@
+Metadata-Version: 2.1
+Name: scikit-physlearn
+Version: 0.1.4
+Summary: A Python package for single-target and multi-target regression tasks.
+Home-page: https://github.com/a-wozniakowski/scikit-physlearn
+Maintainer: Alex Wozniakowski
+Maintainer-email: wozn0001@e.ntu.edu.sg
+License: MIT
+Download-URL: https://github.com/a-wozniakowski/scikit-physlearn
+Project-URL: Paper, https://arxiv.org/abs/2005.06194
+Description: .. -*- mode: rst -*-
+        
+        |SOTA|_ |DOCS|_ |PyPI|_
+        
+        .. |SOTA| image:: https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/boosting-on-the-shoulders-of-giants-in/multi-target-regression-on-google-5-qubit
+        .. _SOTA: https://paperswithcode.com/sota/multi-target-regression-on-google-5-qubit?p=boosting-on-the-shoulders-of-giants-in
+        
+        .. |DOCS| image:: https://readthedocs.org/projects/scikit-physlearn/badge/?version=latest
+        .. _DOCS: https://scikit-physlearn.readthedocs.io/en/latest/?badge=latest
+        
+        .. |PyPI| image:: https://badge.fury.io/py/scikit-physlearn.svg
+        .. _PyPI: https://badge.fury.io/py/scikit-physlearn
+        
+        ################
+        Scikit-physlearn
+        ################
+        
+        **Scikit-physlearn** is a machine learning library designed to amalgamate 
+        `Scikit-learn <https://scikit-learn.org/>`_,
+        `LightGBM <https://lightgbm.readthedocs.io/en/latest/index.html>`_,
+        `XGBoost <https://xgboost.readthedocs.io/en/latest/>`_,
+        `CatBoost <https://catboost.ai/>`_,
+        and `Mlxtend <http://rasbt.github.io/mlxtend/>`_ 
+        regressors into a flexible framework that:
+        
+        - Follows the Scikit-learn API.
+        - Processes pandas data representations.
+        - Solves single-target and multi-target regression tasks.
+        - Interprets regressors with `SHAP <https://shap.readthedocs.io/en/latest/>`_.
+        
+        Additionally, the library contains the official implementation of
+        `base boosting <https://arxiv.org/abs/2005.06194>`_, which is an algorithmic
+        paradigm for building additive expansions based upon the output of any
+        base-level regressor. The implementation:
+        
+        - Supplants the statistical initialization in gradient boosting
+          with the output of any base-level regressor.
+        - Boosts arbitrary basis functions, i.e., it is not limited to boosting
+          decision trees.
+        - Efficiently learns in the low data regime.
+        
+        The `library <https://github.com/a-wozniakowski/scikit-physlearn>`_ was
+        started by Alex Wozniakowski during his graduate studies at Nanyang Technological
+        University.
+        
+        ************
+        Installation
+        ************
+        
+        Scikit-physlearn can be installed from `PyPI <https://pypi.org/project/scikit-physlearn/>`__::
+        
+            pip install scikit-physlearn
+        
+        To build from source, see the `installation guide <https://scikit-physlearn.readthedocs.io/en/latest/install.html>`_.
+        
+        ********
+        Citation
+        ********
+        
+        If you use this library, please consider adding the corresponding citation:
+        
+        .. code-block:: latex
+        
+            @article{wozniakowski_2020_boosting,
+              title={Boosting on the shoulders of giants in quantum device calibration},
+              author={Wozniakowski, Alex and Thompson, Jayne and Gu, Mile and Binder, Felix C.},
+              journal={arXiv preprint arXiv:2005.06194},
+              year={2020}
+            }
+        
+Platform: UNKNOWN
+Classifier: Intended Audience :: Science/Research
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python
+Classifier: Topic :: Software Development
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: Unix
+Classifier: Operating System :: MacOS
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Description-Content-Type: text/x-rst
