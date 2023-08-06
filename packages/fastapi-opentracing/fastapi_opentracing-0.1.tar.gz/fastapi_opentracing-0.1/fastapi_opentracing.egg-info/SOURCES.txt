@@ -1,0 +1,13 @@
+LICENSE
+MANIFEST.in
+README.md
+requirements.txt
+setup.py
+fastapi_opentracing/__init__.py
+fastapi_opentracing/example.py
+fastapi_opentracing/middleware.py
+fastapi_opentracing.egg-info/PKG-INFO
+fastapi_opentracing.egg-info/SOURCES.txt
+fastapi_opentracing.egg-info/dependency_links.txt
+fastapi_opentracing.egg-info/requires.txt
+fastapi_opentracing.egg-info/top_level.txt

@@ -1,0 +1,39 @@
+Metadata-Version: 2.1
+Name: fastapi_opentracing
+Version: 0.1
+Summary: fastapi opentracing middleware works with istio
+Home-page: https://github.com/wesdu/fastapi-opentracing
+Author: Du Wei
+Author-email: pandorid@gmail.com
+License: UNKNOWN
+Description: # fastapi-opentracing
+        fastapi opentracing middleware works with istio
+        
+        example:
+        ```python
+        from fastapi import FastAPI
+        import uvicorn
+        from fastapi_opentracing import get_opentracing_span_headers
+        from fastapi_opentracing.middleware import OpenTracingMiddleware
+        
+        app = FastAPI()
+        
+        app.add_middleware(OpenTracingMiddleware)
+        
+        
+        @app.get("/")
+        async def root():
+            carrier = await get_opentracing_span_headers()
+            return {'span': carrier}
+        
+        if __name__ == "__main__":
+            uvicorn.run(app, host="0.0.0.0", port=8000)
+        ```
+        
+Keywords: fastapi,istio,k8s,opentracing
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
