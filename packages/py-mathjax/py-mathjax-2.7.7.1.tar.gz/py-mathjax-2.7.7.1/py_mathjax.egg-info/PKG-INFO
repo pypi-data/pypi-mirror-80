@@ -1,0 +1,55 @@
+Metadata-Version: 2.1
+Name: py-mathjax
+Version: 2.7.7.1
+Summary: Installs mathjax conda package in pip and conda.
+Home-page: https://github.com/kiwi0fruit/py-mathjax
+Author: kiwi0fruit
+Author-email: peter.zagubisalo@gmail.com
+License: Apache License 2.0
+Description: # MathJax
+        
+        MathJax in pip and conda.
+        
+        # Install
+        
+        Needs python 3.6+
+        
+        ```bash
+        conda install -c defaults -c conda-forge py-mathjax
+        ```
+        
+        or
+        
+        ```bash
+        pip install py-mathjax
+        ```
+        
+        
+        # API
+        
+        ### mathjax_path
+        
+        ```py
+        def mathjax_path(as_url: bool=False) -> str:
+            """ Returns MathJax.js file absolute path. """
+        ```
+        
+        ### CLI
+        
+        ```
+        Usage: py-mathjax-path [OPTIONS]
+        
+          Prints MathJax.js file absolute path.
+        
+        Options:
+          --url, -u    print MathJax.js file abs path as URL,
+          --help, -h   Show this message and exit.
+        ```
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
