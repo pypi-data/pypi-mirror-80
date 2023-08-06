@@ -1,0 +1,175 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# Copyright (C) 2020 James Clark <james.clark@ligo.org>
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along
+# with this program; if not, write to the Free Software Foundation, Inc.,
+# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+#
+# pylint: disable=superfluous-parens
+# pylint: disable=too-few-public-methods
+"""Comand line tool with HTCondor classes and methods to distribute
+gwrucio_registrar file registration tasks in an HTCondor workflow.  Creates a
+DAG and sub files.  Just computes checksum calculations for now."""
+
+import sys
+import os
+import stat
+import argparse
+from glue import pipeline
+
+SUCCESS = 0
+FAILURE = 1
+
+
+class FileInfoJob(pipeline.CondorDAGJob):
+    """
+    Job class for fileinfos.
+    """
+    def __init__(self, executable,
+                 accounting_group="ligo.dev.o3.burst.explore.test",
+                 universe="vanilla"):
+
+        self.__executable = executable
+        self.__universe = universe
+        pipeline.CondorDAGJob.__init__(self, self.__universe,
+                                       self.__executable)
+
+        # Logging info
+        self.set_stdout_file('logs/fileinfo_$(cluster)-$(process).out')
+        self.set_stderr_file('logs/fileinfo_$(cluster)-$(process).err')
+        self.set_log_file('logs/fileinfo_$(cluster)-$(process).log')
+        try:
+            os.makedirs('logs')
+        except OSError:
+            pass
+
+        # Arguments
+        self.add_condor_cmd('accounting_group', accounting_group)
+        self.add_condor_cmd('should_transfer_files', 'YES')
+
+        # Write the submission file
+        self.set_sub_file('fileinfos.sub')
+
+
+class FileInfoNode(pipeline.CondorDAGNode):
+    """
+    DAG node for gwrucio_registrar.
+    """
+
+    def __init__(self, fileinfo_job):
+
+        pipeline.CondorDAGNode.__init__(self, fileinfo_job)
+
+    def set_framefile(self, framefile):
+        """
+        Specify the frame to analyse
+        """
+        self.add_var_arg(framefile)
+
+
+def make_fileinfo():
+    # pylint: disable=line-too-long
+    """
+    Write a script to call gfal-utils CLI:
+    ```
+    #!/bin/bash -e
+    size=$(gfal-stat $1 | grep Size | awk '{print $2}')
+    adler32=$(gfal-sum $1 ADLER32 | awk '{print $2}')
+    md5=$(gfal-sum $1 MD5 | awk '{print $2}')
+    echo $(basename $1) $size $adler32 $md5
+    ```
+    """
+    with open('fileinfo.sh', 'w') as exe:
+        exe.write("#!/bin/bash -e\n")
+        exe.write("size=$(gfal-stat $1 | grep Size | awk \'{print $2}\')\n")
+        exe.write("adler32=$(gfal-sum $1 ADLER32 | awk \'{print $2}\')\n")
+        exe.write("md5=$(gfal-sum $1 MD5 | awk \'{print $2}\')\n")
+        exe.write("echo $(basename $1) $size $adler32 $md5\n")
+
+    exestat = os.stat('fileinfo.sh')
+    os.chmod('fileinfo.sh', exestat.st_mode | stat.S_IEXEC)
+
+
+def get_parser():
+    """
+    Command line parser
+    """
+
+    oparser = argparse.ArgumentParser(description=__doc__)
+
+    oparser.add_argument("framelist", type=str, default=None,
+                         help="""List of frame paths""")
+    oparser.add_argument("--executable", type=str,
+                         help="""Program to return metadata""",
+                         default="fileinfo.sh")
+    oparser.add_argument("--retries", type=int, default=3,
+                         help="""Program to return metadata""")
+
+    return oparser
+
+
+if __name__ == "__main__":
+
+    #
+    # Parse input and choose operation
+    #
+    PARSER = get_parser()
+
+    if len(sys.argv) == 1:
+        PARSER.print_help()
+        sys.exit(FAILURE)
+
+    ARGS = PARSER.parse_args(sys.argv[1:])
+    with open(ARGS.framelist, 'r') as FRAMESF:
+        FRAMES = FRAMESF.read().splitlines()
+
+    # Work in a directory named after the original reg file
+    WORKDIR = ARGS.framelist.replace('.txt', '')
+    try:
+        os.makedirs(WORKDIR)
+    except OSError:
+        print("Failed to create new directory {}. Trying to "
+              "chdir".format(WORKDIR))
+    STARTDIR = os.getcwd()
+    try:
+        os.chdir(WORKDIR)
+    except OSError:
+        print("Failed to chdir to {}, exiting".format(WORKDIR))
+        sys.exit(FAILURE)
+    print("Writing workflow in {}".format(WORKDIR))
+
+    # Executable
+    make_fileinfo()
+
+    # Define DAG and job types
+    DAG = pipeline.CondorDAG(log='fileinfos_pipe.log')
+    DAG.set_dag_file('fileinfos_pipe')
+    FILEINFO_JOB = FileInfoJob(executable=ARGS.executable)
+
+    # Define DAG node
+    for FRAME in FRAMES:
+        print(FRAME)
+        FILEINFO_NODE = FileInfoNode(FILEINFO_JOB)
+        FILEINFO_NODE.set_framefile(FRAME)
+        FILEINFO_NODE.set_retry(ARGS.retries)
+        DAG.add_node(FILEINFO_NODE)
+
+    # Write the resulting DAG
+    DAG.write_sub_files()
+    DAG.write_dag()
+    DAG.write_script()
+
+    # Move back to start directory
+    os.chdir(STARTDIR)
+    print("Complete")
