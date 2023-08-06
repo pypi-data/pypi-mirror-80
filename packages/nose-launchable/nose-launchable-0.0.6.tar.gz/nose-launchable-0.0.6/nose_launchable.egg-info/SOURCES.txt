@@ -1,0 +1,17 @@
+LICENSE
+MANIFEST.in
+README.rst
+requirements.txt
+setup.py
+launchable/__init__.py
+launchable/client.py
+launchable/log.py
+launchable/manager.py
+launchable/plugin.py
+launchable/version.py
+nose_launchable.egg-info/PKG-INFO
+nose_launchable.egg-info/SOURCES.txt
+nose_launchable.egg-info/dependency_links.txt
+nose_launchable.egg-info/entry_points.txt
+nose_launchable.egg-info/requires.txt
+nose_launchable.egg-info/top_level.txt
