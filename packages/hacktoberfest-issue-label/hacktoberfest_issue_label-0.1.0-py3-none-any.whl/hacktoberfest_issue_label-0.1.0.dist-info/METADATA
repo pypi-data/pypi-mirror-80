@@ -1,0 +1,67 @@
+Metadata-Version: 2.1
+Name: hacktoberfest-issue-label
+Version: 0.1.0
+Summary: Add Hacktoberfest issue label on Github
+Home-page: https://github.com/uilianries/hacktoberfest-label
+Author: Uilian Ries
+Author-email: uilianries@gmail.com
+License: MIT
+Keywords: conan,hacktoberfest,github,issues
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Description-Content-Type: text/markdown
+Requires-Dist: requests (>=2.24.0)
+
+# Hacktoberfest Label
+
+#### Add Hacktoberfest to Github issues
+
+By default, this script will add the issue label `Hacktoberfest` to any issue with the label `good first issue` on https://github.com/conan-io/conan.
+However, you can customize the repository and issue label by arguments.
+
+#### Usage
+
+```
+usage: hacktoberfest.py [-h] [--token TOKEN] [--repository REPOSITORY] [--issue ISSUE] [--label LABEL]
+
+Apply Hacktoberfest label to Github issues.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --token TOKEN         Github API Token
+  --repository REPOSITORY
+                        Github organization/repository name
+  --issue ISSUE, -i ISSUE
+                        Update only one Github issue
+  --label LABEL, -l LABEL
+                        Update ALL issues based on label name
+```
+
+#### Authentication
+
+The script consumes the developer [tokens](https://github.com/settings/tokens) for authentication.
+It can be passed by the argument `--token`, or by the environment variable `GITHUB_OAUTH_TOKEN`.
+
+#### Examples
+
+* Add `Hacktoberfest` issue label to https://github.com/conan-io/conan, to all issues with `good first issue` (Default behavior)
+
+    python hacktoberfest.py 
+
+* Add `Hacktoberfest` issue label to https://github.com/foo/bar issue #5
+
+    python hacktoberfest.py --repository=foo/bar --issue=5  
+
+* Add 'Hacktoberfest' issue label to issue label to all issues with `bug`
+
+    python hacktoberfest.py --label=bug
+
+#### LICENSE
+[MIT](LICENSE)
+
+
