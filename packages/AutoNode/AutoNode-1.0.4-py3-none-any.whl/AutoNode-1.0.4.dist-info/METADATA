@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: AutoNode
+Version: 1.0.4
+Summary: AutoNode Python Library
+Home-page: http://harmony.one/auto-node
+Author: Daniel Van Der Maden
+Author-email: daniel@harmony.one
+License: UNKNOWN
+Platform: UNKNOWN
+Requires-Dist: requests (==2.23.0)
+Requires-Dist: pexpect (==4.8.0)
+Requires-Dist: cryptography (==2.9.2)
+Requires-Dist: pyhmy (==20.5.20)
+
+UNKNOWN
+
+
