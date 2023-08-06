@@ -1,0 +1,9 @@
+responder
+graphql-core==2.3
+graphene==2.1.8
+transformers[tf-cpu]==3.0.2
+rake_nltk
+nltk
+sqlalchemy
+tensorflow_hub
+pandas
