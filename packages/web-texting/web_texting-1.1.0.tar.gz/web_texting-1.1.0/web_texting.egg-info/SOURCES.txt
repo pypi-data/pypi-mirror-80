@@ -1,0 +1,16 @@
+README.md
+setup.py
+web_texting/__init__.py
+web_texting/configuration.py
+web_texting/opeeration_wrapper.py
+web_texting/operation.py
+web_texting/operation_executor.py
+web_texting/rpt_tpl.py
+web_texting/unitest_job.py
+web_texting/web_job.py
+web_texting/web_rpt.py
+web_texting.egg-info/PKG-INFO
+web_texting.egg-info/SOURCES.txt
+web_texting.egg-info/dependency_links.txt
+web_texting.egg-info/requires.txt
+web_texting.egg-info/top_level.txt
