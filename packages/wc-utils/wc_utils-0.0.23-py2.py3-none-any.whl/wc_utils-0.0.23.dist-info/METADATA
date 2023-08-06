@@ -1,0 +1,88 @@
+Metadata-Version: 2.1
+Name: wc-utils
+Version: 0.0.23
+Summary: Utilities for whole-cell modeling
+Home-page: https://github.com/KarrLab/wc_utils
+Author: Karr Lab
+Author-email: info@karrlab.org
+License: MIT
+Download-URL: https://github.com/KarrLab/wc_utils
+Keywords: whole-cell modeling
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Topic :: Scientific/Engineering :: Bio-Informatics
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Requires-Dist: abduct
+Requires-Dist: attrdict
+Requires-Dist: configobj
+Requires-Dist: dataclasses
+Requires-Dist: diskcache
+Requires-Dist: humanfriendly
+Requires-Dist: mendeleev
+Requires-Dist: natsort
+Requires-Dist: numpy
+Requires-Dist: objsize
+Requires-Dist: openpyxl (<=3.0.1,>=2.6.1)
+Requires-Dist: pint (>=0.10)
+Requires-Dist: pronto (>=1)
+Requires-Dist: pyexcel (>=0.5.9.1)
+Requires-Dist: pyexcel-io (>=0.5.9.1)
+Requires-Dist: pyyaml (>=5.1)
+Requires-Dist: qualname
+Requires-Dist: requests
+Requires-Dist: setuptools
+Requires-Dist: xlsxwriter
+Provides-Extra: all
+Requires-Dist: boto3 ; extra == 'all'
+Requires-Dist: capturer ; extra == 'all'
+Requires-Dist: gitpython ; extra == 'all'
+Requires-Dist: logging2 ; extra == 'all'
+Requires-Dist: matplotlib ; extra == 'all'
+Requires-Dist: mock ; extra == 'all'
+Requires-Dist: openbabel (<3) ; extra == 'all'
+Requires-Dist: pygithub ; extra == 'all'
+Requires-Dist: pyjnius ; extra == 'all'
+Requires-Dist: quilt3 (>=3.1.5) ; extra == 'all'
+Requires-Dist: scipy ; extra == 'all'
+Requires-Dist: sphinx (>=1.8) ; extra == 'all'
+Requires-Dist: sphinx-fontawesome ; extra == 'all'
+Requires-Dist: sphinx-rtd-theme (>=0.4.2) ; extra == 'all'
+Requires-Dist: sphinxcontrib-addmetahtml (>=0.1.1) ; extra == 'all'
+Requires-Dist: sphinxcontrib-bibtex ; extra == 'all'
+Requires-Dist: sphinxcontrib-googleanalytics (>=0.1.1) ; extra == 'all'
+Requires-Dist: sphinxcontrib-spelling ; extra == 'all'
+Requires-Dist: sphinxprettysearchresults ; extra == 'all'
+Provides-Extra: chem
+Requires-Dist: openbabel (<3) ; extra == 'chem'
+Provides-Extra: docs
+Requires-Dist: sphinx (>=1.8) ; extra == 'docs'
+Requires-Dist: sphinx-fontawesome ; extra == 'docs'
+Requires-Dist: sphinx-rtd-theme (>=0.4.2) ; extra == 'docs'
+Requires-Dist: sphinxcontrib-addmetahtml (>=0.1.1) ; extra == 'docs'
+Requires-Dist: sphinxcontrib-bibtex ; extra == 'docs'
+Requires-Dist: sphinxcontrib-googleanalytics (>=0.1.1) ; extra == 'docs'
+Requires-Dist: sphinxcontrib-spelling ; extra == 'docs'
+Requires-Dist: sphinxprettysearchresults ; extra == 'docs'
+Provides-Extra: git
+Requires-Dist: gitpython ; extra == 'git'
+Requires-Dist: pygithub ; extra == 'git'
+Provides-Extra: logging
+Requires-Dist: logging2 ; extra == 'logging'
+Provides-Extra: protonation
+Requires-Dist: pyjnius ; extra == 'protonation'
+Provides-Extra: quilt
+Requires-Dist: boto3 ; extra == 'quilt'
+Requires-Dist: quilt3 (>=3.1.5) ; extra == 'quilt'
+Provides-Extra: tests
+Requires-Dist: capturer ; extra == 'tests'
+Requires-Dist: matplotlib ; extra == 'tests'
+Requires-Dist: mock ; extra == 'tests'
+Requires-Dist: scipy ; extra == 'tests'
+
+UNKNOWN
+
+
