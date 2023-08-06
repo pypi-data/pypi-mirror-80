@@ -1,0 +1,26 @@
+Metadata-Version: 1.1
+Name: rfmlp
+Version: 0.0.1
+Summary: Ritesh fantastic ML Package
+Home-page: UNKNOWN
+Author: Ritesh Yadav
+Author-email: daydreamingguy941@gmail.com
+License: MIT
+Description: RFMLP is Pronunced as Ritesh-Fantastic-Machine-Learning-Package.This Library contains some basic pakages like : Package to split the Dataset,Package to Create K folds for cross validation techniques!!
+        In future updates various packages will be comming!!
+        
+        You can use this packages to perform split and training your ml dl models.
+        
+        Change Log
+        ==========
+        
+        0.0.1 (27/09/2020)
+        -------------------
+        - First Release
+Keywords: Machine Learning,Datasets
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Education
+Classifier: Operating System :: Microsoft :: Windows :: Windows 10
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
