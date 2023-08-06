@@ -1,0 +1,11 @@
+attrs
+binaryornot
+commoncode
+pdfminer.six
+plugincode
+pygments
+six
+
+[testing]
+pytest>=6
+pytest-xdist>=2

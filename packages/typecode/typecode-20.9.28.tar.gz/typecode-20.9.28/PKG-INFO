@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: typecode
+Version: 20.9.28
+Summary: typecode provides file type detection functionality to ScanCode toolkit
+Home-page: https://github.com/nexB/typecode
+Author: nexB. Inc. and others
+Author-email: info@aboutcode.org
+License: UNKNOWN
+Description: typecode
+        ========
+        typecode provides file type detection functionality to ScanCode toolkit.
+        
+Keywords: scancode,scancode-toolkit,typecode
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Topic :: Software Development
+Classifier: Topic :: Utilities
+Provides-Extra: testing
