@@ -1,0 +1,16 @@
+Metadata-Version: 1.2
+Name: vda
+Version: 0.0.5
+Summary: virtual disk array
+Home-page: https://virtual-disk-array.readthedocs.io/en/latest/index.html
+Author: peng yu
+Author-email: yupeng0921@gmail.com
+License: MIT
+Description: Virtual Disk Array
+        
+Keywords: storage
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.6
