@@ -1,0 +1,41 @@
+Metadata-Version: 2.1
+Name: galileosky
+Version: 0.7.0
+Summary: galileosky protocol implementation
+Home-page: https://github.com/pikhovkin/galileosky
+Author: Sergei Pikhovkin
+Author-email: s@pikhovkin.ru
+License: MIT
+Description: # galileosky
+        
+        [![GitHub Actions](https://github.com/pikhovkin/galileosky/workflows/build/badge.svg)](https://github.com/pikhovkin/galileosky/actions)
+        [![CircleCI](https://img.shields.io/circleci/project/github/pikhovkin/galileosky.svg)](https://circleci.com/gh/pikhovkin/galileosky)
+        [![PyPI](https://img.shields.io/pypi/v/galileosky.svg)](https://pypi.org/project/galileosky/)
+        ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/galileosky.svg)
+        [![PyPI - License](https://img.shields.io/pypi/l/galileosky)](./LICENSE)
+        
+        Implementation of galileosky protocol
+        
+        ### Installation
+        
+        ```bash
+        $ pip install galileosky
+        ```
+        
+        ### License
+        
+        MIT
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: System :: Monitoring
+Classifier: Topic :: Utilities
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
