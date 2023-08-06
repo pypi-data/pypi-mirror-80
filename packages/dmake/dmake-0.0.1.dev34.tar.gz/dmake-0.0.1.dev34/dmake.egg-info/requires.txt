@@ -1,0 +1,8 @@
+ruamel.yaml
+black
+flake8
+pbr
+pre-commit
+pytest
+pytest-flake8
+tox
