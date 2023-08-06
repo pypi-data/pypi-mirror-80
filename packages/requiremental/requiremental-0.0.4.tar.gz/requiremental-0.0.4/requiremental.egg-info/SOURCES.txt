@@ -1,0 +1,14 @@
+setup.py
+requiremental/__init__.py
+requiremental/libGroup.py
+requiremental/libObject.py
+requiremental/library.py
+requiremental/parser.py
+requiremental.egg-info/PKG-INFO
+requiremental.egg-info/SOURCES.txt
+requiremental.egg-info/dependency_links.txt
+requiremental.egg-info/requires.txt
+requiremental.egg-info/top_level.txt
+test/__init__.py
+test/testFile2.py
+test/testLibrary.py
