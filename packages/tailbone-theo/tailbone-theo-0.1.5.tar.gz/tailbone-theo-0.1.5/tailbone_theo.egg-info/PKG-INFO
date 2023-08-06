@@ -1,0 +1,40 @@
+Metadata-Version: 2.1
+Name: tailbone-theo
+Version: 0.1.5
+Summary: Theo, the order system
+Home-page: https://rattailproject.org
+Author: Lance Edgar
+Author-email: lance@edbob.org
+License: UNKNOWN
+Description: 
+        tailbone-theo
+        =============
+        
+        This is an experimental project, as of this writing.  Its purpose is 2-fold:
+        
+        * hopefully provide a useful app for managing special/case orders for customers
+        * either way, hopefully provide a good working example of the code
+        
+        This may also attempt certain aspects of "curbside" and/or "delivery" orders at
+        some point, we'll see.  Nobody should be holding their breath maybe.
+        
+        See the `Rattail Project`_ for more info.
+        
+        .. _`Rattail Project`: https://rattailproject.org/
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Console
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Pyramid
+Classifier: Intended Audience :: Developers
+Classifier: Natural Language :: English
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Office/Business
+Provides-Extra: locsms
+Provides-Extra: app
+Provides-Extra: corepos
+Provides-Extra: catapult
+Provides-Extra: fabric
