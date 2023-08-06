@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block heading %}
+  <h3> neoepitope results: {{savepath}} </h3>
+{% end %}
+
+{% block main %}
+
+	  <div class="main">
+		<div class="floatleft">
+		<form action="/neoepitope">
+			{{ form.savepath.label }}
+			{{ form.savepath }}
+			{{ form.sample.label }}
+			{{ form.sample }}
+			{{ form.view.label }}
+			{{ form.view }}
+			<input type="submit" class="button" value="Submit">
+		</form>
+		</div>
+		{%if status == 0 %}
+	    </div>
+		<div class="warning">{{ msg }}</div>
+		{% else %}
+
+		<div class="floatleft">
+			{{ tables }}
+		</div>
+
+		<div class="floatright">
+		  {{ script }}
+		  {{ div }}
+		</div>
+
+		{% end %}
+
+	  </div>
+
+
+{% end %}

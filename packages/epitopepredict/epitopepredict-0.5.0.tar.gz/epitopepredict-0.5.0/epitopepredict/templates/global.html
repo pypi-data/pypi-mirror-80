@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+	  <div class="main">
+		<form action="/global">
+			{{ form.savepath.label }}
+			{{ form.savepath }}
+			<!--{{ form.deletecached.label }}
+			{{ form.deletecached }} -->
+			<input type="submit" class="button">
+		</form>
+
+		{%if status == 0 %}
+		<div class="warning">{{ msg }}</div>
+		{% else %}
+		<div class="floatleft">
+			{{ tables }}
+		</div>
+
+		<div class="floatright">
+		  {{ script }}
+		  {{ div }}
+		</div>
+		{% end %}
+	  </div>
+
+{% end %}

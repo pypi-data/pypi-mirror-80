@@ -1,0 +1,49 @@
+<!doctype html>
+
+<html lang="en">
+	<head>
+	  <meta charset="utf-8">
+	   {% block title %}
+	   <title> epitopepredict results</title>
+	   {% end %}
+		<link href="http://cdn.pydata.org/bokeh/release/bokeh-0.12.14.min.css"
+			 rel="stylesheet" type="text/css">
+		<link href="http://cdn.pydata.org/bokeh/release/bokeh-widgets-0.12.14.min.css"
+			 rel="stylesheet" type="text/css">
+		<link rel="shortcut icon" href="static/favicon.ico">
+		<link rel="stylesheet" href="{{ static_url("custom.css") }}">
+
+		<script src="static/sorttable.js"></script>
+		<script src="http://cdn.pydata.org/bokeh/release/bokeh-0.12.14.min.js"></script>
+		<script src="http://cdn.pydata.org/bokeh/release/bokeh-widgets-0.12.14.min.js"></script>
+		<script	src="http://cdn.pydata.org/bokeh/release/bokeh-compiler-0.12.14.min.js"></script>
+
+	 <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+
+	</head>
+
+	<body>
+		<div class="divheader">
+			 {% block heading %}
+			 <h3>epitopepredict</h3>
+			 {% end %}
+			 <span><a href='/'>home</a></span>
+			 <span><a href='/global?savepath={{savepath}}'>all results</a></span>
+			 <span><a href='/sequence'>sequence view</a></span>
+			 <!--<span><a href='/makeconfig'>make config</a></span> -->
+			 <span><a href='http://epitopepredict.readthedocs.io/en/latest/webapp.html'>help</a></span>
+			 <span><small>version {{ version }}</small></span>
+		</div>
+
+	{% block main %}
+	{% end %}
+
+	</body>
+
+	<!--<div class="footer">
+		<a href="https://github.com/dmnfarrell/epitopepredict/wiki">help page</a>
+	</div> -->
+
+</html>

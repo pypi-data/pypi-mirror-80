@@ -1,0 +1,6 @@
+biopython>=1.78
+future
+joblib>=0.16.0
+numpy>=1.10
+pandas>=0.22
+scikit-learn>=0.23.2
