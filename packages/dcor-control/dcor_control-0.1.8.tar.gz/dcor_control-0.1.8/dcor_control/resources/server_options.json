@@ -1,0 +1,54 @@
+{
+"setups": [
+    {"name": "production",
+     "requirements": {
+         "ip": "130.183.206.45",
+         "hostname": "dcor-mpl"},
+     "ckan.ini": {
+         "ckan.site_url": "https://dcor.mpl.mpg.de",
+         "ckan.site_title": "DCOR",
+         "ckan.favicon": "/base/images/favicon.ico"
+         },
+     "include": ["general", "garching"]
+     },
+    {"name": "development",
+     "requirements": {
+         "ip": "130.183.206.46",
+         "hostname": "dcor-dev-mpl"},
+     "ckan.ini": {
+         "ckan.site_url": "https://dcor-dev.mpl.mpg.de",
+         "ckan.site_title": "DCOR-dev",
+         "ckan.favicon": "/base/images/favicon-dev.ico"
+         },
+     "include": ["general", "garching"]
+     },
+    {"name": "vm",
+     "requirements": {},
+     "ckan.ini": {
+         "ckan.site_url": "http://<TEMPLATE:IP>",
+         "ckan.site_title": "DCOR-VM",
+         "ckan.favicon": "/base/images/favicon-dev.ico"
+         },
+     "include": ["general"]
+     }
+    ],
+"includes": {
+    "general": {
+     "ckan.ini": {
+        "sqlalchemy.url": "postgresql://ckan_default:<TEMPLATE:PGSQLPASS>@localhost/ckan_default",
+        "ckanext.dcor_depot.users_depot_name": "users-<TEMPLATE:HOSTNAME>",
+        "ckan.storage_path": "/data/ckan-<TEMPLATE:HOSTNAME>"
+     }
+    },
+    "garching": {
+     "ckan.ini": {
+         "smtp.server": "post.mpcdf.mpg.de",
+         "smtp.mail_from": "noreply-<TEMPLATE:HOSTNAME>@mpl.mpg.de",
+         "smtp.user": "",
+         "smtp.password": "",
+         "email_to": "<TEMPLATE:EMAIL>",
+         "error_email_from": "error-<TEMPLATE:HOSTNAME>@mpl.mpg.de"
+         }
+      }
+     }
+}
