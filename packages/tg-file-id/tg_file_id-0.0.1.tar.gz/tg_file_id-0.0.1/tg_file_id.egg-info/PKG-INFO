@@ -1,0 +1,21 @@
+Metadata-Version: 1.1
+Name: tg-file-id
+Version: 0.0.1
+Summary: Decode and encode telegram file_id and file_unique_id and convert between those.
+Home-page: https://github.com/luckydonald/telegram_file_id
+Author: luckydonald
+Author-email: telegram_file_id+code@luckydonald.de
+License: GPLv3+
+Description: Easy state management for teleflask.
+Keywords: telegram bot api file_id file id unpack pack
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Database
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Environment :: Plugins
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Unix
