@@ -1,0 +1,131 @@
+---
+
+- name: lead
+  partials:
+    - wave:
+        waveform: sine
+        phase: 0.0
+        amplitude_envelope_fn:
+          name: generic_ahdsr
+          attack_to_ahds_max_ratio: 0.3
+          max_attack_duration: 0.3
+          attack_degree: 0.5
+          hold_to_hds_max_ratio: 0.05
+          max_hold_duration: 0.05
+          decay_to_ds_max_ratio: 1.0
+          max_decay_duration: 10.0
+          decay_degree: 2.0
+          sustain_level: 0.5
+          max_sustain_duration: 0.0
+          max_release_duration: 0.2
+          release_duration_on_velocity_order: 0.0
+          release_degree: 0.5
+        modulator:
+          waveform: sine
+          frequency_ratio_numerator: 3
+          frequency_ratio_denominator: 2
+          phase: 0.0
+          modulation_index_envelope_fn:
+            name: generic_ahdsr
+            attack_to_ahds_max_ratio: 0.0
+            max_attack_duration: 0.0
+            attack_degree: 1.0
+            hold_to_hds_max_ratio: 0.0
+            max_hold_duration: 0.0
+            decay_to_ds_max_ratio: 1.0
+            max_decay_duration: 5.0
+            decay_degree: 0.75
+            sustain_level: 0.5
+            max_sustain_duration: 0.0
+            max_release_duration: 0.0
+            release_duration_on_velocity_order: 0.0
+            release_degree: 1.0
+            peak_value: 5.0
+            ratio_at_zero_velocity: 0.5
+            envelope_values_on_velocity_order: 0.5
+      frequency_ratio: 1.0
+      amplitude_ratio: 1.0
+      event_to_amplitude_factor_fn:
+        name: power_fn_of_velocity
+        power: 1.0
+      detuning_to_amplitude:
+        -0.1: 0.25
+        0: 0.5
+        0.1: 0.25
+      random_detuning_range: 0.003
+  amplitude_scaling: 1.0
+  effects:
+    - name: equalizer
+      breakpoint_frequencies:
+        - 3000
+        - 8000
+        - 20000
+      gains:
+        - 1.0
+        - 0.5
+        - 0.0
+
+- name: bell_like_bass
+  partials:
+    - wave:
+        waveform: sine
+        phase: 0.0
+        amplitude_envelope_fn:
+          name: generic_ahdsr
+          attack_to_ahds_max_ratio: 0.1
+          max_attack_duration: 0.05
+          attack_degree: 2.0
+          hold_to_hds_max_ratio: 0.0
+          max_hold_duration: 0.0
+          decay_to_ds_max_ratio: 1.0
+          max_decay_duration: 100
+          decay_degree: 0.5
+          sustain_level: 0.05
+          max_sustain_duration: 0
+          max_release_duration: 0.05
+          release_duration_on_velocity_order: 0.0
+          release_degree: 1.5
+        modulator:
+          waveform: sine
+          frequency_ratio_numerator: 2
+          frequency_ratio_denominator: 1
+          phase: 0.0
+          modulation_index_envelope_fn:
+            name: generic_ahdsr
+            attack_to_ahds_max_ratio: 0.1
+            max_attack_duration: 0.05
+            attack_degree: 2.0
+            hold_to_hds_max_ratio: 0.0
+            max_hold_duration: 0.0
+            decay_to_ds_max_ratio: 1.0
+            max_decay_duration: 100
+            decay_degree: 0.5
+            sustain_level: 0.05
+            max_sustain_duration: 0
+            max_release_duration: 0.05
+            release_duration_on_velocity_order: 0.0
+            release_degree: 1.5
+            peak_value: 5.0
+            ratio_at_zero_velocity: 0.5
+            envelope_values_on_velocity_order: 0.5
+      frequency_ratio: 1.0
+      amplitude_ratio: 1.0
+      event_to_amplitude_factor_fn:
+        name: power_fn_of_velocity
+        power: 1.0
+      detuning_to_amplitude:
+        -0.1: 0.25
+        0: 0.5
+        0.1: 0.25
+      random_detuning_range: 0.001
+  amplitude_scaling: 1.0
+  effects:
+    - name: equalizer
+      breakpoint_frequencies:
+        - 3000
+        - 8000
+        - 20000
+      gains:
+        - 1.0
+        - 0.5
+        - 0.0
