@@ -1,0 +1,4 @@
+[console_scripts]
+octviconfig = octvi.config:main
+octvidownload = octvi.command_line:main
+
