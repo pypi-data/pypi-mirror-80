@@ -1,0 +1,12 @@
+[console_scripts]
+pfb=pfb.cli:main
+
+[pfb.plugins]
+add=pfb.commands.add
+from_gen3dict=pfb.importers.gen3dict
+from_json=pfb.importers.json
+rename=pfb.commands.rename
+show=pfb.commands.show
+to_gremlin=pfb.exporters.gremlin
+to_tsv=pfb.exporters.tsv
+
