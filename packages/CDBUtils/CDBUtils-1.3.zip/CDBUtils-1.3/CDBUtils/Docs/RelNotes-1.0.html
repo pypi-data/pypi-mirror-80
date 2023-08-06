@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CDBUtils 1.0 Release Notes</title>
+<link rel="stylesheet" href="Doc.css" type="text/css">
+</head>
+<body>
+<h1 class="header">CDBUtils 1.0 Release Notes</h1>
+
+<p>CDBUtils 1.0 was released on 2020-02-29.</p>
+
+<p>This is the first public release of CDBUtils.this is Database connections pool extension from DBUtils.</p>
+
+<h2>Changes:</h2>
+extension the DBUTils.PooledDB
+<ul>
+<li>Added a <code>test_on_borrow</code> parameter for PooledDB： check availability of the connection fetched
+    from the pool(True = check，False = default = never check).</li>
+<li>Added a <code>test_idle</code> parameter for PooledDB：Check connection availability on idle(是否检查空闲连接)
+    (True = default = check，False =  never check).</li>
+<li>Added a <code>validation_sql</code> parameter for PooledDB： the sql for validate the connection 测试连接的sql 。
+    (default is 'SELECT 1 FROM DUAL')</li>
+ <li>Added a <code>idle_check_time</code> parameter for PooledDB： the seconds for Check and remove the idle
+    connection interval,it will be start one Thread to check the idle connection in the pool,
+     whenever 'idleCheckTime' greater than 0 and 'testIdle' is True,default is 60 seconds.
+    (检查并移除连接池中空闲连接的时间间隔 小于等于0时不检查,默认60s)</li>
+<li>Added a <code>validate_timeout</code> parameter for PooledDB： the max seconds to execute the validation Sql,default is 1.
+   if 'validateTimeOut' Less than 1, it will  Wait until to return the result(执行校验sql语句的最大超时时间秒默认1s)</li>
+<li>Added a <code>max_wait_time</code> parameter for PooledDB：the max wait time for fetch one connection from the pool,
+    if ‘maxWaitTime’ greater than 0 ,it will be start a lock for the function "connection " with in the time,
+    and throw one exception when the timeout 在连接池中获取一个有效连接的最大超时时间 默认5s</li>
+
+</ul>
+
+<h2>Bugfixes and Improvements:</h2>
+<ul>
+</ul>
+
+<div class="footer">
+CDBUtils (<a href="https://gitee.com/ctec//CDBUtils">gitee.com/ctec//CDBUtils</a>)
+</div>
+</body>
+</html>

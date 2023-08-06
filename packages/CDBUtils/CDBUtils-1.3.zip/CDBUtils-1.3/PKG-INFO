@@ -1,0 +1,40 @@
+Metadata-Version: 1.1
+Name: CDBUtils
+Version: 1.3
+Summary: Database connections pool extension from DBUtils
+Home-page: https://gitee.com/ctec/CDBUtils
+Author: zhang zixiao
+Author-email: zhangzixiao@189.cn
+License: MIT License
+Description: ﻿CDBUtils
+        
+        CDBUtils is one extension copy from DBUtils 1.3
+        
+        The CDBUtils home page can be found here:https://gitee.com/ctec/CDBUtils/
+        
+        *Extension parameter descriptions:*
+        
+        
+        - test_on_borrow: check availability of the connection fetched from the pool (True = check,False = default = never check)
+        - test_idle: Check connection availability on idle(True = check,False = default = never check)
+        - validation_sql: the sql for validate the connection (default is "SELECT 1 FROM DUAL")
+        - idle_check_time: the seconds for Check and remove the idle connection interval, it will be start one Thread to check the idle connection in the pool, whenever "idleCheckTime" greater than 0 and "testIdle" is True,default is 60 seconds.
+        - validate_timeout: the max seconds to execute the validation Sql,default is 1. if "validateTimeOut" Less than 1, it will  Wait until to return the result
+        - max_wait_time: the max wait time for fetch one connection from the pool, if "maxWaitTime" greater than 0 ,it will be start a lock for the function "connection " with in the time, and throw one exception when the timeout, default is 5s
+        
+Platform: any
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Topic :: Database
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
