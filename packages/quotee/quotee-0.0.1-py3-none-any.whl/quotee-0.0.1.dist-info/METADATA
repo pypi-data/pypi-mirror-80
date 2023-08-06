@@ -1,0 +1,33 @@
+Metadata-Version: 2.1
+Name: quotee
+Version: 0.0.1
+Summary: Small App To get Quotes depend on Zenquotes api
+Home-page: https://github.com/officialzoka/Quotee.git
+Author: Mahmoud Ibrahiam
+Author-email: golldenhouse@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+
+# Quotee
+
+Small App To get **Quotes** depend on *Zenquotes Api*
+
+## Quotee Usage
+
+```py
+from quotee.random import Quotee
+
+example = Quotee()
+quote = example.quote
+author = example.author
+
+print(quote)
+print(author)
+```
+
+
