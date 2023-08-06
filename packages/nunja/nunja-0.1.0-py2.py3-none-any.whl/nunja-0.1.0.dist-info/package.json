@@ -1,0 +1,10 @@
+{
+    "dependencies": {
+        "nunjucks": "~3.0.0",
+        "requirejs-text": "~2.0.12",
+        "text-loader": "~0.0.1"
+    },
+    "devDependencies": {
+        "eslint": "~3.15.0"
+    }
+}
