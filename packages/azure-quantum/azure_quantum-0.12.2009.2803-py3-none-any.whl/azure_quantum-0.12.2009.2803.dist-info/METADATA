@@ -1,0 +1,42 @@
+Metadata-Version: 2.1
+Name: azure-quantum
+Version: 0.12.2009.2803
+Summary: Python client for Azure Quantum
+Home-page: https://github.com/microsoft/iqsharp
+Author: Microsoft
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+Requires-Dist: azure-storage-blob
+Requires-Dist: msrestazure
+Requires-Dist: msal
+
+# Python SDK for Azure Quantum #
+
+The `azure-quantum` package for Python provides an easy to use
+
+For details on how to get started with Azure Quantum, please visit http://azure.com/quantum
+
+## Installing with pip ##
+
+```bash
+pip install azure-quantum
+```
+
+## Building the `azure-quantum` Package ##
+
+The Azure Quantum Python SDK uses a standard `setuptools`-based packaging strategy.
+To build a platform-independent wheel, run the setup script with `bdist_wheel` instead:
+
+```bash
+cd src/Python/
+python setup.py bdist_wheel
+```
+
+By default, this will create a `azure-quantum` wheel in `dist/` with the version number set to 0.0.0.1.
+To provide a more useful version number, set the `PYTHON_VERSION` environment variable before running `setup.py`.
+
+
