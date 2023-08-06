@@ -1,0 +1,13 @@
+amypad-core[nii]>=0.0.2
+
+[dev]
+Pygments
+docutils>=0.3
+flake8
+pytest
+pytest-cov
+pytest-timeout
+pytest-xdist
+
+[dev:python_version >= "3.0"]
+black
