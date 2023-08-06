@@ -1,0 +1,6 @@
+[invenio_base.api_apps]
+oarepo_iiif = oarepo_iiif.ext:OARepoIIIFExt
+
+[invenio_base.apps]
+oarepo_iiif = oarepo_iiif.ext:OARepoIIIFExt
+
