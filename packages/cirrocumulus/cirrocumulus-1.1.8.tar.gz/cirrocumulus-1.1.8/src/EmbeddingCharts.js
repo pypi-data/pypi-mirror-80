@@ -1,0 +1,85 @@
+import React from 'react';
+
+import {connect} from 'react-redux';
+import {getEmbeddingKey, getTraceKey, MORE_OPTIONS_DIALOG, setDialog, setPrimaryChartSize} from './actions';
+import EmbeddingChart from './EmbeddingChart';
+
+
+const emptySet = new Set();
+
+class EmbeddingCharts extends React.PureComponent {
+
+    constructor(props) {
+        super(props);
+        this.resizeListener = () => {
+            let width = window.innerWidth - 280;
+            // let height = Math.max(1, this.containerElementRef.offsetHeight);
+            let height = Math.max(300, window.innerHeight - 220);
+            this.props.handlePrimaryChartSize({width: width, height: height});
+        };
+
+        window.addEventListener('resize', this.resizeListener);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.resizeListener);
+
+    }
+
+    render() {
+        const {primaryTraceKey, primaryChartSize, embeddingData, markerOpacity, unselectedMarkerOpacity, selection} = this.props;
+        let primaryTraces = embeddingData.filter(traceInfo => getTraceKey(traceInfo) === primaryTraceKey);
+        const primaryTrace = primaryTraces.length === 1 ? primaryTraces[0] : null;
+        let userPoints = emptySet;
+        if (primaryTrace) {
+            const embedding = primaryTrace.embedding;
+            const fullName = getEmbeddingKey(embedding);
+            const chartSelection = selection != null && selection.chart != null ? selection.chart[fullName] : null;
+            userPoints = chartSelection ? chartSelection.userPoints : emptySet;
+        }
+
+        if (primaryTrace == null) {
+
+            return <div style={{height: primaryChartSize.height}}></div>;
+        }
+        return (<EmbeddingChart
+                markerOpacity={markerOpacity}
+                chartSize={primaryChartSize}
+                unselectedMarkerOpacity={unselectedMarkerOpacity}
+                traceInfo={primaryTrace}
+                selection={userPoints}
+                color={primaryTrace.colors}
+                onMoreOptions={this.props.handleMoreOptions}
+                onGallery={this.props.onGallery}
+            />
+        );
+    }
+
+}
+
+const mapStateToProps = state => {
+    return {
+        embeddingData: state.embeddingData,
+        primaryChartSize: state.primaryChartSize,
+        markerOpacity: state.markerOpacity,
+        unselectedMarkerOpacity: state.unselectedMarkerOpacity,
+        selection: state.selection,
+        primaryTraceKey: state.primaryTraceKey
+    };
+};
+const mapDispatchToProps = dispatch => {
+    return {
+        handleMoreOptions: () => {
+            dispatch(setDialog(MORE_OPTIONS_DIALOG));
+        },
+        handlePrimaryChartSize: value => {
+            dispatch(setPrimaryChartSize(value));
+        }
+
+    };
+};
+
+export default (connect(
+    mapStateToProps, mapDispatchToProps,
+)(EmbeddingCharts));
+
