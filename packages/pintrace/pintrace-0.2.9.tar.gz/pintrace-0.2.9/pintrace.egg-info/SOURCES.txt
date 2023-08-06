@@ -1,0 +1,10 @@
+MANIFEST.in
+README.md
+pintrace
+setup.py
+pintrace.egg-info/PKG-INFO
+pintrace.egg-info/SOURCES.txt
+pintrace.egg-info/dependency_links.txt
+pintrace.egg-info/requires.txt
+pintrace.egg-info/top_level.txt
+src/main/pintrace/tracer.py

@@ -1,0 +1,2 @@
+# pintrace
+PinTrace is a useful tracing library. With easiest usage, just add decorators like Java annotation then able to log, trace and get latency in anywhere. It is divided into smallest independent service units and easy to use.

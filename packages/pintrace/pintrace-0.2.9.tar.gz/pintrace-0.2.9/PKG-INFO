@@ -1,0 +1,13 @@
+Metadata-Version: 2.1
+Name: pintrace
+Version: 0.2.9
+Summary: PinTrace is a useful tracing library. With easiest usage, just add decorators like Java annotation then able to log, trace and get latency in anywhere.
+Home-page: https://github.com/superoutput/pintrace
+Author: Savage Lasa
+Author-email: superoutput@gmail.com
+License: Savage
+Description: # pintrace
+        PinTrace is a useful tracing library. With easiest usage, just add decorators like Java annotation then able to log, trace and get latency in anywhere. It is divided into smallest independent service units and easy to use.
+Keywords: pintrace python trace tracing library annotation add-on decorator wrapper
+Platform: UNKNOWN
+Description-Content-Type: text/markdown

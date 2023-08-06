@@ -1,0 +1,4 @@
+#!/usr/bin/env python
+
+echo "`pip install pintrace`"
+echo "`pip package install completed.`"
