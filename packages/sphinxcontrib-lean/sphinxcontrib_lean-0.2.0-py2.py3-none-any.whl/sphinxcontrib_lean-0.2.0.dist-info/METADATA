@@ -1,0 +1,53 @@
+Metadata-Version: 2.1
+Name: sphinxcontrib-lean
+Version: 0.2.0
+Summary: A Sphinx domain for the Lean theorem prover
+Home-page: https://github.com/Julian/sphinxcontrib-lean
+Author: Julian Berman
+Author-email: Julian+sphinxcontrib-lean@GrayVines.com
+License: UNKNOWN
+Project-URL: Documentation, https://sphinxcontrib-lean.readthedocs.io/en/latest/
+Project-URL: Source, https://github.com/Julian/sphinxcontrib-lean
+Project-URL: Issues, https://github.com/Julian/sphinxcontrib-lean/issues/
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Description-Content-Type: text/x-rst
+Requires-Dist: attrs (>=20.2.0)
+Requires-Dist: sphinx
+
+======================
+``sphinxcontrib.lean``
+======================
+
+|PyPI| |Pythons| |CI| |ReadTheDocs|
+
+.. |PyPI| image:: https://img.shields.io/pypi/v/sphinxcontrib-lean.svg
+  :alt: PyPI version
+  :target: https://pypi.org/project/sphinxcontrib-lean/
+
+.. |Pythons| image:: https://img.shields.io/pypi/pyversions/sphinxcontrib-lean.svg
+  :alt: Supported Python versions
+  :target: https://pypi.org/project/sphinxcontrib-lean/
+
+.. |CI| image:: https://github.com/Julian/sphinxcontrib-lean/workflows/CI/badge.svg
+  :alt: Build status
+  :target: https://github.com/Julian/sphinxcontrib-lean/actions?query=workflow%3ACI
+
+.. |ReadTheDocs| image:: https://readthedocs.org/projects/sphinxcontrib-lean/badge/?version=stable&style=flat
+  :alt: ReadTheDocs status
+  :target: https://sphinxcontrib-lean.readthedocs.io/en/stable/
+
+A (highly experimental) `Sphinx domain`_ for the `Lean theorem prover`_.
+
+.. _Sphinx domain: https://www.sphinx-doc.org/en/master/usage/restructuredtext/domains.html
+.. _Lean theorem prover: https://leanprover.github.io/
+
+
