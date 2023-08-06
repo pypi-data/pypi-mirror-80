@@ -1,0 +1,13 @@
+README.md
+setup.py
+./zarrswift/__init__.py
+./zarrswift/storage.py
+./zarrswift/utils.py
+./zarrswift/tests/__init__.py
+./zarrswift/tests/test_storage.py
+./zarrswift/tests/test_utils.py
+zarr_swiftstore.egg-info/PKG-INFO
+zarr_swiftstore.egg-info/SOURCES.txt
+zarr_swiftstore.egg-info/dependency_links.txt
+zarr_swiftstore.egg-info/requires.txt
+zarr_swiftstore.egg-info/top_level.txt
