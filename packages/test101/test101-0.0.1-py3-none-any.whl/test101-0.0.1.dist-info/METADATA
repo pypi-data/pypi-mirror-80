@@ -1,0 +1,31 @@
+Metadata-Version: 2.1
+Name: test101
+Version: 0.0.1
+Summary: A small test package
+Home-page: https://github.com/pypa/sampleproject
+Author: GuiGuy
+Author-email: 2darbyr@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+
+To use this package:
+
+```bash
+pypi_stuff$ python -m venv mypypitest-env
+
+pypi_stuff$ source mypypitest-env/bin/activate
+(mypypitest-env)pypi_stuff$ pip install mypypitest-GuiGuy
+(mypypitest-env)pypi_stuff$ python
+```
+```python
+>>> import mypypitest
+```
+
+If you don't get an error, you have installed it correctly.
+*Note: if you are using mypypitest version 0.0.1 you will get an error (My problem).*
+*To fix this, use the most recent version*
+
