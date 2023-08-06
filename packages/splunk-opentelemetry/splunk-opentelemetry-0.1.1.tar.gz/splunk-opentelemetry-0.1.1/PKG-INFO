@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: splunk-opentelemetry
+Version: 0.1.1
+Summary: The Splunk distribution of OpenTelemetry Python Instrumentation provides a Python agent that automatically instruments your Python application to capture and report distributed traces to SignalFx APM.
+License: Apache-2.0
+Author: Splunk
+Author-email: splunk-oss@splunk.com
+Requires-Python: >=3.5,<4.0
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: opentelemetry-api (>=0.13b0,<0.14)
+Requires-Dist: opentelemetry-exporter-zipkin (>=0.13b0,<0.14)
+Requires-Dist: opentelemetry-instrumentation (>=0.13b0,<0.14)
+Requires-Dist: opentelemetry-sdk (>=0.13b0,<0.14)
