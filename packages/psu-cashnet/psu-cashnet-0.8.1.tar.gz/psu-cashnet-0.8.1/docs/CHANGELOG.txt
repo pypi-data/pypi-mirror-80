@@ -1,0 +1,9 @@
+=== 0.8.1 ===
+- Accommodate item quantities at transaction creation
+
+=== 0.7.0 ===
+- Revised cashnet response workflow to initially not use authentication
+- Created a way for admins to mark incomplete transactions as S or F
+
+=== 0.6.1 ===
+- Initial Release
