@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: pycreator
+Version: 0.1
+Summary: Automatically create a command application
+Home-page: https://github.com/NexSabre/pycreator
+Author: Nex Sabre
+Author-email: nexsabre@protonmail.com
+License: UNKNOWN
+Description: # pycreator
+        Create boilerplate application thru the command-line!
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
