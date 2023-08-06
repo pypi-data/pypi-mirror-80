@@ -1,0 +1,32 @@
+{% extends settings.LAYOUT.main_layout %}
+{% load i18n %}
+{% load templates %}
+
+{% block content %}
+<div class="list-cont" id="list-1">
+
+  <div class="heading-flex">
+    <h1>{{ list_title }}</h1>
+    {% for view_link, faclass in list_menu %}
+    <a href = "{% url view_link %}">
+        <i class="fas {{ faclass }}"></i>
+    </a>
+    {% endfor %}
+ </div>
+
+  {% if not object_list %}
+      {% trans 'Aucun objet à afficher.' %}
+  {% else %}
+    {% if html %}
+      {% include html %}
+    {% endif %}
+  {% endif %}
+
+</div>
+{% endblock %}
+
+{% block javascript %}
+<script>
+  handleLsTools();
+</script>
+{% endblock %}
