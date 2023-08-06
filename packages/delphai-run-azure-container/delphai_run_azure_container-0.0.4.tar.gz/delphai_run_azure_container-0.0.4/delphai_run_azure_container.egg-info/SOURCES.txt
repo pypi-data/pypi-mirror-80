@@ -1,0 +1,10 @@
+MANIFEST.in
+README.md
+setup.py
+delphai_run_azure_container.egg-info/PKG-INFO
+delphai_run_azure_container.egg-info/SOURCES.txt
+delphai_run_azure_container.egg-info/dependency_links.txt
+delphai_run_azure_container.egg-info/requires.txt
+delphai_run_azure_container.egg-info/top_level.txt
+run/__init__.py
+run/main.py
