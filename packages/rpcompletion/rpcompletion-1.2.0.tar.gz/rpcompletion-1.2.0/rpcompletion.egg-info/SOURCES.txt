@@ -1,0 +1,15 @@
+MANIFEST.in
+README.md
+RELEASE
+setup.py
+extras/.env
+extras/requirements.txt
+rpcompletion.egg-info/PKG-INFO
+rpcompletion.egg-info/SOURCES.txt
+rpcompletion.egg-info/dependency_links.txt
+rpcompletion.egg-info/requires.txt
+rpcompletion.egg-info/top_level.txt
+src/__init__.py
+src/__main__.py
+src/rpCofactors.py
+src/rpCompletion.py
