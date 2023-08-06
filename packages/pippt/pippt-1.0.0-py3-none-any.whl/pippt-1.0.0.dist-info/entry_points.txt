@@ -1,0 +1,3 @@
+[console_scripts]
+pi-ppt = pippt.script.pippt_script:main
+
