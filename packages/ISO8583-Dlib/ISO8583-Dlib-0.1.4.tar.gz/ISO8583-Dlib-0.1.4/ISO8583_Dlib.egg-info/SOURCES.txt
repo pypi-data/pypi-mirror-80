@@ -1,0 +1,17 @@
+README.md
+setup.py
+ISO8583_Dlib.egg-info/PKG-INFO
+ISO8583_Dlib.egg-info/SOURCES.txt
+ISO8583_Dlib.egg-info/dependency_links.txt
+ISO8583_Dlib.egg-info/top_level.txt
+iso8583_dlib/__init__.py
+iso8583_dlib/parser.py
+iso8583_dlib/segments/__init__.py
+iso8583_dlib/segments/data_elements.py
+iso8583_dlib/segments/header.py
+iso8583_dlib/segments/iso.py
+iso8583_dlib/segments/mti.py
+iso8583_dlib/segments/primary_bitmap.py
+iso8583_dlib/segments/read_metadata_segments.py
+iso8583_dlib/segments/utilities/__init__.py
+iso8583_dlib/segments/utilities/operations.py
