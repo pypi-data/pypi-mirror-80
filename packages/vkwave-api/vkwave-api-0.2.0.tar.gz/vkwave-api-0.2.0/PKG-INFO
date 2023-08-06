@@ -1,0 +1,38 @@
+Metadata-Version: 2.1
+Name: vkwave-api
+Version: 0.2.0
+Summary: Accessing VK API for humans.
+License: MIT
+Author: prostomarkeloff
+Author-email: 28061158+prostomarkeloff@users.noreply.github.com
+Requires-Python: >=3.7,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: vkwave
+Description-Content-Type: text/markdown
+
+# VKWave-API
+
+Accessing VK API for humans.
+
+## Install
+
+```sh
+pip install vkwave-api
+```
+
+## Example
+```python
+from vkwave_api import API, run
+
+async def main():
+    api = API("MY TOKEN")
+    vk = api.get_api()
+    me = await vk.users.get()
+    print(me)
+
+run(main())
+```
+
