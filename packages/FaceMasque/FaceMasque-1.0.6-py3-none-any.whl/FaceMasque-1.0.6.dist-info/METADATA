@@ -1,0 +1,38 @@
+Metadata-Version: 2.1
+Name: FaceMasque
+Version: 1.0.6
+Summary: A Python package to classify weather a person is weared a mask or not.
+Home-page: https://github.com/Kushal0189/FaceMasque
+Author: KUSHAL MASTER
+Author-email: kushalmaster8@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: onnx (==1.6.0)
+Requires-Dist: onnx-tf (==1.3.0)
+Requires-Dist: onnxruntime (==0.5.0)
+Requires-Dist: opencv-python (==4.1.1.26)
+Requires-Dist: tensorflow (==1.15.2)
+Requires-Dist: keras
+
+# Detection-of-Person-With-or-Without-Mask
+
+This project is mainly made for detecting a person and classify weather a person is weared the mask or not.
+
+To use this project simply follow following steps.
+
+1) Use following command in your working directory through type it in command Prompt.
+   pip install FaceMasque
+
+2) Now, import it in your python file.
+   from FaceMasque import Classfication_of_Person_with_or_without_Wearing_Mask as fm
+
+3) Simply call folloeing function and you are ready with mask detection project. 
+   detected_image = fm.mask_detection(original_image)
+
+
+
