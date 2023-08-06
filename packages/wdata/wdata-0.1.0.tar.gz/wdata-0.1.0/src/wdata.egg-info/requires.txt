@@ -1,0 +1,8 @@
+numpy
+tzlocal
+pytz
+zope.interface
+
+[test]
+nox
+pytest-cov

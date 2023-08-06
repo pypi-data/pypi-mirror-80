@@ -1,0 +1,47 @@
+Metadata-Version: 2.1
+Name: wdata
+Version: 0.1.0
+Summary: W-Data format for superfluid dynamics
+Home-page: https://github.com/mforbes/wdata-format
+Author: Michael McNeil Forbes
+Author-email: michael.forbes+python@gmail.com
+License: UNKNOWN
+Project-URL: Bug Reports, https://github.com/mforbes/wdata-format/issues
+Project-URL: Source, https://github.com/mforbes/wdata-format/issues
+Description: ===============
+         W-data Format
+        ===============
+        This project contains tools for working with and manipulating the
+        W-data format used for analyzing superfluid data.
+        
+        This format was originally derived from the W-SLDA project led by
+        Gabriel Wlazlowski as documented here:
+        
+        http://git2.if.pw.edu.pl/gabrielw/cold-atoms/wikis/W-data-format
+        
+        Here we augment this format slightly to facilitate working with
+        Python.
+        
+        Generalizations
+        ===============
+        The original format required a `.wtxt` file with lots of relevant
+        information.  Here we generalize the format to allow this information
+        to be specified in the data files, which we allow to be in the NPY
+        format.
+        
+Keywords: VisIT
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Science/Research
+Classifier: Topic :: Scientific/Engineering :: Visualization
+Classifier: Topic :: Scientific/Engineering :: Physics
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3 :: Only
+Requires-Python: >=3.5, <4
+Description-Content-Type: text/markdown
+Provides-Extra: test
