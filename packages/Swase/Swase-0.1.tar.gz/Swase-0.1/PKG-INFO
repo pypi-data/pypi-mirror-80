@@ -1,0 +1,37 @@
+Metadata-Version: 1.1
+Name: Swase
+Version: 0.1
+Summary: Swase: A powerful switch case emulator to avoid nested if statements!
+Home-page: https://github.com/GHGDev-11/Swase
+Author: Georges Abdulahad
+Author-email: ghg.abdulahad@gmail.com
+License: MIT
+Download-URL: https://github.com/GHGDev-11/Swase/archive/0.1.tar.gz
+Description: -- Swase --
+        Welcome to Swase!
+        The better if statement; a switch case statement emulator!
+        
+        Why use Swase?
+        If you are a Python developer that constantly uses dozens of nested if-elif statements, This library is just for you!
+        This library emulates a swase statements from C, C#, C++, etc.
+        Instead of checking if something is true one after another, it reads a whole list at once and chooses what is correct.
+        This will massively improve running time!
+        
+        Does Swase use any other library?
+        No, Swase runs by itself; no libraries. If I were to use Swase with libraries, It would just make it slower.
+        
+        
+        Swase: Written by Georges Abdulahad
+Keywords: Emulator,Switch,Case,Statements,if,elif,else
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
