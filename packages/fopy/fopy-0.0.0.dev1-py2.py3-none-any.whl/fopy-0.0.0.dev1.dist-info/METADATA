@@ -1,0 +1,74 @@
+Metadata-Version: 2.1
+Name: fopy
+Version: 0.0.0.dev1
+Summary: A Python package that makes working with math formulas convienant, powerfull and fast. 
+Home-page: https://github.com/AzizAlqasem/fopy
+Author: Abdulaziz Alqasem
+Author-email: Aziz_Alqasem@hotmail.com
+License: MIT license
+Keywords: fopy
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Python: >=3.5
+Requires-Dist: numpy (>=1.14.0)
+Requires-Dist: sympy (>=1.5.0)
+Requires-Dist: pandas (>=1.0.0)
+Requires-Dist: Click (>=7.0)
+
+====
+fopy
+====
+
+
+.. image:: https://img.shields.io/pypi/v/fopy.svg
+        :target: https://pypi.python.org/pypi/fopy
+
+.. image:: https://img.shields.io/travis/AzizAlqasem/fopy.svg
+        :target: https://travis-ci.com/AzizAlqasem/fopy
+
+.. image:: https://readthedocs.org/projects/fopy/badge/?version=latest
+        :target: https://fopy.readthedocs.io/en/latest/?badge=latest
+        :alt: Documentation Status
+
+
+
+
+A Python package that makes working with math formulas convienant, powerfull and fast. 
+
+
+* Free software: MIT license
+* Documentation: https://fopy.readthedocs.io.
+
+
+Features
+--------
+
+* TODO
+
+Credits
+-------
+
+This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
+
+.. _Cookiecutter: https://github.com/audreyr/cookiecutter
+.. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
+
+
+=======
+History
+=======
+
+0.0.0 (2020-09-27)
+------------------
+
+* First release on PyPI.
+
+
