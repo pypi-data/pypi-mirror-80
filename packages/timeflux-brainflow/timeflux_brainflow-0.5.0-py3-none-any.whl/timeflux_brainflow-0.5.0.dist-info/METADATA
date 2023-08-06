@@ -1,0 +1,47 @@
+Metadata-Version: 2.1
+Name: timeflux-brainflow
+Version: 0.5.0
+Summary: Timeflux BrainFlow plugin
+Home-page: https://timeflux.io
+Author: Pierre Clisson
+Author-email: contact@timeflux.io
+License: MIT
+Project-URL: Documentation, http://doc.timeflux.io/projects/timeflux-brainflow/
+Project-URL: Source Code, https://github.com/timeflux/timeflux_brainflow
+Project-URL: Bug Tracker, https://github.com/timeflux/timeflux_brainflow/issues
+Keywords: timeflux,brainflow
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Requires-Dist: brainflow (>=3.4.3)
+Requires-Dist: timeflux (>=0.6.1)
+Provides-Extra: dev
+Requires-Dist: pytest (>=5.3) ; extra == 'dev'
+Requires-Dist: sphinx (>=2.2) ; extra == 'dev'
+Requires-Dist: sphinx-rtd-theme (>=0.4) ; extra == 'dev'
+Requires-Dist: setuptools-scm ; extra == 'dev'
+Requires-Dist: docinit ; extra == 'dev'
+
+BrainFlow plugin
+================
+
+This plugin provides a unified interface for all boards supported by `BrainFlow <https://brainflow.readthedocs.io/en/stable/>`__.
+
+Installation
+------------
+
+First, make sure that `Timeflux <https://github.com/timeflux/timeflux>`__ is installed.
+
+You can then install this plugin in the `timeflux` environment:
+
+::
+
+    $ conda activate timeflux
+    $ pip install timeflux_brainflow
+
+
