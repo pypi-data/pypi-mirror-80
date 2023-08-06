@@ -1,0 +1,80 @@
+name: Apache General Access
+file: ./access.log
+format: "{log_ip} - - [{log_time} +0000] \"{log_method} {log_path} HTTP/1.1\" {log_status} {log_bytes}"
+frequency:
+  seconds: 1
+offset:
+  seconds: 0
+jitter:
+  seconds: 0
+amount: 10
+fields:
+  log_ip:
+    type: ip
+  log_time:
+    type: timestamp
+    format: "%d/%b/%Y:%H:%M:%S"
+  log_timezone:
+    type: enum
+    values: ["-1200", 
+             "-1100",
+             "-1000",
+             "-0930",
+             "-0900",
+             "-0800",
+             "-0700",
+             "-0600",
+             "-0500",
+             "-0400",
+             "-0330",
+             "-0300",
+             "-0200",
+             "-0100",
+             "-0000",
+             "+0000",
+             "+0100",
+             "+0200",
+             "+0300",
+             "+0330",
+             "+0400",
+             "+0430",
+             "+0500",
+             "+0530",
+             "+0545",
+             "+0600",
+             "+0630",
+             "+0700",
+             "+0800",
+             "+0845",
+             "+0900",
+             "+0930",
+             "+1000",
+             "+1030",
+             "+1100",
+             "+1200",
+             "+1245",
+             "+1300",
+             "+1400"]
+  log_method:
+    type: enum
+    values: [POST, GET, PUT, PATCH, DELETE]
+  log_path:
+    type: enum
+    values:
+      - /auth
+      - /alerts
+      - /events
+      - /playbooks
+      - /lists
+      - /fieldsets
+      - /customers
+      - /collectors
+      - /parsers
+      - /users
+  log_status:
+    type: enum
+    values: [200, 201, 204, 300, 301, 400, 401, 403, 404, 500, 503]
+  log_bytes:
+    type: integer
+    min: 2000
+    max: 5000

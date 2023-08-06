@@ -1,0 +1,341 @@
+Metadata-Version: 2.1
+Name: logmonitor
+Version: 0.0.7a1
+Summary: A simple log monitor application that parses an actively written log and outputs useful statistics.
+Home-page: https://github.com/FConstantinos/logmonitor
+Author: Konstantinos Fragkiadakis
+Author-email: fconstantinos@gmail.com
+License: UNKNOWN
+Project-URL: Bug Reports, https://github.com/FConstantinos/logmonitor/issues
+Project-URL: Source, https://github.com/FConstantinos/logmonitor/
+Description: # logmonitor
+        A simple log monitor application that parses an actively written log and outputs useful statistics.
+        
+        # Installation:
+        Simply run:
+        
+        ````
+        pip install logmonitor
+        ````
+        
+        For a quick check you can try printing the version number:
+        
+        ````
+        logmonitor -v
+        0.0.7a1
+        ````
+        Alternatively, you can build it and then install it as shown below
+        
+        # Build
+        
+        You can download the source code from here:
+        https://pypi.org/project/logmonitor/
+        
+        Or here (latest source)
+        https://github.com/FConstantinos/logmonitor
+        
+        Go into the root of the source code directory. To create a source distribution:
+        
+        ````
+        python setup.py sdist
+        ````
+        
+        To create a pure python wheels build distribution:
+        
+        ````
+        python setup.py bdist_wheel
+        ````
+        
+        Note that universal wheels and platform wheels are not supported, since this project is pure python 3. For more
+        information on the different ways to build the package, check:
+        
+        https://packaging.python.org/guides/distributing-packages-using-setuptools/#packaging-your-project
+        
+        # Tests
+        To run the tests, you need to have **pytest** and log-generator installed:
+        
+        ````
+        pip install pytest, log-generator
+        ````
+        
+        Afterwards, you can go to the *test/* folder and run:
+        
+        ````
+        pytest
+        ````
+         
+        # Usage
+        
+        At a high level, **logmonitor** follows an actively written Common Log Format log file and displays useful statistics at
+        a specific time interval defined by the user. For the given interval, some of the statistics displayed are as follows:
+         * The three website sections with the most hits and their number of hits.
+           * If there are less than three sections, all sections are printed.
+         * Moving average of the number of hits per second.
+         * Moving variance of the number of hits per second.
+         
+        Additionally, an alert event is displayed if a user defined threshold of hits per second is exceeded for a user
+        defined period of time, to warn the user of high traffic. A timestamp is generated for this event. When traffic
+        goes back to normal, a message is displayed, informing the user that the alert is now off along with a timestamp
+        for when that happened. The alert can also trigger when the user-defined window has not had time to grow to the
+        defined size (i.e before the running time of the application has reached the length of the window).
+         
+        To change the alert threshold during runtime, press 'a' followed by the new threshold in hits per second and then hit
+        Enter. For example:
+        
+        ````
+        a20<enter>
+        ````
+        
+        will change the threshold to 20 hits per second average before an alert is triggered.
+        
+        To quit the application, press 'q' and then hit Enter.
+        
+        Some assumptions on the log entry traffic:
+         * Log entries can be written asynchronously and potentially out of order.
+         * Log entries with timestamps indicating a future time beyond the application's current time will be discarded.
+         * Log entries with timestamps indicating a past time below the monitoring and alert threshold time windows will be
+         discarded.
+         * Log entries that do not conform to the Common Log Format will be discarded.
+        
+        New web resources (and therefore sections) can be added dynamically; they will be parsed from the log as new entries are
+        being written.
+        
+        For more information on the Common Log Format you can check here:
+        
+        https://en.wikipedia.org/wiki/Common_Log_Format
+        
+        ````
+        usage: __init__.py [-h] [-l LOGFILE] [-u UPDATE_INTERVAL]
+                           [-a ALERT_REQUEST_THRESHOLD] [-o ALERT_SWITCH_ON_THRESHOLD]
+                           [-v]
+        
+        Log monitoring application. Press 'q' followed by 'Enter' to quit.
+        
+        optional arguments:
+          -h, --help            show this help message and exit
+          -l LOGFILE, --logfile LOGFILE
+                                Logfile to monitor. Application will exit if it
+                                doesn't exist Default: /tmp/access.log
+          -u UPDATE_INTERVAL, --update-interval UPDATE_INTERVAL
+                                Monitor update interval in seconds. Default: 10 Min: 1
+                                Max: None
+          -a ALERT_REQUEST_THRESHOLD, --alert-request-threshold ALERT_REQUEST_THRESHOLD
+                                Average number of requests per second that will cause
+                                alert if sustained for more than the alert switch-on
+                                threshold. Overrideable. To override it, press 'a'
+                                followed by the new threshold in seconds and then hit
+                                enter during runtime. Default: 10 Min: 1 Max: None
+          -o ALERT_SWITCH_ON_THRESHOLD, --alert-switch-on-threshold ALERT_SWITCH_ON_THRESHOLD
+                                Alert switch-on threshold in seconds. Alert will turn
+                                on if the average number of requests surpasses the
+                                average request threshold for the duration of the
+                                switch-on threshold. Otherwise, alert will be turned
+                                off Default: 120 Min: 1 Max: None
+          -v, --version         Version number
+        ````
+        
+        # Example
+        
+        For this example, we will use **log-generator**, a configurable log generator that is developed here:
+        
+        https://pypi.org/project/log-generator/
+        
+        In short, the log generator is given a configuration .yaml file that outlines the types of logs to be generated, the
+        generation frequency and the output file. One thing to notice is that this log-generator is not perfect; Although, for
+        example, it can be configured to generate 5 log entries per second, in reality it misses some seconds, as can be
+        seen from its own log, much more so when the log entries per second increase. However, for the purposes of this example,
+        it is not a concern as long as the traffic is at good enough levels to cause the monitor to react appropriately. 
+        
+        We will perform a simple example. We will run the log generator with a 5 entries per second traffic generation:
+        ````
+        costas@costas-ThinkPad-Edge-E545:~/tests/logmonitor$ log-generator log_schema_slow.yaml 
+        2020-09-27 15:55:47,014 INFO     Starting normal execution
+        2020-09-27 15:55:47,056 INFO     Loaded:  log_schema_slow.yaml
+        2020-09-27 15:55:48,099 INFO     Writing    5 logs for "Apache General Access" (./access.log)
+        2020-09-27 15:55:49,220 INFO     Writing    5 logs for "Apache General Access" (./access.log)
+        2020-09-27 15:55:50,370 INFO     Writing    5 logs for "Apache General Access" (./access.log)
+        2020-09-27 15:55:51,497 INFO     Writing    5 logs for "Apache General Access" (./access.log)
+        2020-09-27 15:55:52,613 INFO     Writing    5 logs for "Apache General Access" (./access.log)
+        2020-09-27 15:55:53,762 INFO     Writing    5 logs for "Apache General Access" (./access.log)
+        2020-09-27 15:55:54,879 INFO     Writing    5 logs for "Apache General Access" (./access.log)
+        2020-09-27 15:55:56,017 INFO     Writing    5 logs for "Apache General Access" (./access.log)
+        2020-09-27 15:55:57,133 INFO     Writing    5 logs for "Apache General Access" (./access.log)
+        2020-09-27 15:55:58,261 INFO     Writing    5 logs for "Apache General Access" (./access.log)
+        2020-09-27 15:55:59,395 INFO     Writing    5 logs for "Apache General Access" (./access.log)
+        2020-09-27 15:56:00,542 INFO     Writing    5 logs for "Apache General Access" (./access.log)
+        ...
+        ...
+        ````
+        
+        We will then run **logmonitor** with a monitoring interval of 10 seconds, an alert interval of 10 seconds, and an
+        alert threshold of 10 hits per second. We don't expect any alerts to trigger (but we do expect lower than 5 hits per
+        second averages due to the generator's drift):
+        
+        ````
+        logmonitor -l access.log -o 10
+        ***** Statistics for interval: 2020-09-27 15:56:51 to 2020-09-27 15:56:51 *****
+        three most common section hits: []
+        total hits: 0
+        average (hits per second): 0
+        variance (hits per second): 0
+        
+        ***** Statistics for interval: 2020-09-27 15:56:51 to 2020-09-27 15:57:01 *****
+        three most common section hits: [('customers', 10), ('users', 5), ('collectors', 5)]
+        total hits: 40
+        average (hits per second): 4.0
+        variance (hits per second): 4.0
+        
+        ***** Statistics for interval: 2020-09-27 15:57:01 to 2020-09-27 15:57:11 *****
+        three most common section hits: [('users', 7), ('customers', 7), ('collectors', 5)]
+        total hits: 45
+        average (hits per second): 4.5
+        variance (hits per second): 2.25
+        ...
+        ...
+        
+        ````
+        
+        We stop the log-generator and we expect the displayed statistics to go back to zero:
+        
+        ````
+        ***** Statistics for interval: 2020-09-27 15:58:21 to 2020-09-27 15:58:31 *****
+        three most common section hits: [('fieldsets', 8), ('lists', 5), ('customers', 5)]
+        total hits: 45
+        average (hits per second): 4.5
+        variance (hits per second): 2.25
+        
+        ***** Statistics for interval: 2020-09-27 15:58:31 to 2020-09-27 15:58:41 *****
+        three most common section hits: [('collectors', 5), ('lists', 5), ('parsers', 5)]
+        total hits: 35
+        average (hits per second): 3.5
+        variance (hits per second): 5.25
+        
+        ***** Statistics for interval: 2020-09-27 15:58:41 to 2020-09-27 15:58:51 *****
+        three most common section hits: []
+        total hits: 0
+        average (hits per second): 0.0
+        variance (hits per second): 0.0
+        
+        ***** Statistics for interval: 2020-09-27 15:58:51 to 2020-09-27 15:59:01 *****
+        three most common section hits: []
+        total hits: 0
+        average (hits per second): 0.0
+        variance (hits per second): 0.0
+        ...
+        ...
+        ````
+        
+        We start a faster generator at 20 hits per second (in reality, about 13 hits per second): 
+        
+        ````
+        costas@costas-ThinkPad-Edge-E545:~/tests/logmonitor$ log-generator log_schema_fast.yaml 
+        2020-09-27 15:59:54,559 INFO     Starting normal execution
+        2020-09-27 15:59:54,601 INFO     Loaded:  log_schema_fast.yaml
+        2020-09-27 15:59:55,644 INFO     Writing   20 logs for "Apache General Access" (./access.log)
+        2020-09-27 15:59:57,087 INFO     Writing   20 logs for "Apache General Access" (./access.log)
+        2020-09-27 15:59:58,630 INFO     Writing   20 logs for "Apache General Access" (./access.log)
+        2020-09-27 16:00:00,104 INFO     Writing   20 logs for "Apache General Access" (./access.log)
+        2020-09-27 16:00:01,608 INFO     Writing   20 logs for "Apache General Access" (./access.log)
+        2020-09-27 16:00:03,078 INFO     Writing   20 logs for "Apache General Access" (./access.log)
+        ...
+        ...
+        ````
+        
+        We expect the monitor's alert to trigger after at most 10 seconds:
+        
+        ````
+        ***** Statistics for interval: 2020-09-27 15:59:41 to 2020-09-27 15:59:51 *****
+        three most common section hits: []
+        total hits: 0
+        average (hits per second): 0.0
+        variance (hits per second): 0.0
+        
+        ***** Statistics for interval: 2020-09-27 15:59:51 to 2020-09-27 16:00:01 *****
+        three most common section hits: [('alerts', 16), ('events', 13), ('lists', 11)]
+        total hits: 89
+        average (hits per second): 8.9
+        variance (hits per second): 88.88999999999999
+        
+        ALERT ON: High traffic generated an alert - average (hits per second over --alert-switch-on-threshold period) = 12.0, triggered at 2020-09-27 16:00:03
+        ***** Statistics for interval: 2020-09-27 16:00:01 to 2020-09-27 16:00:11 *****
+        three most common section hits: [('alerts', 19), ('parsers', 18), ('lists', 18)]
+        total hits: 120
+        average (hits per second): 12.0
+        variance (hits per second): 96.0
+        
+        ***** Statistics for interval: 2020-09-27 16:00:11 to 2020-09-27 16:00:21 *****
+        three most common section hits: [('users', 22), ('events', 17), ('alerts', 16)]
+        total hits: 120
+        average (hits per second): 12.0
+        variance (hits per second): 96.0
+        ...
+        ...
+        ````
+        
+        We proceed to stop the log-generator. We expect the displayed traffic to go back to zero again and the alert to stop:
+        
+        ````
+        ***** Statistics for interval: 2020-09-27 16:01:41 to 2020-09-27 16:01:51 *****
+        three most common section hits: [('playbooks', 18), ('collectors', 16), ('customers', 15)]
+        total hits: 132
+        average (hits per second): 13.2
+        variance (hits per second): 80.16000000000003
+        
+        ALERT OFF: Traffic back to normal after an alert, normalized at 2020-09-27 16:01:57
+        ***** Statistics for interval: 2020-09-27 16:01:51 to 2020-09-27 16:02:01 *****
+        three most common section hits: [('parsers', 8), ('playbooks', 7), ('lists', 6)]
+        total hits: 40
+        average (hits per second): 4.0
+        variance (hits per second): 64.0
+        
+        ***** Statistics for interval: 2020-09-27 16:02:01 to 2020-09-27 16:02:11 *****
+        three most common section hits: []
+        total hits: 0
+        average (hits per second): 0.0
+        variance (hits per second): 0.0
+        
+        ***** Statistics for interval: 2020-09-27 16:02:11 to 2020-09-27 16:02:21 *****
+        three most common section hits: []
+        total hits: 0
+        average (hits per second): 0.0
+        variance (hits per second): 0.0
+        ...
+        ...
+        ```` 
+        
+        # Ideas for Future Work:
+         * More tests need to be added. Unfortunately, time constraints did not allow for more.
+         * The time intervals have a slow imperceptible drift of a few milliseconds due to the threaded
+           nature of the application. This can and should be amended.
+         * Extend or suppress, or add new monitoring intervals during runtime
+         * Design alert as a hysteretic system; currently, the alert has no cool-down and therefore can go ON or OFF within
+           seconds. This will be confusing, especially for a log file that is being written to with high variability in hits per
+           second (too many hits at a time, too little at the next second). The fact that the alert triggers on the moving
+           average of a period doesn't matter because that moving average can change between seconds from above the threshold to
+           bellow, depending on the hit values added/evicted. Therefore alerts would need to be triggered with a certain delay.
+         * Expand to follow multiple logs.
+         * Expand for multiple alerts on multiple statistics (hits per second, failed HTTP requests, traffic spikes/lows etc)
+         * Expand to follow multiple time intervals
+         * Currently, each moving statistics interval has its own dedicated memory for the traffic samples it follows. Ideally
+           , we would like those memories to overlap, since a time window of two minutes shares the traffic samples of a time
+           window of one minute
+         * Display numbers of successful/unsuccessful HTTP requests
+         * Display traffic spikes (for example when hits during a second are above two times the standard deviation)
+         * Security: Make sure that log file parsing does not exceed memory/computing resources dues to malevolent entries.
+         * Object oriented design needs more sophistication once requirements are more robust.
+         * Batch update *TimeSeriesMovingStats* data structures instead of adding new entries one by one.
+         
+Keywords: logging,monitoring,development
+Platform: any
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: System :: Monitoring
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3 :: Only
+Requires-Python: >=3.6.9, <4
+Description-Content-Type: text/markdown
+Provides-Extra: dev
+Provides-Extra: test

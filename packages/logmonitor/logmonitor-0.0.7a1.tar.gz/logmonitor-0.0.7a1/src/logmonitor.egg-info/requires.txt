@@ -1,0 +1,11 @@
+sh
+apachelogs
+
+[dev]
+pytest
+log-generator
+wheel
+
+[test]
+pytest
+log-generator
