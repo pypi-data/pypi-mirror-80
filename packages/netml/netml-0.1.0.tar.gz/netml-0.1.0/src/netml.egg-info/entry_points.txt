@@ -1,0 +1,3 @@
+[console_scripts]
+netml = netml.cli:execute [cli]
+
