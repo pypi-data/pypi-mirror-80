@@ -1,0 +1,5 @@
+[run]
+include = */pacifica/auth/*
+
+[report]
+include = */pacifica/auth/*

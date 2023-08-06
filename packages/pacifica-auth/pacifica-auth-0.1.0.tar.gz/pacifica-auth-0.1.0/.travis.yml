@@ -1,0 +1,55 @@
+language: python
+dist: bionic
+python: 3.6
+stages:
+  - lint
+  - test
+  - test-docs
+  - deploy
+script: tox -e $TOX_ENV
+jobs:
+  include:
+    - stage: lint
+      script: pre-commit run -a
+    - python: 3.7
+      script: pre-commit run -a
+    - python: 3.8
+      script: pre-commit run -a
+    - stage: test
+      env:
+        - TOX_ENV=py36
+    - python: 3.7
+      env:
+        - TOX_ENV=py37
+    - python: 3.8
+      env:
+        - TOX_ENV=py38
+    - stage: test-docs
+      python: 3.8
+      before_script: pip install -r requirements-dev.txt
+      script: >
+        cd docs;
+        sphinx-build -T -E -b readthedocs -d _build/doctrees-readthedocs -D language=en . _build/html;
+        sphinx-build -T -b readthedocssinglehtmllocalmedia -d _build/doctrees-readthedocssinglehtmllocalmedia -D language=en . _build/localmedia;
+        sphinx-build -b latex -D language=en -d _build/doctrees . _build/latex;
+        sphinx-build -T -b epub -d _build/doctrees-epub -D language=en . _build/epub
+    - stage: deploy
+      services: []
+      language: python
+      before_install: skip
+      before_script: skip
+      script: skip
+      python: 3.8
+      deploy:
+        skip_cleanup: true
+        provider: pypi
+        user: __token__
+        distributions: sdist bdist_wheel
+        password:
+          secure: NYNAFQfTJU744NqeU4F+fDVqvBBw2xnV7y107SnY0z6HXyQ1fJ+zvO/jB0OjicbI/9iWkXvf27Zqiet7hkvn7A6hxK+VooH2udOYc8nbVUFnqtQ3bVZ9iFbYJOtggd8MDi2PHMBPKxeBWw9Jj8ebjMrFMMaOpOl1qjmD52u8q+8dKgGUEtaTS4JcAxDHNPzT+snbXoAK/AUR9p/tdaXqYtQCLPZnd8rEmFsrzSJ13h2f30AQP1FHpq/vGVY5+rG571KNPy92LFtfXpyuEi756xJtYwW914Kcz5XmyeqvOnUPFQnrWiGB9U70IRREiHdUSopRayXGqAVkAe0PmOJRVJi4ZpAkyzAztqMsi4HAGBczaoAoBxwroLJjmSnuMWuRCR6fgBu4l0VIKNQIYA3NjtdCpcnVhtDDWsJfbvSOancwYKt+YcC6BeV1feoAdBqhi+2acFDspGDwybVA6B6haPDA1Skc1zYLsnEtm6M6eZvpZ4g92RjcL24fLUs2MoVGwBGikdPDVLpZLdXFeLz7vAg6ZCRQBgJVtx/kJJA333Vo3/E39LJR0Ufsy7TZ8Qz1PrGJ0Lxt8soyhzj57F0yWGU7wilVhLeh3KGMgsdzQY+JKLeCtKcmRvV8W6FL7BamH0c1MtuWfF9d5FZnCo20egHBcuk+7E6zBNC+LbWqEyI=
+        on:
+          tags: true
+install:
+  - python -m pip install --upgrade pip virtualenv setuptools wheel
+  - pip install tox pre-commit pep257 pylint requests recommonmark
+  - pip install .
