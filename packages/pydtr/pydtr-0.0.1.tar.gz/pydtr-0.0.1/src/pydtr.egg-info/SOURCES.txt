@@ -1,0 +1,13 @@
+README.md
+setup.cfg
+setup.py
+src/pydtr/__init__.py
+src/pydtr/version.py
+src/pydtr.egg-info/PKG-INFO
+src/pydtr.egg-info/SOURCES.txt
+src/pydtr.egg-info/dependency_links.txt
+src/pydtr.egg-info/requires.txt
+src/pydtr.egg-info/top_level.txt
+src/pydtr/iqlearn/__init__.py
+src/pydtr/iqlearn/base.py
+src/pydtr/iqlearn/regression.py
