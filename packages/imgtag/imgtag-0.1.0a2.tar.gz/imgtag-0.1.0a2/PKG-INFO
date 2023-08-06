@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: imgtag
+Version: 0.1.0a2
+Summary: Simple XMP Image Tag & Metadata Editing Library
+Home-page: https://github.com/nimaid/python-imgtag
+Author: Ella Jameson
+Author-email: ellagjamson@gmail.com
+License: UNKNOWN
+Description: # ImgTag
+        Simple XMP Image Tag & Metadata Editing Module
+        
+        You must install `exempi` for your OS. For Debian:
+        ```
+        sudo apt-get update && sudo apt-get install -y exempi
+        ```
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
