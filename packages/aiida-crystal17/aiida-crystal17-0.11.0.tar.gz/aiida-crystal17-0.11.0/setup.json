@@ -1,0 +1,89 @@
+{
+  "name": "aiida-crystal17",
+  "author": "Chris Sewell",
+  "author_email": "chrisj_sewell@hotmail.com",
+  "description": "AiiDA plugin for running the CRYSTAL17 code",
+  "url": "https://github.com/chrisjsewell/aiida-crystal17",
+  "license": "MIT",
+  "classifiers": [
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 2.7",
+    "Programming Language :: Python :: 3.6",
+    "Topic :: Scientific/Engineering :: Chemistry",
+    "Topic :: Scientific/Engineering :: Physics",
+    "Framework :: AiiDA"
+  ],
+  "version": "0.11.0",
+  "entry_points": {
+    "console_scripts": [
+      "mock_crystal17 = aiida_crystal17.tests.mock_crystal17:main",
+      "mock_properties17 = aiida_crystal17.tests.mock_properties17:main"
+    ],
+    "aiida.data": [
+      "crystal17.parameters = aiida_crystal17.data.input_params:CryInputParamsData",
+      "crystal17.basisset = aiida_crystal17.data.basis_set:BasisSetData",
+      "crystal17.symmetry = aiida_crystal17.data.symmetry:SymmetryData",
+      "crystal17.kinds = aiida_crystal17.data.kinds:KindData",
+      "crystal17.gcube = aiida_crystal17.data.gcube:GaussianCube"
+    ],
+    "aiida.groups": [
+      "crystal17.basisset = aiida_crystal17.data.basis_set:BasisSetFamily"
+    ],
+    "aiida.calculations": [
+      "crystal17.basic = aiida_crystal17.calculations.cry_basic:CryBasicCalculation",
+      "crystal17.main = aiida_crystal17.calculations.cry_main:CryMainCalculation",
+      "crystal17.doss = aiida_crystal17.calculations.prop_doss:CryDossCalculation",
+      "crystal17.ech3 = aiida_crystal17.calculations.prop_ech3:CryEch3Calculation",
+      "crystal17.newk = aiida_crystal17.calculations.prop_newk:CryNewkCalculation",
+      "crystal17.ppan = aiida_crystal17.calculations.prop_ppan:CryPpanCalculation"
+    ],
+    "aiida.parsers": [
+      "crystal17.main = aiida_crystal17.parsers.cry_main:CryMainParser",
+      "crystal17.doss = aiida_crystal17.parsers.cry_doss:CryDossParser",
+      "crystal17.ech3 = aiida_crystal17.parsers.cry_ech3:CryEch3Parser",
+      "crystal17.newk = aiida_crystal17.parsers.cry_newk:CryNewkParser",
+      "crystal17.ppan = aiida_crystal17.parsers.cry_ppan:CryPpanParser"
+    ],
+    "aiida.workflows": [
+      "crystal17.sym3d = aiida_crystal17.workflows.symmetrise_3d_struct:Symmetrise3DStructure",
+      "crystal17.main.base = aiida_crystal17.workflows.crystal_main.base:CryMainBaseWorkChain",
+      "crystal17.properties = aiida_crystal17.workflows.crystal_props.base:CryPropertiesWorkChain"
+    ],
+    "aiida.cmdline.data": [
+      "crystal17.symmetry = aiida_crystal17.cmndline.symmetry:symmetry",
+      "crystal17.basis = aiida_crystal17.cmndline.basis_set:basisset",
+      "crystal17.parse = aiida_crystal17.cmndline.cmd_parser:parse"
+    ]
+  },
+  "include_package_data": true,
+  "reentry_register": true,
+  "python_requires": ">=3.6",
+  "install_requires": [
+    "aiida-core>=1.4.0,<2.0.0",
+    "pyyaml",
+    "jsonextended>=0.7.10",
+    "jsonschema",
+    "spglib>=1.10.0,<2.0.0",
+    "ase>=3.12.0,<4.0.0",
+    "PyCifRW>=4.4.1,<5.0.0",
+    "importlib_resources"
+  ],
+  "extras_require": {
+    "testing": [
+      "pgtest",
+      "pytest",
+      "coverage",
+      "pytest-cov",
+      "pytest-timeout",
+      "pytest-regressions",
+      "pytest-notebook"
+    ],
+    "code_style": [
+      "pre-commit~=2.6"
+    ],
+    "docs": [
+      "myst-nb~=0.10.1",
+      "sphinx-book-theme"
+    ]
+  }
+}
