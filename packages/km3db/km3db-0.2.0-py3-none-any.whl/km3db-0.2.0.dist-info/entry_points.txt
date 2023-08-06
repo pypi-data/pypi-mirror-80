@@ -1,0 +1,3 @@
+[console_scripts]
+streamds = km3db.cli.streamds:main
+
