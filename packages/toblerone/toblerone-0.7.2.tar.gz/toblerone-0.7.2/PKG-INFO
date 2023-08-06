@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: toblerone
+Version: 0.7.2
+Summary: Surface-based analysis tools
+Home-page: https://github.com/tomfrankkirk/toblerone
+Author: Tom Kirk
+Author-email: thomas.kirk@eng.ox.ac.uk
+License: BSD-3-clause
+Description: # Toblerone
+        
+        Surface-based analysis tools. 
+        
+        Install latest version from PyPI: `pip install --upgrade toblerone`
+        
+        Documentation: https://toblerone.readthedocs.io/en/latest/
+        
+        Citation: 
+        T. F. Kirk, T. S. Coalson, M. S. Craig and M. A. Chappell, *Toblerone: Surface-Based Partial Volume Estimation*, in IEEE Transactions on Medical Imaging, vol. 39, no. 5, pp. 1501-1510, May 2020, doi: 10.1109/TMI.2019.2951080.
+        
+        
+        BSD License. 
+Platform: UNKNOWN
+Description-Content-Type: text/markdown
