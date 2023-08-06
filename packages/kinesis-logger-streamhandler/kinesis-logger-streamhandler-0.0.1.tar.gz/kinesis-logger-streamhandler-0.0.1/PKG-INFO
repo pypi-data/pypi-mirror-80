@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: kinesis-logger-streamhandler
+Version: 0.0.1
+Summary: AWS Kinesis logger streamhandler with AWS Session Management
+Home-page: https://github.com/deromka/kinesis-logger-streamhandler
+Author: Roman Dembitsky
+Author-email: romande@gmail.com
+License: UNKNOWN
+Description: # Kinesis Logger Stream Handler
+        
+        This package contains 
+        
+        AwsSessionManagement - handles AWS Session with AWS Temp credentials by Assuming a given Role
+                               it renews the temp credentials when needed
+        
+        AWS Kinesis Logger StreamHandler - a logging streamhandler which can send logs to AWS Kinesis 
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown

@@ -1,0 +1,9 @@
+README.md
+setup.py
+kinesis_logger_streamhandler/__init__.py
+kinesis_logger_streamhandler/aws_session_management.py
+kinesis_logger_streamhandler/kinesis_logger_stream_handler.py
+kinesis_logger_streamhandler.egg-info/PKG-INFO
+kinesis_logger_streamhandler.egg-info/SOURCES.txt
+kinesis_logger_streamhandler.egg-info/dependency_links.txt
+kinesis_logger_streamhandler.egg-info/top_level.txt
