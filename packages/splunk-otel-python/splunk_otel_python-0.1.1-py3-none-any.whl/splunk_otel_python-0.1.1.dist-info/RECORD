@@ -1,0 +1,13 @@
+splunk_otel/__init__.py,sha256=f24HrEv5-QYizLaLF4pNbr-H6OobdiK316rjEf72m10,610
+splunk_otel/cmd/bootstrap.py,sha256=zM9ZvWv__GiqjAjCQcmh0FjGgYuNvKzLy_MvHVcfx0E,5098
+splunk_otel/cmd/trace.py,sha256=4m-3gXTC8Uv1FiePNDsQ9owCHbRk-WbHAb0tksf2WQc,1087
+splunk_otel/exporter/zipkin.py,sha256=sWsVyUF9P-buaXjoIuSlTQ7nW8yRk4H3YlCHX-uPIWg,844
+splunk_otel/site/sitecustomize.py,sha256=bzmUrULEslMGL8ml3Fqtn0LWt3JZX2fINKO8Jeu9XI8,449
+splunk_otel/symbols.py,sha256=JYTP9FplV-NJU332xkvFj8MaDvRcKCF_d8a5nysaOE8,150
+splunk_otel/tracing.py,sha256=M3idMMamZ0CrhwG1bqT4rd7Fi5Ibwb1qghHPw0eI8Q4,1508
+splunk_otel/version.py,sha256=aV26dBXkOatjjVykNZjhReJ8CaUhliT4BwKGMVLxwt8,598
+splunk_otel_python-0.1.1.dist-info/entry_points.txt,sha256=gFWG0lp7KJbn8SD3KcypvMu8cjGObu9oUPbetuk5R3s,113
+splunk_otel_python-0.1.1.dist-info/LICENSE,sha256=xx0jnfkXJvxRnG63LTGOxlggYnIysveWIZ6H3PNdCrQ,11357
+splunk_otel_python-0.1.1.dist-info/WHEEL,sha256=Q99itqWYDhV793oHzqzi24q7L7Kdiz6cb55YDfTXphE,84
+splunk_otel_python-0.1.1.dist-info/METADATA,sha256=S515YOVmb9s0C6i7mKrFPLIxU7gAZTx2lPIL5YFr-qg,906
+splunk_otel_python-0.1.1.dist-info/RECORD,,
