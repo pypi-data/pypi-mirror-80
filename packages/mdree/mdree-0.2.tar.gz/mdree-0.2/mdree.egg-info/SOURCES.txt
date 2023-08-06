@@ -1,0 +1,10 @@
+MANIFEST.in
+README.md
+setup.py
+mdree/__init__.py
+mdree/mdree.py
+mdree.egg-info/PKG-INFO
+mdree.egg-info/SOURCES.txt
+mdree.egg-info/dependency_links.txt
+mdree.egg-info/top_level.txt
+mdree.egg-info/zip-safe
