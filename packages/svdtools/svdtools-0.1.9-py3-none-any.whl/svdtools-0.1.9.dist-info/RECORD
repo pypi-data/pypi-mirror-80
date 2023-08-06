@@ -1,0 +1,17 @@
+svdtools/VERSION,sha256=41jYRVKAilwL1medaQwoO5OOvhXCvYQ8iYaB0JMhMQc,6
+svdtools/__init__.py,sha256=NddH0E09D9QVpTKM8M9WdFv2joHrJmT3sUbxn6erwP8,176
+svdtools/cli.py,sha256=Jy-Rpa1iX0GUnkU3vLzZXgoIK1VM4gBTDZACtVXUX6w,1312
+svdtools/interrupts.py,sha256=fAztEdMBaUp6iX-uKL6L11CVRscCR_Vx3oZ1s7sRlNo,1233
+svdtools/makedeps.py,sha256=KdQZjmOGn0urQgGhDWABLsxdHQ6c8eBYj_QgzoR56ao,452
+svdtools/mmap.py,sha256=_FOTRELqbWTsXPmH5ybwqfK5thDf0wMJwthYbV7_gUY,8147
+svdtools/patch.py,sha256=4uNzWFudtsT57VFqs1YZhX7T7ikC6kR-93Waq3_6XOs,47456
+svdtools/test/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+svdtools/test/test_interrupts.py,sha256=2-CNw8KGwZ-lsxeasOijuA580TMEFbggvZLuXBZFjU8,969
+svdtools/test/test_makedeps.py,sha256=ujmKorcyHqcmXWf2dEPLMokXf-MIvj89PEdDmrQ30OY,751
+svdtools/test/test_mmap.py,sha256=hcap3RxmYxdgl4N2cXoPsK8vlXqtvKvtWR1lJjb3BP8,2836
+svdtools-0.1.9.dist-info/entry_points.txt,sha256=FRei9jgTesxg9zQOLOq6b4VyGL6T8Z7zUae-SSOk-hk,49
+svdtools-0.1.9.dist-info/LICENSE-APACHE,sha256=TRD-XzqhdrBbIpokiGa61wuDTBc_ElKoFP9HSNihODc,10255
+svdtools-0.1.9.dist-info/LICENSE-MIT,sha256=I_GOA9xJ35FiL-KnYXZJdATkbO2KcV2dK2enRGVxzKM,1023
+svdtools-0.1.9.dist-info/WHEEL,sha256=W0C0r2jfBMZdb75jfiTB1qBj15B4vwTGGZrLTh2uslc,81
+svdtools-0.1.9.dist-info/METADATA,sha256=PmVAM01K9Iv7ZMTrq_kTLGGGQy4bauMVsuq3037XKbg,13241
+svdtools-0.1.9.dist-info/RECORD,,
