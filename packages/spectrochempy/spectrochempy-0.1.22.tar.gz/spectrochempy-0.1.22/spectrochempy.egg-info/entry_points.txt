@@ -1,0 +1,4 @@
+[console_scripts]
+scpy = spectrochempy.scripts.scpy:main
+scpy_update = spectrochempy.scripts.scpy_update:main
+

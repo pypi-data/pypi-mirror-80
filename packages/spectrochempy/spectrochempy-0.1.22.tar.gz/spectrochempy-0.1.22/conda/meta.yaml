@@ -1,0 +1,89 @@
+{% set name = "SpectroChemPy" %}
+{% set version = environ['VERSION'] %}
+{% set devstring = environ['DEVSTRING'] %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  path: ../
+
+build:
+  script_env:
+    - VERSION
+    - DEVSTRING
+    - CONDA_BLD_PATH
+  string: "{{ devstring }}"
+  noarch: python
+  script:
+    - export SETUPTOOLS_SCM_PRETEND_VERSION={{ version }}
+    - {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
+
+requirements:
+  host:
+    - pip
+    - python >=3.7
+    - setuptools
+    - setuptools_scm
+    - nodejs
+    - jupyterlab
+    - conda-verify
+  run:
+    - numpy
+    - scipy
+    - pandas
+    - matplotlib
+    - traitlets
+    - pint
+    - quaternion
+    - pyqt
+    - colorama
+    - tqdm
+    - ipython
+    - numba
+    - cantera
+    - quadprog
+    - brukeropusreader
+    - requests
+    - jinja2
+    - nmrglue
+    - docrep
+    - orderedset
+    - traittypes
+    - xlrd
+    - setuptools_scm
+    - git
+    - ipywidgets
+    - ipympl
+    - jupyterlab
+    - nodejs
+  test:
+    - python                {{ python }}
+
+test:
+  script_env:
+    - VERSION
+    - DEVSTRING
+    - CONDA_BLD_PATH
+  imports:
+    - spectrochempy
+
+about:
+  home: "https://github.com/spectrochempy/spectrochempy"
+  license: CeCILL-B
+  license_family: OTHER
+  summary: "Processing, analysis and modelling Spectroscopic data for Chemistry with Python"
+  doc_url: "https://www.spectrochempy.fr"
+  dev_url: "https://github.com/spectrochempy/spectrochempy"
+  description: |
+    SpectroChemPy is a framework for processing, analyzing and modeling Spectroscopic data for Chemistry with Python.
+    It is a cross platform software, running on Linux, Windows or OS X.
+
+    SpectroChemPy is still experimental and under active development.
+    Its current design is subject to major changes, reorganizations, bugs and crashes!!!.
+    Please report any issues to the Issue Tracker on github.
+
+extra:
+  recipe-maintainers:
+    - fernandezc
