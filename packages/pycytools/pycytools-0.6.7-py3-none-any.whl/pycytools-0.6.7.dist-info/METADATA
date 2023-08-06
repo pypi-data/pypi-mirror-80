@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: pycytools
+Version: 0.6.7
+Summary: Helper functions to handle image cytometry data.
+Home-page: https://github.com/BodenmillerGroup/pycytools
+Author: Vito Zanotelli, Matthias Leutenegger, Bernd Bodenmiller
+Author-email: vito.zanotelli@gmail.com
+License: MIT License
+Platform: UNKNOWN
+Description-Content-Type: text/x-rst
+Requires-Dist: numpy
+Requires-Dist: scipy
+Requires-Dist: pandas
+Requires-Dist: requests
+Requires-Dist: scikit-image
+Requires-Dist: tifffile
+
+pycytools helper package
+========================
+
+Collection of helper functions to jugle data from multiplexed imaging experiments
+in python.
+
