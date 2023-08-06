@@ -1,0 +1,15 @@
+LICENSE
+MANIFEST.in
+README.md
+requirements.txt
+setup.py
+django_dynamic_resource_admin/__init__.py
+django_dynamic_resource_admin/admin.py
+django_dynamic_resource_admin.egg-info/PKG-INFO
+django_dynamic_resource_admin.egg-info/SOURCES.txt
+django_dynamic_resource_admin.egg-info/dependency_links.txt
+django_dynamic_resource_admin.egg-info/not-zip-safe
+django_dynamic_resource_admin.egg-info/requires.txt
+django_dynamic_resource_admin.egg-info/top_level.txt
+django_dynamic_resource_admin/migrations/__init__.py
+django_dynamic_resource_admin/templates/admin/base.html

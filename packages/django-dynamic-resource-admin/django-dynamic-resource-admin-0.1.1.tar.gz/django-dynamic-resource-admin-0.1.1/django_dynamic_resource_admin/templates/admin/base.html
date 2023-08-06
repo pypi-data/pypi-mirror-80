@@ -1,0 +1,24 @@
+{% extends "admin/base.html" %}
+
+{% block extrahead %}
+{{block.super}}
+
+{% if django_dynamic_resource_admin_css_codes %}
+<style>
+    {% for css in django_dynamic_resource_admin_css_codes %}
+        {% autoescape off %}{{css}}{% endautoescape %}
+    {% endfor %}
+</style>
+{% endif %}
+
+{% if django_dynamic_resource_admin_js_link %}
+<script type="text/javascript">
+    {% for js in django_dynamic_resource_admin_js_codes %}
+    ;(function(){
+        {% autoescape off %}{{js}}{% endautoescape %}
+    })();
+    {% endfor %}
+</script>
+{% endif %}
+
+{% endblock %}
