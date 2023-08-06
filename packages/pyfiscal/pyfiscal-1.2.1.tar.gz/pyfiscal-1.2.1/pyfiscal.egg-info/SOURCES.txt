@@ -1,0 +1,13 @@
+MANIFEST.in
+README.md
+setup.cfg
+setup.py
+pyfiscal/__init__.py
+pyfiscal/base.py
+pyfiscal/constants.py
+pyfiscal/generate.py
+pyfiscal/utils.py
+pyfiscal.egg-info/PKG-INFO
+pyfiscal.egg-info/SOURCES.txt
+pyfiscal.egg-info/dependency_links.txt
+pyfiscal.egg-info/top_level.txt
