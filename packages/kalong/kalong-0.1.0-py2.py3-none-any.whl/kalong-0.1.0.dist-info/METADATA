@@ -1,0 +1,32 @@
+Metadata-Version: 2.1
+Name: kalong
+Version: 0.1.0
+Summary: A new take on debugging
+Home-page: https://github.com/paradoxxxzero/kalong
+License: UNKNOWN
+Keywords: debugger
+Author: Florian Mounier
+Author-email: paradoxxx.zero@gmail.com
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Requires-Dist: aiohttp
+Requires-Dist: jedi
+Requires-Dist: black ; extra == "dev"
+Requires-Dist: flake8 ; extra == "dev"
+Requires-Dist: isort ; extra == "dev"
+Requires-Dist: cutter ; extra == "extras"
+Requires-Dist: uncompyle6 ; extra == "extras"
+Requires-Dist: flake8 ; extra == "test"
+Requires-Dist: pytest-cov ; extra == "test"
+Requires-Dist: pytest-flake8 ; extra == "test"
+Requires-Dist: pytest-isort ; extra == "test"
+Requires-Dist: pytest ; extra == "test"
+Requires-Dist: sphinx ; extra == "tools"
+Provides-Extra: dev
+Provides-Extra: extras
+Provides-Extra: test
+Provides-Extra: tools
