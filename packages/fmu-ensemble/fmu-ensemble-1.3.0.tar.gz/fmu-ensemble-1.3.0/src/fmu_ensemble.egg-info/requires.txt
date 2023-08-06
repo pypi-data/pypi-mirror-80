@@ -1,0 +1,18 @@
+numpy
+pandas>0.23.0
+pyyaml>=5.1
+six>=1.12.0
+
+[parquet]
+pyarrow
+
+[tests]
+flake8>=2.6.0
+pylint
+pytest>=2.9.2
+pyyaml>=5.1
+sphinx>=1.4.8
+sphinx_rtd_theme>=0.4.1
+
+[tests:python_version >= "3"]
+black>=20.8b0
