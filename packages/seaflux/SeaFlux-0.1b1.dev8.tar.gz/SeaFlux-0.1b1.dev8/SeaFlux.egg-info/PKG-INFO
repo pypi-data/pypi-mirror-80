@@ -1,0 +1,19 @@
+Metadata-Version: 1.1
+Name: SeaFlux
+Version: 0.1b1.dev8
+Summary: Calculate sea fluxes
+Home-page: https://github.com/luke-gregor/SeaFlux
+Author: Luke Gregor
+Author-email: lukegre@gmail.com	
+License: GNUv3
+Description: long_description
+Keywords: SeaFlux
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Intended Audience :: Science/Research
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
