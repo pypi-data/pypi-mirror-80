@@ -1,0 +1,5 @@
+#!python
+
+from ao3kindle import ao3kindle
+
+ao3kindle.main()
