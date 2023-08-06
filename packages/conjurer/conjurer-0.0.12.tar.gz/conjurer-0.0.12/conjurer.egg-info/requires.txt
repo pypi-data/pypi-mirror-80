@@ -1,0 +1,10 @@
+pandas>=1.1
+numpy
+scipy
+sklearn
+altair
+IPython
+lightgbm
+xgboost
+gbm_autosplit>=0.0.1
+networkx
