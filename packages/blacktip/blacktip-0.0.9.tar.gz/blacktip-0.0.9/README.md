@@ -1,0 +1,47 @@
+# Blacktip
+Toolkit for financial analysis. Current tools include: Angler. 
+
+**Angler:** Easy-to-use large scale analysis tool for United Stated public fundamentals (aggregated from SEC Edgar).
+Examine any company that files with the SEC in seconds without having 
+to download data locally! Register [here](http://blacktipresearch.com/accounts/signup)
+beforehand to be able to use Angler. See below for more details.
+
+[Full Toolkit Documentation](https://mattbeveridge.com/blacktip-docs)
+
+## Angler
+Our main SEC analysis tool. After registering your account on the
+[Blacktip Research website](http://blacktipresearch.com/accounts/signup), use your **username** and 
+**password** to interface with Angler.
+
+### Usage
+The workflow is the following:
+
+**import**
+```
+from blacktip.angler import Angler
+```
+
+**initialize**
+```
+instance = Angler(username, password)
+```
+
+**get data**
+```
+form10K = instance.query10K("AAPL", 2019)
+```
+
+**manipulate the data**
+```
+# example calculations
+debt_sheet = form10K.debt_sheet()
+ROE = form10K.calc_ROE()
+net_income = form10K.filter(regex="^NetIncomeLoss$")
+```
+
+**close your instance**
+```
+instance.dispose()
+```
+
+For explicit documentation, visit the [Angler Documentation](https://mattbeveridge.com/blacktip-docs/angler.html).
