@@ -1,0 +1,46 @@
+Metadata-Version: 2.1
+Name: requests-iamauth
+Version: 0.1.0
+Summary: SigV4 authorizer for requests
+Home-page: https://github.com/amancevice/requests-iamauth
+Author: amancevice
+Author-email: smallweirdnum@gmail.com
+License: UNKNOWN
+Description: # Requests IAMAuth
+        
+        Use AWS SigV4 authorization with requests.
+        
+        Accessing an API secured with IAM authorization in AWS API Gateway can be tricky.
+        
+        This tool uses the built-in authorization strategy in `requests` to help you access your secured endpoints.
+        
+        ## Installation
+        
+        ```bash
+        pip install requests-iamauth
+        ```
+        
+        ## Usage
+        
+        ```python
+        import requests
+        from iamauth import IAMAuth
+        
+        session = requests.Session()
+        session.auth = IAMAuth()
+        session.get('https://abcdef0123.execute-api.us-east-2.amazonaws.com/my/api')
+        ```
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Topic :: Utilities
+Requires-Python: >= 3.6
+Description-Content-Type: text/markdown
