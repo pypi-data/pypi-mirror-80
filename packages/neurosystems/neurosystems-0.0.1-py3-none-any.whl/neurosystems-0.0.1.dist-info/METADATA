@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: neurosystems
+Version: 0.0.1
+Summary: A package containing all Neurosistemas Lab's codes
+Home-page: https://github.com/Neurosistemas-Lab/neurosystems
+Author: Ismael Jaras
+Author-email: is.jaras@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3.7
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Description-Content-Type: text/markdown
+Requires-Dist: ipython (>=6)
+Requires-Dist: nbformat (>=4)
+Requires-Dist: nbconvert (>=5)
+Requires-Dist: requests (>=2)
+
+# neurosystems
+Neurosistemas Lab's code
+
+
