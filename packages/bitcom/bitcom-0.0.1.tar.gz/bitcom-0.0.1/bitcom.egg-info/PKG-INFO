@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: bitcom
+Version: 0.0.1
+Summary: bitcom-python-api is a lightweight Python library for bit.com API, supporting Rest requests and event streaming using Websocket.
+Home-page: https://github.com/bitcom-exchange/bitcom-python-api
+Author: Bit.com
+Author-email: kevin@bit.com
+License: UNKNOWN
+Description: # bitcom-python-api
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
