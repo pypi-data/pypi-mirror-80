@@ -1,0 +1,3 @@
+[console_scripts]
+fontin = fontin.__main__:main
+
