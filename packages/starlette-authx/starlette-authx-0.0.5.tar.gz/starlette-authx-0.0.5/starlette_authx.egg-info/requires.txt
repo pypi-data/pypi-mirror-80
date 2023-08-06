@@ -1,0 +1,10 @@
+starlette<1,>=0.12
+python-jose<4,>=3
+passlib<2,>=1
+jinja2<3,>=2
+
+[fastapi]
+fastapi<1,>=0.54
+
+[gql]
+graphene<3,>2.1

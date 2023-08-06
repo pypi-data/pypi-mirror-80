@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: starlette-authx
+Version: 0.0.5
+Summary: UNKNOWN
+Home-page: https://github.com/chriss-de/starlette-authx
+Author: Christoph Hartmann
+Author-email: mail_to_chriss@posteo.net
+License: UNKNOWN
+Description: starlette authorization and authentication middleware
+        
+        extra support for fastapi and graphene to protect routes and fields based on source IP, basic or bearer auth
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+Provides-Extra: gql
+Provides-Extra: fastapi
