@@ -1,0 +1,101 @@
+Metadata-Version: 1.2
+Name: swolfpy-processmodels
+Version: 0.1.3
+Summary: Life-Cylce Process Models for swolfpy (swolfpy_processmodels)
+Home-page: https://bitbucket.org/msm_sardar/swolfpy-processmodels
+Author: Mojtaba Sardarmehni
+Author-email: msardar2@ncsu.edu
+License: GNU GENERAL PUBLIC LICENSE V2
+Description: .. General
+        
+        ==============================================================
+        Life-Cylce Process Models for swolfpy (swolfpy_processmodels)
+        ==============================================================
+        
+        .. image:: https://img.shields.io/pypi/v/swolfpy_processmodels.svg
+                :target: https://pypi.python.org/pypi/swolfpy_processmodels
+                
+        .. image:: https://img.shields.io/pypi/pyversions/swolfpy_processmodels.svg
+            :target: https://pypi.org/project/swolfpy_processmodels/
+            :alt: Supported Python Versions
+        
+        .. image:: https://img.shields.io/pypi/l/swolfpy_processmodels.svg
+            :target: https://pypi.org/project/swolfpy_processmodels/
+            :alt: License
+        
+        .. image:: https://img.shields.io/pypi/format/swolfpy_processmodels.svg
+            :target: https://pypi.org/project/swolfpy_processmodels/
+            :alt: Format
+        
+        .. image:: https://readthedocs.org/projects/swolfpy/badge/?version=latest
+                :target: https://swolfpy.readthedocs.io/en/latest/?badge=latest
+                :alt: Documentation Status
+        
+        
+        * Free software: GNU GENERAL PUBLIC LICENSE V2
+        * Documentation: https://swolfpy.readthedocs.io.
+        * Repository: https://bitbucket.org/msm_sardar/swolfpy-processmodels
+        * Other links: 
+                https://go.ncsu.edu/swolfpy
+        
+                https://jwlevis.wixsite.com/swolf
+        
+        
+        Features
+        --------
+        * Life-cycle process models of swolfpy, include: Landfill, Waste-to-Energy (WTE), Composting, Anaerobic Digestion (AD), Single Stream Material Recovery Facility (MRF), Reprocessing, and Collection.
+        * Monte Carlo simulation
+        
+        
+        .. Installation
+        
+        Installation
+        ------------
+        1- Download and install miniconda from:  https://docs.conda.io/en/latest/miniconda.html
+        
+        2- Update conda in a terminal window or anaconda prompt::
+        
+                conda update conda
+        
+        3- Create a new environment for swolfpy::
+        
+                conda create --name swolfpy python=3.7
+        
+        4- Activate the environment::
+        
+                conda activate swolfpy
+        
+        5- Install swolfpy_processmodels in the environment::
+        
+                pip install swolfpy_processmodels
+        
+        
+        .. endInstallation
+        
+        
+        =======
+        History
+        =======
+        
+        
+        0.1.0 (2020-05-06)
+        ------------------
+        
+        * First release on PyPI. Life-cycle process models include: LF, WTE, Composting, AD, SS_MRF, reprocessing and Collection.
+        
+Keywords: swolfpy_processmodels
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: GNU General Public License v2 (GPLv2)
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Topic :: Scientific/Engineering :: Information Analysis
+Classifier: Topic :: Scientific/Engineering :: Mathematics
+Classifier: Topic :: Scientific/Engineering :: Visualization
+Classifier: Natural Language :: English
+Requires-Python: >=3.5
