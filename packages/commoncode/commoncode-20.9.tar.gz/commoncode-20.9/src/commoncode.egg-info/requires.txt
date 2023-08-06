@@ -1,0 +1,9 @@
+future>=0.16.0
+text_unidecode<2.0,>=1.0
+saneyaml
+Beautifulsoup4<5.0.0,>=4.0.0
+click>=6.0.0
+intbitset<3.0,>=2.3.0
+
+[:python_version < "3"]
+backports.os==0.1.1
