@@ -1,0 +1,17 @@
+CHANGES
+=======
+
+0.0.5
+-----
+
+* support for EE Smart Hub
+* code climate for travis
+
+0.0.4
+-----
+
+* missing requests dependency
+* setuptools config
+* improved device structure now with proper types
+* improved documentation
+* initial commit
