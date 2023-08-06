@@ -1,0 +1,19 @@
+Metadata-Version: 1.1
+Name: ssdb_manager
+Version: 0.1
+Summary: Facilitates interaction between Python and SQL Server Management Studio
+Home-page: https://github.com/tsdatateam/ssdb_manager
+Author: Tishman Speyer Data Analytics
+Author-email: ts.datateam@gmail.com
+License: MIT
+Download-URL: https://github.com/tsdatateam/ssdb_manager/archive/v_0.1.tar.gz
+Description: UNKNOWN
+Keywords: SQL,Server,pandas,Python,SSMS,Query,Database
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
