@@ -1,0 +1,10 @@
+MANIFEST.in
+README.md
+setup.py
+my_flawless_lib.egg-info/PKG-INFO
+my_flawless_lib.egg-info/SOURCES.txt
+my_flawless_lib.egg-info/dependency_links.txt
+my_flawless_lib.egg-info/requires.txt
+my_flawless_lib.egg-info/top_level.txt
+namesewasw/__init__.py
+namesewasw/namesewasw.py
