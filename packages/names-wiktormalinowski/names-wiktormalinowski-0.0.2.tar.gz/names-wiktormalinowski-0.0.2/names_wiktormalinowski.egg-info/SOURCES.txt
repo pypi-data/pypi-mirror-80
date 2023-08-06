@@ -1,0 +1,12 @@
+MANIFEST.in
+README.md
+setup.py
+bin/get_name_wiktormalinowski.bat
+bin/get_name_wiktormalinowski.py
+names_wiktormalinowski.egg-info/PKG-INFO
+names_wiktormalinowski.egg-info/SOURCES.txt
+names_wiktormalinowski.egg-info/dependency_links.txt
+names_wiktormalinowski.egg-info/requires.txt
+names_wiktormalinowski.egg-info/top_level.txt
+nameswiktormalinowski/__init__.py
+nameswiktormalinowski/nameswiktormalinowski.py
