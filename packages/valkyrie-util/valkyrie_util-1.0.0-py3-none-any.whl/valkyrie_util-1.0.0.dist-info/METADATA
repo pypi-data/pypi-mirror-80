@@ -1,0 +1,26 @@
+Metadata-Version: 2.1
+Name: valkyrie-util
+Version: 1.0.0
+Summary: A python library of various math and performance tools
+Home-page: https://github.com/davidjcastner/valkyrie_util
+Author: David Castner
+Author-email: davidjcastner@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: Other/Proprietary License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Topic :: Scientific/Engineering :: Mathematics
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+
+# valkyrie_util
+
+![Upload Python Package](https://github.com/davidjcastner/valkyrie_util/workflows/Upload%20Python%20Package/badge.svg?event=release)
+![Lint & Test Python Package](https://github.com/davidjcastner/valkyrie_util/workflows/Lint%20&%20Test%20Python%20Package/badge.svg)
+
+A python library of various math and performance tools
+
+
