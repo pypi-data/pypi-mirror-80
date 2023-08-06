@@ -1,0 +1,43 @@
+Metadata-Version: 2.1
+Name: akun-tools
+Version: 0.1.2
+Summary: Tools for interacting with anonkun/fiction.live
+Home-page: https://github.com/alethiophile/akun-tools
+License: MIT
+Author: alethiophile
+Author-email: alethiophile.dev@gmail.com
+Requires-Python: >=3.8,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Dist: beautifulsoup4 (>=4.9.1,<5.0.0)
+Requires-Dist: click (>=7.1.2,<8.0.0)
+Requires-Dist: html5lib (>=1.1,<2.0)
+Requires-Dist: python-magic (>=0.4.18,<0.5.0)
+Requires-Dist: qtoml (>=0.3.0,<0.4.0)
+Requires-Dist: requests (>=2.24.0,<3.0.0)
+Project-URL: Repository, https://github.com/alethiophile/akun-tools
+Description-Content-Type: text/x-rst
+
+akun-tools
+==========
+
+akun-tools is a set of tools for interacting with Fiction.live, previously known
+as anonkun. Currently it includes a scraper that generates HTML ebooks of quests.
+
+akun-tools is a command-line utility that requires Python 3 and pip. To install
+it, run:
+
+.. code:: bash
+
+  $ pip install akun-tools
+
+Once installed, you run it with ``akun_scraper``. Example usage:
+
+.. code:: bash
+
+  $ akun_scraper getinfo https://fiction.live/stories/Abyssal-Admiral-Quest-/QGSpwAtjf9NMtvsTA/home
+  $ akun_scraper download abyssal_admiral_quest.toml
+
