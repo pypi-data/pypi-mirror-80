@@ -1,0 +1,14 @@
+README.md
+setup.cfg
+setup.py
+aioadb/__init__.py
+aioadb/adbclient.py
+aioadb/adbconnection.py
+aioadb/adbdevice.py
+aioadb/adbsync.py
+aioadb/mixin.py
+aioadb/parser.py
+aioadb.egg-info/PKG-INFO
+aioadb.egg-info/SOURCES.txt
+aioadb.egg-info/dependency_links.txt
+aioadb.egg-info/top_level.txt
