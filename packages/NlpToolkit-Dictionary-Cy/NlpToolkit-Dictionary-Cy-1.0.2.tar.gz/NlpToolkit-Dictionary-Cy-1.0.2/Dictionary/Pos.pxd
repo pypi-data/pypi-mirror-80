@@ -1,0 +1,9 @@
+cpdef enum Pos:
+    ADJECTIVE = 0
+    NOUN = 1
+    VERB = 2
+    ADVERB = 3
+    CONJUNCTION = 4
+    INTERJECTION = 5
+    PREPOSITION = 6
+    PRONOUN = 7
