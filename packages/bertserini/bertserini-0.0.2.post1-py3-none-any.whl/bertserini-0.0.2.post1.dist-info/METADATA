@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: bertserini
+Version: 0.0.2.post1
+Summary: An end-to-end Open-Domain question answering system
+Home-page: https://github.com/rsvp-ai/bertserini
+Author: bertserini
+Author-email: yuqing.xie@uwaterloo.ca
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Requires-Dist: tqdm (>=4.45.0)
+Requires-Dist: numpy (>=1.18.5)
+Requires-Dist: pyserini (==0.9.4.0)
+Requires-Dist: transformers (>=2.10.0)
+Requires-Dist: torch (==1.5.1)
+Requires-Dist: torchvision (==0.6.1)
+Requires-Dist: tensorboardX (>=2.1)
+Requires-Dist: hanziconv (>=0.3.2)
+
+UNKNOWN
+
+
