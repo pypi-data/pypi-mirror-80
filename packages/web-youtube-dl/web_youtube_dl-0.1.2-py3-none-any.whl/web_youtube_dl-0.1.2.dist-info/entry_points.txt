@@ -1,0 +1,4 @@
+[console_scripts]
+web-youtube-dl=web_youtube_dl.app.main:run_app
+web-youtube-dl-cli=web_youtube_dl.app.youtube_dl_helpers:cli_download
+
