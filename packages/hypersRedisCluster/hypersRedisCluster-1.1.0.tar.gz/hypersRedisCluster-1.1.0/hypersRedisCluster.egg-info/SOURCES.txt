@@ -1,0 +1,15 @@
+README.md
+setup.py
+hypersRedisCluster/__init__.py
+hypersRedisCluster/client.py
+hypersRedisCluster/connection.py
+hypersRedisCluster.egg-info/PKG-INFO
+hypersRedisCluster.egg-info/SOURCES.txt
+hypersRedisCluster.egg-info/dependency_links.txt
+hypersRedisCluster.egg-info/not-zip-safe
+hypersRedisCluster.egg-info/requires.txt
+hypersRedisCluster.egg-info/top_level.txt
+test/__init__.py
+test/runtests.py
+test/test_backend.py
+test/test_sqlite.py
