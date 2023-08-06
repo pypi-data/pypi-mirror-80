@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: natural-questions
+Version: 1.0.6
+Summary: Natural Questions
+Home-page: https://github.com/google-research-datasets/natural-questions
+Author: Google Inc.
+Author-email: no-reply@google.com
+License: Apache 2.0
+Platform: UNKNOWN
+Requires-Dist: absl-py
+Requires-Dist: jinja2
+Requires-Dist: tornado
+
+UNKNOWN
+
+
