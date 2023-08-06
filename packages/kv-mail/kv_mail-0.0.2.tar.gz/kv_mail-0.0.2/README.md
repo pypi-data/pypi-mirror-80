@@ -1,0 +1,1 @@
+Using this module you can use mail services very quickly
