@@ -1,0 +1,84 @@
+Metadata-Version: 2.1
+Name: evolutionary-algorithm
+Version: 0.0.1
+Summary: An evolutionary (genetic) algorithm designed specifically for optimizing predictive models with integer, real, boolean, and categorical inputs.
+Home-page: https://github.com/dmartintucker/evolutionary-algorithm
+Author: Daniel Tucker
+Author-email: dmartintucker@gmail.com
+Maintainer: Daniel Tucker
+License: UNKNOWN
+Keywords: Python,evolutionary,genetic,algorithm,GA
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >3.6
+Description-Content-Type: text/markdown
+Requires-Dist: func-timeout
+Requires-Dist: numpy
+
+# evolutionary_algorithm
+
+`evolutionary-algorithm` is a Python library adapted from https://pypi.org/project/geneticalgorithm/ with modifications for streamlining the fine-tuning of predictive models. 
+
+Random-search parameter optimization tends to be extremely sample-inefficient. This library attempts to address this sample efficiency issue by intelligently moving through parameter spaces to discover (locally or globally) optimimal solutions. Noteworthy improvements over existing Python implementations are the ability to pass a dictionary as input to the objective function, as well as a structured dictionary as the final output. The algorithm also handles categorical (Boolean and multilabel) data in a manner similar to Hyperopt (https://github.com/hyperopt/hyperopt).
+
+## Installation
+The recommended installation process makes use of `pip` (or `pip3`):
+```
+pip install evolutionary-algorithm
+```
+
+## A minimal example
+An ideal use case is passing a list of parameters and parameter bounds directly to a `scikit-learn` model, unpacking the paramters as model arguments within the objective function, and receiving a set of fine-tuned parameters as a result, which can be unpacked directly for downstream usage.
+```
+# Dependencies
+from main import EvolutionaryAlgorithm as ea
+from sklearn.linear_model import SGDClassifier
+from sklearn import datasets
+from sklearn.metrics import accuracy_score
+
+# Sample dataset
+X, y = datasets.load_iris(return_X_y=True, as_frame=False)
+
+# Declare objective function parameters and bounds
+objective_parameters = [
+    {'name' : 'average',
+     'bounds' : [0, 1],
+     'type' : 'bool'},
+    {'name' : 'alpha',
+     'bounds' : [1e-5, 1e-1],
+     'type' : 'float'},
+    {'name' : 'loss',   
+     'bounds' : ['hinge', 'log', 'squared_hinge', 'modified_huber', 'perceptron'],
+     'type' : 'cat'},
+    {'name' : 'penalty',
+     'bounds' : ['l1', 'l2', 'elasticnet'], 
+     'type' : 'cat'},
+    {'name' : 'l1_ratio',
+     'bounds' : [0, 1],
+     'type' : 'float'}
+]
+
+# Define the objective function (with embedded predictive model)
+def objective_function(args):
+
+    clf = SGDClassifier(**args)
+    clf.fit(X, y)
+    preds = clf.predict(X)
+
+    return accuracy_score(y, preds) * -1 # Expects a value to be minimized
+
+# Create instance of EA object
+evo_algo = ea(function=objective_function, 
+           parameters=objective_parameters)
+
+# Run EA
+evo_algo.run()
+
+# Access best model parameters
+evo_algo.best_parameters
+```
+
+
