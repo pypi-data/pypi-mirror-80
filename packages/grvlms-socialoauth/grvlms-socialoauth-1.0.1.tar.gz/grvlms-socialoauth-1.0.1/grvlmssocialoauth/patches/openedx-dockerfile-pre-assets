@@ -1,0 +1,8 @@
+ARG EDX_VERSION=open-release/ironwood.master
+RUN export DJANGO_SETTINGS_MODULE=$SERVICE_VARIANT.envs.$SETTINGS
+RUN echo "Loading settings $DJANGO_SETTINGS_MODULE"
+ARG SOCIALOAUTH_ACTIVATE_AZURE=$SOCIALOAUTH_ACTIVATE_AZURE
+{% if SOCIALOAUTH_ACTIVATE_AZURE == true %}
+RUN echo "Installing EDX profile picture from Azure"
+RUN pip install -e git+https://github.com/groovetch/edx-azuresso.git@$EDX_VERSION#egg=azure_picture_profile
+{% endif %}
