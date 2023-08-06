@@ -1,0 +1,19 @@
+[build-system]
+requires = ["flit_core >=2,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.flit.metadata]
+module = "aracnid_logger"
+author = "Jason Romano"
+author-email = "aracnid@gmail.com"
+home-page = "https://github.com/lakeannebrewhouse/aracnid-logger"
+classifiers = ["License :: OSI Approved :: MIT License"]
+description-file = "README.md"
+requires-python = "~=3.8"
+requires = []
+keywords = "logger"
+
+[tools.flit.metadata.requires-extra]
+test = ["pytest ~=6.0"]
+build = ["flit ~=2.3"]
+dev = ["pylint ~=2.6"]
