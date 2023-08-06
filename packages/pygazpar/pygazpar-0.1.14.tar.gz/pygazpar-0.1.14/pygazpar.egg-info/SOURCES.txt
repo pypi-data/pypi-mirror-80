@@ -1,0 +1,15 @@
+README.md
+setup.cfg
+setup.py
+pygazpar/__init__.py
+pygazpar/__main__.py
+pygazpar/client.py
+pygazpar/enum.py
+pygazpar.egg-info/PKG-INFO
+pygazpar.egg-info/SOURCES.txt
+pygazpar.egg-info/dependency_links.txt
+pygazpar.egg-info/entry_points.txt
+pygazpar.egg-info/requires.txt
+pygazpar.egg-info/top_level.txt
+test/__init__.py
+test/test_client.py
