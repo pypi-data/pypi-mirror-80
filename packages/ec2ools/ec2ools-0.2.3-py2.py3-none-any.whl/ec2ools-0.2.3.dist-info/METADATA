@@ -1,0 +1,71 @@
+Metadata-Version: 2.1
+Name: ec2ools
+Version: 0.2.3
+Summary: Utilities to manage ec2 instances and asg's
+Home-page: https://github.com/ibejohn818/ec2ools
+Author: John Hardy
+Author-email: john@johnchardy.com
+License: MIT license
+Keywords: ec2ools
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: Click (>=7.0)
+Requires-Dist: boto3
+Requires-Dist: requests
+
+=======
+ec2ools
+=======
+.. image:: https://img.shields.io/pypi/v/ec2ools.svg
+        :target: https://pypi.python.org/pypi/ec2ools
+
+.. image:: https://img.shields.io/travis/ibejohn818/ec2ools.svg
+        :target: https://travis-ci.org/ibejohn818/ec2ools
+
+.. image:: https://readthedocs.org/projects/ec2ools/badge/?version=latest
+        :target: https://ec2ools.readthedocs.io/en/latest/?badge=latest
+        :alt: Documentation Status
+
+
+.. image:: https://pyup.io/repos/github/ibejohn818/ec2ools/shield.svg
+     :target: https://pyup.io/repos/github/ibejohn818/ec2ools/
+     :alt: Updates
+
+
+`ec2ools` is a cli of useful tools to use on an ec2 instance to aid in management and automation.   
+Some examples of functionality are:
+- Am I the oldest instance in an ASG (IE: to determine a master node)
+- Attach an elastic-ip to myself by alloc-id
+- Place myself into/out-of standby in my ASG & detach/attach from/to LB for deployments (IE: Codedeploy)
+- etc...
+
+2019-08-29
+The cli is still in development and only a few functions are currently released.  
+My intentions are to start work on some of these tools in the not to distant future.
+
+
+
+
+
+Utilities to manage ec2 instances and asg's
+
+
+* Free software: MIT license
+* Documentation: https://ec2ools.readthedocs.io.
+
+=======
+History
+=======
+
+0.1.0 (2019-05-26)
+------------------
+
+* First release on PyPI.
+
+
