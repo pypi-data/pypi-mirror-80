@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: pcoss-scheduler-pkg-ksazon
+Version: 0.0.18
+Summary: Tabular data PCOSS calculations module
+Home-page: https://github.com/ksazon/mgr/mgr_client
+Author: Krzysztof Sazon
+Author-email: krzysztof.sazon@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: aiohttp (==3.6.2)
+Requires-Dist: async-timeout (==3.0.1)
+Requires-Dist: attrs (==20.2.0)
+Requires-Dist: bleach (==3.2.1)
+Requires-Dist: decorator (==4.4.2)
+Requires-Dist: glob2 (==0.7)
+Requires-Dist: keyring (==21.4.0)
+Requires-Dist: matplotlib (==3.3.1)
+Requires-Dist: matplotlib-base (==3.3.1)
+Requires-Dist: networkx (==2.5)
+Requires-Dist: numpy (==1.19.1)
+Requires-Dist: numpy-base (==1.19.1)
+Requires-Dist: openssl (==1.1.1)
+Requires-Dist: pandas (==1.1.1)
+Requires-Dist: plotly (==4.10.0)
+Requires-Dist: requests (==2.24.0)
+Requires-Dist: toml (==0.10.1)
+
+UNKNOWN
+
+
