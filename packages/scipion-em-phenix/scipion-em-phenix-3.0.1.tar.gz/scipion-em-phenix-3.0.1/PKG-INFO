@@ -1,0 +1,37 @@
+Metadata-Version: 1.1
+Name: scipion-em-phenix
+Version: 3.0.1
+Summary: PHENIX programs in Scipion. Warning: Install PHENIX v. 1-17
+Home-page: https://github.com/scipion-em/scipion-em-phenix
+Author: Roberto Marabini, Marta Martinez
+Author-email: scipion@cnb.csic.es
+License: UNKNOWN
+Description: =====================
+        Phenix scipion plugin
+        =====================
+        
+        This plugin allows to use programs from the *PHENIX* software suite within the Scipion framework. **You need to install the Phenix suite before installing the plugin**, see section "Binary Files" for details.
+        
+        Phenix is a software suite that allows model building of macromolecule structures obtained by X-ray crystallography, and that has been extended to other techniques like cryo-EM (see `Phenix home page <https://www.phenix-online.org/>`_ for details).
+        
+        Current programs implemented:
+        
+          * dock in map
+          * emringer
+          * real space refine
+          * molprobity
+          * superpose pdbs
+          * validation cryoem
+        
+        ===================
+        Install this plugin
+        ===================
+        
+        You will need to use `3.0.0 <https://github.com/I2PC/scipion/releases/tag/v3.0>`_ version of Scipion to run these protocols. To install the plugin, you have two options:
+        
+        - **Stable version**  
+        
+        
+Keywords: scipion cryoem imageprocessing scipion-3.0
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
