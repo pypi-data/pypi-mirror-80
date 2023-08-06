@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: haggle
+Version: 0.0.1
+Summary: A facade to Kaggle data
+Home-page: https://github.com/otosense/haggle
+License: mit
+Platform: any
+Description-Content-Type: text/markdown
+Requires-Dist: kaggle
+Requires-Dist: py2store
+
+
+# haggle
+A facade to Kaggle data
+
+
