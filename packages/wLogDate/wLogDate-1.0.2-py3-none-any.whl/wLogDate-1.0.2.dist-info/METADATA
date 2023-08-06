@@ -1,0 +1,26 @@
+Metadata-Version: 2.1
+Name: wLogDate
+Version: 1.0.2
+Summary: Log Transformation Improves Dating of Phylogenies
+Home-page: UNKNOWN
+Author: ['Uyen Mai', 'Siavash Mirarab']
+Author-email: UNKNOWN
+License: GNU General Public License, version 3
+Keywords: Phylogenetics Evolution Biology
+Platform: UNKNOWN
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: GNU General Public License (GPL)
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Topic :: Scientific/Engineering :: Bio-Informatics
+Requires-Dist: dendropy (>=4.3.0)
+Requires-Dist: scipy (>=1.3.1)
+Requires-Dist: bitsets
+Requires-Dist: numpy (>=1.18.5)
+
+A Python implementation of the wLogDate algorithm
+
+
