@@ -1,0 +1,45 @@
+<table class="django-lookup-table-rating-widget-table django-lookup-table-rating-widget-field-label-in-table">{% load i18n %}
+    <tr>
+        {% if field_label_in_table %}<th colspan="2" class="django-lookup-table-rating-widget-th django-lookup-table-rating-widget-label-and-help" style="width: 10%;">{{field_label}}</th>{% endif %}
+        <th class="django-lookup-table-rating-widget-th">{{final_score_label}}</th>
+        <th class="django-lookup-table-rating-widget-th">{{scores_label}}</th>
+        <th class="django-lookup-table-rating-widget-th">{{rules_label}}</th>
+        {% if weight %}<th class="django-lookup-table-rating-widget-th">{{weight_label}}</th>{% endif %}
+    </tr>
+    <tr>
+        {% if field_label_in_table %}
+        <td rowspan="{{rows}}" class="django-lookup-table-rating-widget-label"></td>
+        <td rowspan="{{rows}}" class="django-lookup-table-rating-widget-help"></td>
+        {% endif %}
+        <td rowspan="{{rows}}" class="django-lookup-table-rating-widget-final-score">
+            {% include 'django/forms/widgets/number.html' %}
+        </td>
+        <td class="django-lookup-table-rating-widget-scores">
+            <nobr>
+                {% for score in first_score_line.scores %}
+                <a class="django-lookup-table-rating-widget-score" data-value="{{score}}">{{score}}</a>
+                {% endfor %}
+            </nobr>
+        </td>
+        <td>
+            {% autoescape off %}{{first_score_line.rule}}{% endautoescape %}
+        </td>
+        {% if weight %}
+        <td rowspan="{{rows}}" class="django-lookup-table-rating-widget-weight">{{weight}} %</td>
+        {% endif %}
+    </tr>
+    {% for score_line in other_score_lines %}
+    <tr>
+        <td class="django-lookup-table-rating-widget-scores">
+            <nobr>
+                {% for score in score_line.scores %}
+                <a class="django-lookup-table-rating-widget-score" data-value="{{score}}">{{score}}</a>
+                {% endfor %}
+            </nobr>
+        </td>
+        <td>
+            {% autoescape off %}{{score_line.rule}}{% endautoescape %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
