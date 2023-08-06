@@ -1,0 +1,16 @@
+README.md
+setup.py
+fycharts/SpotifyCharts.py
+fycharts/__init__.py
+fycharts/cli.py
+fycharts/compute_dates.py
+fycharts/crawler_base.py
+fycharts/exceptions.py
+fycharts/log_config.py
+fycharts/write_to_outputs.py
+fycharts.egg-info/PKG-INFO
+fycharts.egg-info/SOURCES.txt
+fycharts.egg-info/dependency_links.txt
+fycharts.egg-info/entry_points.txt
+fycharts.egg-info/requires.txt
+fycharts.egg-info/top_level.txt
