@@ -1,0 +1,7 @@
+.thin-margin .highlight {
+    margin-bottom: 5px;
+}
+.no-margin .highlight {
+    margin-bottom: 0;
+}
+
