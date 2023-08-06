@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% load bootstrap4 %}
+
+{% block title %}
+    {% trans "Groups" %}
+{% endblock %}
+
+{% block content %}
+    <div class="page-header">
+        <h1>{% trans "Groups" %}</h1>
+    </div>
+    {% if perms.auth.add_group %}
+        <a class="btn btn-secondary" href="{% url "user_management:group_add" %}"><span
+                class="fa fa-plus"></span> {% trans "Add group" %}</a>
+    {% endif %}
+    <table id="event_table" class="table table-striped display datatable">
+        <thead>
+        <tr>
+            <th>{% trans "Name" %}</th>
+            <th data-orderable="false">{% trans "Action" %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for group in group_list %}
+            <tr>
+                <td>{{ group.name }}</td>
+                <td>
+                    <a class="btn btn-outline-primary btn-sm" href="{% url "user_management:group_edit" group.pk %}"><span
+                            class="fa fa-edit"></span> {% trans "Edit" %}</a>
+                    <a class="btn btn-outline-danger btn-sm" href="{% url "user_management:group_delete" group.pk %}"><span
+                            class="fa fa-trash-alt"></span> {% trans "Delete" %}</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
