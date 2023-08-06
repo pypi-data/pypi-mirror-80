@@ -1,0 +1,50 @@
+Metadata-Version: 2.1
+Name: qprof_qiskit
+Version: 1.0.0
+Summary: qprof plugin for qiskit framework.
+Home-page: UNKNOWN
+Author: Adrien Suau
+Author-email: adrien.suau@cerfacs.fr
+License: UNKNOWN
+Project-URL: Collaborator, https://cerfacs.fr/en
+Description: **qprof_interfaces**
+        ====================
+        
+        **qprof_qiskit** is a plugin for *qprof*, a quantum profiler largely inspired by
+        `gprof <https://ftp.gnu.org/old-gnu/Manuals/gprof-2.9.1/html_chapter/gprof_1.html#SEC1>`_.
+        This plugin adds the support for the ``qiskit`` library to ``qprof``.
+        It is a Python module distributed under the open-source (non-OSI but BSD compatible)
+        `CeCILL-B licence <https://cecill.info/licences/Licence_CeCILL-B_V1-en.html>`_.
+        
+        Installation
+        ------------
+        
+        *qprof_qiskit* being a Python module, it is installable with ``pip``.
+        
+        From Gitlab
+        ~~~~~~~~~~~
+        
+        .. code:: shell
+        
+           git clone https://gitlab.com/qcomputing/qprof/qprof_qiskit.git
+           pip install qprof_qiskit/
+        
+        From PyPi
+        ~~~~~~~~~
+        
+        The code has not been published on PyPi yet.
+        
+Keywords: quantum,performance,gprof,profiling,qiskit,plugin
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: Science/Research
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Scientific/Engineering :: Mathematics
+Classifier: License :: CeCILL-B Free Software License Agreement (CECILL-B)
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3 :: Only
+Description-Content-Type: text/x-rst
+Provides-Extra: dev

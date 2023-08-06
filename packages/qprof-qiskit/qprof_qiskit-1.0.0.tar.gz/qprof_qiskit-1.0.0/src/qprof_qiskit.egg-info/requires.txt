@@ -1,0 +1,10 @@
+qiskit==0.21.0
+qprof
+qprof_interfaces
+
+[dev]
+black
+pygments
+setuptools
+wheel
+twine
