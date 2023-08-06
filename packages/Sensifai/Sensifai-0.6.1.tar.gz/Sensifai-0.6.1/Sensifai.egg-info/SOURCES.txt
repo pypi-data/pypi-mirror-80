@@ -1,0 +1,13 @@
+README.md
+setup.cfg
+setup.py
+Sensifai.egg-info/PKG-INFO
+Sensifai.egg-info/SOURCES.txt
+Sensifai.egg-info/dependency_links.txt
+Sensifai.egg-info/requires.txt
+Sensifai.egg-info/top_level.txt
+sensifai/__init__.py
+sensifai/client.py
+sensifai/exceptions.py
+sensifai/payloads.py
+sensifai/responses.py
