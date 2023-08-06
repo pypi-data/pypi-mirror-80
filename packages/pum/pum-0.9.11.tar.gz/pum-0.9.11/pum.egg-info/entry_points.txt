@@ -1,0 +1,3 @@
+[console_scripts]
+pum = pum.__main__:main
+
