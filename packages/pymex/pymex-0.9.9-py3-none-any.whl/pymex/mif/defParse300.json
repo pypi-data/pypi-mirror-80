@@ -1,0 +1,81 @@
+{
+    "@NS":"http://psi.hupo.org/mi/mif300",
+    
+    "*": { "*":{"complex":true, "name": null, "store":"direct", "ikey":"@id", "reference":null, "wrapper": false } },
+    "entry":{"*":{"store":"list"}},
+
+    "shortLabel":{"*":{"complex":false}},
+    "fullName":{"*":{"complex":false}},
+
+    "alias":{"*":{"store":"list"}},
+    
+    "secondaryRef": {"*": {"store":"list"}},
+    
+    "attributeList":{"*":{"wrapper":true}},
+    "attribute":{"*":{"store":"list","name":"attribute"}},
+
+    "availabilityList":{"*":{"wrapper":true}},
+    "availability":{"entry":{"store":"index","ikey":"@id","name":"availabilityList"}},
+    "availabilityRef":{"*":{"reference":"/entrySet/entry/availabilityList","name":"availability"}},
+
+    "experimentList":{"*":{"wrapper":true}},
+    "experimentDescription":{"entry":{"store":"index","ikey":"@id","name":"experimentList"},
+                			     "*":{"store":"list","name":"experiment"}},
+    
+    "experimentRef":{"interaction":{"reference":"/entrySet/entry/experimentList","store":"list","name":"experiment"}},
+    
+    "confidenceList":{"*":{"wrapper":true}},
+    "confidence":{"*":{"store":"list"} },
+    
+    "value":{"*":{"complex":false}},
+
+    "attributeList":{"*":{"wrapper":true}},
+		      
+    "interactorList":{"*":{"wrapper": true} },
+    
+    "interactor":{ "participant": { "store":"direct"},
+		   "*":{"store":"index", "ikey":"@id", "name":"interactorList"}},		  
+
+    "interactorRef":{"*":{"reference": "/entrySet/entry/interactorList", "name":"interactor"} },
+
+    "interactorType":{"*":{"store":"direct"}},     
+    "evidenceType":{"*":{"store":"direct"}}, 
+    
+    "sequence":{"*":{"complex":false}},
+		      
+    "interactionList":{"*":{"wrapper": true} },
+    "interaction":{"*":{"store":"list"}},
+    "abstractInteraction":{"*":{"store":"list"}},
+
+    "participantList":{"*":{"wrapper": true} },
+    "participant":{"*":{"store":"list"}},
+    
+    "interactionType":{"interaction":{"store":"list"},
+		       "abstractInteraction":{"store":"direct"}
+		      },
+
+    "intraMolecular":{"*":{"complex":false}},
+
+    "parameterList":{"*":{"wrapper":true}},
+
+    "hostOrganismList":{"*":{"wrapper":true}},
+    "hostOrganism":{"*":{"store":"list"}},
+    "organism":{"*":{"store":"list"}},
+
+    "experimentalRoleList":{"*":{"wrapper":true}},
+    "experimentalRole":{"*":{"store":"list"}},
+    
+    "experimentalPreparationList":{"*":{"wrapper":true}},
+    "experimentalPreparation":{"*":{"store":"list"}},
+
+    "featureList":{"*":{"wrapper":true}},
+    "feature":{"*":{"store":"list"}},
+
+    "featureRangeList":{"*":{"wrapper":true}},
+    "featureRange":{"*":{"store":"list"}},
+    
+    "bindingFeatureList":{"*":{"wrapper":true}},
+    "bindingFeatures":{"*":{"store":"list"}},
+    "participantFeatureRef":{"*":{"store":"list","complex":false}}
+    
+}

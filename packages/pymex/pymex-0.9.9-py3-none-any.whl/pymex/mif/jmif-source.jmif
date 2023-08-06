@@ -1,0 +1,75 @@
+{"source":{
+  "DIP" :{
+      "names": {
+        "shortLabel": "DIP",
+        "fullName": "Database of Interacting Proteins"
+       },
+       "xref":{
+          "primaryRef": {
+            "db": "psi-mi",
+            "dbAc": "MI:0488",
+            "id": "MI:0465",
+            "refType": "identity",
+            "refTypeAc": "MI:0356"
+          },
+          "secondaryRef": [
+            {
+              "db": "pubmed",
+              "dbAc": "MI:0446",
+              "id": "14681454",
+              "refType": "primary-reference",
+              "refTypeAc": "MI:0358"
+            }
+          ]
+       }
+  },
+  "IntAct":{
+      "names": {
+        "shortLabel": "IntAct",
+        "fullName": "European Bioinformatics Institute"
+       },
+       "xref":{
+          "primaryRef": {
+            "db": "psi-mi",
+            "dbAc": "MI:0488",
+            "id": "MI:0469",
+            "refType": "identity",
+            "refTypeAc": "MI:0356"
+          },
+          "secondaryRef": [
+            {
+              "db": "pubmed",
+              "dbAc": "MI:0446",
+              "id": "14681455",
+              "refType": "primary-reference",
+              "refTypeAc": "MI:0358"
+            }
+          ]
+       }
+   },
+   "MINT":{
+      "names": {
+        "shortLabel": "MINT",
+        "fullName": "MINT, Dpt of Biology, University of Rome Tor Vergata"
+       },
+       "xref":{
+          "primaryRef": {
+            "db": "psi-mi",
+            "dbAc": "MI:0488",
+            "id": "MI:0471",
+            "refType": "identity",
+            "refTypeAc": "MI:0356"
+          },
+          "secondaryRef": [
+            {
+              "db": "pubmed",
+              "dbAc": "MI:0446",
+              "id": "27115627",
+              "refType": "primary-reference",
+              "refTypeAc": "MI:0358"
+            }
+          ]
+       }
+   }
+ }
+}
