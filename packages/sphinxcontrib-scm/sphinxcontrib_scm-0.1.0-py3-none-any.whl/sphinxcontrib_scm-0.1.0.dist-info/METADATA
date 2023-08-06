@@ -1,0 +1,117 @@
+Metadata-Version: 2.1
+Name: sphinxcontrib-scm
+Version: 0.1.0
+Summary: Sphinx SCM interface
+Home-page: UNKNOWN
+Author: Christian Knittl-Frank
+Author-email: lcnittl@gmail.com
+License: GPL-3.0-or-later
+Download-URL: http://pypi.python.org/pypi/sphinxcontrib-scm
+Project-URL: GitHub: repo, https://github.com/sphinx-contrib/scm
+Project-URL: GitHub: issues, https://github.com/sphinx-contrib/scm/issues
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Console
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Sphinx :: Extension
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: Documentation
+Classifier: Topic :: Utilities
+Requires-Python: >=3.7
+Description-Content-Type: text/x-rst
+Requires-Dist: gitpython (>=3.1.8)
+Requires-Dist: Sphinx (>=1.8)
+
+sphinxcontrib-scm
+=================
+
+|badge:pypi-version| |badge:py-versions|
+|badge:pre-commit| |badge:black| |badge:prettier|
+
+.. |badge:pypi-version| image:: https://img.shields.io/pypi/v/sphinxcontrib-scm.svg
+   :target: https://pypi.org/project/sphinxcontrib-scm
+   :alt: [Latest PyPI version]
+.. |badge:py-versions| image:: https://img.shields.io/pypi/pyversions/sphinxcontrib-scm.svg
+   :target: https://pypi.org/project/sphinxcontrib-scm
+   :alt: [Supported Python versions]
+.. |badge:pre-commit| image:: https://img.shields.io/badge/pre--commit-enabled-brightgreen.svg?logo=pre-commit&logoColor=white
+   :target: https://github.com/pre-commit/pre-commit
+   :alt: [pre-commit: enabled]
+.. |badge:black| image:: https://img.shields.io/badge/code%20style-black-000000.svg
+   :target: https://github.com/psf/black
+   :alt: [Code style: black]
+.. |badge:prettier| image:: https://img.shields.io/badge/code_style-prettier-ff69b4.svg
+   :target: https://github.com/prettier/prettier
+   :alt: [Code style: prettier]
+
+
+This package provides ``sphinxcontrib.scm``, a simple SCM interface for Sphinx-based
+documentation.
+
+
+Installation
+------------
+
+1. ``pip install sphinxcontrib-scm``
+
+
+Configuration
+-------------
+
+1. Add ``'sphinxcontrib.scm'`` to the ``extensions`` list in ``conf.py``.
+
+   .. code::
+
+      extensions = [ 'sphinxcontrib.scm' ]
+
+
+2. Configure in ``conf.py``
+
+   .. code::
+
+      scm_contribs_email = ["true"|"false"]          # Show email. Default: "true"
+      scm_contribs_limit_contributors" = [None|int]  # Limit number of contributors. Use None
+                                                     # to deactivate. Default: None
+      scm_contribs_min_commits" = int                # Filter by number of commits. Default: 0
+      scm_contribs_sort" = ["name"|"num"]            # Sort by name or number of commits.
+                                                     # Default: "name"
+      scm_contribs_type" = ["author"|"committer"]    # Show info of author or committer.
+                                                     # Default: "author"
+
+
+Usage
+-----
+
+Directive
+^^^^^^^^^
+
+.. code::
+
+   .. scm-sectionauthor::
+      :email: [true|false]
+      :limit_contributors: [<int>]
+      :min_commits: [<int>]
+      :sort: [name|num]
+      :type: [author|committer]
+
+Populates ``sectionauthor`` directive with a list of SCM contributors. All options are
+optional and override the config settings in ``conf.py``.
+
+
+Role
+^^^^
+
+.. code::
+
+   :scm-contribs:`.`
+
+Can be used inline (eg as content for the ``sectionauthor`` directive. Currenlty, email
+addresses are not converted into mailto links.
+
+
