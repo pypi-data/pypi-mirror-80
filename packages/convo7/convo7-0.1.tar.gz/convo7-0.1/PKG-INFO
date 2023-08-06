@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: convo7
+Version: 0.1
+Summary: Convo: the AI powered chatbot API
+Home-page: UNKNOWN
+Author: OodlesTechnologies
+Author-email: vaibhav.garg.334@gmail.com.com
+License: MIT
+Description: UNKNOWN
+Platform: UNKNOWN
+Requires-Python: >=3.6,<3.8
+Provides-Extra: convert
+Provides-Extra: full
+Provides-Extra: spacy
+Provides-Extra: transformers
