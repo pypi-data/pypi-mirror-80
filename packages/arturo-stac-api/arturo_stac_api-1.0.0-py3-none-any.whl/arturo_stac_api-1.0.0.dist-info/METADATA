@@ -1,0 +1,113 @@
+Metadata-Version: 2.1
+Name: arturo-stac-api
+Version: 1.0.0
+Summary: Arturo's STAC compliant API implementation
+Home-page: https://github.com/arturo-ai/arturo-stac-api
+Author: Arturo Engineering
+Author-email: engineering@arturo.ai
+License: MIT
+Keywords: STAC FastAPI COG
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Information Technology
+Classifier: Intended Audience :: Science/Research
+Classifier: Programming Language :: Python :: 3.8
+Classifier: License :: OSI Approved :: MIT License
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: uvicorn (>=0.11.7)
+Requires-Dist: gunicorn
+Requires-Dist: fastapi (>=0.60.0)
+Requires-Dist: alembic
+Requires-Dist: psycopg2-binary
+Requires-Dist: shapely
+Requires-Dist: sqlalchemy
+Requires-Dist: geoalchemy2 (<0.8.0)
+Requires-Dist: sqlakeyset
+Requires-Dist: stac-pydantic (>=1.3.5)
+Requires-Dist: pydantic[dotenv]
+Requires-Dist: cogeo-mosaic (==3.0a10)
+Requires-Dist: titiler (==0.1a2)
+Requires-Dist: rio-cogeo (==2.0a5)
+Provides-Extra: dev
+Requires-Dist: pytest ; extra == 'dev'
+Requires-Dist: pytest-cov ; extra == 'dev'
+Requires-Dist: pytest-asyncio ; extra == 'dev'
+Requires-Dist: pre-commit ; extra == 'dev'
+Requires-Dist: requests ; extra == 'dev'
+
+# arturo-stac-api ![arturo-stac-api](https://github.com/arturo-ai/arturo-stac-api/workflows/arturo-stac-api/badge.svg)
+---
+
+**Documentation**: coming soon...
+
+**Source Code**: [https://github.com/arturo-ai/arturo-stac-api](https://github.com/arturo-ai/arturo-stac-api)
+
+---
+
+Python library for building and customizing a STAC compliant API:
+
+
+```
+pip install arturo-stac-api
+```
+
+
+## Usage
+```python
+# my_app.py
+from stac_api.config import ApiSettings
+from stac_api.api import create_app
+
+settings = ApiSettings()
+app = create_app(settings)
+```
+
+```bash
+$ uvicorn my_app:app --reload
+```
+
+## Project Structure
+```
+.
+├── alembic             # Database migrations
+│   └── versions        # Migration versions
+├── scripts             # Scripts for local development
+├── stac_api
+│   ├── api             # API layer
+│   ├── clients
+│   │   ├── postgres    # Postgres CRUD client
+│   │   └── tiles       # OGC Tiles API client
+│   ├── models          # Pydantic and ORM models
+│   └── utils           # Helper functions
+└── tests
+    ├── api             # Test api creation
+    ├── clients         # Test application logic
+    └── resources       # Test api endpoints
+```
+
+## Local Development
+Use docker-compose to deploy the application, migrate the database, and ingest some example data:
+```bash
+docker-compose build
+docker-compose up
+```
+
+For local development it is often more convenient to run the application outside of docker-compose:
+```bash
+make docker-run
+```
+
+
+### Testing
+The database container provided by the docker-compose stack must be running.  Run all tests:
+```bash
+make test
+```
+
+Run individual tests by running pytest within the docker container:
+```bash
+make docker-shell
+$ pytest -v
+```
+
