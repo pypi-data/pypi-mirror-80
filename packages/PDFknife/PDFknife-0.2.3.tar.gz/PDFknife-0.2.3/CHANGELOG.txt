@@ -1,0 +1,31 @@
+0.2.4 - 2020
+==================
+
+
+0.2.3 - 2020-09-23
+==================
+
+* Rename tools
+
+0.2.2 - 2020-09-15
+==================
+
+* Add pdfcut
+* Add pdfextract
+* Raise error if no engine is installed
+
+0.2.1 - 2020-05-26
+==================
+
+* fix the former release
+
+0.2.0 - 2020-05-26
+==================
+
+* Add pdfrecto
+* fix bin installation in setup.py
+
+0.1 - 2020-05-26
+================
+
+* First version
