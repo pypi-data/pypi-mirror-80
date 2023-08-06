@@ -1,0 +1,16 @@
+[run]
+source=roles
+omit = tests/*
+
+[report]
+omit =
+    *site-packages*
+    *tests*
+    *.tox*
+exclude_lines =
+    pragma: no cover
+    if __name__ == .__main__.:
+show_missing = True
+
+[tool:pytest]
+addopts = --cov --cov-append --cov-config=tox.ini --cov-report=term-missing
