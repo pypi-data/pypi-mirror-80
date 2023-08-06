@@ -1,0 +1,16 @@
+README.md
+pypi_setup.py
+natural_questions/__init__.py
+natural_questions/eval_utils.py
+natural_questions/eval_utils_test.py
+natural_questions/make_test_data.py
+natural_questions/nq_browser.py
+natural_questions/nq_eval.py
+natural_questions/nq_eval_test.py
+natural_questions/simplify_nq_data.py
+natural_questions/text_utils.py
+natural_questions.egg-info/PKG-INFO
+natural_questions.egg-info/SOURCES.txt
+natural_questions.egg-info/dependency_links.txt
+natural_questions.egg-info/requires.txt
+natural_questions.egg-info/top_level.txt
