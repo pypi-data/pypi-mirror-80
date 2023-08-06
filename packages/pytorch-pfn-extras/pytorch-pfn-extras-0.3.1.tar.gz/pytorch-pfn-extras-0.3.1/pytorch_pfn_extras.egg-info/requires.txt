@@ -1,0 +1,8 @@
+numpy
+torch
+
+[onnx]
+onnx
+
+[test]
+pytest
