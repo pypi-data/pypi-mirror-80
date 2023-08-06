@@ -1,0 +1,15 @@
+README.md
+pyproject.toml
+setup.cfg
+setup.py
+hdmedians/__init__.py
+hdmedians/geomedian.pyx
+hdmedians/medoid.py
+hdmedians.egg-info/PKG-INFO
+hdmedians.egg-info/SOURCES.txt
+hdmedians.egg-info/dependency_links.txt
+hdmedians.egg-info/requires.txt
+hdmedians.egg-info/top_level.txt
+hdmedians/tests/__init__.py
+hdmedians/tests/test_geomedian.py
+hdmedians/tests/test_medoid.py
