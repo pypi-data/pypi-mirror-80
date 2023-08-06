@@ -1,0 +1,16 @@
+[tool.black]
+line-length = 127
+target-version = ['py36', 'py37', 'py38']
+exclude = '''
+/(
+    __pycache__
+  | build
+  | dist
+  | .vscode
+  | .git
+  | .ipynb_checkpoints
+  | .tox
+  | .pytest_cache
+  | rljax.egg-info
+)/
+'''
