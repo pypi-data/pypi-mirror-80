@@ -1,0 +1,1 @@
+import pandas as pda=pd.read_csv('cleaned_data/Cancer Death - Data.csv')print(isinstance(a,pd.DataFrame))

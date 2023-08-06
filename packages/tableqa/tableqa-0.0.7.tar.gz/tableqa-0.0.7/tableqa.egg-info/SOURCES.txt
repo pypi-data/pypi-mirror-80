@@ -1,0 +1,42 @@
+.deepsource.toml
+.gitignore
+.travis.yml
+LICENSE
+MANIFEST.in
+README.md
+setup.py
+examples/sample.ipynb
+tableqa/.gitignore
+tableqa/Question_Classifier.h5
+tableqa/__init__.py
+tableqa/agent.py
+tableqa/clauses.py
+tableqa/clf.py
+tableqa/column_types.py
+tableqa/conditionmaps.py
+tableqa/data_utils.py
+tableqa/database.py
+tableqa/garage.py
+tableqa/nlp.py
+tableqa/requirements.txt
+tableqa.egg-info/PKG-INFO
+tableqa.egg-info/SOURCES.txt
+tableqa.egg-info/dependency_links.txt
+tableqa.egg-info/requires.txt
+tableqa.egg-info/top_level.txt
+tests/__init__.py
+tests/test_agent.py
+tests/test_clause.py
+tests/__pycache__/test_Clause.cpython-36-pytest-5.3.5.pyc
+tests/cleaned_data/Activities - Data.csv
+tests/cleaned_data/Blood Banks - Data.csv
+tests/cleaned_data/Cancer Death - Data.csv
+tests/cleaned_data/Communicable Diseases - Data.csv
+tests/cleaned_data/GDP at current prices (AED)-Production Approach.csv
+tests/cleaned_data/district_wise_details.csv
+tests/schema/Activities - Data.json
+tests/schema/Blood Banks - Data.json
+tests/schema/Cancer Death - Data.json
+tests/schema/Communicable Diseases - Data.json
+tests/schema/GDP at current prices (AED)-Production Approach.json
+tests/schema/district_wise_details.json
