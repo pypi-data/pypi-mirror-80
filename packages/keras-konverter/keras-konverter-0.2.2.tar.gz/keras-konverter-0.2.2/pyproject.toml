@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "keras-konverter"
+version = "0.2.2"
+description = "A tool to convert simple Keras models to pure Python + NumPy"
+readme = "README.md"
+repository = "https://github.com/ShaneSmiskol/Konverter"
+authors = ["Shane Smiskol <shane@smiskol.com>"]
+license = "MIT"
+
+packages = [
+    { include = "konverter" }
+]
+
+[tool.poetry.dependencies]
+python = "^3.6"  # 3.6 to 3.7 is okay, or 3.8 if you're using a beta version of tf
+numpy = "~1.18.3"
+
+[tool.poetry.dev-dependencies]
+tensorflow = "^2.1.0"
+pytest = "^5.4.1"
+
+[tool.poetry.scripts]
+konverter = 'konverter.__main__:run'
+
+[build-system]
+requires = ["poetry>=1.0.5"]
+build-backend = "poetry.masonry.api"
