@@ -1,0 +1,24 @@
+Metadata-Version: 2.1
+Name: ds-arpes-plugin
+Version: 0.0.2
+Summary: Plugin connecting data_slicer.pit and arpys.
+Home-page: https://github.com/kuadrat/ds_arpes_plugin.git
+Author: Kevin Kramer
+Author-email: kevin.kramer@uzh.ch
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+Requires-Dist: arpys (>=0.1.5)
+Requires-Dist: data-slicer (>=0.0.1)
+Requires-Dist: numpy (>=1.17.3)
+
+# Data slicer ARPYS plugin
+
+A plugin for data_slicer's PIT that connects it to functionalities from the 
+arpys module.
+
+
+
