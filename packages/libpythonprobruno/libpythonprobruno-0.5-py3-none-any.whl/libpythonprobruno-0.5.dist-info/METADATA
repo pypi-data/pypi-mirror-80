@@ -1,0 +1,85 @@
+Metadata-Version: 2.1
+Name: libpythonprobruno
+Version: 0.5
+Summary: Módulo para exemplificar construção de projetos Python no curso PyTools
+Home-page: https://github.com/brjatoba92/libpythonprobr
+Author: Bruno Jatobá
+Author-email: brjatoba92@gmail.com
+License: # libpythonprobr
+Requires-Dist: requests
+
+Módulo para exemplificar construção de projetos Python no curso PyTools
+
+Nesse curso é ensinado como contribuir com projetos de código aberto
+
+Link do curso [Python Pro](https://www.python.pro.br/)
+
+[![Build Status](https://travis-ci.org/brjatoba92/libpythonprobr.svg?branch=master)](https://travis-ci.org/brjatoba92/libpythonprobr)
+[![Updates](https://pyup.io/repos/github/brjatoba92/libpythonprobr/shield.svg)](https://pyup.io/repos/github/brjatoba92/libpythonprobr/)
+[![Python 3](https://pyup.io/repos/github/brjatoba92/libpythonprobr/python-3-shield.svg)](https://pyup.io/repos/github/brjatoba92/libpythonprobr/)
+
+Versão 3 do Python
+
+Para instalar:
+
+```console
+py -3 -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements-dev.txt
+```
+
+Para verificar qualidade do código:
+
+```console
+flake8
+```
+
+Tópicos a serem abordados:
+1. Git
+2. VirtualEnv
+3. Pip
+4. PyPi
+
+Description: # libpythonprobr
+        Módulo para exemplificar construção de projetos Python no curso PyTools
+        
+        Nesse curso é ensinado como contribuir com projetos de código aberto
+        
+        Link do curso [Python Pro](https://www.python.pro.br/)
+        
+        [![Build Status](https://travis-ci.org/brjatoba92/libpythonprobr.svg?branch=master)](https://travis-ci.org/brjatoba92/libpythonprobr)
+        [![Updates](https://pyup.io/repos/github/brjatoba92/libpythonprobr/shield.svg)](https://pyup.io/repos/github/brjatoba92/libpythonprobr/)
+        [![Python 3](https://pyup.io/repos/github/brjatoba92/libpythonprobr/python-3-shield.svg)](https://pyup.io/repos/github/brjatoba92/libpythonprobr/)
+        
+        Versão 3 do Python
+        
+        Para instalar:
+        
+        ```console
+        py -3 -m venv .venv
+        .venv\Scripts\activate
+        pip install -r requirements-dev.txt
+        ```
+        
+        Para verificar qualidade do código:
+        
+        ```console
+        flake8
+        ```
+        
+        Tópicos a serem abordados:
+        1. Git
+        2. VirtualEnv
+        3. Pip
+        4. PyPi
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Framework :: Pytest
+Description-Content-Type: text/markdown
