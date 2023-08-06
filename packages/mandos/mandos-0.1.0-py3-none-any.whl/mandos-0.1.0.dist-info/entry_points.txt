@@ -1,0 +1,3 @@
+[console_scripts]
+mandos=mandos.cli:cli
+
