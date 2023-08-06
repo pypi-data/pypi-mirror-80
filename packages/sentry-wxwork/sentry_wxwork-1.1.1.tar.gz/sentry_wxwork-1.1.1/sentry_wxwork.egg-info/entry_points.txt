@@ -1,0 +1,6 @@
+[sentry.apps]
+auth_wxwork = auth_wxwork
+
+[sentry.plugins]
+sentry_wxwork = sentry_wxwork.plugin:WxworkNotificationsPlugin
+
