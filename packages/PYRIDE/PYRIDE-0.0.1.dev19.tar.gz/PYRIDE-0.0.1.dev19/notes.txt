@@ -1,0 +1,37 @@
+
+
+SNIPPETS OF INTERESTING CODE
+
+    #coord = f'@{event.x},{event.y}'
+    #hover_pos = page.index(coord)
+    #print(page.tag_ranges('match')[0].string)
+    #page.bind('<Key>', lambda event: print(repr(event.keysym)))
+
+
+REFACTOR    move the display_guide code into the util module
+REFACTOR    as pages are deleted, the children objects are not deleted, and will accumulate
+REFACTOR    make ScrolledTree mirror the ScrolledText (inherit from tree)
+                and change the view.tree... usage to just tree...
+
+QUESTION    implement presistence to the application? (geometry, text pages, regex pattern)
+QUESTION    instead of requests, use urllib? We only have one dependency...'requests'
+QUESTION    if the user holds down a key in the regex entry, keep resetting until release ?
+QUESTION    perhaps we flash the focus text bold and then regular (set schedules)
+QUESTION    dont focus on first entry when we are already doing work ?
+QUESTION    do we want tabs for the notebook on the left size of the widget ?
+            less wasted space on top...
+QUESTION    there are many different matching functions in re. Implement those ?
+QUESTION    Good idea to have a bigger font size for the 'focus' text selection ?
+QUESTION    make progressbar dynamically appear when needed ?
+QUESTION    implement a 'minimum' size for the window. does it cascade up to the higher levels ?
+QUESTION    make the 'text' column in treeview display only the character count ?
+QUESTION    display text in the treeview right-click ? Isnt that what highlighting is for ?
+QUESTION    schedule realtime on scrolltext update? This may need another special checkbox ?
+QUESTION    be able to save regex & load regex ?
+
+RESEARCH    enumerate the https://regex101.com/ features
+RESEARCH    enumerate features of 'regulator'
+RESEARCH    enumerate features of 'regulazy'
+RESEARCH    https://www.debuggex.com/#cheatsheet
+RESEARCH    other RegEx IDEs
+

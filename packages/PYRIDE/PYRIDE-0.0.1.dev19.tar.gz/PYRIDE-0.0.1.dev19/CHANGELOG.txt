@@ -1,0 +1,106 @@
+
+
+FINISHED fix index1 error
+FINISHED add a debug tab to the pane -> string for the pattern debug
+FINISHED create utility function (in util.py) that processes the matches
+FINISHED mouse and scrollwheel will change font size up or down
+FINISHED to highlight only a single specific group. Specified by the user as a number or name
+FINISHED ...Perhaps we make the decompose checkbox a 'custom box' and add a button to configure
+FINISHED ...the groups. Maybe tack the color configure button onto this setting. It will
+FINISHED ...have to bring up a new window. Transient toplevel.
+FINISHED ...ALSO have the cability to NOT highlight a specific group
+FINISHED ...Maybe we implement all of the specific/not highlighting with a list of checkboxes
+FINISHED ...perhaps we add two menubuttons to the group color labelframe -> leave decompose? alone
+FINISHED have one big master 'match' object that contains all of the info
+FINISHED have highlighting and treeview synced up by adding matches alternating between the two?
+FINISHED you have to go through the selecting group highlighting code...its an absolute mess
+FINISHED implement the 'cursor location' on the bottom of the page "Current Selection: 6.78"
+FINISHED bind navigation arrow keys to change the location label
+FINISHED make a text location field in the status bar on bottom to update cursor location
+FINISHED use 'group' part of self.matches to highlight selective groups
+FINISHED the group menu is reversed?
+FINISHED 'class.*?((E)rror).*?:' will highlight wrong but on decomposed setting
+FINISHED write a proper app wrapper class that inherits from tk.Tk root
+FINISHED be able to exit application while search is happening without error (unschedule tasks?)
+FINISHED add a panedwindow between the treeview and the scrolltext ?
+FINISHED the treeview widget expands slightly every time we search some regex
+FINISHED unhighlight treeview selection when clicking on misc treeview spaces (blank / columns)
+FINISHED make the help and docs popups non-blocking ! (non-transient)
+FINISHED bug where entry widgets in the regex template popup were not stretching out
+FINISHED do notebooks in notebooks for subsections in the help tab
+FINISHED bug where zoom font errors because self._text_font was a tuple object instead of list
+FINISHED error on a popup window will cause main program from exiting due to grab-set method
+FINISHED create subcategorical help popup. And linearize the building of individual pages
+FINISHED include an option for the link file name in the URL page, instead of the 30 char '...'
+FINISHED include a bunch of examples / templates for regex commands
+FINISHED create bindings for TAB or SHIFT TAB in the regex entry
+FINISHED get the new page window to spawn in center of current window
+FINISHED add tags to the help texts to make them pleasant to read
+FINISHED spawn popups in the center of the window
+FINISHED added a button to do a search manually when realtime is off and user doesn't want <return>
+FINISHED switching to a new font family undoes the size
+FINISHED clicking the treeview column header will raise an error. also anywhere else...
+FINISHED a new scrolltext widget with a horizontal scrollbar
+FINISHED when changing font or size, the displayed setting is not updated on the menubutton
+FINISHED update font family and size when starting up
+FINISHED update font family and size when adding new page
+FINISHED switching to a font with a space in it "Consolas New" will not work - raises an error
+FINISHED take quotes out of `a` and 'a' in the documentation
+FINISHED have tree status empty when app starts up
+FINISHED when text is highlighted red (focused) instead make it the opposite color of the background
+         so essentially autodefine it at runtime ?
+         When any match text is highlighted with the cursor, invert the color again.
+FINISHED highlight parts of the documentation with `a` and 'a'
+FINISHED be able to change font / font size in the scrolltexts
+                or just font size. Just display the font family currently being used ?
+FINISHED go thru class attributes and unclass them (remove self) if not 'globally' needed
+FINISHED determine the appropriate data limit to impose. One megabyte ?
+FINISHED searching (.) in html files will break whole program
+FINISHED investigate weird issue when regex "<div.*>(.*)</div>" (+ DOTALL FLAG) is entered
+FINISHED make a api func to insert regex in code
+FINISHED make the regex status label say 'waiting' when the user enters something in realtime
+FINISHED make flag buttons highlight a color when pressed !
+FINISHED remove 'waiting...' if entry is erased before task launches
+FINISHED when pressing flags with nothing in entry box, it searches...
+FINISHED include PYTHON docs in the regex button
+FINISHED notify user if proper modules are not installed
+FINISHED add an inline regex flag on right of the progressbar (acts as a spacer too)
+FINISHED have an indicator that the regex box IS the entry Box i.e. 'enter regex here'
+FINISHED determine if the other flags even do anything important...DOTALL does tho
+FINISHED switch around the yellow and green decompose colors
+FINISHED implement a small delay for realtime processing to capture a bunch of
+                fast characters someone types (maybe 1.5 to 2 seconds)
+FINISHED if you right click an entry in treeview. pop a dialogue with full text
+FINISHED catch encoding errors when opening files that cant be opened (pictures)
+FINISHED If a task is executing, disallow others to start
+        (otherwise, data overwriting and stack overflow)
+FINISHED add options in the window itself to add to the pages.
+        1) add a blank page - have the user type anything into it
+        2) browse for a file - add the contents to page
+        3) Add a download option where we fetch a page's text from a html webpage
+FINISHED switch the palette frame and the search options frame
+FINISHED change the selected treeview match to red text
+FINISHED fix the 'no match bug'
+FINISHED implement a 'find' functionality that zooms the scrolltext to get the match in view
+FINISHED instead of not highlighting anything if too many results. do first 100 or so...
+FINISHED select the right element when enter is pressed on treeview and mouse is in different
+        location than selection
+FINISHED export the source code to a separate 'extension' file
+FINISHED fix the 'config( files)?' error
+FINISHED if realtime -> and too many matches -> disable realtime
+FINISHED Only display 99 matches in the tree
+FINISHED display matches in the treeview
+FINISHED add discrete updates for the progressbar
+FINISHED actually get the progressbar to work
+FINISHED undo the recompiling / highlighting on falling edge of the "realtime" flag
+FINISHED Move pages with arrow keys
+FINISHED add the re.DOTALL flags in a checkbox format
+FINISHED a bunch of cleanup and housekeeping
+FINISHED Figure out the indicatoron flag
+FINISHED when user hits enter and regex is red, it will blip pink in background
+FINISHED Make the default non-decompose highlighting orange-yellow (indust. warning style)
+FINISHED add treeview
+FINISHED Add a numerical count of matches found
+FINISHED fix the '(hav)?' error
+FINISHED Make both color schemes switchable in code
+FINISHED Label the color palette

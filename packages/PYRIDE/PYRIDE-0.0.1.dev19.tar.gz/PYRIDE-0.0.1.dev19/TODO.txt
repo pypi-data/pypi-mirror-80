@@ -1,0 +1,124 @@
+
+
+RELEASE     comment everything to oblivion
+RELEASE     organize and rename functions to group them intelligently
+RELEASE     add to help menu - make it usable
+RELEASE     test out all corner cases. Try to break it ! Press as many buttons as you can !
+RELEASE     Try to ideate errors across platforms (and on this platform too...)
+RELEASE     Clean up the top of the GUI (realign and repack everything, reintroduce spacings)
+RELEASE     Clean up the templates. Get all common temps in there and reorder
+RELEASE     -> do this by testing out the application a lot and building your own !
+RELEASE     reorder methods in IDE to have the GUI management on top (close to __init__) and functional on bottom
+
+
+STYLE
+    configure font styles and sizes
+        make the toolbar background a different color (do it with style)
+        define heading label fonts (and others) by only changing font size (dont explicitly state family)
+        Implement a default font list that will try in order to set the default fonts on start
+
+    make the flag buttons prettier (more native). Inherit from ttk button ?
+
+    have the control exit button be 'redified' -> get the system default style and
+        make a function called 'redify' that is a cross platform way to make the
+        default color slightly more red
+
+    The debug tab of the right pane is highly 'framed-out' lots of visible borders. Fixable?
+
+
+
+FUTURE FEATURES
+    HIGH-LEVEL      crunch & reorder gui and when window is resized. Prioritize important widgets
+    HIGH-LEVEL      a match analysis system that counts occurences of specific matched text and
+                    creates a modality
+    HIGH-LEVEL      add tabs to the entry bar to have separate regex entries
+    HIGH-LEVEL      To the 'add_file' dialog
+                        Implement the checksize functionality inside the 'add from file' function
+                        implement the LOCALE flag when different encodeings are supported
+    HIGH-LEVEL      sometimes regex is needed to search a 'list' of sorts instead of a whole document.
+    HIGH-LEVEL      highlight the regex entry when using decompose?
+    HIGH-LEVEL      implement a 'from cache' suboption for the 'from link' option.
+                        this will require using the 'save' parameter of 'simple download' function
+
+    MID-LEVEL       Rename notebook tabs (page names) when right clicking on them. Have a little popup
+    MID-LEVEL       When finding new matches, use a special 'self.matches' object that only records CHANGES to the overall matches ?
+    MID-LEVEL       A getting-started page that has the add-page buttons with a full explanation
+    MID-LEVEL       A transient toplevel window when right-clicking on the treeview to have a super detailed
+                        look into the match. Maybe use a canvas here ? Thats real difficult...
+    MID-LEVEL       Implement a debug feature with a separate text display for the DEBUG flag output
+    MID-LEVEL       When clicking a sub-group in the treeview, highlight ONLY that group text in red. However, make the rest of the match text bold but black colored
+    MID-LEVEL       use the ttk LabelFrame's 'labelwidget' parameter to make the decomposed checkbutton a title of the palette labelframe
+    MID-LEVEL       re-implement the n_chars limit on the treeview itemization function.
+    MID-LEVEL       use the scrolltext's tag_bind options (with 'enter' and 'leave' bindings to work thru). This will make it such that a hover over the tag with the mouse will select the tag. If you do this, also make a checkbutton on the bottom of the page called 'hover focus' that will toggle this behavior on or off. If the behavior is off, still be able to focus on it by clicking directly and releasing with Button-1
+    LOW-LEVEL       have progress bar always gop to 100% even in limited / override
+                    do this by setting it ahead of time to EITHER the limit value
+                    or the amount of operation cycles (if less than limit). Maybe this is a better way
+                    to do limiting in generat ? Keeps it out of the main loop code. Nice clean code.
+
+
+
+FEATURE     get the handle of the group menu tearoff so the toplevel window can be customized
+FEATURE     double click in the regex entry will highlight only the curent word
+                have it do it in an intelligent way...like sublime text does
+FEATURE     add up and down arrow key control on view text to focus on next-previous
+FEATURE     instead of overloading highlighting operations, launch them in a thread instead, and when
+            the regex changes, cancel the thread and restart it
+FEATURE     add ability to open binary files and files with other encodings
+            display encoding on bottom of the page (on the bottom frame)
+            remember html files come in BOTH utf-8 and binary. You are testing with utf-8 only !!!
+FEATURE     implement TAB and SHIFT and UP and DOWN in regex entry
+FEATURE     add to the color config tab
+            have a 'flux' compatible setting for the decompose colors when the screen turns orange
+            implement the 'full_compliment' option. Rebuild the tags if changed.
+FEATURE     have some indicator that specifies whether the regex is currently searched and ready
+FEATURE     add an icon to the root window (and popups will inherit?)
+FEATURE     a modular window (much like KiCAD) that resonds to treeview right clicks
+            make it a non-transient
+            if window is already spawned in after a rightclick on the treeview -> send it new data
+                dont spawn in a new one
+FEATURE     put some basic graphics into the help window
+FEATURE     we highlight a focused text with bold red, but what about a focused whitespace?
+
+FEATURE     when we toggle decompose make sure we dont recompile and search matches...
+FEATURE     -> when deselecting groups, target that specific group and thats it
+FEATURE     implement the OVERLOAD with a timeout feature as well as absolute cycle limits
+FEATURE     corroborate all the different data limits / n-match limits into something reasonable
+FEATURE     validate GUI is properly updated and operations are going as planned
+FEATURE     have a default tag applied to text the user enters manually (make it green or something?)
+
+TODO    tie together focus_next focus_prev, focus_text, focus_tree, focus_page... etc
+
+BUG     when treeview column names are clicked when scrolled down a bit, it selects the underlying item
+BUG     control-mouse wheel will also scroll and not just change the font size like we want
+BUG     do a wrap-around on the ascii_lowercase so no errors if more than 26 groups
+BUG     unwanted searching when flag changed in API
+BUG     when entry is edited, only reschedule a new wait once regex is good. Otherwise
+        the red background blips and also the Waiting... message never disappears
+BUG     text in entry -> start deleting text -> 'Waiting...' -> When clear, waiting msg disappears
+        -> immediately start typing text -> No Waiting
+BUG     unhelpful error "no content detected" when it cannot load a file
+BUG     the root doesn't seem ot fully quit and allow shell to be used after the mainloop exits
+BUG     hover text not unhighlighted when leaving one 'match' tag and entering another one directly
+BUG     treeview acting strangely by putting one character in each entry
+BUG     processing happens two times when decompose is on...
+BUG     if we start out with hover focus set(1) in code, the invalid slave spec error happens
+BUG     the mainloop of the text popup window will mess up the current search operation. It will freeze it.
+BUG     when there are MANY matches, have an update func called in the finditer loop
+        (5,000,000 matches will freeze the UI)
+
+
+ACTION SERIES  scrolltext
+    FEATURE     if page is clicked on a match, focus bold that match and select in treeview
+    FEATURE     how do we identify the exact match to unhighlight
+                if the user directly edits text box
+                also deal with flag: 'self.text_updated'
+
+
+
+FINISHED todo only do surgical group-selection
+FINISHED delete unnecessary functions
+FINISHED make an API func to set and unset decomposed checkbutton in code
+FINISHED fix progress bar not working
+FINISHED call a function when mouse is moved within the text page
+FINISHED update the gui during operations...we took that out before
+

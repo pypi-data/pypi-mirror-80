@@ -1,0 +1,3 @@
+[console_scripts]
+pyride = pyride.__main__:main
+
