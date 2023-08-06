@@ -1,0 +1,32 @@
+Metadata-Version: 2.1
+Name: python_lnd_grpc
+Version: 0.0.1
+Summary: grpc client for lnd python version 3.6
+Home-page: https://github.com/lightningriders/lnd_grpc
+Author: Tony Sanak
+Author-email: tony@lwqd.money
+License: MIT
+Description: Init 
+        https://packaging.python.org/tutorials/packaging-projects/
+        https://setuptools.readthedocs.io/en/latest/setuptools.html
+        
+        Steps to build and publish package
+        Build wheel:
+        python3 setup.py bdist_wheel
+        
+        Install it locally:
+        pip3 install -e .
+        
+        Source dist (tar ball):
+        python3 setup.py sdist
+        
+        Simplified:
+        python3 setup.py bdist_wheel sdist
+Keywords: python grpc lnd lightning bitcoin async lightning-network rpc
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
