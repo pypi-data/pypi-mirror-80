@@ -1,0 +1,3 @@
+[console_scripts]
+alteruphono = alteruphono.__main__:main
+
