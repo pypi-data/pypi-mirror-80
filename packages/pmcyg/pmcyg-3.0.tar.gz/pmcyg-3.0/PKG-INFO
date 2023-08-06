@@ -1,0 +1,14 @@
+Metadata-Version: 1.1
+Name: pmcyg
+Version: 3.0
+Summary: Utility for creating offline Cygwin installers
+Home-page: https://github.com/rwpenney/pmcyg
+Author: RW Penney
+Author-email: rwpenney@users.sourceforge.net
+License: GPL v3
+Download-URL: https://github.com/rwpenney/pmcyg/archive/pmcyg-3.0.tar.gz
+Description: pmcyg is a tool for creating an offline Cygwin installer containing customized collections of packages. This avoids having to download the entirety of a Cygwin release, which might occupy many GB, instead allowing installers that can be as small as 40MB. pmcyg enables Cygwin installation from a self-contained CD/DVD image or USB-flash for use on systems without internet access.
+Keywords: Cygwin
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Utilities
