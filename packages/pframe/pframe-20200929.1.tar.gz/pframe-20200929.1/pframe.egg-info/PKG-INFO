@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: pframe
+Version: 20200929.1
+Summary: PFrame is a basic framework for python
+Home-page: https://github.com/Eastwu5788/PFrame
+Author: LeonardWoo
+Author-email: wudong@eastwu.cn
+License: MIT
+Description: 
+        # PFrame
+        [![Build Status](https://www.travis-ci.org/Eastwu5788/PFrame.svg?branch=master)](https://www.travis-ci.org/Eastwu5788/PFrame)
+        [![Coverage Status](https://coveralls.io/repos/github/Eastwu5788/PFrame/badge.svg)](https://coveralls.io/github/Eastwu5788/PFrame)  
+        Python小工具库
+        
+        ### PIP安装
+        ```bash
+        pip install pframe
+        ```
+        
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Requires-Python: ~=3.2
+Description-Content-Type: text/markdown
