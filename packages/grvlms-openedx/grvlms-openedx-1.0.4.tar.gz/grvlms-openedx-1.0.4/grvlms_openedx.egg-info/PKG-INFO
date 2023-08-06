@@ -1,0 +1,31 @@
+Metadata-Version: 2.1
+Name: grvlms-openedx
+Version: 1.0.4
+Summary: The docker-based Open edX distribution designed for peace of mind
+Home-page: https://xyz
+Author: GrooveTechnology
+Author-email: product@groovetechnology.com
+License: AGPLv3
+Project-URL: Documentation, https://xyz
+Project-URL: Code, https://xyz
+Project-URL: Issue tracker, https://xyz
+Project-URL: Community, https://xyz
+Description: Grvlms - The Openedx distribution
+        ==================================
+        
+        .. image:: https://ci.groovetechnology.com/buildStatus/icon?job=GrooveGitHub%2Fgrvlms-cli%2Fmaster
+            :alt: Build status
+            :target: https://ci.groovetechnology.com/job/GrooveGitHub/job/grvlms-cli/job/master/
+        
+        Please access this https://groovetech.atlassian.net/wiki/spaces/ROE/overview for more information
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU Affero General Public License v3
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Requires-Python: >=3.5
+Description-Content-Type: text/x-rst
