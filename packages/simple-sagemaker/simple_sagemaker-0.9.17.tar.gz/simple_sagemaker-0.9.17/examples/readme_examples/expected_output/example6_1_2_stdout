@@ -1,0 +1,17 @@
+I [2020-09-24 13:53:36][simple_sag] Running ssm cli, args:['/home/runner/work/simple_sagemaker/simple_sagemaker/.tox/py/bin/ssm', 'run', '-p', 'tests/simple-sagemaker-example-cli_2020-09-24-13-43-54_py37', '-t', 'cli-task6-1', '-s', '/home/runner/work/simple_sagemaker/simple_sagemaker/examples/readme_examples/example6/code', '-e', 'worker6.py', '-i', '/home/runner/work/simple_sagemaker/simple_sagemaker/examples/readme_examples/example6/data', 'ShardedByS3Key', '--iis', 'persons', 's3://awsglue-datasets/examples/us-legislators/all/persons.json', '--df', '/home/runner/work/simple_sagemaker/simple_sagemaker/examples/readme_examples/example6', '--repo_name', 'task6_repo', '--aws_repo_name', 'task6_repo', '--download_state', '--download_model', '--download_output', '--max_run_mins', '15', '--ic', '2', '--task_type', '1', '-o', '/home/runner/work/simple_sagemaker/simple_sagemaker/.tox/py/tmp/popen-gw3/test_readme_examples0/readme_examples/output/example6_1', '--cs', '--ks']
+I [2020-09-24 13:53:36][botocore.c] Found credentials in environment variables.
+I [2020-09-24 13:53:37][simple_sag] Getting the image for pytorch, version 1.6.0, python version py3
+I [2020-09-24 13:53:37][root] Building # 763104351884.dkr.ecr.us-east-1.amazonaws.com/pytorch-training:1.6.0-cpu-py3 is automatically replaced with the correct base image
+FROM 763104351884.dkr.ecr.us-east-1.amazonaws.com/pytorch-training:1.6.0-cpu-py3 
+RUN pip3 install pandas==0.25.3 scikit-learn==0.21.3
+ to task6_repo:latest and pushing to task6_repo...
+I [2020-09-24 13:53:37][root] Image already exists!
+I [2020-09-24 13:53:37][root] Image uri: 667232328135.dkr.ecr.us-east-1.amazonaws.com/task6_repo@sha256:d49f0df54a12a4e71fb9769f77dda4e9f9f6dec9f1a6d8236089624541c9e33b
+I [2020-09-24 13:53:37][simple_sag] Allowing access for SageMakerIAMRole to awsglue-datasets using the SageMakerIAMRole policy...
+statement already exist
+I [2020-09-24 13:53:37][simple_sag] Creating SageMaker IAM Role: SageMakerIAMRole with an attached AmazonSageMakerFullAccess policy...
+I [2020-09-24 13:53:37][simple_sag] Syncing data from /home/runner/work/simple_sagemaker/simple_sagemaker/examples/readme_examples/example6/data to s3://sagemaker-us-east-1-667232328135/tests/simple-sagemaker-example-cli_2020-09-24-13-43-54_py37/cli-task6-1/input...
+I [2020-09-24 13:53:37][simple_sag] Skipping /home/runner/work/simple_sagemaker/simple_sagemaker/examples/readme_examples/example6/data/sample_data2.txt
+I [2020-09-24 13:53:37][simple_sag] Skipping /home/runner/work/simple_sagemaker/simple_sagemaker/examples/readme_examples/example6/data/sample_data1.txt
+I [2020-09-24 13:53:38][simple_sag] Task cli-task6-1 is already completed by cli-task6-1-2020-09-24-13-48-51-lNIcalT0
+I [2020-09-24 13:53:38][simple_sag] Downloading results to /home/runner/work/simple_sagemaker/simple_sagemaker/.tox/py/tmp/popen-gw3/test_readme_examples0/readme_examples/output/example6_1
