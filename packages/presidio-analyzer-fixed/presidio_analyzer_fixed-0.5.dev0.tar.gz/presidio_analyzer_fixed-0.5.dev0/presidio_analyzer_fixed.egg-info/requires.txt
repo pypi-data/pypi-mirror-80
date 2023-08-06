@@ -1,0 +1,7 @@
+cython==0.29.10
+spacy==2.2.3
+regex==2019.6.8
+grpcio==1.31.0
+protobuf==3.8.0
+tldextract==2.2.1
+knack==0.6.2
