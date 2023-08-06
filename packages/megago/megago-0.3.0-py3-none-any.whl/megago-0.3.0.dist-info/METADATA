@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: megago
+Version: 0.3.0
+Summary: Calculate semantic distance for sets of Gene Ontology terms
+Home-page: https://github.com/MEGA-GO/megago
+Author: Henning Schiebenhoefer
+Author-email: henning.schiebenhoefer@posteo.de
+License: LICENSE
+Platform: UNKNOWN
+Requires-Dist: goatools
+Requires-Dist: seaborn
+Requires-Dist: progress
+
+
+Mega-GO calculates the similarity between GO terms with the relevance semantic similarity (sim<sub>Rel</sub>) metric.
+The program reads one or more input FASTA files.
+For each file it computes a variety of statistics, and then
+prints a summary of the statistics as output.
+
+The goal is to provide a solid foundation for new bioinformatics command line tools,
+and is an ideal starting place for new projects.
+
