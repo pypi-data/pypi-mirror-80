@@ -1,0 +1,16 @@
+bqme/__init__.py,sha256=SVyhESkPK8fE0t8BTLK1qgAca8mtzmh_B5LvVmUQsnA,78
+bqme/distributions.py,sha256=K0tJl2IcSDB3xdHz_0Y8zwjonf9TAyBOyBgXsBquZd4,3248
+bqme/models.py,sha256=MljUA2wfjYsBhJSVXyk7aUG2yv3FyeTPiv03P_5bE38,3679
+bqme/settings.py,sha256=SE9Wm-2ORDpDP8ypT1pfWtuLgdf9hL_nGVXTEfus7PM,143
+bqme/stan_code_template.stan,sha256=m_Eti_k9oYlcpUjDjZt7BVAkY0Et0-S1XZrpNvzMFpM,946
+bqme/variables.py,sha256=Hvxy-AIRT9XCjcmVz6rQVOHQcdKHrYCdTcmFhRejtvQ,1071
+test/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+test/test_distributions.py,sha256=L12jZxg9S4B1J47qiF5m_bNtoBIVAKhrR0Ea4ine7pg,1128
+test/test_models.py,sha256=coY9xNtj-rrzpAMZYYobfWegGyacLhBvFpTq2HLVpW4,2137
+test/test_variables.py,sha256=gyeOUs14AfugsGEwsRxAmbCoNjOvjaiSzjCb_0VCHdc,663
+test/filled_templates/os_normal.stan,sha256=WVpOBdGe53AIdLpvfcE7PVndtQKyBczcXLzm3DjYnG8,998
+bqme-0.0.3.dist-info/LICENSE.txt,sha256=OXLcl0T2SZ8Pmy2_dmlvKuetivmyPd5m1q-Gyd-zaYY,35149
+bqme-0.0.3.dist-info/METADATA,sha256=mQ4QeZ4LnB28xlgk0jLyp7kYOKF133I3gpBbf5drtdk,3320
+bqme-0.0.3.dist-info/WHEEL,sha256=EVRjI69F5qVjm_YgqcTXPnTAv3BfSUr0WVAHuSP3Xoo,92
+bqme-0.0.3.dist-info/top_level.txt,sha256=TRFiSZqmS6c_NgfRrprXgvlzFqLnbZ7cXweA7_MCNtQ,10
+bqme-0.0.3.dist-info/RECORD,,
