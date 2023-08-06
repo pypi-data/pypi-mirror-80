@@ -1,0 +1,68 @@
+Metadata-Version: 2.1
+Name: chcli
+Version: 0.1.0
+Summary: A Terminal Client for ClickHouse with AutoCompletion and Syntax Highlighting.
+Home-page: https://github.com/long2ice/chcli
+License: Apache-2.0
+Keywords: migrate,Tortoise-ORM,mysql
+Author: long2ice
+Author-email: long2ice@gmail.com
+Requires-Python: >=3.8,<4.0
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: antlr4-python3-runtime
+Requires-Dist: async_lru
+Requires-Dist: asynch
+Requires-Dist: click
+Requires-Dist: prompt_toolkit
+Requires-Dist: rich
+Requires-Dist: sqlparse
+Project-URL: Documentation, https://github.com/long2ice/chcli
+Project-URL: Repository, https://github.com/long2ice/chcli.git
+Description-Content-Type: text/markdown
+
+# chcli
+
+A Terminal Client for ClickHouse with AutoCompletion and Syntax Highlighting.
+
+This project is inspired by [mycli](https://github.com/dbcli/mycli).
+
+## Features
+
+`chcli` is written using [prompt_toolkit](https://github.com/prompt-toolkit/python-prompt-toolkit) and [antlr4](https://pypi.org/project/antlr4-python3-runtime/) with [grammar](https://github.com/ClickHouse/ClickHouse/tree/master/utils/grammar).
+
+- Auto-completion as you type for SQL keywords as well as tables, views and columns in the database.
+- Syntax highlighting using `Pygments`.
+- Pretty prints tabular data.
+
+## Install
+
+You can install just by pip.
+
+```shell script
+> pip install chcli
+```
+
+## Usage
+
+```shell script
+> chcli --help
+Usage: chcli [OPTIONS]
+
+  A Terminal Client for ClickHouse with AutoCompletion and Syntax
+  Highlighting.
+
+Options:
+  -v, --version       Show the version and exit.
+  -h, --host TEXT     ClickHouse server host.  [default: 127.0.0.1]
+  -p, --port INTEGER  ClickHouse server port.  [default: 9000]
+  -u, --user TEXT     ClickHouse server user.  [default: default]
+  --password TEXT     ClickHouse server password.  [default: ]
+  --help              Show this message and exit.
+```
+
+## License
+
+This project is licensed under the [Apache-2.0](https://github.com/long2ice/chcli/blob/master/LICENSE) License.
+
