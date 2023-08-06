@@ -1,0 +1,43 @@
+Metadata-Version: 2.1
+Name: soco-mrc
+Version: 0.0.8.1
+Summary: Neural machine reading comprehension models
+Home-page: https://www.soco.ai
+Author: tianchez
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: Free for non-commercial use
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+Requires-Dist: aiofiles (>=0.4.0)
+Requires-Dist: aiohttp (>=3.5.4)
+Requires-Dist: asyncio (>=3.4.3)
+Requires-Dist: torch (>=1.2.0)
+Requires-Dist: numpy (>=1.16.3)
+Requires-Dist: starlette (>=0.12.0)
+Requires-Dist: uvicorn (>=0.7.1)
+Requires-Dist: python-multipart (>=0.0.5)
+Requires-Dist: transformers (==2.9.0)
+Requires-Dist: soco-device (==0.0.4)
+Requires-Dist: boto3 (>=1.9.134)
+Requires-Dist: oss2 (>=2.6.1)
+
+# RCServing
+A serve to create APIs for different reading comprehension models.
+
+# Usage
+1. use as a package
+
+    pip install soco-mrc
+
+2. use as a Flask server on docekr.
+
+## Model Ids
+
+### English
+
+
+### Chinese
+
+
