@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: msrc
+Version: 0.0.1
+Summary: MSRC Search tool
+Home-page: https://github.com/haginara/msrc-python
+Author: Jonghak Choi
+Author-email: haginara@gmail.com
+License: MIT License
+Description: MSRC(Microsoft Security Research Center) API for python
+        ============================================
+        
+        Preparation
+        -----------
+        ### Install requirements
+        	pip install requests
+        
+        ### USE .env file
+        Put MSRC_KEY on .env file
+        .env
+        	MSRC_KEY=key_form_msrc_portal
+        
+        Export env from .env file
+        	export $(cat .env | xargs)
+        
+        Usage
+        -----
+        	python msrc.py CVE-2018-8174
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Description-Content-Type: text/markdown
