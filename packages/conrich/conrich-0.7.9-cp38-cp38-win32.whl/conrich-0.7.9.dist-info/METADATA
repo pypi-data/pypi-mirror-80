@@ -1,0 +1,66 @@
+Metadata-Version: 2.1
+Name: conrich
+Version: 0.7.9
+Summary: Python client for send order to Concords Securities.
+Home-page: https://concords6016.github.io/conrich_docs/
+Author: Leo Wu
+Author-email: leo.wu@concords.com.tw
+License: MIT
+Keywords: stock,futures,option,TWSE,TPEX,TAIFEX
+Platform: Windows
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Topic :: Office/Business :: Financial
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: pythonnet (>=2.5.1)
+Requires-Dist: pandas
+Requires-Dist: psutil
+Requires-Dist: pywin32
+
+# *conrich* 
+
+![PyPI](https://img.shields.io/pypi/v/conrich)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/conrich)
+![PyPI - Format](https://img.shields.io/pypi/format/conrich)
+![PyPI - License](https://img.shields.io/pypi/l/conrich)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/conrich)
+![contact](https://img.shields.io/badge/contact-康和證券集團-red)  
+
+---
+## What's conrich for?
+**conrich**為康和綜合證券程式下單API，整合了.net framework 4.5架構下的交易介面，讓使用者可以輕鬆的運用python 3.6+ 執行快速下單。
+</br>
+**conrich** is a securities, futures, option API, which send orders to Concord Securities Group.
+This package integrated with .net framework 4.5, and is compatible with Python 3.6+.
+It is distributed under the MIT license.
+
+## Package Document
+More information about **conrich** is available at [conrich_docs](https://concords6016.github.io/conrich_docs/).
+
+## Requirements
+Using package requires:
+- Windows
+- Python3.6+
+- 康和金好康
+- .net framework 4.5+
+
+## Installation
+Refer to [Install steps](https://concords6016.github.io/conrich_docs/install/).
+
+## Summarized Table
+The functions which are provided in **conrich** are summarized in the below link.  
+[Functions summarized](https://concords6016.github.io/conrich_docs/sum_chart/summarized_table/)
+## Reference  
+Click these two links can get the zip file of Stock API and Futures API. The zip file includes the C# example and the relative document of C# API.  
+- [Stock API zip file](https://www.concords.com.tw/download/20200318_證券API客戶使用元件及文件.zip)  
+- [Futures API zip file](https://www.concordfutures.com.tw/WebSiteUpload//Files/Document/20200728_期貨API.zip)
+
