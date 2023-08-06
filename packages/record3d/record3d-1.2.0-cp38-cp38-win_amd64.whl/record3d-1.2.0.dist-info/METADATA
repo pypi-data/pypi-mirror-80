@@ -1,0 +1,13 @@
+Metadata-Version: 2.1
+Name: record3d
+Version: 1.2.0
+Summary: Accompanying library for the Record3D iOS app (https://record3d.app/). Allows you to receive RGBD stream from iOS devices with TrueDepth camera(s).
+Home-page: https://github.com/marek-simonik/record3d
+Author: Marek Simonik
+Author-email: admin@record3d.app
+License: lgpl-2.1
+Requires-Dist: numpy
+
+# [*Record3D – Point Cloud Animation and Streaming*](https://record3d.app/): the accompanying library 
+
+
