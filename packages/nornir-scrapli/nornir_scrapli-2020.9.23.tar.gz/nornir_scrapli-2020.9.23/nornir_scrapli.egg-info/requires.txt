@@ -1,0 +1,12 @@
+scrapli>=2020.06.06
+scrapli_community>=2020.08.08
+scrapli_netconf>=2020.09.23
+nornir<4.0.0,>=3.0.0
+
+[genie]
+genie>=20.2
+pyats>=20.2
+
+[textfsm]
+textfsm<2.0.0,>=1.1.0
+ntc-templates<2.0.0,>=1.1.0
