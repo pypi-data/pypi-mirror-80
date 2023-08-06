@@ -1,0 +1,13 @@
+LICENSE
+README.md
+setup.cfg
+setup.py
+strudel.scraper.egg-info/PKG-INFO
+strudel.scraper.egg-info/SOURCES.txt
+strudel.scraper.egg-info/dependency_links.txt
+strudel.scraper.egg-info/entry_points.txt
+strudel.scraper.egg-info/requires.txt
+strudel.scraper.egg-info/top_level.txt
+stscraper/__init__.py
+stscraper/base.py
+stscraper/github.py
