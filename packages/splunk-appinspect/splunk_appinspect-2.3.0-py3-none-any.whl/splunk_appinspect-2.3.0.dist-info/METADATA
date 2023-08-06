@@ -1,0 +1,49 @@
+Metadata-Version: 2.1
+Name: splunk-appinspect
+Version: 2.3.0
+Summary: Automatic validation checks for Splunk Apps
+Home-page: https://splunk.com
+Author: Splunk
+Author-email: appinspect@splunk.com
+License: Other/Proprietary License
+Download-URL: http://dev.splunk.com/goto/appinspectdownload
+Keywords: AppInspect,Certification,Splunk,Splunk AppInspect,Testing
+Platform: MacOS
+Platform: Microsoft
+Platform: Unix
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: License :: Other/Proprietary License
+Classifier: Natural Language :: English
+Classifier: Operating System :: MacOS
+Classifier: Operating System :: Microsoft
+Classifier: Operating System :: Unix
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Topic :: Software Development :: Testing
+Classifier: Topic :: Utilities
+Requires-Dist: beautifulsoup4 (==4.8.1)
+Requires-Dist: chardet (==3.0.4)
+Requires-Dist: click (==7.0)
+Requires-Dist: pillow (==7.1.2)
+Requires-Dist: six (==1.12.0)
+Requires-Dist: future (==0.17.1)
+Requires-Dist: futures-then (==0.1.1)
+Requires-Dist: jinja2 (==2.11.1)
+Requires-Dist: langdetect (==1.0.7)
+Requires-Dist: lxml (==4.5.1)
+Requires-Dist: Markdown (==3.1.1)
+Requires-Dist: painter (==0.3.1)
+Requires-Dist: regex (==2019.6.8)
+Requires-Dist: ipaddress (==1.0.22)
+Requires-Dist: jsoncomment (==0.3.3)
+Requires-Dist: mako (==1.0.12)
+Requires-Dist: PyYAML (==5.3)
+Requires-Dist: python-magic (==0.4.18)
+Requires-Dist: enum34 (==1.1.6) ; python_version < "3.4"
+
+AppInspect is a tool for assessing a Splunk App's compliance with Splunk recommended development practices, by using static analysis. AppInspect is open for extension, allowing other teams to compose checks that meet their domain specific needs for semi- or fully-automated analysis and validation of Splunk Apps.
+
+
