@@ -1,0 +1,6 @@
+openpyxl
+colored
+
+[dev]
+nox
+pytest
