@@ -1,0 +1,3 @@
+[console_scripts]
+spo = sharepointcli.cli:main
+
