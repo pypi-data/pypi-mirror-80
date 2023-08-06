@@ -1,0 +1,7 @@
+requests
+python-dateutil
+citizenshell
+
+[test]
+pycodestyle
+coverage
