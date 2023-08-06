@@ -1,0 +1,4 @@
+#!python
+
+import tsoncli
+print( tsoncli.info() )

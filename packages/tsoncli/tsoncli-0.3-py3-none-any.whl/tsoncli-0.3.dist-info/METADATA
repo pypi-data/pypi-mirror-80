@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: tsoncli
+Version: 0.3
+Summary: TSON Command Line Interface
+Home-page: http://github.com/joehmchiu/tsoncli
+Author: Joe Chiu
+Author-email: joehmchiu@gmail.com
+License: MIT
+Keywords: TSON tson cli
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Text Processing :: Linguistic
+Requires-Python: >=3.6
+Requires-Dist: markdown
+
+# tson-cli
+Task Service over Networks CLI
+
+
