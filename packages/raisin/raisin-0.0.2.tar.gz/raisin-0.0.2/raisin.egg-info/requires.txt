@@ -1,0 +1,14 @@
+
+[calculation]
+sympy
+giacpy
+numpy
+
+[graphical]
+tkinter
+matplotlib
+
+[tools]
+psutil
+regex
+cloudpickle

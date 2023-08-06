@@ -1,0 +1,51 @@
+Metadata-Version: 2.1
+Name: raisin
+Version: 0.0.2
+Summary: Cluster Work
+Home-page: https://framagit.org/robinechuca/raisin
+Author: Robin RICHARD (robinechuca)
+Author-email: raisin@ecomail.fr
+License: UNKNOWN
+Description: # Raisin: Faire du travail en grappe facilement!
+        
+        ## Philosophie du projet
+        L'idée de ce projet et de partager les ressources physique de notre machine à un groupe de personnes.
+        Mais en contreparti, il est possible d'utiliser les ressources de ce groupe.
+        Il y a donc 2 facettes à ce projet:
+        ### L'utilisation des resources
+            Pour le moment, l'API de raisin se veut la plus proche possible de celle des modules 'threading' et 'multiprocessing'.
+        L'interet d'utiliser raisin plutôt que threading c'est que la puissance de calcul y est largement décuplée.
+        Bien que raisin soit basé sur 'multiprocessing', Il ne distribut pas seulement les tâches entre les différents coeurs de la machine mais aussi entre les différentes machines d'un réseau. Tout est orchestré automatiquement et intelligement grâce à la théorie des graphes.
+            L'utilisation de raisin se veux la plus simple possible, c'est pourquoi l'annalyse du code et la gestions des ressources se fait automatiquement.
+        Néanmoins, il est tout de même possible de controler ce qu'il se passe puisque toutes les fonctions possèdent de nombreux paramètres par défaut qui sont donc entièrement personnalisables.
+        Toujours pour rester dans cet idéal de simplicité, raisin est un module multiplateforme, écrit 100% en python afin d'en rendre l'installation fiable et simple.
+        Enfin les fonctionnalitées de base fonctionnent même sans les dépendances. Certains modules existant sont très puissant, comme 'sympy', 'numpy', 'giacpy', 'pycrypto', 'tkinter'... Raisin, s'appuie donc sur ces modules pour offrir encore plus de performances. Mais si ils ne sont pas présents sur votre machine, raisin fonctionne quand même, juste de façon moins efficace.
+            Dans une version future, raisin sera capable de faire de la parallélisation automatique, un peu comme 'pydron'.
+        ### Le partage de ressources
+            Pour pouvoir utiliser des ressources, il faut en donner aussi!
+        C'est pourquoi, une fois que raisin est installé comme un package python, il faut installer "l'application".
+        Pour cela, il suffit de tapper "python3 -m raisin install" dans un terminal.
+            La sécurité est évidement un point important.
+        C'est pourquoi, les différents groupes sont étanches entre eux. Les données sont chiffrées. Les machines doivent s'autentifier. Tout cela est configurable graphiquement. Il suffit de tapper "python3 -m raisin configure". C'est l'onglet "Server".
+            Le confort de celui qui offre les ressources est garanti.
+        Raisin n'est pas intruisif, il prend des ressources chez les autres seulement si elles sont disponibles. En effet, la RAM, le CPU, le bruit du ventilateur et la bande passante sont des ressources que raisin utilise sans entrer en conflit avec l'utilisateur.
+        Cela est aussi configurable via l'interface "python3 -m raisin configure" dans l'onglet "Cluster Work"
+        
+        ## Autre fonctions
+           Raisin donne aussi acces à de nombreux outils:
+        -Un verrou à portée globale.
+        -Un décorateur timeout.
+        -Un décorateur qui desamorce la limite de recursion.
+        -Une fonction de copie veritable de tous type d'objets, même des pointeurs de fichiers.
+        -Une extension de la fonction 'open' qui lit intelligement certain type de fichiers.
+        -Un antivol
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Provides-Extra: calculation
+Provides-Extra: tools
+Provides-Extra: graphical
