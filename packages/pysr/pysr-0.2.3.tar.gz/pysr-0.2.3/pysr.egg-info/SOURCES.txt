@@ -1,0 +1,10 @@
+README.md
+setup.py
+pysr/__init__.py
+pysr/sr.py
+pysr.egg-info/PKG-INFO
+pysr.egg-info/SOURCES.txt
+pysr.egg-info/dependency_links.txt
+pysr.egg-info/top_level.txt
+pysr/../julia/operators.jl
+pysr/../julia/sr.jl
