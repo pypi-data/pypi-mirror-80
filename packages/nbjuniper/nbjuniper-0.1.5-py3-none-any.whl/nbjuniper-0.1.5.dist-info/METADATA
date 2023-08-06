@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: nbjuniper
+Version: 0.1.5
+Summary: 
+License: MIT
+Author: Michael Ashton
+Author-email: ashtonmv@gmail.com
+Requires-Python: >=3.7,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: markdown (>=3.2.2,<4.0.0)
+Requires-Dist: pyyaml (>=5.3.1,<6.0.0)
