@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: probs
+Version: 0.0.2
+Summary: Probability library for Python
+Home-page: https://github.com/tyleryep/probs
+Author: Tyler Yep
+Author-email: tyep@cs.stanford.edu
+License: UNKNOWN
+Description: # probs
+        Probability Library for Python
+        
+        [![Python 3.5+](https://img.shields.io/badge/python-3.5+-blue.svg)](https://www.python.org/downloads/release/python-350/)
+        [![Build Status](https://travis-ci.com/TylerYep/probs.svg?branch=master)](https://travis-ci.com/TylerYep/probs)
+        [![GitHub license](https://img.shields.io/github/license/TylerYep/probs)](https://github.com/TylerYep/probs/blob/master/LICENSE)
+        [![Downloads](https://pepy.tech/badge/probs)](https://pepy.tech/project/probs)
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.5
+Description-Content-Type: text/markdown
