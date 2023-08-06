@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: colourise
+Version: 0.0.5
+Summary: Package performing colour conversions
+Home-page: https://github.com/Sandyman/colourise
+Author: Sander Huijsen
+Author-email: sander.huijsen@nmtafe.wa.edu.au
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+
+# Colourise
+
+This package contains a few simple colour conversion routines. For example, it's possible to convert RGB to HSL. 
+
+Calculating complementary colours is also part of the offering.
+
+
