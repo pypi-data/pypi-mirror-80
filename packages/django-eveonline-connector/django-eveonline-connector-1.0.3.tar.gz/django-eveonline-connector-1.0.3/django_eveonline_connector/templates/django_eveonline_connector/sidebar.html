@@ -1,0 +1,18 @@
+<li class="treeview">
+    <a href="#">
+        <i class="fa fa-search"></i> <span>EVE Online</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+        </span>
+    </a>
+    {% if perms.django_eveonline_connector.view_evecharacter %}
+    <ul class="treeview-menu">
+        <li><a href="{% url 'django-eveonline-connector-characters-view' %}"><i class="fa fa-user"></i>Characters</a></li>
+    </ul>
+    {% else %}
+    <ul class="treeview-menu">
+        <li><a href="#"><i class="fa fa-user"></i>No Access</a></li>
+    </ul>
+    {% endif %}
+    
+</li>
