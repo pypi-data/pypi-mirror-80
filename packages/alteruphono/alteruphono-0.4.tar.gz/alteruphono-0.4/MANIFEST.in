@@ -1,0 +1,6 @@
+include README.md
+include AUTHORS
+include LICENSE
+include resources/*
+include resources/model_default/*
+include alteruphono/parser/sound_change.ebnf
