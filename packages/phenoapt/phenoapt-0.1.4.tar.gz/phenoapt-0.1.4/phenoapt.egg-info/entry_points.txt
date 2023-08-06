@@ -1,0 +1,3 @@
+[console_scripts]
+phenoapt = phenoapt.cli:main
+
