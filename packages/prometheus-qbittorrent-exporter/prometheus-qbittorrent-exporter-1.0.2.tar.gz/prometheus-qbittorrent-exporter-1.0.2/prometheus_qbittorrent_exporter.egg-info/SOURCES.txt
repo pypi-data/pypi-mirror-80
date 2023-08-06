@@ -1,0 +1,11 @@
+README.md
+setup.cfg
+setup.py
+prometheus_qbittorrent_exporter.egg-info/PKG-INFO
+prometheus_qbittorrent_exporter.egg-info/SOURCES.txt
+prometheus_qbittorrent_exporter.egg-info/dependency_links.txt
+prometheus_qbittorrent_exporter.egg-info/entry_points.txt
+prometheus_qbittorrent_exporter.egg-info/requires.txt
+prometheus_qbittorrent_exporter.egg-info/top_level.txt
+qbittorrent_exporter/__init__.py
+qbittorrent_exporter/exporter.py
