@@ -1,0 +1,8 @@
+[console_scripts]
+vda_cli = vda.client.cli:main
+vda_cn_agent = vda.cn_agent:main
+vda_db = vda.database:main
+vda_dn_agent = vda.dn_agent:main
+vda_monitor = vda.monitor:main
+vda_portal = vda.portal:main
+
