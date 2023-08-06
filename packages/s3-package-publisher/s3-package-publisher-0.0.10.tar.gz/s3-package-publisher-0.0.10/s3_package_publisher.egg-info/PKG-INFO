@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: s3-package-publisher
+Version: 0.0.10
+Summary: A Pipenv-friendly CLI tool that packages and publishes your python package to your own S3 repository
+Home-page: https://github.com/amamparo/s3-package-publisher
+Author: Aaron Mamparo
+Author-email: aaronmamparo@gmail.com
+License: UNKNOWN
+Description: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >= 3.7
+Description-Content-Type: text/markdown
