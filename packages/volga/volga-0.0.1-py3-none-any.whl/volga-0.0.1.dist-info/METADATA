@@ -1,0 +1,36 @@
+Metadata-Version: 2.1
+Name: volga
+Version: 0.0.1
+Summary: A python framework for deserealization
+Home-page: https://github.com/yefrig/coms4995-volga
+Author: Yefri Gaitan <yg2548@columbia.edu>, Ecenaz Jen Ozmen <eo2419@columbia.edu>
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 1 - Planning
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3.8
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Typing :: Typed
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+
+# coms4995-oss
+A semester-long project for coms4995 - Open Source Software Development
+
+
+## Ideas
+
+* My first idea was to create a program that can generate static websites from markdown composed files. It would also allow you to create your own template.
+
+* A python library for one functional feature such as lazy lists or immutable data structures. However, I found [PyFunctional](https://github.com/EntilZha/PyFunctional) and [Pyrsistent](https://pyrsistent.readthedocs.io/en/latest/), which seem to be very mature libraries. I might still try to implement something more specific.
+
+I would also love some suggestions if you have any. After looking at your streams library I was inspired to something cool with python.
+
+## Team Members
+
+- Yefri Gaitan [@yefrig](https://github.com/yefrig)
+
+ - Ecenaz (Jen) Ozmen [@eozmen410](https://github.com/eozmen410)
+
+
