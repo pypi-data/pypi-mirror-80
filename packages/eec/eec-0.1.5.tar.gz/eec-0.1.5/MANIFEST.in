@@ -1,0 +1,2 @@
+include eec/eeccore.pyx eec/eeccomps.pxd eec/include/*.hh
+recursive-include eec/include/boost *.hpp
