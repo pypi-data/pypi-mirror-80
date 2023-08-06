@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: marshmallow-geojson
+Version: 0.1.0
+Summary: Marshmallow schema validation for GeoJson
+License: MIT
+Author: Aliaksandr Vaskevich
+Author-email: vaskevic.an@gmail.com
+Requires-Python: >=3.7,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: marshmallow (>=3.8.0,<4.0.0)
+Requires-Dist: ujson (>=3.2.0,<4.0.0)
