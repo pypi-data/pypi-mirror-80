@@ -1,0 +1,3 @@
+[console_scripts]
+whatsapp-converter = whatsapp_converter.__main__:main
+

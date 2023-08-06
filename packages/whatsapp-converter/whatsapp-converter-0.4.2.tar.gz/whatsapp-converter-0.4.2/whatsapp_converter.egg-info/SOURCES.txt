@@ -1,0 +1,14 @@
+README.md
+setup.py
+whatsapp_converter/__init__.py
+whatsapp_converter/__main__.py
+whatsapp_converter/version.py
+whatsapp_converter/whatsapp_converter.py
+whatsapp_converter.egg-info/PKG-INFO
+whatsapp_converter.egg-info/SOURCES.txt
+whatsapp_converter.egg-info/dependency_links.txt
+whatsapp_converter.egg-info/entry_points.txt
+whatsapp_converter.egg-info/requires.txt
+whatsapp_converter.egg-info/top_level.txt
+whatsapp_converter/tests/__init__.py
+whatsapp_converter/tests/test_parse.py
