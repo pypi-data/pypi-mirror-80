@@ -1,0 +1,59 @@
+Metadata-Version: 2.1
+Name: isilon-client
+Version: 0.1.0a0
+Summary: async rest client for isilon object storage
+Home-page: https://github.com/amenezes/isilon-client
+Author: alexandre menezes
+Author-email: alexandre.fmenezes@gmail.com
+License: Apache-2.0
+Project-URL: Documentation, https://isilon-client.amenezes.net
+Project-URL: Code, https://github.com/amenezes/isilon-client
+Project-URL: Issue tracker, https://github.com/amenezes/isilon-client/issues
+Platform: UNKNOWN
+Classifier: Framework :: AsyncIO
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Classifier: Topic :: Software Development :: Libraries
+Requires-Python: >=3.6.0
+Description-Content-Type: text/markdown
+Requires-Dist: aiohttp (>=3.5.2)
+Requires-Dist: attr (<=20.1.0)
+Provides-Extra: all
+Requires-Dist: portray ; extra == 'all'
+Requires-Dist: cleo ; extra == 'all'
+Provides-Extra: cli
+Requires-Dist: cleo ; extra == 'cli'
+Provides-Extra: docs
+Requires-Dist: portray ; extra == 'docs'
+
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
+# isilon-client
+
+async rest client for isilon object storage.
+
+API reference: [openstack object storage API](https://docs.openstack.org/api-ref/object-store/)
+
+## Installing
+
+Install and update using pip:
+
+```bash
+pip install -U isilon-client
+```
+
+## Links
+
+- License: [Apache License](https://choosealicense.com/licenses/apache-2.0/)
+- Code: [https://github.com/amenezes/isilon-client](https://github.com/amenezes/isilon-client)
+- Issue Tracker: [https://github.com/amenezes/isilon-client/issues](https://github.com/amenezes/isilon-client/issues)
+- Documentation: [https://isilon-client.amenezes.net](https://isilon-client.amenezes.net)
+
+
