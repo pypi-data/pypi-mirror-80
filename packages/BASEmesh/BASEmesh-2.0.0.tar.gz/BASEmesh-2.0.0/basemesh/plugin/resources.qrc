@@ -1,0 +1,10 @@
+<RCC>
+  <qresource prefix="/plugins/basemesh/plugin">
+    <file>icons/elev_meshing.svg</file>
+    <file>icons/interpolation.svg</file>
+    <file>icons/qual_meshing.svg</file>
+    <file>icons/basemesh_icon.png</file>
+    <file>icons/basemesh_icon.svg</file>
+    <file>icons/basemesh_logo_with_text.png</file>
+  </qresource>
+</RCC>

@@ -1,0 +1,18 @@
+[general]
+name=BASEmesh
+qgisMinimumVersion=3.10
+qgisMaximumVersion=3.99
+description=Pre-processing toolkit for BASEMENT
+about=BASEmesh is used to generate computational meshes for numerical simulation packages such as BASEMENT. It provides mesh triangulation and interpolation utilities, as well as an extensive Python interface for customisation of workflows and integration with other tools.
+version=2.0.0
+author=ETH Zürich
+; email=
+experimental=True
+deprecated=False
+tags=hydraulic,hydraulic modelling,flood,river,channel,mesh,mesh generation,triangle
+homepage=https://basement.ethz.ch/
+repository=http://people.ee.ethz.ch/~basement/qgis_plugins/qgis_plugins.xml
+tracker=https://git.ee.ethz.ch/basemesh/basemesh-v2/-/issues
+icon=plugin/icons/basemesh_icon.png
+; category=
+; changelog=

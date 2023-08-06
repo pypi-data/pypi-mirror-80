@@ -1,0 +1,14 @@
+Metadata-Version: 1.2
+Name: BASEmesh
+Version: 2.0.0
+Summary: Pre-processing and mesh generation toolkit for BASEMENT.
+Home-page: https://git.ee.ethz.ch/basemesh/basemesh-v2/
+Author: ETH Zürich
+Maintainer-email: seidelmann@vaw.ethz.ch
+License: GNU General Public License v3 (GPLv3)
+Description: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Typing :: Typed
