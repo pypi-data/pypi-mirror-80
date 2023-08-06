@@ -1,0 +1,9 @@
+recursive-include chatbotpackage\templates *
+recursive-include chatbotpackage\static *
+recursive-include chatbotpackage\certificates *
+recursive-include chatbotpackage\lib *
+recursive-include chatbotpackage\logs *
+include chatbotpackage\app.yaml
+include chatbotpackage\config.ini
+include chatbotpackage\server.ini
+recursive-include chatbotpackage\chatbot *
