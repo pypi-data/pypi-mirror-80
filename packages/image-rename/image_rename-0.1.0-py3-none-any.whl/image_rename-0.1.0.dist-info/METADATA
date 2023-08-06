@@ -1,0 +1,80 @@
+Metadata-Version: 2.1
+Name: image-rename
+Version: 0.1.0
+Summary: Rename the picture by looking through the human eye and typing. (you don't need to open the file by yourself)
+Home-page: https://github.com/CarsonSlovoka/image-rename/tree/master
+Author: Carson
+Author-email: jackparadise520a@gmail.com
+License: BSD 3-Clause
+Project-URL: Homepage, https://github.com/CarsonSlovoka/image-rename/tree/master
+Project-URL: Documentation, https://carsonslovoka.github.io/image-rename/en/index.html
+Project-URL: Code, https://github.com/CarsonSlovoka/image-rename/tree/master
+Project-URL: Issue Tracker, https://github.com/CarsonSlovoka/image-rename/issues
+Project-URL: Download, https://github.com/CarsonSlovoka/image-rename/tree/master
+Keywords: opencv
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved
+Classifier: Natural Language :: Chinese (Traditional)
+Classifier: Natural Language :: English
+Classifier: Operating System :: Microsoft
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: Unix
+Classifier: Operating System :: MacOS
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: Desktop Environment :: File Managers
+Classifier: Topic :: System :: Filesystems
+Requires-Python: >=3.6.2,
+Description-Content-Type: text/x-rst
+Requires-Dist: opencv-python
+Requires-Dist: numpy
+Requires-Dist: grid-extractor
+
+==================
+Grid Extractor
+==================
+
+**Rename the picture by looking through the human eye and typing. (you don't need to open the file by yourself)**
+
+
+INTRODUCTION
+==================
+
+In response to the vigorous development of machine learning, label data often processed in supervised learning, so how to quickly name it manually has become a topic.
+The purpose of this tool: I hope that users can quickly name tag data.
+
+
+Install
+============
+
+``pip install image-rename``
+
+
+USAGE
+=============
+
+open your CMD, and then:
+
+``img_rename "PATH OF YOUR SETTING.PY"``
+
+.. note::
+    About the setting file you can reference in `here <https://github.com/CarsonSlovoka/image-rename/tree/master/image_rename/config.py>`_.
+
+get help:
+
+``img_rename -h``
+
+
+DEMO
+=============
+
+.. image:: https://raw.githubusercontent.com/CarsonSlovoka/image-rename/release/demo/demo.png
+
+REFERENCE
+=============
+
+
