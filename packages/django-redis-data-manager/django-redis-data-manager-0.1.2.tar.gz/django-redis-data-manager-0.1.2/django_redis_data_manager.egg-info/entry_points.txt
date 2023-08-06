@@ -1,0 +1,3 @@
+[console_scripts]
+manage-django-redis-data-manager = manage_django_redis_data_manager:main
+
