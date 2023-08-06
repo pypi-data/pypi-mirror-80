@@ -1,0 +1,8 @@
+six>=1.9
+swiglpk>=1.4.3
+sympy>=1.0
+
+[development]
+black
+isort
+tox
