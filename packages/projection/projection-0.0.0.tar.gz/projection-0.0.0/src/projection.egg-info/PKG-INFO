@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: projection
+Version: 0.0.0
+Summary: Project Configuration
+Home-page: https://github.com/wsanchez/projection
+Author: Wilfredo Sánchez Vega
+Author-email: wsanchez@wsanchez.net
+License: Apache License, Version 2.0
+Description: # projection
+        Project configuration
+        
+Platform: all
+Classifier: Framework :: Twisted
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Python: >=3.6
+Description-Content-Type: text/x-rst
