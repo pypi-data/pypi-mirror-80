@@ -1,0 +1,24 @@
+Metadata-Version: 1.2
+Name: mosaik-docker-jl
+Version: 0.1.1
+Summary: A JupyterLab extension for executing co-simulations based on the mosaik framework and Docker.
+Home-page: https://mosaik-docker.readthedocs.io/projects/jupyter/
+Maintainer: ERIGrid 2.0 development team
+Maintainer-email: edmund.widl@ait.ac.at
+License: BSD-3-Clause
+Description: The mosaik-docker-jl package
+        ============================
+        
+        A `JupyterLab`_ extension for executing co-simulations based on the `mosaik framework`_ and `Docker`_
+        
+        .. _JupyterLab: https://jupyterlab.readthedocs.io/
+        .. _mosaik framework: https://mosaik.offis.de/
+        .. _Docker: https://docs.docker.com/
+        
+        For details, please refer to the `documentation`_.
+        
+        .. _documentation: https://mosaik-docker.readthedocs.io/projects/jupyter/
+Keywords: Jupyter,JupyterLab,mosaik,mosaik-docker
+Platform: any
+Classifier: Programming Language :: Python :: 3
+Classifier: Framework :: Jupyter
