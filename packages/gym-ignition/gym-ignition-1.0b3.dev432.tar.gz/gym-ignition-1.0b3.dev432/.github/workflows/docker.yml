@@ -1,0 +1,67 @@
+name: Docker Images
+
+on:
+  push:
+    paths:
+      - ".docker/*"
+      - ".github/workflows/docker.yml"
+  pull_request:
+    paths:
+      - ".docker/*"
+      - ".github/workflows/docker.yml"
+  schedule:
+    # Execute a weekly build on Monday at 2AM UTC
+    - cron:  '0 2 * * 1'
+
+jobs:
+  docker:
+    name: 'diegoferigo/gym-ignition:${{ matrix.tag }}'
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 1
+      matrix:
+        baseimage: ['ubuntu:bionic']
+        tag:
+          - base
+          - ci-master
+          - ci-devel
+          - pypi-master
+          - pypi-devel
+          #- latest
+          - nightly
+
+    steps:
+
+      # Use the branch that triggered the workflow for push and pull_request events
+      - uses: actions/checkout@master
+        if: github.event_name != 'schedule'
+
+      # Use devel branch for scheduled builds
+      - uses: actions/checkout@master
+        with:
+          ref: 'refs/heads/devel'
+        if: github.event_name == 'schedule'
+
+      - name: Build
+        env:
+          TAG: ${{ matrix.tag }}
+        run: |
+          cd .docker
+          docker-compose build ${TAG}
+
+      - name: Login
+        if: |
+          github.repository == 'robotology/gym-ignition' &&
+          github.event_name != 'pull_request' &&
+          (github.event_name == 'schedule' || github.ref == 'refs/heads/devel')
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+        run: echo ${DOCKER_PASSWORD} | docker login --username ${DOCKER_USERNAME} --password-stdin
+
+      - name: Push
+        if: |
+          github.repository == 'robotology/gym-ignition' &&
+          github.event_name != 'pull_request' &&
+          (github.event_name == 'schedule' || github.ref == 'refs/heads/devel')
+        run: docker push diegoferigo/gym-ignition:${{ matrix.tag }}

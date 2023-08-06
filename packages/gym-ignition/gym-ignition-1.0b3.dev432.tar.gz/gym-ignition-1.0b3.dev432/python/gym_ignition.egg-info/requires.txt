@@ -1,0 +1,12 @@
+gym>=0.13.1
+gym_ignition_models
+lxml
+numpy
+
+[website]
+breathe
+sphinx
+sphinx-autodoc-typehints
+sphinx-multiversion
+sphinx-rtd-theme
+sphinx_fontawesome
