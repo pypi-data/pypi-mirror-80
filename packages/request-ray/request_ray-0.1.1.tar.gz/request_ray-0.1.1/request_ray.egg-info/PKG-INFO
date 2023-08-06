@@ -1,0 +1,49 @@
+Metadata-Version: 2.1
+Name: request-ray
+Version: 0.1.1
+Summary: a batch based request package with retry stratgy that enables you to send X requests concurrently at rate of Y requests/execution
+Home-page: https://github.com/Kareem-Emad/request-ray
+Author: Kareem Emad
+Author-email: kareememad400@gmail.com
+License: MIT
+Download-URL: https://pypi.org/project/request-ray/
+Description: # Request Ray
+        [![Build Status:](https://github.com/Kareem-Emad/request-ray/workflows/build/badge.svg)](https://github.com/Kareem-Emad/request-ray/actions)
+        [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+        
+        
+        a batch based request package with retry stratgy that enables you to send X requests concurrently at rate of Y requests/execution with max retries for each N
+        
+        ## Setup
+        
+        ```shell
+        pip install request_ray
+        ```
+        
+        ## How to use
+        
+        ```python
+        from request_ray import rray
+        
+        requests = [{
+            'method': 'POST',
+            'url': 'https://google.com',
+            'kwargs': {'data': json.dumps({'hello': 'world'}), 'headers': {'alpha': 'beta'}}
+        }, {
+            'method': 'GET',
+            'url': 'https://facebook.com',
+            'kwargs': {}
+        }]
+        
+        batch_size = 2 # max no of requests to send at a time
+        retry_policy = 3 # how many times to retry failed requests
+        
+        responses rray.send_requests(requests, batch_size, retry_policy)
+        print(responses) # array of expected responses with structure in each element: {'index': 0, 'response': standard_response_object}
+        ```
+        
+        
+        
+Keywords: http,async,batch_execution,gevent
+Platform: UNKNOWN
+Description-Content-Type: text/markdown
