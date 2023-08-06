@@ -1,0 +1,3 @@
+[console_scripts]
+hello = ettelpack.Hello:Hello.say_hello
+
