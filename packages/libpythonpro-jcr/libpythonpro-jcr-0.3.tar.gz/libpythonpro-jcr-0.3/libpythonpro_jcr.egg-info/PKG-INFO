@@ -1,0 +1,48 @@
+Metadata-Version: 2.1
+Name: libpythonpro-jcr
+Version: 0.3
+Summary: Módulo para exemplificar construção de projetos Python no curso PyTools
+Home-page: https://github.com/julianocramos/libpythonpro
+Author: Juliano Ramos
+Author-email: juliano_nj@hotmail.com
+License: GNU AFFERO GENERAL PUBLIC LICENSE
+Description: # libpythonpro
+        MÃ³dulo para exemplificar construÃ§Ã£o  de projetos Python no curso PyTools
+        
+        Nesse curso Ã© ensinado como contribuir com projetos de cÃ³digo aberto
+        
+        Link do curso [Python Pro](https://www.python.pro.br/)
+        
+        [![Build Status](https://travis-ci.org/julianocramos/libpythonpro.svg?branch=master)](https://travis-ci.org/julianocramos/libpythonpro)
+        [![Updates](https://pyup.io/repos/github/julianocramos/libpythonpro/shield.svg)](https://pyup.io/repos/github/julianocramos/libpythonpro/)
+        [![Python 3](https://pyup.io/repos/github/julianocramos/libpythonpro/python-3-shield.svg)](https://pyup.io/repos/github/julianocramos/libpythonpro/)
+        
+        Suportada versÃ£o 3 de Python
+        
+        Para instalar:
+        
+        ```Console
+        python3 -m venv .venv
+        source.venv/bin/activate
+        pip install -r requirements-dev.txt
+        ```
+        
+        Para conferir qualidade do cÃ³digo:
+        ```console
+        flake8
+        ```
+        
+        TÃ³picos a serem abordados:
+        1. Git
+        2. Virtualenv
+        3. Pip
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Framework :: Pytest
+Description-Content-Type: text/markdown
