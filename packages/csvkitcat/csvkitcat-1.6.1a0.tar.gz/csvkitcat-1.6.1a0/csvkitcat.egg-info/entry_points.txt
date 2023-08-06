@@ -1,0 +1,14 @@
+[console_scripts]
+csvcount = csvkitcat.moreutils.csvcount:launch_new_instance
+csvflatten = csvkitcat.moreutils.csvflatten:launch_new_instance
+csvgroupby = csvkitcat.moreutils.csvgroupby:launch_new_instance
+csvnorm = csvkitcat.moreutils.csvnorm:launch_new_instance
+csvpivot = csvkitcat.moreutils.csvpivot:launch_new_instance
+csvrgrep = csvkitcat.moreutils.csvrgrep:launch_new_instance
+csvsed = csvkitcat.moreutils.csvsed:launch_new_instance
+csvslice = csvkitcat.moreutils.csvslice:launch_new_instance
+csvwhere = csvkitcat.moreutils.csvwhere:launch_new_instance
+csvxcap = csvkitcat.moreutils.csvxcap:launch_new_instance
+csvxfind = csvkitcat.moreutils.csvxfind:launch_new_instance
+csvxplit = csvkitcat.moreutils.csvxplit:launch_new_instance
+

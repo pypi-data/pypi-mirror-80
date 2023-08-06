@@ -1,0 +1,12 @@
+csvkit>=1.0.5
+altair>=4.1
+altair-viewer>=0.3.0
+python-slugify>=4.0
+regex>=2020.7.14
+
+[dev]
+coverage>=4.4.2
+nose>=1.1.2
+sphinx>=1.0.7
+sphinx_rtd_theme
+tox>=3.1.0

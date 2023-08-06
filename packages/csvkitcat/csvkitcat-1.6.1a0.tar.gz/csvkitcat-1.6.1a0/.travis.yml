@@ -1,0 +1,16 @@
+dist: xenial
+language: python
+cache: pip
+services:
+  - postgresql
+python:
+  - "3.6"
+  - "3.7"
+  - "3.8"
+
+install:
+  - pip install coveralls
+script:
+  - nosetests --with-coverage --cover-package=csvkitcat
+after_success:
+  coveralls
