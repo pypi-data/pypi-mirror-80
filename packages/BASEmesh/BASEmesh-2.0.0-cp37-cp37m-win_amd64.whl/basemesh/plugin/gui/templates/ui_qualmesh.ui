@@ -1,0 +1,1025 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>dialog</class>
+ <widget class="QDialog" name="dialog">
+  <property name="windowTitle">
+   <string>BASEmesh - Quality meshing</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../../resources.qrc">
+    <normaloff>:/plugins/basemesh/plugin/icons/qual_meshing.svg</normaloff>:/plugins/basemesh/plugin/icons/qual_meshing.svg</iconset>
+  </property>
+  <property name="sizeGripEnabled">
+   <bool>true</bool>
+  </property>
+  <layout class="QVBoxLayout" name="dialogLayout">
+   <item>
+    <layout class="QHBoxLayout" name="splitPanelContainer" stretch="0,1">
+     <item>
+      <layout class="QVBoxLayout" name="leftPanel">
+       <item>
+        <widget class="QScrollArea" name="scrollArea">
+         <property name="verticalScrollBarPolicy">
+          <enum>Qt::ScrollBarAlwaysOn</enum>
+         </property>
+         <property name="horizontalScrollBarPolicy">
+          <enum>Qt::ScrollBarAlwaysOff</enum>
+         </property>
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="scrollAreaWidgetContents">
+          <layout class="QVBoxLayout" name="verticalLayout">
+           <item>
+            <widget class="QGroupBox" name="constraintsGroup">
+             <property name="title">
+              <string>Triangulation constraints</string>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_6">
+              <item>
+               <layout class="QGridLayout" name="constraintsGrid" columnstretch="1,1">
+                <item row="0" column="1">
+                 <widget class="QComboBox" name="linesLayer"/>
+                </item>
+                <item row="3" column="0">
+                 <widget class="QCheckBox" name="usePoints">
+                  <property name="text">
+                   <string>Constrained points</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="0">
+                 <widget class="QCheckBox" name="useLines">
+                  <property name="text">
+                   <string>Break lines</string>
+                  </property>
+                  <property name="checked">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="1">
+                 <widget class="QComboBox" name="pointsLayer">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <layout class="QHBoxLayout" name="dividingGroup" stretch="1,4">
+                  <item>
+                   <spacer name="dividingSpacer">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item>
+                   <widget class="QCheckBox" name="useDivCons">
+                    <property name="text">
+                     <string>Dividing constraints</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QComboBox" name="divConsField">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="angleRow" stretch="4,1">
+                <item>
+                 <widget class="QCheckBox" name="useGlobalMinAngle">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="text">
+                   <string>Minimum angle constraint</string>
+                  </property>
+                  <property name="checked">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QDoubleSpinBox" name="globalMinAngle">
+                  <property name="decimals">
+                   <number>1</number>
+                  </property>
+                  <property name="minimum">
+                   <double>0.000000000000000</double>
+                  </property>
+                  <property name="maximum">
+                   <double>60.000000000000000</double>
+                  </property>
+                  <property name="value">
+                   <double>28.000000000000000</double>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="areaRow" stretch="4,1">
+                <item>
+                 <widget class="QCheckBox" name="useGlobalMaxArea">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="text">
+                   <string>Maximum area constraint</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QDoubleSpinBox" name="globalMaxArea">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <property name="decimals">
+                   <number>2</number>
+                  </property>
+                  <property name="maximum">
+                   <double>9999.000000000000000</double>
+                  </property>
+                  <property name="value">
+                   <double>10.000000000000000</double>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="customArgsRow" stretch="1,1">
+                <item>
+                 <widget class="QCheckBox" name="useCustomArgs">
+                  <property name="text">
+                   <string>Extra arguments</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="customArgs">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QGroupBox" name="regionsGroup">
+             <property name="title">
+              <string>Regions</string>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+             <property name="checked">
+              <bool>false</bool>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_7">
+              <item>
+               <layout class="QGridLayout" name="regionsGrid">
+                <item row="2" column="0">
+                 <widget class="QCheckBox" name="useMatid">
+                  <property name="text">
+                   <string>MATID field</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="0">
+                 <widget class="QCheckBox" name="useMaxArea">
+                  <property name="text">
+                   <string>Maximum area field</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QComboBox" name="regionsLayer"/>
+                </item>
+                <item row="0" column="0">
+                 <widget class="QLabel" name="regionLayerLabel">
+                  <property name="text">
+                   <string>Region marker layer</string>
+                  </property>
+                  <property name="buddy">
+                   <cstring>regionsLayer</cstring>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QCheckBox" name="useHole">
+                  <property name="text">
+                   <string>Hole marker field</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QComboBox" name="holeField">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="1">
+                 <widget class="QComboBox" name="matidField">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="1">
+                 <widget class="QComboBox" name="maxAreaField">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QGroupBox" name="meshDomainGroup">
+             <property name="title">
+              <string notr="true">Mesh domain</string>
+             </property>
+             <layout class="QVBoxLayout" name="meshDomainGroupLayout">
+              <item>
+               <widget class="QRadioButton" name="keepConvexHull">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The convex hull is always generated as a by-product of the triangulation process. Selecting this option will keep the convex hull generated.&lt;/p&gt;&lt;p&gt;This is the recommended option if the elevation mesh will be the only elevation source, and allows triangulation of point-only data sets.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="text">
+                 <string>Keep convex hull</string>
+                </property>
+                <property name="checked">
+                 <bool>false</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="shrinkToSegments">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;After triangulation, any exterior mesh elements will be carved away until a break line is encountered.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Note:&lt;/span&gt; This can cause the entire generated mesh to be &amp;quot;eaten&amp;quot; if there are any gaps in the outside break lines.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="text">
+                 <string>Shrink to segments</string>
+                </property>
+                <property name="checked">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="customBoundaryRow" stretch="1,1">
+                <item>
+                 <widget class="QRadioButton" name="customBoundary">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <property name="toolTip">
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use a custom 2D boundary polygon. The generated mesh will be trimmed or extended to fill the entire mesh boundary polygon.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Note:&lt;/span&gt; The input polygon may contain holes.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  </property>
+                  <property name="text">
+                   <string>Use custom boundary</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QComboBox" name="boundaryLayer">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QGroupBox" name="stringDefGroup">
+             <property name="font">
+              <font>
+               <weight>50</weight>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="title">
+              <string>String definitions</string>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+             <property name="checked">
+              <bool>false</bool>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_5">
+              <item>
+               <layout class="QGridLayout" name="stringDefGrid">
+                <item row="0" column="0">
+                 <widget class="QLabel" name="stringDefLayerLabel">
+                  <property name="text">
+                   <string>String definitions layer</string>
+                  </property>
+                  <property name="buddy">
+                   <cstring>stringDefLayer</cstring>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QComboBox" name="stringDefField"/>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QComboBox" name="stringDefLayer"/>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QLabel" name="stringDefFieldLabel">
+                  <property name="text">
+                   <string>String definitions ID field</string>
+                  </property>
+                  <property name="buddy">
+                   <cstring>stringDefField</cstring>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="QCheckBox" name="includeInMesh">
+                <property name="text">
+                 <string>Include in 2DM node strings (BASEMENT 3)</string>
+                </property>
+                <property name="checked">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QCheckBox" name="writeToSidecar">
+                <property name="text">
+                 <string>Write to sidecar file (BASEMENT 2.8)</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="stringDefFileRow">
+                <item>
+                 <widget class="QLineEdit" name="stringDefPath">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="stringDefBrowseBtn">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <property name="text">
+                   <string>Browse…</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QGroupBox" name="settingsGroup">
+             <property name="title">
+              <string>Settings</string>
+             </property>
+             <layout class="QGridLayout" name="settingsGroupLayout" columnstretch="1,1">
+              <item row="0" column="1">
+               <widget class="QComboBox" name="logLevel">
+                <item>
+                 <property name="text">
+                  <string>Basic statistics</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Detailed statistics</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Debug - Level 1</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Debug - Level 2</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Debug - Level 3</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QCheckBox" name="useSnapping">
+                <property name="text">
+                 <string>Snapping tolerance</string>
+                </property>
+                <property name="checked">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="logLevelLabel">
+                <property name="text">
+                 <string>Log level</string>
+                </property>
+                <property name="buddy">
+                 <cstring>logLevel</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <layout class="QHBoxLayout" name="snappingLayout">
+                <item>
+                 <spacer name="snappingSpacer">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QSpinBox" name="snappingTolerance">
+                  <property name="minimum">
+                   <number>-10</number>
+                  </property>
+                  <property name="maximum">
+                   <number>0</number>
+                  </property>
+                  <property name="value">
+                   <number>-6</number>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <spacer name="verticalSpacer">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="outputGroup">
+         <property name="minimumSize">
+          <size>
+           <width>320</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="title">
+          <string>Output</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_4">
+          <item>
+           <layout class="QHBoxLayout" name="fileRow">
+            <item>
+             <widget class="QLineEdit" name="filePath"/>
+            </item>
+            <item>
+             <widget class="QPushButton" name="fileBrowseBtn">
+              <property name="text">
+               <string>Browse…</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="optionsRow">
+            <item>
+             <widget class="QCheckBox" name="keepTempFiles">
+              <property name="text">
+               <string>Keep triangle files</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="addToMap">
+              <property name="text">
+               <string>Add saved file to map</string>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="optionsSpacer">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QTabWidget" name="tabWidget">
+       <widget class="QWidget" name="logTab">
+        <attribute name="title">
+         <string>Output log</string>
+        </attribute>
+        <layout class="QVBoxLayout" name="logTabLayout">
+         <item>
+          <widget class="QPlainTextEdit" name="log">
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="exportRow">
+           <item>
+            <spacer name="exportSpacer">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QPushButton" name="saveLogBtn">
+             <property name="text">
+              <string>Export log…</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="clearLogBtn">
+             <property name="text">
+              <string>Clear log</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="helpTab">
+        <attribute name="title">
+         <string>Help</string>
+        </attribute>
+        <layout class="QVBoxLayout" name="helpTabLayout">
+         <item>
+          <widget class="QTextEdit" name="help">
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="bottomBar">
+     <item>
+      <layout class="QHBoxLayout" name="progressBarRow">
+       <item>
+        <widget class="QProgressBar" name="progressBar">
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="cancelBtn">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Cancel</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="buttonRow">
+       <item>
+        <widget class="QLabel" name="status">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="runBtn">
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Run</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="closeBtn">
+         <property name="text">
+          <string>Close</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>scrollArea</tabstop>
+  <tabstop>useLines</tabstop>
+  <tabstop>linesLayer</tabstop>
+  <tabstop>useDivCons</tabstop>
+  <tabstop>divConsField</tabstop>
+  <tabstop>usePoints</tabstop>
+  <tabstop>pointsLayer</tabstop>
+  <tabstop>useGlobalMinAngle</tabstop>
+  <tabstop>globalMinAngle</tabstop>
+  <tabstop>useGlobalMaxArea</tabstop>
+  <tabstop>globalMaxArea</tabstop>
+  <tabstop>useCustomArgs</tabstop>
+  <tabstop>customArgs</tabstop>
+  <tabstop>regionsGroup</tabstop>
+  <tabstop>regionsLayer</tabstop>
+  <tabstop>useHole</tabstop>
+  <tabstop>holeField</tabstop>
+  <tabstop>useMatid</tabstop>
+  <tabstop>matidField</tabstop>
+  <tabstop>useMaxArea</tabstop>
+  <tabstop>maxAreaField</tabstop>
+  <tabstop>keepConvexHull</tabstop>
+  <tabstop>shrinkToSegments</tabstop>
+  <tabstop>customBoundary</tabstop>
+  <tabstop>boundaryLayer</tabstop>
+  <tabstop>stringDefGroup</tabstop>
+  <tabstop>stringDefLayer</tabstop>
+  <tabstop>stringDefField</tabstop>
+  <tabstop>includeInMesh</tabstop>
+  <tabstop>writeToSidecar</tabstop>
+  <tabstop>stringDefPath</tabstop>
+  <tabstop>stringDefBrowseBtn</tabstop>
+  <tabstop>logLevel</tabstop>
+  <tabstop>useSnapping</tabstop>
+  <tabstop>snappingTolerance</tabstop>
+  <tabstop>filePath</tabstop>
+  <tabstop>fileBrowseBtn</tabstop>
+  <tabstop>keepTempFiles</tabstop>
+  <tabstop>addToMap</tabstop>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>log</tabstop>
+  <tabstop>saveLogBtn</tabstop>
+  <tabstop>clearLogBtn</tabstop>
+  <tabstop>cancelBtn</tabstop>
+  <tabstop>runBtn</tabstop>
+  <tabstop>closeBtn</tabstop>
+  <tabstop>help</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../../resources.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>useLines</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>linesLayer</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>151</x>
+     <y>62</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>292</x>
+     <y>63</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>usePoints</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>pointsLayer</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>159</x>
+     <y>115</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>292</x>
+     <y>116</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>useGlobalMinAngle</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>globalMinAngle</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>235</x>
+     <y>142</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>292</x>
+     <y>143</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>useGlobalMaxArea</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>globalMaxArea</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>221</x>
+     <y>169</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>292</x>
+     <y>170</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>useHole</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>holeField</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>159</x>
+     <y>281</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>292</x>
+     <y>282</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>useMatid</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>matidField</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>159</x>
+     <y>306</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>292</x>
+     <y>307</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>useMaxArea</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>maxAreaField</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>159</x>
+     <y>331</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>292</x>
+     <y>332</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>useSnapping</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>snappingTolerance</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>146</x>
+     <y>689</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>292</x>
+     <y>689</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>clearLogBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>log</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>710</x>
+     <y>711</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>518</x>
+     <y>601</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>closeBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>dialog</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>723</x>
+     <y>788</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>541</x>
+     <y>797</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>runBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>dialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>642</x>
+     <y>788</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>491</x>
+     <y>799</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>useCustomArgs</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>customArgs</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>159</x>
+     <y>196</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>292</x>
+     <y>197</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>customBoundary</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>boundaryLayer</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>160</x>
+     <y>439</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>292</x>
+     <y>440</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>useDivCons</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>divConsField</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>158</x>
+     <y>89</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>292</x>
+     <y>89</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>writeToSidecar</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>stringDefPath</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>111</x>
+     <y>574</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>115</x>
+     <y>602</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>writeToSidecar</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>stringDefBrowseBtn</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>140</x>
+     <y>574</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>292</x>
+     <y>604</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
