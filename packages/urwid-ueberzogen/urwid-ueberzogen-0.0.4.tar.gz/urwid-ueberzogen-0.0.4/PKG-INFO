@@ -1,0 +1,19 @@
+Metadata-Version: 1.2
+Name: urwid-ueberzogen
+Version: 0.0.4
+Summary: Some widgets which extend urwid with the possibility to use ueberzug.
+Home-page: https://github.com/seebye/urwid-ueberzogen
+Author: Nico Baeurer
+License: GPLv3
+Project-URL: Bug Reports, https://github.com/seebye/urwid-ueberzogen/issues
+Project-URL: Source, https://github.com/seebye/urwid-ueberzogen
+Description: UNKNOWN
+Keywords: image media terminal ui tui urwid
+Platform: UNKNOWN
+Classifier: Environment :: Console
+Classifier: Environment :: X11 Applications
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Topic :: Software Development :: User Interfaces
+Classifier: Topic :: Utilities
+Requires-Python: >=3.5
