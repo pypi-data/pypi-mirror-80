@@ -1,0 +1,4 @@
+[console_scripts]
+sequana_pipelines_ribofinder = sequana_pipelines.ribofinder.main:main
+sequana_ribofinder = sequana_pipelines.ribofinder.main:main
+

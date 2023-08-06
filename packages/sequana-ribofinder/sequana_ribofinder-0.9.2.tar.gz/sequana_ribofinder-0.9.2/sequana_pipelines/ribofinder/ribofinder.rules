@@ -1,0 +1,177 @@
+"""RNASeq pipeline
+
+Affiliation: Institut Pasteur @ 2016-2020
+
+This pipeline is part of Sequana software (sequana.readthedocs.io)
+"""
+import glob
+import os
+import shutil
+import sequana
+from os.path import join
+from sequana import snaketools as sm
+from sequana.gff3 import GFF3
+
+configfile: "config.yaml"
+
+manager = sm.PipelineManager("ribofinder", config)
+manager.setup(globals(), mode="warning")
+
+
+def error(msg):
+    from sequana.pipelines_common import error as err
+    err(msg, "ribofinder")
+
+
+# Generic include of some dynamic modules
+exec(open(sequana.modules["bowtie1_mapping_dynamic"], "r").read())
+exec(open(sequana.modules["bowtie1_index_dynamic"], "r").read())
+exec(open(sequana.modules["dynamic_unpigz"], "r").read())
+
+
+__data__input = manager.getrawdata()
+
+rule pipeline:
+    input: "requirements.txt",".sequana/rulegraph.svg",    "multiqc/multiqc_report.html"
+
+
+__fasta_file__ = config['general']['reference_file']
+if config['general']['genbank_file']:
+    __annot_file__   = config['general']['genbank_file']
+elif config['general']['gff_file']:
+    __annot_file__   = config['general']['gff_file']
+elif config['general']['rRNA_file']:
+    __annot_file__   = config['general']['rRNA_file']
+
+__prefix_name__ = "indexing/features"
+
+
+if manager.config.general.rRNA_file:
+    __bowtie1_index_rna__fasta = config["general"]["rRNA_file"]
+    if os.path.exists(__bowtie1_index_rna__fasta) is False:
+        error("File {} does not exists. Check your config file".format(__bowtie1_index_rna__fasta))
+elif __annot_file__.endswith(".gbk"):
+    # This is for genbank input
+    __build_feature_fasta__output = "build_feature_fasta/feature.fasta"
+    for this in [__fasta_file__, __annot_file__]:
+        if os.path.exists(this) is False:
+            raise IOError("File {} not found".format(__fasta_file__))
+    rule build_feature_fasta:
+        input:
+            fasta = __fasta_file__,
+            annot = __annot_file__
+        output: __build_feature_fasta__output
+        run:
+            from sequana.genbank import GenBank
+            gg = GenBank(input.annot)
+            sequence = gg.extract_fasta(input.fasta, features=['rRNA'])
+            with open(output[0], "w") as fout:
+                fout.write(sequence)
+    __bowtie1_index_rna__fasta = __build_feature_fasta__output
+elif __annot_file__.endswith(".gff") or __annot_file__.endswith(".gff3"):
+    for this in [__fasta_file__, __annot_file__]:
+        if os.path.exists(this) is False:
+            raise IOError("File {} not found".format(__fasta_file__))
+    # extract rRNA feature from GFF and get corresponding fasta
+    # and gff. if no match for rRNA, save empty fasta as AAAAAAAAAAA
+    __build_feature_fasta__output = "build_feature_fasta/feature.fasta"
+
+    __extract_fasta_from_bed__input =       __fasta_file__
+    __extract_fasta_from_bed__gff =         __annot_file__
+    __extract_fasta_from_bed__feature =     config["general"]["rRNA_feature"]
+    __extract_fasta_from_bed__output =          __build_feature_fasta__output
+    __extract_fasta_from_bed__output_features = __prefix_name__ + "_rRNA.gff"
+    __extract_fasta_from_bed__log =             "indexing/get_rRNA.log"
+    # ----------------------------------------------------------------------------
+    include: sm.modules["extract_fasta_from_bed"]
+    __bowtie1_index_rna__fasta = __extract_fasta_from_bed__output
+
+
+__bowtie1_index_rna__output_done = __prefix_name__ + "_rRNA.1.ebwt"
+__bowtie1_index_rna__output_prefix = __prefix_name__ + "_rRNA"
+__bowtie1_index_rna__log = "indexing/bowtie_rRNA.log"
+include: bowtie1_index_dynamic("rna")
+__RNA_index__ = __bowtie1_index_rna__output_prefix
+
+
+__unpigz_R1__input = __data__input
+__unpigz_R1__output = manager.getname("cutadapt", "_R1_.cutadapt.fastq")
+
+
+include: dynamic_unpigz("R1", manager)
+__unpigz__output = [__unpigz_R1__output]
+"""With paired data, alignement on rRNA leads to 0% alignment if we use R1 and
+R2. If we use R1 only, the percentage is >0. First reason is that reads are not
+trimmed properly. In truth, bowtie2 supports local alignments which means it can
+soft-clip non-matching (=adapter) content while still align the local part of
+the read that matches the reference. With Bowtie1 the read will probably go
+unaligned due to the many mismatches. So we do not include R2 from version
+v0.9.14.
+"""
+
+
+# rRNA
+__bowtie1_mapping_rna__input = __unpigz__output
+__bowtie1_mapping_rna__index_done = __bowtie1_index_rna__output_done
+__bowtie1_mapping_rna__bam = manager.getname("bowtie1_mapping_rna", ".bam")
+__bowtie1_mapping_rna__sort = manager.getname("bowtie1_mapping_rna", ".sorted.bam")
+__bowtie1_mapping_rna__prefix_index = __RNA_index__
+__bowtie1_mapping_rna__stdout = manager.getname("bowtie1_mapping_rna", "_rRNA.out")
+__bowtie1_mapping_rna__stderr = manager.getname("bowtie1_mapping_rna", "_rRNA.err")
+
+include: bowtie1_mapping_dynamic("rna", manager)
+expected_output.extend(expand(__bowtie1_mapping_rna__sort, sample=manager.samples))
+
+
+
+__multiqc__input = expected_output
+__multiqc__output = "multiqc/multiqc_report.html"
+include: sm.modules["multiqc/2.0"]
+
+
+# Include rule graph for each sample
+__rulegraph__input = manager.snakefile
+__rulegraph__output = ".sequana/rulegraph.svg"
+__rulegraph__mapper = {"multiqc": "multiqc/multiqc_report.html"}
+include: sm.modules['rulegraph']
+
+
+# Add Conda
+__conda__output = "requirements.txt"
+include: sm.modules['conda']   # Create requirements.txt(dependencies)
+
+
+
+# Those rules takes a couple of seconds so no need for a cluster
+localrules: conda, rulegraph
+
+
+onsuccess:
+    from sequana import logger
+    from sequana.pipelines_common import get_pipeline_location as getpath
+
+    logger.level = "INFO"
+    manager.teardown(plot_stats=False)
+    manager.clean_multiqc(__multiqc__output)
+
+
+    from sequana.modules_report.summary import SummaryModule2
+    from sequana_pipelines import ribofinder
+    data = {
+            "name": manager.name,
+            "stats": "stats.txt", 
+            "rulegraph": __rulegraph__output,
+            "pipeline_version": ribofinder.version
+            }
+    s = SummaryModule2(data, intro="""
+	Please see ribosomal rates in the <a href="multiqc/multiqc_report.html">multiqc report</a> 
+    """)
+    shell("rm -rf rulegraph")
+
+
+    shell("chmod -R g+w .")
+    shell("rm -rf rulegraph")
+onerror:
+    print("An error occurred. See message above.")
+
+
