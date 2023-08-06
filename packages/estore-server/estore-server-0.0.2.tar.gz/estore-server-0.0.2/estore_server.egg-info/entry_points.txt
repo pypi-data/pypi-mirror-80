@@ -1,0 +1,3 @@
+[console_scripts]
+estore=estore.server.cli:cli
+
