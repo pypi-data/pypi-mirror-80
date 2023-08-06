@@ -1,0 +1,3 @@
+[console_scripts]
+pycec = pycec.__main__:main
+

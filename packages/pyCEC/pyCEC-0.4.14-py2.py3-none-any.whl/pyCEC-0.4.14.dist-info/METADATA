@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: pyCEC
+Version: 0.4.14
+Summary: Provide HDMI CEC devices as objects, especially for use with Home Assistant
+Home-page: https://github.com/konikvranik/pycec/
+Author: Petr Vraník
+Author-email: hpa@suteren.net
+License: MIT
+Keywords: cec hdmi home-assistant
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Topic :: Utilities
+Classifier: Topic :: Home Automation
+Classifier: Topic :: Multimedia
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.4
+Requires-Dist: typing ; python_version < "3.5"
+
+README.rst
+
+
