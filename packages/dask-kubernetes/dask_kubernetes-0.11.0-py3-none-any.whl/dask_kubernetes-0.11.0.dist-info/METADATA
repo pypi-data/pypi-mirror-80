@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: dask-kubernetes
+Version: 0.11.0
+Summary: Native Kubernetes integration for Dask
+Home-page: https://github.com/dask/dask-kubernetes
+License: BSD
+Keywords: dask,kubernetes,distributed
+Platform: UNKNOWN
+Requires-Python: >=3.5
+Requires-Dist: dask (>=2.5.2)
+Requires-Dist: distributed (>=2.5.2)
+Requires-Dist: kubernetes (>=9)
+Requires-Dist: kubernetes-asyncio (>=9)
+
+Dask Kubernetes
+===============
+
+|Build Status|
+
+Native Kubernetes integration for Dask.
+
+See documentation for more information:
+`kubernetes.dask.org <https://kubernetes.dask.org/en/latest>`_
+
+.. |Build Status| image:: https://github.com/dask/dask-kubernetes/workflows/CI/badge.svg
+   :target: https://github.com/dask/dask-kubernetes/actions?query=workflow%3ACI
+
+
