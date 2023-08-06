@@ -1,0 +1,37 @@
+Metadata-Version: 2.1
+Name: procuret
+Version: 0.0.1
+Summary: Procuret API Library
+Home-page: https://github.com/procuret/procuret-python
+Author: Procuret
+Author-email: hugh@procuret.com
+License: UNKNOWN
+Project-URL: Github Repository, https://github.com/procuret/procuret-python
+Project-URL: About, https://github.com/procuret/procuret-python
+Description: # Procuret API Python
+        
+        A Python library for interfacing with Procuret API.
+        
+        ## Installation
+        
+        Procuret Python may be installed via PIP:
+        
+        ```
+        $ pip install procuret
+        ```
+        
+Keywords: library http api web payments finance
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Office/Business :: Financial
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
