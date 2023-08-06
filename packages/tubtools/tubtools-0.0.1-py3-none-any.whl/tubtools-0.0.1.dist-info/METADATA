@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: tubtools
+Version: 0.0.1
+Summary: Scraping tools for the TU Berlin web portals
+Home-page: https://gitlab.tubit.tu-berlin.de/bongo0594/tubtools
+Author: Sebastian Bräuer
+Author-email: braeuer@tu-berlin.de
+License: MIT
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: MIT License
+Requires-Python: >=3.6
+Requires-Dist: fleep
+Requires-Dist: requests
+Requires-Dist: beautifulsoup4
+
+UNKNOWN
+
+

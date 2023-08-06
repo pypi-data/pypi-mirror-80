@@ -1,0 +1,4 @@
+[console_scripts]
+isisdl = tubtools.isis:main
+moses-export = tubtools.moses:main
+
