@@ -1,0 +1,32 @@
+Metadata-Version: 1.1
+Name: firmware_uploader
+Version: 0.3.0
+Summary: Uploads firmware to multiple embedded devices.
+Home-page: https://github.com/janelia-pypi/firmware_uploader_python
+Author: Peter Polidoro
+Author-email: peterpolidoro@gmail.com
+License: BSD
+Description: firmware_uploader_python
+        ========================
+        
+        Uploads firmware to multiple embedded devices.
+        
+        Authors::
+        
+            Peter Polidoro <peterpolidoro@gmail.com>
+        
+        License::
+        
+            BSD
+        
+        Example Usage::
+        
+            from firmware_uploader import FirmwareUploader
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
