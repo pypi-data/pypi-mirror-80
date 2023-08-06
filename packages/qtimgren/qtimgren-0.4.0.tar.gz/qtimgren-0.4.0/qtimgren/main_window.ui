@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>793</width>
+    <height>540</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>QtImgren</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QHBoxLayout" name="horizontalLayout_3">
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QCheckBox" name="images_display">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Display &amp;images</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="View" name="tableView">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="selectionBehavior">
+         <enum>QAbstractItemView::SelectRows</enum>
+        </property>
+        <attribute name="horizontalHeaderStretchLastSection">
+         <bool>true</bool>
+        </attribute>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="groupBox">
+        <property name="title">
+         <string>Automatic selections</string>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <item>
+            <widget class="QPushButton" name="reset">
+             <property name="text">
+              <string>Default &amp;selection</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="renamed">
+             <property name="text">
+              <string>Select renamed &amp;images</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>&amp;Delta (minutes)</string>
+          </property>
+          <property name="buddy">
+           <cstring>delta</cstring>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QDoubleSpinBox" name="delta">
+          <property name="decimals">
+           <number>3</number>
+          </property>
+          <property name="minimum">
+           <double>-14400.000000000000000</double>
+          </property>
+          <property name="maximum">
+           <double>14400.000000000000000</double>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="rename">
+          <property name="text">
+           <string>&amp;Rename</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="back">
+          <property name="text">
+           <string>&amp;Back</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>793</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu_File">
+    <property name="title">
+     <string>&amp;File</string>
+    </property>
+    <addaction name="action_merge"/>
+    <addaction name="action_settings"/>
+    <addaction name="separator"/>
+    <addaction name="action_quit"/>
+   </widget>
+   <widget class="QMenu" name="menu_Help">
+    <property name="title">
+     <string>&amp;Help</string>
+    </property>
+    <addaction name="action_about"/>
+    <addaction name="action_about_qt"/>
+   </widget>
+   <widget class="QMenu" name="menu_Profiles">
+    <property name="title">
+     <string>&amp;Profiles</string>
+    </property>
+    <addaction name="action_new_profile"/>
+    <addaction name="separator"/>
+    <addaction name="separator"/>
+    <addaction name="action_manage_profiles"/>
+   </widget>
+   <addaction name="menu_File"/>
+   <addaction name="menu_Profiles"/>
+   <addaction name="menu_Help"/>
+  </widget>
+  <action name="action_quit">
+   <property name="text">
+    <string>&amp;Quit</string>
+   </property>
+  </action>
+  <action name="action_about">
+   <property name="text">
+    <string>&amp;About</string>
+   </property>
+  </action>
+  <action name="action_about_qt">
+   <property name="text">
+    <string>About &amp;Qt</string>
+   </property>
+  </action>
+  <action name="action_new_profile">
+   <property name="text">
+    <string>&amp;New profile</string>
+   </property>
+  </action>
+  <action name="action_manage_profiles">
+   <property name="text">
+    <string>&amp;Manage profiles</string>
+   </property>
+  </action>
+  <action name="actionChange_Folder">
+   <property name="text">
+    <string>Change &amp;Folder</string>
+   </property>
+  </action>
+  <action name="action_merge">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>&amp;Merge</string>
+   </property>
+  </action>
+  <action name="action_settings">
+   <property name="text">
+    <string>&amp;Settings</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>View</class>
+   <extends>QTableView</extends>
+   <header>.main_view.h</header>
+   <slots>
+    <slot>delta_changed(double)</slot>
+    <slot>rename()</slot>
+    <slot>back()</slot>
+    <slot>reset_selection()</slot>
+    <slot>select_renamed()</slot>
+    <slot>display_images(bool)</slot>
+   </slots>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>tableView</tabstop>
+  <tabstop>delta</tabstop>
+  <tabstop>rename</tabstop>
+  <tabstop>back</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>action_quit</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>delta</sender>
+   <signal>valueChanged(double)</signal>
+   <receiver>tableView</receiver>
+   <slot>delta_changed(double)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>267</x>
+     <y>511</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>279</x>
+     <y>413</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rename</sender>
+   <signal>clicked()</signal>
+   <receiver>tableView</receiver>
+   <slot>rename()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>586</x>
+     <y>526</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>482</x>
+     <y>413</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>back</sender>
+   <signal>clicked()</signal>
+   <receiver>tableView</receiver>
+   <slot>back()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>669</x>
+     <y>513</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>680</x>
+     <y>413</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>reset</sender>
+   <signal>clicked()</signal>
+   <receiver>tableView</receiver>
+   <slot>reset_selection()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>392</x>
+     <y>477</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>387</x>
+     <y>413</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>renamed</sender>
+   <signal>clicked()</signal>
+   <receiver>tableView</receiver>
+   <slot>select_renamed()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>771</x>
+     <y>487</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>573</x>
+     <y>373</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>images_display</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>tableView</receiver>
+   <slot>display_images(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>69</x>
+     <y>43</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>75</x>
+     <y>65</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
