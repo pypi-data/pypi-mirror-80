@@ -1,0 +1,4 @@
+[console_scripts]
+gtracks = gtracks.gtracks:main
+gtracks-download-example-bw = gtracks.download_example_bw:main
+
