@@ -1,0 +1,9 @@
+setup.py
+setup_pypi.py
+PyABI_FileCensus.egg-info/PKG-INFO
+PyABI_FileCensus.egg-info/SOURCES.txt
+PyABI_FileCensus.egg-info/dependency_links.txt
+PyABI_FileCensus.egg-info/top_level.txt
+pyabi_filecensus/__init__.py
+tests/__init__.py
+tests/test_pyabi_filecensus.py
