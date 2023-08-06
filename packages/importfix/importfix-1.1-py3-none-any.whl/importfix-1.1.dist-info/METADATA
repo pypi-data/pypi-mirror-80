@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: importfix
+Version: 1.1
+Summary: Fix the sys.path to import modules correctly.
+Home-page: https://github.com/nthdevops/pyModules.git
+Author: nthdevops
+Author-email: nthmanager@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+
+#Import Fix
+
+Fix relative imports with this package
+
