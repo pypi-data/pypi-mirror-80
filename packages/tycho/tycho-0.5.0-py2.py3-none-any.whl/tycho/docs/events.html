@@ -1,0 +1,291 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Events &mdash; tycho 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tycho Runbook" href="runbook.html" />
+    <link rel="prev" title="User Guide" href="userguide.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> tycho
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="userguide.html">User Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Events</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#event-format">Event Format</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="runbook.html">Tycho Runbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html">Design and Performance</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">tycho</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Events</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/events.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="events">
+<h1>Events<a class="headerlink" href="#events" title="Permalink to this headline">¶</a></h1>
+<p>Events are the main data that ETS contains, and can be created and
+updated.</p>
+<p>An event should represent a single manual or automated event, over a
+particular period in time.</p>
+<p>Events can be updated with brand new data, or merged with existing
+data. See the <a class="reference external" href="/api">API</a> for more information.</p>
+<div class="section" id="event-format">
+<h2>Event Format<a class="headerlink" href="#event-format" title="Permalink to this headline">¶</a></h2>
+<p>An example event looks like this:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+     <span class="c1">// a unique ID for your event. This is user-generated,</span>
+     <span class="c1">// and can include semantic information. maximum 100 characters.</span>
+     <span class="c1">// in the case where the id is irrelevant, it&#39;s recommended to use</span>
+     <span class="c1">// a uuid4 id, or not pass one at all.</span>
+     <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;333f1f77bcf86cd799439011&quot;</span>
+     <span class="c1">// if your event was caused by another event being tracked,</span>
+     <span class="c1">// you may reference it here.</span>
+     <span class="s2">&quot;parent_id&quot;</span><span class="o">:</span> <span class="s2">&quot;111f1f77bcf86cd799439011&quot;</span><span class="p">,</span>
+     <span class="c1">// all events require a start time and an event time.</span>
+     <span class="c1">// in the case where is one is not passed, the current time is used.</span>
+     <span class="c1">// In the case where a single timestamp is passed, it is considered</span>
+     <span class="c1">//     both the start and end time.</span>
+     <span class="s2">&quot;start_time&quot;</span><span class="o">:</span> <span class="s2">&quot;2018-12-31T18:38:52.345000+00:00&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;end_time&quot;</span><span class="o">:</span> <span class="s2">&quot;2018-12-31T18:58:52.345000+00:00&quot;</span><span class="p">,</span>
+     <span class="c1">// a string with the description.</span>
+     <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;This is a Concrete event&quot;</span><span class="p">,</span>
+     <span class="c1">// Links to other systems and services can added to this object.</span>
+     <span class="c1">// it should contain a single key representing the service or system</span>
+     <span class="c1">// with more information, and a value with the url to that system.</span>
+     <span class="c1">//</span>
+     <span class="c1">// For a large amount of details, it&#39;s recommended to store that information</span>
+     <span class="c1">// in an external service, and use ETS to query for events that point to that</span>
+     <span class="c1">// information instead.</span>
+     <span class="s2">&quot;detail_urls&quot;</span><span class="o">:</span> <span class="p">{</span><span class="s2">&quot;graphite&quot;</span><span class="o">:</span> <span class="s2">&quot;http//graphite&quot;</span><span class="p">}</span>
+     <span class="c1">// tags are an object of &lt;string, array&lt;string&gt;&gt; pairs,</span>
+     <span class="c1">// signifying all tags that this event matches.</span>
+     <span class="c1">// this is used for querying.</span>
+     <span class="c1">//</span>
+     <span class="c1">// tags have no imposed structure, but some common examples are listed</span>
+     <span class="c1">// below.</span>
+     <span class="s2">&quot;tags&quot;</span><span class="o">:</span> <span class="p">{</span>
+         <span class="c1">// this should be the service or system emitting these events.</span>
+         <span class="c1">// it helps when trying to find all the events that service recently</span>
+         <span class="c1">// emitted.</span>
+         <span class="s2">&quot;source&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;concrete&quot;</span><span class="p">],</span>
+         <span class="c1">// this is the type of action. multiple sources can perform the same action.</span>
+         <span class="c1">// it&#39;s important to not tie this to a particular implementation, as</span>
+         <span class="c1">// technology changes rapidly and the type provides a way to decouple that.</span>
+         <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;commit&quot;</span><span class="p">],</span>
+         <span class="c1">// a list of authors who are responsible for the event.</span>
+         <span class="c1">// e-mail is a namespace that guarantees uniqueness, and works well</span>
+         <span class="c1">// alternatively, some other unique key representing the team would</span>
+         <span class="c1">// work well.</span>
+         <span class="s2">&quot;author&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;yusuket@example.com&quot;</span><span class="p">,</span> <span class="s2">&quot;saroj@example.com&quot;</span><span class="p">],</span>
+         <span class="c1">// the list of services this event affects.</span>
+         <span class="c1">// best practice: only attach this to the event that is actually affecting the service, not</span>
+         <span class="c1">// the event that will CAUSE an affecting event.</span>
+         <span class="s2">&quot;service&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;tycho&quot;</span><span class="p">],</span>
+         <span class="c1">// pending, fail, success. The event can be updated after the fact,</span>
+         <span class="c1">// so this can represent some transient state as well.</span>
+         <span class="c1">// conversely, one could an event after a state change as a separate event.</span>
+         <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;success&quot;</span><span class="p">],</span>
+         <span class="c1">// a bug or ticket number. Having a ticket with work-in-action helps with additional context.</span>
+         <span class="s2">&quot;bug_number&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;MON-1234&quot;</span><span class="p">]</span>
+     <span class="p">}</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="runbook.html" class="btn btn-neutral float-right" title="Tycho Runbook" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="userguide.html" class="btn btn-neutral float-left" title="User Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2016, orbital@example.com
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

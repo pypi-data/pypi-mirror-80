@@ -1,0 +1,333 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>User Guide &mdash; tycho 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Events" href="events.html" />
+    <link rel="prev" title="Welcome to Tycho’s documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> tycho
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submitting-events">Submitting Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#querying-events">Querying Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#specifying-parent-child-relationships">Specifying Parent-Child Relationships</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="events.html">Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="runbook.html">Tycho Runbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html">Design and Performance</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">tycho</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>User Guide</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/userguide.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="user-guide">
+<h1>User Guide<a class="headerlink" href="#user-guide" title="Permalink to this headline">¶</a></h1>
+<p>Tycho is a service designed for durable storage and fast querying of events that indicate operational
+change. Examples of such events include:</p>
+<ul class="simple">
+<li><p>deployments</p></li>
+<li><p>work-in-action (upgrading a host, network card)</p></li>
+<li><p>AB bucket changes</p></li>
+</ul>
+<p>In short, any change that can affect the behavior of a service.</p>
+<p>Once this data is in Tycho, you can perform various queries of the data such as:</p>
+<ul class="simple">
+<li><p>querying a single event</p></li>
+<li><p>querying a series of events based on tags and time ranges when the event occurred</p></li>
+<li><p>querying for a tree of events: if a parent-child relationship is specified in events,
+Tycho can construct a tree and return the full tree of results.</p></li>
+</ul>
+<p>Tycho is primarily an API, and the primary unit of data is an event. An event might look something like:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;my-unique-event-id&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;start_time&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-12-31T18:38:52.345000+00:00&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;end_time&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-12-31T18:58:52.345000+00:00&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;deploy of service foo in environment bar&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;detail_urls&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;deploy&quot;</span><span class="p">:</span> <span class="s2">&quot;http://deploy-service/deploy/1&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;tags&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;deploy&quot;</span><span class="p">],</span>
+      <span class="nt">&quot;service&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;foo&quot;</span><span class="p">],</span>
+      <span class="nt">&quot;environment&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;bar&quot;</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>To describe each component in detail:</p>
+<ul class="simple">
+<li><p>id: a string that unqiuely identifies the event. If omitted, a uuid4 string will be constructed.</p></li>
+<li><p>start_time/ end_time: ISO 8601 timestamps of when the event began and ended.</p></li>
+<li><p>description: a human-readable description of the event</p></li>
+<li><p>detail_urls: a map string/string pairs, with the values being urls.</p></li>
+<li><p>tags: a map of string, list of string pairs that are used to index the event.</p></li>
+</ul>
+<div class="section" id="submitting-events">
+<h2>Submitting Events<a class="headerlink" href="#submitting-events" title="Permalink to this headline">¶</a></h2>
+<p>API documentation and a playground are provided at /api/. However, a simple explanation is given here.</p>
+<p>Tycho supports two primary APIs for submitting events:</p>
+<ul class="simple">
+<li><p>PUT  to /api/v1/events/, to create new events</p></li>
+<li><p>POST to /api/v1/events/, to update existing events</p></li>
+</ul>
+<p>The body should contain the event itself.</p>
+</div>
+<div class="section" id="querying-events">
+<h2>Querying Events<a class="headerlink" href="#querying-events" title="Permalink to this headline">¶</a></h2>
+<p>Events can be queried by time range and by tags. An example using both looks like:</p>
+<p><code class="docutils literal notranslate"><span class="pre">/api/v1/event/?tag=environment:production&amp;tag=service:foo&amp;frm=2018-12-31T09:09:25.991Z&amp;page=1</span></code></p>
+<p>This will return all events that are tagged with environment:production and service:foo since December 31st, 2018.</p>
+</div>
+<div class="section" id="specifying-parent-child-relationships">
+<h2>Specifying Parent-Child Relationships<a class="headerlink" href="#specifying-parent-child-relationships" title="Permalink to this headline">¶</a></h2>
+<p>Oftentimes operational events are automated, such as deploys through a continuous delivery system such as Jenkins or Spinnaker. In those case it may also be valuable to describe
+a chain of events that caused the deploy to occur.</p>
+<p>To facilitate this, events are able to pass in a parent_id. For example, you could provide the
+user-driven commit and the linked deploy object by posting the following:</p>
+<p>Parent Event:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;event&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;user-commit-hash&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;start_time&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-12-31T18:18:52.345000+00:00&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;end_time&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-12-31T18:28:52.345000+00:00&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;detail_urls&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;commit&quot;</span><span class="p">:</span> <span class="s2">&quot;http://github.com/deploy/1&quot;</span>
+      <span class="p">},</span>
+      <span class="nt">&quot;tags&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;github&quot;</span><span class="p">],</span>
+        <span class="nt">&quot;author&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;myemail@example.com&quot;</span><span class="p">]</span>
+      <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Child Event:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;event&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;my-deploy-event&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;parent_id&quot;</span><span class="p">:</span> <span class="s2">&quot;user-commit-hash&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;start_time&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-12-31T18:38:52.345000+00:00&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;end_time&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-12-31T18:58:52.345000+00:00&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;deploy of service foo in environment bar&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;detail_urls&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;deploy&quot;</span><span class="p">:</span> <span class="s2">&quot;http://deploy-service/deploy/1&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;tags&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;deploy&quot;</span><span class="p">],</span>
+      <span class="nt">&quot;service&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;foo&quot;</span><span class="p">],</span>
+      <span class="nt">&quot;environment&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;bar&quot;</span><span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You can then visualize the tree at /event/user-commit-hash/.</p>
+<p>In addition, there are various APIs to help you audit event relationships
+further. Also available in the API documentation, but a few examples are:</p>
+<ul class="simple">
+<li><p>/api/v1/event/&lt;event_id&gt;/children -&gt; see immediate children of event</p></li>
+<li><p>/api/v1/event/&lt;event_id&gt;/impact -&gt; recursively iterate and produce all children</p></li>
+<li><p>/api/v1/event/&lt;event_id&gt;/trace -&gt; return the current event, and all parents</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="events.html" class="btn btn-neutral float-right" title="Events" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to Tycho’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2016, orbital@example.com
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

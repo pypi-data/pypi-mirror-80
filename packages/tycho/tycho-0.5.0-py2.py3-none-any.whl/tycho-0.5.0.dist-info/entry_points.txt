@@ -1,0 +1,3 @@
+[console_scripts]
+create_indexes = tycho.scripts.create_indexes:main
+
