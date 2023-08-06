@@ -1,0 +1,8 @@
+numpy
+scipy
+pandas
+wfdb
+sqlalchemy
+dataclasses
+mne>=0.21.0
+yasa>=0.1.6
