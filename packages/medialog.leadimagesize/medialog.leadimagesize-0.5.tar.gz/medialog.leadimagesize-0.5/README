@@ -1,0 +1,36 @@
+------------
+Introduction
+------------
+
+
+_medialog.leadimageview_ is a simple package that adds an option to choose size of leadimage.
+
+
+TO DO (0.5)
+=========
+- Add upgrade profile (uninstall and reinstall works)
+
+
+Changelog
+=========
+
+0.5 / 26.06 2020
+---------------
+- Added portlet
+- Hide viewlet when portlet is present
+
+
+0.4 / 03.03 2019
+---------------
+- added python 3 support
+- removed preOverlay
+
+0.1.1 / 0.1.2 (17 12 2015)
+---------------------
+- Vocabulary fix [espenmn]
+- Added folder view [espenmn]
+
+
+0.1 (07 12 2015)
+---------------------
+- First version [espenmn]
