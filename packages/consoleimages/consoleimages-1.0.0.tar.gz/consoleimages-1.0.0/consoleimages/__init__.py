@@ -1,0 +1,1 @@
+from consoleimages.code import image
