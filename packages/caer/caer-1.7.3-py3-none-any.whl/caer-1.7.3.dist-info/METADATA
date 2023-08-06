@@ -1,0 +1,51 @@
+Metadata-Version: 2.1
+Name: caer
+Version: 1.7.3
+Summary: A Computer Vision library in Python, built for Humans.
+Home-page: https://github.com/jasmcaus/caer
+Author: Jason Dsouza
+Author-email: jasmcaus@gmail.com
+Maintainer: Jason Dsouza
+License: MIT
+Download-URL: https://pypi.org/project/caer/
+Project-URL: Bug Tracker, https://github.com/jasmcaus/caer/issues
+Project-URL: Documentation, https://github.com/jasmcaus/caer/blob/master/DOCS.md
+Project-URL: Source Code, https://github.com/jasmcaus/caer
+Keywords: computer vision,deep learning,image processing,opencv,matplotlib
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: Science/Research
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: License :: OSI Approved :: MIT License
+Description-Content-Type: text/markdown
+Requires-Dist: numpy
+Requires-Dist: opencv-contrib-python
+Requires-Dist: h5py
+
+A Computer Vision library in Python with powerful image processing operations, including support for Deep Learning models built using the Keras framework
+
+[![Downloads](https://pepy.tech/badge/caer)](https://pepy.tech/project/caer)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/jasmcaus/caer/blob/master/LICENSE)
+
+## Installation
+The `caer` package can be installed via a simple pip install command 
+
+<pre>$ pip install caer</pre>
+
+## Resources
+
+- **Homepage:** <https://github.com/jasmcaus/caer/>
+- **Docs:** <https://github.com/jasmcaus/caer/blob/master/DOCS.md>
+- **Issue tracking:** <https://github.com/jasmcaus/caer/issues>
+
+All Caer wheels on PyPi are MIT-licensed
+
