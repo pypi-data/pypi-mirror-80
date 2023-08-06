@@ -1,0 +1,164 @@
+[
+  {
+    "tyyppi": "muutos",
+    "tunnus": "57c7d9706ac635f8a90b8d454d8f98cff9d0c343",
+    "versio": "0.5.3",
+    "kuvaus": "Ei l\u00e4hetet\u00e4 tyhj\u00e4\u00e4 Websocket-virhesanomaa"
+  },
+  {
+    "tyyppi": "muutos",
+    "tunnus": "0031161a8330c2f3e4220506afe00a4c0d8ac7e3",
+    "versio": "0.5.2",
+    "kuvaus": "Lis\u00e4t\u00e4\u00e4n `runserver --{a,w}sgi`-parametrit, vaikka `uvicornia` ei l\u00f6ydy; annetaan tarvittaessa virheilmoitus"
+  },
+  {
+    "tyyppi": "muutos",
+    "tunnus": "cfc7a7f090786ec736e46d51bb8e0d7d1dae92ab",
+    "versio": "0.5.1",
+    "kuvaus": "Kutsutaan `dispatch`-metodia WebsocketKasittelijassa synkronisesti"
+  },
+  {
+    "tyyppi": "julkaisu",
+    "tunnus": "f6c44979c9273f028f48464f31ef98632b9c4c76",
+    "versio": "0.5",
+    "kuvaus": "Versio 0.5\n* `watchgod`-ASGI-uudelleenlataus\n* t\u00e4ydennetty `runserver`-vipujen k\u00e4sittely"
+  },
+  {
+    "tyyppi": "muutos",
+    "tunnus": "8b57b84bc61efee326233bbe255c8914f09e3790",
+    "versio": "0.5",
+    "kuvaus": "Lis\u00e4tty `verbosity`- ja `{force,no}_color`-parametrien k\u00e4sittely ASGI-kehityspalvelinta ajettaessa"
+  },
+  {
+    "tyyppi": "muutos",
+    "tunnus": "91a483e0a7c22c2d684ac1e1525088a30c6c2c9b",
+    "versio": "0.4.2",
+    "kuvaus": "K\u00e4ytet\u00e4\u00e4n `watchgod`-uudelleenlatausta ASGI-kehityspalvelinta ajettaessa"
+  },
+  {
+    "tyyppi": "muutos",
+    "tunnus": "35e6db55fe3bcd4621ab53fd107c200c54fafad6",
+    "versio": "0.4.1",
+    "kuvaus": "Lis\u00e4tty k\u00e4ytt\u00f6oikeusasiakirja ja `licence=MIT`"
+  },
+  {
+    "tyyppi": "julkaisu",
+    "tunnus": "1f27b251047ac1adbbd8ccba6d0a8d24c08c2cb1",
+    "versio": "0.4",
+    "kuvaus": "Versio 0.4\n* Django 3.1"
+  },
+  {
+    "tyyppi": "muutos",
+    "tunnus": "daec50739a5fe23ab164b355de1a36d65d63fc5e",
+    "versio": "0.4",
+    "kuvaus": "Django 3.1 -k\u00e4ytt\u00f6\u00f6notto"
+  },
+  {
+    "tyyppi": "julkaisu",
+    "tunnus": "450c6b24a6cbb6466709cbb16c75cf7fbf40fb29",
+    "versio": "0.3",
+    "kuvaus": "Versio 0.3\n* alustavat k\u00e4ytt\u00f6ohjeet"
+  },
+  {
+    "tyyppi": "muutos",
+    "tunnus": "d4c32eae246697e0c40ba58039757b4480245e14",
+    "versio": "0.3",
+    "kuvaus": "L\u00e4hetet\u00e4\u00e4n `request_finished`-signaali Websocket-k\u00e4sittelyn p\u00e4\u00e4ttyess\u00e4\n* lis\u00e4tty `thread_sensitive=True` signaalien `sync_to_async`-l\u00e4hetyskutsuihin"
+  },
+  {
+    "tyyppi": "muutos",
+    "tunnus": "e634f59fe5324255215968612645d781f7b038ca",
+    "versio": "0.2.6",
+    "kuvaus": "Korjattu k\u00e4ytt\u00f6ohjeteksti"
+  },
+  {
+    "tyyppi": "muutos",
+    "tunnus": "0bb0d04fc037eb3965c0be86d9f49d6b25a3e63a",
+    "versio": "0.2.5",
+    "kuvaus": "Ajetaan sanoman k\u00e4sittelyyn liittyv\u00e4 synkroninen koodi p\u00e4\u00e4s\u00e4ikeess\u00e4"
+  },
+  {
+    "tyyppi": "muutos",
+    "tunnus": "9cb28e33e0a15bad4d514b9b0126992bc0a7b3cf",
+    "versio": "0.2.4",
+    "kuvaus": "Xterm: odota tulostedatan l\u00e4hetyst\u00e4 ennen yhteyden katkaisua"
+  },
+  {
+    "tyyppi": "muutos",
+    "tunnus": "f126cdedc3d05bea4f061c61835456effe63f13e",
+    "versio": "0.2.3",
+    "kuvaus": "Korjattu Py3.6-yhteensopivaksi"
+  },
+  {
+    "tyyppi": "muutos",
+    "tunnus": "1e9449701cd42cfc4a405ad3c090c5452c17393f",
+    "versio": "0.2.2",
+    "kuvaus": "Lis\u00e4tty alustavat k\u00e4ytt\u00f6ohjeet"
+  },
+  {
+    "tyyppi": "muutos",
+    "tunnus": "42187b483b12c0437c9ca6543d88980a60a59d17",
+    "versio": "0.2.1",
+    "kuvaus": "Lis\u00e4tty Websocket-protokollan saatavuuden tarkistus Xterm-n\u00e4kym\u00e4n GET-k\u00e4sittelij\u00e4\u00e4n"
+  },
+  {
+    "tyyppi": "julkaisu",
+    "tunnus": "0f821183091ccbab8035d5bdbb306f09fdd41270",
+    "versio": "0.2",
+    "kuvaus": "Versio 0.2\n* CSRF-ohjainluokka"
+  },
+  {
+    "tyyppi": "muutos",
+    "tunnus": "2cd9dde11bed1130c19c15b6b95fac6dea97a41b",
+    "versio": "0.2",
+    "kuvaus": "Lis\u00e4tty `CsrfOhjain`-ohjainluokka, joka lis\u00e4\u00e4 `_tarkista_csrf`-metodin pyynn\u00f6lle"
+  },
+  {
+    "tyyppi": "muutos",
+    "tunnus": "ebf5db41c610640ec19279b5421b347353289b38",
+    "versio": "0.1.3",
+    "kuvaus": "Korjattu v\u00e4litt\u00f6m\u00e4n Websocket-paluusanoman muodostus"
+  },
+  {
+    "tyyppi": "muutos",
+    "tunnus": "d6efbc7afe133d202c0174359b7aa4685fede4fd",
+    "versio": "0.1.2",
+    "kuvaus": "Selkiytetty ASGI-k\u00e4sittelij\u00e4n teht\u00e4vien k\u00e4sittely"
+  },
+  {
+    "tyyppi": "muutos",
+    "tunnus": "221c8a3c426cea4f41963532b22da3088a4f3f10",
+    "versio": "0.1.1",
+    "kuvaus": "Pilkottu p\u00e4\u00e4teprosessin k\u00e4sittely omaan moduuliinsa"
+  },
+  {
+    "tyyppi": "julkaisu",
+    "tunnus": "a6f85479e6ba2dbd99502188f6e142170353ed24",
+    "versio": "0.1",
+    "kuvaus": "Versio 0.1"
+  },
+  {
+    "tyyppi": "muutos",
+    "tunnus": "e0c6a273e458ae2c5d7c70853eef7c2485d17438",
+    "versio": "0.1",
+    "kuvaus": "Lis\u00e4tty `XtermNakyma`-luokka"
+  },
+  {
+    "tyyppi": "muutos",
+    "tunnus": "7ca3c585269a6d5fe1a47c302023c7ad90fc2719",
+    "versio": "0.0.3",
+    "kuvaus": "Lis\u00e4tty ylikuormitettu `runserver`-komento"
+  },
+  {
+    "tyyppi": "muutos",
+    "tunnus": "8d8f8fa0d1509cdd7ab5a39fe3b7f1012a9fc0ce",
+    "versio": "0.0.2",
+    "kuvaus": "Lis\u00e4tty esimerkinomainen `WebsocketNakyma`-kantaluokka"
+  },
+  {
+    "tyyppi": "muutos",
+    "tunnus": "d740b77e3ce875620f3362cda26060dab375100a",
+    "versio": "0.0.1",
+    "kuvaus": "Alustava toteutus"
+  }
+]
