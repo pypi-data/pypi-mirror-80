@@ -1,0 +1,13 @@
+Metadata-Version: 2.1
+Name: downward-mtree
+Version: 1.0
+Summary: A variant of MTrees, where NonLeafNodes do not propagate splits to the parent, but combine routing objects downwards
+Home-page: https://github.com/Napolei/dmtree
+Author: Max Feltes
+Author-email: contact@feltes.ch
+License: MIT License
+Platform: UNKNOWN
+
+UNKNOWN
+
+
