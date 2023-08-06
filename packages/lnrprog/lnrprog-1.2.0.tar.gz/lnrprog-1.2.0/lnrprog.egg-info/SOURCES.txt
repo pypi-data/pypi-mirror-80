@@ -1,0 +1,14 @@
+LICENSE.txt
+MANIFEST.in
+README.txt
+pyproject.toml
+setup.cfg
+setup.py
+lnrprog/__init__.py
+lnrprog/lpp_graphical.py
+lnrprog/two_phase_simplex.py
+lnrprog.egg-info/PKG-INFO
+lnrprog.egg-info/SOURCES.txt
+lnrprog.egg-info/dependency_links.txt
+lnrprog.egg-info/requires.txt
+lnrprog.egg-info/top_level.txt
