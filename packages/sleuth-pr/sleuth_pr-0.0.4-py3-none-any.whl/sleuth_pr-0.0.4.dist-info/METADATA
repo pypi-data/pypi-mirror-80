@@ -1,0 +1,76 @@
+Metadata-Version: 2.1
+Name: sleuth-pr
+Version: 0.0.4
+Summary: Pull request automation Django app
+Home-page: https://github.com/sleuth-io/sleuth-pr
+Author: Don Brown
+Author-email: don@sleuth.io
+Maintainer: Don Brown
+Maintainer-email: don@sleuth.io
+License: APLv2 License
+Keywords: pull request,automation,bot
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Topic :: Software Development
+Classifier: Programming Language :: Python :: 3.8
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: Django (>=3.0.0)
+Requires-Dist: celery (>=5.0.0)
+Requires-Dist: marshmallow (>=3.8.0)
+Requires-Dist: PyGithub (>=1.53)
+Requires-Dist: PyJWT (>=1.7.1)
+Requires-Dist: requests (>=2.24.0)
+Requires-Dist: PyYAML (>=5.3.1)
+Requires-Dist: pyparsing (>=2.4.7)
+Requires-Dist: cryptography (>=3.1)
+Provides-Extra: dev
+Requires-Dist: pytest ; extra == 'dev'
+Requires-Dist: pytest-django ; extra == 'dev'
+Requires-Dist: flake8 ; extra == 'dev'
+Requires-Dist: pylint ; extra == 'dev'
+Requires-Dist: black ; extra == 'dev'
+Requires-Dist: reorder-python-imports ; extra == 'dev'
+Requires-Dist: factory-boy ; extra == 'dev'
+Provides-Extra: doc
+Requires-Dist: sphinx ; extra == 'doc'
+Requires-Dist: sphinx-rtd-theme ; extra == 'doc'
+Provides-Extra: test
+Requires-Dist: pytest ; extra == 'test'
+
+```
+  _________.__                 __  .__      ____________________ 
+ /   _____/|  |   ____  __ ___/  |_|  |__   \______   \______   \
+ \_____  \ |  | _/ __ \|  |  \   __\  |  \   |     ___/|       _/
+ /        \|  |_\  ___/|  |  /|  | |   Y  \  |    |    |    |   \
+/_______  /|____/\___  >____/ |__| |___|  /  |____|    |____|_  /
+        \/           \/                 \/                    \/ 
+```
+
+Sleuth PR is a pull request automation application to help developers waste less time in the PR process.
+
+- Automate merges based on your team's requirements
+- Run standalone or embed in another Django application
+- Apache v2 license
+
+
+Quickstart Guide
+----------------
+
+- python3.8 -m venv venv && source venv/bin/activate
+- pip install -r requirements.txt
+- make run
+
+Release Guide
+-------------
+
+- Tag as vMAJOR.MINOR.PATCH (either via the CLI or GitHub UI)
+- Sit back and relax by watching some [Sleuth TV](https://www.youtube.com/channel/UCmIIOHKgJnGQruIVD_Zx71g)
+
+Contributors
+------------
+
+- Deni1111
+
+
