@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: essHIC
+Version: 1.3
+Summary: essHIC is a python module to compare HiC matrices by computing a metric distance between them
+Home-page: https://github.com/stefanofranzini/essHIC
+Author: Stefano Franzini
+Author-email: sfranzin@sissa.it
+License: MIT
+Keywords: HiC,distance,spectral
+Platform: UNKNOWN
+Requires-Dist: numpy
+Requires-Dist: scipy
+Requires-Dist: matplotlib
+Requires-Dist: sklearn
+
+UNKNOWN
+
+
