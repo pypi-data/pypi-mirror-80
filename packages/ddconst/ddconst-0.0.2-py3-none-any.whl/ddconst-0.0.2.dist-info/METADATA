@@ -1,0 +1,32 @@
+Metadata-Version: 2.1
+Name: ddconst
+Version: 0.0.2
+Summary: Constants used across multiple codebases
+Home-page: https://github.com/ielis/ddconst
+Author: Daniel Danis
+Author-email: daniel.gordon.danis@protonmail.com
+License: GPLv3
+Keywords: utility
+Platform: UNKNOWN
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+
+# Constants
+Constants used across multiple codebases.
+
+## How to install
+The package is installed either into *virtualenv* environment by running
+
+```bash
+pip install ddconst
+```
+
+## Run tests
+Run tests to make sure that everything works well. First make sure the virtual environment is activated, then enter the project directory and run tests:
+
+```bash
+cd ddconst
+python -m unittest discover
+```
+
+
