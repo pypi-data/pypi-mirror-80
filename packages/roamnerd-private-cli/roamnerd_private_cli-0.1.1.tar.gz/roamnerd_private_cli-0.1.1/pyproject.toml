@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "roamnerd_private_cli"
+version = "0.1.1"
+description = "A private CLI for roamNERd developers / power users. Runs all NER locally using spacy"
+authors = ["hmprt <hmprt@protonmail.com>"]
+license = "Proprietary"
+
+[tool.poetry.dependencies]
+python = "^3.5"
+python-dateutil = "^2.8.1"
+argh = "^0.26.2"
+spacy = "^2.3.2"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
+
+[tool.poetry.scripts]
+roamnerd_private_cli = "roamnerd_private_cli:main"
+roamNERdHelper = "roamnerdHelper"
+RoamnerdInstance = "RoamnerdInstance"
+roamnerdMain = "roamnerdMain"
