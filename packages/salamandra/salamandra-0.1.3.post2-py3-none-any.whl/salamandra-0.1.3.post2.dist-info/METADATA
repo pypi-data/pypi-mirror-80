@@ -1,0 +1,185 @@
+Metadata-Version: 2.1
+Name: salamandra
+Version: 0.1.3.post2
+Summary: Framework for describing hierarchical systems
+Home-page: http://enicslabs.com/
+Author: Tzachi Noy
+Author-email: tzachi.noy@biu.ac.il
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.5
+Description-Content-Type: text/markdown
+
+# Project Salamandra
+###### still in Stealth Mode
+
+**Salamandra** is an extensible [Pythonic](https://en.wikipedia.org/wiki/Python_(programming_language)) 
+infrastructure for loading, analyzing, generating and storing of netlists. 
+It is hosted under Enics's gitlab repository. 
+For an introductory presentation see [on the git](http://gitlab.local/noytzach/salamandra/raw/master/docs/salamandra.pptx) 
+or this [slide show](http://enicskb.local/wiki/images/2/2a/Salamandra.pptx). 
+Although still in alpha testing, Salamandra is considered by many to be 'the next big thing'. 
+As such, this page is expected to change more frequently than others in this wiki (like duh), so stay tuned.
+
+## Getting Salamandra - Setup
+Salamandra is hosted under gitlab at http://gitlab.local/noytzach/salamandra.
+
+To install Salamandra use `pip install salamandra`
+
+If you want a specific version you can do `pip install salamandra==#version#`
+
+~~~
+If used as basis to another git project - the recomended method is to use it as a git submodule.
+
+*Using Submodules is recomended for advanced git users, for detailed description 
+see [submodules in the git-scm book](https://git-scm.com/book/en/v2/Git-Tools-Submodules). 
+Novices can use* `git clone` *instead and ignore the rest of this section.*
+
+If you issue the following command from your project's root directory,
+
+`$ git submodule add http://<username>@gitlab.local/noytzach/salamandra.git`
+
+the salamandra repository will be placed as a submodule of your project and the files will be located under ./salamandra.
+
+
+in order to import the package from files in other directories, add the following code to the top of the file
+
+```
+import sys, os
+sys.path.append(os.path.abspath('../salamandra/python'))
+```
+
+where the path for `abspath` is the relative path from the file to Salamandra's Python directory. 
+Take [this git project](http://gitlab.local/noytzach/gc_tp_ram) as an example. 
+The Salamandra scripts are under `slm/`, while the Salamandra infrastructure is under `submodules/salamandra/`
+~~~
+
+
+## Basic Commands
+
+**Note: Only Python3 is supported by Salamandra.**
+
+Salamandra is object-oriented. The four basic classes are `Component`, `Net` , `Param` and `Pin`. The following code creates an NMOS transistor skeleton.
+
+```
+import salamandra as slm
+nmos = slm.Component('nmos')
+nmos.add_pin(slm.Pin('source'))
+nmos.add_pin(slm.Pin('drain'))
+nmos.add_pin(slm.Pin('gate'))
+nmos.add_pin(slm.Pin('body'))
+```
+
+The nmos component above has no internal structure, but can be used as a leaf node for higher levels, 
+as shown in the example below. Note below the usage of `Input`, `Output` and `Inout`, 
+which are of subclass `Pin`, and imply the pin's direction in digital designs.
+```
+inv = slm.Component('inv')
+
+#pins
+inv.add_pin(slm.Input('I'))
+inv.add_pin(slm.Output('ZN'))
+inv.add_pin(slm.Inout('VDD'))
+inv.add_pin(slm.Inout('VSS'))
+
+#subcomponents
+inv.add_component(nmos, 'n1')
+inv.add_component(pmos, 'p1')
+
+#connections
+inv.connect('I', 'n1.gate')
+inv.connect('I', 'p1.gate')
+inv.connect('ZN', 'n1.drain')
+inv.connect('ZN', 'p1.drain')
+inv.connect('VDD', 'p1.source')
+inv.connect('VDD', 'p1.body')
+inv.connect('VSS', 'n1.source')
+inv.connect('VSS', 'n1.body')
+```
+Component like nmos, resistor, capacitors etc. 
+may have parameters like width, length etc. 
+To be able to make the component compatible to Netlist exporting, those parameters should be added to the component. 
+The following code demonstrate how to add `Param` to components.
+```
+#adding new params to inv
+nmos.add_prarm(Param('W',200E-9))
+nmos.add_param(Param('L',60E-9))
+nmos.add_param(Param('mult',2))
+nmos.add_param(Param('nf')) #default value is 0 
+
+#changing a specific parameter value in the inv component
+nmos.set_param('nf',2)
+```
+
+## Export Netlist
+Salamandra currently supports exporting netlists as verilog nelist or as spectere netlist (cadence version of spice).
+`write_verilog` is used to export a component as verilog netlist. 
+The function returns a list of lines defining the component as a verilog module. 
+The following code will print the verilog netlist to STDOUT.
+```
+for l in riscv.write_verilog():
+   print(l)
+```
+Similarly, for exporting into a file use something like this:
+```
+f = open('sfpga.v', 'w')
+for l in sfpga.write_verilog():
+   f.write(l+'\n')
+f.close()
+```
+In a similar way you can write spectre netlist by using write_netlist like this:
+```
+for l in comp.write_netlist():
+   print(l)
+```
+have notice that if you are want to use salamandra for spectre netlist you need 
+to give your basic component significant names (that fit to the process) 
+and attach to them the relevant parameters as explained above.
+
+## Getting Support
+The following people consider themselves (or are considered by others) as Salamandra Gurus. 
+You can always ask for their assistance or blessing. 
+While support is given for free, smiles or small donations are always welcome.
+
+- [Tzachi Noy](mailto:tzachi.noy@biu.ac.il)
+- [Hanan Marinberg](mailto:hanan.marinberg@biu.ac.il)
+- [Or Maltabashi](mailto:ormaltab@gmail.com)
+- [Roi Gelis](mailto:roi6633@gmail.com)
+
+If you think you deserve it - feel free to add yourself to the exclusive list above.
+
+## Salamandra in the academice world
+On Spring of 2018, an homework assignment in the course 
+[Advanced Digital VLSI Design II](https://lemida.biu.ac.il/course/view.php?id=38992)
+given in [Bar-Ilan university](https://en.wikipedia.org/wiki/Bar-Ilan_University), 
+was based on the Salamandra infrastructure. 
+This never happened in any other reputable academic institute since.
+
+## Create/Update Salamandra as a python package
+First create/update a file called `setup.py` in the package's root directory 
+in a specific format(see example at `setup.py`)
+
+Then, To create a binary distribution, 
+you need to download wheel package using `pip install wheel`
+
+and then to create the distribution run: `python setup.py bdist_wheel`
+
+and it will create a wheel file inside `dist` directory
+
+And that it's all you need for install it using `pip install /path/to/wheelfile.whl`
+
+To upload it to PyPI you will need twine package, so install it first using `pip install twine`
+
+Then upload your package using twine `twine upload dist/* --config-file .pypirc`
+
+And now you can check it on https://pypi.org/project/salamandra
+and install wherever you want it using `pip install salamandra`
+
+
+## See also
+- [sclib](http://enicskb.local/wiki/index.php/Standard_Cell_Library_for_Salamandra)
+- [Placeable component (componentXY)](http://enicskb.local/wiki/index.php/Placeable_component_in_salamandra)
+
