@@ -1,0 +1,7 @@
+requests
+django>=2.0
+pbr
+cachetools
+six
+astunparse
+yapf
