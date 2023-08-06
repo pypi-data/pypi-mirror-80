@@ -1,0 +1,8 @@
+{% load i18n %}
+{% load django_horizontal_list_filter %}
+<label>{{ title }} </label>
+<select>
+{% for choice in choices %}
+    <option value="{% django_horizontal_list_filter_clean_query_string cl spec choice.query_string %}"{% if choice.selected %} selected="selected"{% endif %}>{{ choice.display }}</option>
+{% endfor %}
+</select>
