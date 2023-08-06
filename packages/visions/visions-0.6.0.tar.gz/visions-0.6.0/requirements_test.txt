@@ -1,0 +1,14 @@
+matplotlib
+imagehash
+Pillow
+shapely
+mypy
+black>=19.10b0
+isort>=5.0.9
+big_o>=0.10.1
+twine>=3.1.1
+pydot
+pytest>=5.2.0
+pytest-mypy
+pytest-black
+check-manifest>=0.41
