@@ -1,0 +1,3 @@
+[console_scripts]
+satsuki = satsuki.cli:main
+
