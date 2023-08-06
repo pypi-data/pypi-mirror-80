@@ -1,0 +1,16 @@
+LICENSE
+MANIFEST.in
+README.md
+setup.py
+prodapp/__init__.py
+prodapp/app.py
+prodapp/app_state.py
+prodapp/config.ini
+prodapp.egg-info/PKG-INFO
+prodapp.egg-info/SOURCES.txt
+prodapp.egg-info/dependency_links.txt
+prodapp.egg-info/requires.txt
+prodapp.egg-info/top_level.txt
+prodapp.egg-info/zip-safe
+prodapp/sounds/bleep.mp3
+prodapp/static/style.css
