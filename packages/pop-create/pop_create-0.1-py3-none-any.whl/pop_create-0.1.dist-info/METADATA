@@ -1,0 +1,49 @@
+Metadata-Version: 2.1
+Name: pop-create
+Version: 0.1
+Summary: UNKNOWN
+Home-page: UNKNOWN
+Author: David Boucha
+Author-email: boucha@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Development Status :: 5 - Production/Stable
+Requires-Python: >=3.6
+Description-Content-Type: text/x-rst
+Requires-Dist: pop
+
+==========
+pop-create
+==========
+
+pop-create was originally an internal function of the pop project named
+pop-seed.
+
+pop-create will initialize a new pop project.
+
+
+Geting Started
+==============
+
+.. code-block:: bash
+
+    pip3 install pop-create
+
+Now that you have pop-create installed you can run:
+
+
+.. code-block:: bash
+
+    pop-create --help
+    pop-create poppy
+
+
+This initial release should have identical functionality as `pop-seed` as
+currently provided by the `pop` project.
+
+
