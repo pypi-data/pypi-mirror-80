@@ -1,0 +1,9 @@
+README.md
+setup.py
+clickhouse_migrator.egg-info/PKG-INFO
+clickhouse_migrator.egg-info/SOURCES.txt
+clickhouse_migrator.egg-info/dependency_links.txt
+clickhouse_migrator.egg-info/requires.txt
+clickhouse_migrator.egg-info/top_level.txt
+migration_lib/__init__.py
+migration_lib/migrate.py
