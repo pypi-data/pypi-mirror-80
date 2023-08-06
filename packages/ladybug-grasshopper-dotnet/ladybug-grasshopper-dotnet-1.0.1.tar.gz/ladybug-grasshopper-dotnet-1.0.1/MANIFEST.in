@@ -1,0 +1,7 @@
+prune src*
+prune .github*
+exclude .gitignore
+exclude .releaserc.json
+exclude *.md
+recursive-include ladybug_grasshopper_dotnet *.gha
+recursive-exclude * __pycache__
