@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: sparkfun-qwiic-gpio
+Version: 0.0.2
+Summary: SparkFun Electronics qwiic GPIO package
+Home-page: http://www.sparkfun.com/qwiic
+Author: SparkFun Electronics
+Author-email: info@sparkfun.com
+License: MIT
+Keywords: electronics,maker
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Requires-Dist: sparkfun-qwiic-i2c
+
+Qwiic GPIO Py
+==========================
+
+This package controls the [SparkFun Qwiic GPIO](https://www.sparkfun.com/products/15993) using I<sup>2</sup>C.
+
