@@ -1,0 +1,3 @@
+[console_scripts]
+arkfbp-py = arkfbp.common.django.management:execute_from_command_line
+
