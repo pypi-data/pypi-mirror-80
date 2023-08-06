@@ -1,0 +1,24 @@
+Metadata-Version: 1.1
+Name: pyWmiHandler
+Version: 0.1
+Summary: Most common used WMI queries and functions wrapper
+Home-page: https://github.com/utytlanyjoe/pyWmiHandler
+Author: Dariusz Lewandowski
+Author-email: utytlanyjoe@icloud.com
+License: MIT
+Description: =========================
+        pyWmiHandler
+        =========================
+        Description
+        ------------------
+        This package is a wrapper for most common used wmi queries and functions.
+        
+Keywords: WMI Windows Management Instrumentation
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: System :: Systems Administration
+Classifier: Topic :: System :: Operating System
+Classifier: Environment :: Win32 (MS Windows)
+Classifier: Operating System :: Microsoft :: Windows

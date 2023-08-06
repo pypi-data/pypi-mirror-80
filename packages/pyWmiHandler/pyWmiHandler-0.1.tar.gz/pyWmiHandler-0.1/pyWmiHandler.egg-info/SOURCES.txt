@@ -1,0 +1,12 @@
+MANIFEST.in
+README.rst
+setup.py
+pyWMiHandler/__init__.py
+pyWMiHandler/helpers.py
+pyWMiHandler/wmi_wrapper.py
+pyWmiHandler.egg-info/PKG-INFO
+pyWmiHandler.egg-info/SOURCES.txt
+pyWmiHandler.egg-info/dependency_links.txt
+pyWmiHandler.egg-info/not-zip-safe
+pyWmiHandler.egg-info/requires.txt
+pyWmiHandler.egg-info/top_level.txt
