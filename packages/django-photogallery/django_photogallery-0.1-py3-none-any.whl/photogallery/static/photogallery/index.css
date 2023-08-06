@@ -1,0 +1,38 @@
+body {
+    background-color:rgb(41, 43, 44);
+}
+
+.h-45 {
+    height: 45% !important;
+}
+
+.pagination > li > a
+{
+    background-color:transparent;
+    color: red;
+    border:1px solid red
+}
+
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover
+{
+    color: white;
+    background-color:rgb(185, 34, 34);
+    border-color: rgb(126, 13, 13);
+}
+
+.pagination > .active > a
+{
+    color: white;
+    background-color: rgb(126, 13, 13) !Important;
+    border: solid 1px rgb(126, 13, 13) !Important;
+}
+
+.pagination > .active > a:hover
+{
+    color: white;
+    background-color: rgb(126, 13, 13) !Important;
+    border: solid 1px rgb(126, 13, 13)d !Important;
+}

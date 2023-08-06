@@ -1,0 +1,16 @@
+.mh-90 {
+    max-height: 90% !important;
+}
+
+.w-35 {
+    width: 35% !important;
+}
+
+.w-65 {
+    width: 65% !important;
+}
+
+body {
+    background-color:rgb(41, 43, 44);
+}
+

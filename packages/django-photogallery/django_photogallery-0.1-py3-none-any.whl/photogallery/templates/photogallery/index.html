@@ -1,0 +1,38 @@
+{% load static %}
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="{% static 'photogallery/index.css' %}">
+
+{% if pictures_list %}
+    {% for picture in pictures_list %}
+        <div class="w-25 h-45 card float-left bg-dark" style="overflow: hidden; border:5px solid rgb(41, 43, 44);">
+            <a href="{% url 'photogallery:detail' picture.id %}" style="color: white;">
+            <div class="card-header border-0 bg-secondary text-center pt-0 ">{{ picture.name }}</div>
+                <div class="card-body ">
+                    <img class="card-img-top rounded mw-100" src = {% get_media_prefix %}{{ picture.picture }}>
+                </div>
+            </div>
+        </a>
+        </div>
+    {% endfor %}
+
+    {% if is_paginated %}
+        <nav aria-label="Page navigation">
+            <ul class="pagination fixed-bottom offset-4 text-center">
+                <li class="page-item"><a class="page-link" href="?page=1">First</a></li>
+                {% for num in page_obj.paginator.page_range %}
+                    {% if page_obj.number == num %}
+                        <li class="page-item active"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                    {% elif num > page_obj.number|add:'-4' and num < page_obj.number|add:'4' %}
+                        <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Last</a></li>
+            </ul>
+        </nav>
+    {% endif %}
+{% else %}
+    <p>No posts were found.</p>
+{% endif %}
+
+</body>

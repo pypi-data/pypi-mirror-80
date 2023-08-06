@@ -1,0 +1,33 @@
+{% load static %}
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="{% static 'photogallery/detail.css' %}">
+
+
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'photogallery:index'%}">All pictures</a>
+        </li>
+    </div>
+  </nav>
+
+<div class="card w-35 mh-90 rounded-0 float-left text-white border-0" style="background-color: rgb(41, 43, 44);">
+    <div class="card-body">
+        <h5 class="card-title">{{picture.name}}</h5>               
+        <p class="card-text">{{picture.description}}</p>
+        <p class="card-text">{{picture.pub_date}}</p>
+        <p class="card-text"><a href="{{picture.source}}">Source of Picture</a><br><a href={% get_media_prefix %}{{picture.picture}}>Show file</a></p>
+        <p class="card-text"></p>
+    </div>
+</div>
+<div class="card w-65 mh-100 rounded-0 border-0" style="background-color: rgb(41, 43, 44);">
+
+{% if picture.url_height < 500 or picture.url_height < picture.url_width %}
+  <img src={% get_media_prefix %}{{picture.picture}} class="card-img-top rounded">
+{% else %}
+  <img src={% get_media_prefix %}{{picture.picture}} class="card-img-top w-50 rounded" >
+{% endif %}
+</div>
+</div>
