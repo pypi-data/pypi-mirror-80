@@ -1,0 +1,110 @@
+{%- extends 'lab/index.html.j2' -%}
+
+{# this overrides the default behavior of directly starting the kernel and executing the notebook #}
+{% block notebook_execute %}
+{% endblock notebook_execute %}
+
+{%- block html_head_css -%}
+{{ super() }}
+{% if resources.theme == 'dark' %}
+{% set bar_color = '#eee' %}
+{% else %}
+{% set bar_color = '#eee' %}
+{% endif %}
+{{ resources.include_css("static/materialize.min.css") }}
+
+<style type="text/css">
+  body {
+    background-color: var(--jp-layout-color0);
+    overflow-y: scroll;
+  }
+
+  /* Overwrite default value, workaround for not breaking materialize */
+  .jp-Notebook {
+    padding: 0px;
+  }
+
+  .nav-wrapper {
+    background-color: {{ bar_color }};
+  }
+
+  .brand-logo {
+    height: 90%;
+    width: 100%;
+  }
+
+  .voila-spinner-color1 {
+    fill: {{ bar_color }};
+  }
+</style>
+
+<style>
+  a.anchor-link {
+    display: none;
+  }
+  .highlight  {
+    margin: 0.4em;
+  }
+  /* we keep the DOM for nbconvert the same as for voila, but hide the status icon */
+  #kernel-status-icon {
+    display: none;
+  }
+</style>
+
+{%- endblock html_head_css -%}
+
+{%- block body -%}
+{%- block body_header -%}
+{{ super() }}
+<header>
+  <div class="navbar-fixed" style="height:45px">
+    <nav class="top-nav" style="height:45px">
+      <div class="nav-wrapper" style="height:45px">
+        <a href="#!" class="brand-logo-container">
+          <object class="brand-logo" type="image/svg+xml" data="{{ resources.include_url("static/osscar_logo.svg") }}"></object>
+        </a>
+        <ul class="right">
+          <li><a href="#"><i class="material-icons" id="kernel-status-icon" style="line-height: 40px;">radio_button_unchecked</i></a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main style="background-color: white">
+  <div class="container">
+    <div class="row">
+      <div class="col s12">
+        {%- endblock body_header -%}
+
+        {%- block body_loop -%}
+        {% if resources.theme == 'dark' %}
+        <div class="jp-Notebook theme-dark">
+          {% else %}
+          <div class="jp-Notebook theme-light">
+            {% endif %}
+            {{ super() }}
+          </div>
+          {%- endblock body_loop -%}
+
+          {%- block body_footer -%}
+          <hr style="border-top: 0.5px solid #cccccc;">
+          <footer class="container">
+            <p>Copyright © 2019-2020 OSSCAR. All Rights Reserved.
+              <br>
+              OSSCAR is supported by the <a href="https://www.osscar.org">EPFL Open Science Fund.</a>
+              <br>
+              <div class="logo-container">
+                <a href="https://www.osscar.org/"><img src="{{ resources.base_url }}voila/static/osscar_logo.svg"></a>
+              </div>
+              <p></p>
+            </footer>
+          </div>
+        </div>
+      </div>
+    </main>
+    {{ super() }}
+    {{ resources.include_js("static/materialize.min.js") }}
+    {%- endblock body_footer -%}
+
+    {%- endblock body -%}
