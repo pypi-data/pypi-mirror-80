@@ -1,0 +1,16 @@
+README.md
+setup.py
+CMSeq.egg-info/PKG-INFO
+CMSeq.egg-info/SOURCES.txt
+CMSeq.egg-info/dependency_links.txt
+CMSeq.egg-info/entry_points.txt
+CMSeq.egg-info/requires.txt
+CMSeq.egg-info/top_level.txt
+cmseq/__init__.py
+cmseq/breadth_depth.py
+cmseq/cmseq.py
+cmseq/consensus.py
+cmseq/consensus_aDNA.py
+cmseq/filter.py
+cmseq/poly.py
+cmseq/polymut.py
