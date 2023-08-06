@@ -1,0 +1,23 @@
+PyGObject
+bleach
+dataclasses-json
+deepdiff
+fuzzywuzzy
+peewee
+python-Levenshtein
+python-dateutil
+python-mpv
+requests
+semver
+
+[:sys_platform == "darwin"]
+osxmmkeys
+
+[chromecast]
+pychromecast
+
+[keyring]
+keyring
+
+[server]
+bottle
