@@ -1,0 +1,3 @@
+[gui_scripts]
+image-sorting-tool = image_sorting_tool.__main__:run
+
