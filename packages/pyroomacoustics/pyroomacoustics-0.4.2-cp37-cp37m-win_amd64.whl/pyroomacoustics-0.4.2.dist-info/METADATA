@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: pyroomacoustics
+Version: 0.4.2
+Summary: A simple framework for room acoustics and audio processing in Python.
+Home-page: https://github.com/LCAV/pyroomacoustics
+Author: Laboratory for Audiovisual Communications, EPFL
+Author-email: fakufaku@gmail.ch
+License: MIT
+Requires-Dist: Cython
+Requires-Dist: numpy
+Requires-Dist: scipy (>=0.18.0)
+Requires-Dist: pybind11 (>=2.2)
+
+.. image:: https://github.com/LCAV/pyroomacoustics/raw/master/logo/pyroomacoustics_logo_horizontal.png
+
+
