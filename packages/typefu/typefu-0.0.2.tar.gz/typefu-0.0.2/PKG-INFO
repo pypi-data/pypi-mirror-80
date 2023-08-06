@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: typefu
+Version: 0.0.2
+Summary: A type casting guru from your data sources and data formats
+Home-page: https://github.com/canimus/typefu
+Author: Herminio Vazquez
+Author-email: canimus@gmail.com
+License: UNKNOWN
+Description: # typefu
+        
+        An utility to help you map data types between different data sources and data files.
+        Originally created to find mappings between `Microsoft SQL Server` and `Apache Spark` but expanded to `avro` and `parquet`.
+        
+        Idea is to consolidate also schemas for `PyArrow`.
+        
+        Early development. Use with caution.
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Utilities
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
