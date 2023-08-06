@@ -1,0 +1,33 @@
+Metadata-Version: 2.1
+Name: deartriogui
+Version: 0.0.1
+Summary: Async DearPyGui support using trio guest mode eventloop
+Home-page: https://github.com/nosklo/dearpygui
+Author: Clovis Fabricio Costa
+Author-email: python.nosklo@0sg.net
+License: MIT -or- Apache License 2.0
+Keywords: async,io,gui
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Framework :: Trio
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Requires-Python: >=3.7
+Requires-Dist: trio
+Requires-Dist: dearpygui
+
+DearTrioGui
+===========
+
+Welcome to `DearTrioGui <https://github.com/nosklo/deartriogui>`__!
+
+Async DearPyGui support using trio guest mode eventloop!
+
+License: Your choice of MIT or Apache License 2.0
+
+
+
