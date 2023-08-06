@@ -1,0 +1,12 @@
+Metadata-Version: 1.2
+Name: gtab
+Version: 0.4
+Summary: gtab (Google Trends Anchor Bank) allows users to obtain precisely calibrated time series of search interest from Google Trends.
+Home-page: https://github.com/epfl-dlab/GoogleTrendsAnchorBank
+Author: EPFL DLAB
+Author-email: epfl.dlab@gmail.com
+License: UNKNOWN
+Description: For a project description see https://github.com/epfl-dlab/GoogleTrendsAnchorBank/.
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Requires-Python: >=3.6

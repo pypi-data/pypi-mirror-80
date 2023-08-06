@@ -1,0 +1,31 @@
+MANIFEST.in
+README.md
+setup.py
+gtab/__init__.py
+gtab/command_line.py
+gtab/core.py
+gtab.egg-info/PKG-INFO
+gtab.egg-info/SOURCES.txt
+gtab.egg-info/dependency_links.txt
+gtab.egg-info/entry_points.txt
+gtab.egg-info/requires.txt
+gtab.egg-info/top_level.txt
+gtab/config/config_cl.json
+gtab/config/config_py.json
+gtab/config/dir_cl.json
+gtab/data/anchor_candidate_list.txt
+gtab/data/internal/freebase/freebase_foods_all.tsv
+gtab/data/internal/freebase/freebase_foods_filtered.tsv
+gtab/data/internal/freebase/freebase_foods_isdish.tsv
+gtab/data/internal/freebase/freebase_foods_isfood.tsv
+gtab/data/internal/google_keywords/google_keywords_geo=IT_timeframe=2019-01-01 2020-08-01.pkl
+gtab/data/internal/google_keywords/google_keywords_geo=_timeframe=2019-01-01 2020-08-01.pkl
+gtab/data/internal/google_pairs/google_pairs_geo=IT_timeframe=2019-01-01 2020-08-01.pkl
+gtab/data/internal/google_pairs/google_pairs_geo=_timeframe=2019-01-01 2020-08-01.pkl
+gtab/data/internal/google_results/google_results_geo=IT_timeframe=2019-01-01 2020-08-01.pkl
+gtab/data/internal/google_results/google_results_geo=_timeframe=2019-01-01 2020-08-01.pkl
+gtab/logs/log_geo=IT_timeframe=2019-01-01 2020-08-01.txt
+gtab/logs/log_geo=_timeframe=2019-01-01 2020-08-01.txt
+gtab/output/.DS_Store
+gtab/output/google_anchorbanks/google_anchorbank_geo=IT_timeframe=2019-01-01 2020-08-01.tsv
+gtab/output/google_anchorbanks/google_anchorbank_geo=_timeframe=2019-01-01 2020-08-01.tsv
