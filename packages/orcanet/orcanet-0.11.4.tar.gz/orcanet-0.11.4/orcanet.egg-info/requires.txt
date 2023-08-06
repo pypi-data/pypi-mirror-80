@@ -1,0 +1,10 @@
+setuptools_scm
+tensorflow>=2.1
+tensorflow_addons
+tensorflow_probability
+numpy
+h5py
+matplotlib
+toml
+graphviz
+medgeconv
