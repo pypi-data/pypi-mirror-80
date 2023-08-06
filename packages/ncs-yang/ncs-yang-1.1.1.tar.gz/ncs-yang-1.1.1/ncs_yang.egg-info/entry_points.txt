@@ -1,0 +1,3 @@
+[console_scripts]
+ncs-yang = ncs_yang.ncs_yang:run
+
