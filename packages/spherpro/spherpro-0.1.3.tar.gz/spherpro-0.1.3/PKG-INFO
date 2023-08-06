@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: spherpro
+Version: 0.1.3
+Summary: Tool to analize tumor spheroid data
+Home-page: https://github.com/bodenmillerlab/spherpro
+Author: Vito Zanotelli, Matthias Leutenegger, Bodenmiller Lab UZH
+Author-email: vito.zanotelli@uzh.ch
+License: BSD-3 License
+Description: Spherpro
+        ========
+        
+        Code to analyze multiplexed IMC data for tumor spheroids.
+        
+        Adding documentation and tests is WIP.
+Platform: UNKNOWN
+Description-Content-Type: text/x-rst
