@@ -1,0 +1,79 @@
+#!/usr/bin/python3.8
+import argparse
+from biblehub import get_versions, find_verse, search, styling, parse_str, find_passage
+
+
+def run(args):
+    args.query = ' '.join(args.query)
+    if args.command == 'find':
+        verse = parse_str(args.query)
+        if args.versions:
+            versions = get_versions(args.query, recolor=True)
+            print(versions[0]["reference"])
+            for version in versions:
+                print(version["version"])
+                print(version["passage"])
+            exit(0)
+        # Find passage
+        elif ':' not in args.query or '-' in args.query:
+            res = find_passage(args.query, version=args.version)
+            verses = res['verses']
+            keys = verses.keys()
+            print(styling.format_reference(res['reference']+' (%s)' % args.version.upper()))
+            for key in keys:
+                print(styling.format_reference(str(key))+ ' ' + res['verses'][key])
+        else:
+            try:
+                print(find_verse(args.query, version=args.version, get_lexicons=args.all | args.l,
+                                 get_crfs=args.all | args.c, get_tsks=args.all | args.t))
+            except ValueError:
+                print('Value error')
+                print('Verse query for ' + ''.join(args.query) + ' failed')
+            except IndexError:
+                print('query for ' + ''.join(args.query) + ' failed')
+                print('Did you type in the reference correctly?\nformat examples: 1 corinthians 1:2, genesis 2:4')
+    elif args.command == 'search':
+        search_filter = ''
+        if args.nt:
+            search_filter = 'nt'
+        elif args.ot:
+            search_filter = 'ot'
+        query_results = search(args.query, search_filter=search_filter)
+        for item in query_results:
+            print(styling.format_reference(item["reference"]))
+            print(item["preview"])
+            print(item["excerpt"])
+
+
+def main():
+    parser = argparse.ArgumentParser(description='Query Biblehub.com and retrieve the verse.'
+                                                 'Use the flag -a to fetch all available information on the reference')
+    subparsers = parser.add_subparsers(dest='command')
+    find_verse = subparsers.add_parser('find')
+    search_verses = subparsers.add_parser('search')
+
+    # find command
+    find_verse.add_argument('query', nargs='+', type=str, help='The Bible Reference to retrieve. Only Book #:# format '
+                                                               'accepted. (i.e Genesis 1:1, case insensitive)')
+    find_verse.add_argument('-v', '--version', nargs='?', default='niv',
+                            help='The version of the bible to be retrieved, '
+                                 'Defaults to NIV')
+    find_verse.add_argument('-c', '--cross-refs', dest='c', action='store_true', help='Fetch the cross references')
+    find_verse.add_argument('-t', '--treasury-scripture', dest='t', action='store_true',
+                            help='Fetch the treasury of scripture')
+    find_verse.add_argument('-l', '--lexicon', dest='l', action='store_true', help='Fetch the lexicon')
+    find_verse.add_argument('-a', '--all', action='store_true', help='Fetch all available information on scripture')
+    find_verse.add_argument('--versions', dest='versions', action='store_true', help='Fetch all available versions')
+
+    # search command
+    search_verses.add_argument('query', nargs='+', type=str, help='The key words to query biblehub.com for')
+    search_verses.add_argument('--ot', '--old-testament', dest='ot', action='store_true',
+                               help='Restrict search to the old testament')
+    search_verses.add_argument('--nt', '--new-testament', dest='nt', action='store_true',
+                               help='Restrict search to the new testament')
+    args = parser.parse_args()
+    run(args)
+
+
+if __name__ == "__main__":
+    main()

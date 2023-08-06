@@ -1,0 +1,14 @@
+README.md
+setup.py
+biblehub/__init__.py
+biblehub/scrape_passages.py
+biblehub/scrape_search.py
+biblehub/scrape_utils.py
+biblehub/scrape_verses.py
+biblehub/styling.py
+biblehub.egg-info/PKG-INFO
+biblehub.egg-info/SOURCES.txt
+biblehub.egg-info/dependency_links.txt
+biblehub.egg-info/requires.txt
+biblehub.egg-info/top_level.txt
+bin/biblehub
