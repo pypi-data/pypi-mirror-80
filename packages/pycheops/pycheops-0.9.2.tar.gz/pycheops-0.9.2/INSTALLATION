@@ -1,0 +1,10 @@
+Install Anaconda 2019.07 Python 3.7 version, including
+  ⁃ astropy 3.2.1
+
+Install this package from pypi
+ - pip install pycheops --upgrade
+
+(Install ellc only if you want to run ld._coefficient_optimizer)
+
+
+
