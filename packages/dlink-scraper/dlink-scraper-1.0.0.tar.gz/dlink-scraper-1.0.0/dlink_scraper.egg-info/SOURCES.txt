@@ -1,0 +1,13 @@
+MANIFEST.in
+README.md
+setup.py
+dlink_scraper.egg-info/PKG-INFO
+dlink_scraper.egg-info/SOURCES.txt
+dlink_scraper.egg-info/dependency_links.txt
+dlink_scraper.egg-info/entry_points.txt
+dlink_scraper.egg-info/requires.txt
+dlink_scraper.egg-info/top_level.txt
+dlinkscraper/__init__.py
+dlinkscraper/__main__.py
+dlinkscraper/_duckdns_update_script.py
+dlinkscraper/stolen_javascript.js
