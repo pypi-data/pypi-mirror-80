@@ -1,0 +1,13 @@
+LICENSE
+README.md
+setup.py
+coverage_fixpaths.egg-info/PKG-INFO
+coverage_fixpaths.egg-info/SOURCES.txt
+coverage_fixpaths.egg-info/dependency_links.txt
+coverage_fixpaths.egg-info/entry_points.txt
+coverage_fixpaths.egg-info/top_level.txt
+coveragefixpaths/__init__.py
+coveragefixpaths/__main__.py
+coveragefixpaths/coverage.py
+coveragefixpaths/junit.py
+coveragefixpaths/shared.py
