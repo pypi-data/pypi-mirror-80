@@ -1,0 +1,12 @@
+README.md
+setup.py
+notebuild/__init__.py
+notebuild.egg-info/PKG-INFO
+notebuild.egg-info/SOURCES.txt
+notebuild.egg-info/dependency_links.txt
+notebuild.egg-info/entry_points.txt
+notebuild.egg-info/top_level.txt
+notebuild/core/__init__.py
+notebuild/core/core.py
+notebuild/shell/__init__.py
+notebuild/shell/core.py
