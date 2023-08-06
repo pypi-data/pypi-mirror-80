@@ -1,0 +1,15 @@
+include README.rst
+include CHANGELOG.rst
+include CHANGELOG_LEGACY.rst
+include CONTRIBUTING.rst
+include LICENSE
+include requirements/*.txt
+include tox.ini
+exclude *.yaml
+recursive-exclude requirements *.in
+graft artwork
+graft docs
+graft tests
+graft .github
+prune docs/build
+global-exclude *.pyc
