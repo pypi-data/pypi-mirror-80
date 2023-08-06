@@ -1,0 +1,60 @@
+v0.1.42 initial version for authorised alpha testers
+v0.1.43 timeseries functions now take parameter format='pandas-dataframe' format='numpy-ndarray' and return results accordingly
+v0.1.44 lots of refactoring of code and moving various reusable code into norgatehelper.py
+v0.1.45 documentation fixes
+v0.1.46 handle No Content (return code 204), fundametals also returns date
+v0.1.47 Implemented recarray, now returns numpy recarray as default, Fixed TypeVar constraints, fixed indexconstituenthistory, watchlist now returns assetid as a column, fixed watchlists returning correctly
+v0.1.48 fixed csv requirement
+v0.2.0 various bugfixes
+v0.2.1 Norgate Data files are now written to ~/.norgatedata or NORGATEDATA_ROOT (environment variable)
+v0.2.2 Version checking made generic, for other packages to use such as zipline-norgatedata
+v0.2.3 Forgot to install EEXIST in checking...fixed
+v0.2.4 More generic version checking fixes
+v1.0.0 Release version
+v1.0.1 Fix version checking
+v1.0.2 Print version at startup
+v1.0.3 Added UnadjustedCloseTimeSeries, PaddingStatusTimeSeries
+v1.0.4 Use logger, add logbook to dependencies
+v1.0.5 Documentation
+v1.0.6 Documentation
+v1.0.7 Documentation - consistency of indents
+v1.0.8 Documentation - consistency of indents
+v1.0.9 Documentation - consistency of indents
+v1.0.10 Better exceptions 
+v1.0.11 price_timeseries fields explained
+v1.0.12 Docs
+v1.0.13 Docs
+v1.0.14 Fix fundamental
+v1.0.15 Fix fundamental
+v1.0.16 Fix/document fundamental
+v1.0.17 Fixes on Classifications
+v1.0.18 Checks status upon startup.  Added retries for obtaining data - this could happen if NDU is ugprading in the background
+v1.0.19 Change more returns to ValuError instead of sys.exit
+v1.0.20 Docs
+v1.0.21 Various FuturesMarket and FuturesMarketSession functions added
+v1.0.22 Ensure all functions can take assetid (as integer) or symbol (as string), last_price_uptime_time and last_database_update_time now return datetime objects
+v1.0.23 Tidy up of syntax, added futures_market_session_contracts to obtain all symbols for a given futures market session
+v1.0.24 Python 3.8 compatibility flags added
+v1.0.25 Performance improvements, uses request instead of urllib3
+v1.0.26 Validate API response on base_type, all date parameters can be of type string (i.e. ISO YYYY-MM-DD), pandas.Timestamp, numpy.datetime64 or datetime.datetime, all routines that output a date can be provided with format='iso' datetime pandas-timestamp or numpy-datetime64
+v1.0.27 price_timeseries accepts fields list to limit output
+v1.0.28 Converted all dates from "<M8" to datetime64[ns] due to comparison/reindexing issues
+v1.0.29 Fix recarray position argument
+v1.0.30 Handle datetimeformat and timezone parameter for retrieval of timeseries data.  Change ndarray/recarray to use "<M8[D]" as default for daily data.  
+v1.0.31 Docs
+v1.0.32 Version passed to API, calling script, Better None handling
+v1.0.33 First Quoted Date, update error msg on index constituent, docs, fix ndarray/recarray use of datetime since astype did not add a zero time
+v1.0.34 Fix debug print statement
+v1.0.35 Added interval parameter for price data (default interval='D', can also specified 'W' and 'M')
+v1.0.36 Provide a nicer error message when all of a user's subscriptions have expired
+v1.0.37 Ensure that index name for Pandas Dataframe is Date
+v1.0.38 Fixes related to dataframe passing into index_constituents_timeseries etc.
+v1.0.39 More fixes related to dataframe passing into index_constituents_timeseries etc.
+v1.0.40 More fixes related to dataframe passing into index_constituents_timeseries etc.
+v1.0.41 Date format related fixes
+v1.0.42 Incorporate Ashwin Kapur's code that handles datetime.date objects
+v1.0.43 Add database() database_symbols() and datbases() calls, fix capital_event_timeseries typo for ndarray
+v1.0.44 Fix watchlists/databases bug, revamp docs, add TOC
+v1.0.45 Fix databases and database symbols
+v1.0.46 Fix session_type
+
