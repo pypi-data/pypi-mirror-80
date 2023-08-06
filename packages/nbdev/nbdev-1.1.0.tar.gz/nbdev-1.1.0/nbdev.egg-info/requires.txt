@@ -1,0 +1,10 @@
+pip
+packaging
+fastcore>=1.0.15
+nbformat>=4.4.0
+nbconvert<6
+pyyaml
+jupyter_client
+ipykernel
+
+[dev]
