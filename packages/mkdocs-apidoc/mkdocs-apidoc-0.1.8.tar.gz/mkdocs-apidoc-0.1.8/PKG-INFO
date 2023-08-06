@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: mkdocs-apidoc
+Version: 0.1.8
+Summary: 
+Author: Evan
+Author-email: evanmcurtin@gmail.com
+Requires-Python: >=3.7,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: attrs (>=20.2.0,<21.0.0)
+Requires-Dist: jinja2 (>=2.10,<3.0)
+Requires-Dist: mkdocs (>=1.1,<2.0)
+Requires-Dist: numpydoc (>=0.9.2,<0.10.0)
