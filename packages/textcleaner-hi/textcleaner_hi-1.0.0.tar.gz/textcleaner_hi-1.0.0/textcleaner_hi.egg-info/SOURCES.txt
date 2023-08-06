@@ -1,0 +1,11 @@
+MANIFEST.in
+README.md
+setup.py
+hindiExtract/__init__.py
+hindiExtract/clean.py
+hindiExtract/extract.py
+textcleaner_hi.egg-info/PKG-INFO
+textcleaner_hi.egg-info/SOURCES.txt
+textcleaner_hi.egg-info/dependency_links.txt
+textcleaner_hi.egg-info/entry_points.txt
+textcleaner_hi.egg-info/top_level.txt

@@ -1,0 +1,24 @@
+Metadata-Version: 2.1
+Name: textcleaner_hi
+Version: 1.0.0
+Summary: A Python package to extract hindi characters.
+Home-page: UNKNOWN
+Author: Chhavi Trivedi, Naman Jain, Ms. Gayatri Venugopal
+Author-email: chhavi7320@gmail.com, n.jnamanjain2001@gmail.com, gayatrivenugopal3@gmail.com
+License: MIT License
+Description: # About 
+        
+        A command line based solution to pre-process hindi dataset and its cleaning. The abilities of this package includes-
+        
+         - pre-processing given file into hindi characters only
+         - splitting paragraphs into sentences
+         - removal of punctuations from the dataset (if required)
+        
+        ## Usage
+        
+        extract -l <location of file you want to clean> -p <y/yes (to keep punctuation)>
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Description-Content-Type: text/markdown
