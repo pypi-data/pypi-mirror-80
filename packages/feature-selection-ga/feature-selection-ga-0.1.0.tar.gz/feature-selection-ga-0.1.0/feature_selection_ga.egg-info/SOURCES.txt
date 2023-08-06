@@ -1,0 +1,14 @@
+LICENSE
+MANIFEST.in
+README.md
+setup.cfg
+setup.py
+feature_selection_ga/__init__.py
+feature_selection_ga/feature_selection_ga.py
+feature_selection_ga/fitness_function.py
+feature_selection_ga.egg-info/PKG-INFO
+feature_selection_ga.egg-info/SOURCES.txt
+feature_selection_ga.egg-info/dependency_links.txt
+feature_selection_ga.egg-info/not-zip-safe
+feature_selection_ga.egg-info/requires.txt
+feature_selection_ga.egg-info/top_level.txt
