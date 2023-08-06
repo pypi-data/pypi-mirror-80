@@ -1,0 +1,17 @@
+bolsa/__init__.py,sha256=cmb0r99lThcYQoQzTuweYyfMPUNOFlrkVTypUi12-zE,49
+bolsa/backend.py,sha256=WgK2pzxcYLneosyDWfYjocdBdwi5uyOMISdGhQSfi54,3077
+bolsa/connector.py,sha256=5vUkiE0_CN4qQ7y40JJljpFcC558f6KD_jVqukY7Nms,350
+bolsa/constants.py,sha256=pU26vAb2Cbc1Dp_AAzRR3F2iCFC8O5jJUAPtBsY-AnU,510
+bolsa/http_client.py,sha256=FjO_pnm8grSSYzS1Hw1sAQcxmObEvPjfjD9rxrCG4fY,8507
+bolsa/models.py,sha256=YPjlDRgbl5Ixo9v_ICXlg_E5aAb_O9Na5BlNt5SNY3o,2403
+bolsa/responses.py,sha256=RiaXTXpDsYVtDF75httUcroxjinkjnEy3kEhtf4AWWM,4344
+bolsa/contrib/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+bolsa/contrib/mixins/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+bolsa/contrib/mixins/singleton.py,sha256=7GmWbgliBd7MLidEdEaEob3OIcoodQNC8w3-5I1ZZ20,280
+bolsa/test/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+bolsa/test/test_constans.py,sha256=VIKyJRUIjTw9cshyo-XvNcxRJAoocE0g2OoD7BSsKPs,978
+bolsa/test/test_models.py,sha256=B1rc6lIqQWAmNPE3d07p8dZu1A7556rI5XOm5w6kxks,1844
+bolsa-0.0.6.dist-info/METADATA,sha256=GyNU59qM0Dj5RSZVpX930GX0NdfpaGDOHFoU6NHNfQo,1672
+bolsa-0.0.6.dist-info/WHEEL,sha256=EVRjI69F5qVjm_YgqcTXPnTAv3BfSUr0WVAHuSP3Xoo,92
+bolsa-0.0.6.dist-info/top_level.txt,sha256=UTedOTxiDNfEOB29EumqjkhIa4JkeT9nePu19GugIVo,6
+bolsa-0.0.6.dist-info/RECORD,,
