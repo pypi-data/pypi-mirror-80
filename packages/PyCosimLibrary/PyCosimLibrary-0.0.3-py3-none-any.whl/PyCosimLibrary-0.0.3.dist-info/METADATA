@@ -1,0 +1,37 @@
+Metadata-Version: 2.1
+Name: PyCosimLibrary
+Version: 0.0.3
+Summary: A co-simulation library with the most common master algorithms.
+Home-page: https://github.com/clagms/PyCosimLibrary
+Author: Claudio Gomes
+Author-email: claudio.gomes@eng.au.dk
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+
+# Co-sim library
+
+A co-simulation library with the most common master algorithms.
+
+# Install from PyPi:
+
+```
+pip install PyCosimLibrary
+```
+
+# Install from local source
+
+```
+pip install -e .
+```
+
+# Publishing this package on pypi
+
+```
+python setup.py sdist bdist_wheel
+python -m twine upload dist/*
+set user and password according to pypi's api token
+
