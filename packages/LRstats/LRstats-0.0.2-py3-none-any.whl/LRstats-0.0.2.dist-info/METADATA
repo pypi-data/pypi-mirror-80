@@ -1,0 +1,34 @@
+Metadata-Version: 2.1
+Name: LRstats
+Version: 0.0.2
+Summary: Computing statistic for longrun
+Home-page: https://gitlab.com/salvatore.causio/longrun_statistics.git
+Author: Salvatore Causio
+Author-email: salvatore.causio@cmcc.it
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+
+#
+#The tool processed a dataset in input [ds]  and return some statistics in netcdf format:
+#
+#descriptive.Processer(ds, output_path) has the following modules:
+#
+#- _mean
+#- _min
+#- _max
+#_ _95p
+##
+#
+#Each module apply the statistics required by resampling the dataset at different timescale:#
+##
+#
+#- overall
+#- seasonal: the seasons are so defined DJF, MAM, JJA, SON
+#- monthly
+#- yearly
+
+
+
