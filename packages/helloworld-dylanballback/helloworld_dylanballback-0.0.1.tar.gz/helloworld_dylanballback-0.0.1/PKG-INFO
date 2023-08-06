@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: helloworld_dylanballback
+Version: 0.0.1
+Summary: Say, hello!
+Home-page: https://github.com/dylanballback/packagetest
+Author: Dylan Ballback
+Author-email: Dylanballback19@gmail.com
+License: UNKNOWN
+Description: ## Usage
+        
+        ```python
+        from helloworld import say_hello
+        
+        # Generate "Hello, World!"
+        say_hello()
+        
+        #Generate "Hello, Everybody!"
+        say_hello("Everybody")
+        ```
+        
+Platform: UNKNOWN
+Description-Content-Type: text/markdown
