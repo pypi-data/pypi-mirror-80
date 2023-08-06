@@ -1,0 +1,16 @@
+bitmath
+configargparse
+fasteners
+jinja2
+numpy
+molsystem>=2020.9.23
+pandas
+pillow
+pmw
+py-cpuinfo
+pyuca
+reference_handler
+molsystem
+seamm-util>=2020.9.23
+seamm-widgets>=2020.9.28
+stevedore
