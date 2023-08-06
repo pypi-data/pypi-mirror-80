@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: salusshcpy
+Version: 0.0.2
+Summary: Salus Smart Home Controller API Python Library
+Home-page: UNKNOWN
+Author: Emre Bolat
+Author-email: emre-bolat@hotmail.de
+License: bsd-3-clause
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: BSD License
+Requires-Python: >=3.7
+Requires-Dist: requests (>=2.22)
+
+UNKNOWN
+
+
