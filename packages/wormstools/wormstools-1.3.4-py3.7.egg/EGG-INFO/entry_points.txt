@@ -1,0 +1,3 @@
+[console_scripts]
+worms = wormstools.worms:main
+
