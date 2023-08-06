@@ -1,0 +1,60 @@
+Metadata-Version: 2.1
+Name: three60cube
+Version: 0.0.6
+Summary: A class to project 360x180 images onto a cube
+Home-page: https://github.com/UtrechtUniversity/three60cube
+Author: C.S. Kaandorp
+Author-email: c.s.kaandorp@uu.nl
+License: MIT
+Platform: UNKNOWN
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: pillow
+Requires-Dist: numpy
+
+# Three60Cube
+
+A Package to project a 360 x 180 image onto a cube.
+
+## Installation
+
+```
+pip install three60cube
+```
+
+## Usage
+
+Creation of projection template
+```
+from three30cube import Three60Cube
+
+proj = Three60Cube('source.JPG')
+```
+This will write a `npy` file to your working directory. To get the projection on a certain cube pane:
+
+```
+new_img = proj.get_projected_pane(pane=1, dim=500)
+new_img
+```
+
+Panes 0 through 3 are taken from the left to right side of the 360 image. Pane 4 is the top of the cube and pane 5 is the bottom part. The `dim` parameter refers to dimension of the output image; a `dim` of 500 will produce a 500 x 500px image.
+
+After you have generated the npy-template you can process images with the same dimensions of the initial 360 image:
+
+```
+# use the generated template if you have one and haven't 
+# initialized a Three60Cube object already 
+proj = Three60Cube(template='three60cube_template.npy')
+
+# open an image
+proj.open_image('trees.JPG')
+
+# project
+new_img = proj.get_projected_pane(pane=0, dim=500)
+```
+
+### Fast vs Slow
+
+The `get_projected_pane` function takes a parameter `fast` (default value is True) that will project single RGB on the cube. If `fast` is set to False it will collect all RGB values of all pixels that are projected on a single pixel of the cube and sets its RGB value to the average of the collected values. This will take much more time, but the produced projections are of better quality.
+
+
