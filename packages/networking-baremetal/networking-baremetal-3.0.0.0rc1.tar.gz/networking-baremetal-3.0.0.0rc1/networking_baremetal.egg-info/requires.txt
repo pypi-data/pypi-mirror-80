@@ -1,0 +1,13 @@
+keystoneauth1>=3.14.0
+neutron-lib>=1.28.0
+neutron>=14.0.0.0b1
+openstacksdk>=0.31.2
+oslo.config>=5.2.0
+oslo.i18n>=3.15.3
+oslo.log>=3.36.0
+oslo.messaging>=5.29.0
+oslo.service>=1.30.0
+oslo.utils>=3.33.0
+pbr!=2.1.0,>=2.0.0
+tenacity>=6.0.0
+tooz>=2.5.1
