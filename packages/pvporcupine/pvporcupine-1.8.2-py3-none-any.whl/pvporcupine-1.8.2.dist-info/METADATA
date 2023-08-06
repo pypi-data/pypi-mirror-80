@@ -1,0 +1,71 @@
+Metadata-Version: 2.1
+Name: pvporcupine
+Version: 1.8.2
+Summary: On-Device wake word detection powered by deep learning.
+Home-page: https://github.com/Picovoice/porcupine
+Author: Picovoice
+Author-email: hello@picovoice.ai
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Multimedia :: Sound/Audio :: Speech
+Requires-Python: >=3
+Description-Content-Type: text/markdown
+Requires-Dist: enum34 (==1.1.6)
+Requires-Dist: numpy
+
+
+# [Porcupine](https://github.com/Picovoice/porcupine).   
+
+It supports Ubuntu (x86_64), Mac (x86_64), Raspberry Pi (Zero, 1, 2, 3, 4) running Raspbian, and BeagleBone.
+
+## Installation
+
+```bash
+sudo pip3 install pvporcupine
+```
+
+If it fails to install PyAudio, you can do the following for Debian/Ubuntu as referenced in the installation guide
+of [PyAudio](https://people.csail.mit.edu/hubert/pyaudio/). 
+
+Install PyAudio  
+
+```bash
+sudo apt-get install python3-pyaudio
+```
+
+If the above fails then first run the following
+
+```bash
+sudo apt-get install portaudio19-dev
+sudo apt-get install python3-all-dev
+```
+
+## Usage
+
+You can create an instance of Porcupine engine for use within your application using the factory method provided below
+
+```python
+import pvporcupine
+
+pvporcupine.create(keywords=pvporcupine.KEYWORDS)
+```
+
+`pvporcupine.KEYWORDS` is the set of default keyword files that ships with the PIP package across all platforms. In
+order to use your own keyword file you can instantiate the object as follows:
+
+```python
+import pvporcupine
+
+keyword_file_1_path = ...
+keyword_file_2_path = ...
+keyword_file_3_path = ...
+
+pvporcupine.create(keyword_file_paths=[keyword_file_1_path, keyword_file_2_path, keyword_file_3_path])
+```
+
+
