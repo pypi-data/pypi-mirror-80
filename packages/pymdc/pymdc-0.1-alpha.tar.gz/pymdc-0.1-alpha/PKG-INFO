@@ -1,0 +1,17 @@
+Metadata-Version: 1.1
+Name: pymdc
+Version: 0.1-alpha
+Summary: Python library to use the Multi Display Control protocol
+Home-page: https://github.com/mflage/pymdc
+Author: Marius Flage
+Author-email: marius@flage.org
+License: MIT
+Download-URL: https://github.com/mflage/pymdc/archive/v0.1-alpha.tar.gz
+Description: UNKNOWN
+Keywords: mdc,samsung remote control
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
