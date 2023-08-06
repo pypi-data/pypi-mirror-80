@@ -1,0 +1,81 @@
+Metadata-Version: 1.0
+Name: hed_mkproj
+Version: 2.0.0
+Summary: Vanilla project skeleton generator.
+Home-page: https://www.github.com/Hrissimir/hed_mkproj
+Author: Hrisimir Dakov
+Author-email: hrisimir.dakov@gmail.com
+License: The MIT License (MIT)
+
+Copyright (c) 2020 Hrissimir
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+Description: # hed_mkproj
+        
+        Vanilla project skeleton generator.
+        
+        
+        ## Description
+        
+        Installs the 'mkproj' CLI command:
+            
+            usage: mkproj [-h] [-v] -n NAME [-d DESCRIPTION] [-p PACKAGE]
+            
+            Vanilla project skeleton generator.
+            
+            optional arguments:
+              -h, --help      show this help message and exit
+              -v              set logging level to debug (default: info)
+              -n NAME         project name
+              -d DESCRIPTION  project description
+              -p PACKAGE      project package (default: project name)
+            
+            NOTE: Project is created in cwd (...) !
+        
+        ---
+        
+        Creates the following project structure:
+        
+        path                                        | type 
+        -----                                       | -----
+        .\project_name                              | folder 
+        .\project_name\build.sh                     | file 
+        .\project_name\setup.py                     | file 
+        .\project_name\README.md                    | file 
+        .\project_name\LICENSE.txt                  | file 
+        .\project_name\MANIFEST.in                  | file 
+        .\project_name\Docs                         | folder 
+        .\project_name\tests                        | folder 
+        .\project_name\package_name                 | folder 
+        .\project_name\package_name\\\_\_init__.py  | file 
+        
+        
+        ## Installation / Upgrade
+        
+        - Windows
+        
+            pip install --user --upgrade --force hed_mkproj
+            
+        - Linux / Mac
+        
+            pip3 install --user --upgrade --force hed_mkproj
+        
+        
+Platform: UNKNOWN
