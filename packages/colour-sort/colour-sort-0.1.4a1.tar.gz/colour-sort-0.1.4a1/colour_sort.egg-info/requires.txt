@@ -1,0 +1,6 @@
+importlib_resources<2.0,>=1.0
+numpy<2.0,>=1.17
+pillow<7.0,>=6.2
+sklearn
+scikit-image<1.0.0,>=0.17.2
+opencv-python<5.0,>=4.2.0.34
