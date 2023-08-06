@@ -1,0 +1,10 @@
+Metadata-Version: 2.1
+Name: paraminjector
+Version: 0.1.1
+Summary: 
+Author: Joscha Götzer
+Author-email: joscha.goetzer@gmail.com
+Requires-Python: >=3.8,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: cached-property (>=1.5.1,<2.0.0)
