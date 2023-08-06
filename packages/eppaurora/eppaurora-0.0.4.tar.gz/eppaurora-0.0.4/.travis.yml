@@ -1,0 +1,58 @@
+language: python
+cache: pip
+dist: xenial
+python:
+  - "2.7"
+  - "3.4"
+  - "3.5"
+  - "3.6"
+  - "3.7"
+  - "3.8"
+env:
+  global:
+    LD_PRELOAD=/lib/x86_64-linux-gnu/libSegFault.so
+before_install:
+  - python --version
+  - uname -a
+  - lsb_release -a
+install:
+  - pip install -U pytest pytest-cov codecov coveralls
+  - pip install tox-travis
+  - pip install scrutinizer-ocular
+  - pip install -e ".[all]"
+script:
+  - py.test -v --doctest-glob='*.md' --cov src
+after_success:
+  - codecov
+  - coveralls
+  - ocular --data-file ".coverage"
+notifications:
+  email:
+    on_success: never
+    on_failure: always
+deploy:
+  - provider: pypi
+    edge: true
+    server: https://test.pypi.org/legacy/
+    user: __token__
+    password:
+      secure: TUHFz51F8vMfZgWTyR5QinhUkC1BdR135UtGQqPEaRUrqpV9SQKKd3NvsCyvkbxa6BFMDf2WKzV6n2j6ZqOasCY///BK/FdCXk1n73ZgPlqqthhihwsQAiDuQ2wTMDUh1mOyZZU6LNAkAV9Khm4NRHxfXksTfwkLW6Zo9THBh4uPak8/o0KA9oajuY/hTt6g+AZQkeCag8YzA61yDX/w/FUhn4eYlwThYannDW/2rgGVizRkKCXpf1F3Kr3MzSxYomfMBdYW57bC1iJMH1zoAT6ZPw3nu2v82ZXocHY+sAksvxoZJoFKF7z9CiZh0QVuv5tcbE9qVwFaXCa0j56Mc79fy1e0/6jOmC/HjCETPu5oPHii3RXIc13qkfYH/MYn6ls9yxkq6Gm8IWE0Lo2paHfUH1zdDeBheZgyRZEREYslBptIEGVMIieJobi7pLxlrxacPcV4hUbDB76sGjOjYMZvIXzXwivM0PAgdEkaLwAdkXkBOxbpei8KAryiCSOCgKMuvhbjhyiIaZdastPMUbq651ugRRZ/Jbq9IySCvaOiyt4kxbjbUSupH3GGQ2JLPricAFCxt0XsYma2a3RJUwqDtVRSDvdB5jCA6oRZ5BMyasXzDE7XWmO0tIx7olfN7jld8cRAsCy/FyR5LS5S0OdAWZ13Hz2AO219yv0/lno=
+    skip_existing: true
+    distributions: sdist bdist_wheel
+    on:
+      repo: st-bender/pyeppaurora
+      branch: master
+      tags: false
+      condition: $TRAVIS_PYTHON_VERSION == 3.7
+  - provider: pypi
+    edge: true
+    user: __token__
+    password:
+      secure: RUYoCg3SFn/0tP5VVeYYfi3HWiHl+juOcHQX/4PAq/qH79iicHV8KuYMNjyIkH1BkDw2NYYIvG5XFJHisXe6Shro7o+vxwB8BlJFPVTjk72dUs8QvgFHXx/YQUXjHtgnlMOhdVwek4wd9sSonrwoz7CYMEhGr98R3szQUXEJgGcgi/HlmD4el5OonDsHa2usFAJRc7P9E9aQ412kMgFx6zb6/cWktxNTF0H+PHI/U4rwWeTAEJfM31f6iV+bGb1RDL780AAH+7gV6PtezGOYkdNdLRL1WPE8CHQ3/qGlrJkEaJvjfVy9gkMUFMhSIzxgH9WMxF6laTkiose5ZH90z9Dx9qqxO/05jfzTJL6tceYaAk/1uODIR9Slg4svPhrT2+XCo6cFl41OL9aD9Fwyp0PTqrA0nqyusPY3Aa3x+nmqsIXKulfGu6VeWEYmw95sh6RtbnDsC+Sip6YQnYf0na2DBCLG1OzlbbxybW/CWL/sRdqwhyFc/c2qG5FUX9DsVMl4lEJ8L134Ed9u/P+S8n16xr2snJSzIV/zH4wFTrW6Kpyx8c5CDRdwQmQRfM1YxSFxuOADeBuXrPpaQAyoZb55iCZ6J5av2QFQgKaRolKY4m0iD2jOGW1Pk9ALtnV/mQt9R/C3TE0WkK8qdyJFJO7uyf4DgqEnI8Ir/3hTWHc=
+    skip_existing: true
+    distributions: sdist bdist_wheel
+    on:
+      repo: st-bender/pyeppaurora
+      branch: master
+      tags: true
+      condition: $TRAVIS_PYTHON_VERSION == 3.7
