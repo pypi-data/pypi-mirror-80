@@ -1,0 +1,12 @@
+LICENSE
+MANIFEST.in
+README.rst
+setup.cfg
+setup.py
+cognito_assume_role.egg-info/PKG-INFO
+cognito_assume_role.egg-info/SOURCES.txt
+cognito_assume_role.egg-info/dependency_links.txt
+cognito_assume_role.egg-info/requires.txt
+cognito_assume_role.egg-info/top_level.txt
+src/cognito_assume_role/__init__.py
+src/cognito_assume_role/providers.py
