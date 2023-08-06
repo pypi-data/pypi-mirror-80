@@ -1,0 +1,5 @@
+click<8,>=7
+mypy<1,>=0.782
+
+[:python_version<"3.7"]
+dataclasses>=0.7
