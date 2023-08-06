@@ -1,0 +1,3 @@
+[console_scripts]
+akun_scraper=akun_tools.scraper:scraper
+
