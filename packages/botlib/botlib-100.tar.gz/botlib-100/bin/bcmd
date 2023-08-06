@@ -1,0 +1,18 @@
+#!/usr/bin/python3
+# BOTLIB = framework to program bots
+#
+#
+
+import os, sys ; sys.path.insert(0, os.getcwd())
+import ol
+
+from bot.irc import IRC
+
+def main():
+    k = ol.krn.boot("bot")
+    k.scandir(k.cfg.md)
+    k.walk("bmod")
+    k.cmd(k.cfg.origtxt)
+
+ol.trm.execute(main)
+os._exit(0)
