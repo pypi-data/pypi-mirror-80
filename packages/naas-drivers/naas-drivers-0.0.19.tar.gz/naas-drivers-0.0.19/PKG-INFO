@@ -1,0 +1,29 @@
+Metadata-Version: 2.1
+Name: naas-drivers
+Version: 0.0.19
+Summary: Drivers made to easy connect to any services
+Home-page: https://github.com/jupyter-naas/drivers
+Author: Martin Donadieu
+Author-email: martindonadieu@gmail.com
+License: BSD
+Description: # Drivers
+        🏎 Simple formulas to build highly efficient scripts
+        
+        ## Check lint
+        
+        `python3 -m black naas` format better
+        `python3 -m flake8 naas` check if any left error
+        
+        ## Publish
+        
+        Allow easy deploy by setting password in keyring
+        `python3 -m keyring set https://upload.pypi.org/legacy/ bobapp`
+        
+        Then publish
+        `publish.sh`
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3.8
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Framework :: Jupyter
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
