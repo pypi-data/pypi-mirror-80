@@ -1,0 +1,758 @@
+{
+  "title":"MUTANNO_SOURCE_LIST",
+  "sources":[
+    {
+      "name":"CLINVAR",
+      "latest": "20200329",
+      "versions":[
+        {
+          "version":"20200830",
+          "version_date":"2020.08.30",
+          "total_size": 2604690136,
+          "ref_version": "hg38",
+          "preprocess_function": "run_preproc_clinvar",
+          "urls":[
+            "https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh38/weekly/clinvar_20200830.vcf.gz",
+            "https://ftp.ncbi.nlm.nih.gov/pub/clinvar/xml/ClinVarFullRelease_2020-08.xml.gz"
+          ]
+        },{
+          "version": "20200329",
+          "version_date": "2020.03.29",
+          "total_size": 2604690136,
+          "ref_version": "hg38",
+          "preprocess_function": "run_preproc_clinvar",
+          "urls": [
+            "https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh38/weekly/clinvar_20200329.vcf.gz",
+            "https://ftp.ncbi.nlm.nih.gov/pub/clinvar/xml/ClinVarFullRelease_2020-03.xml.gz"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "GERP",
+      "latest": "111_mammals",
+      "versions": [
+        {
+          "version": "111_mammals",
+          "version_date": "2020.07.15",
+          "total_size": 12276031884,
+          "ref_version": "hg38",
+          "preprocess_function": "run_preproc_gerp",
+          "urls": [
+            "ftp://ftp.ensembl.org/pub/current_compara/conservation_scores/111_mammals.gerp_conservation_score/gerp_conservation_scores.homo_sapiens.GRCh38.bw"
+          ]
+        },
+        {
+          "version": "100_mammals",
+          "version_date": "2015.05.07",
+          "total_size": 9136602832,
+          "ref_version": "hg38",
+          "is_avialable": false,
+          "preprocess_function": "run_preproc_gerp",
+          "urls": [
+            "ftp://ftp.ensembl.org/pub/current_compara/conservation_scores/100_mammals.gerp_conservation_score/gerp_conservation_scores.homo_sapiens.GRCh38.bw"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PHASTCONS",
+      "latest": "100way",
+      "versions": [
+        {
+          "version": "100way",
+          "version_date": "2015.05.07",
+          "preprocess_function": "run_preproc_phastcons",
+          "total_size": 2604690136,
+          "ref_version": "hg38",
+          "urls": [
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons100way/hg38.100way.phastCons/chr1.phastCons100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons100way/hg38.100way.phastCons/chr10.phastCons100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons100way/hg38.100way.phastCons/chr11.phastCons100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons100way/hg38.100way.phastCons/chr12.phastCons100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons100way/hg38.100way.phastCons/chr13.phastCons100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons100way/hg38.100way.phastCons/chr14.phastCons100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons100way/hg38.100way.phastCons/chr15.phastCons100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons100way/hg38.100way.phastCons/chr16.phastCons100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons100way/hg38.100way.phastCons/chr17.phastCons100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons100way/hg38.100way.phastCons/chr18.phastCons100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons100way/hg38.100way.phastCons/chr19.phastCons100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons100way/hg38.100way.phastCons/chr2.phastCons100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons100way/hg38.100way.phastCons/chr20.phastCons100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons100way/hg38.100way.phastCons/chr21.phastCons100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons100way/hg38.100way.phastCons/chr22.phastCons100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons100way/hg38.100way.phastCons/chr3.phastCons100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons100way/hg38.100way.phastCons/chr4.phastCons100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons100way/hg38.100way.phastCons/chr5.phastCons100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons100way/hg38.100way.phastCons/chr6.phastCons100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons100way/hg38.100way.phastCons/chr7.phastCons100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons100way/hg38.100way.phastCons/chr8.phastCons100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons100way/hg38.100way.phastCons/chr9.phastCons100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons100way/hg38.100way.phastCons/chrM.phastCons100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons100way/hg38.100way.phastCons/chrX.phastCons100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons100way/hg38.100way.phastCons/chrY.phastCons100way.wigFix.gz"
+          ]
+        },{
+          "version": "30way",
+          "version_date": "2017.11.02",
+          "total_size": 3315711231,
+          "preprocess_function": "run_preproc_phastcons",
+          "ref_version": "hg38",
+          "urls": [
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons30way/hg38.30way.phastCons/chr1.phastCons30way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons30way/hg38.30way.phastCons/chr10.phastCons100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons30way/hg38.30way.phastCons/chr11.phastCons100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons30way/hg38.30way.phastCons/chr12.phastCons100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons30way/hg38.30way.phastCons/chr13.phastCons100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons30way/hg38.30way.phastCons/chr14.phastCons100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons30way/hg38.30way.phastCons/chr15.phastCons100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons30way/hg38.30way.phastCons/chr16.phastCons100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons30way/hg38.30way.phastCons/chr17.phastCons100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons30way/hg38.30way.phastCons/chr18.phastCons100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons30way/hg38.30way.phastCons/chr19.phastCons100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons30way/hg38.30way.phastCons/chr2.phastCons100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons30way/hg38.30way.phastCons/chr20.phastCons100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons30way/hg38.30way.phastCons/chr21.phastCons100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons30way/hg38.30way.phastCons/chr22.phastCons100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons30way/hg38.30way.phastCons/chr3.phastCons100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons30way/hg38.30way.phastCons/chr4.phastCons100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons30way/hg38.30way.phastCons/chr5.phastCons100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons30way/hg38.30way.phastCons/chr6.phastCons100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons30way/hg38.30way.phastCons/chr7.phastCons100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons30way/hg38.30way.phastCons/chr8.phastCons100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons30way/hg38.30way.phastCons/chr9.phastCons100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons30way/hg38.30way.phastCons/chrM.phastCons100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons30way/hg38.30way.phastCons/chrX.phastCons100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons30way/hg38.30way.phastCons/chrY.phastCons100way.wigFix.gz"
+          ]
+        },
+        {
+          "version": "20way",
+          "version_date": "2015.04.16",
+          "total_size": 3451931212,
+          "preprocess_function": "run_preproc_phastcons",
+          "ref_version": "hg38",
+          "urls": [
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phastCons20way/hg38.phastCons20way.wigFix.gz"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PHYLOP",
+      "latest": "100way",
+      "versions": [
+        {
+          "version": "100way",
+          "version_date": "2015.05.07",
+          "preprocess_function": "run_preproc_phylop",
+          "total_size": 5452454204,
+          "ref_version": "hg38",
+          "urls": [
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP100way/hg38.100way.phyloP100way/chr1.phyloP100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP100way/hg38.100way.phyloP100way/chr10.phyloP100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP100way/hg38.100way.phyloP100way/chr11.phyloP100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP100way/hg38.100way.phyloP100way/chr12.phyloP100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP100way/hg38.100way.phyloP100way/chr13.phyloP100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP100way/hg38.100way.phyloP100way/chr14.phyloP100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP100way/hg38.100way.phyloP100way/chr15.phyloP100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP100way/hg38.100way.phyloP100way/chr16.phyloP100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP100way/hg38.100way.phyloP100way/chr17.phyloP100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP100way/hg38.100way.phyloP100way/chr18.phyloP100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP100way/hg38.100way.phyloP100way/chr19.phyloP100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP100way/hg38.100way.phyloP100way/chr2.phyloP100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP100way/hg38.100way.phyloP100way/chr20.phyloP100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP100way/hg38.100way.phyloP100way/chr21.phyloP100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP100way/hg38.100way.phyloP100way/chr22.phyloP100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP100way/hg38.100way.phyloP100way/chr3.phyloP100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP100way/hg38.100way.phyloP100way/chr4.phyloP100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP100way/hg38.100way.phyloP100way/chr5.phyloP100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP100way/hg38.100way.phyloP100way/chr6.phyloP100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP100way/hg38.100way.phyloP100way/chr7.phyloP100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP100way/hg38.100way.phyloP100way/chr8.phyloP100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP100way/hg38.100way.phyloP100way/chr9.phyloP100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP100way/hg38.100way.phyloP100way/chrM.phyloP100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP100way/hg38.100way.phyloP100way/chrX.phyloP100way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP100way/hg38.100way.phyloP100way/chrY.phyloP100way.wigFix.gz"
+          ]
+        },
+        {
+          "version": "30way",
+          "version_date": "2017.11.05",
+          "total_size": 3315711231,
+          "preprocess_function": "run_preproc_phastcons",
+          "ref_version": "hg38",
+          "urls": [
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP30way/hg38.30way.phyloP/chr1.phyloP30way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP30way/hg38.30way.phyloP/chr10.phyloP30way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP30way/hg38.30way.phyloP/chr11.phyloP30way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP30way/hg38.30way.phyloP/chr12.phyloP30way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP30way/hg38.30way.phyloP/chr13.phyloP30way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP30way/hg38.30way.phyloP/chr14.phyloP30way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP30way/hg38.30way.phyloP/chr15.phyloP30way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP30way/hg38.30way.phyloP/chr16.phyloP30way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP30way/hg38.30way.phyloP/chr17.phyloP30way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP30way/hg38.30way.phyloP/chr18.phyloP30way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP30way/hg38.30way.phyloP/chr19.phyloP30way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP30way/hg38.30way.phyloP/chr2.phyloP30way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP30way/hg38.30way.phyloP/chr20.phyloP30way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP30way/hg38.30way.phyloP/chr21.phyloP30way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP30way/hg38.30way.phyloP/chr22.phyloP30way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP30way/hg38.30way.phyloP/chr3.phyloP30way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP30way/hg38.30way.phyloP/chr4.phyloP30way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP30way/hg38.30way.phyloP/chr5.phyloP30way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP30way/hg38.30way.phyloP/chr6.phyloP30way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP30way/hg38.30way.phyloP/chr7.phyloP30way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP30way/hg38.30way.phyloP/chr8.phyloP30way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP30way/hg38.30way.phyloP/chr9.phyloP30way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP30way/hg38.30way.phyloP/chrM.phyloP30way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP30way/hg38.30way.phyloP/chrX.phyloP30way.wigFix.gz",
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP30way/hg38.30way.phyloP/chrY.phyloP30way.wigFix.gz"
+          ]
+        },
+        {
+          "version": "20way",
+          "version_date": "2015.04.16",
+          "total_size": 4572468017,
+          "preprocess_function": "run_preproc_phastcons",
+          "ref_version": "hg38",
+          "urls": [
+            "ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/phyloP20way/hg38.phyloP20way.wigFix.gz"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SHIPHY",
+      "latest": "20150125",
+      "versions": [
+        {
+          "version": "29mammals",
+          "version_date": "2015.01.25",
+          "total_size": 104323776,
+          "preprocess_function": "run_preproc_shiphy",
+          "ref_version": "hg19",
+          "urls": [
+            "http://www.broadinstitute.org/ftp/pub/assemblies/mammals/29mammals/hg19/hg19_29way_omega_lods_elements_12mers.chr_specific.fdr_0.1_with_scores.txt.gz",
+            "http://www.broadinstitute.org/ftp/pub/assemblies/mammals/29mammals/hg19/hg19_29way_pi_lods_elements_12mers.chr_specific.fdr_0.1_with_scores.txt.gz"
+          ]
+        },{
+          "version": "29mammals",
+          "version_date": "2015.01.25",
+          "total_size": 164202274,
+          "preprocess_function": "run_preproc_shiphy",
+          "ref_version": "hg38",
+          "urls": [
+            "mutanno hg38liftover_29way_omega_lods_elements_12mers.chr_specific.fdr_0.1_with_scores.txt.sorted.bed.gz",
+            "mutanno hg38liftover_29way_pi_lods_elements_12mers.chr_specific.fdr_0.1_with_scores.tsv.sorted.bed.gz"
+          ]
+        }
+      ]
+    },{
+      "name": "UK10K",
+      "latest": "20160215",
+      "versions": [
+        {
+          "version": "20160215",
+          "version_date": "2016.02.15",
+          "total_size": 2058644475,
+          "preprocess_function": "run_preproc_uk10k",
+          "ref_version": "hg19",
+          "urls": [
+            "ftp://ngs.sanger.ac.uk/production/uk10k/UK10K_COHORT/REL-2012-06-02/UK10K_COHORT.20160215.sites.vcf.gz",
+            "mutanno UK10K_COHORT.20160215.sites.vcf.gz"
+          ]
+        },
+        {
+          "version": "20160215",
+          "version_date": "2016.02.15",
+          "total_size": 2058644475,
+          "preprocess_function": "run_preproc_uk10k",
+          "ref_version": "hg38",
+          "urls": [
+            "ftp://ngs.sanger.ac.uk/production/uk10k/UK10K_COHORT/REL-2012-06-02/UK10K_COHORT.20160215.sites.vcf.gz",
+            "mutanno UK10K_COHORT.20160215.sites.liftover.hg38.vcf.gz"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "GNOMAD",
+      "latest": "3.0",
+      "versions": [
+        {
+          "version": "3.0",
+          "version_date": "2019.03.06",
+          "total_size": 2058644475,
+          "preprocess_function": "run_preproc_gnomad",
+          "ref_version": "hg38",
+          "tmp": "https://storage.googleapis.com/gnomad-public/release/3.0/vcf/genomes/gnomad.genomes.r3.0.sites.vcf.bgz",
+          "urls": [
+            "https://storage.googleapis.com/gnomad-public/release/3.0/vcf/genomes/gnomad.genomes.r3.0.sites.chrY.vcf.bgz",
+            "https://storage.googleapis.com/gnomad-public/release/3.0/vcf/genomes/gnomad.genomes.r3.0.sites.chrY.vcf.bgz.tbi",
+            "mutanno GNOMAD.3.0.vcf.gz"
+          ]
+        },
+        {
+          "version": "2.1.1",
+          "version_date": "2019.03.06",
+          "total_size": 2058644475,
+          "preprocess_function": "run_preproc_gnomad",
+          "ref_version": "hg19",
+          "urls": [
+            "https://storage.googleapis.com/gnomad-public/release/2.1.1/vcf/exomes/gnomad.exomes.r2.1.1.sites.1.vcf.bgz",
+            "mutanno UK10K_COHORT.20160215.sites.liftover.hg38.vcf.gz"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CADD",
+      "latest": "1.6",
+      "versions": [
+        {
+          "version": "1.6",
+          "version_date": "2020.03.26",
+          "total_size": 86592987071,
+          "preprocess_function": "run_preproc_cadd",
+          "ref_version": "hg38",
+          "urls": [
+            "https://krishna.gs.washington.edu/download/CADD/v1.6/GRCh38/whole_genome_SNVs.tsv.gz",
+            "mutanno UK10K_COHORT.20160215.sites.vcf.gz"
+          ]
+        },
+        {
+          "version": "1.5",
+          "version_date": "2019.02.22",
+          "total_size": 85809729344,
+          "preprocess_function": "run_preproc_cadd",
+          "ref_version": "hg38",
+          "urls": [
+            "https://krishna.gs.washington.edu/download/CADD/v1.5/GRCh38/whole_genome_SNVs.tsv.gz",
+            "mutanno UK10K_COHORT.20160215.sites.vcf.gz"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MMSPLICE",
+      "latest": "1.6",
+      "versions": [
+        {
+          "version": "1.6",
+          "version_date": "2020.03.26",
+          "total_size": 86592987071,
+          "preprocess_function": "run_preproc_cadd",
+          "ref_version": "hg38",
+          "urls": [
+            "https://krishna.gs.washington.edu/download/CADD/v1.6/GRCh38/MMSpliceUpdate/mmsplice-all-GRCh38.tsv.gz",
+            "mutanno UK10K_COHORT.20160215.sites.vcf.gz"
+          ]
+        },
+        {
+          "version": "1.5",
+          "version_date": "2019.02.22",
+          "total_size": 85809729344,
+          "preprocess_function": "run_preproc_cadd",
+          "ref_version": "hg38",
+          "urls": [
+            "https://krishna.gs.washington.edu/download/CADD/v1.5/GRCh38/whole_genome_SNVs.tsv.gz",
+            "mutanno UK10K_COHORT.20160215.sites.vcf.gz"
+          ]
+        }
+      ]
+    },{
+      "name": "ENSEMBLgene",
+      "latest": "",
+      "versions": [
+        {
+          "version": "v99",
+          "version_date": "2019.11.21",
+          "total_size": 99999,
+          "preprocess_function": "run_preproc_ensemblgene",
+          "ref_version": "hg38",
+          "urls": [
+            "ftp://ftp.ensembl.org/pub/release-99/gtf/homo_sapiens/Homo_sapiens.GRCh38.99.gtf.gz",
+            "mutanno Homo_sapiens.GRCh38.99.bed.gz"
+          ]
+        },
+        {
+          "version": "v100",
+          "version_date": "2020.03.06",
+          "total_size": 99999,
+          "preprocess_function": "run_preproc_ensemblgene",
+          "ref_version": "hg38",
+          "urls": [
+            "ftp://ftp.ensembl.org/pub/release-100/gtf/homo_sapiens/Homo_sapiens.GRCh38.100.gtf.gz",
+            "mutanno Homo_sapiens.GRCh38.100.bed.gz"
+          ]
+        },
+        {
+          "version": "v101",
+          "version_date": "2020.07.11",
+          "total_size": 99999,
+          "preprocess_function": "run_preproc_ensemblgene",
+          "ref_version": "hg38",
+          "urls": [
+            "ftp://ftp.ensembl.org/pub/release-101/gtf/homo_sapiens/Homo_sapiens.GRCh38.101.gtf.gz",
+            "mutanno Homo_sapiens.GRCh38.101.bed.gz"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ENSEMBLgeneGRCh37",
+      "latest": "",
+      "versions": [
+        {
+          "version": "v75(GRCh37.p13)",
+          "version_date": "2013.09.01",
+          "total_size": 99999,
+          "preprocess_function": "run_preproc_ensemblgenegrch37",
+          "ref_version": "hg38",
+          "urls": [
+            "ftp://ftp.ensembl.org/pub/release-75/gtf/homo_sapiens/Homo_sapiens.GRCh37.75.gtf.gz",
+            "mutanno ensgid_hg19_coordination.tsv.gz"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CYTOBAND",
+      "latest": "",
+      "versions": [
+        {
+          "version": "2017-07-17",
+          "version_date": "2017.07.17",
+          "total_size": 99999,
+          "preprocess_function": "run_preproc_cytoband",
+          "ref_version": "hg38",
+          "urls": [
+            "mutanno cytoBand.hg38.2017-07-17.bed.gz"
+          ]
+        },{
+          "version": "2019-03-11",
+          "version_date": "2019.03.11",
+          "total_size": 99999,
+          "preprocess_function": "run_preproc_cytoband",
+          "ref_version": "hg38",
+          "urls": [
+            "http://hgdownload.cse.ucsc.edu/goldenpath/hg38/database/cytoBand.txt.gz",
+            "mutanno cytoBand.hg38.2019.03.11.bed.gz"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "RefSeq",
+      "latest": "",
+      "versions": [
+        {
+          "version": "2020-03-20",
+          "version_date": "2020.03.20",
+          "total_size": 99999,
+          "preprocess_function": "run_preproc_refseq",
+          "ref_version": "hg38",
+          "urls": [
+            "mutanno refseq.hg38.2017-07-17.tsv.gz"
+          ]
+        },
+        {
+          "version": "2020-09-08",
+          "version_date": "2020.09.08",
+          "total_size": 99999,
+          "preprocess_function": "run_preproc_refseq",
+          "ref_version": "hg38",
+          "urls": [
+            "ftp://ftp.ncbi.nlm.nih.gov/refseq/H_sapiens/RefSeqGene/refseqgene.1.genomic.gbff.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/refseq/H_sapiens/RefSeqGene/refseqgene.2.genomic.gbff.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/refseq/H_sapiens/RefSeqGene/refseqgene.3.genomic.gbff.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/refseq/H_sapiens/RefSeqGene/refseqgene.4.genomic.gbff.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/refseq/H_sapiens/RefSeqGene/refseqgene.5.genomic.gbff.gz",
+            "mutanno refseq.hg38.2020-09-08.tsv.gz"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "HGNC",
+      "latest": "",
+      "versions": [
+        {
+          "version": "2020-02-24",
+          "version_date": "02/24/2020",
+          "total_size": 99999,
+          "preprocess_function": "run_preproc_hgnc",
+          "ref_version": "hg38",
+          "urls": [
+            "mutanno hgnc_complete_set.mod.txt.gz"
+          ]
+        },
+        {
+          "version": "2020-09-08",
+          "version_date": "2020.09.08",
+          "total_size": 99999,
+          "preprocess_function": "run_preproc_refseq",
+          "ref_version": "hg38",
+          "urls": [
+            "ftp://ftp.ebi.ac.uk/pub/databases/genenames/new/tsv/hgnc_complete_set.txt",
+            "mutanno hgnc_complete_set.mod.txt.gz"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ClinGen",
+      "latest": "",
+      "versions": [
+        {
+          "version": "20200403",
+          "version_date": "04/03/2020",
+          "total_size": 99999,
+          "preprocess_function": "run_preproc_clingen",
+          "ref_version": "hg38",
+          "urls": [
+            "mutanno clingen_list_2020-04-03.html.mod.tsv"
+          ]
+        },
+        {
+          "version": "20200911",
+          "version_date": "2020.09.11",
+          "total_size": 99999,
+          "preprocess_function": "run_preproc_clingen",
+          "ref_version": "hg38",
+          "urls": [
+            "https://search.clinicalgenome.org/kb/curations/",
+            "mutanno clingen_list_2020-04-03.html.mod.tsv"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ClinGenDisease",
+      "latest": "",
+      "versions": [
+        {
+          "version": "20200403",
+          "version_date": "04/03/2020",
+          "total_size": 99999,
+          "preprocess_function": "run_preproc_clingendisease",
+          "ref_version": "hg38",
+          "urls": [
+            "mutanno clingen_gene-validity_2020-04-03.csv.mod.tsv"
+          ]
+        },
+        {
+          "version": "20200911",
+          "version_date": "2020.09.11",
+          "total_size": 99999,
+          "preprocess_function": "run_preproc_clingendisease",
+          "ref_version": "hg38",
+          "urls": [
+            "https://search.clinicalgenome.org/kb/curations/",
+            "mutanno clingen_gene-validity_2020-04-03.csv.mod.tsv"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ENSEMBLIDxrefTrscriptID",
+      "latest": "",
+      "versions": [
+        {
+          "version": "2017-11-22",
+          "version_date": "11/22/2017",
+          "total_size": 99999,
+          "preprocess_function": "run_preproc_clingendisease",
+          "ref_version": "hg38",
+          "urls": [
+            "mutanno idmap_ensembl_uniprot_xref.transcriptid.tsv.gz"
+          ]
+        },
+        {
+          "version": "2020-08-12",
+          "version_date": "2020.08.12",
+          "total_size": 99999,
+          "preprocess_function": "run_preproc_clingendisease",
+          "ref_version": "hg38",
+          "urls": [
+            "ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/idmapping/by_organism/HUMAN_9606_idmapping_selected.tab.gz",
+            "mutanno idmap_ensembl_uniprot_xref.transcriptid.tsv.gz"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ENSEMBLIDxref",
+      "latest": "",
+      "versions": [
+        {
+          "version": "2017-11-22",
+          "version_date": "11/22/2017",
+          "total_size": 99999,
+          "preprocess_function": "run_preproc_clingendisease",
+          "ref_version": "hg38",
+          "urls": [
+            "mutanno idmap_ensembl_uniprot_xref.tsv.gz"
+          ]
+        },
+        {
+          "version": "2020-08-12",
+          "version_date": "2020.08.12",
+          "total_size": 99999,
+          "preprocess_function": "run_preproc_clingendisease",
+          "ref_version": "hg38",
+          "urls": [
+            "ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/idmapping/by_organism/HUMAN_9606_idmapping_selected.tab.gz",
+            "mutanno idmap_ensembl_uniprot_xref.tsv.gz"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "dbNSFP",
+      "latest": "",
+      "versions": [
+        {
+          "version": "4.0c",
+          "version_date": "06/05/2017",
+          "total_size": 99999,
+          "preprocess_function": "run_preproc_dbnsfp",
+          "ref_version": "hg38",
+          "urls": [
+            "ftp://dbnsfp:dbnsfp@dbnsfp.softgenetics.com/dbNSFP4.0c.zip",
+            "mutanno dbNSFP4.0_gene.complete.mod.gz"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "gnomADmetrics",
+      "latest": "",
+      "versions": [
+        {
+          "version": "v2.1.1",
+          "version_date": "11/22/2017",
+          "total_size": 99999,
+          "preprocess_function": "run_preproc_dbnsfp",
+          "ref_version": "hg38",
+          "urls": [
+            "https://storage.googleapis.com/gnomad-public/release/2.1.1/constraint/gnomad.v2.1.1.lof_metrics.by_gene.txt.bgz",
+            "mutanno gnomad.v2.1.1.lof_metrics.by_gene.txt.gz"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Marrvel",
+      "latest": "",
+      "versions": [
+        {
+          "version": "v1.2",
+          "version_date": "06/01/2017",
+          "total_size": 99999,
+          "preprocess_function": "run_preproc_marrvel",
+          "ref_version": "hg38",
+          "urls": [
+            "https://storage.googleapis.com/gnomad-public/release/2.1.1/constraint/gnomad.v2.1.1.lof_metrics.by_gene.txt.bgz",
+            "mutanno marrvel_genesymbol.v1.2_170601.tsv.gz"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CassaNatGenet2017",
+      "latest": "",
+      "versions": [
+        {
+          "version": "04/03/2017",
+          "version_date": "04/03/2017",
+          "total_size": 99999,
+          "preprocess_function": "run_preproc_marrvel",
+          "ref_version": "hg38",
+          "urls": [
+            "https://www.biorxiv.org/highwire/filestream/20869/field_highwire_adjunct_files/0/075523-1.xlsx",
+            "mutanno 075523-1.tsv.gz"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "GTEx",
+      "latest": "",
+      "versions": [
+        {
+          "version": "v8",
+          "version_date": "06/05/2017",
+          "total_size": 99999,
+          "preprocess_function": "run_preproc_gtex",
+          "ref_version": "hg38",
+          "urls": [
+            "https://storage.googleapis.com/gtex_analysis_v8/rna_seq_data/GTEx_Analysis_2017-06-05_v8_RNASeQCv1.1.9_gene_median_tpm.gct.gz",
+            "mutanno GTEx_Analysis_2017-06-05_v8_RNASeQCv1.1.9_link.tsv.gz"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "BrainSpan",
+      "latest": "",
+      "versions": [
+        {
+          "version": "v2",
+          "version_date": "06/05/2017",
+          "total_size": 99999,
+          "preprocess_function": "run_preproc_gtex",
+          "ref_version": "hg38",
+          "urls": [
+            "mutanno GTEx_Analysis_2017-06-05_v8_RNASeQCv1.1.9_link.tsv.gz"
+          ]
+        },{
+          "version": "v10",
+          "version_date": "06/05/2017",
+          "total_size": 99999,
+          "preprocess_function": "run_preproc_gtex",
+          "ref_version": "hg38",
+          "urls": [
+            "https://www.brainspan.org/api/v2/well_known_file_download/267666525",
+            "mutanno GTEx_Analysis_2017-06-05_v8_RNASeQCv1.1.9_link.tsv.gz"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "BrainAtlas",
+      "latest": "",
+      "versions": [
+        {
+          "version": "v2",
+          "version_date": "06/05/2017",
+          "total_size": 99999,
+          "preprocess_function": "run_preproc_gtex",
+          "ref_version": "hg38",
+          "urls": [
+            "https://www.brainspan.org/api/v2/well_known_file_download/267666525",
+            "mutanno BRAINATLAS_microarry_link.tsv.gz"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "GenCode",
+      "latest": "",
+      "versions": [
+        {
+          "version": "v33",
+          "version_date": "12/13/2019",
+          "total_size": 99999,
+          "preprocess_function": "run_preproc_genecode",
+          "ref_version": "hg38",
+          "urls": [
+            "ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_33/gencode.v33.annotation.gff3.gz",
+            "mutanno GenCodeTranscript.v33.12_13_2019.bed.gz"
+          ]
+        }
+      ]
+    }
+  ]
+}
