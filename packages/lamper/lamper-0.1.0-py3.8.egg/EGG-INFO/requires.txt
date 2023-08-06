@@ -1,0 +1,6 @@
+marshmallow
+requests
+
+[tests]
+pytest
+requets_mock
