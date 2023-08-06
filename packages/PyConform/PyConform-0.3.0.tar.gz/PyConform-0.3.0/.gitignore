@@ -1,0 +1,15 @@
+*.spec
+*.pyc
+*.nc
+.cache
+.pytest_cache
+.DS_Store
+temp
+build
+dist
+PyConform.egg-info
+.idea/
+.vscode/
+__pycache__
+.coverage*
+coverage.xml

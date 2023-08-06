@@ -1,0 +1,6 @@
+
+        [console_scripts]
+        iconform=pyconform.cli.iconform:main
+        vardeps=pyreshaper.cli.vardeps:main
+        xconform=pyreshaper.cli.xconform:main
+        
