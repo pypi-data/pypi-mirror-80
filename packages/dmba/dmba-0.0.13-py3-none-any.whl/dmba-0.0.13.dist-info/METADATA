@@ -1,0 +1,27 @@
+Metadata-Version: 2.1
+Name: dmba
+Version: 0.0.13
+Summary: Utility functions for 'Data Mining for Business Analytics: Concepts, Techniques, and Applications in Python'
+Home-page: https://github.com/gedeck/dmba
+Author: Peter Gedeck
+Author-email: mail@petergedeck.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+
+# Data Mining for Business Analytics: Concepts, Techniques, and  Applications in Python
+
+Collection of utility functions used in the book
+
+> _Data Mining for Business Analytics: Concepts, Techniques, and Applications in Python_ (First Edition) 
+> Galit Shmueli, Peter C. Bruce, Peter Gedeck, and Nitin R. Patel
+> (c) 2019 John Wiley & Sons, Inc. 
+
+Code for the book and the used datasets are available on https://www.dataminingbook.com/book/python-edition.
+
+
