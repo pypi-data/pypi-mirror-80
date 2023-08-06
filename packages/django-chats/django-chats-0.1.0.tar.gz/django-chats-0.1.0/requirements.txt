@@ -1,0 +1,9 @@
+django==3.1
+django-fsm
+djangorestframework
+django-ckeditor
+django-environ
+channels-redis
+channels
+daphne
+# Additional requirements go here
