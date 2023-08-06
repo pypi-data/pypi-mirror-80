@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: mpddrp
+Version: 1.0.1
+Summary: MPD Discord Rich Presence
+Home-page: https://github.com/PanKohnih/mpddrp
+Author: Franz Łotocki
+Author-email: flotocki002@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+Requires-Dist: python-mpd2
+Requires-Dist: pypresence
+
+# mpddrp
+mpddrp is a simple python script that displays what you're currently listening to through MPD on Discord.
+## Dependencies
+* [pypresence](https://github.com/qwertyquerty/pypresence)
+* [python-mpd2](https://github.com/Mic92/python-mpd2)
+## How to run
+Install using : 
+`pip install mpddrp`
+
+## Configuration
+The configuration file is located at:
+
+Windows:
+`C:/Users/USERNAME/AppData/Roaming/mpddrp/config`
+
+UNIX:
+`$HOME/.config/mpddrp/config`
+
+
