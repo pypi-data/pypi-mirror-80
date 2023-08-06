@@ -1,0 +1,17 @@
+panflute>=1.12
+
+[dev]
+check-manifest
+
+[docs]
+sphinx>=3.2
+sphinx_rtd_theme>=0.5
+
+[test]
+tox
+pytest-runner
+pytest-cov
+black
+doc8
+pylint>=2.6
+panflute>=1.12
