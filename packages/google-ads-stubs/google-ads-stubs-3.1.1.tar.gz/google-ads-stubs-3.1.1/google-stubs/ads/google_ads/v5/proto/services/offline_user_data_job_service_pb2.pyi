@@ -1,0 +1,10 @@
+from typing import Any
+
+DESCRIPTOR: Any
+CreateOfflineUserDataJobRequest: Any
+CreateOfflineUserDataJobResponse: Any
+GetOfflineUserDataJobRequest: Any
+RunOfflineUserDataJobRequest: Any
+AddOfflineUserDataJobOperationsRequest: Any
+OfflineUserDataJobOperation: Any
+AddOfflineUserDataJobOperationsResponse: Any

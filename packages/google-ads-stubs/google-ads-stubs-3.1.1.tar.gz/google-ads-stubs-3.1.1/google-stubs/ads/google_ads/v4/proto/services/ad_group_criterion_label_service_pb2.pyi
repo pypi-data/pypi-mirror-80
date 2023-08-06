@@ -1,0 +1,8 @@
+from typing import Any
+
+DESCRIPTOR: Any
+GetAdGroupCriterionLabelRequest: Any
+MutateAdGroupCriterionLabelsRequest: Any
+AdGroupCriterionLabelOperation: Any
+MutateAdGroupCriterionLabelsResponse: Any
+MutateAdGroupCriterionLabelResult: Any

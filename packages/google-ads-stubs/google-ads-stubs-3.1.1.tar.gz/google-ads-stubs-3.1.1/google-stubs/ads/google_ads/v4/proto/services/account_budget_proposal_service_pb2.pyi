@@ -1,0 +1,8 @@
+from typing import Any
+
+DESCRIPTOR: Any
+GetAccountBudgetProposalRequest: Any
+MutateAccountBudgetProposalRequest: Any
+AccountBudgetProposalOperation: Any
+MutateAccountBudgetProposalResponse: Any
+MutateAccountBudgetProposalResult: Any

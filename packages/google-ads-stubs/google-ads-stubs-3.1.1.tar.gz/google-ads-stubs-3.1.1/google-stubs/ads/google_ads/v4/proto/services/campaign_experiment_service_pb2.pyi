@@ -1,0 +1,16 @@
+from typing import Any
+
+DESCRIPTOR: Any
+GetCampaignExperimentRequest: Any
+MutateCampaignExperimentsRequest: Any
+CampaignExperimentOperation: Any
+MutateCampaignExperimentsResponse: Any
+MutateCampaignExperimentResult: Any
+CreateCampaignExperimentRequest: Any
+CreateCampaignExperimentMetadata: Any
+GraduateCampaignExperimentRequest: Any
+GraduateCampaignExperimentResponse: Any
+PromoteCampaignExperimentRequest: Any
+EndCampaignExperimentRequest: Any
+ListCampaignExperimentAsyncErrorsRequest: Any
+ListCampaignExperimentAsyncErrorsResponse: Any

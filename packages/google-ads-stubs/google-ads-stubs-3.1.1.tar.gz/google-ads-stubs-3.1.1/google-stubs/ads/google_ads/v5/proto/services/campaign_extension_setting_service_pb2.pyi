@@ -1,0 +1,8 @@
+from typing import Any
+
+DESCRIPTOR: Any
+GetCampaignExtensionSettingRequest: Any
+MutateCampaignExtensionSettingsRequest: Any
+CampaignExtensionSettingOperation: Any
+MutateCampaignExtensionSettingsResponse: Any
+MutateCampaignExtensionSettingResult: Any

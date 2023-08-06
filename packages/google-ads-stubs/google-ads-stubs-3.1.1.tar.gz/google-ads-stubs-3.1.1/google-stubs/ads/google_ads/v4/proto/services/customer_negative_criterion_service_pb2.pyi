@@ -1,0 +1,8 @@
+from typing import Any
+
+DESCRIPTOR: Any
+GetCustomerNegativeCriterionRequest: Any
+MutateCustomerNegativeCriteriaRequest: Any
+CustomerNegativeCriterionOperation: Any
+MutateCustomerNegativeCriteriaResponse: Any
+MutateCustomerNegativeCriteriaResult: Any

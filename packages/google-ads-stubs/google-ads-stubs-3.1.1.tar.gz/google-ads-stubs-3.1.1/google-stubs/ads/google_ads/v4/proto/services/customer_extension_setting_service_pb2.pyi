@@ -1,0 +1,8 @@
+from typing import Any
+
+DESCRIPTOR: Any
+GetCustomerExtensionSettingRequest: Any
+MutateCustomerExtensionSettingsRequest: Any
+CustomerExtensionSettingOperation: Any
+MutateCustomerExtensionSettingsResponse: Any
+MutateCustomerExtensionSettingResult: Any

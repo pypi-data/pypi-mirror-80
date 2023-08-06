@@ -1,0 +1,8 @@
+from typing import Any
+
+DESCRIPTOR: Any
+GetKeywordPlanAdGroupKeywordRequest: Any
+MutateKeywordPlanAdGroupKeywordsRequest: Any
+KeywordPlanAdGroupKeywordOperation: Any
+MutateKeywordPlanAdGroupKeywordsResponse: Any
+MutateKeywordPlanAdGroupKeywordResult: Any
