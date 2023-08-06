@@ -1,0 +1,13 @@
+LICENSE
+README.md
+README.rst
+pyproject.toml
+setup.py
+setup_pypi.py
+PyCPU_RAINBOW.egg-info/PKG-INFO
+PyCPU_RAINBOW.egg-info/SOURCES.txt
+PyCPU_RAINBOW.egg-info/dependency_links.txt
+PyCPU_RAINBOW.egg-info/top_level.txt
+pycpu_rainbow/__init__.py
+tests/__init__.py
+tests/test_pycpu_rainbow.py
