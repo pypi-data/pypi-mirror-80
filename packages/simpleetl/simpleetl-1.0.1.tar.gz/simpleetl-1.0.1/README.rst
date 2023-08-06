@@ -1,0 +1,65 @@
+SimpleETL - ETL Processing by Simple Specifications
+===================================================
+
+SimpleETL er an ETL tool developed by FlexDanmark to easily handling processing of data
+from user-defined data sources and automatically generates a dimensionally modelled
+data warehouse.
+
+SimpleETL is developed to work with the PostgreSQL DBMS backend with psycopg2 as
+database adapter.
+
+Features
+--------
+- Automatically generates data warehouse dimensional model (star schema)
+- Can track changes of facts
+- User-defined automatic fact table partitioning
+- Handle deleted facts
+- Ensures data quality by type and value checking
+- Provides a wide range of default data types and allows user to define their own
+
+
+Installation
+------------
+SimpleETL can be installed in multiple ways. The simples is to receive (or build) a wheel file
+and install this using pip.
+
+In the future SimpleETL is supposed to be available from the PyPI package repository.
+
+Dependencies
+````````````
+SimpleETL requires the psycopg2-binary and the pygrametl package for database
+PostgreSQL database connections and table handling.
+
+It is highly recommended to build and install SimpleETL in a virtual environment::
+
+    $ python -m venv venv       # Create virtuel environment in venv subfolder
+    $ source venv/bin/activate  # Activate virtual environment
+
+Build and install a wheel package (using pip)
+`````````````````````````````````````````````
+SimpleETL can also be installed from a wheel package using the ``pip`` command::
+
+    $ pip install simpleetl-2.3.0-py3-none-any.whl
+
+To manually build a .whl file for distribution and installation the wheel package is required.
+Then a SimpleETL wheel can be build with the following, resulting in a .whl file in the dist folder::
+
+    $ python setup.py sdist bdist_wheel
+
+Build and install from source
+`````````````````````````````
+SimpleETL be installed using ``setup.py`` if you have downloaded the source package locally::
+
+    $ python setup.py build
+    $ sudo python setup.py install
+
+
+Example usages
+--------------
+From the source repository multiple code examples can be found in the examples folder
+
+Publications
+------------
+Ove Andersen, Christian Thomsen, Kristian Torp:
+SimpleETL: ETL Processing by Simple Specifications. DOLAP 2018
+http://ceur-ws.org/Vol-2062/paper10.pdf
