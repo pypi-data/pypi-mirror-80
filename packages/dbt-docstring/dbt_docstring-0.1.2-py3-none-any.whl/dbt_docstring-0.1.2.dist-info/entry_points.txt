@@ -1,0 +1,4 @@
+
+    [console_scripts]
+    dbtdocstr=dbt_docstring:main
+    
