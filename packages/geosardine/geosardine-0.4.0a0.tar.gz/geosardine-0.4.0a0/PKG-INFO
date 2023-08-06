@@ -1,0 +1,69 @@
+Metadata-Version: 2.1
+Name: geosardine
+Version: 0.4.0a0
+Summary: Spatial operations extend fiona and rasterio
+Home-page: https://github.com/sahitono/geosardine
+Author: Sahit Tuntas Sadono
+Author-email: 26474008+sahitono@users.noreply.github.com
+Requires-Python: >=3.6,<4.0
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Topic :: Scientific/Engineering :: GIS
+Classifier: Typing :: Typed
+Requires-Dist: affine (>=2.3.0,<3.0.0)
+Requires-Dist: fiona
+Requires-Dist: gdal
+Requires-Dist: nptyping (>=1.3.0,<2.0.0)
+Requires-Dist: numba (>=0.51.2,<0.52.0)
+Requires-Dist: numpy (>=1.18,<2.0)
+Requires-Dist: rasterio
+Requires-Dist: shapely (>=1.6.4,<2.0.0)
+Requires-Dist: tqdm (>=4.48.2,<5.0.0)
+Project-URL: Repository, https://github.com/sahitono/geosardine
+Description-Content-Type: text/markdown
+
+## Geo-Sardine
+
+Collection of spatial operation which i occasionally use 
+
+### Setup
+install it with pip
+```pip install --pre geosardine```
+
+### How to use it
+```python
+import geosardine as dine
+import rasterio
+import fiona
+
+with rasterio.open("/home/user/data.tif") as raster, fiona.open("/home/user/data.shp") as vector:
+    draped = dine.drape_geojson(vector, raster)
+    joined = dine.spatial_join(vector, raster) 
+```
+
+### Geosardine CLI
+You can use it through terminal or command prompt by calling **dine**
+
+```
+$ dine --help
+Usage: dine [OPTIONS] COMMAND [ARGS]...
+
+  GeoSardine CLI
+
+Options:
+  --help  Show this message and exit.
+
+Commands:
+  drape         Drape vector to raster to obtain height value
+  info          Get supported format
+  join-spatial  Join attribute by location
+```
+
+### License
+[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
+
