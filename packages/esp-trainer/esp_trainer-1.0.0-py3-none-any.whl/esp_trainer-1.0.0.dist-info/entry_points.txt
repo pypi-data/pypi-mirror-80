@@ -1,0 +1,3 @@
+[console_scripts]
+esp-trainer = esp_trainer.__main__:main
+
