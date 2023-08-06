@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: cranko
+Version: 0.1.0
+Summary: Placeholder for the Cranko release automation tool
+Home-page: https://github.com/pkgw/cranko
+Author: Peter Williams
+Author-email: peter@newton.cx
+License: MIT
+Description: 
+        This is a placeholder package created to entitle the "Cranko"
+        release automation tool to use the `tool.cranko` namespace in
+        `pyproject.toml` files, as per PEP 518.
+Platform: UNKNOWN
+Description-Content-Type: text/markdown
