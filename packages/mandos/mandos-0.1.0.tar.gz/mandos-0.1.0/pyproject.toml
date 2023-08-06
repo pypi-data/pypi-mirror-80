@@ -1,0 +1,162 @@
+[metadata]
+description-file = "README.md"
+
+[build-system]
+requires = ["poetry>=1,<2", "coverage[toml]>=5,<6"]
+build-backend = "poetry.masonry.api"
+
+
+#########################################################################################
+# Tyrannosaurus
+#########################################################################################
+
+[tool.tyrannosaurus.options]
+align = true
+
+[tool.tyrannosaurus.sources]
+status             = "'Development'"
+date               = "'${today}'"
+copyright          = "'Copyright ${today.year}'"
+version            = "tool.poetry.version"
+release            = "tool.poetry.version"
+pyversions         = "tool.poetry.dependencies"
+devdeps            = "tool.poetry.dev-dependencies"
+linelength         = "tool.black.line-length"
+authors = [
+    "Douglas Myers-Turnbull <github:dmyersturnbull,orcid:0000-0003-3610-4808>",
+]
+maintainers = "tool.tyrannosaurus.sources.authors"
+
+[tool.tyrannosuarus.paths]
+recipe             = "'recipes/${name}/meta.yml'"
+environment        = "'environment.yml'"
+
+[tool.tyrannosaurus.targets]
+pyproject    = true
+init         = true
+tox          = true
+docs         = true
+recipes      = true
+environment  = true
+license      = true
+authors      = true
+github       = true
+travis       = true
+dockerfile   = true
+readme       = true
+changelog    = true
+citation     = true
+codemeta     = true
+
+
+#########################################################################################
+# Poetry metadata
+#########################################################################################
+
+[tool.poetry]
+name = "mandos"
+version = "0.1.0"
+description = "Get the biological targets of compounds."
+include = [
+    "README.md",
+    "LICENSE.txt",
+    "CHANGES.md"
+]
+authors = ["Douglas Myers-Turnbull"]
+maintainers = ["Douglas Myers-Turnbull"]
+license = "Apache-2.0"
+readme = "README.md"
+keywords = ["cheminformatics", "chembl"]
+homepage = "https://github.com/dmyersturnbull/mandos"
+repository = "https://github.com/dmyersturnbull/mandos"
+documentation = "https://mandos-chem.readthedocs.io"
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.8",
+	"Intended Audience :: Science/Research",
+	"Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+    "Topic :: Scientific/Engineering :: Chemistry",
+	'Typing :: Typed'
+]
+
+[tool.poetry.urls]
+CI = "https://github.com/dmyersturnbull/mandos/actions"
+Issues = "https://github.com/dmyersturnbull/mandos/issues"
+
+
+#########################################################################################
+# Poetry build & dependencies
+#########################################################################################
+
+[tool.poetry.scripts]
+mandos = "mandos.cli:cli"
+
+
+[tool.poetry.dependencies]
+python                         = ">=3.8, <4"
+chembl-webresource-client      = "^0.10"
+pandas                         = ">=1.1, <2.0"
+requests                       = ">=2.24, <3.0"
+tomlkit                        = ">=0.7, <1.0"
+tqdm                           = ">=4.48, <5.0"
+typer                          = {version=">=0.3, <1.0", extras=["colorama"]}
+pocketutils                    = ">=0.3.2, <0.4"
+
+
+[tool.poetry.dev-dependencies]
+pre-commit               = ">=2.7, <3.0"
+pre-commit-hooks         = ">=3.2, <4.0"
+pytest                   = "^6"
+coverage                 = {extras = ["toml"], version = "^5"}
+pytest-cov               = "^2"
+black                    = "=19.10b0"
+isort                    = "^5"
+sphinx                   = "^3"
+sphinx-autoapi           = "^1"
+sphinx-rtd-theme         = ">=0.5, <1.0"
+flake8                   = ">=3.8, <4.0"
+flake8-docstrings        = ">=1.5, <2.0"
+flake8-bugbear           = "^20"
+
+
+[tool.poetry.extras]
+dev = [
+        "toml", "pytest", "coverage", "pytest-cov"
+]
+
+
+#########################################################################################
+# Style checking
+#########################################################################################
+
+[tool.coverage.paths]
+source = ["mandos"]
+
+[tool.coverage.run]
+source = ["mandos"]
+
+[tool.coverage.report]
+show_missing = true
+
+[tool.black]
+line-length = 100
+target-version = ["py38"]
+
+[tool.isort]
+line_length = 100
+
+[mypy]
+check_untyped_defs = true
+strict_optional = true
+
+[pycodestyle]
+max-line-length = 100
+statistics = true
+
+[pydocstyle]
+# 212 and 213 contradict; 203 and 204 contradict; D302 is not relevant in Py3
+ignore = ["D203", "D212", "D302"]
