@@ -1,0 +1,17 @@
+README.rst
+setup.py
+nameko_injector/__init__.py
+nameko_injector/core.py
+nameko_injector.egg-info/PKG-INFO
+nameko_injector.egg-info/SOURCES.txt
+nameko_injector.egg-info/dependency_links.txt
+nameko_injector.egg-info/requires.txt
+nameko_injector.egg-info/top_level.txt
+nameko_injector/testing/__init__.py
+nameko_injector/testing/pytest_fixtures.py
+tests/__init__.py
+tests/conftest.py
+tests/dummy_service.py
+tests/test_http.py
+tests/test_injected.py
+tests/test_rpc.py
