@@ -1,0 +1,3 @@
+[console_scripts]
+retriever = mutalyzer_retriever.cli:main
+
