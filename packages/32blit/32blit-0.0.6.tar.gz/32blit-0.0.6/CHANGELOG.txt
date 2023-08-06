@@ -1,0 +1,39 @@
+0.0.6
+-----
+
+* Font tool (thanks @Daft-Freak)
+* Flash command with multi-target function (thanks @Daft-Freak)
+* Bugfixes to palette handling (thanks @Daft-Freak)
+* Bugfixes to package recognition (seemed to affect Python 3.8 on Windows)
+* Friendly (ish) error message when a .tmx tilemap with 0-index tiles is used (tmx is 1-indexed for valid tiles)
+
+0.0.5
+-----
+
+* Output data length symbols (thanks @Daft-Freak)
+* Fix --packed to be default, again (packed can be disabled with --packed no)
+* Various other tweaks
+* Start of 32blit file upload support
+
+0.0.4
+-----
+
+* Default images to packed (packed arg now takes a bool)
+* Fix bug in sprite payload size (thanks @Daft-Freak)
+
+0.0.3
+-----
+
+* Fix packaging mishap so tool actually works
+
+0.0.2
+-----
+
+* Real initial release
+* Pack, cmake and asset commands working
+* Very beta!
+
+0.0.1
+-----
+
+* Initial Release
