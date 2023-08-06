@@ -1,0 +1,79 @@
+{
+  "mappings": {
+    "location-v1.0.0": {
+      "date_detection": false,
+      "numeric_detection": false,
+      "properties": {
+        "$schema": {
+          "type": "keyword"
+        },
+        "pid": {
+          "type": "keyword"
+        },
+        "legacy_id": {
+          "type": "keyword"
+        },
+        "name": {
+          "type": "text"
+        },
+        "address": {
+          "type": "text"
+        },
+        "email": {
+          "type": "text"
+        },
+        "phone": {
+          "type": "keyword"
+        },
+        "notes": {
+          "type": "text"
+        },
+        "opening_weekdays": {
+          "properties": {
+            "weekday": {
+              "type": "keyword"
+            },
+            "is_open": {
+              "type": "boolean"
+            },
+            "times": {
+              "properties": {
+                "start_time": {
+                  "type": "text"
+                },
+                "end_time": {
+                  "type": "text"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "opening_exceptions": {
+          "properties": {
+            "title": {
+              "type": "keyword"
+            },
+            "is_open": {
+              "type": "boolean"
+            },
+            "start_date": {
+              "type": "date"
+            },
+            "end_date": {
+              "type": "date"
+            }
+          },
+          "type": "object"
+        },
+        "_created": {
+          "type": "date"
+        },
+        "_updated": {
+          "type": "date"
+        }
+      }
+    }
+  }
+}
