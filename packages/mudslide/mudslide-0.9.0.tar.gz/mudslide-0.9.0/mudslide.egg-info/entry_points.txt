@@ -1,0 +1,4 @@
+[console_scripts]
+mudslide = mudslide.__main__:main
+mudslide-surface = mudslide.surface:main
+

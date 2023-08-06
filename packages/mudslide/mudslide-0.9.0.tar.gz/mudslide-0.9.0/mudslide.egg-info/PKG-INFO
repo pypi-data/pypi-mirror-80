@@ -1,0 +1,21 @@
+Metadata-Version: 1.1
+Name: mudslide
+Version: 0.9.0
+Summary: Package to simulate nonadiabatic molecular dynamics using trajectory methods
+Home-page: https://github.com/smparker/mudslide
+Author: Shane M. Parker
+Author-email: shane.parker@case.edu
+License: MIT
+Download-URL: https://github.com/smparker/mudslide/archive/v0.9.tar.gz
+Description: UNKNOWN
+Keywords: science,chemistry,nonadiabatic dynamics
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Science/Research
+Classifier: Topic :: Scientific/Engineering :: Chemistry
+Classifier: Topic :: Scientific/Engineering :: Physics
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
