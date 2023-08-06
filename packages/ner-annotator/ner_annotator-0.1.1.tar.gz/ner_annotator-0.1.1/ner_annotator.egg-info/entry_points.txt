@@ -1,0 +1,3 @@
+[console_scripts]
+ner_annotator = ner_annotator.__main__:main
+
