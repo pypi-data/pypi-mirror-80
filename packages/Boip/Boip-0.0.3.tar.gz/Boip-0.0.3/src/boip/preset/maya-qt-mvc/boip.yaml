@@ -1,0 +1,12 @@
+title: MayaQt-MVC # template name
+convertExtensions: # distExtension srcExtension(The same extension is okay.)
+  py: py
+  ui: ui
+question: # question list
+  - name: tool_name # Name to use for replacement. Use with {Name} for stationery.
+    message: "Tool name?" # Question.
+    default: sampleWindow # Default Value.
+
+  - name: maya_version
+    message: "What version of Maya are you using?"
+    default: 2020
