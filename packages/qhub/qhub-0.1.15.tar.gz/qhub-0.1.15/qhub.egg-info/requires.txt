@@ -1,0 +1,12 @@
+cookiecutter
+pyyaml
+cloudflare
+auth0-python
+pydantic
+
+[dev]
+flake8
+black
+twine
+pytest
+diagrams
