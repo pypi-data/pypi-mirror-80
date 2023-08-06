@@ -1,0 +1,4 @@
+[console_scripts]
+survol_cgiserver = survol.scripts.cgiserver:start_server_forever
+survol_wsgiserver = survol.scripts.wsgiserver:run_wsgi_server
+

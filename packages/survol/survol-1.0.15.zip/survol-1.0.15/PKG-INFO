@@ -1,0 +1,32 @@
+Metadata-Version: 1.1
+Name: survol
+Version: 1.0.15
+Summary: Understanding legacy applications
+Home-page: http://www.primhillcomputers.com/survol.html
+Author: Primhill Computers
+Author-email: contact@primhillcomputers.com
+License: UNKNOWN
+Description: Survol is Primhill Computer's Software Intelligence tool to analyse and investigate running applications.
+        
+        Survol is a Python agent and a web interface aiming to help understand an existing information system, perhaps legacy applications.
+        
+        A set of machines, processes, databases, programs etc .... all communicating with each other, manipulating your data,
+        and whose software architecture has become, with time, complicated, difficult to understand, and undocumented.
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: System Administrators
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: Information Technology
+Classifier: License :: OSI Approved :: Python Software Foundation License
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: POSIX
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: JavaScript
+Classifier: Topic :: Software Development :: Bug Tracking
+Classifier: Topic :: Education
+Classifier: Topic :: Software Development :: Documentation
+Classifier: Topic :: System :: Systems Administration
+Classifier: Topic :: Documentation
