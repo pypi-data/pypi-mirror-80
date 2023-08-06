@@ -1,0 +1,4 @@
+
+        [console_scripts]
+        apeiron=apeiron.cli:cli
+    
