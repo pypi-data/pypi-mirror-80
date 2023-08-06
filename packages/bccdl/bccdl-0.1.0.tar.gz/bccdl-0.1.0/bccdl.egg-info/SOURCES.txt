@@ -1,0 +1,11 @@
+setup.py
+bccdl/__init__.py
+bccdl/downloader.py
+bccdl/subtitle.py
+bccdl/utils.py
+bccdl.egg-info/PKG-INFO
+bccdl.egg-info/SOURCES.txt
+bccdl.egg-info/dependency_links.txt
+bccdl.egg-info/requires.txt
+bccdl.egg-info/top_level.txt
+bin/bccdl
