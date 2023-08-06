@@ -1,0 +1,61 @@
+- project:
+    templates:
+      - check-requirements
+      - publish-openstack-docs-pti
+      - tempest-plugin-jobs
+    check:
+      jobs:
+        # NOTE(dtantsur): keep N-3 and older non-voting for these jobs.
+        - ironic-standalone
+        - ironic-standalone-ussuri
+        - ironic-standalone-train
+        - ironic-standalone-stein:
+            voting: false
+        - ironic-tempest-functional-python3
+        - ironic-tempest-functional-python3-ussuri
+        - ironic-tempest-functional-python3-train
+        - ironic-tempest-functional-python3-stein:
+            voting: false
+        - ironic-inspector-tempest
+        - ironic-inspector-tempest-ussuri
+        - ironic-inspector-tempest-train
+        - ironic-inspector-tempest-stein:
+            voting: false
+        - ironic-standalone-redfish
+        - ironic-standalone-redfish-ussuri:
+            voting: false
+        - ironic-standalone-redfish-train:
+            voting: false
+        - ironic-standalone-redfish-stein:
+            voting: false
+        # NOTE(dtantsur): these jobs cover rarely changed tests and are quite
+        # unstable, so keep them non-voting.
+        - ironic-tempest-ipa-wholedisk-direct-tinyipa-multinode:
+            voting: false
+        - ironic-tempest-ipa-wholedisk-direct-tinyipa-multinode-ussuri:
+            voting: false
+        - ironic-tempest-ipa-wholedisk-direct-tinyipa-multinode-train:
+            voting: false
+        - ironic-tempest-ipa-wholedisk-direct-tinyipa-multinode-stein:
+            voting: false
+        - ironic-inspector-tempest-discovery
+        - ironic-inspector-tempest-discovery-ussuri:
+            voting: false
+        - ironic-inspector-tempest-discovery-train:
+            voting: false
+        - ironic-inspector-tempest-discovery-stein:
+            voting: false
+    gate:
+      queue: ironic
+      jobs:
+        - ironic-standalone
+        - ironic-standalone-ussuri
+        - ironic-standalone-train
+        - ironic-tempest-functional-python3
+        - ironic-tempest-functional-python3-ussuri
+        - ironic-tempest-functional-python3-train
+        - ironic-inspector-tempest
+        - ironic-inspector-tempest-ussuri
+        - ironic-inspector-tempest-train
+        - ironic-standalone-redfish
+        - ironic-inspector-tempest-discovery
