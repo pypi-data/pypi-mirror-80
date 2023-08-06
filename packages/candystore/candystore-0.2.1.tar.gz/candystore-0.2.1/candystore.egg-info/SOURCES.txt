@@ -1,0 +1,12 @@
+MANIFEST.in
+README.md
+setup.py
+candystore/__init__.py
+candystore/data_factory.py
+candystore.egg-info/PKG-INFO
+candystore.egg-info/SOURCES.txt
+candystore.egg-info/dependency_links.txt
+candystore.egg-info/requires.txt
+candystore.egg-info/top_level.txt
+tests/__init__.py
+tests/test_data_factory.py
