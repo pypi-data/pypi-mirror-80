@@ -1,0 +1,3163 @@
+{
+  "program": {
+    "fileInfos": {
+      "../../node_modules/typescript/lib/lib.es5.d.ts": {
+        "version": "b42eddba1a53c9d27279cfe7fc0416c10a81489826ad47e39013b9d340fc0cc7",
+        "signature": "b42eddba1a53c9d27279cfe7fc0416c10a81489826ad47e39013b9d340fc0cc7"
+      },
+      "../../node_modules/typescript/lib/lib.es2015.d.ts": {
+        "version": "7994d44005046d1413ea31d046577cdda33b8b2470f30281fd9c8b3c99fe2d96",
+        "signature": "7994d44005046d1413ea31d046577cdda33b8b2470f30281fd9c8b3c99fe2d96"
+      },
+      "../../node_modules/typescript/lib/lib.es2016.d.ts": {
+        "version": "5f217838d25704474d9ef93774f04164889169ca31475fe423a9de6758f058d1",
+        "signature": "5f217838d25704474d9ef93774f04164889169ca31475fe423a9de6758f058d1"
+      },
+      "../../node_modules/typescript/lib/lib.es2017.d.ts": {
+        "version": "459097c7bdd88fc5731367e56591e4f465f2c9de81a35427a7bd473165c34743",
+        "signature": "459097c7bdd88fc5731367e56591e4f465f2c9de81a35427a7bd473165c34743"
+      },
+      "../../node_modules/typescript/lib/lib.es2018.d.ts": {
+        "version": "9c67dcc7ca897b61f58d57d487bc9f07950546e5ac8701cbc41a8a4fec48b091",
+        "signature": "9c67dcc7ca897b61f58d57d487bc9f07950546e5ac8701cbc41a8a4fec48b091"
+      },
+      "../../node_modules/typescript/lib/lib.dom.d.ts": {
+        "version": "f2039e0dbc31f69183f6377b368c033802dfdcf77e5fd214def06c1fd7b225ed",
+        "signature": "f2039e0dbc31f69183f6377b368c033802dfdcf77e5fd214def06c1fd7b225ed"
+      },
+      "../../node_modules/typescript/lib/lib.es2015.core.d.ts": {
+        "version": "734ddc145e147fbcd55f07d034f50ccff1086f5a880107665ec326fb368876f6",
+        "signature": "734ddc145e147fbcd55f07d034f50ccff1086f5a880107665ec326fb368876f6"
+      },
+      "../../node_modules/typescript/lib/lib.es2015.collection.d.ts": {
+        "version": "4a0862a21f4700de873db3b916f70e41570e2f558da77d2087c9490f5a0615d8",
+        "signature": "4a0862a21f4700de873db3b916f70e41570e2f558da77d2087c9490f5a0615d8"
+      },
+      "../../node_modules/typescript/lib/lib.es2015.generator.d.ts": {
+        "version": "765e0e9c9d74cf4d031ca8b0bdb269a853e7d81eda6354c8510218d03db12122",
+        "signature": "765e0e9c9d74cf4d031ca8b0bdb269a853e7d81eda6354c8510218d03db12122"
+      },
+      "../../node_modules/typescript/lib/lib.es2015.iterable.d.ts": {
+        "version": "285958e7699f1babd76d595830207f18d719662a0c30fac7baca7df7162a9210",
+        "signature": "285958e7699f1babd76d595830207f18d719662a0c30fac7baca7df7162a9210"
+      },
+      "../../node_modules/typescript/lib/lib.es2015.promise.d.ts": {
+        "version": "d4deaafbb18680e3143e8b471acd650ed6f72a408a33137f0a0dd104fbe7f8ca",
+        "signature": "d4deaafbb18680e3143e8b471acd650ed6f72a408a33137f0a0dd104fbe7f8ca"
+      },
+      "../../node_modules/typescript/lib/lib.es2015.proxy.d.ts": {
+        "version": "5e72f949a89717db444e3bd9433468890068bb21a5638d8ab15a1359e05e54fe",
+        "signature": "5e72f949a89717db444e3bd9433468890068bb21a5638d8ab15a1359e05e54fe"
+      },
+      "../../node_modules/typescript/lib/lib.es2015.reflect.d.ts": {
+        "version": "f5b242136ae9bfb1cc99a5971cccc44e99947ae6b5ef6fd8aa54b5ade553b976",
+        "signature": "f5b242136ae9bfb1cc99a5971cccc44e99947ae6b5ef6fd8aa54b5ade553b976"
+      },
+      "../../node_modules/typescript/lib/lib.es2015.symbol.d.ts": {
+        "version": "9ae2860252d6b5f16e2026d8a2c2069db7b2a3295e98b6031d01337b96437230",
+        "signature": "9ae2860252d6b5f16e2026d8a2c2069db7b2a3295e98b6031d01337b96437230"
+      },
+      "../../node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts": {
+        "version": "3e0a459888f32b42138d5a39f706ff2d55d500ab1031e0988b5568b0f67c2303",
+        "signature": "3e0a459888f32b42138d5a39f706ff2d55d500ab1031e0988b5568b0f67c2303"
+      },
+      "../../node_modules/typescript/lib/lib.es2016.array.include.d.ts": {
+        "version": "3f96f1e570aedbd97bf818c246727151e873125d0512e4ae904330286c721bc0",
+        "signature": "3f96f1e570aedbd97bf818c246727151e873125d0512e4ae904330286c721bc0"
+      },
+      "../../node_modules/typescript/lib/lib.es2017.object.d.ts": {
+        "version": "c2d60b2e558d44384e4704b00e6b3d154334721a911f094d3133c35f0917b408",
+        "signature": "c2d60b2e558d44384e4704b00e6b3d154334721a911f094d3133c35f0917b408"
+      },
+      "../../node_modules/typescript/lib/lib.es2017.sharedmemory.d.ts": {
+        "version": "b8667586a618c5cf64523d4e500ae39e781428abfb28f3de441fc66b56144b6f",
+        "signature": "b8667586a618c5cf64523d4e500ae39e781428abfb28f3de441fc66b56144b6f"
+      },
+      "../../node_modules/typescript/lib/lib.es2017.string.d.ts": {
+        "version": "21df2e0059f14dcb4c3a0e125859f6b6ff01332ee24b0065a741d121250bc71c",
+        "signature": "21df2e0059f14dcb4c3a0e125859f6b6ff01332ee24b0065a741d121250bc71c"
+      },
+      "../../node_modules/typescript/lib/lib.es2017.intl.d.ts": {
+        "version": "c1759cb171c7619af0d2234f2f8fb2a871ee88e956e2ed91bb61778e41f272c6",
+        "signature": "c1759cb171c7619af0d2234f2f8fb2a871ee88e956e2ed91bb61778e41f272c6"
+      },
+      "../../node_modules/typescript/lib/lib.es2017.typedarrays.d.ts": {
+        "version": "28569d59e07d4378cb3d54979c4c60f9f06305c9bb6999ffe6cab758957adc46",
+        "signature": "28569d59e07d4378cb3d54979c4c60f9f06305c9bb6999ffe6cab758957adc46"
+      },
+      "../../node_modules/typescript/lib/lib.es2018.asyncgenerator.d.ts": {
+        "version": "2958de3d25bfb0b5cdace0244e11c9637e5988920b99024db705a720ce6348e7",
+        "signature": "2958de3d25bfb0b5cdace0244e11c9637e5988920b99024db705a720ce6348e7"
+      },
+      "../../node_modules/typescript/lib/lib.es2018.asynciterable.d.ts": {
+        "version": "85085a0783532dc04b66894748dc4a49983b2fbccb0679b81356947021d7a215",
+        "signature": "85085a0783532dc04b66894748dc4a49983b2fbccb0679b81356947021d7a215"
+      },
+      "../../node_modules/typescript/lib/lib.es2018.intl.d.ts": {
+        "version": "5494f46d3a8a0329d13ddc37f8759d5288760febb51c92336608d1c06bb18d29",
+        "signature": "5494f46d3a8a0329d13ddc37f8759d5288760febb51c92336608d1c06bb18d29"
+      },
+      "../../node_modules/typescript/lib/lib.es2018.promise.d.ts": {
+        "version": "efe049114bad1035b0aa9a4a0359f50ab776e3897c411521e51d3013079cbd62",
+        "signature": "efe049114bad1035b0aa9a4a0359f50ab776e3897c411521e51d3013079cbd62"
+      },
+      "../../node_modules/typescript/lib/lib.es2018.regexp.d.ts": {
+        "version": "e7780d04cd4120ee554c665829db2bbdd6b947cbaa3c150b7d9ea74df3beb2e8",
+        "signature": "e7780d04cd4120ee554c665829db2bbdd6b947cbaa3c150b7d9ea74df3beb2e8"
+      },
+      "../../node_modules/typescript/lib/lib.es2020.bigint.d.ts": {
+        "version": "0c9ea8c2028047f39a3f66752682604f543c08be8806258c3d95c93e75a43255",
+        "signature": "0c9ea8c2028047f39a3f66752682604f543c08be8806258c3d95c93e75a43255"
+      },
+      "../../node_modules/typescript/lib/lib.esnext.intl.d.ts": {
+        "version": "1377923021927244ea19433873b997ad8585533b0a56d5de29cda497f7842756",
+        "signature": "1377923021927244ea19433873b997ad8585533b0a56d5de29cda497f7842756"
+      },
+      "../../node_modules/@lumino/coreutils/types/json.d.ts": {
+        "version": "44a4b5ef53f2ff94bfcfa223e3fc3ad35f32bef57337e050513dd7c729a0cb63",
+        "signature": "44a4b5ef53f2ff94bfcfa223e3fc3ad35f32bef57337e050513dd7c729a0cb63"
+      },
+      "../../node_modules/@lumino/coreutils/types/mime.d.ts": {
+        "version": "47dbb9212d0f309e56914de06038a91ad4f0ce9e28a200ebe7c8268bada8fede",
+        "signature": "47dbb9212d0f309e56914de06038a91ad4f0ce9e28a200ebe7c8268bada8fede"
+      },
+      "../../node_modules/@lumino/coreutils/types/promise.d.ts": {
+        "version": "a57ee34edf8791c8c4395ada1fb459df7aad714838555ab306729b66db795840",
+        "signature": "a57ee34edf8791c8c4395ada1fb459df7aad714838555ab306729b66db795840"
+      },
+      "../../node_modules/@lumino/coreutils/types/random.d.ts": {
+        "version": "615e4d11ecad76f74ca65a175f3c3b3f7c82be6abe41436c61505d6bf700fab5",
+        "signature": "615e4d11ecad76f74ca65a175f3c3b3f7c82be6abe41436c61505d6bf700fab5"
+      },
+      "../../node_modules/@lumino/coreutils/types/token.d.ts": {
+        "version": "facc62a0c8748f37d6c85d3e5a6eb4cd1d40a899d4ee2c360c9ec4756513931c",
+        "signature": "facc62a0c8748f37d6c85d3e5a6eb4cd1d40a899d4ee2c360c9ec4756513931c"
+      },
+      "../../node_modules/@lumino/coreutils/types/uuid.d.ts": {
+        "version": "912f540154a35a5c589e394710cf2472e7fd005893f3aed8353e3ff1c6cc7509",
+        "signature": "912f540154a35a5c589e394710cf2472e7fd005893f3aed8353e3ff1c6cc7509"
+      },
+      "../../node_modules/@lumino/coreutils/types/index.d.ts": {
+        "version": "14291b5cf9f3318a8aec9e856b6563cc1aaf8b0fc4b7a87117f29ecac8e7b803",
+        "signature": "14291b5cf9f3318a8aec9e856b6563cc1aaf8b0fc4b7a87117f29ecac8e7b803"
+      },
+      "../../node_modules/@jupyterlab/services/lib/config/index.d.ts": {
+        "version": "41bd5decb99be607b760e0fcec9bccb318b0db4e32fa4771d07fdeffca120552",
+        "signature": "41bd5decb99be607b760e0fcec9bccb318b0db4e32fa4771d07fdeffca120552"
+      },
+      "../../node_modules/@lumino/algorithm/types/array.d.ts": {
+        "version": "df52f40fae2bd287b9fb52f0d4cd6978891f5b9e12c8bc4b51f5aeb20673db24",
+        "signature": "df52f40fae2bd287b9fb52f0d4cd6978891f5b9e12c8bc4b51f5aeb20673db24"
+      },
+      "../../node_modules/@lumino/algorithm/types/iter.d.ts": {
+        "version": "95a373d620cf8adb5baa4d4f18c0880d9279761d742075693b64dcfe25d93249",
+        "signature": "95a373d620cf8adb5baa4d4f18c0880d9279761d742075693b64dcfe25d93249"
+      },
+      "../../node_modules/@lumino/algorithm/types/chain.d.ts": {
+        "version": "59c71ace3907b7558202ab9fb0fc29d0f000455e6addb8891476ea6f29704fb0",
+        "signature": "59c71ace3907b7558202ab9fb0fc29d0f000455e6addb8891476ea6f29704fb0"
+      },
+      "../../node_modules/@lumino/algorithm/types/empty.d.ts": {
+        "version": "71d30de4d06e783009da711978077e046ec2a2340cc3307d0d18e832edffc52f",
+        "signature": "71d30de4d06e783009da711978077e046ec2a2340cc3307d0d18e832edffc52f"
+      },
+      "../../node_modules/@lumino/algorithm/types/enumerate.d.ts": {
+        "version": "49fa72b3dd09f2d8cfa8538f3aba53644e90a99866c486a1e535f6e45a809019",
+        "signature": "49fa72b3dd09f2d8cfa8538f3aba53644e90a99866c486a1e535f6e45a809019"
+      },
+      "../../node_modules/@lumino/algorithm/types/filter.d.ts": {
+        "version": "4bd953ab46129d1a06fc848cc1e04f69d003cba1010839ae5f11d9a8ecc1b45c",
+        "signature": "4bd953ab46129d1a06fc848cc1e04f69d003cba1010839ae5f11d9a8ecc1b45c"
+      },
+      "../../node_modules/@lumino/algorithm/types/find.d.ts": {
+        "version": "985be8579445c37fccc690db36529d9197abac484b76e2374845eda82fc134be",
+        "signature": "985be8579445c37fccc690db36529d9197abac484b76e2374845eda82fc134be"
+      },
+      "../../node_modules/@lumino/algorithm/types/map.d.ts": {
+        "version": "778e780516d0cfa36e160dcdbc2cc64193fb13853c4019bafeb2adc39d4b6f95",
+        "signature": "778e780516d0cfa36e160dcdbc2cc64193fb13853c4019bafeb2adc39d4b6f95"
+      },
+      "../../node_modules/@lumino/algorithm/types/range.d.ts": {
+        "version": "61821a4dfe8525bb4082648600ecd1f945698fb65a0bbf4fa2b6e160751fe5e1",
+        "signature": "61821a4dfe8525bb4082648600ecd1f945698fb65a0bbf4fa2b6e160751fe5e1"
+      },
+      "../../node_modules/@lumino/algorithm/types/reduce.d.ts": {
+        "version": "6f2192fe22e5aed3e61ae7891921feb8601bfa101161c7b522965d709210cc41",
+        "signature": "6f2192fe22e5aed3e61ae7891921feb8601bfa101161c7b522965d709210cc41"
+      },
+      "../../node_modules/@lumino/algorithm/types/repeat.d.ts": {
+        "version": "39effd6ab75c733dd48cbe43a91658cec9cf86db5a961d3b091d8194b7e7b573",
+        "signature": "39effd6ab75c733dd48cbe43a91658cec9cf86db5a961d3b091d8194b7e7b573"
+      },
+      "../../node_modules/@lumino/algorithm/types/retro.d.ts": {
+        "version": "431207ccbae58b4046cba4a5956beeea69a151defc993bcba16b357cbc8871e7",
+        "signature": "431207ccbae58b4046cba4a5956beeea69a151defc993bcba16b357cbc8871e7"
+      },
+      "../../node_modules/@lumino/algorithm/types/sort.d.ts": {
+        "version": "2053f012d9d8edaeb4b66bb65120888dd342be84316cc7b85e78cae9ceade349",
+        "signature": "2053f012d9d8edaeb4b66bb65120888dd342be84316cc7b85e78cae9ceade349"
+      },
+      "../../node_modules/@lumino/algorithm/types/stride.d.ts": {
+        "version": "bcfae0d75f0dd13b0d0bd6bb6a1a527076f23d48335a1530211d4926556edf4d",
+        "signature": "bcfae0d75f0dd13b0d0bd6bb6a1a527076f23d48335a1530211d4926556edf4d"
+      },
+      "../../node_modules/@lumino/algorithm/types/string.d.ts": {
+        "version": "b8186710d384b0b58f9ac2e8e9e4a8cf6385718fd47f12adfca9e163def1fa5e",
+        "signature": "b8186710d384b0b58f9ac2e8e9e4a8cf6385718fd47f12adfca9e163def1fa5e"
+      },
+      "../../node_modules/@lumino/algorithm/types/take.d.ts": {
+        "version": "2e55931399ada20784a0903627d3e7cac14e6849ef7e589f32907ed733160af0",
+        "signature": "2e55931399ada20784a0903627d3e7cac14e6849ef7e589f32907ed733160af0"
+      },
+      "../../node_modules/@lumino/algorithm/types/zip.d.ts": {
+        "version": "425744ecce376e0c201eb15a24df23c20b9f9222c25501a64147191255f1a5bb",
+        "signature": "425744ecce376e0c201eb15a24df23c20b9f9222c25501a64147191255f1a5bb"
+      },
+      "../../node_modules/@lumino/algorithm/types/index.d.ts": {
+        "version": "d9700500170f5138bbb3b59ede0d2303486b24826a19dd242eaaa667a3735b63",
+        "signature": "d9700500170f5138bbb3b59ede0d2303486b24826a19dd242eaaa667a3735b63"
+      },
+      "../../node_modules/@lumino/signaling/types/index.d.ts": {
+        "version": "11e5e4c5983c5150410112a156503aa02b29fed56100314eb3a77334a5e2ec6c",
+        "signature": "11e5e4c5983c5150410112a156503aa02b29fed56100314eb3a77334a5e2ec6c"
+      },
+      "../../node_modules/@lumino/disposable/types/index.d.ts": {
+        "version": "97056de69d4d1897fa4d77b047fdfd64771269238bd627b7ff5af6cd2bc8edf1",
+        "signature": "97056de69d4d1897fa4d77b047fdfd64771269238bd627b7ff5af6cd2bc8edf1"
+      },
+      "../../node_modules/@lumino/messaging/types/index.d.ts": {
+        "version": "cac40d24651330bd29ebcf835dc9014a8d9ce02219503fb1dd880ffd27d71b3b",
+        "signature": "cac40d24651330bd29ebcf835dc9014a8d9ce02219503fb1dd880ffd27d71b3b"
+      },
+      "../../node_modules/@jupyterlab/observables/lib/observablemap.d.ts": {
+        "version": "661a64c322166f6efa02715c10a2ae836ca59dab3ce7c09370b11dd99e624a25",
+        "signature": "661a64c322166f6efa02715c10a2ae836ca59dab3ce7c09370b11dd99e624a25"
+      },
+      "../../node_modules/@jupyterlab/observables/lib/observablejson.d.ts": {
+        "version": "e330139099ebcf6830ae396ff59e59e09ae0f6b56ebdc9205609e66843d7e3ef",
+        "signature": "e330139099ebcf6830ae396ff59e59e09ae0f6b56ebdc9205609e66843d7e3ef"
+      },
+      "../../node_modules/@jupyterlab/observables/lib/observablestring.d.ts": {
+        "version": "f3c6769aeebc6890c190aa33831461a7d7d0d59ae1474555594dc480af6a4a5b",
+        "signature": "f3c6769aeebc6890c190aa33831461a7d7d0d59ae1474555594dc480af6a4a5b"
+      },
+      "../../node_modules/@jupyterlab/observables/lib/observablelist.d.ts": {
+        "version": "abe5fc339dc9bc6cfdce825ae8e80171fb62c93506796aa86743d4c46f86cfa6",
+        "signature": "abe5fc339dc9bc6cfdce825ae8e80171fb62c93506796aa86743d4c46f86cfa6"
+      },
+      "../../node_modules/@jupyterlab/observables/lib/undoablelist.d.ts": {
+        "version": "17b1e1fc5d431f6380ab9ae528d4c3fa648bcfbe5cd49e9061c7779fc3095f7f",
+        "signature": "17b1e1fc5d431f6380ab9ae528d4c3fa648bcfbe5cd49e9061c7779fc3095f7f"
+      },
+      "../../node_modules/@jupyterlab/observables/lib/modeldb.d.ts": {
+        "version": "7289477bfdc020fa43a85016fbe14b0d9f6e0f90511e274b16e6c74fa4d0f102",
+        "signature": "7289477bfdc020fa43a85016fbe14b0d9f6e0f90511e274b16e6c74fa4d0f102"
+      },
+      "../../node_modules/@jupyterlab/observables/lib/index.d.ts": {
+        "version": "14272cf5e560df638409e768e655862b5b9524ecd34a3f6a6ea5f7854af76bb0",
+        "signature": "14272cf5e560df638409e768e655862b5b9524ecd34a3f6a6ea5f7854af76bb0"
+      },
+      "../../node_modules/@jupyterlab/services/lib/contents/index.d.ts": {
+        "version": "f9edb48866ff05ad346eec5339163d7a2a9c8c684f58607f4abfdc59e557ba68",
+        "signature": "f9edb48866ff05ad346eec5339163d7a2a9c8c684f58607f4abfdc59e557ba68"
+      },
+      "../../node_modules/@jupyterlab/nbformat/lib/index.d.ts": {
+        "version": "09f752f2778fe814e66febd490692755553cd392c19a3a0fdb02ab39f34169cc",
+        "signature": "09f752f2778fe814e66febd490692755553cd392c19a3a0fdb02ab39f34169cc"
+      },
+      "../../node_modules/@jupyterlab/services/lib/kernel/messages.d.ts": {
+        "version": "cc70374948e21539d27e6f52d7683e23f11be91796447bd040958bdd9def0691",
+        "signature": "cc70374948e21539d27e6f52d7683e23f11be91796447bd040958bdd9def0691"
+      },
+      "../../node_modules/@jupyterlab/services/lib/serverconnection.d.ts": {
+        "version": "bf0c827efe9423b447253f11b42aaec17cdc4a2e5870e5dfc9d23e50822b6b20",
+        "signature": "bf0c827efe9423b447253f11b42aaec17cdc4a2e5870e5dfc9d23e50822b6b20"
+      },
+      "../../node_modules/@jupyterlab/services/lib/basemanager.d.ts": {
+        "version": "ed186aff8f5899e1c5bc14ccff9c892a6e701d6aee339e38e10ae76d8d0f60fe",
+        "signature": "ed186aff8f5899e1c5bc14ccff9c892a6e701d6aee339e38e10ae76d8d0f60fe"
+      },
+      "../../node_modules/@jupyterlab/services/lib/kernelspec/restapi.d.ts": {
+        "version": "1e516b8aace99b3cfd896b1d52f51c8d7186fb721718007f2fd632d65caaa204",
+        "signature": "1e516b8aace99b3cfd896b1d52f51c8d7186fb721718007f2fd632d65caaa204"
+      },
+      "../../node_modules/@jupyterlab/services/lib/kernelspec/kernelspec.d.ts": {
+        "version": "e655ecf9defa4207f36029831d09487233b7cb3d0af1f22cdd39bbbcc89ed242",
+        "signature": "e655ecf9defa4207f36029831d09487233b7cb3d0af1f22cdd39bbbcc89ed242"
+      },
+      "../../node_modules/@lumino/polling/types/poll.d.ts": {
+        "version": "ce473f99dd39a6d3df6ccd27fa99482e4195d7c64c06d75d58eec9a272a421fe",
+        "signature": "ce473f99dd39a6d3df6ccd27fa99482e4195d7c64c06d75d58eec9a272a421fe"
+      },
+      "../../node_modules/@lumino/polling/types/ratelimiter.d.ts": {
+        "version": "b666aaa284576533582a375288a6c129f261b866e6c33c392e34db0fe5b98fbd",
+        "signature": "b666aaa284576533582a375288a6c129f261b866e6c33c392e34db0fe5b98fbd"
+      },
+      "../../node_modules/@lumino/polling/types/index.d.ts": {
+        "version": "3800fa91e1e1a17b2d8497a388c9249bb7b7c4adb87540e71ad02c69a79d7a5c",
+        "signature": "3800fa91e1e1a17b2d8497a388c9249bb7b7c4adb87540e71ad02c69a79d7a5c"
+      },
+      "../../node_modules/@jupyterlab/services/lib/kernelspec/manager.d.ts": {
+        "version": "5af5d2530e681dfea1ca7271eee7ede8d55eb4f0f8ae12cc7f02a87b50191b1d",
+        "signature": "5af5d2530e681dfea1ca7271eee7ede8d55eb4f0f8ae12cc7f02a87b50191b1d"
+      },
+      "../../node_modules/@jupyterlab/services/lib/kernelspec/index.d.ts": {
+        "version": "ee46549bb25b958e351bbfeb37b4a0fb42091b5d9e95233a25000a8abeedb688",
+        "signature": "ee46549bb25b958e351bbfeb37b4a0fb42091b5d9e95233a25000a8abeedb688"
+      },
+      "../../node_modules/@jupyterlab/services/lib/kernel/restapi.d.ts": {
+        "version": "bed01ccd9b1f468911157e9eb263866b495e9ba7ac62e28b3ebef745a818bb33",
+        "signature": "bed01ccd9b1f468911157e9eb263866b495e9ba7ac62e28b3ebef745a818bb33"
+      },
+      "../../node_modules/@jupyterlab/services/lib/kernel/kernel.d.ts": {
+        "version": "12f4f08e2dff42ccf639ec54fd682b8f09b5cb57944f827ae271af1177086211",
+        "signature": "12f4f08e2dff42ccf639ec54fd682b8f09b5cb57944f827ae271af1177086211"
+      },
+      "../../node_modules/@jupyterlab/services/lib/kernel/manager.d.ts": {
+        "version": "64355cb023413b9f710306b65a083d3d70226c8f28e32bf866492a2c843ac641",
+        "signature": "64355cb023413b9f710306b65a083d3d70226c8f28e32bf866492a2c843ac641"
+      },
+      "../../node_modules/@jupyterlab/services/lib/kernel/index.d.ts": {
+        "version": "dcffdebf16fc799783c78f5333bd8dc595a8c353e6aecb3df3c8ca5a25eafecd",
+        "signature": "dcffdebf16fc799783c78f5333bd8dc595a8c353e6aecb3df3c8ca5a25eafecd"
+      },
+      "../../node_modules/@jupyterlab/services/lib/builder/index.d.ts": {
+        "version": "7c4ca33d63aba0dd458b26f777d76ec26467537eaa7f86c6676bef45e2deb36e",
+        "signature": "7c4ca33d63aba0dd458b26f777d76ec26467537eaa7f86c6676bef45e2deb36e"
+      },
+      "../../node_modules/@jupyterlab/services/lib/nbconvert/index.d.ts": {
+        "version": "e3d73207d0e9c210e4a9d133a929c474f870e9d23ff0075c7d2512a107e50a5e",
+        "signature": "e3d73207d0e9c210e4a9d133a929c474f870e9d23ff0075c7d2512a107e50a5e"
+      },
+      "../../node_modules/@jupyterlab/coreutils/lib/activitymonitor.d.ts": {
+        "version": "b5575443873e492a09e84e53f65c37a24f5d291a306036f74fd34646ee9c14dd",
+        "signature": "b5575443873e492a09e84e53f65c37a24f5d291a306036f74fd34646ee9c14dd"
+      },
+      "../../node_modules/@jupyterlab/coreutils/lib/interfaces.d.ts": {
+        "version": "e4591a005f34ccbbbec0bd140702e243387d57a21b1d4bb6bd3e76de152fc89f",
+        "signature": "e4591a005f34ccbbbec0bd140702e243387d57a21b1d4bb6bd3e76de152fc89f"
+      },
+      "../../node_modules/@jupyterlab/coreutils/lib/markdowncodeblocks.d.ts": {
+        "version": "377fa33e5213ba934d4350d674296c1387aa2ebd225e2a296a465bb691915884",
+        "signature": "377fa33e5213ba934d4350d674296c1387aa2ebd225e2a296a465bb691915884"
+      },
+      "../../node_modules/@jupyterlab/coreutils/lib/pageconfig.d.ts": {
+        "version": "5d1af849d4efb17724b3385721ddf60944110f22a26e1e5e491a7ee5e6ae06a9",
+        "signature": "5d1af849d4efb17724b3385721ddf60944110f22a26e1e5e491a7ee5e6ae06a9"
+      },
+      "../../node_modules/@jupyterlab/coreutils/lib/path.d.ts": {
+        "version": "6baff3e4e3aca45d2879a6b26369316430f8756d85319898c64c69019036ab61",
+        "signature": "6baff3e4e3aca45d2879a6b26369316430f8756d85319898c64c69019036ab61"
+      },
+      "../../node_modules/@jupyterlab/coreutils/lib/text.d.ts": {
+        "version": "7efd9303320cf186211b14e1723172a2bc15378c0d95e49990f31be5d2f271d4",
+        "signature": "7efd9303320cf186211b14e1723172a2bc15378c0d95e49990f31be5d2f271d4"
+      },
+      "../../node_modules/@jupyterlab/coreutils/lib/time.d.ts": {
+        "version": "315dfd130e525ffa1934e769dc2266bafb35d021951a7845eb145089501ed86d",
+        "signature": "315dfd130e525ffa1934e769dc2266bafb35d021951a7845eb145089501ed86d"
+      },
+      "../../node_modules/@jupyterlab/coreutils/lib/url.d.ts": {
+        "version": "544eca475389fa55c49cac94d17a1f0e2286ea1ba0eb6599f28a513c86b04b10",
+        "signature": "544eca475389fa55c49cac94d17a1f0e2286ea1ba0eb6599f28a513c86b04b10"
+      },
+      "../../node_modules/@jupyterlab/coreutils/lib/index.d.ts": {
+        "version": "03b5f7f1cddded8421bccccaa7cb43c20ddde5f0d32719581a3f99fffd2fdb42",
+        "signature": "03b5f7f1cddded8421bccccaa7cb43c20ddde5f0d32719581a3f99fffd2fdb42"
+      },
+      "../../node_modules/@jupyterlab/services/lib/session/session.d.ts": {
+        "version": "7e2865d064da62a77c2134090d4362c70a25d41dbbd43799ffe7b29798fca9a2",
+        "signature": "7e2865d064da62a77c2134090d4362c70a25d41dbbd43799ffe7b29798fca9a2"
+      },
+      "../../node_modules/@jupyterlab/services/lib/session/restapi.d.ts": {
+        "version": "1e376fe94028a3e12ca8c3d2db097bb6f1c9de17a72f6e854e1d512bb1734adf",
+        "signature": "1e376fe94028a3e12ca8c3d2db097bb6f1c9de17a72f6e854e1d512bb1734adf"
+      },
+      "../../node_modules/@jupyterlab/services/lib/session/manager.d.ts": {
+        "version": "30e5c9e5ecd787438ad41ca8a487a77d6d571122c4eca365b24074eb2163964c",
+        "signature": "30e5c9e5ecd787438ad41ca8a487a77d6d571122c4eca365b24074eb2163964c"
+      },
+      "../../node_modules/@jupyterlab/services/lib/session/index.d.ts": {
+        "version": "0214c4398c638c72f77a78bc20c16fb8fab08d9cfe2bdfcd67f0baeafcc5b02b",
+        "signature": "0214c4398c638c72f77a78bc20c16fb8fab08d9cfe2bdfcd67f0baeafcc5b02b"
+      },
+      "../../node_modules/@lumino/virtualdom/types/index.d.ts": {
+        "version": "44a8be96842899b8250784c2f87eea9f7e084931a4478baf6cf4109560b0533a",
+        "signature": "44a8be96842899b8250784c2f87eea9f7e084931a4478baf6cf4109560b0533a"
+      },
+      "../../node_modules/@lumino/commands/types/index.d.ts": {
+        "version": "7506970552ee6175b21032f115affb5f91bf41fc24f7d8310e1a21d49b636e49",
+        "signature": "7506970552ee6175b21032f115affb5f91bf41fc24f7d8310e1a21d49b636e49"
+      },
+      "../../node_modules/@jupyterlab/statedb/lib/interfaces.d.ts": {
+        "version": "9bfdb958a6b460d0c0c0f2781dece557cd20698820f0d4e644690dc23bc05cd9",
+        "signature": "9bfdb958a6b460d0c0c0f2781dece557cd20698820f0d4e644690dc23bc05cd9"
+      },
+      "../../node_modules/@jupyterlab/statedb/lib/dataconnector.d.ts": {
+        "version": "bd969829f3805c917933ef812d4cabe2c045aff801859f2c5166eb8d56aea4eb",
+        "signature": "bd969829f3805c917933ef812d4cabe2c045aff801859f2c5166eb8d56aea4eb"
+      },
+      "../../node_modules/@jupyterlab/statedb/lib/restorablepool.d.ts": {
+        "version": "4c21323d9575649908d578c403dac9a3f240e839c5e0f3a7422d6bdea0d596f8",
+        "signature": "4c21323d9575649908d578c403dac9a3f240e839c5e0f3a7422d6bdea0d596f8"
+      },
+      "../../node_modules/@jupyterlab/statedb/lib/tokens.d.ts": {
+        "version": "2b793820a0e7d5fc41a8e3b7361a9bbb61538ccd997b3e324311dd100828830f",
+        "signature": "2b793820a0e7d5fc41a8e3b7361a9bbb61538ccd997b3e324311dd100828830f"
+      },
+      "../../node_modules/@jupyterlab/statedb/lib/statedb.d.ts": {
+        "version": "f8c57de65d7a1c151041621bf9ed1cc3da20ffb5bd004182e4e04dbbaa21e41e",
+        "signature": "f8c57de65d7a1c151041621bf9ed1cc3da20ffb5bd004182e4e04dbbaa21e41e"
+      },
+      "../../node_modules/@jupyterlab/statedb/lib/index.d.ts": {
+        "version": "ea3d38e208051abbe4045b494f6988e326a6f41d28f06a4e6fc097f9f4b51581",
+        "signature": "ea3d38e208051abbe4045b494f6988e326a6f41d28f06a4e6fc097f9f4b51581"
+      },
+      "../../node_modules/@jupyterlab/settingregistry/lib/tokens.d.ts": {
+        "version": "7245409212bcb5f3067cc961cc52dd924c672e6d4af5ef2e82bf5d64ab3f8a1b",
+        "signature": "7245409212bcb5f3067cc961cc52dd924c672e6d4af5ef2e82bf5d64ab3f8a1b"
+      },
+      "../../node_modules/@jupyterlab/settingregistry/lib/settingregistry.d.ts": {
+        "version": "22a8af7501bb57fc431c7a7429140aa4d378dc8cfd2784011d737be26990eddb",
+        "signature": "22a8af7501bb57fc431c7a7429140aa4d378dc8cfd2784011d737be26990eddb"
+      },
+      "../../node_modules/@jupyterlab/settingregistry/lib/index.d.ts": {
+        "version": "a4dfd64a8c7aad8447b5d01ad3e26be000862bf038d0f1b9ba65bad972510171",
+        "signature": "a4dfd64a8c7aad8447b5d01ad3e26be000862bf038d0f1b9ba65bad972510171"
+      },
+      "../../node_modules/@jupyterlab/services/lib/setting/index.d.ts": {
+        "version": "3f60325f8360846557509a160b9211c90419c4325581b04d3bd6fbe8a0972f9e",
+        "signature": "3f60325f8360846557509a160b9211c90419c4325581b04d3bd6fbe8a0972f9e"
+      },
+      "../../node_modules/@jupyterlab/services/lib/terminal/restapi.d.ts": {
+        "version": "ad222cd4778885952eb6624fcd2348c2105d8293dcb4326ca15583f859c78747",
+        "signature": "ad222cd4778885952eb6624fcd2348c2105d8293dcb4326ca15583f859c78747"
+      },
+      "../../node_modules/@jupyterlab/services/lib/terminal/terminal.d.ts": {
+        "version": "a2feee4df1f1d753bcbd3c433c21c8448a1ac0056e3ac9be4cc27a03fbace276",
+        "signature": "a2feee4df1f1d753bcbd3c433c21c8448a1ac0056e3ac9be4cc27a03fbace276"
+      },
+      "../../node_modules/@jupyterlab/services/lib/terminal/manager.d.ts": {
+        "version": "6bfbf1f9ad12ab0b95cf1c41468f90c006bc5d10fc4dccc9a875854f14f9dd61",
+        "signature": "6bfbf1f9ad12ab0b95cf1c41468f90c006bc5d10fc4dccc9a875854f14f9dd61"
+      },
+      "../../node_modules/@jupyterlab/services/lib/terminal/index.d.ts": {
+        "version": "77a4cfb8baa8f9861178b8ff4de8409841b387cd73ea4e51e2beee758c2d818a",
+        "signature": "77a4cfb8baa8f9861178b8ff4de8409841b387cd73ea4e51e2beee758c2d818a"
+      },
+      "../../node_modules/@jupyterlab/services/lib/workspace/index.d.ts": {
+        "version": "41238e64af8893e3b433f15a8b0effc87e1510c11cb5d157dde0e06411247398",
+        "signature": "41238e64af8893e3b433f15a8b0effc87e1510c11cb5d157dde0e06411247398"
+      },
+      "../../node_modules/@jupyterlab/services/lib/manager.d.ts": {
+        "version": "fdbe60857d35ec916e210e581890f5387e885d0e73e8c6fb62052bad05362bb8",
+        "signature": "fdbe60857d35ec916e210e581890f5387e885d0e73e8c6fb62052bad05362bb8"
+      },
+      "../../node_modules/@jupyterlab/services/lib/index.d.ts": {
+        "version": "7b33ecaba2fcfd2ddda40d6bea6a5f2b71ef1eff6e31990ab6800b8708ea3da4",
+        "signature": "7b33ecaba2fcfd2ddda40d6bea6a5f2b71ef1eff6e31990ab6800b8708ea3da4"
+      },
+      "../../node_modules/@jupyter-widgets/base/lib/utils.d.ts": {
+        "version": "f471c155d40e8bf62bdf01067f4376956cb4cd3c974abdb2d3fa80763742acd2",
+        "signature": "f471c155d40e8bf62bdf01067f4376956cb4cd3c974abdb2d3fa80763742acd2"
+      },
+      "../../node_modules/@types/jquery/jquerystatic.d.ts": {
+        "version": "2a19c7dd007f71b9db87dba915e20d894dbdac8aa8fab5d1c3083a61f2316a5c",
+        "signature": "2a19c7dd007f71b9db87dba915e20d894dbdac8aa8fab5d1c3083a61f2316a5c"
+      },
+      "../../node_modules/@types/jquery/jquery.d.ts": {
+        "version": "c7e41611fca9dda55b40fdaabc0a2cb3b254517a8040515dcd7cb2bef67a065f",
+        "signature": "c7e41611fca9dda55b40fdaabc0a2cb3b254517a8040515dcd7cb2bef67a065f"
+      },
+      "../../node_modules/@types/jquery/misc.d.ts": {
+        "version": "b209302269a2eddff39d1b927cbf054c520b01c1bc35a6d48857bdb85caca497",
+        "signature": "b209302269a2eddff39d1b927cbf054c520b01c1bc35a6d48857bdb85caca497"
+      },
+      "../../node_modules/@types/jquery/legacy.d.ts": {
+        "version": "8c4a3355af2c490a8af67c4ec304e970424a15ef648a3c3fbb3ee6634461e2cc",
+        "signature": "8c4a3355af2c490a8af67c4ec304e970424a15ef648a3c3fbb3ee6634461e2cc"
+      },
+      "../../node_modules/@types/sizzle/index.d.ts": {
+        "version": "7ddac8a4ba398441cfd6d8a69380401378f122ee8cc2d848e6e32f4db2b6c876",
+        "signature": "7ddac8a4ba398441cfd6d8a69380401378f122ee8cc2d848e6e32f4db2b6c876"
+      },
+      "../../node_modules/@types/jquery/index.d.ts": {
+        "version": "83b41c4e728a2ebc360331cb09a235edf7fb3525ccabe8434ee0d9b61d4f4783",
+        "signature": "83b41c4e728a2ebc360331cb09a235edf7fb3525ccabe8434ee0d9b61d4f4783"
+      },
+      "../../node_modules/@types/underscore/index.d.ts": {
+        "version": "d139da5f63fbc1501e7f382cccd96bce603331b9bc2fd12c357fe5957ad0c9a9",
+        "signature": "d139da5f63fbc1501e7f382cccd96bce603331b9bc2fd12c357fe5957ad0c9a9"
+      },
+      "../../node_modules/@types/backbone/index.d.ts": {
+        "version": "34a45aa27a59cc5373f56e2df50d7a92e4fee416a2ec7306f15d2b607a582a07",
+        "signature": "34a45aa27a59cc5373f56e2df50d7a92e4fee416a2ec7306f15d2b607a582a07"
+      },
+      "../../node_modules/@jupyter-widgets/base/lib/nativeview.d.ts": {
+        "version": "0d7537a338a14ba2516778e0d59b828dfec172220c26252f461bbe90a127baef",
+        "signature": "0d7537a338a14ba2516778e0d59b828dfec172220c26252f461bbe90a127baef"
+      },
+      "../../node_modules/@lumino/widgets/types/boxengine.d.ts": {
+        "version": "6ce99f2c6e7c79a0b467e93cc607909fdeea4075ac24b2ea26df81c756c91197",
+        "signature": "6ce99f2c6e7c79a0b467e93cc607909fdeea4075ac24b2ea26df81c756c91197"
+      },
+      "../../node_modules/@lumino/widgets/types/title.d.ts": {
+        "version": "069430905191c1c7d58b608084a53b30584aa0c8a60134787578161ec8cafc72",
+        "signature": "069430905191c1c7d58b608084a53b30584aa0c8a60134787578161ec8cafc72"
+      },
+      "../../node_modules/@lumino/widgets/types/widget.d.ts": {
+        "version": "813737a8cd7bd632b12d427e288818157c5dd79beadcd7930c55aeb7ff75668e",
+        "signature": "813737a8cd7bd632b12d427e288818157c5dd79beadcd7930c55aeb7ff75668e"
+      },
+      "../../node_modules/@lumino/widgets/types/layout.d.ts": {
+        "version": "9606217cee9da6af32701c4a4ec62c5e1c08a8c81e9b40444bd02007981f35ad",
+        "signature": "9606217cee9da6af32701c4a4ec62c5e1c08a8c81e9b40444bd02007981f35ad"
+      },
+      "../../node_modules/@lumino/widgets/types/panellayout.d.ts": {
+        "version": "b6fe9902db09a08fb5816c2644d47b21b48763a6493d1f2080dcc8f97f63ffd5",
+        "signature": "b6fe9902db09a08fb5816c2644d47b21b48763a6493d1f2080dcc8f97f63ffd5"
+      },
+      "../../node_modules/@lumino/widgets/types/boxlayout.d.ts": {
+        "version": "094bc98f1966930b9b31f714ff4689cc2282348d2ac06614d2dfa3e3a0dd2bee",
+        "signature": "094bc98f1966930b9b31f714ff4689cc2282348d2ac06614d2dfa3e3a0dd2bee"
+      },
+      "../../node_modules/@lumino/widgets/types/panel.d.ts": {
+        "version": "4ea4e4aeb7cc473d641ec53cc7a05324ff1c528e452e1a0f5949a245911d4775",
+        "signature": "4ea4e4aeb7cc473d641ec53cc7a05324ff1c528e452e1a0f5949a245911d4775"
+      },
+      "../../node_modules/@lumino/widgets/types/boxpanel.d.ts": {
+        "version": "eb0acd32fc29c07e864c737a4811b71159e03833b36febb85f7e47259d87e135",
+        "signature": "eb0acd32fc29c07e864c737a4811b71159e03833b36febb85f7e47259d87e135"
+      },
+      "../../node_modules/@lumino/widgets/types/commandpalette.d.ts": {
+        "version": "05d9a8f0c106e662d8dfea3d5fdda3d736b5b01cf07504df026ebdd5b0a6777a",
+        "signature": "05d9a8f0c106e662d8dfea3d5fdda3d736b5b01cf07504df026ebdd5b0a6777a"
+      },
+      "../../node_modules/@lumino/widgets/types/menu.d.ts": {
+        "version": "a84fdd5325d4dc7e2adff61b951529ae6e168edd476c90e7003e959d5398a8f8",
+        "signature": "a84fdd5325d4dc7e2adff61b951529ae6e168edd476c90e7003e959d5398a8f8"
+      },
+      "../../node_modules/@lumino/widgets/types/contextmenu.d.ts": {
+        "version": "0408afb474542f58f54367587274e5363d622293e7610e7b811242a00ae4d2fe",
+        "signature": "0408afb474542f58f54367587274e5363d622293e7610e7b811242a00ae4d2fe"
+      },
+      "../../node_modules/@lumino/widgets/types/tabbar.d.ts": {
+        "version": "8752ebc7aa2662b0e669ca430dbf6828f1a406f45fb43b376359a7f7be68b270",
+        "signature": "8752ebc7aa2662b0e669ca430dbf6828f1a406f45fb43b376359a7f7be68b270"
+      },
+      "../../node_modules/@lumino/widgets/types/docklayout.d.ts": {
+        "version": "7f844465fd87097c35cf3cb13cc77e28c8e7429eab6750c4a49500125b6e48b2",
+        "signature": "7f844465fd87097c35cf3cb13cc77e28c8e7429eab6750c4a49500125b6e48b2"
+      },
+      "../../node_modules/@lumino/widgets/types/dockpanel.d.ts": {
+        "version": "cac95c328a04ebcce9b6ff3afb8d64d6d6c0964e99e0542ec7529784d8f75dc8",
+        "signature": "cac95c328a04ebcce9b6ff3afb8d64d6d6c0964e99e0542ec7529784d8f75dc8"
+      },
+      "../../node_modules/@lumino/widgets/types/focustracker.d.ts": {
+        "version": "a7c7b25084276be11aa983dbf29f39892db6c521b85433f598717921bf64d08e",
+        "signature": "a7c7b25084276be11aa983dbf29f39892db6c521b85433f598717921bf64d08e"
+      },
+      "../../node_modules/@lumino/widgets/types/gridlayout.d.ts": {
+        "version": "9d3fb450742b3f5c5f459177e70fa3c4c4ab52d0b4215be87cfcdf5fc8685ad2",
+        "signature": "9d3fb450742b3f5c5f459177e70fa3c4c4ab52d0b4215be87cfcdf5fc8685ad2"
+      },
+      "../../node_modules/@lumino/widgets/types/menubar.d.ts": {
+        "version": "0676ad817bf1b4c310e58ce87e32fd9fa6f9229c6a2a6b5d5f7e92b09b7bfa77",
+        "signature": "0676ad817bf1b4c310e58ce87e32fd9fa6f9229c6a2a6b5d5f7e92b09b7bfa77"
+      },
+      "../../node_modules/@lumino/widgets/types/scrollbar.d.ts": {
+        "version": "ff8fce615e42a7a40d34fd1110488663bc010469e7cd3d21df8ddda06f6ebd95",
+        "signature": "ff8fce615e42a7a40d34fd1110488663bc010469e7cd3d21df8ddda06f6ebd95"
+      },
+      "../../node_modules/@lumino/widgets/types/singletonlayout.d.ts": {
+        "version": "cb114e95d686eadc19feda14f7ae0c497fd060415cf669d4062447ef22b54e93",
+        "signature": "cb114e95d686eadc19feda14f7ae0c497fd060415cf669d4062447ef22b54e93"
+      },
+      "../../node_modules/@lumino/widgets/types/splitlayout.d.ts": {
+        "version": "115b150e7d81fb2e80d204b7f1082c13fd9650195da846a74f6f2b43b022579e",
+        "signature": "115b150e7d81fb2e80d204b7f1082c13fd9650195da846a74f6f2b43b022579e"
+      },
+      "../../node_modules/@lumino/widgets/types/splitpanel.d.ts": {
+        "version": "bd5604d87894ac046a5f017c1fd820f15fcf70d58ac7db47e537205cf5a9f80d",
+        "signature": "bd5604d87894ac046a5f017c1fd820f15fcf70d58ac7db47e537205cf5a9f80d"
+      },
+      "../../node_modules/@lumino/widgets/types/stackedlayout.d.ts": {
+        "version": "c7e1800b0e4e0914d2109b02cc4efa98c3fb79acb98f6a9a0dd5c1311576a42f",
+        "signature": "c7e1800b0e4e0914d2109b02cc4efa98c3fb79acb98f6a9a0dd5c1311576a42f"
+      },
+      "../../node_modules/@lumino/widgets/types/stackedpanel.d.ts": {
+        "version": "c94759a4b4d2f1044f2b03f3057319194739841524d22aa73b13e556a99bef5c",
+        "signature": "c94759a4b4d2f1044f2b03f3057319194739841524d22aa73b13e556a99bef5c"
+      },
+      "../../node_modules/@lumino/widgets/types/tabpanel.d.ts": {
+        "version": "887ef5e98f4b329f3ddf17864d45a9f2ee82608aa43666f95863b690e261a1ee",
+        "signature": "887ef5e98f4b329f3ddf17864d45a9f2ee82608aa43666f95863b690e261a1ee"
+      },
+      "../../node_modules/@lumino/widgets/types/index.d.ts": {
+        "version": "3575fd6e7b41c7b983d39ae80434267391f78d28b48a8af78f9f26e4535de01b",
+        "signature": "3575fd6e7b41c7b983d39ae80434267391f78d28b48a8af78f9f26e4535de01b"
+      },
+      "../../node_modules/@jupyter-widgets/base/lib/services-shim.d.ts": {
+        "version": "c243b9d660d9cb863c17f88617f92954a062ee866012138998a8904062f964e4",
+        "signature": "c243b9d660d9cb863c17f88617f92954a062ee866012138998a8904062f964e4"
+      },
+      "../../node_modules/@jupyter-widgets/base/lib/widget.d.ts": {
+        "version": "34fc2bffd43b9f56ce91bdf830de5efe619f2b1e6eb95dbff9ebbae2d3f38c71",
+        "signature": "34fc2bffd43b9f56ce91bdf830de5efe619f2b1e6eb95dbff9ebbae2d3f38c71"
+      },
+      "../../node_modules/@jupyter-widgets/base/lib/manager-base.d.ts": {
+        "version": "e309c62ece009902edc64c66cdaaeb02790c9ea8e52032ac3f0a5c3430aa6618",
+        "signature": "e309c62ece009902edc64c66cdaaeb02790c9ea8e52032ac3f0a5c3430aa6618"
+      },
+      "../../node_modules/@jupyter-widgets/base/lib/widget_layout.d.ts": {
+        "version": "e595759d6a04245afbe5625b884bb504ce32709d4ec4b8aae71267e21e81a1cb",
+        "signature": "e595759d6a04245afbe5625b884bb504ce32709d4ec4b8aae71267e21e81a1cb"
+      },
+      "../../node_modules/@jupyter-widgets/base/lib/widget_style.d.ts": {
+        "version": "a56d0bad386ae3849a940bce358397c1df5ce2a3c87c36b4da36f331863903c1",
+        "signature": "a56d0bad386ae3849a940bce358397c1df5ce2a3c87c36b4da36f331863903c1"
+      },
+      "../../node_modules/@jupyter-widgets/base/lib/viewlist.d.ts": {
+        "version": "9941ff5db618195f71d99d16a550282daedbc4dc9578f9cc53b916684cdf754d",
+        "signature": "9941ff5db618195f71d99d16a550282daedbc4dc9578f9cc53b916684cdf754d"
+      },
+      "../../node_modules/@jupyter-widgets/base/lib/version.d.ts": {
+        "version": "891703c0426c0fea087bb018953c7fdd585d0e899058452e6548eacffea66f91",
+        "signature": "891703c0426c0fea087bb018953c7fdd585d0e899058452e6548eacffea66f91"
+      },
+      "../../node_modules/@jupyter-widgets/base/lib/registry.d.ts": {
+        "version": "ed7a8977ab6313fadbe48120fe65cfc4ca4fe15bdc2bb6b709d5be3be9f61d03",
+        "signature": "ed7a8977ab6313fadbe48120fe65cfc4ca4fe15bdc2bb6b709d5be3be9f61d03"
+      },
+      "../../node_modules/@jupyter-widgets/base/lib/index.d.ts": {
+        "version": "1b4893c0b464b611778b6093bda3142e7140d495d3783fd59b16fe1e70290f94",
+        "signature": "1b4893c0b464b611778b6093bda3142e7140d495d3783fd59b16fe1e70290f94"
+      },
+      "../../node_modules/@types/ndarray/index.d.ts": {
+        "version": "a944dcb306326c8c1373ef95d7ab5ada52bb4ed2adb960452f173c7346ab5e2a",
+        "signature": "a944dcb306326c8c1373ef95d7ab5ada52bb4ed2adb960452f173c7346ab5e2a"
+      },
+      "../serializers/lib/ndarray.d.ts": {
+        "version": "4440acbc22f81828d26c11f9af3ae23f2a95463bd352e187f2f49fa5af87e625",
+        "signature": "4440acbc22f81828d26c11f9af3ae23f2a95463bd352e187f2f49fa5af87e625"
+      },
+      "../serializers/lib/common.d.ts": {
+        "version": "3f11d07aaadbbd4ad6cc65c9bbcf13143c757b7ffa4b973dbbccbca52640b783",
+        "signature": "3f11d07aaadbbd4ad6cc65c9bbcf13143c757b7ffa4b973dbbccbca52640b783"
+      },
+      "../serializers/lib/union.d.ts": {
+        "version": "f6e6784b9a4bafafcbadde4fd4704a79f4d9b73943760e947bbc2c3aad3253f2",
+        "signature": "f6e6784b9a4bafafcbadde4fd4704a79f4d9b73943760e947bbc2c3aad3253f2"
+      },
+      "../serializers/lib/index.d.ts": {
+        "version": "a90e1dd0526c224b7306e74f38daa673af29a754f66f5ed068ad7d6c5efd84a0",
+        "signature": "a90e1dd0526c224b7306e74f38daa673af29a754f66f5ed068ad7d6c5efd84a0"
+      },
+      "./src/version.ts": {
+        "version": "190705ae77084d1dd81b8f716c8280ff42af34daecef17013ccc6c0a9efb9803",
+        "signature": "b6d94b5953c77e284b52826836daaccf5bb28f9a11a19fc92968d9237ff39c23"
+      },
+      "./src/base.ts": {
+        "version": "e8d07479817de2ad53ced6eb56700b603af6a4512ad8fc037ed5e8f667351ffc",
+        "signature": "620ca4d49d111bcc4d553fe7983f12877031c24d5f6d4b4d7f2cc1fbe789c8bc"
+      },
+      "./src/ndarray.ts": {
+        "version": "e13f3ddc696696aa8ed0c51154b3fec2b46890ee7807b31d3b022342f33b5e50",
+        "signature": "16fbf0cd39e62142dd2bf2f16587eb7343c907a6d4399516e62569c935d5ac01"
+      },
+      "./src/media.ts": {
+        "version": "0c1cd0c6b6138e4b1c94d6c734b56a377204989c67d515136f6692b8af37520b",
+        "signature": "59c38f3975c75e6d8b5f797ea39a0a0afc3e83d768db480b5494ce4f9684346b"
+      },
+      "./src/index.ts": {
+        "version": "780e5489a4eec6041fab1a763aee42b13d807f7cc5963ca216fdf1097125eb23",
+        "signature": "b8142a873ad883fc1c0ac7e17a8d975f00d54c3270fd4e5b6625fd53732584fa"
+      },
+      "./src/extension.ts": {
+        "version": "e47404e5b9940cf42e09f279dde54a5ea585c02726c9d92640c7a439497dd6cd",
+        "signature": "4c69b756b0bade20aa3a4b5d6695655c4fafd9dbf9cf8e56670449fd5031caa3"
+      },
+      "../../node_modules/@types/color-name/index.d.ts": {
+        "version": "f0cb4b3ab88193e3e51e9e2622e4c375955003f1f81239d72c5b7a95415dad3e",
+        "signature": "f0cb4b3ab88193e3e51e9e2622e4c375955003f1f81239d72c5b7a95415dad3e"
+      },
+      "../../node_modules/@types/expect.js/index.d.ts": {
+        "version": "99bb31b08b79cfc2b145d1b45b75693783feb7d771171fad19df8cd29b775334",
+        "signature": "99bb31b08b79cfc2b145d1b45b75693783feb7d771171fad19df8cd29b775334"
+      },
+      "../../node_modules/@types/node/globals.d.ts": {
+        "version": "7445e72f48c68a1343819c5d375ef8d2ff486fccd0230bb998cd9ab908fff19c",
+        "signature": "7445e72f48c68a1343819c5d375ef8d2ff486fccd0230bb998cd9ab908fff19c"
+      },
+      "../../node_modules/@types/node/async_hooks.d.ts": {
+        "version": "96e547b51f95ee76bdb25731c92420fa6f93b59c3f38f23d505be36e2de394ee",
+        "signature": "96e547b51f95ee76bdb25731c92420fa6f93b59c3f38f23d505be36e2de394ee"
+      },
+      "../../node_modules/@types/node/buffer.d.ts": {
+        "version": "61215c1a376bbe8f51cab4cc4ddbf3746387015113c37a84d981d4738c21b878",
+        "signature": "61215c1a376bbe8f51cab4cc4ddbf3746387015113c37a84d981d4738c21b878"
+      },
+      "../../node_modules/@types/node/child_process.d.ts": {
+        "version": "7361f763742de595bddfbcebde5db9fee3f7964c8a2b93fb81c77d0adb9a9658",
+        "signature": "7361f763742de595bddfbcebde5db9fee3f7964c8a2b93fb81c77d0adb9a9658"
+      },
+      "../../node_modules/@types/node/cluster.d.ts": {
+        "version": "123ec69e4b3a686eb49afd94ebe3292a5c84a867ecbcb6bb84bdd720a12af803",
+        "signature": "123ec69e4b3a686eb49afd94ebe3292a5c84a867ecbcb6bb84bdd720a12af803"
+      },
+      "../../node_modules/@types/node/console.d.ts": {
+        "version": "525c8fc510d9632d2a0a9de2d41c3ac1cdd79ff44d3b45c6d81cacabb683528d",
+        "signature": "525c8fc510d9632d2a0a9de2d41c3ac1cdd79ff44d3b45c6d81cacabb683528d"
+      },
+      "../../node_modules/@types/node/constants.d.ts": {
+        "version": "90c85ddbb8de82cd19198bda062065fc51b7407c0f206f2e399e65a52e979720",
+        "signature": "90c85ddbb8de82cd19198bda062065fc51b7407c0f206f2e399e65a52e979720"
+      },
+      "../../node_modules/@types/node/crypto.d.ts": {
+        "version": "fcd76edf76962a48d239d167130d98fcdb298b6b52efdbce40ff6ef869a92738",
+        "signature": "fcd76edf76962a48d239d167130d98fcdb298b6b52efdbce40ff6ef869a92738"
+      },
+      "../../node_modules/@types/node/dgram.d.ts": {
+        "version": "7ecfe97b43aa6c8b8f90caa599d5648bb559962e74e6f038f73a77320569dd78",
+        "signature": "7ecfe97b43aa6c8b8f90caa599d5648bb559962e74e6f038f73a77320569dd78"
+      },
+      "../../node_modules/@types/node/dns.d.ts": {
+        "version": "aad3237c3f99480041cad7ca04d64307c98933996f822342b7c0ee4a78553346",
+        "signature": "aad3237c3f99480041cad7ca04d64307c98933996f822342b7c0ee4a78553346"
+      },
+      "../../node_modules/@types/node/domain.d.ts": {
+        "version": "4d4c83f77ac21a72252785baa5328a5612b0b6598d512f68b8cb14f7966d059e",
+        "signature": "4d4c83f77ac21a72252785baa5328a5612b0b6598d512f68b8cb14f7966d059e"
+      },
+      "../../node_modules/@types/node/events.d.ts": {
+        "version": "5ffa4219ee64e130980a4231392cbc628544df137ccf650ae8d76e0a1744fd2b",
+        "signature": "5ffa4219ee64e130980a4231392cbc628544df137ccf650ae8d76e0a1744fd2b"
+      },
+      "../../node_modules/@types/node/fs.d.ts": {
+        "version": "ba0ec4593b3e716497433b1b8b39932455b3d5dcbabd18d58143ca556c2bc745",
+        "signature": "ba0ec4593b3e716497433b1b8b39932455b3d5dcbabd18d58143ca556c2bc745"
+      },
+      "../../node_modules/@types/node/http.d.ts": {
+        "version": "15f8c6aa0485ad13bd169cd1b8bddaa5a1fde86a1836d04ac8b9f7eebc5244f3",
+        "signature": "15f8c6aa0485ad13bd169cd1b8bddaa5a1fde86a1836d04ac8b9f7eebc5244f3"
+      },
+      "../../node_modules/@types/node/http2.d.ts": {
+        "version": "873da589b78a1f1fa7d623483bd2c2730a02e0852259fb8fdcfe5221ac51d18a",
+        "signature": "873da589b78a1f1fa7d623483bd2c2730a02e0852259fb8fdcfe5221ac51d18a"
+      },
+      "../../node_modules/@types/node/https.d.ts": {
+        "version": "c969bf4c7cdfe4d5dd28aa09432f99d09ad1d8d8b839959646579521d0467d1a",
+        "signature": "c969bf4c7cdfe4d5dd28aa09432f99d09ad1d8d8b839959646579521d0467d1a"
+      },
+      "../../node_modules/@types/node/inspector.d.ts": {
+        "version": "4218ced3933a31eed1278d350dd63c5900df0f0904f57d61c054d7a4b83dbe4c",
+        "signature": "4218ced3933a31eed1278d350dd63c5900df0f0904f57d61c054d7a4b83dbe4c"
+      },
+      "../../node_modules/@types/node/module.d.ts": {
+        "version": "a376e245f494b58365a4391a2568e6dd9da372c3453f4732eb6e15ebb9038451",
+        "signature": "a376e245f494b58365a4391a2568e6dd9da372c3453f4732eb6e15ebb9038451"
+      },
+      "../../node_modules/@types/node/net.d.ts": {
+        "version": "ffe8912b7c45288810c870b768190c6c097459930a587dd6ef0d900a5529a811",
+        "signature": "ffe8912b7c45288810c870b768190c6c097459930a587dd6ef0d900a5529a811"
+      },
+      "../../node_modules/@types/node/os.d.ts": {
+        "version": "f53678bdb9f25445c8cdf021f2b003b74fd638e69bb1959dde8e370e8cc1e4fa",
+        "signature": "f53678bdb9f25445c8cdf021f2b003b74fd638e69bb1959dde8e370e8cc1e4fa"
+      },
+      "../../node_modules/@types/node/path.d.ts": {
+        "version": "84044697c8b3e08ef24e4b32cfe6440143d07e469a5e34bda0635276d32d9f35",
+        "signature": "84044697c8b3e08ef24e4b32cfe6440143d07e469a5e34bda0635276d32d9f35"
+      },
+      "../../node_modules/@types/node/perf_hooks.d.ts": {
+        "version": "d94d33374d74a4110bdec369ef28ac2d0a8f6049fbf216d51726555687b40019",
+        "signature": "d94d33374d74a4110bdec369ef28ac2d0a8f6049fbf216d51726555687b40019"
+      },
+      "../../node_modules/@types/node/process.d.ts": {
+        "version": "0e0d58f5e90c0a270dac052b9c5ad8ccdfc8271118c2105b361063218d528d6e",
+        "signature": "0e0d58f5e90c0a270dac052b9c5ad8ccdfc8271118c2105b361063218d528d6e"
+      },
+      "../../node_modules/@types/node/punycode.d.ts": {
+        "version": "30ec6f9c683b988c3cfaa0c4690692049c4e7ed7dc6f6e94f56194c06b86f5e1",
+        "signature": "30ec6f9c683b988c3cfaa0c4690692049c4e7ed7dc6f6e94f56194c06b86f5e1"
+      },
+      "../../node_modules/@types/node/querystring.d.ts": {
+        "version": "9f633ecf3e065ff82c19eccab35c8aa1d6d5d1a49af282dc29ef5a64cca34164",
+        "signature": "9f633ecf3e065ff82c19eccab35c8aa1d6d5d1a49af282dc29ef5a64cca34164"
+      },
+      "../../node_modules/@types/node/readline.d.ts": {
+        "version": "6b2bb67b0942bcfce93e1d6fad5f70afd54940a2b13df7f311201fba54b2cbe9",
+        "signature": "6b2bb67b0942bcfce93e1d6fad5f70afd54940a2b13df7f311201fba54b2cbe9"
+      },
+      "../../node_modules/@types/node/repl.d.ts": {
+        "version": "dd3706b25d06fe23c73d16079e8c66ac775831ef419da00716bf2aee530a04a4",
+        "signature": "dd3706b25d06fe23c73d16079e8c66ac775831ef419da00716bf2aee530a04a4"
+      },
+      "../../node_modules/@types/node/stream.d.ts": {
+        "version": "634aab260b8f9806870c71f3e670699aa217785d36647f6b14acb7912d39f0e9",
+        "signature": "634aab260b8f9806870c71f3e670699aa217785d36647f6b14acb7912d39f0e9"
+      },
+      "../../node_modules/@types/node/string_decoder.d.ts": {
+        "version": "7e62aac2cc9c0710d772047ad89e8d7117f52592c791eb995ce1f865fedab432",
+        "signature": "7e62aac2cc9c0710d772047ad89e8d7117f52592c791eb995ce1f865fedab432"
+      },
+      "../../node_modules/@types/node/timers.d.ts": {
+        "version": "b40652bf8ce4a18133b31349086523b219724dca8df3448c1a0742528e7ad5b9",
+        "signature": "b40652bf8ce4a18133b31349086523b219724dca8df3448c1a0742528e7ad5b9"
+      },
+      "../../node_modules/@types/node/tls.d.ts": {
+        "version": "424bc64b2794d9280c1e1f4a3518ba9d285385a16d84753a6427bb469e582eca",
+        "signature": "424bc64b2794d9280c1e1f4a3518ba9d285385a16d84753a6427bb469e582eca"
+      },
+      "../../node_modules/@types/node/trace_events.d.ts": {
+        "version": "a77fdb357c78b70142b2fdbbfb72958d69e8f765fd2a3c69946c1018e89d4638",
+        "signature": "a77fdb357c78b70142b2fdbbfb72958d69e8f765fd2a3c69946c1018e89d4638"
+      },
+      "../../node_modules/@types/node/tty.d.ts": {
+        "version": "3c2ac350c3baa61fd2b1925844109e098f4376d0768a4643abc82754fd752748",
+        "signature": "3c2ac350c3baa61fd2b1925844109e098f4376d0768a4643abc82754fd752748"
+      },
+      "../../node_modules/@types/node/url.d.ts": {
+        "version": "826d48e49c905cedb906cbde6ccaf758827ff5867d4daa006b5a79e0fb489357",
+        "signature": "826d48e49c905cedb906cbde6ccaf758827ff5867d4daa006b5a79e0fb489357"
+      },
+      "../../node_modules/@types/node/util.d.ts": {
+        "version": "5ef157fbb39494a581bd24f21b60488fe248d452c479738b5e41b48720ea69b8",
+        "signature": "5ef157fbb39494a581bd24f21b60488fe248d452c479738b5e41b48720ea69b8"
+      },
+      "../../node_modules/@types/node/v8.d.ts": {
+        "version": "289be113bad7ee27ee7fa5b1e373c964c9789a5e9ed7db5ddcb631371120b953",
+        "signature": "289be113bad7ee27ee7fa5b1e373c964c9789a5e9ed7db5ddcb631371120b953"
+      },
+      "../../node_modules/@types/node/vm.d.ts": {
+        "version": "e4abb8eaa8a7d78236be0f8342404aab076668d20590209e32fdeb924588531e",
+        "signature": "e4abb8eaa8a7d78236be0f8342404aab076668d20590209e32fdeb924588531e"
+      },
+      "../../node_modules/@types/node/worker_threads.d.ts": {
+        "version": "086bfc0710b044ce1586108ee56c6e1c0d9ca2d325c153bb026cbc850169f593",
+        "signature": "086bfc0710b044ce1586108ee56c6e1c0d9ca2d325c153bb026cbc850169f593"
+      },
+      "../../node_modules/@types/node/zlib.d.ts": {
+        "version": "f409183966a1dd93d3a9cd1d54fbeb85c73101e87cd5b19467c5e37b252f3fd8",
+        "signature": "f409183966a1dd93d3a9cd1d54fbeb85c73101e87cd5b19467c5e37b252f3fd8"
+      },
+      "../../node_modules/@types/node/ts3.4/base.d.ts": {
+        "version": "9f9bcdd779aa999565851b4b737abf0557abe8f81da659aa48941412e27bb9ba",
+        "signature": "9f9bcdd779aa999565851b4b737abf0557abe8f81da659aa48941412e27bb9ba"
+      },
+      "../../node_modules/@types/node/globals.global.d.ts": {
+        "version": "2708349d5a11a5c2e5f3a0765259ebe7ee00cdcc8161cb9990cb4910328442a1",
+        "signature": "2708349d5a11a5c2e5f3a0765259ebe7ee00cdcc8161cb9990cb4910328442a1"
+      },
+      "../../node_modules/@types/node/wasi.d.ts": {
+        "version": "0b3fef11ea6208c4cb3715c9aa108766ce98fc726bfba68cc23b25ce944ce9c0",
+        "signature": "0b3fef11ea6208c4cb3715c9aa108766ce98fc726bfba68cc23b25ce944ce9c0"
+      },
+      "../../node_modules/@types/node/ts3.6/base.d.ts": {
+        "version": "c4c3269c907e86136f96f2c55df93049b3549516bb5772c7282bc15a6e4b8edc",
+        "signature": "c4c3269c907e86136f96f2c55df93049b3549516bb5772c7282bc15a6e4b8edc"
+      },
+      "../../node_modules/@types/node/assert.d.ts": {
+        "version": "a8b842671d535d14f533fd8dbfacebceacf5195069d720425d572d5cc5ab3dc4",
+        "signature": "a8b842671d535d14f533fd8dbfacebceacf5195069d720425d572d5cc5ab3dc4"
+      },
+      "../../node_modules/@types/node/base.d.ts": {
+        "version": "d20072cb51d8baad944bedd935a25c7f10c29744e9a648d2c72c215337356077",
+        "signature": "d20072cb51d8baad944bedd935a25c7f10c29744e9a648d2c72c215337356077"
+      },
+      "../../node_modules/@types/node/index.d.ts": {
+        "version": "c486ff9af79b8a4b2a47a283add6da60eead5000142a4e92872d422ec9a5026d",
+        "signature": "c486ff9af79b8a4b2a47a283add6da60eead5000142a4e92872d422ec9a5026d"
+      },
+      "../../node_modules/@types/minimatch/index.d.ts": {
+        "version": "1d1e6bd176eee5970968423d7e215bfd66828b6db8d54d17afec05a831322633",
+        "signature": "1d1e6bd176eee5970968423d7e215bfd66828b6db8d54d17afec05a831322633"
+      },
+      "../../node_modules/@types/glob/index.d.ts": {
+        "version": "393137c76bd922ba70a2f8bf1ade4f59a16171a02fb25918c168d48875b0cfb0",
+        "signature": "393137c76bd922ba70a2f8bf1ade4f59a16171a02fb25918c168d48875b0cfb0"
+      },
+      "../../node_modules/@types/lodash/common/common.d.ts": {
+        "version": "29304d38d619bac17128f20c21af1a03256f9edf8f0b82e6674565e09e956dff",
+        "signature": "29304d38d619bac17128f20c21af1a03256f9edf8f0b82e6674565e09e956dff"
+      },
+      "../../node_modules/@types/lodash/common/array.d.ts": {
+        "version": "d03a1ae3d39f757c9f22e4e775b940a98d86bb50ec85529b59e32a17b65c2b90",
+        "signature": "d03a1ae3d39f757c9f22e4e775b940a98d86bb50ec85529b59e32a17b65c2b90"
+      },
+      "../../node_modules/@types/lodash/common/collection.d.ts": {
+        "version": "0c75b204aed9cf6ff1c7b4bed87a3ece0d9d6fc857a6350c0c95ed0c38c814e8",
+        "signature": "0c75b204aed9cf6ff1c7b4bed87a3ece0d9d6fc857a6350c0c95ed0c38c814e8"
+      },
+      "../../node_modules/@types/lodash/common/date.d.ts": {
+        "version": "187119ff4f9553676a884e296089e131e8cc01691c546273b1d0089c3533ce42",
+        "signature": "187119ff4f9553676a884e296089e131e8cc01691c546273b1d0089c3533ce42"
+      },
+      "../../node_modules/@types/lodash/common/function.d.ts": {
+        "version": "99256c6888e554431cf3b907d6267a7a119f34c860937f422f771c1396b7e5b4",
+        "signature": "99256c6888e554431cf3b907d6267a7a119f34c860937f422f771c1396b7e5b4"
+      },
+      "../../node_modules/@types/lodash/common/lang.d.ts": {
+        "version": "d7fac90d8d76afeccb236132472c6c2c26f1783af0e46575d3b2f5a59501f4ca",
+        "signature": "d7fac90d8d76afeccb236132472c6c2c26f1783af0e46575d3b2f5a59501f4ca"
+      },
+      "../../node_modules/@types/lodash/common/math.d.ts": {
+        "version": "65648639567d214f62c1b21d200c852807e68bdb08311f95ab6f526ef5b98995",
+        "signature": "65648639567d214f62c1b21d200c852807e68bdb08311f95ab6f526ef5b98995"
+      },
+      "../../node_modules/@types/lodash/common/number.d.ts": {
+        "version": "00baffbe8a2f2e4875367479489b5d43b5fc1429ecb4a4cc98cfc3009095f52a",
+        "signature": "00baffbe8a2f2e4875367479489b5d43b5fc1429ecb4a4cc98cfc3009095f52a"
+      },
+      "../../node_modules/@types/lodash/common/object.d.ts": {
+        "version": "7fc5a3d7cff296cea5c225911726a56283b663328709088fcc912d61f73682fc",
+        "signature": "7fc5a3d7cff296cea5c225911726a56283b663328709088fcc912d61f73682fc"
+      },
+      "../../node_modules/@types/lodash/common/seq.d.ts": {
+        "version": "3c92b6dfd43cc1c2485d9eba5ff0b74a19bb8725b692773ef1d66dac48cda4bd",
+        "signature": "3c92b6dfd43cc1c2485d9eba5ff0b74a19bb8725b692773ef1d66dac48cda4bd"
+      },
+      "../../node_modules/@types/lodash/common/string.d.ts": {
+        "version": "4908e4c00832b26ce77a629de8501b0e23a903c094f9e79a7fec313a15da796a",
+        "signature": "4908e4c00832b26ce77a629de8501b0e23a903c094f9e79a7fec313a15da796a"
+      },
+      "../../node_modules/@types/lodash/common/util.d.ts": {
+        "version": "2630a7cbb597e85d713b7ef47f2946d4280d3d4c02733282770741d40672b1a5",
+        "signature": "2630a7cbb597e85d713b7ef47f2946d4280d3d4c02733282770741d40672b1a5"
+      },
+      "../../node_modules/@types/lodash/index.d.ts": {
+        "version": "0714e2046df66c0e93c3330d30dbc0565b3e8cd3ee302cf99e4ede6220e5fec8",
+        "signature": "0714e2046df66c0e93c3330d30dbc0565b3e8cd3ee302cf99e4ede6220e5fec8"
+      },
+      "../../node_modules/@types/minimist/index.d.ts": {
+        "version": "3602dfff3072caea42f23a9b63fb34a7b0c95a62b93ce2add5fe6b159447845e",
+        "signature": "3602dfff3072caea42f23a9b63fb34a7b0c95a62b93ce2add5fe6b159447845e"
+      },
+      "../../node_modules/@types/mocha/index.d.ts": {
+        "version": "f24768499dab9a34c0aff9c9e3fbfe5117001bfabba4a1db01a17df086d6a606",
+        "signature": "f24768499dab9a34c0aff9c9e3fbfe5117001bfabba4a1db01a17df086d6a606"
+      },
+      "../../node_modules/@types/normalize-package-data/index.d.ts": {
+        "version": "c9ad058b2cc9ce6dc2ed92960d6d009e8c04bef46d3f5312283debca6869f613",
+        "signature": "c9ad058b2cc9ce6dc2ed92960d6d009e8c04bef46d3f5312283debca6869f613"
+      },
+      "../../node_modules/@types/pako/index.d.ts": {
+        "version": "ac8256962829db28179e5b4ee97f4a0b27d85f219ad5c7b03b375673fadddd59",
+        "signature": "ac8256962829db28179e5b4ee97f4a0b27d85f219ad5c7b03b375673fadddd59"
+      },
+      "../../node_modules/@types/webpack-env/index.d.ts": {
+        "version": "9575baefb3597b2bf1514d36839d36ab8404dfcb5ad4b1a322165a96fbd618e7",
+        "signature": "9575baefb3597b2bf1514d36839d36ab8404dfcb5ad4b1a322165a96fbd618e7"
+      }
+    },
+    "options": {
+      "composite": true,
+      "declaration": true,
+      "declarationMap": true,
+      "lib": [
+        "lib.dom.d.ts",
+        "lib.es5.d.ts",
+        "lib.es2015.promise.d.ts",
+        "lib.es2015.iterable.d.ts"
+      ],
+      "module": 1,
+      "moduleResolution": 2,
+      "noEmitOnError": true,
+      "skipLibCheck": true,
+      "sourceMap": true,
+      "strict": true,
+      "target": 1,
+      "outDir": "./lib",
+      "rootDir": "./src",
+      "strictPropertyInitialization": false,
+      "configFilePath": "./tsconfig.json"
+    },
+    "referencedMap": {
+      "../../node_modules/@lumino/coreutils/types/index.d.ts": [
+        "../../node_modules/@lumino/coreutils/types/json.d.ts",
+        "../../node_modules/@lumino/coreutils/types/mime.d.ts",
+        "../../node_modules/@lumino/coreutils/types/promise.d.ts",
+        "../../node_modules/@lumino/coreutils/types/random.d.ts",
+        "../../node_modules/@lumino/coreutils/types/token.d.ts",
+        "../../node_modules/@lumino/coreutils/types/uuid.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/config/index.d.ts": [
+        "../../node_modules/@lumino/coreutils/types/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/index.d.ts"
+      ],
+      "../../node_modules/@lumino/algorithm/types/chain.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/iter.d.ts"
+      ],
+      "../../node_modules/@lumino/algorithm/types/empty.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/iter.d.ts"
+      ],
+      "../../node_modules/@lumino/algorithm/types/enumerate.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/iter.d.ts"
+      ],
+      "../../node_modules/@lumino/algorithm/types/filter.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/iter.d.ts"
+      ],
+      "../../node_modules/@lumino/algorithm/types/find.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/iter.d.ts"
+      ],
+      "../../node_modules/@lumino/algorithm/types/map.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/iter.d.ts"
+      ],
+      "../../node_modules/@lumino/algorithm/types/range.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/iter.d.ts"
+      ],
+      "../../node_modules/@lumino/algorithm/types/reduce.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/iter.d.ts"
+      ],
+      "../../node_modules/@lumino/algorithm/types/repeat.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/iter.d.ts"
+      ],
+      "../../node_modules/@lumino/algorithm/types/retro.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/iter.d.ts"
+      ],
+      "../../node_modules/@lumino/algorithm/types/sort.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/iter.d.ts"
+      ],
+      "../../node_modules/@lumino/algorithm/types/stride.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/iter.d.ts"
+      ],
+      "../../node_modules/@lumino/algorithm/types/take.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/iter.d.ts"
+      ],
+      "../../node_modules/@lumino/algorithm/types/zip.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/iter.d.ts"
+      ],
+      "../../node_modules/@lumino/algorithm/types/index.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/array.d.ts",
+        "../../node_modules/@lumino/algorithm/types/chain.d.ts",
+        "../../node_modules/@lumino/algorithm/types/empty.d.ts",
+        "../../node_modules/@lumino/algorithm/types/enumerate.d.ts",
+        "../../node_modules/@lumino/algorithm/types/filter.d.ts",
+        "../../node_modules/@lumino/algorithm/types/find.d.ts",
+        "../../node_modules/@lumino/algorithm/types/iter.d.ts",
+        "../../node_modules/@lumino/algorithm/types/map.d.ts",
+        "../../node_modules/@lumino/algorithm/types/range.d.ts",
+        "../../node_modules/@lumino/algorithm/types/reduce.d.ts",
+        "../../node_modules/@lumino/algorithm/types/repeat.d.ts",
+        "../../node_modules/@lumino/algorithm/types/retro.d.ts",
+        "../../node_modules/@lumino/algorithm/types/sort.d.ts",
+        "../../node_modules/@lumino/algorithm/types/stride.d.ts",
+        "../../node_modules/@lumino/algorithm/types/string.d.ts",
+        "../../node_modules/@lumino/algorithm/types/take.d.ts",
+        "../../node_modules/@lumino/algorithm/types/zip.d.ts"
+      ],
+      "../../node_modules/@lumino/disposable/types/index.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/observables/lib/observablemap.d.ts": [
+        "../../node_modules/@lumino/disposable/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@jupyterlab/observables/lib/modeldb.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/observables/lib/observablejson.d.ts": [
+        "../../node_modules/@lumino/coreutils/types/index.d.ts",
+        "../../node_modules/@lumino/messaging/types/index.d.ts",
+        "../../node_modules/@jupyterlab/observables/lib/observablemap.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/observables/lib/observablestring.d.ts": [
+        "../../node_modules/@lumino/disposable/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@jupyterlab/observables/lib/modeldb.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/observables/lib/observablelist.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/index.d.ts",
+        "../../node_modules/@lumino/disposable/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/observables/lib/undoablelist.d.ts": [
+        "../../node_modules/@lumino/coreutils/types/index.d.ts",
+        "../../node_modules/@jupyterlab/observables/lib/observablelist.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/observables/lib/modeldb.d.ts": [
+        "../../node_modules/@lumino/disposable/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@lumino/coreutils/types/index.d.ts",
+        "../../node_modules/@jupyterlab/observables/lib/observablejson.d.ts",
+        "../../node_modules/@jupyterlab/observables/lib/observablestring.d.ts",
+        "../../node_modules/@jupyterlab/observables/lib/undoablelist.d.ts",
+        "../../node_modules/@jupyterlab/observables/lib/observablemap.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/observables/lib/index.d.ts": [
+        "../../node_modules/@jupyterlab/observables/lib/modeldb.d.ts",
+        "../../node_modules/@jupyterlab/observables/lib/observablejson.d.ts",
+        "../../node_modules/@jupyterlab/observables/lib/observablelist.d.ts",
+        "../../node_modules/@jupyterlab/observables/lib/observablemap.d.ts",
+        "../../node_modules/@jupyterlab/observables/lib/observablestring.d.ts",
+        "../../node_modules/@jupyterlab/observables/lib/undoablelist.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/contents/index.d.ts": [
+        "../../node_modules/@jupyterlab/observables/lib/index.d.ts",
+        "../../node_modules/@lumino/disposable/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/index.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/nbformat/lib/index.d.ts": [
+        "../../node_modules/@lumino/coreutils/types/index.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/kernel/messages.d.ts": [
+        "../../node_modules/@jupyterlab/nbformat/lib/index.d.ts",
+        "../../node_modules/@lumino/coreutils/types/index.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/basemanager.d.ts": [
+        "../../node_modules/@lumino/disposable/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/serverconnection.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/kernelspec/restapi.d.ts": [
+        "../../node_modules/@jupyterlab/services/lib/serverconnection.d.ts",
+        "../../node_modules/@lumino/coreutils/types/index.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/kernelspec/kernelspec.d.ts": [
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/basemanager.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/kernelspec/restapi.d.ts"
+      ],
+      "../../node_modules/@lumino/polling/types/poll.d.ts": [
+        "../../node_modules/@lumino/disposable/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@lumino/polling/types/index.d.ts"
+      ],
+      "../../node_modules/@lumino/polling/types/ratelimiter.d.ts": [
+        "../../node_modules/@lumino/coreutils/types/index.d.ts",
+        "../../node_modules/@lumino/polling/types/index.d.ts",
+        "../../node_modules/@lumino/polling/types/poll.d.ts"
+      ],
+      "../../node_modules/@lumino/polling/types/index.d.ts": [
+        "../../node_modules/@lumino/disposable/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@lumino/polling/types/poll.d.ts",
+        "../../node_modules/@lumino/polling/types/ratelimiter.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/kernelspec/manager.d.ts": [
+        "../../node_modules/@lumino/polling/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/serverconnection.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/kernelspec/kernelspec.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/kernelspec/restapi.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/basemanager.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/kernelspec/index.d.ts": [
+        "../../node_modules/@jupyterlab/services/lib/kernelspec/kernelspec.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/kernelspec/restapi.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/kernelspec/manager.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/kernel/restapi.d.ts": [
+        "../../node_modules/@jupyterlab/services/lib/serverconnection.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/kernel/kernel.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/index.d.ts",
+        "../../node_modules/@lumino/coreutils/types/index.d.ts",
+        "../../node_modules/@lumino/disposable/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/kernel/messages.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/kernelspec/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/basemanager.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/kernel/restapi.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/kernel/manager.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/index.d.ts",
+        "../../node_modules/@lumino/polling/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/kernel/kernel.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/basemanager.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/kernel/restapi.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/kernel/index.d.ts": [
+        "../../node_modules/@jupyterlab/services/lib/kernel/kernel.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/kernel/messages.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/kernel/restapi.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/kernel/manager.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/builder/index.d.ts": [
+        "../../node_modules/@jupyterlab/services/lib/serverconnection.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/nbconvert/index.d.ts": [
+        "../../node_modules/@jupyterlab/services/lib/serverconnection.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/coreutils/lib/activitymonitor.d.ts": [
+        "../../node_modules/@lumino/disposable/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/coreutils/lib/url.d.ts": [
+        "../../node_modules/@lumino/coreutils/types/index.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/coreutils/lib/index.d.ts": [
+        "../../node_modules/@jupyterlab/coreutils/lib/activitymonitor.d.ts",
+        "../../node_modules/@jupyterlab/coreutils/lib/interfaces.d.ts",
+        "../../node_modules/@jupyterlab/coreutils/lib/markdowncodeblocks.d.ts",
+        "../../node_modules/@jupyterlab/coreutils/lib/pageconfig.d.ts",
+        "../../node_modules/@jupyterlab/coreutils/lib/path.d.ts",
+        "../../node_modules/@jupyterlab/coreutils/lib/text.d.ts",
+        "../../node_modules/@jupyterlab/coreutils/lib/time.d.ts",
+        "../../node_modules/@jupyterlab/coreutils/lib/url.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/session/session.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/index.d.ts",
+        "../../node_modules/@lumino/disposable/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/kernel/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/index.d.ts",
+        "../../node_modules/@jupyterlab/coreutils/lib/index.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/session/restapi.d.ts": [
+        "../../node_modules/@jupyterlab/services/lib/serverconnection.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/session/index.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/session/manager.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/index.d.ts",
+        "../../node_modules/@lumino/polling/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/serverconnection.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/session/session.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/basemanager.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/kernel/index.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/session/index.d.ts": [
+        "../../node_modules/@jupyterlab/services/lib/session/session.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/session/restapi.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/session/manager.d.ts"
+      ],
+      "../../node_modules/@lumino/commands/types/index.d.ts": [
+        "../../node_modules/@lumino/coreutils/types/index.d.ts",
+        "../../node_modules/@lumino/disposable/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@lumino/virtualdom/types/index.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/statedb/lib/interfaces.d.ts": [
+        "../../node_modules/@lumino/commands/types/index.d.ts",
+        "../../node_modules/@lumino/coreutils/types/index.d.ts",
+        "../../node_modules/@lumino/disposable/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/statedb/lib/dataconnector.d.ts": [
+        "../../node_modules/@jupyterlab/statedb/lib/interfaces.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/statedb/lib/restorablepool.d.ts": [
+        "../../node_modules/@lumino/disposable/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@jupyterlab/statedb/lib/interfaces.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/statedb/lib/tokens.d.ts": [
+        "../../node_modules/@lumino/coreutils/types/index.d.ts",
+        "../../node_modules/@jupyterlab/statedb/lib/interfaces.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/statedb/lib/statedb.d.ts": [
+        "../../node_modules/@lumino/coreutils/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@jupyterlab/statedb/lib/interfaces.d.ts",
+        "../../node_modules/@jupyterlab/statedb/lib/tokens.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/statedb/lib/index.d.ts": [
+        "../../node_modules/@jupyterlab/statedb/lib/dataconnector.d.ts",
+        "../../node_modules/@jupyterlab/statedb/lib/interfaces.d.ts",
+        "../../node_modules/@jupyterlab/statedb/lib/restorablepool.d.ts",
+        "../../node_modules/@jupyterlab/statedb/lib/statedb.d.ts",
+        "../../node_modules/@jupyterlab/statedb/lib/tokens.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/settingregistry/lib/tokens.d.ts": [
+        "../../node_modules/@lumino/coreutils/types/index.d.ts",
+        "../../node_modules/@lumino/disposable/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@jupyterlab/statedb/lib/index.d.ts",
+        "../../node_modules/@jupyterlab/settingregistry/lib/settingregistry.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/settingregistry/lib/settingregistry.d.ts": [
+        "../../node_modules/@lumino/coreutils/types/index.d.ts",
+        "../../node_modules/@lumino/disposable/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@jupyterlab/statedb/lib/index.d.ts",
+        "../../node_modules/@jupyterlab/settingregistry/lib/tokens.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/settingregistry/lib/index.d.ts": [
+        "../../node_modules/@jupyterlab/settingregistry/lib/settingregistry.d.ts",
+        "../../node_modules/@jupyterlab/settingregistry/lib/tokens.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/setting/index.d.ts": [
+        "../../node_modules/@jupyterlab/settingregistry/lib/index.d.ts",
+        "../../node_modules/@jupyterlab/statedb/lib/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/serverconnection.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/terminal/restapi.d.ts": [
+        "../../node_modules/@jupyterlab/services/lib/serverconnection.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/terminal/terminal.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/index.d.ts",
+        "../../node_modules/@lumino/coreutils/types/index.d.ts",
+        "../../node_modules/@lumino/disposable/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/basemanager.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/terminal/restapi.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/terminal/manager.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/index.d.ts",
+        "../../node_modules/@lumino/polling/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/terminal/terminal.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/basemanager.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/terminal/index.d.ts": [
+        "../../node_modules/@jupyterlab/services/lib/terminal/terminal.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/terminal/restapi.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/terminal/manager.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/workspace/index.d.ts": [
+        "../../node_modules/@jupyterlab/statedb/lib/index.d.ts",
+        "../../node_modules/@lumino/coreutils/types/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/serverconnection.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/manager.d.ts": [
+        "../../node_modules/@lumino/disposable/types/index.d.ts",
+        "../../node_modules/@lumino/polling/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/builder/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/nbconvert/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/contents/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/kernelspec/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/session/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/setting/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/terminal/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/serverconnection.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/workspace/index.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/index.d.ts": [
+        "../../node_modules/@jupyterlab/services/lib/config/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/contents/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/kernel/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/kernelspec/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/manager.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/serverconnection.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/session/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/setting/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/terminal/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/workspace/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/nbconvert/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/builder/index.d.ts"
+      ],
+      "../../node_modules/@types/jquery/index.d.ts": [
+        "../../node_modules/@types/jquery/jquerystatic.d.ts",
+        "../../node_modules/@types/jquery/jquery.d.ts",
+        "../../node_modules/@types/jquery/misc.d.ts",
+        "../../node_modules/@types/jquery/legacy.d.ts",
+        "../../node_modules/@types/sizzle/index.d.ts"
+      ],
+      "../../node_modules/@types/backbone/index.d.ts": [
+        "../../node_modules/@types/underscore/index.d.ts",
+        "../../node_modules/@types/jquery/index.d.ts"
+      ],
+      "../../node_modules/@jupyter-widgets/base/lib/nativeview.d.ts": [
+        "../../node_modules/@types/backbone/index.d.ts"
+      ],
+      "../../node_modules/@lumino/widgets/types/title.d.ts": [
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@lumino/virtualdom/types/index.d.ts"
+      ],
+      "../../node_modules/@lumino/widgets/types/widget.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/index.d.ts",
+        "../../node_modules/@lumino/disposable/types/index.d.ts",
+        "../../node_modules/@lumino/messaging/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@lumino/widgets/types/layout.d.ts",
+        "../../node_modules/@lumino/widgets/types/title.d.ts"
+      ],
+      "../../node_modules/@lumino/widgets/types/layout.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/index.d.ts",
+        "../../node_modules/@lumino/disposable/types/index.d.ts",
+        "../../node_modules/@lumino/messaging/types/index.d.ts",
+        "../../node_modules/@lumino/widgets/types/widget.d.ts"
+      ],
+      "../../node_modules/@lumino/widgets/types/panellayout.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/index.d.ts",
+        "../../node_modules/@lumino/widgets/types/layout.d.ts",
+        "../../node_modules/@lumino/widgets/types/widget.d.ts"
+      ],
+      "../../node_modules/@lumino/widgets/types/boxlayout.d.ts": [
+        "../../node_modules/@lumino/messaging/types/index.d.ts",
+        "../../node_modules/@lumino/widgets/types/panellayout.d.ts",
+        "../../node_modules/@lumino/widgets/types/widget.d.ts"
+      ],
+      "../../node_modules/@lumino/widgets/types/panel.d.ts": [
+        "../../node_modules/@lumino/widgets/types/panellayout.d.ts",
+        "../../node_modules/@lumino/widgets/types/widget.d.ts"
+      ],
+      "../../node_modules/@lumino/widgets/types/boxpanel.d.ts": [
+        "../../node_modules/@lumino/widgets/types/boxlayout.d.ts",
+        "../../node_modules/@lumino/widgets/types/panel.d.ts",
+        "../../node_modules/@lumino/widgets/types/widget.d.ts"
+      ],
+      "../../node_modules/@lumino/widgets/types/commandpalette.d.ts": [
+        "../../node_modules/@lumino/coreutils/types/index.d.ts",
+        "../../node_modules/@lumino/commands/types/index.d.ts",
+        "../../node_modules/@lumino/messaging/types/index.d.ts",
+        "../../node_modules/@lumino/virtualdom/types/index.d.ts",
+        "../../node_modules/@lumino/widgets/types/widget.d.ts"
+      ],
+      "../../node_modules/@lumino/widgets/types/menu.d.ts": [
+        "../../node_modules/@lumino/commands/types/index.d.ts",
+        "../../node_modules/@lumino/coreutils/types/index.d.ts",
+        "../../node_modules/@lumino/messaging/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@lumino/virtualdom/types/index.d.ts",
+        "../../node_modules/@lumino/widgets/types/widget.d.ts"
+      ],
+      "../../node_modules/@lumino/widgets/types/contextmenu.d.ts": [
+        "../../node_modules/@lumino/commands/types/index.d.ts",
+        "../../node_modules/@lumino/disposable/types/index.d.ts",
+        "../../node_modules/@lumino/widgets/types/menu.d.ts"
+      ],
+      "../../node_modules/@lumino/widgets/types/tabbar.d.ts": [
+        "../../node_modules/@lumino/messaging/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@lumino/virtualdom/types/index.d.ts",
+        "../../node_modules/@lumino/widgets/types/title.d.ts",
+        "../../node_modules/@lumino/widgets/types/widget.d.ts"
+      ],
+      "../../node_modules/@lumino/widgets/types/docklayout.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/index.d.ts",
+        "../../node_modules/@lumino/messaging/types/index.d.ts",
+        "../../node_modules/@lumino/widgets/types/layout.d.ts",
+        "../../node_modules/@lumino/widgets/types/tabbar.d.ts",
+        "../../node_modules/@lumino/widgets/types/widget.d.ts"
+      ],
+      "../../node_modules/@lumino/widgets/types/dockpanel.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/index.d.ts",
+        "../../node_modules/@lumino/messaging/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@lumino/widgets/types/docklayout.d.ts",
+        "../../node_modules/@lumino/widgets/types/tabbar.d.ts",
+        "../../node_modules/@lumino/widgets/types/widget.d.ts"
+      ],
+      "../../node_modules/@lumino/widgets/types/focustracker.d.ts": [
+        "../../node_modules/@lumino/disposable/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@lumino/widgets/types/widget.d.ts"
+      ],
+      "../../node_modules/@lumino/widgets/types/gridlayout.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/index.d.ts",
+        "../../node_modules/@lumino/messaging/types/index.d.ts",
+        "../../node_modules/@lumino/widgets/types/layout.d.ts",
+        "../../node_modules/@lumino/widgets/types/widget.d.ts"
+      ],
+      "../../node_modules/@lumino/widgets/types/menubar.d.ts": [
+        "../../node_modules/@lumino/messaging/types/index.d.ts",
+        "../../node_modules/@lumino/virtualdom/types/index.d.ts",
+        "../../node_modules/@lumino/widgets/types/menu.d.ts",
+        "../../node_modules/@lumino/widgets/types/title.d.ts",
+        "../../node_modules/@lumino/widgets/types/widget.d.ts"
+      ],
+      "../../node_modules/@lumino/widgets/types/scrollbar.d.ts": [
+        "../../node_modules/@lumino/messaging/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@lumino/widgets/types/widget.d.ts"
+      ],
+      "../../node_modules/@lumino/widgets/types/singletonlayout.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/index.d.ts",
+        "../../node_modules/@lumino/widgets/types/layout.d.ts",
+        "../../node_modules/@lumino/widgets/types/widget.d.ts"
+      ],
+      "../../node_modules/@lumino/widgets/types/splitlayout.d.ts": [
+        "../../node_modules/@lumino/messaging/types/index.d.ts",
+        "../../node_modules/@lumino/widgets/types/panellayout.d.ts",
+        "../../node_modules/@lumino/widgets/types/widget.d.ts"
+      ],
+      "../../node_modules/@lumino/widgets/types/splitpanel.d.ts": [
+        "../../node_modules/@lumino/messaging/types/index.d.ts",
+        "../../node_modules/@lumino/widgets/types/panel.d.ts",
+        "../../node_modules/@lumino/widgets/types/splitlayout.d.ts",
+        "../../node_modules/@lumino/widgets/types/widget.d.ts"
+      ],
+      "../../node_modules/@lumino/widgets/types/stackedlayout.d.ts": [
+        "../../node_modules/@lumino/messaging/types/index.d.ts",
+        "../../node_modules/@lumino/widgets/types/panellayout.d.ts",
+        "../../node_modules/@lumino/widgets/types/widget.d.ts"
+      ],
+      "../../node_modules/@lumino/widgets/types/stackedpanel.d.ts": [
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@lumino/widgets/types/panel.d.ts",
+        "../../node_modules/@lumino/widgets/types/stackedlayout.d.ts",
+        "../../node_modules/@lumino/widgets/types/widget.d.ts"
+      ],
+      "../../node_modules/@lumino/widgets/types/tabpanel.d.ts": [
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@lumino/widgets/types/stackedpanel.d.ts",
+        "../../node_modules/@lumino/widgets/types/tabbar.d.ts",
+        "../../node_modules/@lumino/widgets/types/widget.d.ts"
+      ],
+      "../../node_modules/@lumino/widgets/types/index.d.ts": [
+        "../../node_modules/@lumino/widgets/types/boxengine.d.ts",
+        "../../node_modules/@lumino/widgets/types/boxlayout.d.ts",
+        "../../node_modules/@lumino/widgets/types/boxpanel.d.ts",
+        "../../node_modules/@lumino/widgets/types/commandpalette.d.ts",
+        "../../node_modules/@lumino/widgets/types/contextmenu.d.ts",
+        "../../node_modules/@lumino/widgets/types/docklayout.d.ts",
+        "../../node_modules/@lumino/widgets/types/dockpanel.d.ts",
+        "../../node_modules/@lumino/widgets/types/focustracker.d.ts",
+        "../../node_modules/@lumino/widgets/types/gridlayout.d.ts",
+        "../../node_modules/@lumino/widgets/types/layout.d.ts",
+        "../../node_modules/@lumino/widgets/types/menu.d.ts",
+        "../../node_modules/@lumino/widgets/types/menubar.d.ts",
+        "../../node_modules/@lumino/widgets/types/panel.d.ts",
+        "../../node_modules/@lumino/widgets/types/panellayout.d.ts",
+        "../../node_modules/@lumino/widgets/types/scrollbar.d.ts",
+        "../../node_modules/@lumino/widgets/types/singletonlayout.d.ts",
+        "../../node_modules/@lumino/widgets/types/splitlayout.d.ts",
+        "../../node_modules/@lumino/widgets/types/splitpanel.d.ts",
+        "../../node_modules/@lumino/widgets/types/stackedlayout.d.ts",
+        "../../node_modules/@lumino/widgets/types/stackedpanel.d.ts",
+        "../../node_modules/@lumino/widgets/types/tabbar.d.ts",
+        "../../node_modules/@lumino/widgets/types/tabpanel.d.ts",
+        "../../node_modules/@lumino/widgets/types/title.d.ts",
+        "../../node_modules/@lumino/widgets/types/widget.d.ts"
+      ],
+      "../../node_modules/@jupyter-widgets/base/lib/services-shim.d.ts": [
+        "../../node_modules/@jupyterlab/services/lib/index.d.ts"
+      ],
+      "../../node_modules/@jupyter-widgets/base/lib/widget.d.ts": [
+        "../../node_modules/@jupyter-widgets/base/lib/manager-base.d.ts",
+        "../../node_modules/@jupyter-widgets/base/lib/utils.d.ts",
+        "../../node_modules/@types/backbone/index.d.ts",
+        "../../node_modules/@jupyter-widgets/base/lib/nativeview.d.ts",
+        "../../node_modules/@lumino/widgets/types/index.d.ts",
+        "../../node_modules/@lumino/messaging/types/index.d.ts",
+        "../../node_modules/@jupyter-widgets/base/lib/services-shim.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/index.d.ts"
+      ],
+      "../../node_modules/@jupyter-widgets/base/lib/manager-base.d.ts": [
+        "../../node_modules/@jupyterlab/services/lib/index.d.ts",
+        "../../node_modules/@jupyter-widgets/base/lib/widget.d.ts",
+        "../../node_modules/@jupyter-widgets/base/lib/services-shim.d.ts"
+      ],
+      "../../node_modules/@jupyter-widgets/base/lib/widget_layout.d.ts": [
+        "../../node_modules/@jupyter-widgets/base/lib/widget.d.ts"
+      ],
+      "../../node_modules/@jupyter-widgets/base/lib/widget_style.d.ts": [
+        "../../node_modules/@jupyter-widgets/base/lib/widget.d.ts"
+      ],
+      "../../node_modules/@jupyter-widgets/base/lib/registry.d.ts": [
+        "../../node_modules/@lumino/coreutils/types/index.d.ts",
+        "../../node_modules/@jupyter-widgets/base/lib/widget.d.ts"
+      ],
+      "../../node_modules/@jupyter-widgets/base/lib/index.d.ts": [
+        "../../node_modules/@jupyter-widgets/base/lib/manager-base.d.ts",
+        "../../node_modules/@jupyter-widgets/base/lib/widget.d.ts",
+        "../../node_modules/@jupyter-widgets/base/lib/widget_layout.d.ts",
+        "../../node_modules/@jupyter-widgets/base/lib/widget_style.d.ts",
+        "../../node_modules/@jupyter-widgets/base/lib/services-shim.d.ts",
+        "../../node_modules/@jupyter-widgets/base/lib/viewlist.d.ts",
+        "../../node_modules/@jupyter-widgets/base/lib/version.d.ts",
+        "../../node_modules/@jupyter-widgets/base/lib/utils.d.ts",
+        "../../node_modules/@jupyter-widgets/base/lib/registry.d.ts"
+      ],
+      "../serializers/lib/ndarray.d.ts": [
+        "../../node_modules/@jupyter-widgets/base/lib/index.d.ts",
+        "../../node_modules/@types/ndarray/index.d.ts"
+      ],
+      "../serializers/lib/common.d.ts": [
+        "../../node_modules/@jupyter-widgets/base/lib/index.d.ts",
+        "../../node_modules/@types/ndarray/index.d.ts"
+      ],
+      "../serializers/lib/union.d.ts": [
+        "../../node_modules/@jupyter-widgets/base/lib/index.d.ts",
+        "../serializers/lib/ndarray.d.ts",
+        "../serializers/lib/common.d.ts",
+        "../../node_modules/@types/ndarray/index.d.ts"
+      ],
+      "../serializers/lib/index.d.ts": [
+        "../serializers/lib/ndarray.d.ts",
+        "../serializers/lib/common.d.ts",
+        "../serializers/lib/union.d.ts"
+      ],
+      "./src/base.ts": [
+        "../../node_modules/@jupyter-widgets/base/lib/index.d.ts",
+        "../serializers/lib/index.d.ts",
+        "./src/version.ts",
+        "../../node_modules/@types/ndarray/index.d.ts"
+      ],
+      "./src/ndarray.ts": [
+        "./src/base.ts",
+        "../serializers/lib/index.d.ts",
+        "../../node_modules/@types/ndarray/index.d.ts"
+      ],
+      "./src/media.ts": [
+        "../../node_modules/@jupyter-widgets/base/lib/index.d.ts",
+        "../serializers/lib/index.d.ts",
+        "./src/version.ts",
+        "../../node_modules/@types/ndarray/index.d.ts"
+      ],
+      "./src/index.ts": [
+        "./src/ndarray.ts",
+        "./src/media.ts",
+        "./src/version.ts"
+      ],
+      "./src/extension.ts": [
+        "./src/index.ts"
+      ],
+      "../../node_modules/@types/node/child_process.d.ts": [
+        "../../node_modules/@types/node/events.d.ts",
+        "../../node_modules/@types/node/net.d.ts",
+        "../../node_modules/@types/node/stream.d.ts"
+      ],
+      "../../node_modules/@types/node/cluster.d.ts": [
+        "../../node_modules/@types/node/child_process.d.ts",
+        "../../node_modules/@types/node/events.d.ts",
+        "../../node_modules/@types/node/net.d.ts"
+      ],
+      "../../node_modules/@types/node/constants.d.ts": [
+        "../../node_modules/@types/node/os.d.ts",
+        "../../node_modules/@types/node/crypto.d.ts",
+        "../../node_modules/@types/node/fs.d.ts"
+      ],
+      "../../node_modules/@types/node/crypto.d.ts": [
+        "../../node_modules/@types/node/stream.d.ts"
+      ],
+      "../../node_modules/@types/node/dgram.d.ts": [
+        "../../node_modules/@types/node/net.d.ts",
+        "../../node_modules/@types/node/dns.d.ts",
+        "../../node_modules/@types/node/events.d.ts"
+      ],
+      "../../node_modules/@types/node/domain.d.ts": [
+        "../../node_modules/@types/node/events.d.ts"
+      ],
+      "../../node_modules/@types/node/fs.d.ts": [
+        "../../node_modules/@types/node/stream.d.ts",
+        "../../node_modules/@types/node/events.d.ts",
+        "../../node_modules/@types/node/url.d.ts"
+      ],
+      "../../node_modules/@types/node/http.d.ts": [
+        "../../node_modules/@types/node/events.d.ts",
+        "../../node_modules/@types/node/stream.d.ts",
+        "../../node_modules/@types/node/url.d.ts",
+        "../../node_modules/@types/node/net.d.ts"
+      ],
+      "../../node_modules/@types/node/http2.d.ts": [
+        "../../node_modules/@types/node/events.d.ts",
+        "../../node_modules/@types/node/fs.d.ts",
+        "../../node_modules/@types/node/net.d.ts",
+        "../../node_modules/@types/node/stream.d.ts",
+        "../../node_modules/@types/node/tls.d.ts",
+        "../../node_modules/@types/node/url.d.ts",
+        "../../node_modules/@types/node/http.d.ts"
+      ],
+      "../../node_modules/@types/node/https.d.ts": [
+        "../../node_modules/@types/node/tls.d.ts",
+        "../../node_modules/@types/node/events.d.ts",
+        "../../node_modules/@types/node/http.d.ts",
+        "../../node_modules/@types/node/url.d.ts"
+      ],
+      "../../node_modules/@types/node/inspector.d.ts": [
+        "../../node_modules/@types/node/events.d.ts"
+      ],
+      "../../node_modules/@types/node/module.d.ts": [
+        "../../node_modules/@types/node/url.d.ts"
+      ],
+      "../../node_modules/@types/node/net.d.ts": [
+        "../../node_modules/@types/node/stream.d.ts",
+        "../../node_modules/@types/node/events.d.ts",
+        "../../node_modules/@types/node/dns.d.ts"
+      ],
+      "../../node_modules/@types/node/perf_hooks.d.ts": [
+        "../../node_modules/@types/node/async_hooks.d.ts"
+      ],
+      "../../node_modules/@types/node/process.d.ts": [
+        "../../node_modules/@types/node/tty.d.ts"
+      ],
+      "../../node_modules/@types/node/readline.d.ts": [
+        "../../node_modules/@types/node/events.d.ts",
+        "../../node_modules/@types/node/stream.d.ts"
+      ],
+      "../../node_modules/@types/node/repl.d.ts": [
+        "../../node_modules/@types/node/readline.d.ts",
+        "../../node_modules/@types/node/vm.d.ts",
+        "../../node_modules/@types/node/util.d.ts"
+      ],
+      "../../node_modules/@types/node/stream.d.ts": [
+        "../../node_modules/@types/node/events.d.ts"
+      ],
+      "../../node_modules/@types/node/tls.d.ts": [
+        "../../node_modules/@types/node/crypto.d.ts",
+        "../../node_modules/@types/node/dns.d.ts",
+        "../../node_modules/@types/node/net.d.ts",
+        "../../node_modules/@types/node/stream.d.ts"
+      ],
+      "../../node_modules/@types/node/tty.d.ts": [
+        "../../node_modules/@types/node/net.d.ts"
+      ],
+      "../../node_modules/@types/node/url.d.ts": [
+        "../../node_modules/@types/node/querystring.d.ts"
+      ],
+      "../../node_modules/@types/node/v8.d.ts": [
+        "../../node_modules/@types/node/stream.d.ts"
+      ],
+      "../../node_modules/@types/node/worker_threads.d.ts": [
+        "../../node_modules/@types/node/vm.d.ts",
+        "../../node_modules/@types/node/events.d.ts",
+        "../../node_modules/@types/node/stream.d.ts",
+        "../../node_modules/@types/node/url.d.ts"
+      ],
+      "../../node_modules/@types/node/zlib.d.ts": [
+        "../../node_modules/@types/node/stream.d.ts"
+      ],
+      "../../node_modules/@types/node/ts3.4/base.d.ts": [
+        "../../node_modules/@types/node/globals.d.ts",
+        "../../node_modules/@types/node/async_hooks.d.ts",
+        "../../node_modules/@types/node/buffer.d.ts",
+        "../../node_modules/@types/node/child_process.d.ts",
+        "../../node_modules/@types/node/cluster.d.ts",
+        "../../node_modules/@types/node/console.d.ts",
+        "../../node_modules/@types/node/constants.d.ts",
+        "../../node_modules/@types/node/crypto.d.ts",
+        "../../node_modules/@types/node/dgram.d.ts",
+        "../../node_modules/@types/node/dns.d.ts",
+        "../../node_modules/@types/node/domain.d.ts",
+        "../../node_modules/@types/node/events.d.ts",
+        "../../node_modules/@types/node/fs.d.ts",
+        "../../node_modules/@types/node/http.d.ts",
+        "../../node_modules/@types/node/http2.d.ts",
+        "../../node_modules/@types/node/https.d.ts",
+        "../../node_modules/@types/node/inspector.d.ts",
+        "../../node_modules/@types/node/module.d.ts",
+        "../../node_modules/@types/node/net.d.ts",
+        "../../node_modules/@types/node/os.d.ts",
+        "../../node_modules/@types/node/path.d.ts",
+        "../../node_modules/@types/node/perf_hooks.d.ts",
+        "../../node_modules/@types/node/process.d.ts",
+        "../../node_modules/@types/node/punycode.d.ts",
+        "../../node_modules/@types/node/querystring.d.ts",
+        "../../node_modules/@types/node/readline.d.ts",
+        "../../node_modules/@types/node/repl.d.ts",
+        "../../node_modules/@types/node/stream.d.ts",
+        "../../node_modules/@types/node/string_decoder.d.ts",
+        "../../node_modules/@types/node/timers.d.ts",
+        "../../node_modules/@types/node/tls.d.ts",
+        "../../node_modules/@types/node/trace_events.d.ts",
+        "../../node_modules/@types/node/tty.d.ts",
+        "../../node_modules/@types/node/url.d.ts",
+        "../../node_modules/@types/node/util.d.ts",
+        "../../node_modules/@types/node/v8.d.ts",
+        "../../node_modules/@types/node/vm.d.ts",
+        "../../node_modules/@types/node/worker_threads.d.ts",
+        "../../node_modules/@types/node/zlib.d.ts"
+      ],
+      "../../node_modules/@types/node/ts3.6/base.d.ts": [
+        "../../node_modules/@types/node/ts3.4/base.d.ts",
+        "../../node_modules/@types/node/globals.global.d.ts",
+        "../../node_modules/@types/node/wasi.d.ts"
+      ],
+      "../../node_modules/@types/node/base.d.ts": [
+        "../../node_modules/@types/node/ts3.6/base.d.ts",
+        "../../node_modules/@types/node/assert.d.ts"
+      ],
+      "../../node_modules/@types/node/index.d.ts": [
+        "../../node_modules/@types/node/base.d.ts"
+      ],
+      "../../node_modules/@types/glob/index.d.ts": [
+        "../../node_modules/@types/node/events.d.ts",
+        "../../node_modules/@types/minimatch/index.d.ts",
+        "../../node_modules/@types/node/index.d.ts"
+      ],
+      "../../node_modules/@types/lodash/common/common.d.ts": [
+        "../../node_modules/@types/lodash/index.d.ts",
+        "../../node_modules/@types/lodash/common/array.d.ts",
+        "../../node_modules/@types/lodash/common/collection.d.ts",
+        "../../node_modules/@types/lodash/common/date.d.ts",
+        "../../node_modules/@types/lodash/common/function.d.ts",
+        "../../node_modules/@types/lodash/common/lang.d.ts",
+        "../../node_modules/@types/lodash/common/math.d.ts",
+        "../../node_modules/@types/lodash/common/number.d.ts",
+        "../../node_modules/@types/lodash/common/object.d.ts",
+        "../../node_modules/@types/lodash/common/seq.d.ts",
+        "../../node_modules/@types/lodash/common/string.d.ts",
+        "../../node_modules/@types/lodash/common/util.d.ts"
+      ],
+      "../../node_modules/@types/lodash/common/array.d.ts": [
+        "../../node_modules/@types/lodash/index.d.ts",
+        "../../node_modules/@types/lodash/common/common.d.ts",
+        "../../node_modules/@types/lodash/common/collection.d.ts",
+        "../../node_modules/@types/lodash/common/date.d.ts",
+        "../../node_modules/@types/lodash/common/function.d.ts",
+        "../../node_modules/@types/lodash/common/lang.d.ts",
+        "../../node_modules/@types/lodash/common/math.d.ts",
+        "../../node_modules/@types/lodash/common/number.d.ts",
+        "../../node_modules/@types/lodash/common/object.d.ts",
+        "../../node_modules/@types/lodash/common/seq.d.ts",
+        "../../node_modules/@types/lodash/common/string.d.ts",
+        "../../node_modules/@types/lodash/common/util.d.ts"
+      ],
+      "../../node_modules/@types/lodash/common/collection.d.ts": [
+        "../../node_modules/@types/lodash/index.d.ts",
+        "../../node_modules/@types/lodash/common/common.d.ts",
+        "../../node_modules/@types/lodash/common/array.d.ts",
+        "../../node_modules/@types/lodash/common/date.d.ts",
+        "../../node_modules/@types/lodash/common/function.d.ts",
+        "../../node_modules/@types/lodash/common/lang.d.ts",
+        "../../node_modules/@types/lodash/common/math.d.ts",
+        "../../node_modules/@types/lodash/common/number.d.ts",
+        "../../node_modules/@types/lodash/common/object.d.ts",
+        "../../node_modules/@types/lodash/common/seq.d.ts",
+        "../../node_modules/@types/lodash/common/string.d.ts",
+        "../../node_modules/@types/lodash/common/util.d.ts"
+      ],
+      "../../node_modules/@types/lodash/common/date.d.ts": [
+        "../../node_modules/@types/lodash/index.d.ts",
+        "../../node_modules/@types/lodash/common/common.d.ts",
+        "../../node_modules/@types/lodash/common/array.d.ts",
+        "../../node_modules/@types/lodash/common/collection.d.ts",
+        "../../node_modules/@types/lodash/common/function.d.ts",
+        "../../node_modules/@types/lodash/common/lang.d.ts",
+        "../../node_modules/@types/lodash/common/math.d.ts",
+        "../../node_modules/@types/lodash/common/number.d.ts",
+        "../../node_modules/@types/lodash/common/object.d.ts",
+        "../../node_modules/@types/lodash/common/seq.d.ts",
+        "../../node_modules/@types/lodash/common/string.d.ts",
+        "../../node_modules/@types/lodash/common/util.d.ts"
+      ],
+      "../../node_modules/@types/lodash/common/function.d.ts": [
+        "../../node_modules/@types/lodash/index.d.ts",
+        "../../node_modules/@types/lodash/common/common.d.ts",
+        "../../node_modules/@types/lodash/common/array.d.ts",
+        "../../node_modules/@types/lodash/common/collection.d.ts",
+        "../../node_modules/@types/lodash/common/date.d.ts",
+        "../../node_modules/@types/lodash/common/lang.d.ts",
+        "../../node_modules/@types/lodash/common/math.d.ts",
+        "../../node_modules/@types/lodash/common/number.d.ts",
+        "../../node_modules/@types/lodash/common/object.d.ts",
+        "../../node_modules/@types/lodash/common/seq.d.ts",
+        "../../node_modules/@types/lodash/common/string.d.ts",
+        "../../node_modules/@types/lodash/common/util.d.ts"
+      ],
+      "../../node_modules/@types/lodash/common/lang.d.ts": [
+        "../../node_modules/@types/lodash/index.d.ts",
+        "../../node_modules/@types/lodash/common/common.d.ts",
+        "../../node_modules/@types/lodash/common/array.d.ts",
+        "../../node_modules/@types/lodash/common/collection.d.ts",
+        "../../node_modules/@types/lodash/common/date.d.ts",
+        "../../node_modules/@types/lodash/common/function.d.ts",
+        "../../node_modules/@types/lodash/common/math.d.ts",
+        "../../node_modules/@types/lodash/common/number.d.ts",
+        "../../node_modules/@types/lodash/common/object.d.ts",
+        "../../node_modules/@types/lodash/common/seq.d.ts",
+        "../../node_modules/@types/lodash/common/string.d.ts",
+        "../../node_modules/@types/lodash/common/util.d.ts"
+      ],
+      "../../node_modules/@types/lodash/common/math.d.ts": [
+        "../../node_modules/@types/lodash/index.d.ts",
+        "../../node_modules/@types/lodash/common/common.d.ts",
+        "../../node_modules/@types/lodash/common/array.d.ts",
+        "../../node_modules/@types/lodash/common/collection.d.ts",
+        "../../node_modules/@types/lodash/common/date.d.ts",
+        "../../node_modules/@types/lodash/common/function.d.ts",
+        "../../node_modules/@types/lodash/common/lang.d.ts",
+        "../../node_modules/@types/lodash/common/number.d.ts",
+        "../../node_modules/@types/lodash/common/object.d.ts",
+        "../../node_modules/@types/lodash/common/seq.d.ts",
+        "../../node_modules/@types/lodash/common/string.d.ts",
+        "../../node_modules/@types/lodash/common/util.d.ts"
+      ],
+      "../../node_modules/@types/lodash/common/number.d.ts": [
+        "../../node_modules/@types/lodash/index.d.ts",
+        "../../node_modules/@types/lodash/common/common.d.ts",
+        "../../node_modules/@types/lodash/common/array.d.ts",
+        "../../node_modules/@types/lodash/common/collection.d.ts",
+        "../../node_modules/@types/lodash/common/date.d.ts",
+        "../../node_modules/@types/lodash/common/function.d.ts",
+        "../../node_modules/@types/lodash/common/lang.d.ts",
+        "../../node_modules/@types/lodash/common/math.d.ts",
+        "../../node_modules/@types/lodash/common/object.d.ts",
+        "../../node_modules/@types/lodash/common/seq.d.ts",
+        "../../node_modules/@types/lodash/common/string.d.ts",
+        "../../node_modules/@types/lodash/common/util.d.ts"
+      ],
+      "../../node_modules/@types/lodash/common/object.d.ts": [
+        "../../node_modules/@types/lodash/index.d.ts",
+        "../../node_modules/@types/lodash/common/common.d.ts",
+        "../../node_modules/@types/lodash/common/array.d.ts",
+        "../../node_modules/@types/lodash/common/collection.d.ts",
+        "../../node_modules/@types/lodash/common/date.d.ts",
+        "../../node_modules/@types/lodash/common/function.d.ts",
+        "../../node_modules/@types/lodash/common/lang.d.ts",
+        "../../node_modules/@types/lodash/common/math.d.ts",
+        "../../node_modules/@types/lodash/common/number.d.ts",
+        "../../node_modules/@types/lodash/common/seq.d.ts",
+        "../../node_modules/@types/lodash/common/string.d.ts",
+        "../../node_modules/@types/lodash/common/util.d.ts"
+      ],
+      "../../node_modules/@types/lodash/common/seq.d.ts": [
+        "../../node_modules/@types/lodash/index.d.ts",
+        "../../node_modules/@types/lodash/common/common.d.ts",
+        "../../node_modules/@types/lodash/common/array.d.ts",
+        "../../node_modules/@types/lodash/common/collection.d.ts",
+        "../../node_modules/@types/lodash/common/date.d.ts",
+        "../../node_modules/@types/lodash/common/function.d.ts",
+        "../../node_modules/@types/lodash/common/lang.d.ts",
+        "../../node_modules/@types/lodash/common/math.d.ts",
+        "../../node_modules/@types/lodash/common/number.d.ts",
+        "../../node_modules/@types/lodash/common/object.d.ts",
+        "../../node_modules/@types/lodash/common/string.d.ts",
+        "../../node_modules/@types/lodash/common/util.d.ts"
+      ],
+      "../../node_modules/@types/lodash/common/string.d.ts": [
+        "../../node_modules/@types/lodash/index.d.ts",
+        "../../node_modules/@types/lodash/common/common.d.ts",
+        "../../node_modules/@types/lodash/common/array.d.ts",
+        "../../node_modules/@types/lodash/common/collection.d.ts",
+        "../../node_modules/@types/lodash/common/date.d.ts",
+        "../../node_modules/@types/lodash/common/function.d.ts",
+        "../../node_modules/@types/lodash/common/lang.d.ts",
+        "../../node_modules/@types/lodash/common/math.d.ts",
+        "../../node_modules/@types/lodash/common/number.d.ts",
+        "../../node_modules/@types/lodash/common/object.d.ts",
+        "../../node_modules/@types/lodash/common/seq.d.ts",
+        "../../node_modules/@types/lodash/common/util.d.ts"
+      ],
+      "../../node_modules/@types/lodash/common/util.d.ts": [
+        "../../node_modules/@types/lodash/index.d.ts",
+        "../../node_modules/@types/lodash/common/common.d.ts",
+        "../../node_modules/@types/lodash/common/array.d.ts",
+        "../../node_modules/@types/lodash/common/collection.d.ts",
+        "../../node_modules/@types/lodash/common/date.d.ts",
+        "../../node_modules/@types/lodash/common/function.d.ts",
+        "../../node_modules/@types/lodash/common/lang.d.ts",
+        "../../node_modules/@types/lodash/common/math.d.ts",
+        "../../node_modules/@types/lodash/common/number.d.ts",
+        "../../node_modules/@types/lodash/common/object.d.ts",
+        "../../node_modules/@types/lodash/common/seq.d.ts",
+        "../../node_modules/@types/lodash/common/string.d.ts"
+      ],
+      "../../node_modules/@types/lodash/index.d.ts": [
+        "../../node_modules/@types/lodash/common/common.d.ts",
+        "../../node_modules/@types/lodash/common/array.d.ts",
+        "../../node_modules/@types/lodash/common/collection.d.ts",
+        "../../node_modules/@types/lodash/common/date.d.ts",
+        "../../node_modules/@types/lodash/common/function.d.ts",
+        "../../node_modules/@types/lodash/common/lang.d.ts",
+        "../../node_modules/@types/lodash/common/math.d.ts",
+        "../../node_modules/@types/lodash/common/number.d.ts",
+        "../../node_modules/@types/lodash/common/object.d.ts",
+        "../../node_modules/@types/lodash/common/seq.d.ts",
+        "../../node_modules/@types/lodash/common/string.d.ts",
+        "../../node_modules/@types/lodash/common/util.d.ts"
+      ]
+    },
+    "exportedModulesMap": {
+      "../../node_modules/@lumino/coreutils/types/index.d.ts": [
+        "../../node_modules/@lumino/coreutils/types/json.d.ts",
+        "../../node_modules/@lumino/coreutils/types/mime.d.ts",
+        "../../node_modules/@lumino/coreutils/types/promise.d.ts",
+        "../../node_modules/@lumino/coreutils/types/random.d.ts",
+        "../../node_modules/@lumino/coreutils/types/token.d.ts",
+        "../../node_modules/@lumino/coreutils/types/uuid.d.ts"
+      ],
+      "../../node_modules/@jupyter-widgets/base/lib/registry.d.ts": [
+        "../../node_modules/@lumino/coreutils/types/index.d.ts",
+        "../../node_modules/@jupyter-widgets/base/lib/widget.d.ts"
+      ],
+      "../../node_modules/@jupyter-widgets/base/lib/index.d.ts": [
+        "../../node_modules/@jupyter-widgets/base/lib/manager-base.d.ts",
+        "../../node_modules/@jupyter-widgets/base/lib/widget.d.ts",
+        "../../node_modules/@jupyter-widgets/base/lib/widget_layout.d.ts",
+        "../../node_modules/@jupyter-widgets/base/lib/widget_style.d.ts",
+        "../../node_modules/@jupyter-widgets/base/lib/services-shim.d.ts",
+        "../../node_modules/@jupyter-widgets/base/lib/viewlist.d.ts",
+        "../../node_modules/@jupyter-widgets/base/lib/version.d.ts",
+        "../../node_modules/@jupyter-widgets/base/lib/utils.d.ts",
+        "../../node_modules/@jupyter-widgets/base/lib/registry.d.ts"
+      ],
+      "./src/media.ts": [
+        "../serializers/lib/index.d.ts",
+        "../../node_modules/@jupyter-widgets/base/lib/index.d.ts"
+      ],
+      "./src/index.ts": [
+        "./src/ndarray.ts",
+        "./src/media.ts",
+        "./src/version.ts"
+      ],
+      "./src/extension.ts": [
+        "./src/index.ts"
+      ],
+      "./src/base.ts": [
+        "../../node_modules/@types/ndarray/index.d.ts",
+        "../serializers/lib/index.d.ts",
+        "../../node_modules/@jupyter-widgets/base/lib/index.d.ts"
+      ],
+      "./src/ndarray.ts": [
+        "../../node_modules/@types/ndarray/index.d.ts",
+        "../serializers/lib/index.d.ts",
+        "./src/base.ts"
+      ],
+      "../serializers/lib/union.d.ts": [
+        "../../node_modules/@jupyter-widgets/base/lib/index.d.ts",
+        "../serializers/lib/ndarray.d.ts",
+        "../serializers/lib/common.d.ts",
+        "../../node_modules/@types/ndarray/index.d.ts"
+      ],
+      "../serializers/lib/index.d.ts": [
+        "../serializers/lib/ndarray.d.ts",
+        "../serializers/lib/common.d.ts",
+        "../serializers/lib/union.d.ts"
+      ],
+      "../serializers/lib/common.d.ts": [
+        "../../node_modules/@jupyter-widgets/base/lib/index.d.ts",
+        "../../node_modules/@types/ndarray/index.d.ts"
+      ],
+      "../serializers/lib/ndarray.d.ts": [
+        "../../node_modules/@jupyter-widgets/base/lib/index.d.ts",
+        "../../node_modules/@types/ndarray/index.d.ts"
+      ],
+      "../../node_modules/@lumino/widgets/types/menu.d.ts": [
+        "../../node_modules/@lumino/commands/types/index.d.ts",
+        "../../node_modules/@lumino/coreutils/types/index.d.ts",
+        "../../node_modules/@lumino/messaging/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@lumino/virtualdom/types/index.d.ts",
+        "../../node_modules/@lumino/widgets/types/widget.d.ts"
+      ],
+      "../../node_modules/@lumino/widgets/types/index.d.ts": [
+        "../../node_modules/@lumino/widgets/types/boxengine.d.ts",
+        "../../node_modules/@lumino/widgets/types/boxlayout.d.ts",
+        "../../node_modules/@lumino/widgets/types/boxpanel.d.ts",
+        "../../node_modules/@lumino/widgets/types/commandpalette.d.ts",
+        "../../node_modules/@lumino/widgets/types/contextmenu.d.ts",
+        "../../node_modules/@lumino/widgets/types/docklayout.d.ts",
+        "../../node_modules/@lumino/widgets/types/dockpanel.d.ts",
+        "../../node_modules/@lumino/widgets/types/focustracker.d.ts",
+        "../../node_modules/@lumino/widgets/types/gridlayout.d.ts",
+        "../../node_modules/@lumino/widgets/types/layout.d.ts",
+        "../../node_modules/@lumino/widgets/types/menu.d.ts",
+        "../../node_modules/@lumino/widgets/types/menubar.d.ts",
+        "../../node_modules/@lumino/widgets/types/panel.d.ts",
+        "../../node_modules/@lumino/widgets/types/panellayout.d.ts",
+        "../../node_modules/@lumino/widgets/types/scrollbar.d.ts",
+        "../../node_modules/@lumino/widgets/types/singletonlayout.d.ts",
+        "../../node_modules/@lumino/widgets/types/splitlayout.d.ts",
+        "../../node_modules/@lumino/widgets/types/splitpanel.d.ts",
+        "../../node_modules/@lumino/widgets/types/stackedlayout.d.ts",
+        "../../node_modules/@lumino/widgets/types/stackedpanel.d.ts",
+        "../../node_modules/@lumino/widgets/types/tabbar.d.ts",
+        "../../node_modules/@lumino/widgets/types/tabpanel.d.ts",
+        "../../node_modules/@lumino/widgets/types/title.d.ts",
+        "../../node_modules/@lumino/widgets/types/widget.d.ts"
+      ],
+      "../../node_modules/@jupyter-widgets/base/lib/widget.d.ts": [
+        "../../node_modules/@jupyter-widgets/base/lib/manager-base.d.ts",
+        "../../node_modules/@jupyter-widgets/base/lib/utils.d.ts",
+        "../../node_modules/@types/backbone/index.d.ts",
+        "../../node_modules/@jupyter-widgets/base/lib/nativeview.d.ts",
+        "../../node_modules/@lumino/widgets/types/index.d.ts",
+        "../../node_modules/@lumino/messaging/types/index.d.ts",
+        "../../node_modules/@jupyter-widgets/base/lib/services-shim.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/index.d.ts"
+      ],
+      "../../node_modules/@jupyter-widgets/base/lib/widget_style.d.ts": [
+        "../../node_modules/@jupyter-widgets/base/lib/widget.d.ts"
+      ],
+      "../../node_modules/@jupyter-widgets/base/lib/widget_layout.d.ts": [
+        "../../node_modules/@jupyter-widgets/base/lib/widget.d.ts"
+      ],
+      "../../node_modules/@jupyter-widgets/base/lib/manager-base.d.ts": [
+        "../../node_modules/@jupyterlab/services/lib/index.d.ts",
+        "../../node_modules/@jupyter-widgets/base/lib/widget.d.ts",
+        "../../node_modules/@jupyter-widgets/base/lib/services-shim.d.ts"
+      ],
+      "../../node_modules/@lumino/widgets/types/menubar.d.ts": [
+        "../../node_modules/@lumino/messaging/types/index.d.ts",
+        "../../node_modules/@lumino/virtualdom/types/index.d.ts",
+        "../../node_modules/@lumino/widgets/types/menu.d.ts",
+        "../../node_modules/@lumino/widgets/types/title.d.ts",
+        "../../node_modules/@lumino/widgets/types/widget.d.ts"
+      ],
+      "../../node_modules/@lumino/widgets/types/contextmenu.d.ts": [
+        "../../node_modules/@lumino/commands/types/index.d.ts",
+        "../../node_modules/@lumino/disposable/types/index.d.ts",
+        "../../node_modules/@lumino/widgets/types/menu.d.ts"
+      ],
+      "../../node_modules/@lumino/widgets/types/commandpalette.d.ts": [
+        "../../node_modules/@lumino/coreutils/types/index.d.ts",
+        "../../node_modules/@lumino/commands/types/index.d.ts",
+        "../../node_modules/@lumino/messaging/types/index.d.ts",
+        "../../node_modules/@lumino/virtualdom/types/index.d.ts",
+        "../../node_modules/@lumino/widgets/types/widget.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/workspace/index.d.ts": [
+        "../../node_modules/@jupyterlab/statedb/lib/index.d.ts",
+        "../../node_modules/@lumino/coreutils/types/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/serverconnection.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/index.d.ts": [
+        "../../node_modules/@jupyterlab/services/lib/config/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/contents/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/kernel/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/kernelspec/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/manager.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/serverconnection.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/session/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/setting/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/terminal/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/workspace/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/nbconvert/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/builder/index.d.ts"
+      ],
+      "../../node_modules/@jupyter-widgets/base/lib/services-shim.d.ts": [
+        "../../node_modules/@jupyterlab/services/lib/index.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/terminal/manager.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/index.d.ts",
+        "../../node_modules/@lumino/polling/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/terminal/terminal.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/basemanager.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/terminal/index.d.ts": [
+        "../../node_modules/@jupyterlab/services/lib/terminal/terminal.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/terminal/restapi.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/terminal/manager.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/manager.d.ts": [
+        "../../node_modules/@lumino/disposable/types/index.d.ts",
+        "../../node_modules/@lumino/polling/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/builder/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/nbconvert/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/contents/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/kernelspec/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/session/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/setting/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/terminal/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/serverconnection.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/workspace/index.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/terminal/terminal.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/index.d.ts",
+        "../../node_modules/@lumino/coreutils/types/index.d.ts",
+        "../../node_modules/@lumino/disposable/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/basemanager.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/terminal/restapi.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/session/session.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/index.d.ts",
+        "../../node_modules/@lumino/disposable/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/kernel/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/index.d.ts",
+        "../../node_modules/@jupyterlab/coreutils/lib/index.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/session/index.d.ts": [
+        "../../node_modules/@jupyterlab/services/lib/session/session.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/session/restapi.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/session/manager.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/session/restapi.d.ts": [
+        "../../node_modules/@jupyterlab/services/lib/serverconnection.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/session/index.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/session/manager.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/index.d.ts",
+        "../../node_modules/@lumino/polling/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/serverconnection.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/session/session.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/basemanager.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/kernel/index.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/kernel/manager.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/index.d.ts",
+        "../../node_modules/@lumino/polling/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/kernel/kernel.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/basemanager.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/kernel/restapi.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/kernel/index.d.ts": [
+        "../../node_modules/@jupyterlab/services/lib/kernel/kernel.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/kernel/messages.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/kernel/restapi.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/kernel/manager.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/kernel/kernel.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/index.d.ts",
+        "../../node_modules/@lumino/coreutils/types/index.d.ts",
+        "../../node_modules/@lumino/disposable/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/kernel/messages.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/kernelspec/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/basemanager.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/kernel/restapi.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/contents/index.d.ts": [
+        "../../node_modules/@jupyterlab/observables/lib/index.d.ts",
+        "../../node_modules/@lumino/disposable/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/index.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/config/index.d.ts": [
+        "../../node_modules/@lumino/coreutils/types/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/index.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/settingregistry/lib/settingregistry.d.ts": [
+        "../../node_modules/@lumino/coreutils/types/index.d.ts",
+        "../../node_modules/@lumino/disposable/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@jupyterlab/statedb/lib/index.d.ts",
+        "../../node_modules/@jupyterlab/settingregistry/lib/tokens.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/settingregistry/lib/index.d.ts": [
+        "../../node_modules/@jupyterlab/settingregistry/lib/settingregistry.d.ts",
+        "../../node_modules/@jupyterlab/settingregistry/lib/tokens.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/setting/index.d.ts": [
+        "../../node_modules/@jupyterlab/settingregistry/lib/index.d.ts",
+        "../../node_modules/@jupyterlab/statedb/lib/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/serverconnection.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/settingregistry/lib/tokens.d.ts": [
+        "../../node_modules/@lumino/coreutils/types/index.d.ts",
+        "../../node_modules/@lumino/disposable/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@jupyterlab/statedb/lib/index.d.ts",
+        "../../node_modules/@jupyterlab/settingregistry/lib/settingregistry.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/statedb/lib/statedb.d.ts": [
+        "../../node_modules/@lumino/coreutils/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@jupyterlab/statedb/lib/interfaces.d.ts",
+        "../../node_modules/@jupyterlab/statedb/lib/tokens.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/statedb/lib/index.d.ts": [
+        "../../node_modules/@jupyterlab/statedb/lib/dataconnector.d.ts",
+        "../../node_modules/@jupyterlab/statedb/lib/interfaces.d.ts",
+        "../../node_modules/@jupyterlab/statedb/lib/restorablepool.d.ts",
+        "../../node_modules/@jupyterlab/statedb/lib/statedb.d.ts",
+        "../../node_modules/@jupyterlab/statedb/lib/tokens.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/statedb/lib/tokens.d.ts": [
+        "../../node_modules/@lumino/coreutils/types/index.d.ts",
+        "../../node_modules/@jupyterlab/statedb/lib/interfaces.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/statedb/lib/interfaces.d.ts": [
+        "../../node_modules/@lumino/commands/types/index.d.ts",
+        "../../node_modules/@lumino/coreutils/types/index.d.ts",
+        "../../node_modules/@lumino/disposable/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/statedb/lib/restorablepool.d.ts": [
+        "../../node_modules/@lumino/disposable/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@jupyterlab/statedb/lib/interfaces.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/statedb/lib/dataconnector.d.ts": [
+        "../../node_modules/@jupyterlab/statedb/lib/interfaces.d.ts"
+      ],
+      "../../node_modules/@lumino/commands/types/index.d.ts": [
+        "../../node_modules/@lumino/coreutils/types/index.d.ts",
+        "../../node_modules/@lumino/disposable/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@lumino/virtualdom/types/index.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/coreutils/lib/url.d.ts": [
+        "../../node_modules/@lumino/coreutils/types/index.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/coreutils/lib/index.d.ts": [
+        "../../node_modules/@jupyterlab/coreutils/lib/activitymonitor.d.ts",
+        "../../node_modules/@jupyterlab/coreutils/lib/interfaces.d.ts",
+        "../../node_modules/@jupyterlab/coreutils/lib/markdowncodeblocks.d.ts",
+        "../../node_modules/@jupyterlab/coreutils/lib/pageconfig.d.ts",
+        "../../node_modules/@jupyterlab/coreutils/lib/path.d.ts",
+        "../../node_modules/@jupyterlab/coreutils/lib/text.d.ts",
+        "../../node_modules/@jupyterlab/coreutils/lib/time.d.ts",
+        "../../node_modules/@jupyterlab/coreutils/lib/url.d.ts"
+      ],
+      "../../node_modules/@lumino/polling/types/ratelimiter.d.ts": [
+        "../../node_modules/@lumino/coreutils/types/index.d.ts",
+        "../../node_modules/@lumino/polling/types/index.d.ts",
+        "../../node_modules/@lumino/polling/types/poll.d.ts"
+      ],
+      "../../node_modules/@lumino/polling/types/index.d.ts": [
+        "../../node_modules/@lumino/disposable/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@lumino/polling/types/poll.d.ts",
+        "../../node_modules/@lumino/polling/types/ratelimiter.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/kernelspec/manager.d.ts": [
+        "../../node_modules/@lumino/polling/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/serverconnection.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/kernelspec/kernelspec.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/kernelspec/restapi.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/basemanager.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/kernelspec/index.d.ts": [
+        "../../node_modules/@jupyterlab/services/lib/kernelspec/kernelspec.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/kernelspec/restapi.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/kernelspec/manager.d.ts"
+      ],
+      "../../node_modules/@lumino/polling/types/poll.d.ts": [
+        "../../node_modules/@lumino/disposable/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@lumino/polling/types/index.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/kernelspec/restapi.d.ts": [
+        "../../node_modules/@jupyterlab/services/lib/serverconnection.d.ts",
+        "../../node_modules/@lumino/coreutils/types/index.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/kernelspec/kernelspec.d.ts": [
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/basemanager.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/kernelspec/restapi.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/kernel/messages.d.ts": [
+        "../../node_modules/@jupyterlab/nbformat/lib/index.d.ts",
+        "../../node_modules/@lumino/coreutils/types/index.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/nbformat/lib/index.d.ts": [
+        "../../node_modules/@lumino/coreutils/types/index.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/observables/lib/modeldb.d.ts": [
+        "../../node_modules/@lumino/disposable/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@lumino/coreutils/types/index.d.ts",
+        "../../node_modules/@jupyterlab/observables/lib/observablejson.d.ts",
+        "../../node_modules/@jupyterlab/observables/lib/observablestring.d.ts",
+        "../../node_modules/@jupyterlab/observables/lib/undoablelist.d.ts",
+        "../../node_modules/@jupyterlab/observables/lib/observablemap.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/observables/lib/index.d.ts": [
+        "../../node_modules/@jupyterlab/observables/lib/modeldb.d.ts",
+        "../../node_modules/@jupyterlab/observables/lib/observablejson.d.ts",
+        "../../node_modules/@jupyterlab/observables/lib/observablelist.d.ts",
+        "../../node_modules/@jupyterlab/observables/lib/observablemap.d.ts",
+        "../../node_modules/@jupyterlab/observables/lib/observablestring.d.ts",
+        "../../node_modules/@jupyterlab/observables/lib/undoablelist.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/observables/lib/observablestring.d.ts": [
+        "../../node_modules/@lumino/disposable/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@jupyterlab/observables/lib/modeldb.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/observables/lib/observablemap.d.ts": [
+        "../../node_modules/@lumino/disposable/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@jupyterlab/observables/lib/modeldb.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/observables/lib/observablejson.d.ts": [
+        "../../node_modules/@lumino/coreutils/types/index.d.ts",
+        "../../node_modules/@lumino/messaging/types/index.d.ts",
+        "../../node_modules/@jupyterlab/observables/lib/observablemap.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/observables/lib/undoablelist.d.ts": [
+        "../../node_modules/@lumino/coreutils/types/index.d.ts",
+        "../../node_modules/@jupyterlab/observables/lib/observablelist.d.ts"
+      ],
+      "../../node_modules/@lumino/algorithm/types/index.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/array.d.ts",
+        "../../node_modules/@lumino/algorithm/types/chain.d.ts",
+        "../../node_modules/@lumino/algorithm/types/empty.d.ts",
+        "../../node_modules/@lumino/algorithm/types/enumerate.d.ts",
+        "../../node_modules/@lumino/algorithm/types/filter.d.ts",
+        "../../node_modules/@lumino/algorithm/types/find.d.ts",
+        "../../node_modules/@lumino/algorithm/types/iter.d.ts",
+        "../../node_modules/@lumino/algorithm/types/map.d.ts",
+        "../../node_modules/@lumino/algorithm/types/range.d.ts",
+        "../../node_modules/@lumino/algorithm/types/reduce.d.ts",
+        "../../node_modules/@lumino/algorithm/types/repeat.d.ts",
+        "../../node_modules/@lumino/algorithm/types/retro.d.ts",
+        "../../node_modules/@lumino/algorithm/types/sort.d.ts",
+        "../../node_modules/@lumino/algorithm/types/stride.d.ts",
+        "../../node_modules/@lumino/algorithm/types/string.d.ts",
+        "../../node_modules/@lumino/algorithm/types/take.d.ts",
+        "../../node_modules/@lumino/algorithm/types/zip.d.ts"
+      ],
+      "../../node_modules/@lumino/widgets/types/singletonlayout.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/index.d.ts",
+        "../../node_modules/@lumino/widgets/types/layout.d.ts",
+        "../../node_modules/@lumino/widgets/types/widget.d.ts"
+      ],
+      "../../node_modules/@lumino/widgets/types/gridlayout.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/index.d.ts",
+        "../../node_modules/@lumino/messaging/types/index.d.ts",
+        "../../node_modules/@lumino/widgets/types/layout.d.ts",
+        "../../node_modules/@lumino/widgets/types/widget.d.ts"
+      ],
+      "../../node_modules/@lumino/widgets/types/dockpanel.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/index.d.ts",
+        "../../node_modules/@lumino/messaging/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@lumino/widgets/types/docklayout.d.ts",
+        "../../node_modules/@lumino/widgets/types/tabbar.d.ts",
+        "../../node_modules/@lumino/widgets/types/widget.d.ts"
+      ],
+      "../../node_modules/@lumino/widgets/types/docklayout.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/index.d.ts",
+        "../../node_modules/@lumino/messaging/types/index.d.ts",
+        "../../node_modules/@lumino/widgets/types/layout.d.ts",
+        "../../node_modules/@lumino/widgets/types/tabbar.d.ts",
+        "../../node_modules/@lumino/widgets/types/widget.d.ts"
+      ],
+      "../../node_modules/@lumino/widgets/types/panellayout.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/index.d.ts",
+        "../../node_modules/@lumino/widgets/types/layout.d.ts",
+        "../../node_modules/@lumino/widgets/types/widget.d.ts"
+      ],
+      "../../node_modules/@lumino/widgets/types/stackedlayout.d.ts": [
+        "../../node_modules/@lumino/messaging/types/index.d.ts",
+        "../../node_modules/@lumino/widgets/types/panellayout.d.ts",
+        "../../node_modules/@lumino/widgets/types/widget.d.ts"
+      ],
+      "../../node_modules/@lumino/widgets/types/stackedpanel.d.ts": [
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@lumino/widgets/types/panel.d.ts",
+        "../../node_modules/@lumino/widgets/types/stackedlayout.d.ts",
+        "../../node_modules/@lumino/widgets/types/widget.d.ts"
+      ],
+      "../../node_modules/@lumino/widgets/types/tabpanel.d.ts": [
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@lumino/widgets/types/stackedpanel.d.ts",
+        "../../node_modules/@lumino/widgets/types/tabbar.d.ts",
+        "../../node_modules/@lumino/widgets/types/widget.d.ts"
+      ],
+      "../../node_modules/@lumino/widgets/types/splitlayout.d.ts": [
+        "../../node_modules/@lumino/messaging/types/index.d.ts",
+        "../../node_modules/@lumino/widgets/types/panellayout.d.ts",
+        "../../node_modules/@lumino/widgets/types/widget.d.ts"
+      ],
+      "../../node_modules/@lumino/widgets/types/splitpanel.d.ts": [
+        "../../node_modules/@lumino/messaging/types/index.d.ts",
+        "../../node_modules/@lumino/widgets/types/panel.d.ts",
+        "../../node_modules/@lumino/widgets/types/splitlayout.d.ts",
+        "../../node_modules/@lumino/widgets/types/widget.d.ts"
+      ],
+      "../../node_modules/@lumino/widgets/types/panel.d.ts": [
+        "../../node_modules/@lumino/widgets/types/panellayout.d.ts",
+        "../../node_modules/@lumino/widgets/types/widget.d.ts"
+      ],
+      "../../node_modules/@lumino/widgets/types/boxpanel.d.ts": [
+        "../../node_modules/@lumino/widgets/types/boxlayout.d.ts",
+        "../../node_modules/@lumino/widgets/types/panel.d.ts",
+        "../../node_modules/@lumino/widgets/types/widget.d.ts"
+      ],
+      "../../node_modules/@lumino/widgets/types/boxlayout.d.ts": [
+        "../../node_modules/@lumino/messaging/types/index.d.ts",
+        "../../node_modules/@lumino/widgets/types/panellayout.d.ts",
+        "../../node_modules/@lumino/widgets/types/widget.d.ts"
+      ],
+      "../../node_modules/@lumino/widgets/types/layout.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/index.d.ts",
+        "../../node_modules/@lumino/disposable/types/index.d.ts",
+        "../../node_modules/@lumino/messaging/types/index.d.ts",
+        "../../node_modules/@lumino/widgets/types/widget.d.ts"
+      ],
+      "../../node_modules/@lumino/widgets/types/widget.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/index.d.ts",
+        "../../node_modules/@lumino/disposable/types/index.d.ts",
+        "../../node_modules/@lumino/messaging/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@lumino/widgets/types/layout.d.ts",
+        "../../node_modules/@lumino/widgets/types/title.d.ts"
+      ],
+      "../../node_modules/@lumino/widgets/types/scrollbar.d.ts": [
+        "../../node_modules/@lumino/messaging/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@lumino/widgets/types/widget.d.ts"
+      ],
+      "../../node_modules/@lumino/widgets/types/focustracker.d.ts": [
+        "../../node_modules/@lumino/disposable/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@lumino/widgets/types/widget.d.ts"
+      ],
+      "../../node_modules/@lumino/widgets/types/tabbar.d.ts": [
+        "../../node_modules/@lumino/messaging/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@lumino/virtualdom/types/index.d.ts",
+        "../../node_modules/@lumino/widgets/types/title.d.ts",
+        "../../node_modules/@lumino/widgets/types/widget.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/observables/lib/observablelist.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/index.d.ts",
+        "../../node_modules/@lumino/disposable/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts"
+      ],
+      "../../node_modules/@lumino/disposable/types/index.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/coreutils/lib/activitymonitor.d.ts": [
+        "../../node_modules/@lumino/disposable/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/basemanager.d.ts": [
+        "../../node_modules/@lumino/disposable/types/index.d.ts",
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@jupyterlab/services/lib/serverconnection.d.ts"
+      ],
+      "../../node_modules/@lumino/algorithm/types/zip.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/iter.d.ts"
+      ],
+      "../../node_modules/@lumino/algorithm/types/take.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/iter.d.ts"
+      ],
+      "../../node_modules/@lumino/algorithm/types/stride.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/iter.d.ts"
+      ],
+      "../../node_modules/@lumino/algorithm/types/sort.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/iter.d.ts"
+      ],
+      "../../node_modules/@lumino/algorithm/types/retro.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/iter.d.ts"
+      ],
+      "../../node_modules/@lumino/algorithm/types/repeat.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/iter.d.ts"
+      ],
+      "../../node_modules/@lumino/algorithm/types/reduce.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/iter.d.ts"
+      ],
+      "../../node_modules/@lumino/algorithm/types/range.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/iter.d.ts"
+      ],
+      "../../node_modules/@lumino/algorithm/types/map.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/iter.d.ts"
+      ],
+      "../../node_modules/@lumino/algorithm/types/find.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/iter.d.ts"
+      ],
+      "../../node_modules/@lumino/algorithm/types/filter.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/iter.d.ts"
+      ],
+      "../../node_modules/@lumino/algorithm/types/enumerate.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/iter.d.ts"
+      ],
+      "../../node_modules/@lumino/algorithm/types/empty.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/iter.d.ts"
+      ],
+      "../../node_modules/@lumino/algorithm/types/chain.d.ts": [
+        "../../node_modules/@lumino/algorithm/types/iter.d.ts"
+      ],
+      "../../node_modules/@lumino/widgets/types/title.d.ts": [
+        "../../node_modules/@lumino/signaling/types/index.d.ts",
+        "../../node_modules/@lumino/virtualdom/types/index.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/terminal/restapi.d.ts": [
+        "../../node_modules/@jupyterlab/services/lib/serverconnection.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/nbconvert/index.d.ts": [
+        "../../node_modules/@jupyterlab/services/lib/serverconnection.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/builder/index.d.ts": [
+        "../../node_modules/@jupyterlab/services/lib/serverconnection.d.ts"
+      ],
+      "../../node_modules/@jupyterlab/services/lib/kernel/restapi.d.ts": [
+        "../../node_modules/@jupyterlab/services/lib/serverconnection.d.ts"
+      ],
+      "../../node_modules/@types/jquery/index.d.ts": [
+        "../../node_modules/@types/jquery/jquerystatic.d.ts",
+        "../../node_modules/@types/jquery/jquery.d.ts",
+        "../../node_modules/@types/jquery/misc.d.ts",
+        "../../node_modules/@types/jquery/legacy.d.ts",
+        "../../node_modules/@types/sizzle/index.d.ts"
+      ],
+      "../../node_modules/@types/backbone/index.d.ts": [
+        "../../node_modules/@types/underscore/index.d.ts",
+        "../../node_modules/@types/jquery/index.d.ts"
+      ],
+      "../../node_modules/@jupyter-widgets/base/lib/nativeview.d.ts": [
+        "../../node_modules/@types/backbone/index.d.ts"
+      ],
+      "../../node_modules/@types/node/ts3.4/base.d.ts": [
+        "../../node_modules/@types/node/globals.d.ts",
+        "../../node_modules/@types/node/async_hooks.d.ts",
+        "../../node_modules/@types/node/buffer.d.ts",
+        "../../node_modules/@types/node/child_process.d.ts",
+        "../../node_modules/@types/node/cluster.d.ts",
+        "../../node_modules/@types/node/console.d.ts",
+        "../../node_modules/@types/node/constants.d.ts",
+        "../../node_modules/@types/node/crypto.d.ts",
+        "../../node_modules/@types/node/dgram.d.ts",
+        "../../node_modules/@types/node/dns.d.ts",
+        "../../node_modules/@types/node/domain.d.ts",
+        "../../node_modules/@types/node/events.d.ts",
+        "../../node_modules/@types/node/fs.d.ts",
+        "../../node_modules/@types/node/http.d.ts",
+        "../../node_modules/@types/node/http2.d.ts",
+        "../../node_modules/@types/node/https.d.ts",
+        "../../node_modules/@types/node/inspector.d.ts",
+        "../../node_modules/@types/node/module.d.ts",
+        "../../node_modules/@types/node/net.d.ts",
+        "../../node_modules/@types/node/os.d.ts",
+        "../../node_modules/@types/node/path.d.ts",
+        "../../node_modules/@types/node/perf_hooks.d.ts",
+        "../../node_modules/@types/node/process.d.ts",
+        "../../node_modules/@types/node/punycode.d.ts",
+        "../../node_modules/@types/node/querystring.d.ts",
+        "../../node_modules/@types/node/readline.d.ts",
+        "../../node_modules/@types/node/repl.d.ts",
+        "../../node_modules/@types/node/stream.d.ts",
+        "../../node_modules/@types/node/string_decoder.d.ts",
+        "../../node_modules/@types/node/timers.d.ts",
+        "../../node_modules/@types/node/tls.d.ts",
+        "../../node_modules/@types/node/trace_events.d.ts",
+        "../../node_modules/@types/node/tty.d.ts",
+        "../../node_modules/@types/node/url.d.ts",
+        "../../node_modules/@types/node/util.d.ts",
+        "../../node_modules/@types/node/v8.d.ts",
+        "../../node_modules/@types/node/vm.d.ts",
+        "../../node_modules/@types/node/worker_threads.d.ts",
+        "../../node_modules/@types/node/zlib.d.ts"
+      ],
+      "../../node_modules/@types/node/ts3.6/base.d.ts": [
+        "../../node_modules/@types/node/ts3.4/base.d.ts",
+        "../../node_modules/@types/node/globals.global.d.ts",
+        "../../node_modules/@types/node/wasi.d.ts"
+      ],
+      "../../node_modules/@types/node/base.d.ts": [
+        "../../node_modules/@types/node/ts3.6/base.d.ts",
+        "../../node_modules/@types/node/assert.d.ts"
+      ],
+      "../../node_modules/@types/node/index.d.ts": [
+        "../../node_modules/@types/node/base.d.ts"
+      ],
+      "../../node_modules/@types/glob/index.d.ts": [
+        "../../node_modules/@types/node/events.d.ts",
+        "../../node_modules/@types/minimatch/index.d.ts",
+        "../../node_modules/@types/node/index.d.ts"
+      ],
+      "../../node_modules/@types/node/perf_hooks.d.ts": [
+        "../../node_modules/@types/node/async_hooks.d.ts"
+      ],
+      "../../node_modules/@types/node/child_process.d.ts": [
+        "../../node_modules/@types/node/events.d.ts",
+        "../../node_modules/@types/node/net.d.ts",
+        "../../node_modules/@types/node/stream.d.ts"
+      ],
+      "../../node_modules/@types/node/cluster.d.ts": [
+        "../../node_modules/@types/node/child_process.d.ts",
+        "../../node_modules/@types/node/events.d.ts",
+        "../../node_modules/@types/node/net.d.ts"
+      ],
+      "../../node_modules/@types/node/constants.d.ts": [
+        "../../node_modules/@types/node/os.d.ts",
+        "../../node_modules/@types/node/crypto.d.ts",
+        "../../node_modules/@types/node/fs.d.ts"
+      ],
+      "../../node_modules/@types/node/crypto.d.ts": [
+        "../../node_modules/@types/node/stream.d.ts"
+      ],
+      "../../node_modules/@types/node/tls.d.ts": [
+        "../../node_modules/@types/node/crypto.d.ts",
+        "../../node_modules/@types/node/dns.d.ts",
+        "../../node_modules/@types/node/net.d.ts",
+        "../../node_modules/@types/node/stream.d.ts"
+      ],
+      "../../node_modules/@types/node/https.d.ts": [
+        "../../node_modules/@types/node/tls.d.ts",
+        "../../node_modules/@types/node/events.d.ts",
+        "../../node_modules/@types/node/http.d.ts",
+        "../../node_modules/@types/node/url.d.ts"
+      ],
+      "../../node_modules/@types/node/http2.d.ts": [
+        "../../node_modules/@types/node/events.d.ts",
+        "../../node_modules/@types/node/fs.d.ts",
+        "../../node_modules/@types/node/net.d.ts",
+        "../../node_modules/@types/node/stream.d.ts",
+        "../../node_modules/@types/node/tls.d.ts",
+        "../../node_modules/@types/node/url.d.ts",
+        "../../node_modules/@types/node/http.d.ts"
+      ],
+      "../../node_modules/@types/node/dgram.d.ts": [
+        "../../node_modules/@types/node/net.d.ts",
+        "../../node_modules/@types/node/dns.d.ts",
+        "../../node_modules/@types/node/events.d.ts"
+      ],
+      "../../node_modules/@types/node/net.d.ts": [
+        "../../node_modules/@types/node/stream.d.ts",
+        "../../node_modules/@types/node/events.d.ts",
+        "../../node_modules/@types/node/dns.d.ts"
+      ],
+      "../../node_modules/@types/node/tty.d.ts": [
+        "../../node_modules/@types/node/net.d.ts"
+      ],
+      "../../node_modules/@types/node/process.d.ts": [
+        "../../node_modules/@types/node/tty.d.ts"
+      ],
+      "../../node_modules/@types/node/http.d.ts": [
+        "../../node_modules/@types/node/events.d.ts",
+        "../../node_modules/@types/node/stream.d.ts",
+        "../../node_modules/@types/node/url.d.ts",
+        "../../node_modules/@types/node/net.d.ts"
+      ],
+      "../../node_modules/@types/node/domain.d.ts": [
+        "../../node_modules/@types/node/events.d.ts"
+      ],
+      "../../node_modules/@types/node/worker_threads.d.ts": [
+        "../../node_modules/@types/node/vm.d.ts",
+        "../../node_modules/@types/node/events.d.ts",
+        "../../node_modules/@types/node/stream.d.ts",
+        "../../node_modules/@types/node/url.d.ts"
+      ],
+      "../../node_modules/@types/node/stream.d.ts": [
+        "../../node_modules/@types/node/events.d.ts"
+      ],
+      "../../node_modules/@types/node/zlib.d.ts": [
+        "../../node_modules/@types/node/stream.d.ts"
+      ],
+      "../../node_modules/@types/node/v8.d.ts": [
+        "../../node_modules/@types/node/stream.d.ts"
+      ],
+      "../../node_modules/@types/node/readline.d.ts": [
+        "../../node_modules/@types/node/events.d.ts",
+        "../../node_modules/@types/node/stream.d.ts"
+      ],
+      "../../node_modules/@types/node/repl.d.ts": [
+        "../../node_modules/@types/node/readline.d.ts",
+        "../../node_modules/@types/node/vm.d.ts",
+        "../../node_modules/@types/node/util.d.ts"
+      ],
+      "../../node_modules/@types/node/fs.d.ts": [
+        "../../node_modules/@types/node/stream.d.ts",
+        "../../node_modules/@types/node/events.d.ts",
+        "../../node_modules/@types/node/url.d.ts"
+      ],
+      "../../node_modules/@types/node/inspector.d.ts": [
+        "../../node_modules/@types/node/events.d.ts"
+      ],
+      "../../node_modules/@types/node/module.d.ts": [
+        "../../node_modules/@types/node/url.d.ts"
+      ],
+      "../../node_modules/@types/node/url.d.ts": [
+        "../../node_modules/@types/node/querystring.d.ts"
+      ],
+      "../../node_modules/@types/lodash/common/common.d.ts": [
+        "../../node_modules/@types/lodash/index.d.ts",
+        "../../node_modules/@types/lodash/common/array.d.ts",
+        "../../node_modules/@types/lodash/common/collection.d.ts",
+        "../../node_modules/@types/lodash/common/date.d.ts",
+        "../../node_modules/@types/lodash/common/function.d.ts",
+        "../../node_modules/@types/lodash/common/lang.d.ts",
+        "../../node_modules/@types/lodash/common/math.d.ts",
+        "../../node_modules/@types/lodash/common/number.d.ts",
+        "../../node_modules/@types/lodash/common/object.d.ts",
+        "../../node_modules/@types/lodash/common/seq.d.ts",
+        "../../node_modules/@types/lodash/common/string.d.ts",
+        "../../node_modules/@types/lodash/common/util.d.ts"
+      ],
+      "../../node_modules/@types/lodash/index.d.ts": [
+        "../../node_modules/@types/lodash/common/common.d.ts",
+        "../../node_modules/@types/lodash/common/array.d.ts",
+        "../../node_modules/@types/lodash/common/collection.d.ts",
+        "../../node_modules/@types/lodash/common/date.d.ts",
+        "../../node_modules/@types/lodash/common/function.d.ts",
+        "../../node_modules/@types/lodash/common/lang.d.ts",
+        "../../node_modules/@types/lodash/common/math.d.ts",
+        "../../node_modules/@types/lodash/common/number.d.ts",
+        "../../node_modules/@types/lodash/common/object.d.ts",
+        "../../node_modules/@types/lodash/common/seq.d.ts",
+        "../../node_modules/@types/lodash/common/string.d.ts",
+        "../../node_modules/@types/lodash/common/util.d.ts"
+      ],
+      "../../node_modules/@types/lodash/common/util.d.ts": [
+        "../../node_modules/@types/lodash/index.d.ts",
+        "../../node_modules/@types/lodash/common/common.d.ts",
+        "../../node_modules/@types/lodash/common/array.d.ts",
+        "../../node_modules/@types/lodash/common/collection.d.ts",
+        "../../node_modules/@types/lodash/common/date.d.ts",
+        "../../node_modules/@types/lodash/common/function.d.ts",
+        "../../node_modules/@types/lodash/common/lang.d.ts",
+        "../../node_modules/@types/lodash/common/math.d.ts",
+        "../../node_modules/@types/lodash/common/number.d.ts",
+        "../../node_modules/@types/lodash/common/object.d.ts",
+        "../../node_modules/@types/lodash/common/seq.d.ts",
+        "../../node_modules/@types/lodash/common/string.d.ts"
+      ],
+      "../../node_modules/@types/lodash/common/string.d.ts": [
+        "../../node_modules/@types/lodash/index.d.ts",
+        "../../node_modules/@types/lodash/common/common.d.ts",
+        "../../node_modules/@types/lodash/common/array.d.ts",
+        "../../node_modules/@types/lodash/common/collection.d.ts",
+        "../../node_modules/@types/lodash/common/date.d.ts",
+        "../../node_modules/@types/lodash/common/function.d.ts",
+        "../../node_modules/@types/lodash/common/lang.d.ts",
+        "../../node_modules/@types/lodash/common/math.d.ts",
+        "../../node_modules/@types/lodash/common/number.d.ts",
+        "../../node_modules/@types/lodash/common/object.d.ts",
+        "../../node_modules/@types/lodash/common/seq.d.ts",
+        "../../node_modules/@types/lodash/common/util.d.ts"
+      ],
+      "../../node_modules/@types/lodash/common/seq.d.ts": [
+        "../../node_modules/@types/lodash/index.d.ts",
+        "../../node_modules/@types/lodash/common/common.d.ts",
+        "../../node_modules/@types/lodash/common/array.d.ts",
+        "../../node_modules/@types/lodash/common/collection.d.ts",
+        "../../node_modules/@types/lodash/common/date.d.ts",
+        "../../node_modules/@types/lodash/common/function.d.ts",
+        "../../node_modules/@types/lodash/common/lang.d.ts",
+        "../../node_modules/@types/lodash/common/math.d.ts",
+        "../../node_modules/@types/lodash/common/number.d.ts",
+        "../../node_modules/@types/lodash/common/object.d.ts",
+        "../../node_modules/@types/lodash/common/string.d.ts",
+        "../../node_modules/@types/lodash/common/util.d.ts"
+      ],
+      "../../node_modules/@types/lodash/common/object.d.ts": [
+        "../../node_modules/@types/lodash/index.d.ts",
+        "../../node_modules/@types/lodash/common/common.d.ts",
+        "../../node_modules/@types/lodash/common/array.d.ts",
+        "../../node_modules/@types/lodash/common/collection.d.ts",
+        "../../node_modules/@types/lodash/common/date.d.ts",
+        "../../node_modules/@types/lodash/common/function.d.ts",
+        "../../node_modules/@types/lodash/common/lang.d.ts",
+        "../../node_modules/@types/lodash/common/math.d.ts",
+        "../../node_modules/@types/lodash/common/number.d.ts",
+        "../../node_modules/@types/lodash/common/seq.d.ts",
+        "../../node_modules/@types/lodash/common/string.d.ts",
+        "../../node_modules/@types/lodash/common/util.d.ts"
+      ],
+      "../../node_modules/@types/lodash/common/number.d.ts": [
+        "../../node_modules/@types/lodash/index.d.ts",
+        "../../node_modules/@types/lodash/common/common.d.ts",
+        "../../node_modules/@types/lodash/common/array.d.ts",
+        "../../node_modules/@types/lodash/common/collection.d.ts",
+        "../../node_modules/@types/lodash/common/date.d.ts",
+        "../../node_modules/@types/lodash/common/function.d.ts",
+        "../../node_modules/@types/lodash/common/lang.d.ts",
+        "../../node_modules/@types/lodash/common/math.d.ts",
+        "../../node_modules/@types/lodash/common/object.d.ts",
+        "../../node_modules/@types/lodash/common/seq.d.ts",
+        "../../node_modules/@types/lodash/common/string.d.ts",
+        "../../node_modules/@types/lodash/common/util.d.ts"
+      ],
+      "../../node_modules/@types/lodash/common/math.d.ts": [
+        "../../node_modules/@types/lodash/index.d.ts",
+        "../../node_modules/@types/lodash/common/common.d.ts",
+        "../../node_modules/@types/lodash/common/array.d.ts",
+        "../../node_modules/@types/lodash/common/collection.d.ts",
+        "../../node_modules/@types/lodash/common/date.d.ts",
+        "../../node_modules/@types/lodash/common/function.d.ts",
+        "../../node_modules/@types/lodash/common/lang.d.ts",
+        "../../node_modules/@types/lodash/common/number.d.ts",
+        "../../node_modules/@types/lodash/common/object.d.ts",
+        "../../node_modules/@types/lodash/common/seq.d.ts",
+        "../../node_modules/@types/lodash/common/string.d.ts",
+        "../../node_modules/@types/lodash/common/util.d.ts"
+      ],
+      "../../node_modules/@types/lodash/common/lang.d.ts": [
+        "../../node_modules/@types/lodash/index.d.ts",
+        "../../node_modules/@types/lodash/common/common.d.ts",
+        "../../node_modules/@types/lodash/common/array.d.ts",
+        "../../node_modules/@types/lodash/common/collection.d.ts",
+        "../../node_modules/@types/lodash/common/date.d.ts",
+        "../../node_modules/@types/lodash/common/function.d.ts",
+        "../../node_modules/@types/lodash/common/math.d.ts",
+        "../../node_modules/@types/lodash/common/number.d.ts",
+        "../../node_modules/@types/lodash/common/object.d.ts",
+        "../../node_modules/@types/lodash/common/seq.d.ts",
+        "../../node_modules/@types/lodash/common/string.d.ts",
+        "../../node_modules/@types/lodash/common/util.d.ts"
+      ],
+      "../../node_modules/@types/lodash/common/function.d.ts": [
+        "../../node_modules/@types/lodash/index.d.ts",
+        "../../node_modules/@types/lodash/common/common.d.ts",
+        "../../node_modules/@types/lodash/common/array.d.ts",
+        "../../node_modules/@types/lodash/common/collection.d.ts",
+        "../../node_modules/@types/lodash/common/date.d.ts",
+        "../../node_modules/@types/lodash/common/lang.d.ts",
+        "../../node_modules/@types/lodash/common/math.d.ts",
+        "../../node_modules/@types/lodash/common/number.d.ts",
+        "../../node_modules/@types/lodash/common/object.d.ts",
+        "../../node_modules/@types/lodash/common/seq.d.ts",
+        "../../node_modules/@types/lodash/common/string.d.ts",
+        "../../node_modules/@types/lodash/common/util.d.ts"
+      ],
+      "../../node_modules/@types/lodash/common/date.d.ts": [
+        "../../node_modules/@types/lodash/index.d.ts",
+        "../../node_modules/@types/lodash/common/common.d.ts",
+        "../../node_modules/@types/lodash/common/array.d.ts",
+        "../../node_modules/@types/lodash/common/collection.d.ts",
+        "../../node_modules/@types/lodash/common/function.d.ts",
+        "../../node_modules/@types/lodash/common/lang.d.ts",
+        "../../node_modules/@types/lodash/common/math.d.ts",
+        "../../node_modules/@types/lodash/common/number.d.ts",
+        "../../node_modules/@types/lodash/common/object.d.ts",
+        "../../node_modules/@types/lodash/common/seq.d.ts",
+        "../../node_modules/@types/lodash/common/string.d.ts",
+        "../../node_modules/@types/lodash/common/util.d.ts"
+      ],
+      "../../node_modules/@types/lodash/common/collection.d.ts": [
+        "../../node_modules/@types/lodash/index.d.ts",
+        "../../node_modules/@types/lodash/common/common.d.ts",
+        "../../node_modules/@types/lodash/common/array.d.ts",
+        "../../node_modules/@types/lodash/common/date.d.ts",
+        "../../node_modules/@types/lodash/common/function.d.ts",
+        "../../node_modules/@types/lodash/common/lang.d.ts",
+        "../../node_modules/@types/lodash/common/math.d.ts",
+        "../../node_modules/@types/lodash/common/number.d.ts",
+        "../../node_modules/@types/lodash/common/object.d.ts",
+        "../../node_modules/@types/lodash/common/seq.d.ts",
+        "../../node_modules/@types/lodash/common/string.d.ts",
+        "../../node_modules/@types/lodash/common/util.d.ts"
+      ],
+      "../../node_modules/@types/lodash/common/array.d.ts": [
+        "../../node_modules/@types/lodash/index.d.ts",
+        "../../node_modules/@types/lodash/common/common.d.ts",
+        "../../node_modules/@types/lodash/common/collection.d.ts",
+        "../../node_modules/@types/lodash/common/date.d.ts",
+        "../../node_modules/@types/lodash/common/function.d.ts",
+        "../../node_modules/@types/lodash/common/lang.d.ts",
+        "../../node_modules/@types/lodash/common/math.d.ts",
+        "../../node_modules/@types/lodash/common/number.d.ts",
+        "../../node_modules/@types/lodash/common/object.d.ts",
+        "../../node_modules/@types/lodash/common/seq.d.ts",
+        "../../node_modules/@types/lodash/common/string.d.ts",
+        "../../node_modules/@types/lodash/common/util.d.ts"
+      ]
+    },
+    "semanticDiagnosticsPerFile": [
+      "../../node_modules/@lumino/coreutils/types/json.d.ts",
+      "../../node_modules/@lumino/coreutils/types/mime.d.ts",
+      "../../node_modules/@lumino/coreutils/types/promise.d.ts",
+      "../../node_modules/@lumino/coreutils/types/random.d.ts",
+      "../../node_modules/@lumino/coreutils/types/token.d.ts",
+      "../../node_modules/@lumino/coreutils/types/uuid.d.ts",
+      "../../node_modules/@lumino/coreutils/types/index.d.ts",
+      "../../node_modules/@jupyterlab/services/lib/config/index.d.ts",
+      "../../node_modules/@lumino/algorithm/types/array.d.ts",
+      "../../node_modules/@lumino/algorithm/types/iter.d.ts",
+      "../../node_modules/@lumino/algorithm/types/chain.d.ts",
+      "../../node_modules/@lumino/algorithm/types/empty.d.ts",
+      "../../node_modules/@lumino/algorithm/types/enumerate.d.ts",
+      "../../node_modules/@lumino/algorithm/types/filter.d.ts",
+      "../../node_modules/@lumino/algorithm/types/find.d.ts",
+      "../../node_modules/@lumino/algorithm/types/map.d.ts",
+      "../../node_modules/@lumino/algorithm/types/range.d.ts",
+      "../../node_modules/@lumino/algorithm/types/reduce.d.ts",
+      "../../node_modules/@lumino/algorithm/types/repeat.d.ts",
+      "../../node_modules/@lumino/algorithm/types/retro.d.ts",
+      "../../node_modules/@lumino/algorithm/types/sort.d.ts",
+      "../../node_modules/@lumino/algorithm/types/stride.d.ts",
+      "../../node_modules/@lumino/algorithm/types/string.d.ts",
+      "../../node_modules/@lumino/algorithm/types/take.d.ts",
+      "../../node_modules/@lumino/algorithm/types/zip.d.ts",
+      "../../node_modules/@lumino/algorithm/types/index.d.ts",
+      "../../node_modules/@lumino/signaling/types/index.d.ts",
+      "../../node_modules/@lumino/disposable/types/index.d.ts",
+      "../../node_modules/@lumino/messaging/types/index.d.ts",
+      "../../node_modules/@jupyterlab/observables/lib/observablemap.d.ts",
+      "../../node_modules/@jupyterlab/observables/lib/observablejson.d.ts",
+      "../../node_modules/@jupyterlab/observables/lib/observablestring.d.ts",
+      "../../node_modules/@jupyterlab/observables/lib/observablelist.d.ts",
+      "../../node_modules/@jupyterlab/observables/lib/undoablelist.d.ts",
+      "../../node_modules/@jupyterlab/observables/lib/modeldb.d.ts",
+      "../../node_modules/@jupyterlab/observables/lib/index.d.ts",
+      "../../node_modules/@jupyterlab/services/lib/contents/index.d.ts",
+      "../../node_modules/@jupyterlab/nbformat/lib/index.d.ts",
+      "../../node_modules/@jupyterlab/services/lib/kernel/messages.d.ts",
+      "../../node_modules/@jupyterlab/services/lib/serverconnection.d.ts",
+      "../../node_modules/@jupyterlab/services/lib/basemanager.d.ts",
+      "../../node_modules/@jupyterlab/services/lib/kernelspec/restapi.d.ts",
+      "../../node_modules/@jupyterlab/services/lib/kernelspec/kernelspec.d.ts",
+      "../../node_modules/@lumino/polling/types/poll.d.ts",
+      "../../node_modules/@lumino/polling/types/ratelimiter.d.ts",
+      "../../node_modules/@lumino/polling/types/index.d.ts",
+      "../../node_modules/@jupyterlab/services/lib/kernelspec/manager.d.ts",
+      "../../node_modules/@jupyterlab/services/lib/kernelspec/index.d.ts",
+      "../../node_modules/@jupyterlab/services/lib/kernel/restapi.d.ts",
+      "../../node_modules/@jupyterlab/services/lib/kernel/kernel.d.ts",
+      "../../node_modules/@jupyterlab/services/lib/kernel/manager.d.ts",
+      "../../node_modules/@jupyterlab/services/lib/kernel/index.d.ts",
+      "../../node_modules/@jupyterlab/services/lib/builder/index.d.ts",
+      "../../node_modules/@jupyterlab/services/lib/nbconvert/index.d.ts",
+      "../../node_modules/@jupyterlab/coreutils/lib/activitymonitor.d.ts",
+      "../../node_modules/@jupyterlab/coreutils/lib/interfaces.d.ts",
+      "../../node_modules/@jupyterlab/coreutils/lib/markdowncodeblocks.d.ts",
+      "../../node_modules/@jupyterlab/coreutils/lib/pageconfig.d.ts",
+      "../../node_modules/@jupyterlab/coreutils/lib/path.d.ts",
+      "../../node_modules/@jupyterlab/coreutils/lib/text.d.ts",
+      "../../node_modules/@jupyterlab/coreutils/lib/time.d.ts",
+      "../../node_modules/@jupyterlab/coreutils/lib/url.d.ts",
+      "../../node_modules/@jupyterlab/coreutils/lib/index.d.ts",
+      "../../node_modules/@jupyterlab/services/lib/session/session.d.ts",
+      "../../node_modules/@jupyterlab/services/lib/session/restapi.d.ts",
+      "../../node_modules/@jupyterlab/services/lib/session/manager.d.ts",
+      "../../node_modules/@jupyterlab/services/lib/session/index.d.ts",
+      "../../node_modules/@lumino/virtualdom/types/index.d.ts",
+      "../../node_modules/@lumino/commands/types/index.d.ts",
+      "../../node_modules/@jupyterlab/statedb/lib/interfaces.d.ts",
+      "../../node_modules/@jupyterlab/statedb/lib/dataconnector.d.ts",
+      "../../node_modules/@jupyterlab/statedb/lib/restorablepool.d.ts",
+      "../../node_modules/@jupyterlab/statedb/lib/tokens.d.ts",
+      "../../node_modules/@jupyterlab/statedb/lib/statedb.d.ts",
+      "../../node_modules/@jupyterlab/statedb/lib/index.d.ts",
+      "../../node_modules/@jupyterlab/settingregistry/lib/tokens.d.ts",
+      "../../node_modules/@jupyterlab/settingregistry/lib/settingregistry.d.ts",
+      "../../node_modules/@jupyterlab/settingregistry/lib/index.d.ts",
+      "../../node_modules/@jupyterlab/services/lib/setting/index.d.ts",
+      "../../node_modules/@jupyterlab/services/lib/terminal/restapi.d.ts",
+      "../../node_modules/@jupyterlab/services/lib/terminal/terminal.d.ts",
+      "../../node_modules/@jupyterlab/services/lib/terminal/manager.d.ts",
+      "../../node_modules/@jupyterlab/services/lib/terminal/index.d.ts",
+      "../../node_modules/@jupyterlab/services/lib/workspace/index.d.ts",
+      "../../node_modules/@jupyterlab/services/lib/manager.d.ts",
+      "../../node_modules/@jupyterlab/services/lib/index.d.ts",
+      "../../node_modules/@jupyter-widgets/base/lib/utils.d.ts",
+      "../../node_modules/@types/jquery/jquerystatic.d.ts",
+      "../../node_modules/@types/jquery/jquery.d.ts",
+      "../../node_modules/@types/jquery/misc.d.ts",
+      "../../node_modules/@types/jquery/legacy.d.ts",
+      "../../node_modules/@types/sizzle/index.d.ts",
+      "../../node_modules/@types/jquery/index.d.ts",
+      "../../node_modules/@types/underscore/index.d.ts",
+      "../../node_modules/@types/backbone/index.d.ts",
+      "../../node_modules/@jupyter-widgets/base/lib/nativeview.d.ts",
+      "../../node_modules/@lumino/widgets/types/boxengine.d.ts",
+      "../../node_modules/@lumino/widgets/types/title.d.ts",
+      "../../node_modules/@lumino/widgets/types/widget.d.ts",
+      "../../node_modules/@lumino/widgets/types/layout.d.ts",
+      "../../node_modules/@lumino/widgets/types/panellayout.d.ts",
+      "../../node_modules/@lumino/widgets/types/boxlayout.d.ts",
+      "../../node_modules/@lumino/widgets/types/panel.d.ts",
+      "../../node_modules/@lumino/widgets/types/boxpanel.d.ts",
+      "../../node_modules/@lumino/widgets/types/commandpalette.d.ts",
+      "../../node_modules/@lumino/widgets/types/menu.d.ts",
+      "../../node_modules/@lumino/widgets/types/contextmenu.d.ts",
+      "../../node_modules/@lumino/widgets/types/tabbar.d.ts",
+      "../../node_modules/@lumino/widgets/types/docklayout.d.ts",
+      "../../node_modules/@lumino/widgets/types/dockpanel.d.ts",
+      "../../node_modules/@lumino/widgets/types/focustracker.d.ts",
+      "../../node_modules/@lumino/widgets/types/gridlayout.d.ts",
+      "../../node_modules/@lumino/widgets/types/menubar.d.ts",
+      "../../node_modules/@lumino/widgets/types/scrollbar.d.ts",
+      "../../node_modules/@lumino/widgets/types/singletonlayout.d.ts",
+      "../../node_modules/@lumino/widgets/types/splitlayout.d.ts",
+      "../../node_modules/@lumino/widgets/types/splitpanel.d.ts",
+      "../../node_modules/@lumino/widgets/types/stackedlayout.d.ts",
+      "../../node_modules/@lumino/widgets/types/stackedpanel.d.ts",
+      "../../node_modules/@lumino/widgets/types/tabpanel.d.ts",
+      "../../node_modules/@lumino/widgets/types/index.d.ts",
+      "../../node_modules/@jupyter-widgets/base/lib/services-shim.d.ts",
+      "../../node_modules/@jupyter-widgets/base/lib/widget.d.ts",
+      "../../node_modules/@jupyter-widgets/base/lib/manager-base.d.ts",
+      "../../node_modules/@jupyter-widgets/base/lib/widget_layout.d.ts",
+      "../../node_modules/@jupyter-widgets/base/lib/widget_style.d.ts",
+      "../../node_modules/@jupyter-widgets/base/lib/viewlist.d.ts",
+      "../../node_modules/@jupyter-widgets/base/lib/version.d.ts",
+      "../../node_modules/@jupyter-widgets/base/lib/registry.d.ts",
+      "../../node_modules/@jupyter-widgets/base/lib/index.d.ts",
+      "../../node_modules/@types/ndarray/index.d.ts",
+      "../serializers/lib/ndarray.d.ts",
+      "../serializers/lib/common.d.ts",
+      "../serializers/lib/union.d.ts",
+      "../serializers/lib/index.d.ts",
+      "./src/version.ts",
+      "./src/base.ts",
+      "./src/ndarray.ts",
+      "./src/media.ts",
+      "./src/index.ts",
+      "./src/extension.ts",
+      "../../node_modules/@types/color-name/index.d.ts",
+      "../../node_modules/@types/expect.js/index.d.ts",
+      "../../node_modules/@types/node/globals.d.ts",
+      "../../node_modules/@types/node/async_hooks.d.ts",
+      "../../node_modules/@types/node/buffer.d.ts",
+      "../../node_modules/@types/node/child_process.d.ts",
+      "../../node_modules/@types/node/cluster.d.ts",
+      "../../node_modules/@types/node/console.d.ts",
+      "../../node_modules/@types/node/constants.d.ts",
+      "../../node_modules/@types/node/crypto.d.ts",
+      "../../node_modules/@types/node/dgram.d.ts",
+      "../../node_modules/@types/node/dns.d.ts",
+      "../../node_modules/@types/node/domain.d.ts",
+      "../../node_modules/@types/node/events.d.ts",
+      "../../node_modules/@types/node/fs.d.ts",
+      "../../node_modules/@types/node/http.d.ts",
+      "../../node_modules/@types/node/http2.d.ts",
+      "../../node_modules/@types/node/https.d.ts",
+      "../../node_modules/@types/node/inspector.d.ts",
+      "../../node_modules/@types/node/module.d.ts",
+      "../../node_modules/@types/node/net.d.ts",
+      "../../node_modules/@types/node/os.d.ts",
+      "../../node_modules/@types/node/path.d.ts",
+      "../../node_modules/@types/node/perf_hooks.d.ts",
+      "../../node_modules/@types/node/process.d.ts",
+      "../../node_modules/@types/node/punycode.d.ts",
+      "../../node_modules/@types/node/querystring.d.ts",
+      "../../node_modules/@types/node/readline.d.ts",
+      "../../node_modules/@types/node/repl.d.ts",
+      "../../node_modules/@types/node/stream.d.ts",
+      "../../node_modules/@types/node/string_decoder.d.ts",
+      "../../node_modules/@types/node/timers.d.ts",
+      "../../node_modules/@types/node/tls.d.ts",
+      "../../node_modules/@types/node/trace_events.d.ts",
+      "../../node_modules/@types/node/tty.d.ts",
+      "../../node_modules/@types/node/url.d.ts",
+      "../../node_modules/@types/node/util.d.ts",
+      "../../node_modules/@types/node/v8.d.ts",
+      "../../node_modules/@types/node/vm.d.ts",
+      "../../node_modules/@types/node/worker_threads.d.ts",
+      "../../node_modules/@types/node/zlib.d.ts",
+      "../../node_modules/@types/node/ts3.4/base.d.ts",
+      "../../node_modules/@types/node/globals.global.d.ts",
+      "../../node_modules/@types/node/wasi.d.ts",
+      "../../node_modules/@types/node/ts3.6/base.d.ts",
+      "../../node_modules/@types/node/assert.d.ts",
+      "../../node_modules/@types/node/base.d.ts",
+      "../../node_modules/@types/node/index.d.ts",
+      "../../node_modules/@types/minimatch/index.d.ts",
+      "../../node_modules/@types/glob/index.d.ts",
+      "../../node_modules/@types/lodash/common/common.d.ts",
+      "../../node_modules/@types/lodash/common/array.d.ts",
+      "../../node_modules/@types/lodash/common/collection.d.ts",
+      "../../node_modules/@types/lodash/common/date.d.ts",
+      "../../node_modules/@types/lodash/common/function.d.ts",
+      "../../node_modules/@types/lodash/common/lang.d.ts",
+      "../../node_modules/@types/lodash/common/math.d.ts",
+      "../../node_modules/@types/lodash/common/number.d.ts",
+      "../../node_modules/@types/lodash/common/object.d.ts",
+      "../../node_modules/@types/lodash/common/seq.d.ts",
+      "../../node_modules/@types/lodash/common/string.d.ts",
+      "../../node_modules/@types/lodash/common/util.d.ts",
+      "../../node_modules/@types/lodash/index.d.ts",
+      "../../node_modules/@types/minimist/index.d.ts",
+      "../../node_modules/@types/mocha/index.d.ts",
+      "../../node_modules/@types/normalize-package-data/index.d.ts",
+      "../../node_modules/@types/pako/index.d.ts",
+      "../../node_modules/@types/webpack-env/index.d.ts",
+      "../../node_modules/typescript/lib/lib.es2015.d.ts",
+      "../../node_modules/typescript/lib/lib.es2016.d.ts",
+      "../../node_modules/typescript/lib/lib.es2017.d.ts",
+      "../../node_modules/typescript/lib/lib.es2018.d.ts",
+      "../../node_modules/typescript/lib/lib.es5.d.ts",
+      "../../node_modules/typescript/lib/lib.dom.d.ts",
+      "../../node_modules/typescript/lib/lib.es2015.core.d.ts",
+      "../../node_modules/typescript/lib/lib.es2015.collection.d.ts",
+      "../../node_modules/typescript/lib/lib.es2015.generator.d.ts",
+      "../../node_modules/typescript/lib/lib.es2015.iterable.d.ts",
+      "../../node_modules/typescript/lib/lib.es2015.promise.d.ts",
+      "../../node_modules/typescript/lib/lib.es2015.proxy.d.ts",
+      "../../node_modules/typescript/lib/lib.es2015.reflect.d.ts",
+      "../../node_modules/typescript/lib/lib.es2015.symbol.d.ts",
+      "../../node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts",
+      "../../node_modules/typescript/lib/lib.es2016.array.include.d.ts",
+      "../../node_modules/typescript/lib/lib.es2017.object.d.ts",
+      "../../node_modules/typescript/lib/lib.es2017.sharedmemory.d.ts",
+      "../../node_modules/typescript/lib/lib.es2017.string.d.ts",
+      "../../node_modules/typescript/lib/lib.es2017.intl.d.ts",
+      "../../node_modules/typescript/lib/lib.es2017.typedarrays.d.ts",
+      "../../node_modules/typescript/lib/lib.es2018.asyncgenerator.d.ts",
+      "../../node_modules/typescript/lib/lib.es2018.asynciterable.d.ts",
+      "../../node_modules/typescript/lib/lib.es2018.intl.d.ts",
+      "../../node_modules/typescript/lib/lib.es2018.promise.d.ts",
+      "../../node_modules/typescript/lib/lib.es2018.regexp.d.ts",
+      "../../node_modules/typescript/lib/lib.es2020.bigint.d.ts",
+      "../../node_modules/typescript/lib/lib.esnext.intl.d.ts"
+    ]
+  },
+  "version": "3.8.3"
+}
