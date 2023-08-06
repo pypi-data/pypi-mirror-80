@@ -1,0 +1,36 @@
+# -*- coding: utf-8 -*-
+from setuptools import setup
+
+packages = \
+['ecowitt2mqtt']
+
+package_data = \
+{'': ['*']}
+
+install_requires = \
+['aiohttp>=3.6.2,<4.0.0',
+ 'asyncio-mqtt>=0.7.0,<0.8.0',
+ 'supervisor>=4.2.1,<5.0.0']
+
+entry_points = \
+{'console_scripts': ['ecowitt2mqtt = ecowitt2mqtt.main:main']}
+
+setup_kwargs = {
+    'name': 'ecowitt2mqtt',
+    'version': '0.0.4',
+    'description': 'A small web server to send data from Ecowitt devices to an MQTT Broker',
+    'long_description': "# 🔘 ecowitt2mqtt: Send Ecowitt device data to an MQTT broker\n\n[![PyPi](https://img.shields.io/pypi/v/ecowitt2mqtt.svg)](https://pypi.python.org/pypi/ecowitt2mqtt)\n[![Version](https://img.shields.io/pypi/pyversions/ecowitt2mqtt.svg)](https://pypi.python.org/pypi/ecowitt2mqtt)\n[![License](https://img.shields.io/pypi/l/ecowitt2mqtt.svg)](https://github.com/bachya/ecowitt2mqtt/blob/master/LICENSE)\n[![Maintainability](https://api.codeclimate.com/v1/badges/a03c9e96f19a3dc37f98/maintainability)](https://codeclimate.com/github/bachya/ecowitt2mqtt/maintainability)\n[![Say Thanks](https://img.shields.io/badge/SayThanks-!-1EAEDB.svg)](https://saythanks.io/to/bachya)\n\n`ecowitt2mqtt` is a small CLI/web server that allows [Ecowitt](http://www.ecowitt.com)\ndevice data to be sent to an MQTT broker.\n\n- [Installation](#installation)\n- [Python Versions](#python-versions)\n- [Quick Start](#quick-start)\n- [Advanced Usage](#advanced-usage)\n- [Contributing](#contributing)\n\n# Installation\n\n```python\npip install ecowitt2mqtt\n```\n\n# Python Versions\n\n`ecowitt2mqtt` is currently supported on:\n\n* Python 3.6\n* Python 3.7\n* Python 3.8 \n\n# Quick Start\n\nNote that this README assumes:\n\n* you have access to an MQTT broker\n* you have already paired your Ecowitt device with the WS View Android/iOS app from\n  Ecowitt.\n\nFirst, install `ecowitt2mqtt` via `pip`:\n\n```bash\n$ pip install ecowitt2mqtt\n```\n\nThen, shift over to the WS View app on your Android/iOS device. While viewing your\ndevice in the app, select `Weather Services`:\n\n![Select Weather Services](/assets/1-weather-services.jpeg?raw=true)\n\nPress `Next` until you reach the `Customized` screen:\n\n![The Customized screen in the WS View app](/assets/2-customized.jpeg?raw=true)\n\nFill out the form with these values and tap `Save`:\n\n* `Protocol Type Same As`: `Ecowitt`\n* `Server IP / Hostname`: the IP address/hostname of the device running `ecowitt2mqtt`\n* `Path`: `/data/report` (note that unlike the default in the WS View App, there shouldn't\n  be a trailing slash)\n* `Port`: `8080`\n* `Upload Interval`: `60` (change this to alter the frequency with which data is published)\n\nThen, on the machine where you installed `ecowitt2mqtt`, run it:\n\n```bash\n$ ecowitt2mqtt \\\n    --mqtt-broker=192.168.1.101 \\\n    --mqtt-username=user \\\n    --mqtt-password=password \\\n    --mqtt-topic=ecowitt/testdevice1\n```\n\nWithin the `Upload Interval`, data should begin to appear in the MQTT broker at the topic\nspecified.\n\n# Advanced Usage\n\n## Command Line Interface\n\nThe `ecowitt2mqtt` executable contains several configurable parameters:`\n```\nusage: ecowitt2mqtt [-h] --mqtt-broker MQTT_BROKER --mqtt-topic MQTT_TOPIC [--mqtt-port MQTT_PORT]\n                    [--mqtt-username MQTT_USERNAME] [--mqtt-password MQTT_PASSWORD]\n                    [--endpoint ENDPOINT] [--port PORT] [-l LOG_LEVEL]\n\nSend data from Ecowitt devices to an MQTT broker\n\noptional arguments:\n  -h, --help            show this help message and exit\n  --mqtt-broker MQTT_BROKER\n                        The hostname or IP address of the MQTT broker\n  --mqtt-topic MQTT_TOPIC\n                        The MQTT topic to publish the device's data to\n  --mqtt-port MQTT_PORT\n                        The port of the MQTT broker (default: 1883)\n  --mqtt-username MQTT_USERNAME\n                        The username to use with the MQTT broker (default: None)\n  --mqtt-password MQTT_PASSWORD\n                        The password to use with the MQTT broker (default: None)\n  --endpoint ENDPOINT   The relative endpoint/path to serve the web app on (default: /data/report)\n  --port PORT           The port to serve the web app on (default: 8080)\n  -l LOG_LEVEL, --log-level LOG_LEVEL\n                        The logging level (default: INFO)\n```\n\n## Run in the Background\n\n`ecowitt2mqtt` doesn't, itself, provide any sort of daemonization mechanism. The suggested\nroute is to use something like [`supervisord`](http://www.supervisord.org):\n\n```\n[supervisord]\nnodaemon=true\nloglevel=info\nuser=root\n\n[program:ecowitt2mqtt]\ncommand=ecowitt2mqtt --mqtt-broker=192.168.1.101 --mqtt-topic=ecowitt/testdevice1\nstdout_logfile=/dev/stdout\nstdout_logfile_maxbytes=0\nredirect_stderr=true\n```\n\n## Docker\n\nThe library is available via a Docker image (`bachya/ecowitt2mqtt`). It is configured by\na handful of environment variables that correspond to the command line parameters listed\nabove:\n\n* `LOG_LEVEL:` the log level to use (default: `INFO`)\n* `ENDPOINT:` the relative endpoint/path to serve the web app on (default: `/data/report`)\n* `PORT:` the port to serve the web app on (default: `8080`)\n* `MQTT_BROKER:` the hostname or IP address of the MQTT broker\n* `MQTT_PORT:` the port of the MQTT broker (default: `1883`)\n* `MQTT_PASSWORD:` the password to use with the MQTT broker (default: `None`)\n* `MQTT_USERNAME:` the password to use with the MQTT broker (default: `None`)\n* `MQTT_TOPIC:` the MQTT topic to publish the device's data to\n\nAn example `docker-compose` usage can be found in `docker-compose.dist.yml`.\n\n# Contributing\n\n1. [Check for open features/bugs](https://github.com/bachya/ecowitt2mqtt/issues)\n  or [initiate a discussion on one](https://github.com/bachya/ecowitt2mqtt/issues/new).\n2. [Fork the repository](https://github.com/bachya/ecowitt2mqtt/fork).\n3. (_optional, but highly recommended_) Create a virtual environment: `python3 -m venv .venv`\n4. (_optional, but highly recommended_) Enter the virtual environment: `source ./.venv/bin/activate`\n5. Install the dev environment: `script/setup`\n6. Code your new feature or bug fix.\n7. Write tests that cover your new functionality.\n8. Run tests and ensure 100% code coverage: `script/test`\n9. Update `README.md` with any new documentation.\n10. Add yourself to `AUTHORS.md`.\n11. Submit a pull request!\n",
+    'author': 'Aaron Bach',
+    'author_email': 'bachya1208@gmail.com',
+    'maintainer': None,
+    'maintainer_email': None,
+    'url': 'https://github.com/bachya/ecowitt2mqtt',
+    'packages': packages,
+    'package_data': package_data,
+    'install_requires': install_requires,
+    'entry_points': entry_points,
+    'python_requires': '>=3.6.1,<4.0.0',
+}
+
+
+setup(**setup_kwargs)
