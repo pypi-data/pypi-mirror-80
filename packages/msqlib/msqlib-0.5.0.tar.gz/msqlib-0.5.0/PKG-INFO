@@ -1,0 +1,17 @@
+Metadata-Version: 1.2
+Name: msqlib
+Version: 0.5.0
+Summary: A Quantitative-research Platform
+Home-page: https://github.com/microsoft/qlib
+License: MIT Licence
+Description: TODO: to be completed
+Platform: UNKNOWN
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Development Status :: 3 - Alpha
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Requires-Python: >=3.5.0
