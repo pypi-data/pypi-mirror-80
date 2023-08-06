@@ -1,0 +1,12 @@
+google-api-core[grpc]<2.0.0dev,>=1.22.2
+proto-plus>=1.4.0
+libcst>=0.2.5
+
+[fastavro]
+fastavro>=0.21.2
+
+[pandas]
+pandas>=0.17.1
+
+[pyarrow]
+pyarrow>=0.15.0
