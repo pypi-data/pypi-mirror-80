@@ -1,0 +1,44 @@
+Metadata-Version: 2.1
+Name: winix
+Version: 0.0.1
+Summary: Programmatically control the Winix C545
+Home-page: https://github.com/hfern/winix
+Author: Hunter Fernandes
+Author-email: hunter@hfernandes.com
+License: UNKNOWN
+Description: # Winix Controller
+        
+        This is a Python library for controlling Winix C545 Air Purifier
+        devices. I reverse-engineered the API calls from the Android app. There
+        are a few weird idiosyncrasies with the Winix backends.
+        
+        Included in this package is a CLI program `winixctl`.
+        
+        ## Setup
+        
+        
+        ## `winixctl` CLI
+        
+        ```
+        ~/dev/winix(master*) » winixctl                                                                                                                                                                                                 hfern@arrakis
+        usage: winixctl [-h] {login,refresh,devices,fan,power} ...
+        
+        Winix C545 Air Purifier Control
+        
+        positional arguments:
+          {login,refresh,devices,fan,power}
+            login               Authenticate Winix account
+            refresh             Refresh account device metadata
+            devices             List registered Winix devices
+            fan                 Fan speed controls
+            power               Power controls
+        
+        optional arguments:
+          -h, --help            show this help message and exit
+        ```
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
