@@ -1,0 +1,18 @@
+Metadata-Version: 1.1
+Name: mendel-opt
+Version: 0.1
+Summary: Python library written as a case study in implementing pythonic Genetic Algorithms.
+Home-page: https://github.com/vsartor/mendel-opt
+Author: Victhor Sartório
+Author-email: victhor@vsartor.com
+License: MIT
+Description: UNKNOWN
+Keywords: optimizer,genetic algorithm
+Platform: UNKNOWN
+Classifier: Intended Audience :: Science/Research
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Classifier: Topic :: Scientific/Engineering :: Mathematics
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Typing :: Typed
