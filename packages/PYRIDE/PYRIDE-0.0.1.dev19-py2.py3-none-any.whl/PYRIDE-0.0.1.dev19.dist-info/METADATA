@@ -1,0 +1,31 @@
+Metadata-Version: 2.1
+Name: PYRIDE
+Version: 0.0.1.dev19
+Summary: PYRIDE: A Cross-Platform RegEx IDE
+Home-page: https://github.com/nickpandolfi/
+Author: Nicholas C. Pandolfi
+Author-email: npandolfi@wpi.edu
+License: MIT
+Keywords: Regular Expression,RegEx,regex,re,Python,Python 3,user-friendly,command-line,script,ide,IDE,Integrated Development Environment,api,parser,highlight,
+Platform: Windows
+Platform: MacOS
+Platform: POSIX
+Platform: Unix
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Console
+Classifier: Topic :: Software Development
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: Topic :: Desktop Environment :: File Managers
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Science/Research
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.8
+Classifier: License :: OSI Approved :: MIT License
+Description-Content-Type: text/markdown
+Requires-Dist: requests
+
+
+PYRIDE
+
+
