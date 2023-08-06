@@ -1,0 +1,49 @@
+Metadata-Version: 2.1
+Name: flake8-idom-hooks
+Version: 0.1.0
+Summary: Flake8 plugin to enforce the rules of hooks for IDOM
+Home-page: https://github.com/idom-team/flake8-idom-hooks
+Author: Ryan Morshead
+Author-email: ryan.morshead@gmail.com
+License: MIT
+Platform: Linux
+Platform: Mac OS X
+Platform: Windows
+Classifier: Environment :: Console
+Classifier: Framework :: Flake8
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Software Development :: Quality Assurance
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: flake8 (>=3.7)
+
+# `flake8-idom-hooks`
+
+A Flake8 plugin that enforces the ["rules of hooks"](https://reactjs.org/docs/hooks-rules.html) for [IDOM](https://github.com/idom-team/idom).
+
+The implementation is based on React's own ESLint [plugin for hooks](https://github.com/facebook/react/tree/master/packages/eslint-plugin-react-hooks).
+
+# Install
+
+```bash
+pip install flake8-idom-hooks
+```
+
+# Developer Installation
+
+```bash
+pip install -r requirements.txt
+pip install -e .
+```
+
+Run the tests
+
+```bash
+tox
+```
+
+
