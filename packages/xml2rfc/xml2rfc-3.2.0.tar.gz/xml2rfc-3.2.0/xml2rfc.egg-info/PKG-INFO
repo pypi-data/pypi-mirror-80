@@ -1,0 +1,205 @@
+Metadata-Version: 1.1
+Name: xml2rfc
+Version: 3.2.0
+Summary: Xml2rfc generates RFCs and IETF drafts from document source in XML according to the IETF xml2rfc v2 and v3 vocabularies.
+Home-page: https://tools.ietf.org/tools/xml2rfc/trac/
+Author: Henrik Levkowetz
+Author-email: henrik@levkowetz.com
+License: BSD-3-Clause
+Download-URL: https://pypi.python.org/pypi/xml2rfc
+Description: Introduction
+        ============
+        
+        The IETF_ uses a specific format for the standards and other documents it
+        publishes as RFCs_, and for the draft documents which are produced when
+        developing documents for publications.  There exists a number of different
+        tools to facilitate the formatting of drafts and RFCs according to the
+        existing rules, and this tool, **xml2rfc**, is one of them.  It takes as input
+        an xml file which contains the text and meta-information about author names
+        etc., and transforms it into suitably formatted output.  The input xml file
+        should follow the grammars in RFC7749_ (for v2 documents) or RFC7991_ (for 
+        v3 documents). Note that the grammar for v3 is still being refined, and 
+        changes will eventually be captured in the `bis draft for 7991`_. 
+        Changes not yet captured can be seen in the xml2rfc source `v3.rng`_.
+        
+        **xml2rfc** provides a variety of output formats. See the command line
+        help for a full list of formats. It also provides conversion from v2 to
+        v3, and can run the preptool_ on its input.
+        
+        .. _IETF: https://www.ietf.org/
+        .. _RFCs: https://www.rfc-editor.org/
+        .. _RFC7749: https://tools.ietf.org/html/rfc7749
+        .. _RFC7991: https://tools.ietf.org/html/rfc7991
+        .. _bis draft for 7991: https://tools.ietf.org/html/draft-iab-rfc7991bis
+        .. _v3.rng: https://trac.tools.ietf.org/tools/xml2rfc/trac/browser/trunk/cli/xml2rfc/data/v3.rng
+        .. _preptool: https://tools.ietf.org/html/rfc7998
+        
+        Installation
+        ============
+        
+        Installation of the python package is done as usual with 'pip install xml2rfc',
+        using appropriate switches and/or sudo.
+        
+        Installation of support libraries for the PDF-formatter
+        -------------------------------------------------------
+        
+        In order to generate PDFs, xml2rfc uses the WeasyPrint module, which
+        depends on external libaries that must be installed as native packages
+        on your platform, separately from the xml2rfc install.
+        
+        First, install the Cairo, Pango, and GDK-PixBuf library files on your
+        system.  See installation instructions on the WeasyPrint Docs:
+        
+            https://weasyprint.readthedocs.io/en/stable/install.html
+        
+        (Python 3 is not needed if your system Python is 2.7, though).
+        
+        (On some OS X systems with System Integrity Protection active, you may
+        need to create a symlink from your home directory to the library installation
+        directory (often /opt/local/lib):
+        
+            ln -s /opt/local/lib ~/lib
+        
+        in order for weasyprint to find the installed cairo and pango libraries.
+        Whether this is needed or not depends on whether you used macports or homebrew
+        to install cairo and pango, and the homebrew / macport version.)
+        
+        Next, install the pycairo and weasyprint python modules using pip.
+        Depending on your system, you may need to use 'sudo' or install in
+        user-specific directories, using the --user switch.  On OS X in
+        particular, you may also need to install a newer version of setuptools
+        using --user before weasyprint can be installed.  If you install with 
+        the --user switch, you may need to also set PYTHONPATH, e.g.,
+        
+            PYTHONPATH=/Users/henrik/Library/Python/2.7/lib/python/site-packages
+        
+        for Python 2.7.
+        
+        The basic pip commands (modify as needed according to the text above)
+        are:
+        
+            pip install 'pycairo>=1.18' 'weasyprint<=0.42.3'
+        
+        With these installed and available to xml2rfc, the --pdf switch will be
+        enabled.
+        
+        For PDF output, you also need to install the Noto font set.  Download the full
+        set from https://noto-website-2.storage.googleapis.com/pkgs/Noto-unhinted.zip,
+        and install as appropriate for your platform.
+        
+        Usage
+        =====
+        
+        xml2rfc accepts a single XML document as input and outputs to one or more conversion formats.
+        
+        **Basic Usage**: ``xml2rfc SOURCE [options] FORMATS...``
+        
+        Run ``xml2rfc --help`` for a full listing of command-line options.
+        
+        
+        Changelog
+        =========
+        
+        
+        Version 3.2.0 (24 Sep 2020)
+        ------------------------------------------------
+        
+        
+          * Added a utility script that checks some test suite prerequisites, to 
+            avoid for instance test errors because of missing python modules or fonts.  
+            Related to issue #549.
+        
+          * Updated the list of tags that permit Latin script content without an 
+            'ascii' attribute.
+        
+          * Changed the acceptable length of the title abbreviation for the running 
+            page header in PDF output, and changed the warning to a note.
+        
+        
+        
+        
+        
+        
+        Version 3.1.1 (13 Sep 2020)
+        ------------------------------------------------
+        
+        
+          * Fixed an issue with empty table cells that could cause an exception.
+        
+        
+        
+        
+        
+        
+        
+        Version 3.1.0 (13 Sep 2020)
+        ------------------------------------------------
+        
+        
+          * Fixed an issue with an extra comma rendered in HTML for empty date 
+            elements.  Fixes issue #542.
+        
+          * Added escaping of quotes in page footer and header components when
+            generating the @page CSS for PDF output, in order to avoid issues
+            when building quoted CSS content strings from the components.  
+            Fixes issue #544.
+        
+          * Added a CSS workaround for an unexpected HTML rendering behaviour in 
+            some browsers, where a <dt> following an empty <dd> would be indented.  
+            Fixes issue #545.
+        
+          * Improved error messages and the handling of artwork with no "type" 
+            attribute value when "binary-art" would have been correct.
+            Fixes issue #535.
+        
+          * Reverted the default value for the --legacy-date-format to false, on 
+            request from the RPC.
+        
+          * Fixed table cell padding to not add left paddding for left-aligned 
+            columns if not all lines in the column can be padded in the same manner,
+            and similarly for right-aligned columns.  Fixes issue #543.
+        
+          * Tweaked utils.build_dataurl() to give consistent results across Python 
+            versions (tilde was added to the default safe characters in Python 3.7,
+            so the default percentage-escape results of binary content differed if
+            it contained a 0x7e (tilde) character.
+        
+          * Fixed a bug in finding the length of the longest word in a table cell, 
+            used to determine minimum cell width for text output.
+        
+          * Added a new test case with a tightly constrained table to excercise the 
+            issue in #543.
+        
+          * Added <title> to the list of elements that can have Latin script 
+            content without needing the 'ascii' attribute set.  Fixes issue #525.
+        
+          * Refined the rendering of <xref> with format='title' for the text 
+            formatter.
+        
+          * Added docfile and manpage information about elements that are permitted 
+            to have Latin script content without an ascii attribute equivalent being 
+            set.
+        
+          * Expanded on the docfile description of elements that can have Latin 
+            script content without ASCII fallback.
+        
+          * Added a test case related to issue #525.
+        
+          * Changed the HTML rendering of <xref> within <name> to use square 
+            brackets.  Fixes issue #498.
+        
+        
+        
+        
+        
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Console
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python
+Classifier: Topic :: Text Processing
+Classifier: Topic :: Text Processing :: Markup :: XML
+Classifier: License :: OSI Approved :: BSD License
