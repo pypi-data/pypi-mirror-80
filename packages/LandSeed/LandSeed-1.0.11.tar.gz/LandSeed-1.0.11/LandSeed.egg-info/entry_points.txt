@@ -1,0 +1,4 @@
+[console_scripts]
+LandSeed = LandSeed.LandSeed:generate
+LandSeed_newinput = LandSeed.LandSeed:newInputFile
+
