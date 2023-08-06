@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: testthisqawsedrftg
+Version: 0.0.1
+Summary: test
+Home-page: https://github.com/The-Data-Hound/tutorials
+Author: Barry Guglielmo
+Author-email: barryguglielmo@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Description-Content-Type: text/markdown
+Requires-Dist: pandas
+Provides-Extra: dev
+Requires-Dist: pytest (>=3.7) ; extra == 'dev'
+
+# Practice Distribution
+
+Here is an example of a project to post to pypi
+
+
