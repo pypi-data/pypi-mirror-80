@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="LibPyMathModules" targetName="LibPyMathModules" />
+    </generated>
+  </component>
+  <component name="CMakeSettings" AUTO_RELOAD="true">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b7457a26-bd1f-4832-a19d-92379590878c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/BLAS/dgemm.h" beforeDir="false" afterPath="$PROJECT_DIR$/BLAS/dgemm.h" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1gdQVho8lgLrR31ZRDwjcro9jVE" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="cf.first.check.clang-format" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\penci\OneDrive\Desktop\LibPyMath\LibPyMath\libpymath\LibPyMathModules\BLAS" />
+      <recent name="C:\Users\penci\OneDrive\Desktop\LibPyMath\LibPyMath\libpymath\LibPyMathModules\matrix" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\penci\OneDrive\Desktop\LibPyMath\LibPyMath\libpymath\LibPyMathModules\error" />
+      <recent name="C:\Users\penci\OneDrive\Desktop\LibPyMath\LibPyMath\LibPyMath\LibPyMathModules" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="LibPyMathModules" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="LibPyMathModules" TARGET_NAME="LibPyMathModules" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="LibPyMathModules" RUN_TARGET_NAME="LibPyMathModules">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="project-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b7457a26-bd1f-4832-a19d-92379590878c" name="Default Changelist" comment="" />
+      <created>1598442014922</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1598442014922</updated>
+      <workItem from="1598442016344" duration="3300000" />
+      <workItem from="1598476565609" duration="837000" />
+      <workItem from="1598527412587" duration="4765000" />
+      <workItem from="1598603860371" duration="11329000" />
+      <workItem from="1598687960193" duration="596000" />
+      <workItem from="1598704924087" duration="164000" />
+      <workItem from="1598705099692" duration="8065000" />
+      <workItem from="1598787875923" duration="6649000" />
+      <workItem from="1598857347496" duration="6208000" />
+      <workItem from="1598961795066" duration="1644000" />
+      <workItem from="1599033704071" duration="4301000" />
+      <workItem from="1599073894261" duration="1157000" />
+      <workItem from="1599160192957" duration="2007000" />
+      <workItem from="1599200484532" duration="6087000" />
+      <workItem from="1599303457038" duration="3128000" />
+      <workItem from="1599415773012" duration="3824000" />
+      <workItem from="1599457419566" duration="4994000" />
+      <workItem from="1599719243396" duration="956000" />
+      <workItem from="1599767207705" duration="1075000" />
+      <workItem from="1599802100074" duration="2659000" />
+      <workItem from="1599904372025" duration="3601000" />
+      <workItem from="1600020340631" duration="891000" />
+      <workItem from="1600077975743" duration="762000" />
+      <workItem from="1600163484082" duration="1364000" />
+      <workItem from="1600257065415" duration="664000" />
+      <workItem from="1600259133382" duration="2466000" />
+      <workItem from="1600262716110" duration="8986000" />
+      <workItem from="1600337891761" duration="2506000" />
+      <workItem from="1600410348285" duration="595000" />
+      <workItem from="1600500426448" duration="69000" />
+      <workItem from="1600500503906" duration="12805000" />
+      <workItem from="1600591045346" duration="593000" />
+      <workItem from="1600614721081" duration="1527000" />
+      <workItem from="1600754696054" duration="265000" />
+      <workItem from="1600754969687" duration="76000" />
+      <workItem from="1600755076469" duration="161000" />
+      <workItem from="1600755274125" duration="590000" />
+      <workItem from="1600804806818" duration="62000" />
+      <workItem from="1600805255662" duration="1238000" />
+      <workItem from="1600839282680" duration="1240000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/../../.." />
+    </ignored-roots>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="872" y="358" key="#New_File_Extensions" timestamp="1598442612472">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="872" y="358" key="#New_File_Extensions/0.0.2560.1400@0.0.2560.1400" timestamp="1598442612472" />
+    <state x="525" y="566" key="#Notifications" timestamp="1598907557228">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="525" y="566" key="#Notifications/0.0.2560.1400@0.0.2560.1400" timestamp="1598907557228" />
+    <state x="1010" y="447" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1600755006220">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1010" y="447" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1600755006220" />
+    <state x="1700" y="458" key="FileChooserDialogImpl" timestamp="1600755029278">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1700" y="458" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1600755029278" />
+    <state x="1086" y="428" key="SettingsEditor" timestamp="1600275242898">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1086" y="428" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1600275242898" />
+    <state x="1583" y="320" width="672" height="678" key="search.everywhere.popup" timestamp="1600259120313">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1583" y="320" width="672" height="678" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1600259120313" />
+  </component>
+</project>
