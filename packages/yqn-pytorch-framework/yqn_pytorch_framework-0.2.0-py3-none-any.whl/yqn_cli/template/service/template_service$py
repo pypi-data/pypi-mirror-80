@@ -1,0 +1,39 @@
+import numpy as np
+from yqn_common.singleton import Singleton
+from yqn_common.helper import set_logger
+from termcolor import colored
+from ${module_name}.infer.pytorch_${module_name}_infer import ${class_name}Infer
+from annotation import time_cost
+from io import BytesIO
+import os
+from PIL import Image
+
+
+@Singleton
+class ${class_name}Service:
+    def __init__(self, config=None, verbose=False):
+        pid = os.getpid()
+        self.logger = set_logger(
+            colored("${class_name}Service", 'blue'), verbose)
+        self.config = config
+        self.models = self.load_models(config)
+        self.logger.info("pid : " + str(pid))
+
+    def load_models(self, config):
+        self.logger.info("load_models")
+        models_initial = {"${module_name}": ${class_name}Infer(config)}
+        return models_initial
+
+    def service_infer(self, input_features):
+        predicts_str = self._infer_model(input_features)
+        return predicts_str[0]
+
+    @time_cost
+    def _infer_model(self, input_features):
+        """
+        :param img
+        :return:
+        """
+        service_model = self.models['${module_name}']
+        predicts_class, predicts_str = service_model.infer([np.array([input_features])])
+        return predicts_str
