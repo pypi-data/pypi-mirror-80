@@ -1,0 +1,12 @@
+LICENSE
+MANIFEST.in
+README.md
+requirements.txt
+requirements_dev.txt
+setup.py
+makefile/__init__.py
+makefile/makefile.py
+makefile.egg-info/PKG-INFO
+makefile.egg-info/SOURCES.txt
+makefile.egg-info/dependency_links.txt
+makefile.egg-info/top_level.txt
