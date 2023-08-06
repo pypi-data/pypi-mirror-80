@@ -1,0 +1,31 @@
+Metadata-Version: 2.1
+Name: strdes
+Version: 0.0.1
+Summary: A string encrypt and decrypt library
+Home-page: https://github.com/tootal/strdes
+Author: tootal
+Author-email: tootal@yeah.net
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+
+# StrDES
+**strdes** is a easy to use string encrypt and decrypt library. 
+
+Refactoring from [des.js](https://sso.scut.edu.cn/cas/comm/js/des.js), the original author is Guapo.
+
+```py
+>>> import strdes
+>>> strdes.strEnc('abcd', 'a', 'b', 'c')
+'238A77E95631FDAA'
+>>> strdes.strDec('238A77E95631FDAA', 'a', 'b', 'c')
+'abcd'
+```
+
+## Installing
+strdes is available on PyPI, install via `pip install strdes`.
+
