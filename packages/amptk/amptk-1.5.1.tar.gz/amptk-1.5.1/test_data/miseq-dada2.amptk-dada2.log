@@ -1,0 +1,18 @@
+[07/30/19 17:46:10]: /Users/jon/miniconda3/envs/amptk_dev/bin/amptk dada2 -i miseq.demux.fq.gz -o miseq-dada2
+
+[07/30/19 17:46:10]: OS: MacOSX 10.14.5, 8 cores, ~ 17 GB RAM. Python: 3.7.3
+[07/30/19 17:46:10]: Python Modules: numpy v1.16.4, pandas v0.25.0, matplotlib v3.1.1, psutil v5.6.3, natsort v6.0.0, biopython v1.74, edlib v1.2.4.post1, biom-format v2.1.7
+[07/30/19 17:46:10]: AMPtk v1.4.1, USEARCH v9.2.64, VSEARCH v2.13.6
+[07/30/19 17:46:11]: R v3.6.1; DADA2 v1.12.1
+[07/30/19 17:46:11]: Loading FASTQ Records
+[07/30/19 17:46:11]: pigz --decompress -c -p 8 /Users/jon/amptk/test_data/miseq.demux.fq.gz
+[07/30/19 17:46:11]: vsearch --fastq_filter /Users/jon/amptk/test_data/miseq-dada2.cleaned_input.fq --fastq_qmax 55 --fastaout miseq-dada2.original.fa --threads 8
+[07/30/19 17:46:11]: b'WARNING: The fastq_filter command does not support multithreading.\nOnly 1 thread used.\nvsearch v2.13.6_macos_x86_64, 16.0GB RAM, 8 cores\nhttps://github.com/torognes/vsearch\n\nReading input file 100%\n599 sequences kept (of which 0 truncated), 0 sequences discarded.\n'
+[07/30/19 17:46:11]: 599 reads (344.3 KB)
+[07/30/19 17:46:11]: Quality Filtering, expected errors < 1.0
+[07/30/19 17:46:11]: vsearch --fastq_filter miseq-dada2.cleaned_input.fq --fastq_maxee 1.0 --fastqout miseq-dada2.qual-filtered.fq --fastq_qmax 55 --fastq_maxns 0 --threads 8
+[07/30/19 17:46:11]: b'WARNING: The fastq_filter command does not support multithreading.\nOnly 1 thread used.\nvsearch v2.13.6_macos_x86_64, 16.0GB RAM, 8 cores\nhttps://github.com/torognes/vsearch\n\nReading input file 100%\n394 sequences kept (of which 0 truncated), 205 sequences discarded.\n'
+[07/30/19 17:46:11]: 394 reads passed
+[07/30/19 17:46:11]: Splitting FASTQ file by Sample into individual files
+[07/30/19 17:46:11]: Running DADA2 pipeline
+[07/30/19 17:46:18]: DADA2 run failed, please check miseq-dada2.dada2.Rscript.log logfile

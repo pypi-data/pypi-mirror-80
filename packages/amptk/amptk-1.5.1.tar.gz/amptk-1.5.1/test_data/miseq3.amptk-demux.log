@@ -1,0 +1,161 @@
+[09/27/20 11:05:51]: /Users/jon/miniconda3/envs/amptk_v1.5.0/bin/amptk illumina -i illumina_no_primers -o miseq3 -f ITS1-F -r ITS2 --require_primer off --cleanup
+
+[09/27/20 11:05:51]: OS: MacOSX 10.14.6, 8 cores, ~ 17 GB RAM. Python: 3.7.8
+[09/27/20 11:05:51]: Python Modules: numpy v1.19.1, pandas v1.1.2, matplotlib v3.2.2, psutil v5.7.2, natsort v7.0.1, biopython v1.78, edlib v1.3.8.post1, biom-format v2.1.8
+[09/27/20 11:05:51]: AMPtk v1.5.0, VSEARCH v2.15.0
+[09/27/20 11:05:51]: ITS1-F fwd primer found in AMPtk primer db, setting to: CTTGGTCATTTAGAGGAAGTAA
+[09/27/20 11:05:51]: ITS2 rev primer found in AMPtk primer db, setting to: GCTGCGTTCTTCATCGATGC
+[09/27/20 11:05:51]: Non-standard names detected, skipping mapping file
+[09/27/20 11:05:51]: Non-standard names detected, skipping mapping file
+[09/27/20 11:05:51]: Non-standard names detected, skipping mapping file
+[09/27/20 11:05:51]: Demuxing data using 8 cpus
+[09/27/20 11:05:51]: Dropping reads less than 100 bp and setting lossless trimming to 300 bp.
+[09/27/20 11:05:51]: Strip Primers and Merge PE reads. FwdPrimer: CTTGGTCATTTAGAGGAAGTAA RevPrimer: GCTGCGTTCTTCATCGATGC
+[09/27/20 11:05:51]: Sample1: illumina_no_primers/Sample1_R1.fastq illumina_no_primers/Sample1_R2.fastq
+[09/27/20 11:05:51]: Sample2: illumina_no_primers/Sample2_R1.fastq illumina_no_primers/Sample2_R2.fastq
+[09/27/20 11:05:51]: SynMock: illumina_no_primers/SynMock_R1.fastq illumina_no_primers/SynMock_R2.fastq
+[09/27/20 11:05:51]: Now merging PE reads
+[09/27/20 11:05:51]: vsearch --fastq_mergepairs miseq3/Sample2_R1.fq --reverse miseq3/Sample2_R2.fq --fastqout miseq3/Sample2.merged.fq.merged.fq --fastqout_notmerged_fwd miseq3/Sample2.merged.fq.notmerged.R1.fq --fastq_minmergelen 100 --fastq_allowmergestagger --threads 1
+[09/27/20 11:05:51]: Now merging PE reads
+[09/27/20 11:05:51]: vsearch --fastq_mergepairs miseq3/Sample1_R1.fq --reverse miseq3/Sample1_R2.fq --fastqout miseq3/Sample1.merged.fq.merged.fq --fastqout_notmerged_fwd miseq3/Sample1.merged.fq.notmerged.R1.fq --fastq_minmergelen 100 --fastq_allowmergestagger --threads 1
+[09/27/20 11:05:51]: Now merging PE reads
+[09/27/20 11:05:51]: vsearch --fastq_mergepairs miseq3/SynMock_R1.fq --reverse miseq3/SynMock_R2.fq --fastqout miseq3/SynMock.merged.fq.merged.fq --fastqout_notmerged_fwd miseq3/SynMock.merged.fq.notmerged.R1.fq --fastq_minmergelen 100 --fastq_allowmergestagger --threads 1
+[09/27/20 11:05:51]: vsearch v2.15.0_macos_x86_64, 16.0GB RAM, 8 cores
+https://github.com/torognes/vsearch
+
+Merging reads 100%
+      2000  Pairs
+      1890  Merged (94.5%)
+       110  Not merged (5.5%)
+
+Pairs that failed merging due to various reasons:
+         3  multiple potential alignments
+        64  too many differences
+        43  alignment score too low, or score drop too high
+
+Statistics of all reads:
+    250.00  Mean read length
+
+Statistics of merged reads:
+    210.59  Mean fragment length
+     60.82  Standard deviation of fragment length
+      0.21  Mean expected error in forward sequences
+      0.71  Mean expected error in reverse sequences
+      0.09  Mean expected error in merged sequences
+      0.18  Mean observed errors in merged region of forward sequences
+      0.88  Mean observed errors in merged region of reverse sequences
+      1.05  Mean observed errors in merged region
+
+[09/27/20 11:05:51]: vsearch v2.15.0_macos_x86_64, 16.0GB RAM, 8 cores
+https://github.com/torognes/vsearch
+
+Merging reads 100%
+      2000  Pairs
+      1613  Merged (80.7%)
+       387  Not merged (19.4%)
+
+Pairs that failed merging due to various reasons:
+         1  too few kmers found on same diagonal
+        15  multiple potential alignments
+       138  too many differences
+       233  alignment score too low, or score drop too high
+
+Statistics of all reads:
+    250.00  Mean read length
+
+Statistics of merged reads:
+    211.90  Mean fragment length
+     29.69  Standard deviation of fragment length
+      0.22  Mean expected error in forward sequences
+      0.90  Mean expected error in reverse sequences
+      0.06  Mean expected error in merged sequences
+      0.17  Mean observed errors in merged region of forward sequences
+      1.07  Mean observed errors in merged region of reverse sequences
+      1.25  Mean observed errors in merged region
+
+[09/27/20 11:05:51]: Removing phix from SynMock.merged.fq
+[09/27/20 11:05:51]: Removing phix from Sample1.merged.fq
+[09/27/20 11:05:51]: vsearch v2.15.0_macos_x86_64, 16.0GB RAM, 8 cores
+https://github.com/torognes/vsearch
+
+Merging reads 100%
+      2000  Pairs
+      1765  Merged (88.2%)
+       235  Not merged (11.8%)
+
+Pairs that failed merging due to various reasons:
+         2  too few kmers found on same diagonal
+         3  multiple potential alignments
+       136  too many differences
+        94  alignment score too low, or score drop too high
+
+Statistics of all reads:
+    250.00  Mean read length
+
+Statistics of merged reads:
+    277.89  Mean fragment length
+     31.39  Standard deviation of fragment length
+      0.23  Mean expected error in forward sequences
+      1.05  Mean expected error in reverse sequences
+      0.14  Mean expected error in merged sequences
+      0.14  Mean observed errors in merged region of forward sequences
+      1.29  Mean observed errors in merged region of reverse sequences
+      1.43  Mean observed errors in merged region
+
+[09/27/20 11:05:51]: File Size: 917927 bytes
+[09/27/20 11:05:51]: usearch9 -filter_phix miseq3/SynMock.merged.fq.tmp -output miseq3/SynMock.merged.fq -threads 1
+[09/27/20 11:05:51]: File Size: 943993 bytes
+[09/27/20 11:05:51]: usearch9 -filter_phix miseq3/Sample1.merged.fq.tmp -output miseq3/Sample1.merged.fq -threads 1
+[09/27/20 11:05:51]: Removing phix from Sample2.merged.fq
+[09/27/20 11:05:51]: File Size: 1165329 bytes
+[09/27/20 11:05:51]: usearch9 -filter_phix miseq3/Sample2.merged.fq.tmp -output miseq3/Sample2.merged.fq -threads 1
+[09/27/20 11:05:52]: usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores
+(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: palmer.jona@gmail.com
+
+
+[09/27/20 11:05:52]: 00:01 203Mb     0.1% Word stats00:01 203Mb   100.0% Word stats
+00:01 203Mb   100.0% Alloc rows
+00:01 203Mb     0.1% Build index00:01 203Mb   100.0% Build index
+00:01 138Mb   100.0% Filtering for phix, 53 hits (2.6%)
+
+[09/27/20 11:05:52]: usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores
+(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: palmer.jona@gmail.com
+
+
+[09/27/20 11:05:52]: 00:01 203Mb     0.1% Word stats00:01 203Mb   100.0% Word stats
+00:01 203Mb   100.0% Alloc rows
+00:01 203Mb     0.1% Build index00:01 203Mb   100.0% Build index
+00:01 139Mb   100.0% Filtering for phix, 37 hits (1.8%)
+
+[09/27/20 11:05:52]: usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores
+(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: palmer.jona@gmail.com
+
+
+[09/27/20 11:05:52]: 00:01 203Mb     0.1% Word stats00:01 203Mb   100.0% Word stats
+00:01 203Mb   100.0% Alloc rows
+00:01 203Mb     0.1% Build index00:01 203Mb   100.0% Build index
+00:01 140Mb   100.0% Filtering for phix, 43 hits (2.1%)
+
+[09/27/20 11:05:52]: Concatenating Demuxed Files
+[09/27/20 11:05:52]: 6,000 total reads
+[09/27/20 11:05:52]: 1,684 Fwd Primer found, 2,653 Rev Primer found
+[09/27/20 11:05:52]: 0 discarded Primer incompatibility
+[09/27/20 11:05:52]: 0 discarded too short (< 100 bp)
+[09/27/20 11:05:52]: 5,867 valid output reads
+[09/27/20 11:05:52]: Found 3 barcoded samples
+                        Sample:  Count
+                       Sample1:  1963
+                       Sample2:  1957
+                       SynMock:  1947
+[09/27/20 11:05:52]: pigz -c -p 8 miseq3.demux.fq
+[09/27/20 11:05:52]: Output file:  miseq3.demux.fq.gz (246.4 KB)
+[09/27/20 11:05:52]: Mapping file: miseq3.mapping_file.txt

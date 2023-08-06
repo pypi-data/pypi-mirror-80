@@ -1,0 +1,157 @@
+[09/27/20 11:05:43]: /Users/jon/miniconda3/envs/amptk_v1.5.0/bin/amptk illumina -i alt_illumina -o miseq --cleanup
+
+[09/27/20 11:05:43]: OS: MacOSX 10.14.6, 8 cores, ~ 17 GB RAM. Python: 3.7.8
+[09/27/20 11:05:44]: Python Modules: numpy v1.19.1, pandas v1.1.2, matplotlib v3.2.2, psutil v5.7.2, natsort v7.0.1, biopython v1.78, edlib v1.3.8.post1, biom-format v2.1.8
+[09/27/20 11:05:44]: AMPtk v1.5.0, VSEARCH v2.15.0
+[09/27/20 11:05:44]: fITS7 fwd primer found in AMPtk primer db, setting to: GTGARTCATCGAATCTTTG
+[09/27/20 11:05:44]: ITS4 rev primer found in AMPtk primer db, setting to: TCCTCCGCTTATTGATATGC
+[09/27/20 11:05:44]: Non-standard names detected, skipping mapping file
+[09/27/20 11:05:44]: Demuxing data using 8 cpus
+[09/27/20 11:05:44]: Dropping reads less than 100 bp and setting lossless trimming to 300 bp.
+[09/27/20 11:05:44]: Warning: --require_primer=on, ensure that your reads will contain --fwd_primer
+[09/27/20 11:05:44]: Strip Primers and Merge PE reads. FwdPrimer: GTGARTCATCGAATCTTTG RevPrimer: TCCTCCGCTTATTGATATGC
+[09/27/20 11:05:44]: 301-1: alt_illumina/301-1_TCCGGAGA-CCTATCCT_L001_R1_001.fastq alt_illumina/301-1_TCCGGAGA-CCTATCCT_L001_R2_001.fastq
+[09/27/20 11:05:44]: 301-2: alt_illumina/301-2_TCCGGAGA-GGCTCTGA_L001_R1_001.fastq alt_illumina/301-2_TCCGGAGA-GGCTCTGA_L001_R2_001.fastq
+[09/27/20 11:05:44]: empty: alt_illumina/empty_R1.fastq alt_illumina/empty_R2.fastq
+[09/27/20 11:05:44]: spike: alt_illumina/spike_CGCTCATT-GGCTCTGA_L001_R1_001.fastq alt_illumina/spike_CGCTCATT-GGCTCTGA_L001_R2_001.fastq
+[09/27/20 11:05:44]: Now merging PE reads
+[09/27/20 11:05:44]: Now merging PE reads
+[09/27/20 11:05:44]: vsearch --fastq_mergepairs miseq/301-1_R1.fq --reverse miseq/301-1_R2.fq --fastqout miseq/301-1.merged.fq.merged.fq --fastqout_notmerged_fwd miseq/301-1.merged.fq.notmerged.R1.fq --fastq_minmergelen 100 --fastq_allowmergestagger --threads 1
+[09/27/20 11:05:44]: vsearch --fastq_mergepairs miseq/301-2_R1.fq --reverse miseq/301-2_R2.fq --fastqout miseq/301-2.merged.fq.merged.fq --fastqout_notmerged_fwd miseq/301-2.merged.fq.notmerged.R1.fq --fastq_minmergelen 100 --fastq_allowmergestagger --threads 1
+[09/27/20 11:05:44]: vsearch v2.15.0_macos_x86_64, 16.0GB RAM, 8 cores
+https://github.com/torognes/vsearch
+
+Merging reads 100%
+       100  Pairs
+        26  Merged (26.0%)
+        74  Not merged (74.0%)
+
+Pairs that failed merging due to various reasons:
+         1  too few kmers found on same diagonal
+         7  too many differences
+        66  alignment score too low, or score drop too high
+
+Statistics of all reads:
+    280.01  Mean read length
+
+Statistics of merged reads:
+    269.69  Mean fragment length
+     15.09  Standard deviation of fragment length
+      1.50  Mean expected error in forward sequences
+     25.94  Mean expected error in reverse sequences
+      0.05  Mean expected error in merged sequences
+      0.50  Mean observed errors in merged region of forward sequences
+      5.04  Mean observed errors in merged region of reverse sequences
+      5.54  Mean observed errors in merged region
+
+[09/27/20 11:05:44]: vsearch v2.15.0_macos_x86_64, 16.0GB RAM, 8 cores
+https://github.com/torognes/vsearch
+
+Merging reads 100%
+        99  Pairs
+        26  Merged (26.3%)
+        73  Not merged (73.7%)
+
+Pairs that failed merging due to various reasons:
+         4  too many differences
+        69  alignment score too low, or score drop too high
+
+Statistics of all reads:
+    280.02  Mean read length
+
+Statistics of merged reads:
+    272.81  Mean fragment length
+     28.72  Standard deviation of fragment length
+      1.96  Mean expected error in forward sequences
+     16.66  Mean expected error in reverse sequences
+      0.04  Mean expected error in merged sequences
+      0.35  Mean observed errors in merged region of forward sequences
+      4.12  Mean observed errors in merged region of reverse sequences
+      4.46  Mean observed errors in merged region
+
+[09/27/20 11:05:44]: Removing phix from 301-2.merged.fq
+[09/27/20 11:05:44]: Removing phix from 301-1.merged.fq
+[09/27/20 11:05:44]: File Size: 58606 bytes
+[09/27/20 11:05:44]: File Size: 58173 bytes
+[09/27/20 11:05:44]: usearch9 -filter_phix miseq/301-2.merged.fq.tmp -output miseq/301-2.merged.fq -threads 1
+[09/27/20 11:05:44]: usearch9 -filter_phix miseq/301-1.merged.fq.tmp -output miseq/301-1.merged.fq -threads 1
+[09/27/20 11:05:44]: Now merging PE reads
+[09/27/20 11:05:44]: vsearch --fastq_mergepairs miseq/spike_R1.fq --reverse miseq/spike_R2.fq --fastqout miseq/spike.merged.fq.merged.fq --fastqout_notmerged_fwd miseq/spike.merged.fq.notmerged.R1.fq --fastq_minmergelen 100 --fastq_allowmergestagger --threads 1
+[09/27/20 11:05:44]: vsearch v2.15.0_macos_x86_64, 16.0GB RAM, 8 cores
+https://github.com/torognes/vsearch
+
+Merging reads 100%
+       400  Pairs
+        81  Merged (20.2%)
+       319  Not merged (79.8%)
+
+Pairs that failed merging due to various reasons:
+        28  too many differences
+       291  alignment score too low, or score drop too high
+
+Statistics of all reads:
+    280.01  Mean read length
+
+Statistics of merged reads:
+    278.44  Mean fragment length
+     35.61  Standard deviation of fragment length
+      2.19  Mean expected error in forward sequences
+     23.35  Mean expected error in reverse sequences
+      0.05  Mean expected error in merged sequences
+      0.38  Mean observed errors in merged region of forward sequences
+      5.11  Mean observed errors in merged region of reverse sequences
+      5.49  Mean observed errors in merged region
+
+[09/27/20 11:05:44]: Removing phix from spike.merged.fq
+[09/27/20 11:05:44]: File Size: 236686 bytes
+[09/27/20 11:05:44]: usearch9 -filter_phix miseq/spike.merged.fq.tmp -output miseq/spike.merged.fq -threads 1
+[09/27/20 11:05:44]: usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores
+(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: palmer.jona@gmail.com
+
+
+[09/27/20 11:05:44]: 00:00 203Mb     0.1% Word stats00:00 203Mb   100.0% Word stats
+00:00 203Mb   100.0% Alloc rows
+00:00 203Mb     0.1% Build index00:00 203Mb   100.0% Build index
+00:00 136Mb   100.0% Filtering for phix, 0 hits (0.0%)
+
+[09/27/20 11:05:44]: usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores
+(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: palmer.jona@gmail.com
+
+
+[09/27/20 11:05:44]: 00:00 203Mb     0.1% Word stats00:00 203Mb   100.0% Word stats
+00:00 203Mb   100.0% Alloc rows
+00:00 203Mb     0.1% Build index00:00 203Mb   100.0% Build index
+00:00 136Mb   100.0% Filtering for phix, 0 hits (0.0%)
+
+[09/27/20 11:05:44]: usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores
+(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: palmer.jona@gmail.com
+
+
+[09/27/20 11:05:44]: 00:00 203Mb     0.1% Word stats00:00 203Mb   100.0% Word stats
+00:00 203Mb   100.0% Alloc rows
+00:00 203Mb     0.1% Build index00:00 203Mb   100.0% Build index
+00:00 137Mb   100.0% Filtering for phix, 0 hits (0.0%)
+
+[09/27/20 11:05:45]: Concatenating Demuxed Files
+[09/27/20 11:05:45]: 600 total reads
+[09/27/20 11:05:45]: 600 Fwd Primer found, 599 Rev Primer found
+[09/27/20 11:05:45]: 0 discarded Primer incompatibility
+[09/27/20 11:05:45]: 0 discarded too short (< 100 bp)
+[09/27/20 11:05:45]: 599 valid output reads
+[09/27/20 11:05:45]: Found 3 barcoded samples
+                        Sample:  Count
+                         spike:  400
+                         301-2:  100
+                         301-1:  99
+[09/27/20 11:05:45]: pigz -c -p 8 miseq.demux.fq
+[09/27/20 11:05:45]: Output file:  miseq.demux.fq.gz (69.4 KB)
+[09/27/20 11:05:45]: Mapping file: miseq.mapping_file.txt

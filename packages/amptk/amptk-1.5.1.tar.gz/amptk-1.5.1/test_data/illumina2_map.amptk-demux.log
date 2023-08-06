@@ -1,0 +1,1479 @@
+[09/27/20 11:05:57]: /Users/jon/miniconda3/envs/amptk_v1.5.0/bin/amptk illumina2 -i Run1_R1.fastq --reverse Run1_R2.fastq -m run1_mapping_file.txt -o illumina2_map
+
+[09/27/20 11:05:57]: OS: MacOSX 10.14.6, 8 cores, ~ 17 GB RAM. Python: 3.7.8
+[09/27/20 11:05:57]: Python Modules: numpy v1.19.1, pandas v1.1.2, matplotlib v3.2.2, psutil v5.7.2, natsort v7.0.1, biopython v1.78, edlib v1.3.8.post1, biom-format v2.1.8
+[09/27/20 11:05:57]: AMPtk v1.5.0, VSEARCH v2.15.0
+[09/27/20 11:05:57]: Loading FASTQ Records
+[09/27/20 11:05:57]: 5,000 reads (6.3 MB)
+[09/27/20 11:05:57]: Searching for 77 forward barcodes and 77 reverse barcodes
+[09/27/20 11:05:57]: Splitting FASTQ files over 8 cpus
+[09/27/20 11:05:57]: Demuxing PE Illumina reads; FwdPrimer: GTGARTCATCGARTCTTTG RevPrimer: TCCTCCGCTTATTGATATGC
+[09/27/20 11:05:57]: Dropping reads less than 100 bp and setting lossless trimming to 300 bp.
+[09/27/20 11:05:58]: Re-oriented PE reads for chunk_3: 157 total, 82 correct, 66 flipped, 9 dropped.
+[09/27/20 11:05:58]: Re-oriented PE reads for chunk_1: 157 total, 67 correct, 74 flipped, 16 dropped.
+[09/27/20 11:05:58]: Re-oriented PE reads for chunk_11: 157 total, 74 correct, 69 flipped, 14 dropped.
+[09/27/20 11:05:58]: Re-oriented PE reads for chunk_22: 157 total, 74 correct, 67 flipped, 16 dropped.
+[09/27/20 11:05:58]: Re-oriented PE reads for chunk_17: 157 total, 73 correct, 72 flipped, 12 dropped.
+[09/27/20 11:05:58]: Re-oriented PE reads for chunk_20: 157 total, 67 correct, 76 flipped, 14 dropped.
+[09/27/20 11:05:58]: Re-oriented PE reads for chunk_19: 157 total, 71 correct, 73 flipped, 13 dropped.
+[09/27/20 11:05:58]: Re-oriented PE reads for chunk_13: 157 total, 76 correct, 72 flipped, 9 dropped.
+[09/27/20 11:05:58]: Now merging PE reads
+[09/27/20 11:05:58]: vsearch --fastq_mergepairs illumina2_map_37024/chunk_20_R1.trimmed.fq --reverse illumina2_map_37024/chunk_20_R2.trimmed.fq --fastqout ./illumina2_map_37024/chunk_20.merged.fq.merged.fq --fastqout_notmerged_fwd ./illumina2_map_37024/chunk_20.merged.fq.notmerged.R1.fq --fastq_minmergelen 100 --fastq_allowmergestagger --threads 1
+[09/27/20 11:05:58]: vsearch v2.15.0_macos_x86_64, 16.0GB RAM, 8 cores
+https://github.com/torognes/vsearch
+
+Merging reads 100%
+       114  Pairs
+       107  Merged (93.9%)
+         7  Not merged (6.1%)
+
+Pairs that failed merging due to various reasons:
+         7  too many differences
+
+Statistics of all reads:
+    272.49  Mean read length
+
+Statistics of merged reads:
+    274.19  Mean fragment length
+     35.05  Standard deviation of fragment length
+      1.10  Mean expected error in forward sequences
+      0.95  Mean expected error in reverse sequences
+      0.10  Mean expected error in merged sequences
+      0.91  Mean observed errors in merged region of forward sequences
+      0.64  Mean observed errors in merged region of reverse sequences
+      1.55  Mean observed errors in merged region
+
+[09/27/20 11:05:58]: Now merging PE reads
+[09/27/20 11:05:58]: vsearch --fastq_mergepairs illumina2_map_37024/chunk_17_R1.trimmed.fq --reverse illumina2_map_37024/chunk_17_R2.trimmed.fq --fastqout ./illumina2_map_37024/chunk_17.merged.fq.merged.fq --fastqout_notmerged_fwd ./illumina2_map_37024/chunk_17.merged.fq.notmerged.R1.fq --fastq_minmergelen 100 --fastq_allowmergestagger --threads 1
+[09/27/20 11:05:58]: Removing phix from illumina2_map_37024/chunk_20.merged.fq
+[09/27/20 11:05:58]: File Size: 65782 bytes
+[09/27/20 11:05:58]: usearch9 -filter_phix ./illumina2_map_37024/chunk_20.merged.fq.tmp -output ./illumina2_map_37024/chunk_20.merged.fq -threads 1
+[09/27/20 11:05:58]: Now merging PE reads
+[09/27/20 11:05:58]: vsearch --fastq_mergepairs illumina2_map_37024/chunk_22_R1.trimmed.fq --reverse illumina2_map_37024/chunk_22_R2.trimmed.fq --fastqout ./illumina2_map_37024/chunk_22.merged.fq.merged.fq --fastqout_notmerged_fwd ./illumina2_map_37024/chunk_22.merged.fq.notmerged.R1.fq --fastq_minmergelen 100 --fastq_allowmergestagger --threads 1
+[09/27/20 11:05:58]: Now merging PE reads
+[09/27/20 11:05:58]: vsearch --fastq_mergepairs illumina2_map_37024/chunk_3_R1.trimmed.fq --reverse illumina2_map_37024/chunk_3_R2.trimmed.fq --fastqout ./illumina2_map_37024/chunk_3.merged.fq.merged.fq --fastqout_notmerged_fwd ./illumina2_map_37024/chunk_3.merged.fq.notmerged.R1.fq --fastq_minmergelen 100 --fastq_allowmergestagger --threads 1
+[09/27/20 11:05:58]: Now merging PE reads
+[09/27/20 11:05:58]: vsearch --fastq_mergepairs illumina2_map_37024/chunk_19_R1.trimmed.fq --reverse illumina2_map_37024/chunk_19_R2.trimmed.fq --fastqout ./illumina2_map_37024/chunk_19.merged.fq.merged.fq --fastqout_notmerged_fwd ./illumina2_map_37024/chunk_19.merged.fq.notmerged.R1.fq --fastq_minmergelen 100 --fastq_allowmergestagger --threads 1
+[09/27/20 11:05:58]: Now merging PE reads
+[09/27/20 11:05:58]: vsearch --fastq_mergepairs illumina2_map_37024/chunk_1_R1.trimmed.fq --reverse illumina2_map_37024/chunk_1_R2.trimmed.fq --fastqout ./illumina2_map_37024/chunk_1.merged.fq.merged.fq --fastqout_notmerged_fwd ./illumina2_map_37024/chunk_1.merged.fq.notmerged.R1.fq --fastq_minmergelen 100 --fastq_allowmergestagger --threads 1
+[09/27/20 11:05:58]: vsearch v2.15.0_macos_x86_64, 16.0GB RAM, 8 cores
+https://github.com/torognes/vsearch
+
+Merging reads 100%
+       114  Pairs
+       103  Merged (90.4%)
+        11  Not merged (9.6%)
+
+Pairs that failed merging due to various reasons:
+         9  too many differences
+         2  alignment score too low, or score drop too high
+
+Statistics of all reads:
+    272.55  Mean read length
+
+Statistics of merged reads:
+    278.14  Mean fragment length
+     38.28  Standard deviation of fragment length
+      1.29  Mean expected error in forward sequences
+      0.86  Mean expected error in reverse sequences
+      0.07  Mean expected error in merged sequences
+      0.96  Mean observed errors in merged region of forward sequences
+      0.64  Mean observed errors in merged region of reverse sequences
+      1.60  Mean observed errors in merged region
+
+[09/27/20 11:05:58]: Removing phix from illumina2_map_37024/chunk_17.merged.fq
+[09/27/20 11:05:58]: File Size: 66589 bytes
+[09/27/20 11:05:58]: vsearch v2.15.0_macos_x86_64, 16.0GB RAM, 8 cores
+https://github.com/torognes/vsearch
+
+Merging reads 100%
+       108  Pairs
+        95  Merged (88.0%)
+        13  Not merged (12.0%)
+
+Pairs that failed merging due to various reasons:
+         7  too many differences
+         6  alignment score too low, or score drop too high
+
+Statistics of all reads:
+    272.49  Mean read length
+
+Statistics of merged reads:
+    282.19  Mean fragment length
+     35.97  Standard deviation of fragment length
+      0.81  Mean expected error in forward sequences
+      0.77  Mean expected error in reverse sequences
+      0.05  Mean expected error in merged sequences
+      0.53  Mean observed errors in merged region of forward sequences
+      0.48  Mean observed errors in merged region of reverse sequences
+      1.01  Mean observed errors in merged region
+
+[09/27/20 11:05:58]: usearch9 -filter_phix ./illumina2_map_37024/chunk_17.merged.fq.tmp -output ./illumina2_map_37024/chunk_17.merged.fq -threads 1
+[09/27/20 11:05:58]: Removing phix from illumina2_map_37024/chunk_22.merged.fq
+[09/27/20 11:05:58]: File Size: 63830 bytes
+[09/27/20 11:05:58]: usearch9 -filter_phix ./illumina2_map_37024/chunk_22.merged.fq.tmp -output ./illumina2_map_37024/chunk_22.merged.fq -threads 1
+[09/27/20 11:05:58]: vsearch v2.15.0_macos_x86_64, 16.0GB RAM, 8 cores
+https://github.com/torognes/vsearch
+
+Merging reads 100%
+       106  Pairs
+        99  Merged (93.4%)
+         7  Not merged (6.6%)
+
+Pairs that failed merging due to various reasons:
+         3  too many differences
+         4  alignment score too low, or score drop too high
+
+Statistics of all reads:
+    272.52  Mean read length
+
+Statistics of merged reads:
+    276.62  Mean fragment length
+     36.83  Standard deviation of fragment length
+      1.05  Mean expected error in forward sequences
+      0.99  Mean expected error in reverse sequences
+      0.09  Mean expected error in merged sequences
+      0.74  Mean observed errors in merged region of forward sequences
+      0.76  Mean observed errors in merged region of reverse sequences
+      1.49  Mean observed errors in merged region
+
+[09/27/20 11:05:58]: Removing phix from illumina2_map_37024/chunk_3.merged.fq
+[09/27/20 11:05:58]: vsearch v2.15.0_macos_x86_64, 16.0GB RAM, 8 cores
+https://github.com/torognes/vsearch
+
+Merging reads 100%
+       103  Pairs
+        91  Merged (88.3%)
+        12  Not merged (11.7%)
+
+Pairs that failed merging due to various reasons:
+         6  too many differences
+         6  alignment score too low, or score drop too high
+
+Statistics of all reads:
+    272.47  Mean read length
+
+Statistics of merged reads:
+    279.75  Mean fragment length
+     35.39  Standard deviation of fragment length
+      0.92  Mean expected error in forward sequences
+      0.89  Mean expected error in reverse sequences
+      0.05  Mean expected error in merged sequences
+      0.62  Mean observed errors in merged region of forward sequences
+      0.63  Mean observed errors in merged region of reverse sequences
+      1.24  Mean observed errors in merged region
+
+[09/27/20 11:05:58]: File Size: 61645 bytes
+[09/27/20 11:05:58]: Now merging PE reads
+[09/27/20 11:05:58]: usearch9 -filter_phix ./illumina2_map_37024/chunk_3.merged.fq.tmp -output ./illumina2_map_37024/chunk_3.merged.fq -threads 1
+[09/27/20 11:05:58]: vsearch --fastq_mergepairs illumina2_map_37024/chunk_13_R1.trimmed.fq --reverse illumina2_map_37024/chunk_13_R2.trimmed.fq --fastqout ./illumina2_map_37024/chunk_13.merged.fq.merged.fq --fastqout_notmerged_fwd ./illumina2_map_37024/chunk_13.merged.fq.notmerged.R1.fq --fastq_minmergelen 100 --fastq_allowmergestagger --threads 1
+[09/27/20 11:05:58]: Removing phix from illumina2_map_37024/chunk_19.merged.fq
+[09/27/20 11:05:58]: File Size: 60435 bytes
+[09/27/20 11:05:58]: usearch9 -filter_phix ./illumina2_map_37024/chunk_19.merged.fq.tmp -output ./illumina2_map_37024/chunk_19.merged.fq -threads 1
+[09/27/20 11:05:58]: vsearch v2.15.0_macos_x86_64, 16.0GB RAM, 8 cores
+https://github.com/torognes/vsearch
+
+Merging reads 100%
+       102  Pairs
+        94  Merged (92.2%)
+         8  Not merged (7.8%)
+
+Pairs that failed merging due to various reasons:
+         5  too many differences
+         3  alignment score too low, or score drop too high
+
+Statistics of all reads:
+    272.54  Mean read length
+
+Statistics of merged reads:
+    278.13  Mean fragment length
+     35.62  Standard deviation of fragment length
+      1.24  Mean expected error in forward sequences
+      0.83  Mean expected error in reverse sequences
+      0.05  Mean expected error in merged sequences
+      0.91  Mean observed errors in merged region of forward sequences
+      0.50  Mean observed errors in merged region of reverse sequences
+      1.41  Mean observed errors in merged region
+
+[09/27/20 11:05:58]: Now merging PE reads
+[09/27/20 11:05:58]: vsearch --fastq_mergepairs illumina2_map_37024/chunk_11_R1.trimmed.fq --reverse illumina2_map_37024/chunk_11_R2.trimmed.fq --fastqout ./illumina2_map_37024/chunk_11.merged.fq.merged.fq --fastqout_notmerged_fwd ./illumina2_map_37024/chunk_11.merged.fq.notmerged.R1.fq --fastq_minmergelen 100 --fastq_allowmergestagger --threads 1
+[09/27/20 11:05:58]: Removing phix from illumina2_map_37024/chunk_1.merged.fq
+[09/27/20 11:05:58]: File Size: 59590 bytes
+[09/27/20 11:05:58]: usearch9 -filter_phix ./illumina2_map_37024/chunk_1.merged.fq.tmp -output ./illumina2_map_37024/chunk_1.merged.fq -threads 1
+[09/27/20 11:05:58]: vsearch v2.15.0_macos_x86_64, 16.0GB RAM, 8 cores
+https://github.com/torognes/vsearch
+
+Merging reads 100%
+       117  Pairs
+       100  Merged (85.5%)
+        17  Not merged (14.5%)
+
+Pairs that failed merging due to various reasons:
+        11  too many differences
+         6  alignment score too low, or score drop too high
+
+Statistics of all reads:
+    272.56  Mean read length
+
+Statistics of merged reads:
+    279.41  Mean fragment length
+     38.20  Standard deviation of fragment length
+      1.28  Mean expected error in forward sequences
+      0.87  Mean expected error in reverse sequences
+      0.05  Mean expected error in merged sequences
+      1.23  Mean observed errors in merged region of forward sequences
+      0.59  Mean observed errors in merged region of reverse sequences
+      1.82  Mean observed errors in merged region
+
+[09/27/20 11:05:58]: vsearch v2.15.0_macos_x86_64, 16.0GB RAM, 8 cores
+https://github.com/torognes/vsearch
+
+Merging reads 100%
+        97  Pairs
+        87  Merged (89.7%)
+        10  Not merged (10.3%)
+
+Pairs that failed merging due to various reasons:
+         4  too many differences
+         6  alignment score too low, or score drop too high
+
+Statistics of all reads:
+    272.44  Mean read length
+
+Statistics of merged reads:
+    272.98  Mean fragment length
+     34.32  Standard deviation of fragment length
+      0.91  Mean expected error in forward sequences
+      0.63  Mean expected error in reverse sequences
+      0.04  Mean expected error in merged sequences
+      0.63  Mean observed errors in merged region of forward sequences
+      0.39  Mean observed errors in merged region of reverse sequences
+      1.02  Mean observed errors in merged region
+
+[09/27/20 11:05:58]: Removing phix from illumina2_map_37024/chunk_11.merged.fq
+[09/27/20 11:05:58]: File Size: 55753 bytes
+[09/27/20 11:05:58]: Removing phix from illumina2_map_37024/chunk_13.merged.fq
+[09/27/20 11:05:58]: usearch9 -filter_phix ./illumina2_map_37024/chunk_11.merged.fq.tmp -output ./illumina2_map_37024/chunk_11.merged.fq -threads 1
+[09/27/20 11:05:58]: File Size: 68545 bytes
+[09/27/20 11:05:58]: usearch9 -filter_phix ./illumina2_map_37024/chunk_13.merged.fq.tmp -output ./illumina2_map_37024/chunk_13.merged.fq -threads 1
+[09/27/20 11:05:59]: usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores
+(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: palmer.jona@gmail.com
+
+
+[09/27/20 11:05:59]: 00:00 203Mb     0.1% Word stats00:00 203Mb   100.0% Word stats
+00:00 203Mb   100.0% Alloc rows
+00:01 203Mb     0.1% Build index00:01 203Mb   100.0% Build index
+00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)
+
+[09/27/20 11:05:59]: usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores
+(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: palmer.jona@gmail.com
+
+
+[09/27/20 11:05:59]: 00:00 203Mb     0.1% Word stats00:00 203Mb   100.0% Word stats
+00:00 203Mb   100.0% Alloc rows
+00:01 203Mb     0.1% Build index00:01 203Mb   100.0% Build index
+00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)
+
+[09/27/20 11:05:59]: usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores
+(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: palmer.jona@gmail.com
+
+
+[09/27/20 11:05:59]: 00:00 203Mb     0.1% Word stats00:00 203Mb   100.0% Word stats
+00:00 203Mb   100.0% Alloc rows
+00:01 203Mb     0.1% Build index00:01 203Mb   100.0% Build index
+00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)
+
+[09/27/20 11:05:59]: usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores
+(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: palmer.jona@gmail.com
+
+
+[09/27/20 11:05:59]: usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores
+(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: palmer.jona@gmail.com
+
+
+[09/27/20 11:05:59]: 00:00 203Mb     0.1% Word stats00:00 203Mb   100.0% Word stats
+00:00 203Mb   100.0% Alloc rows
+00:01 203Mb     0.1% Build index00:01 203Mb   100.0% Build index
+00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)
+
+[09/27/20 11:05:59]: 00:00 203Mb     0.1% Word stats00:00 203Mb   100.0% Word stats
+00:00 203Mb   100.0% Alloc rows
+00:01 203Mb     0.1% Build index00:01 203Mb   100.0% Build index
+00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)
+
+[09/27/20 11:05:59]: usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores
+(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: palmer.jona@gmail.com
+
+
+[09/27/20 11:05:59]: usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores
+(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: palmer.jona@gmail.com
+
+
+[09/27/20 11:05:59]: 00:00 203Mb     0.1% Word stats00:00 203Mb   100.0% Word stats
+00:00 203Mb   100.0% Alloc rows
+00:01 203Mb     0.1% Build index00:01 203Mb   100.0% Build index
+00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)
+
+[09/27/20 11:05:59]: 00:00 203Mb     0.1% Word stats00:00 203Mb   100.0% Word stats
+00:01 203Mb   100.0% Alloc rows
+00:01 203Mb     0.1% Build index00:01 203Mb   100.0% Build index
+00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)
+
+[09/27/20 11:05:59]: usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores
+(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: palmer.jona@gmail.com
+
+
+[09/27/20 11:05:59]: 00:00 203Mb     0.1% Word stats00:00 203Mb   100.0% Word stats
+00:01 203Mb   100.0% Alloc rows
+00:01 203Mb     0.1% Build index00:01 203Mb   100.0% Build index
+00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)
+
+[09/27/20 11:05:59]: Re-oriented PE reads for chunk_24: 157 total, 69 correct, 72 flipped, 16 dropped.
+[09/27/20 11:05:59]: Re-oriented PE reads for chunk_9: 157 total, 79 correct, 69 flipped, 9 dropped.
+[09/27/20 11:05:59]: Re-oriented PE reads for chunk_31: 157 total, 76 correct, 71 flipped, 10 dropped.
+[09/27/20 11:05:59]: Re-oriented PE reads for chunk_15: 157 total, 68 correct, 78 flipped, 11 dropped.
+[09/27/20 11:05:59]: Re-oriented PE reads for chunk_7: 157 total, 70 correct, 74 flipped, 13 dropped.
+[09/27/20 11:05:59]: Re-oriented PE reads for chunk_28: 157 total, 67 correct, 74 flipped, 16 dropped.
+[09/27/20 11:05:59]: Re-oriented PE reads for chunk_26: 157 total, 65 correct, 85 flipped, 7 dropped.
+[09/27/20 11:05:59]: Re-oriented PE reads for chunk_5: 157 total, 66 correct, 81 flipped, 10 dropped.
+[09/27/20 11:05:59]: Now merging PE reads
+[09/27/20 11:05:59]: vsearch --fastq_mergepairs illumina2_map_37024/chunk_24_R1.trimmed.fq --reverse illumina2_map_37024/chunk_24_R2.trimmed.fq --fastqout ./illumina2_map_37024/chunk_24.merged.fq.merged.fq --fastqout_notmerged_fwd ./illumina2_map_37024/chunk_24.merged.fq.notmerged.R1.fq --fastq_minmergelen 100 --fastq_allowmergestagger --threads 1
+[09/27/20 11:05:59]: vsearch v2.15.0_macos_x86_64, 16.0GB RAM, 8 cores
+https://github.com/torognes/vsearch
+
+Merging reads 100%
+       108  Pairs
+        94  Merged (87.0%)
+        14  Not merged (13.0%)
+
+Pairs that failed merging due to various reasons:
+         1  multiple potential alignments
+         8  too many differences
+         5  alignment score too low, or score drop too high
+
+Statistics of all reads:
+    272.50  Mean read length
+
+Statistics of merged reads:
+    273.84  Mean fragment length
+     33.97  Standard deviation of fragment length
+      0.93  Mean expected error in forward sequences
+      0.67  Mean expected error in reverse sequences
+      0.04  Mean expected error in merged sequences
+      0.82  Mean observed errors in merged region of forward sequences
+      0.50  Mean observed errors in merged region of reverse sequences
+      1.32  Mean observed errors in merged region
+
+[09/27/20 11:05:59]: Removing phix from illumina2_map_37024/chunk_24.merged.fq
+[09/27/20 11:05:59]: File Size: 62237 bytes
+[09/27/20 11:05:59]: usearch9 -filter_phix ./illumina2_map_37024/chunk_24.merged.fq.tmp -output ./illumina2_map_37024/chunk_24.merged.fq -threads 1
+[09/27/20 11:05:59]: Now merging PE reads
+[09/27/20 11:05:59]: vsearch --fastq_mergepairs illumina2_map_37024/chunk_28_R1.trimmed.fq --reverse illumina2_map_37024/chunk_28_R2.trimmed.fq --fastqout ./illumina2_map_37024/chunk_28.merged.fq.merged.fq --fastqout_notmerged_fwd ./illumina2_map_37024/chunk_28.merged.fq.notmerged.R1.fq --fastq_minmergelen 100 --fastq_allowmergestagger --threads 1
+[09/27/20 11:05:59]: Now merging PE reads
+[09/27/20 11:05:59]: vsearch --fastq_mergepairs illumina2_map_37024/chunk_31_R1.trimmed.fq --reverse illumina2_map_37024/chunk_31_R2.trimmed.fq --fastqout ./illumina2_map_37024/chunk_31.merged.fq.merged.fq --fastqout_notmerged_fwd ./illumina2_map_37024/chunk_31.merged.fq.notmerged.R1.fq --fastq_minmergelen 100 --fastq_allowmergestagger --threads 1
+[09/27/20 11:05:59]: vsearch v2.15.0_macos_x86_64, 16.0GB RAM, 8 cores
+https://github.com/torognes/vsearch
+
+Merging reads 100%
+       109  Pairs
+       104  Merged (95.4%)
+         5  Not merged (4.6%)
+
+Pairs that failed merging due to various reasons:
+         2  too many differences
+         3  alignment score too low, or score drop too high
+
+Statistics of all reads:
+    272.51  Mean read length
+
+Statistics of merged reads:
+    276.60  Mean fragment length
+     31.13  Standard deviation of fragment length
+      0.99  Mean expected error in forward sequences
+      0.74  Mean expected error in reverse sequences
+      0.06  Mean expected error in merged sequences
+      0.63  Mean observed errors in merged region of forward sequences
+      0.56  Mean observed errors in merged region of reverse sequences
+      1.19  Mean observed errors in merged region
+
+[09/27/20 11:05:59]: Now merging PE reads
+[09/27/20 11:05:59]: vsearch --fastq_mergepairs illumina2_map_37024/chunk_15_R1.trimmed.fq --reverse illumina2_map_37024/chunk_15_R2.trimmed.fq --fastqout ./illumina2_map_37024/chunk_15.merged.fq.merged.fq --fastqout_notmerged_fwd ./illumina2_map_37024/chunk_15.merged.fq.notmerged.R1.fq --fastq_minmergelen 100 --fastq_allowmergestagger --threads 1
+[09/27/20 11:05:59]: Removing phix from illumina2_map_37024/chunk_28.merged.fq
+[09/27/20 11:05:59]: File Size: 63395 bytes
+[09/27/20 11:05:59]: usearch9 -filter_phix ./illumina2_map_37024/chunk_28.merged.fq.tmp -output ./illumina2_map_37024/chunk_28.merged.fq -threads 1
+[09/27/20 11:05:59]: Now merging PE reads
+[09/27/20 11:05:59]: vsearch --fastq_mergepairs illumina2_map_37024/chunk_9_R1.trimmed.fq --reverse illumina2_map_37024/chunk_9_R2.trimmed.fq --fastqout ./illumina2_map_37024/chunk_9.merged.fq.merged.fq --fastqout_notmerged_fwd ./illumina2_map_37024/chunk_9.merged.fq.notmerged.R1.fq --fastq_minmergelen 100 --fastq_allowmergestagger --threads 1
+[09/27/20 11:05:59]: vsearch v2.15.0_macos_x86_64, 16.0GB RAM, 8 cores
+https://github.com/torognes/vsearch
+
+Merging reads 100%
+       113  Pairs
+       105  Merged (92.9%)
+         8  Not merged (7.1%)
+
+Pairs that failed merging due to various reasons:
+         6  too many differences
+         2  alignment score too low, or score drop too high
+
+Statistics of all reads:
+    272.50  Mean read length
+
+Statistics of merged reads:
+    273.17  Mean fragment length
+     36.96  Standard deviation of fragment length
+      1.10  Mean expected error in forward sequences
+      0.89  Mean expected error in reverse sequences
+      0.05  Mean expected error in merged sequences
+      0.76  Mean observed errors in merged region of forward sequences
+      0.70  Mean observed errors in merged region of reverse sequences
+      1.46  Mean observed errors in merged region
+
+[09/27/20 11:05:59]: vsearch v2.15.0_macos_x86_64, 16.0GB RAM, 8 cores
+https://github.com/torognes/vsearch
+
+Merging reads 100%
+       109  Pairs
+        94  Merged (86.2%)
+        15  Not merged (13.8%)
+
+Pairs that failed merging due to various reasons:
+         1  multiple potential alignments
+         8  too many differences
+         6  alignment score too low, or score drop too high
+
+Statistics of all reads:
+    272.41  Mean read length
+
+Statistics of merged reads:
+    278.64  Mean fragment length
+     34.35  Standard deviation of fragment length
+      1.14  Mean expected error in forward sequences
+      0.83  Mean expected error in reverse sequences
+      0.05  Mean expected error in merged sequences
+      0.77  Mean observed errors in merged region of forward sequences
+      0.53  Mean observed errors in merged region of reverse sequences
+      1.30  Mean observed errors in merged region
+
+[09/27/20 11:05:59]: Removing phix from illumina2_map_37024/chunk_31.merged.fq
+[09/27/20 11:05:59]: Removing phix from illumina2_map_37024/chunk_15.merged.fq
+[09/27/20 11:05:59]: File Size: 64989 bytes
+[09/27/20 11:05:59]: usearch9 -filter_phix ./illumina2_map_37024/chunk_31.merged.fq.tmp -output ./illumina2_map_37024/chunk_31.merged.fq -threads 1
+[09/27/20 11:05:59]: File Size: 63705 bytes
+[09/27/20 11:05:59]: usearch9 -filter_phix ./illumina2_map_37024/chunk_15.merged.fq.tmp -output ./illumina2_map_37024/chunk_15.merged.fq -threads 1
+[09/27/20 11:05:59]: Now merging PE reads
+[09/27/20 11:05:59]: vsearch --fastq_mergepairs illumina2_map_37024/chunk_7_R1.trimmed.fq --reverse illumina2_map_37024/chunk_7_R2.trimmed.fq --fastqout ./illumina2_map_37024/chunk_7.merged.fq.merged.fq --fastqout_notmerged_fwd ./illumina2_map_37024/chunk_7.merged.fq.notmerged.R1.fq --fastq_minmergelen 100 --fastq_allowmergestagger --threads 1
+[09/27/20 11:05:59]: vsearch v2.15.0_macos_x86_64, 16.0GB RAM, 8 cores
+https://github.com/torognes/vsearch
+
+Merging reads 100%
+       117  Pairs
+       110  Merged (94.0%)
+         7  Not merged (6.0%)
+
+Pairs that failed merging due to various reasons:
+         4  too many differences
+         3  alignment score too low, or score drop too high
+
+Statistics of all reads:
+    272.56  Mean read length
+
+Statistics of merged reads:
+    278.52  Mean fragment length
+     34.48  Standard deviation of fragment length
+      1.09  Mean expected error in forward sequences
+      1.03  Mean expected error in reverse sequences
+      0.05  Mean expected error in merged sequences
+      0.77  Mean observed errors in merged region of forward sequences
+      0.74  Mean observed errors in merged region of reverse sequences
+      1.51  Mean observed errors in merged region
+
+[09/27/20 11:05:59]: Removing phix from illumina2_map_37024/chunk_9.merged.fq
+[09/27/20 11:05:59]: Now merging PE reads
+[09/27/20 11:05:59]: vsearch --fastq_mergepairs illumina2_map_37024/chunk_5_R1.trimmed.fq --reverse illumina2_map_37024/chunk_5_R2.trimmed.fq --fastqout ./illumina2_map_37024/chunk_5.merged.fq.merged.fq --fastqout_notmerged_fwd ./illumina2_map_37024/chunk_5.merged.fq.notmerged.R1.fq --fastq_minmergelen 100 --fastq_allowmergestagger --threads 1
+[09/27/20 11:05:59]: Now merging PE reads
+[09/27/20 11:05:59]: File Size: 68484 bytes
+[09/27/20 11:05:59]: vsearch --fastq_mergepairs illumina2_map_37024/chunk_26_R1.trimmed.fq --reverse illumina2_map_37024/chunk_26_R2.trimmed.fq --fastqout ./illumina2_map_37024/chunk_26.merged.fq.merged.fq --fastqout_notmerged_fwd ./illumina2_map_37024/chunk_26.merged.fq.notmerged.R1.fq --fastq_minmergelen 100 --fastq_allowmergestagger --threads 1
+[09/27/20 11:05:59]: usearch9 -filter_phix ./illumina2_map_37024/chunk_9.merged.fq.tmp -output ./illumina2_map_37024/chunk_9.merged.fq -threads 1
+[09/27/20 11:05:59]: vsearch v2.15.0_macos_x86_64, 16.0GB RAM, 8 cores
+https://github.com/torognes/vsearch
+
+Merging reads 100%
+       113  Pairs
+       103  Merged (91.2%)
+        10  Not merged (8.8%)
+
+Pairs that failed merging due to various reasons:
+         7  too many differences
+         3  alignment score too low, or score drop too high
+
+Statistics of all reads:
+    272.45  Mean read length
+
+Statistics of merged reads:
+    280.16  Mean fragment length
+     37.98  Standard deviation of fragment length
+      0.97  Mean expected error in forward sequences
+      0.78  Mean expected error in reverse sequences
+      0.05  Mean expected error in merged sequences
+      0.63  Mean observed errors in merged region of forward sequences
+      0.39  Mean observed errors in merged region of reverse sequences
+      1.02  Mean observed errors in merged region
+
+[09/27/20 11:05:59]: Removing phix from illumina2_map_37024/chunk_7.merged.fq
+[09/27/20 11:05:59]: File Size: 66439 bytes
+[09/27/20 11:05:59]: usearch9 -filter_phix ./illumina2_map_37024/chunk_7.merged.fq.tmp -output ./illumina2_map_37024/chunk_7.merged.fq -threads 1
+[09/27/20 11:05:59]: vsearch v2.15.0_macos_x86_64, 16.0GB RAM, 8 cores
+https://github.com/torognes/vsearch
+
+Merging reads 100%
+       106  Pairs
+       101  Merged (95.3%)
+         5  Not merged (4.7%)
+
+Pairs that failed merging due to various reasons:
+         1  too many differences
+         4  alignment score too low, or score drop too high
+
+Statistics of all reads:
+    272.55  Mean read length
+
+Statistics of merged reads:
+    275.35  Mean fragment length
+     34.35  Standard deviation of fragment length
+      1.10  Mean expected error in forward sequences
+      0.60  Mean expected error in reverse sequences
+      0.05  Mean expected error in merged sequences
+      1.02  Mean observed errors in merged region of forward sequences
+      0.45  Mean observed errors in merged region of reverse sequences
+      1.47  Mean observed errors in merged region
+
+[09/27/20 11:05:59]: Removing phix from illumina2_map_37024/chunk_5.merged.fq
+[09/27/20 11:05:59]: File Size: 61396 bytes
+[09/27/20 11:05:59]: usearch9 -filter_phix ./illumina2_map_37024/chunk_5.merged.fq.tmp -output ./illumina2_map_37024/chunk_5.merged.fq -threads 1
+[09/27/20 11:05:59]: vsearch v2.15.0_macos_x86_64, 16.0GB RAM, 8 cores
+https://github.com/torognes/vsearch
+
+Merging reads 100%
+       106  Pairs
+        97  Merged (91.5%)
+         9  Not merged (8.5%)
+
+Pairs that failed merging due to various reasons:
+         6  too many differences
+         3  alignment score too low, or score drop too high
+
+Statistics of all reads:
+    272.45  Mean read length
+
+Statistics of merged reads:
+    277.77  Mean fragment length
+     35.01  Standard deviation of fragment length
+      1.11  Mean expected error in forward sequences
+      0.85  Mean expected error in reverse sequences
+      0.05  Mean expected error in merged sequences
+      0.94  Mean observed errors in merged region of forward sequences
+      0.64  Mean observed errors in merged region of reverse sequences
+      1.58  Mean observed errors in merged region
+
+[09/27/20 11:05:59]: Removing phix from illumina2_map_37024/chunk_26.merged.fq
+[09/27/20 11:05:59]: File Size: 61852 bytes
+[09/27/20 11:05:59]: usearch9 -filter_phix ./illumina2_map_37024/chunk_26.merged.fq.tmp -output ./illumina2_map_37024/chunk_26.merged.fq -threads 1
+[09/27/20 11:06:00]: usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores
+(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: palmer.jona@gmail.com
+
+
+[09/27/20 11:06:00]: 00:00 203Mb     0.1% Word stats00:00 203Mb   100.0% Word stats
+00:00 203Mb   100.0% Alloc rows
+00:01 203Mb     0.1% Build index00:01 203Mb   100.0% Build index
+00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)
+
+[09/27/20 11:06:00]: usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores
+(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: palmer.jona@gmail.com
+
+
+[09/27/20 11:06:00]: 00:00 203Mb     0.1% Word stats00:00 203Mb   100.0% Word stats
+00:00 203Mb   100.0% Alloc rows
+00:01 203Mb     0.1% Build index00:01 203Mb   100.0% Build index
+00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)
+
+[09/27/20 11:06:00]: usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores
+(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: palmer.jona@gmail.com
+
+
+[09/27/20 11:06:00]: 00:00 203Mb     0.1% Word stats00:00 203Mb   100.0% Word stats
+00:00 203Mb   100.0% Alloc rows
+00:01 203Mb     0.1% Build index00:01 203Mb   100.0% Build index
+00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)
+
+[09/27/20 11:06:00]: usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores
+(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: palmer.jona@gmail.com
+
+
+[09/27/20 11:06:00]: 00:00 203Mb     0.1% Word stats00:00 203Mb   100.0% Word stats
+00:00 203Mb   100.0% Alloc rows
+00:01 203Mb     0.1% Build index00:01 203Mb   100.0% Build index
+00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)
+
+[09/27/20 11:06:00]: usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores
+(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: palmer.jona@gmail.com
+
+
+[09/27/20 11:06:00]: usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores
+(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: palmer.jona@gmail.com
+
+
+[09/27/20 11:06:00]: 00:00 203Mb     0.1% Word stats00:00 203Mb   100.0% Word stats
+00:00 203Mb   100.0% Alloc rows
+00:01 203Mb     0.1% Build index00:01 203Mb   100.0% Build index
+00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)
+
+[09/27/20 11:06:00]: 00:00 203Mb     0.1% Word stats00:00 203Mb   100.0% Word stats
+00:00 203Mb   100.0% Alloc rows
+00:01 203Mb     0.1% Build index00:01 203Mb   100.0% Build index
+00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)
+
+[09/27/20 11:06:00]: usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores
+(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: palmer.jona@gmail.com
+
+
+[09/27/20 11:06:00]: 00:00 203Mb     0.1% Word stats00:00 203Mb   100.0% Word stats
+00:00 203Mb   100.0% Alloc rows
+00:01 203Mb     0.1% Build index00:01 203Mb   100.0% Build index
+00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)
+
+[09/27/20 11:06:00]: usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores
+(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: palmer.jona@gmail.com
+
+
+[09/27/20 11:06:00]: 00:00 203Mb     0.1% Word stats00:00 203Mb   100.0% Word stats
+00:00 203Mb   100.0% Alloc rows
+00:01 203Mb     0.1% Build index00:01 203Mb   100.0% Build index
+00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)
+
+[09/27/20 11:06:00]: Re-oriented PE reads for chunk_21: 157 total, 70 correct, 75 flipped, 12 dropped.
+[09/27/20 11:06:00]: Re-oriented PE reads for chunk_12: 157 total, 66 correct, 75 flipped, 16 dropped.
+[09/27/20 11:06:00]: Re-oriented PE reads for chunk_23: 157 total, 75 correct, 64 flipped, 18 dropped.
+[09/27/20 11:06:00]: Re-oriented PE reads for chunk_2: 157 total, 83 correct, 68 flipped, 6 dropped.
+[09/27/20 11:06:00]: Re-oriented PE reads for chunk_30: 157 total, 76 correct, 69 flipped, 12 dropped.
+[09/27/20 11:06:00]: Re-oriented PE reads for chunk_10: 157 total, 80 correct, 71 flipped, 6 dropped.
+[09/27/20 11:06:00]: Re-oriented PE reads for chunk_4: 157 total, 66 correct, 73 flipped, 18 dropped.
+[09/27/20 11:06:00]: Re-oriented PE reads for chunk_14: 157 total, 81 correct, 62 flipped, 14 dropped.
+[09/27/20 11:06:00]: Now merging PE reads
+[09/27/20 11:06:00]: vsearch --fastq_mergepairs illumina2_map_37024/chunk_23_R1.trimmed.fq --reverse illumina2_map_37024/chunk_23_R2.trimmed.fq --fastqout ./illumina2_map_37024/chunk_23.merged.fq.merged.fq --fastqout_notmerged_fwd ./illumina2_map_37024/chunk_23.merged.fq.notmerged.R1.fq --fastq_minmergelen 100 --fastq_allowmergestagger --threads 1
+[09/27/20 11:06:00]: Now merging PE reads
+[09/27/20 11:06:00]: vsearch --fastq_mergepairs illumina2_map_37024/chunk_14_R1.trimmed.fq --reverse illumina2_map_37024/chunk_14_R2.trimmed.fq --fastqout ./illumina2_map_37024/chunk_14.merged.fq.merged.fq --fastqout_notmerged_fwd ./illumina2_map_37024/chunk_14.merged.fq.notmerged.R1.fq --fastq_minmergelen 100 --fastq_allowmergestagger --threads 1
+[09/27/20 11:06:00]: vsearch v2.15.0_macos_x86_64, 16.0GB RAM, 8 cores
+https://github.com/torognes/vsearch
+
+Merging reads 100%
+       108  Pairs
+        99  Merged (91.7%)
+         9  Not merged (8.3%)
+
+Pairs that failed merging due to various reasons:
+         7  too many differences
+         2  alignment score too low, or score drop too high
+
+Statistics of all reads:
+    272.52  Mean read length
+
+Statistics of merged reads:
+    281.64  Mean fragment length
+     36.80  Standard deviation of fragment length
+      0.95  Mean expected error in forward sequences
+      0.94  Mean expected error in reverse sequences
+      0.06  Mean expected error in merged sequences
+      0.63  Mean observed errors in merged region of forward sequences
+      0.74  Mean observed errors in merged region of reverse sequences
+      1.36  Mean observed errors in merged region
+
+[09/27/20 11:06:00]: Removing phix from illumina2_map_37024/chunk_23.merged.fq
+[09/27/20 11:06:00]: File Size: 63786 bytes
+[09/27/20 11:06:00]: usearch9 -filter_phix ./illumina2_map_37024/chunk_23.merged.fq.tmp -output ./illumina2_map_37024/chunk_23.merged.fq -threads 1
+[09/27/20 11:06:00]: Now merging PE reads
+[09/27/20 11:06:00]: vsearch --fastq_mergepairs illumina2_map_37024/chunk_21_R1.trimmed.fq --reverse illumina2_map_37024/chunk_21_R2.trimmed.fq --fastqout ./illumina2_map_37024/chunk_21.merged.fq.merged.fq --fastqout_notmerged_fwd ./illumina2_map_37024/chunk_21.merged.fq.notmerged.R1.fq --fastq_minmergelen 100 --fastq_allowmergestagger --threads 1
+[09/27/20 11:06:00]: Now merging PE reads
+[09/27/20 11:06:00]: vsearch --fastq_mergepairs illumina2_map_37024/chunk_30_R1.trimmed.fq --reverse illumina2_map_37024/chunk_30_R2.trimmed.fq --fastqout ./illumina2_map_37024/chunk_30.merged.fq.merged.fq --fastqout_notmerged_fwd ./illumina2_map_37024/chunk_30.merged.fq.notmerged.R1.fq --fastq_minmergelen 100 --fastq_allowmergestagger --threads 1
+[09/27/20 11:06:00]: vsearch v2.15.0_macos_x86_64, 16.0GB RAM, 8 cores
+https://github.com/torognes/vsearch
+
+Merging reads 100%
+       105  Pairs
+        96  Merged (91.4%)
+         9  Not merged (8.6%)
+
+Pairs that failed merging due to various reasons:
+         1  multiple potential alignments
+         5  too many differences
+         3  alignment score too low, or score drop too high
+
+Statistics of all reads:
+    272.50  Mean read length
+
+Statistics of merged reads:
+    284.64  Mean fragment length
+     38.83  Standard deviation of fragment length
+      0.75  Mean expected error in forward sequences
+      0.94  Mean expected error in reverse sequences
+      0.05  Mean expected error in merged sequences
+      0.47  Mean observed errors in merged region of forward sequences
+      0.86  Mean observed errors in merged region of reverse sequences
+      1.33  Mean observed errors in merged region
+
+[09/27/20 11:06:00]: Now merging PE reads
+[09/27/20 11:06:00]: vsearch --fastq_mergepairs illumina2_map_37024/chunk_4_R1.trimmed.fq --reverse illumina2_map_37024/chunk_4_R2.trimmed.fq --fastqout ./illumina2_map_37024/chunk_4.merged.fq.merged.fq --fastqout_notmerged_fwd ./illumina2_map_37024/chunk_4.merged.fq.notmerged.R1.fq --fastq_minmergelen 100 --fastq_allowmergestagger --threads 1
+[09/27/20 11:06:00]: Removing phix from illumina2_map_37024/chunk_14.merged.fq
+[09/27/20 11:06:00]: File Size: 62583 bytes
+[09/27/20 11:06:00]: usearch9 -filter_phix ./illumina2_map_37024/chunk_14.merged.fq.tmp -output ./illumina2_map_37024/chunk_14.merged.fq -threads 1
+[09/27/20 11:06:00]: Now merging PE reads
+[09/27/20 11:06:00]: vsearch --fastq_mergepairs illumina2_map_37024/chunk_12_R1.trimmed.fq --reverse illumina2_map_37024/chunk_12_R2.trimmed.fq --fastqout ./illumina2_map_37024/chunk_12.merged.fq.merged.fq --fastqout_notmerged_fwd ./illumina2_map_37024/chunk_12.merged.fq.notmerged.R1.fq --fastq_minmergelen 100 --fastq_allowmergestagger --threads 1
+[09/27/20 11:06:00]: vsearch v2.15.0_macos_x86_64, 16.0GB RAM, 8 cores
+https://github.com/torognes/vsearch
+
+Merging reads 100%
+        98  Pairs
+        90  Merged (91.8%)
+         8  Not merged (8.2%)
+
+Pairs that failed merging due to various reasons:
+         4  too many differences
+         4  alignment score too low, or score drop too high
+
+Statistics of all reads:
+    272.55  Mean read length
+
+Statistics of merged reads:
+    278.20  Mean fragment length
+     35.16  Standard deviation of fragment length
+      1.22  Mean expected error in forward sequences
+      0.85  Mean expected error in reverse sequences
+      0.05  Mean expected error in merged sequences
+      0.70  Mean observed errors in merged region of forward sequences
+      0.56  Mean observed errors in merged region of reverse sequences
+      1.26  Mean observed errors in merged region
+
+[09/27/20 11:06:00]: Removing phix from illumina2_map_37024/chunk_21.merged.fq
+[09/27/20 11:06:00]: File Size: 57264 bytes
+[09/27/20 11:06:00]: usearch9 -filter_phix ./illumina2_map_37024/chunk_21.merged.fq.tmp -output ./illumina2_map_37024/chunk_21.merged.fq -threads 1
+[09/27/20 11:06:00]: Now merging PE reads
+[09/27/20 11:06:00]: vsearch --fastq_mergepairs illumina2_map_37024/chunk_10_R1.trimmed.fq --reverse illumina2_map_37024/chunk_10_R2.trimmed.fq --fastqout ./illumina2_map_37024/chunk_10.merged.fq.merged.fq --fastqout_notmerged_fwd ./illumina2_map_37024/chunk_10.merged.fq.notmerged.R1.fq --fastq_minmergelen 100 --fastq_allowmergestagger --threads 1
+[09/27/20 11:06:00]: vsearch v2.15.0_macos_x86_64, 16.0GB RAM, 8 cores
+https://github.com/torognes/vsearch
+
+Merging reads 100%
+        98  Pairs
+        89  Merged (90.8%)
+         9  Not merged (9.2%)
+
+Pairs that failed merging due to various reasons:
+         1  multiple potential alignments
+         4  too many differences
+         4  alignment score too low, or score drop too high
+
+Statistics of all reads:
+    272.53  Mean read length
+
+Statistics of merged reads:
+    274.39  Mean fragment length
+     33.69  Standard deviation of fragment length
+      1.32  Mean expected error in forward sequences
+      0.93  Mean expected error in reverse sequences
+      0.06  Mean expected error in merged sequences
+      1.08  Mean observed errors in merged region of forward sequences
+      0.64  Mean observed errors in merged region of reverse sequences
+      1.72  Mean observed errors in merged region
+
+[09/27/20 11:06:00]: vsearch v2.15.0_macos_x86_64, 16.0GB RAM, 8 cores
+https://github.com/torognes/vsearch
+
+Merging reads 100%
+        94  Pairs
+        84  Merged (89.4%)
+        10  Not merged (10.6%)
+
+Pairs that failed merging due to various reasons:
+         5  too many differences
+         5  alignment score too low, or score drop too high
+
+Statistics of all reads:
+    272.48  Mean read length
+
+Statistics of merged reads:
+    283.07  Mean fragment length
+     33.80  Standard deviation of fragment length
+      0.98  Mean expected error in forward sequences
+      0.61  Mean expected error in reverse sequences
+      0.05  Mean expected error in merged sequences
+      0.76  Mean observed errors in merged region of forward sequences
+      0.36  Mean observed errors in merged region of reverse sequences
+      1.12  Mean observed errors in merged region
+
+[09/27/20 11:06:00]: Removing phix from illumina2_map_37024/chunk_30.merged.fq
+[09/27/20 11:06:00]: Removing phix from illumina2_map_37024/chunk_4.merged.fq
+[09/27/20 11:06:00]: File Size: 56575 bytes
+[09/27/20 11:06:00]: usearch9 -filter_phix ./illumina2_map_37024/chunk_30.merged.fq.tmp -output ./illumina2_map_37024/chunk_30.merged.fq -threads 1
+[09/27/20 11:06:00]: File Size: 55728 bytes
+[09/27/20 11:06:00]: vsearch v2.15.0_macos_x86_64, 16.0GB RAM, 8 cores
+https://github.com/torognes/vsearch
+
+Merging reads 100%
+       107  Pairs
+        97  Merged (90.7%)
+        10  Not merged (9.3%)
+
+Pairs that failed merging due to various reasons:
+         5  too many differences
+         5  alignment score too low, or score drop too high
+
+Statistics of all reads:
+    272.53  Mean read length
+
+Statistics of merged reads:
+    283.39  Mean fragment length
+     34.55  Standard deviation of fragment length
+      1.19  Mean expected error in forward sequences
+      0.69  Mean expected error in reverse sequences
+      0.05  Mean expected error in merged sequences
+      0.94  Mean observed errors in merged region of forward sequences
+      0.31  Mean observed errors in merged region of reverse sequences
+      1.25  Mean observed errors in merged region
+
+[09/27/20 11:06:00]: usearch9 -filter_phix ./illumina2_map_37024/chunk_4.merged.fq.tmp -output ./illumina2_map_37024/chunk_4.merged.fq -threads 1
+[09/27/20 11:06:00]: Removing phix from illumina2_map_37024/chunk_12.merged.fq
+[09/27/20 11:06:00]: File Size: 63526 bytes
+[09/27/20 11:06:00]: usearch9 -filter_phix ./illumina2_map_37024/chunk_12.merged.fq.tmp -output ./illumina2_map_37024/chunk_12.merged.fq -threads 1
+[09/27/20 11:06:00]: vsearch v2.15.0_macos_x86_64, 16.0GB RAM, 8 cores
+https://github.com/torognes/vsearch
+
+Merging reads 100%
+       107  Pairs
+        96  Merged (89.7%)
+        11  Not merged (10.3%)
+
+Pairs that failed merging due to various reasons:
+         1  multiple potential alignments
+         8  too many differences
+         2  alignment score too low, or score drop too high
+
+Statistics of all reads:
+    272.48  Mean read length
+
+Statistics of merged reads:
+    277.52  Mean fragment length
+     36.22  Standard deviation of fragment length
+      1.24  Mean expected error in forward sequences
+      0.96  Mean expected error in reverse sequences
+      0.05  Mean expected error in merged sequences
+      0.98  Mean observed errors in merged region of forward sequences
+      0.75  Mean observed errors in merged region of reverse sequences
+      1.73  Mean observed errors in merged region
+
+[09/27/20 11:06:00]: Now merging PE reads
+[09/27/20 11:06:00]: vsearch --fastq_mergepairs illumina2_map_37024/chunk_2_R1.trimmed.fq --reverse illumina2_map_37024/chunk_2_R2.trimmed.fq --fastqout ./illumina2_map_37024/chunk_2.merged.fq.merged.fq --fastqout_notmerged_fwd ./illumina2_map_37024/chunk_2.merged.fq.notmerged.R1.fq --fastq_minmergelen 100 --fastq_allowmergestagger --threads 1
+[09/27/20 11:06:00]: Removing phix from illumina2_map_37024/chunk_10.merged.fq
+[09/27/20 11:06:00]: File Size: 62389 bytes
+[09/27/20 11:06:00]: usearch9 -filter_phix ./illumina2_map_37024/chunk_10.merged.fq.tmp -output ./illumina2_map_37024/chunk_10.merged.fq -threads 1
+[09/27/20 11:06:00]: vsearch v2.15.0_macos_x86_64, 16.0GB RAM, 8 cores
+https://github.com/torognes/vsearch
+
+Merging reads 100%
+       108  Pairs
+        99  Merged (91.7%)
+         9  Not merged (8.3%)
+
+Pairs that failed merging due to various reasons:
+         1  multiple potential alignments
+         6  too many differences
+         2  alignment score too low, or score drop too high
+
+Statistics of all reads:
+    272.54  Mean read length
+
+Statistics of merged reads:
+    278.52  Mean fragment length
+     37.40  Standard deviation of fragment length
+      0.81  Mean expected error in forward sequences
+      0.56  Mean expected error in reverse sequences
+      0.05  Mean expected error in merged sequences
+      0.59  Mean observed errors in merged region of forward sequences
+      0.32  Mean observed errors in merged region of reverse sequences
+      0.91  Mean observed errors in merged region
+
+[09/27/20 11:06:00]: Removing phix from illumina2_map_37024/chunk_2.merged.fq
+[09/27/20 11:06:00]: File Size: 63176 bytes
+[09/27/20 11:06:00]: usearch9 -filter_phix ./illumina2_map_37024/chunk_2.merged.fq.tmp -output ./illumina2_map_37024/chunk_2.merged.fq -threads 1
+[09/27/20 11:06:01]: usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores
+(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: palmer.jona@gmail.com
+
+
+[09/27/20 11:06:01]: 00:00 203Mb     0.1% Word stats00:00 203Mb   100.0% Word stats
+00:00 203Mb   100.0% Alloc rows
+00:00 203Mb     0.1% Build index00:00 203Mb   100.0% Build index
+00:01 136Mb     0.2% Filtering for phix, 0 hits (0.0%)00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)
+
+[09/27/20 11:06:01]: usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores
+(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: palmer.jona@gmail.com
+
+
+[09/27/20 11:06:01]: 00:00 203Mb     0.1% Word stats00:00 203Mb   100.0% Word stats
+00:00 203Mb   100.0% Alloc rows
+00:00 203Mb     0.1% Build index00:00 203Mb   100.0% Build index
+00:01 136Mb     0.2% Filtering for phix, 0 hits (0.0%)00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)
+
+[09/27/20 11:06:01]: usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores
+(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: palmer.jona@gmail.com
+
+
+[09/27/20 11:06:01]: usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores
+(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: palmer.jona@gmail.com
+
+
+[09/27/20 11:06:01]: 00:00 203Mb     0.1% Word stats00:00 203Mb   100.0% Word stats
+00:00 203Mb   100.0% Alloc rows
+00:00 203Mb     0.1% Build index00:00 203Mb   100.0% Build index
+00:01 136Mb     0.2% Filtering for phix, 0 hits (0.0%)00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)
+
+[09/27/20 11:06:01]: usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores
+(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: palmer.jona@gmail.com
+
+
+[09/27/20 11:06:01]: 00:00 203Mb     0.1% Word stats00:00 203Mb   100.0% Word stats
+00:00 203Mb   100.0% Alloc rows
+00:00 203Mb     0.1% Build index00:00 203Mb   100.0% Build index
+00:01 136Mb     0.2% Filtering for phix, 0 hits (0.0%)00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)
+
+[09/27/20 11:06:01]: 00:00 203Mb     0.1% Word stats00:00 203Mb   100.0% Word stats
+00:00 203Mb   100.0% Alloc rows
+00:00 203Mb     0.1% Build index00:00 203Mb   100.0% Build index
+00:01 136Mb     0.2% Filtering for phix, 0 hits (0.0%)00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)
+
+[09/27/20 11:06:01]: usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores
+(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: palmer.jona@gmail.com
+
+
+[09/27/20 11:06:01]: usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores
+(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: palmer.jona@gmail.com
+
+
+[09/27/20 11:06:01]: 00:00 203Mb     0.1% Word stats00:00 203Mb   100.0% Word stats
+00:00 203Mb   100.0% Alloc rows
+00:00 203Mb     0.1% Build index00:00 203Mb   100.0% Build index
+00:01 136Mb     0.2% Filtering for phix, 0 hits (0.0%)00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)
+
+[09/27/20 11:06:01]: 00:00 203Mb     0.1% Word stats00:00 203Mb   100.0% Word stats
+00:00 203Mb   100.0% Alloc rows
+00:00 203Mb     0.1% Build index00:00 203Mb   100.0% Build index
+00:01 136Mb     0.2% Filtering for phix, 0 hits (0.0%)00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)
+
+[09/27/20 11:06:01]: usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores
+(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: palmer.jona@gmail.com
+
+
+[09/27/20 11:06:01]: 00:00 203Mb     0.1% Word stats00:00 203Mb   100.0% Word stats
+00:00 203Mb   100.0% Alloc rows
+00:01 203Mb     0.1% Build index00:01 203Mb   100.0% Build index
+00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)
+
+[09/27/20 11:06:01]: Re-oriented PE reads for chunk_29: 157 total, 75 correct, 65 flipped, 17 dropped.
+[09/27/20 11:06:01]: Re-oriented PE reads for chunk_27: 157 total, 73 correct, 70 flipped, 14 dropped.
+[09/27/20 11:06:01]: Re-oriented PE reads for chunk_25: 157 total, 68 correct, 78 flipped, 11 dropped.
+[09/27/20 11:06:01]: Re-oriented PE reads for chunk_6: 157 total, 71 correct, 74 flipped, 12 dropped.
+[09/27/20 11:06:01]: Re-oriented PE reads for chunk_18: 157 total, 78 correct, 72 flipped, 7 dropped.
+[09/27/20 11:06:01]: Re-oriented PE reads for chunk_8: 157 total, 62 correct, 81 flipped, 14 dropped.
+[09/27/20 11:06:01]: Re-oriented PE reads for chunk_32: 133 total, 61 correct, 62 flipped, 10 dropped.
+[09/27/20 11:06:01]: Re-oriented PE reads for chunk_16: 157 total, 74 correct, 72 flipped, 11 dropped.
+[09/27/20 11:06:01]: Now merging PE reads
+[09/27/20 11:06:01]: vsearch --fastq_mergepairs illumina2_map_37024/chunk_29_R1.trimmed.fq --reverse illumina2_map_37024/chunk_29_R2.trimmed.fq --fastqout ./illumina2_map_37024/chunk_29.merged.fq.merged.fq --fastqout_notmerged_fwd ./illumina2_map_37024/chunk_29.merged.fq.notmerged.R1.fq --fastq_minmergelen 100 --fastq_allowmergestagger --threads 1
+[09/27/20 11:06:01]: Now merging PE reads
+[09/27/20 11:06:01]: vsearch --fastq_mergepairs illumina2_map_37024/chunk_32_R1.trimmed.fq --reverse illumina2_map_37024/chunk_32_R2.trimmed.fq --fastqout ./illumina2_map_37024/chunk_32.merged.fq.merged.fq --fastqout_notmerged_fwd ./illumina2_map_37024/chunk_32.merged.fq.notmerged.R1.fq --fastq_minmergelen 100 --fastq_allowmergestagger --threads 1
+[09/27/20 11:06:01]: vsearch v2.15.0_macos_x86_64, 16.0GB RAM, 8 cores
+https://github.com/torognes/vsearch
+
+Merging reads 100%
+       106  Pairs
+       100  Merged (94.3%)
+         6  Not merged (5.7%)
+
+Pairs that failed merging due to various reasons:
+         5  too many differences
+         1  alignment score too low, or score drop too high
+
+Statistics of all reads:
+    272.50  Mean read length
+
+Statistics of merged reads:
+    279.28  Mean fragment length
+     37.63  Standard deviation of fragment length
+      0.99  Mean expected error in forward sequences
+      1.19  Mean expected error in reverse sequences
+      0.06  Mean expected error in merged sequences
+      0.66  Mean observed errors in merged region of forward sequences
+      0.83  Mean observed errors in merged region of reverse sequences
+      1.49  Mean observed errors in merged region
+
+[09/27/20 11:06:01]: Removing phix from illumina2_map_37024/chunk_29.merged.fq
+[09/27/20 11:06:01]: File Size: 62176 bytes
+[09/27/20 11:06:01]: usearch9 -filter_phix ./illumina2_map_37024/chunk_29.merged.fq.tmp -output ./illumina2_map_37024/chunk_29.merged.fq -threads 1
+[09/27/20 11:06:01]: vsearch v2.15.0_macos_x86_64, 16.0GB RAM, 8 cores
+https://github.com/torognes/vsearch
+
+Merging reads 100%
+        98  Pairs
+        93  Merged (94.9%)
+         5  Not merged (5.1%)
+
+Pairs that failed merging due to various reasons:
+         3  too many differences
+         2  alignment score too low, or score drop too high
+
+Statistics of all reads:
+    272.47  Mean read length
+
+Statistics of merged reads:
+    284.00  Mean fragment length
+     34.11  Standard deviation of fragment length
+      1.36  Mean expected error in forward sequences
+      0.99  Mean expected error in reverse sequences
+      0.06  Mean expected error in merged sequences
+      1.05  Mean observed errors in merged region of forward sequences
+      0.85  Mean observed errors in merged region of reverse sequences
+      1.90  Mean observed errors in merged region
+
+[09/27/20 11:06:01]: Removing phix from illumina2_map_37024/chunk_32.merged.fq
+[09/27/20 11:06:01]: File Size: 58369 bytes
+[09/27/20 11:06:01]: usearch9 -filter_phix ./illumina2_map_37024/chunk_32.merged.fq.tmp -output ./illumina2_map_37024/chunk_32.merged.fq -threads 1
+[09/27/20 11:06:01]: Now merging PE reads
+[09/27/20 11:06:01]: vsearch --fastq_mergepairs illumina2_map_37024/chunk_8_R1.trimmed.fq --reverse illumina2_map_37024/chunk_8_R2.trimmed.fq --fastqout ./illumina2_map_37024/chunk_8.merged.fq.merged.fq --fastqout_notmerged_fwd ./illumina2_map_37024/chunk_8.merged.fq.notmerged.R1.fq --fastq_minmergelen 100 --fastq_allowmergestagger --threads 1
+[09/27/20 11:06:01]: Now merging PE reads
+[09/27/20 11:06:01]: vsearch --fastq_mergepairs illumina2_map_37024/chunk_25_R1.trimmed.fq --reverse illumina2_map_37024/chunk_25_R2.trimmed.fq --fastqout ./illumina2_map_37024/chunk_25.merged.fq.merged.fq --fastqout_notmerged_fwd ./illumina2_map_37024/chunk_25.merged.fq.notmerged.R1.fq --fastq_minmergelen 100 --fastq_allowmergestagger --threads 1
+[09/27/20 11:06:01]: Now merging PE reads
+[09/27/20 11:06:01]: vsearch --fastq_mergepairs illumina2_map_37024/chunk_16_R1.trimmed.fq --reverse illumina2_map_37024/chunk_16_R2.trimmed.fq --fastqout ./illumina2_map_37024/chunk_16.merged.fq.merged.fq --fastqout_notmerged_fwd ./illumina2_map_37024/chunk_16.merged.fq.notmerged.R1.fq --fastq_minmergelen 100 --fastq_allowmergestagger --threads 1
+[09/27/20 11:06:01]: Now merging PE reads
+[09/27/20 11:06:01]: vsearch v2.15.0_macos_x86_64, 16.0GB RAM, 8 cores
+https://github.com/torognes/vsearch
+
+Merging reads 100%
+       109  Pairs
+       102  Merged (93.6%)
+         7  Not merged (6.4%)
+
+Pairs that failed merging due to various reasons:
+         2  too many differences
+         5  alignment score too low, or score drop too high
+
+Statistics of all reads:
+    272.50  Mean read length
+
+Statistics of merged reads:
+    273.26  Mean fragment length
+     34.72  Standard deviation of fragment length
+      1.23  Mean expected error in forward sequences
+      1.02  Mean expected error in reverse sequences
+      0.08  Mean expected error in merged sequences
+      0.99  Mean observed errors in merged region of forward sequences
+      0.66  Mean observed errors in merged region of reverse sequences
+      1.65  Mean observed errors in merged region
+
+[09/27/20 11:06:01]: vsearch --fastq_mergepairs illumina2_map_37024/chunk_27_R1.trimmed.fq --reverse illumina2_map_37024/chunk_27_R2.trimmed.fq --fastqout ./illumina2_map_37024/chunk_27.merged.fq.merged.fq --fastqout_notmerged_fwd ./illumina2_map_37024/chunk_27.merged.fq.notmerged.R1.fq --fastq_minmergelen 100 --fastq_allowmergestagger --threads 1
+[09/27/20 11:06:01]: Removing phix from illumina2_map_37024/chunk_8.merged.fq
+[09/27/20 11:06:01]: File Size: 62709 bytes
+[09/27/20 11:06:01]: usearch9 -filter_phix ./illumina2_map_37024/chunk_8.merged.fq.tmp -output ./illumina2_map_37024/chunk_8.merged.fq -threads 1
+[09/27/20 11:06:01]: vsearch v2.15.0_macos_x86_64, 16.0GB RAM, 8 cores
+https://github.com/torognes/vsearch
+
+Merging reads 100%
+       104  Pairs
+        96  Merged (92.3%)
+         8  Not merged (7.7%)
+
+Pairs that failed merging due to various reasons:
+         5  too many differences
+         3  alignment score too low, or score drop too high
+
+Statistics of all reads:
+    272.53  Mean read length
+
+Statistics of merged reads:
+    269.67  Mean fragment length
+     32.72  Standard deviation of fragment length
+      1.22  Mean expected error in forward sequences
+      0.86  Mean expected error in reverse sequences
+      0.04  Mean expected error in merged sequences
+      1.04  Mean observed errors in merged region of forward sequences
+      0.56  Mean observed errors in merged region of reverse sequences
+      1.60  Mean observed errors in merged region
+
+[09/27/20 11:06:01]: Removing phix from illumina2_map_37024/chunk_25.merged.fq
+[09/27/20 11:06:01]: File Size: 59126 bytes
+[09/27/20 11:06:01]: usearch9 -filter_phix ./illumina2_map_37024/chunk_25.merged.fq.tmp -output ./illumina2_map_37024/chunk_25.merged.fq -threads 1
+[09/27/20 11:06:01]: vsearch v2.15.0_macos_x86_64, 16.0GB RAM, 8 cores
+https://github.com/torognes/vsearch
+
+Merging reads 100%
+       113  Pairs
+       101  Merged (89.4%)
+        12  Not merged (10.6%)
+
+Pairs that failed merging due to various reasons:
+         7  too many differences
+         5  alignment score too low, or score drop too high
+
+Statistics of all reads:
+    272.58  Mean read length
+
+Statistics of merged reads:
+    280.04  Mean fragment length
+     36.16  Standard deviation of fragment length
+      0.77  Mean expected error in forward sequences
+      0.76  Mean expected error in reverse sequences
+      0.04  Mean expected error in merged sequences
+      0.52  Mean observed errors in merged region of forward sequences
+      0.46  Mean observed errors in merged region of reverse sequences
+      0.98  Mean observed errors in merged region
+
+[09/27/20 11:06:01]: Removing phix from illumina2_map_37024/chunk_16.merged.fq
+[09/27/20 11:06:01]: File Size: 66385 bytes
+[09/27/20 11:06:01]: usearch9 -filter_phix ./illumina2_map_37024/chunk_16.merged.fq.tmp -output ./illumina2_map_37024/chunk_16.merged.fq -threads 1
+[09/27/20 11:06:01]: Now merging PE reads
+[09/27/20 11:06:01]: vsearch --fastq_mergepairs illumina2_map_37024/chunk_18_R1.trimmed.fq --reverse illumina2_map_37024/chunk_18_R2.trimmed.fq --fastqout ./illumina2_map_37024/chunk_18.merged.fq.merged.fq --fastqout_notmerged_fwd ./illumina2_map_37024/chunk_18.merged.fq.notmerged.R1.fq --fastq_minmergelen 100 --fastq_allowmergestagger --threads 1
+[09/27/20 11:06:01]: vsearch v2.15.0_macos_x86_64, 16.0GB RAM, 8 cores
+https://github.com/torognes/vsearch
+
+Merging reads 100%
+       102  Pairs
+        93  Merged (91.2%)
+         9  Not merged (8.8%)
+
+Pairs that failed merging due to various reasons:
+         7  too many differences
+         2  alignment score too low, or score drop too high
+
+Statistics of all reads:
+    272.61  Mean read length
+
+Statistics of merged reads:
+    278.77  Mean fragment length
+     33.59  Standard deviation of fragment length
+      1.02  Mean expected error in forward sequences
+      1.07  Mean expected error in reverse sequences
+      0.08  Mean expected error in merged sequences
+      0.88  Mean observed errors in merged region of forward sequences
+      0.76  Mean observed errors in merged region of reverse sequences
+      1.65  Mean observed errors in merged region
+
+[09/27/20 11:06:01]: Now merging PE reads
+[09/27/20 11:06:01]: vsearch --fastq_mergepairs illumina2_map_37024/chunk_6_R1.trimmed.fq --reverse illumina2_map_37024/chunk_6_R2.trimmed.fq --fastqout ./illumina2_map_37024/chunk_6.merged.fq.merged.fq --fastqout_notmerged_fwd ./illumina2_map_37024/chunk_6.merged.fq.notmerged.R1.fq --fastq_minmergelen 100 --fastq_allowmergestagger --threads 1
+[09/27/20 11:06:01]: Removing phix from illumina2_map_37024/chunk_27.merged.fq
+[09/27/20 11:06:01]: File Size: 59705 bytes
+[09/27/20 11:06:01]: usearch9 -filter_phix ./illumina2_map_37024/chunk_27.merged.fq.tmp -output ./illumina2_map_37024/chunk_27.merged.fq -threads 1
+[09/27/20 11:06:01]: vsearch v2.15.0_macos_x86_64, 16.0GB RAM, 8 cores
+https://github.com/torognes/vsearch
+
+Merging reads 100%
+       110  Pairs
+       101  Merged (91.8%)
+         9  Not merged (8.2%)
+
+Pairs that failed merging due to various reasons:
+         5  too many differences
+         4  alignment score too low, or score drop too high
+
+Statistics of all reads:
+    272.50  Mean read length
+
+Statistics of merged reads:
+    277.03  Mean fragment length
+     35.52  Standard deviation of fragment length
+      1.22  Mean expected error in forward sequences
+      0.96  Mean expected error in reverse sequences
+      0.08  Mean expected error in merged sequences
+      1.11  Mean observed errors in merged region of forward sequences
+      0.60  Mean observed errors in merged region of reverse sequences
+      1.71  Mean observed errors in merged region
+
+[09/27/20 11:06:01]: vsearch v2.15.0_macos_x86_64, 16.0GB RAM, 8 cores
+https://github.com/torognes/vsearch
+
+Merging reads 100%
+       108  Pairs
+        99  Merged (91.7%)
+         9  Not merged (8.3%)
+
+Pairs that failed merging due to various reasons:
+         1  too few kmers found on same diagonal
+         1  multiple potential alignments
+         6  too many differences
+         1  alignment score too low, or score drop too high
+
+Statistics of all reads:
+    272.53  Mean read length
+
+Statistics of merged reads:
+    277.00  Mean fragment length
+     34.77  Standard deviation of fragment length
+      1.01  Mean expected error in forward sequences
+      1.16  Mean expected error in reverse sequences
+      0.11  Mean expected error in merged sequences
+      0.71  Mean observed errors in merged region of forward sequences
+      1.00  Mean observed errors in merged region of reverse sequences
+      1.71  Mean observed errors in merged region
+
+[09/27/20 11:06:01]: Removing phix from illumina2_map_37024/chunk_6.merged.fq
+[09/27/20 11:06:01]: Removing phix from illumina2_map_37024/chunk_18.merged.fq
+[09/27/20 11:06:01]: File Size: 64043 bytes
+[09/27/20 11:06:01]: usearch9 -filter_phix ./illumina2_map_37024/chunk_6.merged.fq.tmp -output ./illumina2_map_37024/chunk_6.merged.fq -threads 1
+[09/27/20 11:06:01]: File Size: 62869 bytes
+[09/27/20 11:06:01]: usearch9 -filter_phix ./illumina2_map_37024/chunk_18.merged.fq.tmp -output ./illumina2_map_37024/chunk_18.merged.fq -threads 1
+[09/27/20 11:06:02]: usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores
+(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: palmer.jona@gmail.com
+
+
+[09/27/20 11:06:02]: 00:00 203Mb     0.1% Word stats00:00 203Mb   100.0% Word stats
+00:00 203Mb   100.0% Alloc rows
+00:00 203Mb     0.1% Build index00:00 203Mb   100.0% Build index
+00:00 136Mb   100.0% Filtering for phix, 0 hits (0.0%)
+
+[09/27/20 11:06:02]: usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores
+(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: palmer.jona@gmail.com
+
+
+[09/27/20 11:06:02]: usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores
+(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: palmer.jona@gmail.com
+
+
+[09/27/20 11:06:02]: 00:00 203Mb     0.1% Word stats00:00 203Mb   100.0% Word stats
+00:00 203Mb   100.0% Alloc rows
+00:00 203Mb     0.1% Build index00:00 203Mb   100.0% Build index
+00:01 136Mb     0.2% Filtering for phix, 0 hits (0.0%)00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)
+
+[09/27/20 11:06:02]: 00:00 203Mb     0.1% Word stats00:00 203Mb   100.0% Word stats
+00:00 203Mb   100.0% Alloc rows
+00:00 203Mb     0.1% Build index00:00 203Mb   100.0% Build index
+00:01 136Mb     0.2% Filtering for phix, 0 hits (0.0%)00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)
+
+[09/27/20 11:06:02]: usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores
+(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: palmer.jona@gmail.com
+
+
+[09/27/20 11:06:02]: 00:00 203Mb     0.1% Word stats00:00 203Mb   100.0% Word stats
+00:00 203Mb   100.0% Alloc rows
+00:00 203Mb     0.1% Build index00:00 203Mb   100.0% Build index
+00:01 136Mb     0.2% Filtering for phix, 0 hits (0.0%)00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)
+
+[09/27/20 11:06:02]: usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores
+(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: palmer.jona@gmail.com
+
+
+[09/27/20 11:06:02]: 00:00 203Mb     0.1% Word stats00:00 203Mb   100.0% Word stats
+00:00 203Mb   100.0% Alloc rows
+00:00 203Mb     0.1% Build index00:00 203Mb   100.0% Build index
+00:01 136Mb     0.2% Filtering for phix, 0 hits (0.0%)00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)
+
+[09/27/20 11:06:02]: usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores
+(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: palmer.jona@gmail.com
+
+
+[09/27/20 11:06:02]: 00:00 203Mb     0.1% Word stats00:00 203Mb   100.0% Word stats
+00:00 203Mb   100.0% Alloc rows
+00:00 203Mb     0.1% Build index00:00 203Mb   100.0% Build index
+00:01 136Mb     0.2% Filtering for phix, 0 hits (0.0%)00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)
+
+[09/27/20 11:06:02]: usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores
+(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: palmer.jona@gmail.com
+
+
+[09/27/20 11:06:02]: 00:00 203Mb     0.1% Word stats00:00 203Mb   100.0% Word stats
+00:00 203Mb   100.0% Alloc rows
+00:00 203Mb     0.1% Build index00:00 203Mb   100.0% Build index
+00:01 136Mb     0.2% Filtering for phix, 0 hits (0.0%)00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)
+
+[09/27/20 11:06:02]: usearch v9.2.64_i86osx32, 4.0Gb RAM (17.2Gb total), 8 cores
+(C) Copyright 2013-16 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: palmer.jona@gmail.com
+
+
+[09/27/20 11:06:02]: 00:00 203Mb     0.1% Word stats00:00 203Mb   100.0% Word stats
+00:00 203Mb   100.0% Alloc rows
+00:00 203Mb     0.1% Build index00:00 203Mb   100.0% Build index
+00:01 136Mb     0.2% Filtering for phix, 0 hits (0.0%)00:01 136Mb   100.0% Filtering for phix, 0 hits (0.0%)
+
+[09/27/20 11:06:02]: Concatenating Demuxed Files
+[09/27/20 11:06:02]: 4,607 total reads
+[09/27/20 11:06:02]: 3,417 valid Barcodes
+[09/27/20 11:06:02]: 3,417 valid output reads (Barcodes and Primers)
+[09/27/20 11:06:02]: Found 76 barcoded samples
+                Sample:  Count
+                  s223:  92
+                  s440:  84
+                  s106:  78
+                  s279:  70
+                  s295:  69
+                    s9:  65
+                  s325:  63
+                 s490a:  62
+                  s487:  62
+                  s434:  62
+                  s369:  62
+                   s83:  62
+                  s445:  61
+                  s543:  60
+                  s122:  59
+                  s159:  57
+                  s360:  56
+                  s687:  55
+                  s406:  54
+                  s395:  53
+                  s372:  53
+                  s591:  53
+                  s715:  52
+                  s712:  51
+                  s458:  51
+                  s716:  51
+                  s454:  50
+                  s667:  49
+                  s215:  49
+                   s67:  48
+                  s300:  48
+                  s153:  47
+                   s33:  46
+                  s331:  44
+                  s326:  43
+                  s232:  43
+                  s491:  43
+                   s50:  42
+                  s260:  42
+                  s187:  41
+                   s77:  41
+                   s61:  41
+                  s271:  40
+                  s263:  40
+                   s59:  40
+                  s371:  39
+                  s191:  39
+                  s666:  39
+                  s703:  39
+                  s483:  38
+                  s132:  38
+                  s214:  36
+                  s708:  36
+                    s3:  35
+                  s118:  35
+                  s465:  34
+                  s676:  34
+                  s109:  34
+                  s158:  34
+                    M1:  33
+                  s660:  33
+                   s25:  33
+                  s490:  33
+                  s131:  32
+                  s124:  31
+                  s361:  30
+                  s732:  30
+                  s562:  29
+                  s179:  29
+                  s307:  29
+                  s309:  26
+                  s469:  26
+                  s378:  24
+                  s664:  23
+                  s162:  17
+                  s346:  15
+[09/27/20 11:06:02]: pigz -c -p 8 illumina2_map.demux.fq
+[09/27/20 11:06:02]: Output file:  illumina2_map.demux.fq.gz (210.1 KB)
+[09/27/20 11:06:02]: Mapping file: illumina2_map.mapping_file.txt

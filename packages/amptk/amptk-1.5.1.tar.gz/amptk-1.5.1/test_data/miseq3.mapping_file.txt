@@ -1,0 +1,4 @@
+#SampleID	BarcodeSequence	LinkerPrimerSequence	RevBarcodeSequence	ReversePrimer	phinchID	DemuxReads	Treatment
+Sample1	R1.fastq	CTTGGTCATTTAGAGGAAGTAA	no_data	GCTGCGTTCTTCATCGATGC	Sample1	1963	no_data
+Sample2	R1.fastq	CTTGGTCATTTAGAGGAAGTAA	no_data	GCTGCGTTCTTCATCGATGC	Sample2	1957	no_data
+SynMock	R1.fastq	CTTGGTCATTTAGAGGAAGTAA	no_data	GCTGCGTTCTTCATCGATGC	SynMock	1947	no_data
