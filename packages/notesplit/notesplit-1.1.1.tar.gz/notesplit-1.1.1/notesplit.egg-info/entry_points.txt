@@ -1,0 +1,5 @@
+[console_scripts]
+filesync = notesplit.syncfiles:main
+notesplit = notesplit.split:main
+notesync = notesplit.sync:main
+
