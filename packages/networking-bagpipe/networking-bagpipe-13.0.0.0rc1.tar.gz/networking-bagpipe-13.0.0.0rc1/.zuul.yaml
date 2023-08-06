@@ -1,0 +1,101 @@
+- project:
+    templates:
+      - openstack-python3-victoria-jobs-neutron
+      - publish-openstack-docs-pti
+      - release-notes-jobs-python3
+      - check-requirements
+      - periodic-stable-jobs-neutron
+    check:
+      jobs:
+        - openstack-tox-lower-constraints:
+            # Currently, we cannot specify that we want neutron
+            # checked out from master using tox-siblings for this
+            # job, so this always fails.
+            voting: false
+        - openstack-tox-pep8:
+            required-projects:
+              - openstack/horizon
+              - openstack/networking-bgpvpn
+              - openstack/networking-sfc
+        - openstack-tox-py36:
+            required-projects:
+              - openstack/horizon
+              - openstack/networking-bgpvpn
+              - openstack/networking-sfc
+        - openstack-tox-py38:
+            required-projects:
+              - openstack/horizon
+              - openstack/networking-bgpvpn
+              - openstack/networking-sfc
+        - openstack-tox-cover:
+            required-projects:
+              - openstack/horizon
+              - openstack/neutron
+              - openstack/networking-bgpvpn
+              - openstack/networking-sfc
+        - neutron-tempest-plugin-bgpvpn-bagpipe:
+            irrelevant-files:
+              - ^(test-|)requirements.txt$
+              - ^setup.cfg$
+        - networking-bagpipe-dsvm-fullstack:
+            voting: false
+        - networking-bagpipe-tempest
+    gate:
+      jobs:
+        - openstack-tox-pep8:
+            required-projects:
+              - openstack/horizon
+              - openstack/networking-bgpvpn
+              - openstack/networking-sfc
+        - openstack-tox-py36:
+            required-projects:
+              - openstack/horizon
+              - openstack/networking-bgpvpn
+              - openstack/networking-sfc
+        - openstack-tox-py38:
+            required-projects:
+              - openstack/horizon
+              - openstack/networking-bgpvpn
+              - openstack/networking-sfc
+        - neutron-tempest-plugin-bgpvpn-bagpipe:
+            irrelevant-files:
+              - ^(test-|)requirements.txt$
+              - ^setup.cfg$
+        - networking-bagpipe-tempest
+
+- job:
+    name: networking-bagpipe-tempest
+    parent: tempest-full-py3
+    nodeset: openstack-single-node-focal
+    timeout: 10800
+    required-projects:
+      - openstack/tempest
+      - openstack/neutron
+      - openstack/networking-bagpipe
+    vars:
+      tempest_concurrency: 4
+      # TODO(lajoskatona): On Ubuntu Focal some volume attach tests are
+      # failing. When https://bugs.launchpad.net/nova/+bug/1882521 is solved
+      # this list can be removed.
+      tempest_black_regex: "\
+          (^tempest.api.compute.servers.test_server_rescue.ServerStableDeviceRescueTest)|\
+          (^tempest.api.compute.servers.test_server_rescue.ServerRescueNegativeTestJSON)|\
+          (^tempest.api.compute.volumes.test_attach_volume.AttachVolumeMultiAttachTest)|\
+          (^tempest.api.compute.servers.test_server_rescue.ServerStableDeviceRescueTest.test_stable_device_rescue_disk_virtio_with_volume_attached)|\
+          (^tempest.api.compute.servers.test_server_rescue_negative.ServerRescueNegativeTestJSON.test_rescued_vm_detach_volume)|\
+          (^tempest.api.compute.volumes.test_attach_volume.AttachVolumeMultiAttachTest.test_resize_server_with_multiattached_volume)"
+    irrelevant-files:
+      - ^(test-|)requirements.txt$
+      - ^setup.cfg$
+
+- job:
+    name: networking-bagpipe-dsvm-fullstack
+    parent: neutron-fullstack
+    timeout: 7800
+    required-projects:
+      - openstack/neutron
+      - openstack/networking-bgpvpn
+      - openstack/networking-sfc
+    vars:
+      tox_envlist: dsvm-fullstack
+      project_name: networking-bagpipe
