@@ -1,0 +1,31 @@
+Metadata-Version: 2.1
+Name: hithere
+Version: 0.0.1
+Summary: Say hi !!
+Home-page: https://github.com/abinashstack/pypi
+Author: Abinash Gogoi
+Author-email: abinash.gogoi55@gmail.com
+License: UNKNOWN
+Description: ## Usage
+        
+        * python
+        
+        * from hithere import say_hi
+        
+        
+        # Generate "Hi, There!"
+        
+        * say_hi()
+        
+        # Generate "Hi ,Everybody"
+        
+        say_hi("Everybody")
+        
+        
+        # Author : Abinash Gogoi
+         
+        
+        
+Platform: UNKNOWN
+Description-Content-Type: text/markdown
+Provides-Extra: dev

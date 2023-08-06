@@ -1,0 +1,13 @@
+LICENSE.txt
+MANIFEST.in
+README.md
+setup.py
+dist/hithere-0.0.1-py3-none-any.whl
+dist/hithere-0.0.1.tar.gz
+src/hithere.py
+src/__pycache__/hithere.cpython-37.pyc
+src/hithere.egg-info/PKG-INFO
+src/hithere.egg-info/SOURCES.txt
+src/hithere.egg-info/dependency_links.txt
+src/hithere.egg-info/requires.txt
+src/hithere.egg-info/top_level.txt
