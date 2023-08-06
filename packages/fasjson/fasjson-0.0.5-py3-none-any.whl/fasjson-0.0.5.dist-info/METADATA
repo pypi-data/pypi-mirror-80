@@ -1,0 +1,37 @@
+Metadata-Version: 2.1
+Name: fasjson
+Version: 0.0.5
+Summary: fasjson makes it possible for applications to talk to the fedora account system.
+Home-page: https://github.com/fedora-infra/fasjson
+License: MIT
+Author: Fedora Infrastructure
+Author-email: admin@fedoraproject.org
+Requires-Python: >=3.6,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: Flask (>=1.1.1,<2.0.0)
+Requires-Dist: dnspython (>=1.16.0,<2.0.0)
+Requires-Dist: flask-healthz (>=0.0.1,<0.0.2)
+Requires-Dist: flask-mod-auth-gssapi (>=0.1.0,<0.2.0)
+Requires-Dist: flask-restx (>=0.2.0,<0.3.0)
+Requires-Dist: python-freeipa (>=1.0.5,<2.0.0)
+Requires-Dist: python-ldap (>=3.2.0,<4.0.0)
+Requires-Dist: requests-kerberos (>=0.12.0,<0.13.0)
+Requires-Dist: typing (>=3.7.4.1,<4.0.0.0)
+Project-URL: Repository, https://github.com/fedora-infra/fasjson
+Description-Content-Type: text/markdown
+
+# Fedora Account System / IPA JSON gateway
+
+A JSON gateway to query FreeIPA, built for the Fedora Account System.
+
+The documentation is available at https://fasjson.readthedocs.io/
+
+## TODO
+
+- documentation
+- HTTPS
+
