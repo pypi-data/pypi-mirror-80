@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: mercurytest
+Version: 0.0.1
+Summary: image pre-processing
+Home-page: https://github.com/kim-jeonghwa/mercury_v2
+Author: jeonghwa.kim
+Author-email: iris9469@gmail.com
+License: UNKNOWN
+Keywords: image filter
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3.7
+Requires-Python: >=3
+Requires-Dist: numpy (>=1.17.0)
+Requires-Dist: opencv-python (>=4.1.0.25)
+Requires-Dist: requests (>=2.19.0)
+
+UNKNOWN
+
+
