@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: ReviewBoardPowerPack
+Version: 3.0.3
+Summary: Enhances Review Board with PDF review, GitHub Enterprise support, improved scalability, and more.
+Home-page: https://www.reviewboard.org/powerpack/
+Author: Beanbag, Inc.
+Author-email: support@beanbaginc.com
+Maintainer: Beanbag, Inc.
+Maintainer-email: support@beanbaginc.com
+License: UNKNOWN
+Download-URL: http://downloads.beanbaginc.com/powerpack/
+Platform: UNKNOWN
+Requires-Dist: boto3 (>=1.4.7)
+Requires-Dist: cryptography (>=1.8.1)
+Requires-Dist: diff-match-patch (>=20121119)
+Requires-Dist: paramiko
+Requires-Dist: pdfminer.six (==20191020)
+Requires-Dist: python-ntlm3
+
+UNKNOWN
+
+
