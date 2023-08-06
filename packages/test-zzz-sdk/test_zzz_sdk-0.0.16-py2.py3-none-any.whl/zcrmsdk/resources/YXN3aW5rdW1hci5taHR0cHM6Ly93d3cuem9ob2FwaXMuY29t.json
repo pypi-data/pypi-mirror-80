@@ -1,0 +1,3209 @@
+{
+    "FIELDS-LAST-MODIFIED-TIME": 1599714832881.6982,
+    "contacts": {
+        "Owner": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "name": "Owner"
+        },
+        "First_Name": {
+            "type": "String",
+            "name": "First_Name"
+        },
+        "Last_Name": {
+            "required": true,
+            "type": "String",
+            "name": "Last_Name"
+        },
+        "Currency": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "INR",
+                "ERN",
+                "AOA",
+                "USD"
+            ],
+            "name": "Currency"
+        },
+        "Lead_Source": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "-None-",
+                "Advertisement",
+                "Cold Call",
+                "Employee Referral",
+                "External Referral",
+                "OnlineStore",
+                "Partner",
+                "Public Relations",
+                "Sales Mail Alias",
+                "Seminar Partner",
+                "Seminar-Internal",
+                "Trade Show",
+                "Web Download",
+                "Web Research",
+                "Web Cases",
+                "Web Mail",
+                "Chat"
+            ],
+            "name": "Lead_Source"
+        },
+        "Account_Name": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "module": "Accounts",
+            "skip_mandatory": true,
+            "name": "Account_Name"
+        },
+        "Single_Line_1": {
+            "type": "String",
+            "name": "Single_Line_1"
+        },
+        "Email": {
+            "type": "String",
+            "name": "Email"
+        },
+        "Phone": {
+            "type": "String",
+            "name": "Phone"
+        },
+        "Full_Name": {
+            "type": "String",
+            "name": "Full_Name"
+        },
+        "Mobile": {
+            "type": "String",
+            "name": "Mobile"
+        },
+        "Lookup": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "module": "Vehicles",
+            "name": "Lookup"
+        },
+        "Vendor_Name": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "module": "Vendors",
+            "name": "Vendor_Name"
+        },
+        "Department": {
+            "type": "String",
+            "name": "Department"
+        },
+        "Salutation": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "-None-",
+                "Mr.",
+                "Mrs.",
+                "Ms.",
+                "Dr.",
+                "Prof."
+            ],
+            "name": "Salutation"
+        },
+        "Title": {
+            "type": "String",
+            "name": "Title"
+        },
+        "File_Upload_1": {
+            "type": "List",
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.FileDetails",
+            "name": "File_Upload_1"
+        },
+        "Home_Phone": {
+            "type": "String",
+            "name": "Home_Phone"
+        },
+        "Fax": {
+            "type": "String",
+            "name": "Fax"
+        },
+        "Date_of_Birth": {
+            "type": "Date",
+            "name": "Date_of_Birth"
+        },
+        "Other_Phone": {
+            "type": "String",
+            "name": "Other_Phone"
+        },
+        "Asst_Phone": {
+            "type": "String",
+            "name": "Asst_Phone"
+        },
+        "Email_Opt_Out": {
+            "type": "Boolean",
+            "name": "Email_Opt_Out"
+        },
+        "Assistant": {
+            "type": "String",
+            "name": "Assistant"
+        },
+        "Skype_ID": {
+            "type": "String",
+            "name": "Skype_ID"
+        },
+        "User": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "name": "User"
+        },
+        "Secondary_Email": {
+            "type": "String",
+            "name": "Secondary_Email"
+        },
+        "Reports_To": {
+            "type": "String",
+            "name": "Reports_To"
+        },
+        "Twitter": {
+            "type": "String",
+            "name": "Twitter"
+        },
+        "Reporting_To": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "module": "Contacts",
+            "name": "Reporting_To"
+        },
+        "Exchange_Rate": {
+            "type": "Float",
+            "name": "Exchange_Rate"
+        },
+        "Multi_Select": {
+            "type": "String",
+            "lookup": true,
+            "name": "Multi_Select"
+        },
+        "Last_Activity_Time": {
+            "type": "DateTime",
+            "name": "Last_Activity_Time"
+        },
+        "Territories": {
+            "type": "String",
+            "name": "Territories"
+        },
+        "Unsubscribed_Mode": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "Consent form",
+                "Manual",
+                "Unsubscribe link",
+                "Zoho campaigns"
+            ],
+            "name": "Unsubscribed_Mode"
+        },
+        "Unsubscribed_Time": {
+            "type": "DateTime",
+            "name": "Unsubscribed_Time"
+        },
+        "Test_Multi": {
+            "type": "String",
+            "lookup": true,
+            "name": "Test_Multi"
+        },
+        "Mailing_Street": {
+            "type": "String",
+            "name": "Mailing_Street"
+        },
+        "Other_Street": {
+            "type": "String",
+            "name": "Other_Street"
+        },
+        "Mailing_City": {
+            "type": "String",
+            "name": "Mailing_City"
+        },
+        "Other_City": {
+            "type": "String",
+            "name": "Other_City"
+        },
+        "Mailing_State": {
+            "type": "String",
+            "name": "Mailing_State"
+        },
+        "Other_State": {
+            "type": "String",
+            "name": "Other_State"
+        },
+        "Mailing_Zip": {
+            "type": "String",
+            "name": "Mailing_Zip"
+        },
+        "Other_Zip": {
+            "type": "String",
+            "name": "Other_Zip"
+        },
+        "Mailing_Country": {
+            "type": "String",
+            "name": "Mailing_Country"
+        },
+        "Other_Country": {
+            "type": "String",
+            "name": "Other_Country"
+        },
+        "Description": {
+            "type": "String",
+            "name": "Description"
+        },
+        "Record_Image": {
+            "type": "String",
+            "name": "Record_Image"
+        },
+        "Subform_1": {
+            "type": "List",
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "module": "Subform_1",
+            "skip_mandatory": true,
+            "subform": true,
+            "name": "Subform_1"
+        }
+    },
+    "accounts": {
+        "Owner": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "name": "Owner"
+        },
+        "Account_Name": {
+            "required": true,
+            "type": "String",
+            "name": "Account_Name"
+        },
+        "Currency": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "INR",
+                "ERN",
+                "AOA",
+                "USD"
+            ],
+            "name": "Currency"
+        },
+        "Rating": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "-None-",
+                "Acquired",
+                "Active",
+                "Market Failed",
+                "Project Cancelled",
+                "ShutDown"
+            ],
+            "name": "Rating"
+        },
+        "Phone": {
+            "type": "String",
+            "name": "Phone"
+        },
+        "Website": {
+            "type": "String",
+            "name": "Website"
+        },
+        "Industry": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "-None-",
+                "ASP",
+                "Data/Telecom OEM",
+                "ERP",
+                "Government/Military",
+                "Large Enterprise",
+                "ManagementISV",
+                "MSP (Management Service Provider)",
+                "Network Equipment (Enterprise)",
+                "Non-management ISV",
+                "Optical Networking",
+                "Service Provider",
+                "Small/Medium Enterprise",
+                "Storage Equipment",
+                "Storage Service Provider",
+                "Systems Integrator",
+                "Wireless Industry",
+                "Communications",
+                "Consulting",
+                "Education",
+                "Financial Services",
+                "Manufacturing",
+                "Real Estate",
+                "Technology"
+            ],
+            "name": "Industry"
+        },
+        "Account_Site": {
+            "type": "String",
+            "name": "Account_Site"
+        },
+        "Employees": {
+            "type": "Integer",
+            "name": "Employees"
+        },
+        "Fax": {
+            "type": "String",
+            "name": "Fax"
+        },
+        "Annual_Revenue": {
+            "type": "Float",
+            "name": "Annual_Revenue"
+        },
+        "Parent_Account": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "module": "Accounts",
+            "skip_mandatory": true,
+            "name": "Parent_Account"
+        },
+        "Account_Number": {
+            "type": "String",
+            "name": "Account_Number"
+        },
+        "Ticker_Symbol": {
+            "type": "String",
+            "name": "Ticker_Symbol"
+        },
+        "Sum": {
+            "type": "Float",
+            "read-only": true,
+            "name": "Sum"
+        },
+        "Ownership": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "-None-",
+                "Other",
+                "Private",
+                "Public",
+                "Subsidiary",
+                "Government",
+                "Partnership",
+                "Privately Held",
+                "Public Company"
+            ],
+            "name": "Ownership"
+        },
+        "Account_Type": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "-None-",
+                "Analyst",
+                "Competitor",
+                "Customer",
+                "Distributor",
+                "Integrator",
+                "Investor",
+                "Other",
+                "Partner",
+                "Press",
+                "Prospect",
+                "Reseller",
+                "Supplier",
+                "Vendor"
+            ],
+            "name": "Account_Type"
+        },
+        "SIC_Code": {
+            "type": "Integer",
+            "name": "SIC_Code"
+        },
+        "Territories": {
+            "type": "String",
+            "name": "Territories"
+        },
+        "Last_Activity_Time": {
+            "type": "DateTime",
+            "name": "Last_Activity_Time"
+        },
+        "Exchange_Rate": {
+            "type": "Float",
+            "name": "Exchange_Rate"
+        },
+        "Billing_Street": {
+            "type": "String",
+            "name": "Billing_Street"
+        },
+        "Shipping_Street": {
+            "type": "String",
+            "name": "Shipping_Street"
+        },
+        "Billing_City": {
+            "type": "String",
+            "name": "Billing_City"
+        },
+        "Shipping_City": {
+            "type": "String",
+            "name": "Shipping_City"
+        },
+        "Billing_State": {
+            "type": "String",
+            "name": "Billing_State"
+        },
+        "Shipping_State": {
+            "type": "String",
+            "name": "Shipping_State"
+        },
+        "Billing_Code": {
+            "type": "String",
+            "name": "Billing_Code"
+        },
+        "Shipping_Code": {
+            "type": "String",
+            "name": "Shipping_Code"
+        },
+        "Billing_Country": {
+            "type": "String",
+            "name": "Billing_Country"
+        },
+        "Shipping_Country": {
+            "type": "String",
+            "name": "Shipping_Country"
+        },
+        "Description": {
+            "type": "String",
+            "name": "Description"
+        },
+        "Record_Image": {
+            "type": "String",
+            "name": "Record_Image"
+        },
+        "Subform_2": {
+            "type": "List",
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "module": "Subform_2",
+            "skip_mandatory": true,
+            "subform": true,
+            "name": "Subform_2"
+        }
+    },
+    "subform_2": {
+        "Email_1": {
+            "type": "String",
+            "name": "Email_1"
+        },
+        "Parent_Id": {
+            "required": true,
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "module": "Accounts",
+            "skip_mandatory": true,
+            "name": "Parent_Id"
+        }
+    },
+    "vehicles": {
+        "Name": {
+            "required": true,
+            "type": "String",
+            "name": "Name"
+        },
+        "Currency": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "INR",
+                "ERN",
+                "AOA",
+                "USD"
+            ],
+            "name": "Currency"
+        },
+        "Owner": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "name": "Owner"
+        },
+        "Email": {
+            "type": "String",
+            "name": "Email"
+        },
+        "Model": {
+            "type": "String",
+            "name": "Model"
+        },
+        "Capacity": {
+            "type": "Integer",
+            "name": "Capacity"
+        },
+        "Number": {
+            "type": "Integer",
+            "name": "Number"
+        },
+        "Name1": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "module": "Contacts",
+            "name": "Name1"
+        },
+        "Contact": {
+            "type": "String",
+            "name": "Contact"
+        },
+        "Last_Activity_Time": {
+            "type": "DateTime",
+            "name": "Last_Activity_Time"
+        },
+        "Last_day_distance": {
+            "type": "Integer",
+            "name": "Last_day_distance"
+        },
+        "Total_distance": {
+            "type": "Integer",
+            "name": "Total_distance"
+        },
+        "City": {
+            "type": "String",
+            "name": "City"
+        },
+        "Zip": {
+            "type": "Integer",
+            "name": "Zip"
+        },
+        "Layout": {
+            "name": "Layout",
+            "type": "zcrmsdk.src.com.zoho.crm.api.layouts.Layout",
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.layouts.Layout",
+            "lookup": true
+        },
+        "Country": {
+            "type": "String",
+            "name": "Country"
+        },
+        "Carburetor_ID": {
+            "type": "Integer",
+            "name": "Carburetor_ID"
+        },
+        "Tyre_Brand": {
+            "type": "String",
+            "name": "Tyre_Brand"
+        },
+        "test_formula": {
+            "type": "Float",
+            "read-only": true,
+            "name": "test_formula"
+        },
+        "Exchange_Rate": {
+            "type": "Float",
+            "name": "Exchange_Rate"
+        },
+        "Unsubscribed_Mode": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "Consent form",
+                "Manual",
+                "Unsubscribe link",
+                "Zoho campaigns"
+            ],
+            "name": "Unsubscribed_Mode"
+        },
+        "Unsubscribed_Time": {
+            "type": "DateTime",
+            "name": "Unsubscribed_Time"
+        },
+        "Record_Image": {
+            "type": "String",
+            "name": "Record_Image"
+        }
+    },
+    "vendors": {
+        "Vendor_Name": {
+            "required": true,
+            "type": "String",
+            "name": "Vendor_Name"
+        },
+        "Owner": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "name": "Owner"
+        },
+        "Currency": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "INR",
+                "ERN",
+                "AOA",
+                "USD"
+            ],
+            "name": "Currency"
+        },
+        "Phone": {
+            "type": "String",
+            "name": "Phone"
+        },
+        "Email": {
+            "type": "String",
+            "name": "Email"
+        },
+        "Website": {
+            "type": "String",
+            "name": "Website"
+        },
+        "Category": {
+            "type": "String",
+            "name": "Category"
+        },
+        "GL_Account": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "Sales-Software",
+                "Sales-Hardware",
+                "Rental-Income",
+                "Interest-Income",
+                "Sales-Software-Support",
+                "Sales Other",
+                "Interest Sales",
+                "Service-Hardware Labor"
+            ],
+            "name": "GL_Account"
+        },
+        "Exchange_Rate": {
+            "type": "Float",
+            "name": "Exchange_Rate"
+        },
+        "Street": {
+            "type": "String",
+            "name": "Street"
+        },
+        "City": {
+            "type": "String",
+            "name": "City"
+        },
+        "State": {
+            "type": "String",
+            "name": "State"
+        },
+        "Zip_Code": {
+            "type": "String",
+            "name": "Zip_Code"
+        },
+        "Country": {
+            "type": "String",
+            "name": "Country"
+        },
+        "Description": {
+            "type": "String",
+            "name": "Description"
+        },
+        "Record_Image": {
+            "type": "String",
+            "name": "Record_Image"
+        }
+    },
+    "subform_1": {
+        "Single_Line_1": {
+            "type": "String",
+            "name": "Single_Line_1"
+        },
+        "Parent_Id": {
+            "required": true,
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "module": "Contacts",
+            "name": "Parent_Id"
+        }
+    },
+    "deals": {
+        "Owner": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "name": "Owner"
+        },
+        "Amount": {
+            "type": "Float",
+            "name": "Amount"
+        },
+        "Deal_Name": {
+            "required": true,
+            "type": "String",
+            "name": "Deal_Name"
+        },
+        "Currency": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "INR",
+                "ERN",
+                "AOA",
+                "USD"
+            ],
+            "name": "Currency"
+        },
+        "Closing_Date": {
+            "type": "Date",
+            "name": "Closing_Date"
+        },
+        "Stage": {
+            "required": true,
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "Qualification",
+                "Needs Analysis",
+                "Value Proposition",
+                "Id. Decision Makers",
+                "Proposal/Price Quote",
+                "Negotiation/Review",
+                "Closed Won",
+                "Closed Lost",
+                "Closed Lost to Competition"
+            ],
+            "name": "Stage"
+        },
+        "Probability": {
+            "type": "Integer",
+            "name": "Probability"
+        },
+        "Expected_Revenue": {
+            "type": "Float",
+            "name": "Expected_Revenue"
+        },
+        "Type": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "-None-",
+                "Existing Business",
+                "New Business"
+            ],
+            "name": "Type"
+        },
+        "Next_Step": {
+            "type": "String",
+            "name": "Next_Step"
+        },
+        "Lead_Source": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "-None-",
+                "Advertisement",
+                "Cold Call",
+                "Employee Referral",
+                "External Referral",
+                "OnlineStore",
+                "Partner",
+                "Public Relations",
+                "Sales Mail Alias",
+                "Seminar Partner",
+                "Seminar-Internal",
+                "Trade Show",
+                "Web Download",
+                "Web Research",
+                "Chat"
+            ],
+            "name": "Lead_Source"
+        },
+        "Campaign_Source": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "module": "Campaigns",
+            "name": "Campaign_Source"
+        },
+        "Contact_Name": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "module": "Contacts",
+            "name": "Contact_Name"
+        },
+        "Test": {
+            "type": "Float",
+            "read-only": true,
+            "name": "Test"
+        },
+        "Territory": {
+            "type": "String",
+            "name": "Territory"
+        },
+        "Last_Activity_Time": {
+            "type": "DateTime",
+            "name": "Last_Activity_Time"
+        },
+        "Lead_Conversion_Time": {
+            "type": "Integer",
+            "name": "Lead_Conversion_Time"
+        },
+        "Sales_Cycle_Duration": {
+            "type": "Integer",
+            "name": "Sales_Cycle_Duration"
+        },
+        "Overall_Sales_Duration": {
+            "type": "Integer",
+            "name": "Overall_Sales_Duration"
+        },
+        "Exchange_Rate": {
+            "type": "Float",
+            "name": "Exchange_Rate"
+        },
+        "Description": {
+            "type": "String",
+            "name": "Description"
+        }
+    },
+    "campaigns": {
+        "Owner": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "name": "Owner"
+        },
+        "Type": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "-None-",
+                "Conference",
+                "Webinar",
+                "Trade Show",
+                "Public Relations",
+                "Partners",
+                "Referral Program",
+                "Advertisement",
+                "Banner Ads",
+                "Direct mail",
+                "Email",
+                "Telemarketing",
+                "Others"
+            ],
+            "name": "Type"
+        },
+        "Campaign_Name": {
+            "required": true,
+            "type": "String",
+            "name": "Campaign_Name"
+        },
+        "Currency": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "INR",
+                "ERN",
+                "AOA",
+                "USD"
+            ],
+            "name": "Currency"
+        },
+        "Start_Date": {
+            "type": "Date",
+            "name": "Start_Date"
+        },
+        "Status": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "-None-",
+                "Planning",
+                "Active",
+                "Inactive",
+                "Complete"
+            ],
+            "name": "Status"
+        },
+        "End_Date": {
+            "type": "Date",
+            "name": "End_Date"
+        },
+        "Expected_Revenue": {
+            "type": "Float",
+            "name": "Expected_Revenue"
+        },
+        "Actual_Cost": {
+            "type": "Float",
+            "name": "Actual_Cost"
+        },
+        "Budgeted_Cost": {
+            "type": "Float",
+            "name": "Budgeted_Cost"
+        },
+        "Expected_Response": {
+            "type": "String",
+            "name": "Expected_Response"
+        },
+        "Num_sent": {
+            "type": "String",
+            "name": "Num_sent"
+        },
+        "Parent_Campaign": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "module": "Campaigns",
+            "name": "Parent_Campaign"
+        },
+        "Exchange_Rate": {
+            "type": "Float",
+            "name": "Exchange_Rate"
+        },
+        "Description": {
+            "type": "String",
+            "name": "Description"
+        }
+    },
+    "activities": {
+        "Currency": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "INR",
+                "ERN",
+                "AOA",
+                "USD"
+            ],
+            "name": "Currency"
+        },
+        "Due_Date": {
+            "type": "Date",
+            "name": "Due_Date"
+        },
+        "Priority": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "High",
+                "Highest",
+                "Low",
+                "Lowest",
+                "Normal"
+            ],
+            "name": "Priority"
+        },
+        "Status": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "Not Started",
+                "Deferred",
+                "In Progress",
+                "Completed",
+                "Waiting on someone else"
+            ],
+            "name": "Status"
+        },
+        "Recurring_Activity": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.RecurringActivity",
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.RecurringActivity",
+            "name": "Recurring_Activity"
+        },
+        "Closed_Time": {
+            "type": "DateTime",
+            "name": "Closed_Time"
+        },
+        "Exchange_Rate": {
+            "type": "Float",
+            "name": "Exchange_Rate"
+        },
+        "Single_Line_1": {
+            "type": "String",
+            "name": "Single_Line_1"
+        },
+        "Venue": {
+            "type": "String",
+            "name": "Venue"
+        },
+        "Start_DateTime": {
+            "required": true,
+            "type": "DateTime",
+            "name": "Start_DateTime"
+        },
+        "All_day": {
+            "type": "Boolean",
+            "name": "All_day"
+        },
+        "End_DateTime": {
+            "required": true,
+            "type": "DateTime",
+            "name": "End_DateTime"
+        },
+        "Participants": {
+            "name": "Participants",
+            "type": "List",
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Participants",
+            "skip_mandatory": true
+        },
+        "Remind Participants": {
+            "type": "List",
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Reminder",
+            "name": "Remind Participants"
+        },
+        "Check_In_Time": {
+            "type": "DateTime",
+            "name": "Check_In_Time"
+        },
+        "Check_In_By": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "name": "Check_In_By"
+        },
+        "Check_In_Comment": {
+            "type": "String",
+            "name": "Check_In_Comment"
+        },
+        "Check_In_Sub_Locality": {
+            "type": "String",
+            "name": "Check_In_Sub_Locality"
+        },
+        "Check_In_City": {
+            "type": "String",
+            "name": "Check_In_City"
+        },
+        "Check_In_State": {
+            "type": "String",
+            "name": "Check_In_State"
+        },
+        "Check_In_Country": {
+            "type": "String",
+            "name": "Check_In_Country"
+        },
+        "Latitude": {
+            "type": "Float",
+            "name": "Latitude"
+        },
+        "Longitude": {
+            "type": "Float",
+            "name": "Longitude"
+        },
+        "ZIP_Code": {
+            "type": "String",
+            "name": "ZIP_Code"
+        },
+        "Check_In_Address": {
+            "type": "String",
+            "name": "Check_In_Address"
+        },
+        "Check_In_Status": {
+            "type": "String",
+            "name": "Check_In_Status"
+        },
+        "Call_Result": {
+            "type": "String",
+            "name": "Call_Result"
+        },
+        "Call_Start_Time": {
+            "required": true,
+            "type": "DateTime",
+            "name": "Call_Start_Time"
+        },
+        "Call_Duration": {
+            "required": true,
+            "type": "String",
+            "name": "Call_Duration"
+        },
+        "Call_Type": {
+            "required": true,
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "Outbound",
+                "Inbound",
+                "Missed"
+            ],
+            "name": "Call_Type"
+        },
+        "Call_Purpose": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "-None-",
+                "Prospecting",
+                "Administrative",
+                "Negotiation",
+                "Demo",
+                "Project",
+                "Support"
+            ],
+            "name": "Call_Purpose"
+        },
+        "Dialled_Number": {
+            "type": "String",
+            "name": "Dialled_Number"
+        },
+        "Caller_ID": {
+            "type": "String",
+            "name": "Caller_ID"
+        },
+        "Call_Duration_in_seconds": {
+            "type": "Integer",
+            "name": "Call_Duration_in_seconds"
+        },
+        "CTI_Entry": {
+            "type": "Boolean",
+            "name": "CTI_Entry"
+        },
+        "Reminder": {
+            "type": "String",
+            "name": "Reminder"
+        },
+        "Call_Status": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "name": "Call_Status"
+        },
+        "Call_Agenda": {
+            "type": "String",
+            "name": "Call_Agenda"
+        },
+        "Owner": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "name": "Owner"
+        },
+        "Subject": {
+            "required": true,
+            "type": "String",
+            "name": "Subject"
+        },
+        "Activity_Type": {
+            "type": "String",
+            "name": "Activity_Type"
+        },
+        "Who_Id": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "module": "Contacts",
+            "name": "Who_Id"
+        },
+        "What_Id": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "name": "What_Id"
+        },
+        "Description": {
+            "type": "String",
+            "name": "Description"
+        }
+    },
+    "products": {
+        "Owner": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "name": "Owner"
+        },
+        "Product_Name": {
+            "required": true,
+            "type": "String",
+            "name": "Product_Name"
+        },
+        "Product_Code": {
+            "type": "String",
+            "name": "Product_Code"
+        },
+        "Vendor_Name": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "module": "Vendors",
+            "name": "Vendor_Name"
+        },
+        "Product_Category": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "-None-",
+                "Hardware",
+                "Software",
+                "CRM Applications"
+            ],
+            "name": "Product_Category"
+        },
+        "Unit_Price": {
+            "type": "Float",
+            "name": "Unit_Price"
+        },
+        "Product_Active": {
+            "type": "Boolean",
+            "name": "Product_Active"
+        },
+        "Tax": {
+            "type": "List",
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "name": "Tax"
+        },
+        "Manufacturer": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "-None-",
+                "AltvetPet Inc.",
+                "LexPon Inc.",
+                "MetBeat Corp"
+            ],
+            "name": "Manufacturer"
+        },
+        "Qty_Ordered": {
+            "type": "Float",
+            "name": "Qty_Ordered"
+        },
+        "Taxable": {
+            "type": "Boolean",
+            "name": "Taxable"
+        },
+        "Qty_in_Stock": {
+            "type": "Float",
+            "name": "Qty_in_Stock"
+        },
+        "Sales_Start_Date": {
+            "type": "Date",
+            "name": "Sales_Start_Date"
+        },
+        "Sales_End_Date": {
+            "type": "Date",
+            "name": "Sales_End_Date"
+        },
+        "Support_Start_Date": {
+            "type": "Date",
+            "name": "Support_Start_Date"
+        },
+        "Support_Expiry_Date": {
+            "type": "Date",
+            "name": "Support_Expiry_Date"
+        },
+        "PlacementDetails": {
+            "type": "Date",
+            "name": "PlacementDetails"
+        },
+        "Commission_Rate": {
+            "type": "Float",
+            "name": "Commission_Rate"
+        },
+        "Usage_Unit": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "Box",
+                "Carton",
+                "Dozen",
+                "Each",
+                "Hours",
+                "Impressions",
+                "Lb",
+                "M",
+                "Pack",
+                "Pages",
+                "Pieces",
+                "Quantity",
+                "Reams",
+                "Sheet",
+                "Spiral Binder",
+                "Sq Ft"
+            ],
+            "name": "Usage_Unit"
+        },
+        "Reorder_Level": {
+            "type": "Float",
+            "name": "Reorder_Level"
+        },
+        "Handler": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "name": "Handler"
+        },
+        "Qty_in_Demand": {
+            "type": "Float",
+            "name": "Qty_in_Demand"
+        },
+        "Description": {
+            "type": "String",
+            "name": "Description"
+        },
+        "Record_Image": {
+            "type": "String",
+            "name": "Record_Image"
+        }
+    },
+    "quotes": {
+        "Subject": {
+            "required": true,
+            "type": "String",
+            "name": "Subject"
+        },
+        "Owner": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "name": "Owner"
+        },
+        "Currency": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "INR",
+                "ERN",
+                "AOA",
+                "USD"
+            ],
+            "name": "Currency"
+        },
+        "Quote_Number": {
+            "type": "String",
+            "name": "Quote_Number"
+        },
+        "Quote_Stage": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "Draft",
+                "Negotiation",
+                "Delivered",
+                "On Hold",
+                "Confirmed",
+                "Closed Won",
+                "Closed Lost"
+            ],
+            "name": "Quote_Stage"
+        },
+        "Account_Name": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "module": "Accounts",
+            "skip_mandatory": true,
+            "name": "Account_Name"
+        },
+        "Single_Line_1": {
+            "type": "String",
+            "name": "Single_Line_1"
+        },
+        "Deal_Name": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "module": "Deals",
+            "name": "Deal_Name"
+        },
+        "Product_Details": {
+            "required": true,
+            "name": "Product_Details",
+            "type": "List",
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.InventoryLineItems",
+            "skip_mandatory": true
+        },
+        "Valid_Till": {
+            "type": "Date",
+            "name": "Valid_Till"
+        },
+        "Carrier": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "FedEX",
+                "UPS",
+                "USPS",
+                "DHL",
+                "BlueDart"
+            ],
+            "name": "Carrier"
+        },
+        "Contact_Name": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "module": "Contacts",
+            "name": "Contact_Name"
+        },
+        "Team": {
+            "type": "String",
+            "name": "Team"
+        },
+        "Exchange_Rate": {
+            "type": "Float",
+            "name": "Exchange_Rate"
+        },
+        "Billing_Street": {
+            "type": "String",
+            "name": "Billing_Street"
+        },
+        "Shipping_Street": {
+            "type": "String",
+            "name": "Shipping_Street"
+        },
+        "Billing_City": {
+            "type": "String",
+            "name": "Billing_City"
+        },
+        "Shipping_City": {
+            "type": "String",
+            "name": "Shipping_City"
+        },
+        "Billing_State": {
+            "type": "String",
+            "name": "Billing_State"
+        },
+        "Shipping_State": {
+            "type": "String",
+            "name": "Shipping_State"
+        },
+        "Billing_Code": {
+            "type": "String",
+            "name": "Billing_Code"
+        },
+        "Shipping_Code": {
+            "type": "String",
+            "name": "Shipping_Code"
+        },
+        "Billing_Country": {
+            "type": "String",
+            "name": "Billing_Country"
+        },
+        "Shipping_Country": {
+            "type": "String",
+            "name": "Shipping_Country"
+        },
+        "Sub_Total": {
+            "type": "Float",
+            "name": "Sub_Total"
+        },
+        "Discount": {
+            "type": "Float",
+            "name": "Discount"
+        },
+        "Tax": {
+            "type": "Float",
+            "name": "Tax"
+        },
+        "Adjustment": {
+            "type": "Float",
+            "name": "Adjustment"
+        },
+        "Grand_Total": {
+            "type": "Float",
+            "name": "Grand_Total"
+        },
+        "Terms_and_Conditions": {
+            "type": "String",
+            "name": "Terms_and_Conditions"
+        },
+        "Description": {
+            "type": "String",
+            "name": "Description"
+        }
+    },
+    "sales_orders": {
+        "Subject": {
+            "required": true,
+            "type": "String",
+            "name": "Subject"
+        },
+        "Owner": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "name": "Owner"
+        },
+        "Currency": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "INR",
+                "ERN",
+                "AOA",
+                "USD"
+            ],
+            "name": "Currency"
+        },
+        "SO_Number": {
+            "type": "String",
+            "name": "SO_Number"
+        },
+        "Status": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "Created",
+                "Approved",
+                "Delivered",
+                "Cancelled"
+            ],
+            "name": "Status"
+        },
+        "Account_Name": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "module": "Accounts",
+            "skip_mandatory": true,
+            "name": "Account_Name"
+        },
+        "Deal_Name": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "module": "Deals",
+            "name": "Deal_Name"
+        },
+        "Due_Date": {
+            "type": "Date",
+            "name": "Due_Date"
+        },
+        "Product_Details": {
+            "required": true,
+            "name": "Product_Details",
+            "type": "List",
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.InventoryLineItems",
+            "skip_mandatory": true
+        },
+        "Customer_No": {
+            "type": "String",
+            "name": "Customer_No"
+        },
+        "Purchase_Order": {
+            "type": "String",
+            "name": "Purchase_Order"
+        },
+        "Pending": {
+            "type": "String",
+            "name": "Pending"
+        },
+        "Quote_Name": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "module": "Quotes",
+            "name": "Quote_Name"
+        },
+        "Contact_Name": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "module": "Contacts",
+            "name": "Contact_Name"
+        },
+        "Carrier": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "FedEX",
+                "UPS",
+                "USPS",
+                "DHL",
+                "BlueDart"
+            ],
+            "name": "Carrier"
+        },
+        "Excise_Duty": {
+            "type": "Float",
+            "name": "Excise_Duty"
+        },
+        "Sales_Commission": {
+            "type": "Float",
+            "name": "Sales_Commission"
+        },
+        "Exchange_Rate": {
+            "type": "Float",
+            "name": "Exchange_Rate"
+        },
+        "Billing_Street": {
+            "type": "String",
+            "name": "Billing_Street"
+        },
+        "Shipping_Street": {
+            "type": "String",
+            "name": "Shipping_Street"
+        },
+        "Billing_City": {
+            "type": "String",
+            "name": "Billing_City"
+        },
+        "Shipping_City": {
+            "type": "String",
+            "name": "Shipping_City"
+        },
+        "Billing_State": {
+            "type": "String",
+            "name": "Billing_State"
+        },
+        "Shipping_State": {
+            "type": "String",
+            "name": "Shipping_State"
+        },
+        "Billing_Code": {
+            "type": "String",
+            "name": "Billing_Code"
+        },
+        "Shipping_Code": {
+            "type": "String",
+            "name": "Shipping_Code"
+        },
+        "Billing_Country": {
+            "type": "String",
+            "name": "Billing_Country"
+        },
+        "Shipping_Country": {
+            "type": "String",
+            "name": "Shipping_Country"
+        },
+        "Sub_Total": {
+            "type": "Float",
+            "name": "Sub_Total"
+        },
+        "Discount": {
+            "type": "Float",
+            "name": "Discount"
+        },
+        "Tax": {
+            "type": "Float",
+            "name": "Tax"
+        },
+        "Adjustment": {
+            "type": "Float",
+            "name": "Adjustment"
+        },
+        "Grand_Total": {
+            "type": "Float",
+            "name": "Grand_Total"
+        },
+        "Terms_and_Conditions": {
+            "type": "String",
+            "name": "Terms_and_Conditions"
+        },
+        "Description": {
+            "type": "String",
+            "name": "Description"
+        }
+    },
+    "purchase_orders": {
+        "Subject": {
+            "required": true,
+            "type": "String",
+            "name": "Subject"
+        },
+        "Owner": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "name": "Owner"
+        },
+        "Currency": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "INR",
+                "ERN",
+                "AOA",
+                "USD"
+            ],
+            "name": "Currency"
+        },
+        "PO_Number": {
+            "type": "String",
+            "name": "PO_Number"
+        },
+        "Vendor_Name": {
+            "required": true,
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "module": "Vendors",
+            "name": "Vendor_Name"
+        },
+        "Status": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "Created",
+                "Approved",
+                "Delivered",
+                "Cancelled"
+            ],
+            "name": "Status"
+        },
+        "PO_Date": {
+            "type": "Date",
+            "name": "PO_Date"
+        },
+        "Product_Details": {
+            "required": true,
+            "name": "Product_Details",
+            "type": "List",
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.InventoryLineItems",
+            "skip_mandatory": true
+        },
+        "Requisition_No": {
+            "type": "String",
+            "name": "Requisition_No"
+        },
+        "Due_Date": {
+            "type": "Date",
+            "name": "Due_Date"
+        },
+        "Tracking_Number": {
+            "type": "String",
+            "name": "Tracking_Number"
+        },
+        "Grand_Total": {
+            "type": "Float",
+            "name": "Grand_Total"
+        },
+        "Contact_Name": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "module": "Contacts",
+            "name": "Contact_Name"
+        },
+        "Carrier": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "FedEX",
+                "UPS",
+                "USPS",
+                "DHL",
+                "BlueDart"
+            ],
+            "name": "Carrier"
+        },
+        "Excise_Duty": {
+            "type": "Float",
+            "name": "Excise_Duty"
+        },
+        "Sales_Commission": {
+            "type": "Float",
+            "name": "Sales_Commission"
+        },
+        "Exchange_Rate": {
+            "type": "Float",
+            "name": "Exchange_Rate"
+        },
+        "Billing_Street": {
+            "type": "String",
+            "name": "Billing_Street"
+        },
+        "Shipping_Street": {
+            "type": "String",
+            "name": "Shipping_Street"
+        },
+        "Billing_City": {
+            "type": "String",
+            "name": "Billing_City"
+        },
+        "Shipping_City": {
+            "type": "String",
+            "name": "Shipping_City"
+        },
+        "Billing_State": {
+            "type": "String",
+            "name": "Billing_State"
+        },
+        "Shipping_State": {
+            "type": "String",
+            "name": "Shipping_State"
+        },
+        "Billing_Code": {
+            "type": "String",
+            "name": "Billing_Code"
+        },
+        "Shipping_Code": {
+            "type": "String",
+            "name": "Shipping_Code"
+        },
+        "Billing_Country": {
+            "type": "String",
+            "name": "Billing_Country"
+        },
+        "Shipping_Country": {
+            "type": "String",
+            "name": "Shipping_Country"
+        },
+        "Sub_Total": {
+            "type": "Float",
+            "name": "Sub_Total"
+        },
+        "Discount": {
+            "type": "Float",
+            "name": "Discount"
+        },
+        "Tax": {
+            "type": "Float",
+            "name": "Tax"
+        },
+        "Adjustment": {
+            "type": "Float",
+            "name": "Adjustment"
+        },
+        "Terms_and_Conditions": {
+            "type": "String",
+            "name": "Terms_and_Conditions"
+        },
+        "Description": {
+            "type": "String",
+            "name": "Description"
+        }
+    },
+    "invoices": {
+        "Subject": {
+            "required": true,
+            "type": "String",
+            "name": "Subject"
+        },
+        "Owner": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "name": "Owner"
+        },
+        "Currency": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "INR",
+                "ERN",
+                "AOA",
+                "USD"
+            ],
+            "name": "Currency"
+        },
+        "Invoice_Number": {
+            "type": "String",
+            "name": "Invoice_Number"
+        },
+        "Status": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "Created",
+                "Approved",
+                "Delivered",
+                "Cancelled"
+            ],
+            "name": "Status"
+        },
+        "Invoice_Date": {
+            "type": "Date",
+            "name": "Invoice_Date"
+        },
+        "Account_Name": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "module": "Accounts",
+            "skip_mandatory": true,
+            "name": "Account_Name"
+        },
+        "Sales_Order": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "module": "Sales_Orders",
+            "name": "Sales_Order"
+        },
+        "Due_Date": {
+            "type": "Date",
+            "name": "Due_Date"
+        },
+        "Product_Details": {
+            "required": true,
+            "name": "Product_Details",
+            "type": "List",
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.InventoryLineItems",
+            "skip_mandatory": true
+        },
+        "Grand_Total": {
+            "type": "Float",
+            "name": "Grand_Total"
+        },
+        "Purchase_Order": {
+            "type": "String",
+            "name": "Purchase_Order"
+        },
+        "Contact_Name": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "module": "Contacts",
+            "name": "Contact_Name"
+        },
+        "Excise_Duty": {
+            "type": "Float",
+            "name": "Excise_Duty"
+        },
+        "Sales_Commission": {
+            "type": "Float",
+            "name": "Sales_Commission"
+        },
+        "Exchange_Rate": {
+            "type": "Float",
+            "name": "Exchange_Rate"
+        },
+        "Billing_Street": {
+            "type": "String",
+            "name": "Billing_Street"
+        },
+        "Shipping_Street": {
+            "type": "String",
+            "name": "Shipping_Street"
+        },
+        "Billing_City": {
+            "type": "String",
+            "name": "Billing_City"
+        },
+        "Shipping_City": {
+            "type": "String",
+            "name": "Shipping_City"
+        },
+        "Billing_State": {
+            "type": "String",
+            "name": "Billing_State"
+        },
+        "Shipping_State": {
+            "type": "String",
+            "name": "Shipping_State"
+        },
+        "Billing_Code": {
+            "type": "String",
+            "name": "Billing_Code"
+        },
+        "Shipping_Code": {
+            "type": "String",
+            "name": "Shipping_Code"
+        },
+        "Billing_Country": {
+            "type": "String",
+            "name": "Billing_Country"
+        },
+        "Shipping_Country": {
+            "type": "String",
+            "name": "Shipping_Country"
+        },
+        "Sub_Total": {
+            "type": "Float",
+            "name": "Sub_Total"
+        },
+        "Discount": {
+            "type": "Float",
+            "name": "Discount"
+        },
+        "Tax": {
+            "type": "Float",
+            "name": "Tax"
+        },
+        "Adjustment": {
+            "type": "Float",
+            "name": "Adjustment"
+        },
+        "Terms_and_Conditions": {
+            "type": "String",
+            "name": "Terms_and_Conditions"
+        },
+        "Description": {
+            "type": "String",
+            "name": "Description"
+        }
+    },
+    "price_books": {
+        "Owner": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "name": "Owner"
+        },
+        "Price_Book_Name": {
+            "required": true,
+            "type": "String",
+            "name": "Price_Book_Name"
+        },
+        "Active": {
+            "type": "Boolean",
+            "name": "Active"
+        },
+        "Pricing_Model": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "-None-",
+                "Flat",
+                "Differential"
+            ],
+            "name": "Pricing_Model"
+        },
+        "Description": {
+            "type": "String",
+            "name": "Description"
+        },
+        "Pricing_Details": {
+            "name": "Pricing_Details",
+            "type": "List",
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.PricingDetails",
+            "skip_mandatory": true
+        }
+    },
+    "cases": {
+        "Status": {
+            "required": true,
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "New",
+                "Escalated",
+                "On Hold",
+                "Closed"
+            ],
+            "name": "Status"
+        },
+        "Subject": {
+            "required": true,
+            "type": "String",
+            "name": "Subject"
+        },
+        "Currency": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "INR",
+                "ERN",
+                "AOA",
+                "USD"
+            ],
+            "name": "Currency"
+        },
+        "Owner": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "name": "Owner"
+        },
+        "Priority": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "-None-",
+                "High",
+                "Medium",
+                "Low"
+            ],
+            "name": "Priority"
+        },
+        "Case_Origin": {
+            "required": true,
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "-None-",
+                "Email",
+                "Phone",
+                "Web"
+            ],
+            "name": "Case_Origin"
+        },
+        "Case_Number": {
+            "type": "String",
+            "name": "Case_Number"
+        },
+        "Product_Name": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "module": "Products",
+            "name": "Product_Name"
+        },
+        "Email": {
+            "type": "String",
+            "name": "Email"
+        },
+        "Type": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "-None-",
+                "Problem",
+                "Feature Request",
+                "Question"
+            ],
+            "name": "Type"
+        },
+        "Description": {
+            "type": "String",
+            "name": "Description"
+        },
+        "Case_Reason": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "-None-",
+                "User did not attend any training",
+                "Complex functionality",
+                "Existing problem",
+                "Instructions not clear",
+                "New problem"
+            ],
+            "name": "Case_Reason"
+        },
+        "Related_To": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "module": "Contacts",
+            "name": "Related_To"
+        },
+        "No_of_comments": {
+            "type": "Integer",
+            "name": "No_of_comments"
+        },
+        "Account_Name": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "module": "Accounts",
+            "skip_mandatory": true,
+            "name": "Account_Name"
+        },
+        "Reported_By": {
+            "type": "String",
+            "name": "Reported_By"
+        },
+        "Deal_Name": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "module": "Deals",
+            "name": "Deal_Name"
+        },
+        "Phone": {
+            "type": "String",
+            "name": "Phone"
+        },
+        "Exchange_Rate": {
+            "type": "Float",
+            "name": "Exchange_Rate"
+        },
+        "Internal_Comments": {
+            "type": "String",
+            "name": "Internal_Comments"
+        },
+        "Solution": {
+            "type": "String",
+            "name": "Solution"
+        },
+        "Add_Comment": {
+            "type": "String",
+            "name": "Add_Comment"
+        },
+        "Comments": {
+            "name": "Comments",
+            "type": "List",
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Comment",
+            "lookup": true
+        }
+    },
+    "solutions": {
+        "Solution_Number": {
+            "type": "String",
+            "name": "Solution_Number"
+        },
+        "Solution_Title": {
+            "required": true,
+            "type": "String",
+            "name": "Solution_Title"
+        },
+        "Currency": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "INR",
+                "ERN",
+                "AOA",
+                "USD"
+            ],
+            "name": "Currency"
+        },
+        "Owner": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "name": "Owner"
+        },
+        "Product_Name": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "module": "Products",
+            "name": "Product_Name"
+        },
+        "Question": {
+            "type": "String",
+            "name": "Question"
+        },
+        "Status": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "Draft",
+                "Reviewed",
+                "Duplicate"
+            ],
+            "name": "Status"
+        },
+        "Answer": {
+            "type": "String",
+            "name": "Answer"
+        },
+        "Published": {
+            "type": "Boolean",
+            "name": "Published"
+        },
+        "No_of_comments": {
+            "type": "Integer",
+            "name": "No_of_comments"
+        },
+        "Exchange_Rate": {
+            "type": "Float",
+            "name": "Exchange_Rate"
+        },
+        "Add_Comment": {
+            "type": "String",
+            "name": "Add_Comment"
+        },
+        "Comments": {
+            "name": "Comments",
+            "type": "List",
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Comment",
+            "lookup": true
+        }
+    },
+    "visits": {},
+    "tasks": {
+        "Owner": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "name": "Owner"
+        },
+        "Subject": {
+            "required": true,
+            "type": "String",
+            "name": "Subject"
+        },
+        "Currency": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "INR",
+                "ERN",
+                "AOA",
+                "USD"
+            ],
+            "name": "Currency"
+        },
+        "Due_Date": {
+            "type": "Date",
+            "name": "Due_Date"
+        },
+        "Priority": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "High",
+                "Highest",
+                "Low",
+                "Lowest",
+                "Normal"
+            ],
+            "name": "Priority"
+        },
+        "Status": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "Not Started",
+                "Deferred",
+                "In Progress",
+                "Completed",
+                "Waiting on someone else"
+            ],
+            "name": "Status"
+        },
+        "What_Id": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "name": "What_Id"
+        },
+        "Who_Id": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "module": "Contacts",
+            "name": "Who_Id"
+        },
+        "Send_Notification_Email": {
+            "type": "Boolean",
+            "name": "Send_Notification_Email"
+        },
+        "Remind_At": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.RemindAt",
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.RemindAt",
+            "name": "Remind_At"
+        },
+        "Recurring_Activity": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.RecurringActivity",
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.RecurringActivity",
+            "name": "Recurring_Activity"
+        },
+        "Closed_Time": {
+            "type": "DateTime",
+            "name": "Closed_Time"
+        },
+        "Exchange_Rate": {
+            "type": "Float",
+            "name": "Exchange_Rate"
+        },
+        "Description": {
+            "type": "String",
+            "name": "Description"
+        }
+    },
+    "events": {
+        "Event_Title": {
+            "required": true,
+            "type": "String",
+            "name": "Event_Title"
+        },
+        "Currency": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "INR",
+                "ERN",
+                "AOA",
+                "USD"
+            ],
+            "name": "Currency"
+        },
+        "Single_Line_1": {
+            "type": "String",
+            "name": "Single_Line_1"
+        },
+        "Venue": {
+            "type": "String",
+            "name": "Venue"
+        },
+        "Start_DateTime": {
+            "required": true,
+            "type": "DateTime",
+            "name": "Start_DateTime"
+        },
+        "All_day": {
+            "type": "Boolean",
+            "name": "All_day"
+        },
+        "End_DateTime": {
+            "required": true,
+            "type": "DateTime",
+            "name": "End_DateTime"
+        },
+        "Owner": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "name": "Owner"
+        },
+        "Who_Id": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "module": "Contacts",
+            "name": "Who_Id"
+        },
+        "Description": {
+            "type": "String",
+            "name": "Description"
+        },
+        "Participants": {
+            "name": "Participants",
+            "type": "List",
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Participants",
+            "skip_mandatory": true
+        },
+        "What_Id": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "name": "What_Id"
+        },
+        "Recurring_Activity": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.RecurringActivity",
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.RecurringActivity",
+            "name": "Recurring_Activity"
+        },
+        "Exchange_Rate": {
+            "type": "Float",
+            "name": "Exchange_Rate"
+        },
+        "Check_In_Time": {
+            "type": "DateTime",
+            "name": "Check_In_Time"
+        },
+        "Check_In_By": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "name": "Check_In_By"
+        },
+        "Check_In_Comment": {
+            "type": "String",
+            "name": "Check_In_Comment"
+        },
+        "Check_In_Sub_Locality": {
+            "type": "String",
+            "name": "Check_In_Sub_Locality"
+        },
+        "Remind_At": {
+            "type": "DateTime",
+            "name": "Remind_At"
+        },
+        "Check_In_City": {
+            "type": "String",
+            "name": "Check_In_City"
+        },
+        "Check_In_State": {
+            "type": "String",
+            "name": "Check_In_State"
+        },
+        "Check_In_Country": {
+            "type": "String",
+            "name": "Check_In_Country"
+        },
+        "Latitude": {
+            "type": "Float",
+            "name": "Latitude"
+        },
+        "Longitude": {
+            "type": "Float",
+            "name": "Longitude"
+        },
+        "ZIP_Code": {
+            "type": "String",
+            "name": "ZIP_Code"
+        },
+        "Check_In_Address": {
+            "type": "String",
+            "name": "Check_In_Address"
+        },
+        "Check_In_Status": {
+            "type": "String",
+            "name": "Check_In_Status"
+        }
+    },
+    "notes": {
+        "Owner": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "name": "Owner"
+        },
+        "Note_Title": {
+            "type": "String",
+            "name": "Note_Title"
+        },
+        "Note_Content": {
+            "type": "String",
+            "name": "Note_Content"
+        },
+        "Parent_Id": {
+            "required": true,
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "name": "Parent_Id"
+        }
+    },
+    "attachments": {
+        "Owner": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "name": "Owner"
+        },
+        "File_Name": {
+            "required": true,
+            "type": "String",
+            "name": "File_Name"
+        },
+        "Size": {
+            "required": true,
+            "type": "String",
+            "name": "Size"
+        },
+        "Parent_Id": {
+            "required": true,
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "name": "Parent_Id"
+        }
+    },
+    "calls": {
+        "Who_Id": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "module": "Contacts",
+            "name": "Who_Id"
+        },
+        "Call_Result": {
+            "type": "String",
+            "name": "Call_Result"
+        },
+        "Call_Start_Time": {
+            "required": true,
+            "type": "DateTime",
+            "name": "Call_Start_Time"
+        },
+        "Subject": {
+            "type": "String",
+            "name": "Subject"
+        },
+        "Call_Duration": {
+            "type": "String",
+            "name": "Call_Duration"
+        },
+        "Call_Type": {
+            "required": true,
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "Outbound",
+                "Inbound",
+                "Missed"
+            ],
+            "name": "Call_Type"
+        },
+        "Call_Purpose": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "-None-",
+                "Prospecting",
+                "Administrative",
+                "Negotiation",
+                "Demo",
+                "Project",
+                "Support"
+            ],
+            "name": "Call_Purpose"
+        },
+        "Owner": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "name": "Owner"
+        },
+        "What_Id": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "name": "What_Id"
+        },
+        "Dialled_Number": {
+            "type": "String",
+            "name": "Dialled_Number"
+        },
+        "Caller_ID": {
+            "type": "String",
+            "name": "Caller_ID"
+        },
+        "Description": {
+            "type": "String",
+            "name": "Description"
+        },
+        "Call_Duration_in_seconds": {
+            "type": "Integer",
+            "name": "Call_Duration_in_seconds"
+        },
+        "CTI_Entry": {
+            "type": "Boolean",
+            "name": "CTI_Entry"
+        },
+        "Reminder": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "none",
+                "5 mins",
+                "10 mins",
+                "15 mins",
+                "30 mins",
+                "1 hrs",
+                "2 hrs",
+                "1 days",
+                "2 days"
+            ],
+            "name": "Reminder"
+        },
+        "Call_Status": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "name": "Call_Status"
+        },
+        "Call_Agenda": {
+            "type": "String",
+            "name": "Call_Agenda"
+        }
+    },
+    "approvals": {},
+    "actions_performed": {},
+    "test": {
+        "Name": {
+            "required": true,
+            "type": "String",
+            "name": "Name"
+        },
+        "Currency": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "INR",
+                "ERN",
+                "AOA",
+                "USD"
+            ],
+            "name": "Currency"
+        },
+        "Owner": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "name": "Owner"
+        },
+        "Email": {
+            "type": "String",
+            "name": "Email"
+        },
+        "Secondary_Email": {
+            "type": "String",
+            "name": "Secondary_Email"
+        },
+        "Names": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "module": "Contacts",
+            "name": "Names"
+        },
+        "Email_Opt_Out": {
+            "type": "Boolean",
+            "name": "Email_Opt_Out"
+        },
+        "Last_Activity_Time": {
+            "type": "DateTime",
+            "name": "Last_Activity_Time"
+        },
+        "Exchange_Rate": {
+            "type": "Float",
+            "name": "Exchange_Rate"
+        },
+        "Unsubscribed_Mode": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "Consent form",
+                "Manual",
+                "Unsubscribe link",
+                "Zoho campaigns"
+            ],
+            "name": "Unsubscribed_Mode"
+        },
+        "Unsubscribed_Time": {
+            "type": "DateTime",
+            "name": "Unsubscribed_Time"
+        },
+        "Record_Image": {
+            "type": "String",
+            "name": "Record_Image"
+        }
+    },
+    "conteads": {
+        "Name": {
+            "type": "String",
+            "name": "Name"
+        },
+        "Multi_Select": {
+            "required": true,
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "module": "Leads",
+            "name": "Multi_Select"
+        },
+        "Currency": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "INR",
+                "ERN",
+                "AOA",
+                "USD"
+            ],
+            "name": "Currency"
+        },
+        "Owner": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "name": "Owner"
+        },
+        "Multi_Select_Lookup_1": {
+            "required": true,
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "module": "Contacts",
+            "name": "Multi_Select_Lookup_1"
+        },
+        "Last_Activity_Time": {
+            "type": "DateTime",
+            "name": "Last_Activity_Time"
+        },
+        "Exchange_Rate": {
+            "type": "Float",
+            "name": "Exchange_Rate"
+        },
+        "Unsubscribed_Mode": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "Consent form",
+                "Manual",
+                "Unsubscribe link",
+                "Zoho campaigns"
+            ],
+            "name": "Unsubscribed_Mode"
+        },
+        "Unsubscribed_Time": {
+            "type": "DateTime",
+            "name": "Unsubscribed_Time"
+        }
+    },
+    "weeks": {
+        "Name": {
+            "required": true,
+            "type": "String",
+            "name": "Name"
+        },
+        "Owner": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "name": "Owner"
+        },
+        "Email": {
+            "type": "String",
+            "name": "Email"
+        },
+        "Secondary_Email": {
+            "type": "String",
+            "name": "Secondary_Email"
+        },
+        "Currency": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "INR",
+                "ERN",
+                "AOA",
+                "USD"
+            ],
+            "name": "Currency"
+        },
+        "Email_Opt_Out": {
+            "type": "Boolean",
+            "name": "Email_Opt_Out"
+        },
+        "Last_Activity_Time": {
+            "type": "DateTime",
+            "name": "Last_Activity_Time"
+        },
+        "Tkural": {
+            "type": "Integer",
+            "name": "Tkural"
+        },
+        "Exchange_Rate": {
+            "type": "Float",
+            "name": "Exchange_Rate"
+        },
+        "Number": {
+            "type": "Integer",
+            "name": "Number"
+        },
+        "Leads_Lookup": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "module": "Leads",
+            "name": "Leads_Lookup"
+        },
+        "Unsubscribed_Mode": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "Consent form",
+                "Manual",
+                "Unsubscribe link",
+                "Zoho campaigns"
+            ],
+            "name": "Unsubscribed_Mode"
+        },
+        "Unsubscribed_Time": {
+            "type": "DateTime",
+            "name": "Unsubscribed_Time"
+        },
+        "Record_Image": {
+            "type": "String",
+            "name": "Record_Image"
+        }
+    },
+    "leads_x_contacts": {
+        "Currency": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "INR",
+                "ERN",
+                "AOA",
+                "USD"
+            ],
+            "name": "Currency"
+        },
+        "Exchange_Rate": {
+            "type": "Float",
+            "name": "Exchange_Rate"
+        },
+        "Name": {
+            "type": "String",
+            "name": "Name"
+        },
+        "Test_Multi": {
+            "required": true,
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "module": "Leads",
+            "name": "Test_Multi"
+        },
+        "Owner": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "name": "Owner"
+        },
+        "Multi_Select_Lookup_2": {
+            "required": true,
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "module": "Contacts",
+            "name": "Multi_Select_Lookup_2"
+        },
+        "Email": {
+            "type": "String",
+            "name": "Email"
+        },
+        "Secondary_Email": {
+            "type": "String",
+            "name": "Secondary_Email"
+        },
+        "Email_Opt_Out": {
+            "type": "Boolean",
+            "name": "Email_Opt_Out"
+        },
+        "Last_Activity_Time": {
+            "type": "DateTime",
+            "name": "Last_Activity_Time"
+        },
+        "Unsubscribed_Mode": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "Consent form",
+                "Manual",
+                "Unsubscribe link",
+                "Zoho campaigns"
+            ],
+            "name": "Unsubscribed_Mode"
+        },
+        "Unsubscribed_Time": {
+            "type": "DateTime",
+            "name": "Unsubscribed_Time"
+        }
+    },
+    "leads": {
+        "Owner": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "name": "Owner"
+        },
+        "Company": {
+            "type": "String",
+            "name": "Company"
+        },
+        "Last_Name": {
+            "required": true,
+            "type": "String",
+            "name": "Last_Name"
+        },
+        "First_Name": {
+            "type": "String",
+            "name": "First_Name"
+        },
+        "Salutation": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "-None-",
+                "Mr.",
+                "Mrs.",
+                "Ms.",
+                "Dr.",
+                "Prof."
+            ],
+            "name": "Salutation"
+        },
+        "Email": {
+            "type": "String",
+            "name": "Email"
+        },
+        "Full_Name": {
+            "type": "String",
+            "name": "Full_Name"
+        },
+        "Phone": {
+            "type": "String",
+            "name": "Phone"
+        },
+        "Name_Length": {
+            "type": "Float",
+            "read-only": true,
+            "name": "Name_Length"
+        },
+        "Formula_2": {
+            "type": "DateTime",
+            "read-only": true,
+            "name": "Formula_2"
+        },
+        "Mobile": {
+            "type": "String",
+            "name": "Mobile"
+        },
+        "Designation": {
+            "type": "String",
+            "name": "Designation"
+        },
+        "Lead_Status": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "-None-",
+                "Attempted to Contact",
+                "Contact in Future",
+                "--None--",
+                "Contacted",
+                "Junk Lead",
+                "Lost Lead",
+                "Not Contacted",
+                "Pre Qualified",
+                "Not Qualified"
+            ],
+            "name": "Lead_Status"
+        },
+        "Multi_Select_1": {
+            "type": "List",
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "name": "Multi_Select_1"
+        },
+        "Fax": {
+            "type": "String",
+            "name": "Fax"
+        },
+        "Formula_3": {
+            "type": "Float",
+            "read-only": true,
+            "name": "Formula_3"
+        },
+        "Website": {
+            "type": "String",
+            "name": "Website"
+        },
+        "Decimal_field": {
+            "type": "Float",
+            "name": "Decimal_field"
+        },
+        "Currency_3": {
+            "type": "Float",
+            "name": "Currency_3"
+        },
+        "Contacts": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "module": "Contacts",
+            "name": "Contacts"
+        },
+        "No_of_Employees": {
+            "type": "Integer",
+            "name": "No_of_Employees"
+        },
+        "Multi_Select_Lookup_2": {
+            "type": "String",
+            "lookup": true,
+            "name": "Multi_Select_Lookup_2"
+        },
+        "Rating": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "-None-",
+                "Acquired",
+                "Active",
+                "Market Failed",
+                "Project Cancelled",
+                "ShutDown"
+            ],
+            "name": "Rating"
+        },
+        "Lead_Source": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "-None-",
+                "Advertisement",
+                "Cold Call",
+                "Employee Referral",
+                "External Referral",
+                "OnlineStore",
+                "Partner",
+                "Public Relations",
+                "Sales Mail Alias",
+                "Seminar Partner",
+                "Seminar-Internal",
+                "Trade Show",
+                "Web Download",
+                "Web Research",
+                "Chat"
+            ],
+            "name": "Lead_Source"
+        },
+        "Percent_1": {
+            "type": "Float",
+            "name": "Percent_1"
+        },
+        "User": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.users.User",
+            "name": "User"
+        },
+        "Bool": {
+            "type": "Boolean",
+            "read-only": true,
+            "name": "Bool"
+        },
+        "Skype_ID": {
+            "type": "String",
+            "name": "Skype_ID"
+        },
+        "Industry": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "-None-",
+                "ASP",
+                "Data/Telecom OEM",
+                "ERP",
+                "Government/Military",
+                "Large Enterprise",
+                "ManagementISV",
+                "MSP (Management Service Provider)",
+                "Network Equipment (Enterprise)",
+                "Non-management ISV",
+                "Optical Networking",
+                "Service Provider",
+                "Small/Medium Enterprise",
+                "Storage Equipment",
+                "Storage Service Provider",
+                "Systems Integrator",
+                "Wireless Industry",
+                "ERP_1"
+            ],
+            "name": "Industry"
+        },
+        "Twitter": {
+            "type": "String",
+            "name": "Twitter"
+        },
+        "Checkbox_2": {
+            "type": "Boolean",
+            "name": "Checkbox_2"
+        },
+        "Secondary_Email": {
+            "type": "String",
+            "name": "Secondary_Email"
+        },
+        "URL_1": {
+            "type": "String",
+            "name": "URL_1"
+        },
+        "Annual_Revenue": {
+            "type": "Float",
+            "name": "Annual_Revenue"
+        },
+        "Multi_Select_Lookup_1": {
+            "type": "String",
+            "lookup": true,
+            "name": "Multi_Select_Lookup_1"
+        },
+        "Email_Opt_Out": {
+            "type": "Boolean",
+            "name": "Email_Opt_Out"
+        },
+        "Custom_Picklist": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "-None-",
+                "One",
+                "Two"
+            ],
+            "name": "Custom_Picklist"
+        },
+        "Account_Lookup": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "module": "Accounts",
+            "name": "Account_Lookup"
+        },
+        "Last_Activity_Time": {
+            "type": "DateTime",
+            "name": "Last_Activity_Time"
+        },
+        "Number_Picklist": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "-None-",
+                "1",
+                "2"
+            ],
+            "name": "Number_Picklist"
+        },
+        "Unsubscribed_Mode": {
+            "type": "zcrmsdk.src.com.zoho.crm.api.util.Choice",
+            "values": [
+                "Consent form",
+                "Manual",
+                "Unsubscribe link",
+                "Zoho campaigns"
+            ],
+            "name": "Unsubscribed_Mode"
+        },
+        "Unsubscribed_Time": {
+            "type": "DateTime",
+            "name": "Unsubscribed_Time"
+        },
+        "Street": {
+            "type": "String",
+            "name": "Street"
+        },
+        "City": {
+            "type": "String",
+            "name": "City"
+        },
+        "State": {
+            "type": "String",
+            "name": "State"
+        },
+        "Zip_Code": {
+            "type": "String",
+            "name": "Zip_Code"
+        },
+        "Description": {
+            "type": "String",
+            "name": "Description"
+        },
+        "Record_Image": {
+            "type": "String",
+            "name": "Record_Image"
+        },
+        "Subform": {
+            "type": "List",
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "module": "Subform",
+            "skip_mandatory": true,
+            "subform": true,
+            "name": "Subform"
+        }
+    },
+    "subform": {
+        "Shylaja": {
+            "type": "String",
+            "name": "Shylaja"
+        },
+        "Parent_Id": {
+            "required": true,
+            "type": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "lookup": true,
+            "structure_name": "zcrmsdk.src.com.zoho.crm.api.record.Record",
+            "module": "Leads",
+            "name": "Parent_Id"
+        }
+    }
+}
