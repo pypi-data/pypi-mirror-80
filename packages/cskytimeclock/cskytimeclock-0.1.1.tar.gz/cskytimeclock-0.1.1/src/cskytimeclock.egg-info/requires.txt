@@ -1,0 +1,6 @@
+click~=7.1
+requests~=2.24
+
+[dev]
+pytest~=6.0
+responses~=0.12
