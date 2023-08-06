@@ -1,0 +1,66 @@
+Metadata-Version: 2.1
+Name: azure-databricks-sdk-python
+Version: 0.0.0
+Summary: This is an unofficial Databricks SDK for python. It supports the operations provided by the Databricks REST API 2.0.
+Home-page: http://github.com/aminekaabachi/azure-databricks-sdk-python
+Author: Amine Kaabachi
+Author-email: ping@kaabachi.io
+Maintainer: Amine Kaabachi
+Maintainer-email: ping@kaabachi.io
+License: MIT
+Keywords: azure,databricks
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Information Technology
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Description-Content-Type: text/markdown
+Requires-Dist: requests
+
+# Azure Databricks SDK for Python
+
+[![Workflow Status](https://img.shields.io/github/workflow/status/aminekaabachi/azure-databricks-sdk-python/Unit%20Tests/master?style=flat-square)](https://github.com/aminekaabachi/azure-databricks-sdk-python/actions?query=workflow%3A%22Unit+Tests%22)
+[![Coveralls github](https://img.shields.io/coveralls/github/aminekaabachi/azure-databricks-sdk-python?style=flat-square)](https://coveralls.io/github/aminekaabachi/azure-databricks-sdk-python?branch=master)
+[![GitHub](https://img.shields.io/github/license/aminekaabachi/azure-databricks-sdk-python?style=flat-square)](https://github.com/aminekaabachi/azure-databricks-sdk-python/blob/master/LICENSE)
+
+
+A Python SDK for the [Azure Databricks REST API 2.0](https://docs.azuredatabricks.net/api/latest/index.html)
+
+### Install
+This package is pip installable.
+```bash
+pip install azure-databricks-sdk-python
+```
+
+## Usage
+
+```python
+
+
+
+```
+
+## Implementation Progress
+
+Please refer to the progress below:
+
+| API  | Progress |
+| :--- | :---: | 
+| Clusters API | 0% |
+| DBFS API  | 0% |
+| Groups API  | 0% |
+| Jobs API | 0% |
+| Libraries API | 0% |
+| MLflow API | 0% |
+| Secrets API | 0% |
+| Token API | 0% |
+| Workspace API | 0% |
+| Instance Pools API (preview) | 0% |
+| SCIM API (preview) | 0% |
+
+
+
