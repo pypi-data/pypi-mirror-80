@@ -1,0 +1,168 @@
+#!/usr/bin/env python
+#
+# Copyright (C) 2018  James Alexander Clark <james.clark@ligo.org>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+"""
+Command line tool to register LIGO/Virgo datasets into rucio.
+
+Data may be registered as individual files, ascii lists of files, or registered
+on the fly as a background process monitoring a DiskCacheFile.
+
+This is a second generation version. Name is temporary.
+"""
+
+# pylint: disable=import-error
+
+import sys
+import pathlib
+import argparse
+import configparser
+import argcomplete
+
+from gwrucio.registrar import run, stop
+
+
+def file_exists(aparser, infile):
+    """
+    Helper function to validate input file existence
+    """
+    try:
+        pathlib.Path(infile).resolve(strict=True)
+    except FileNotFoundError:
+        aparser.error("The file %s does not exist!" % infile)
+    else:
+        return infile
+
+
+def parse_inputs():
+    """
+    Command line parser
+    """
+
+    aparser = argparse.ArgumentParser(description=__doc__)
+
+    aparser.add_argument(dest="config_file",
+                         metavar="FILE",
+                         type=lambda infile: file_exists(aparser, infile),
+                         help="""Python configuration file for registration"""
+                         )
+
+    aparser.add_argument('-c',
+                         "--diskcache-dump",
+                         required=True,
+                         type=lambda infile: file_exists(aparser, infile),
+                         metavar="FILE",
+                         help="""Path to diskcache ascii dump""")
+
+    aparser.add_argument('-r',
+                         "--rse",
+                         type=str,
+                         required=True,
+                         help="""RSE to register replicas at""")
+
+    aparser.add_argument('-s',
+                         "--gps-start-time",
+                         type=int,
+                         required=False,
+                         help="""GPS start time to register files from
+                         (overrides values in config file)""")
+
+    aparser.add_argument('-e',
+                         "--gps-end-time",
+                         type=int,
+                         required=False,
+                         help="""GPS end time to register files from
+                         (overrides values in config file)""")
+
+    aparser.add_argument("--online",
+                         default=False,
+                         action="store_true",
+                         help="""Run continuously""")
+
+    aparser.add_argument('-S',
+                         "--sleep-interval",
+                         type=float,
+                         default=5,
+                         required=False,
+                         help="""Number of seconds to sleep between
+                         registration loops when running online""")
+
+    aparser.add_argument('-d',
+                         "--daemon",
+                         default=False,
+                         action="store_true",
+                         help="""Run as a detached background process""")
+
+    aparser.add_argument('-t',
+                         "--threads",
+                         type=int,
+                         default=1,
+                         help="""Number of worker threads""")
+
+    aparser.add_argument('-p',
+                         "--pid-file",
+                         type=str,
+                         default=f"/var/log/{sys.argv[0]}.pid",
+                         required=False,
+                         help="""PID file for daemon process""")
+
+    aparser.add_argument('-l',
+                         "--log-file",
+                         type=str,
+                         default=f"/var/log/{sys.argv[0]}.log",
+                         required=False,
+                         help="""Log file (stdout and stderr) for daemon
+                         process""")
+
+    aparser.add_argument("--dry-run",
+                         default=False,
+                         action="store_true",
+                         help="""Find files, construct replica list but don't
+                         actually upload to rucio""")
+
+    argcomplete.autocomplete(aparser)
+
+    aparser = aparser.parse_args(sys.argv[1:])
+
+    # Parse configfile
+    cparser = configparser.ConfigParser()
+
+    # Default configparser values to argparser
+    cparser['instance'] = {arg: str(getattr(aparser, arg)) for arg in
+                           vars(aparser)}
+
+    # cparser.optionxform = str
+    cparser.read([aparser.config_file])
+
+    # Make sure command line overrides config file for time-spans for HTC
+    # registration jobs
+    if aparser.gps_start_time:
+        cparser.set('data', 'gps-start-time', aparser.gps_start_time)
+    if aparser.gps_end_time:
+        cparser.set('data', 'gps-end-time', aparser.gps_end_time)
+
+    return cparser
+
+
+if __name__ == "__main__":
+
+    # Parse input
+    CONFIG = parse_inputs()
+
+    try:
+        run(config=CONFIG)
+    except KeyboardInterrupt:
+        stop()

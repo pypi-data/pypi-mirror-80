@@ -1,0 +1,260 @@
+#!/usr/bin/env python
+#
+# Copyright (C) 2018  James Alexander Clark <james.clark@ligo.org>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+"""
+Application to verify md5 checksums in a dataset
+
+Loops through a random selection of dataset contents and compares the rucio
+checksum with a live calculation.
+
+"""
+# TODO: simplify, remove daemon mode and run as a k8s cronjob
+
+import logging
+import sys
+import re
+import signal
+import argparse
+import time
+import random
+
+import yaml
+import argcomplete
+
+from rucio.client.client import Client
+from gwrucio.register import gfal_md5
+
+_FRAME_RE = re.compile(r'([A-Z]+)-([A-Za-z0-9_]+)-([0-9]+)-([0-9]+)')
+
+SUCCESS = 0
+FAILURE = 1
+MAX_CACHE_TRIES = 5
+GFAL_SLEEP = 5
+
+LOGGER = logging.getLogger('user')
+
+RUCIO_CLIENT = Client()
+
+
+def setup_logger(logger):
+    """
+    Configures logging information. Lifted from `rucio`.
+    """
+
+    logger.setLevel(logging.INFO)
+    hdlr = logging.StreamHandler()
+
+    def emit_decorator(fnc):
+        """
+        Format logger
+        """
+        def func(*args):
+            """
+            Logging colours
+            """
+            levelno = args[0].levelno
+            if levelno >= logging.CRITICAL:
+                color = '\033[31;1m'
+            elif levelno >= logging.ERROR:
+                color = '\033[31;1m'
+            elif levelno >= logging.WARNING:
+                color = '\033[33;1m'
+            elif levelno >= logging.INFO:
+                color = '\033[32;1m'
+            elif levelno >= logging.DEBUG:
+                color = '\033[36;1m'
+            else:
+                color = '\033[0m'
+            # pylint: disable=line-too-long
+            formatter = logging.Formatter('{0}%(asctime)s\t%(levelname)s\t%(message)s\033[0m'.format(color))  # noqa: E501
+            hdlr.setFormatter(formatter)
+            return fnc(*args)
+        return func
+    hdlr.emit = emit_decorator(hdlr.emit)
+    logger.addHandler(hdlr)
+
+
+setup_logger(LOGGER)
+
+
+def signal_handler(sig, frame):
+    """
+    Catch INTERRUPTs
+    """
+    # pylint: disable=unused-argument
+    LOGGER.error('Interrupt received')
+    # Do some cleanup?
+    sys.exit(1)
+
+
+def get_parser():
+    """
+    Command line parser
+    """
+
+    aparser = argparse.ArgumentParser(description=__doc__)
+
+    aparser.add_argument(dest="rsets",
+                         help="""YAML file specifying datasets.""")
+
+    aparser.add_argument('-r',
+                         "--rse",
+                         type=str,
+                         default=None,
+                         required=True,
+                         help="""RSE to check replicas at.""")
+
+    aparser.add_argument("--nrandom",
+                         type=int,
+                         required=False,
+                         help="""Select nrandom files to spot-check from the
+                         target datasets.""")
+
+    aparser.add_argument("--sleep",
+                         type=float,
+                         default=5,
+                         required=False,
+                         help="""Wait period between checks in daemon mode""")
+
+    aparser.add_argument("--run-once",
+                         action='store_true',
+                         default=False,
+                         help="""Run a single iteration.""")
+
+    aparser.add_argument("--verbose",
+                         default=False,
+                         action="store_true",
+                         help="""Print all logging info.""")
+
+    return aparser
+
+
+def get_rsets(configyml):
+    """
+    Read configuration from YAML
+
+    Returns :rset: YAML dictionary
+    """
+    with open(configyml, 'r') as stream:
+        rset = yaml.load(stream, Loader=yaml.SafeLoader)
+    return rset
+
+
+def md5check(lfns, scope, rse, sleep_time=GFAL_SLEEP):
+    """
+    Computes the current MD5 checksum and compares with the registered value of
+    a file
+
+    Parameters:
+
+    :param lfn_list: list of LFNs whose checksum we want to check
+    :param scope: Scope of the LFNs
+    :param rse: RSE whose replica we want to check
+    :type lfn_list: list of strings
+    :type scope: str
+    :type rse: str
+
+    :returns: True if checksums match
+    """
+
+    # Construct list of dids like:
+    # [{'scope': <scope1>, 'name': <name1>}, {'scope': <scope2>, 'name':
+    # <name2>}, ...]
+    did_list = [{'scope': scope, 'name': lfn} for lfn in lfns]
+
+    LOGGER.info("Finding replicas")
+
+    # Get replicas
+    replicas = RUCIO_CLIENT.list_replicas(did_list)
+
+    # Loop through and check
+    for replica in replicas:
+        LOGGER.info("%s:%s -> %s", scope, replica['name'], replica['md5'])
+        try:
+            for pfn in replica['rses'][rse]:
+                LOGGER.info("Checking: %s", pfn)
+                md5_ondisk = gfal_md5(pfn, max_tries=5, sleep_time=sleep_time)
+                if md5_ondisk != replica['md5']:
+                    LOGGER.error("BAD REPLICA %s:%s: %s | "
+                                 "MD5 at source: %s | MD5 at %s: %s",
+                                 scope, replica['name'], pfn,
+                                 replica['md5'], rse, md5_ondisk)
+        except KeyError:
+            LOGGER.critical("NO REPLICA %s:%s not present at %s",
+                            scope, replica['name'], rse)
+            continue
+
+
+def main():
+    """
+    Principal operations
+    """
+
+    # parse input and choose operation
+    parser = get_parser()
+    argcomplete.autocomplete(parser)
+
+    if len(sys.argv) == FAILURE:
+        parser.print_help()
+        sys.exit(FAILURE)
+
+    args = parser.parse_args(sys.argv[1:])
+
+    if args.verbose:
+        LOGGER.setLevel(logging.DEBUG)
+
+    # Add hooks for SIGTERM and SIGINT
+    signal.signal(signal.SIGTERM, signal_handler)
+    signal.signal(signal.SIGINT, signal_handler)
+
+    LOGGER.info("Reading registration set file %s", args.rsets)
+    rsets = get_rsets(args.rsets)
+
+    LOGGER.info("Starting daemon loop")
+    daemon_running = True
+    while daemon_running:
+
+        LOGGER.info("--------------------------------------------------")
+
+        for rset in rsets:
+
+            lfns = [item['name'] for item in
+                    list(RUCIO_CLIENT.list_content(rsets[rset]['scope'],
+                                                   rset))]
+            LOGGER.info("Found %d files in dataset", len(lfns))
+
+            if args.nrandom:
+                # Downsample to a random selection of files
+                LOGGER.info("Selecting %d random files from %d files",
+                            args.nrandom, len(lfns))
+                lfns = random.sample(lfns, args.nrandom)
+
+            if not lfns:
+                break
+
+            md5check(lfns, rsets[rset]['scope'], args.rse, args.sleep)
+
+        if args.run_once:
+            # break out of the daemon while-loop
+            break
+
+        LOGGER.info("Going to sleep for %d s...", args.sleep)
+        time.sleep(args.sleep)
+
+
+if __name__ == "__main__":
+    main()
