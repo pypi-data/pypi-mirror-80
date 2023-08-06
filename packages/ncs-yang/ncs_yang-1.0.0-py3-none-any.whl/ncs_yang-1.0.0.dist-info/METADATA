@@ -1,0 +1,24 @@
+Metadata-Version: 2.1
+Name: ncs-yang
+Version: 1.0.0
+Summary: ncs-yang is the smartway to compile yang file/files along with it's dependencies from Makefile.
+Home-page: https://github.com/kirankotari/ncs-yang.git
+Author: Kiran Kumar Kotari
+Author-email: kirankotari@live.com
+License: UNKNOWN
+Keywords: yang,ncsc,yangpath,yang-compiler,yanger
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Description-Content-Type: text/markdown
+
+# ncs-yang
+
+
