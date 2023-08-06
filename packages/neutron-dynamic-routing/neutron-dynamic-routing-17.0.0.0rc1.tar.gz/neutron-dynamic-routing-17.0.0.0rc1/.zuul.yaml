@@ -1,0 +1,28 @@
+- job:
+    name: neutron-dynamic-routing-functional
+    parent: neutron-functional
+    vars:
+      project_name: neutron-dynamic-routing-functional
+      # NOTE(amotoki): neutron-functional sets tox_install_siblings to false.
+      # This needs to be true so that neutron from its repo is installed into
+      # tox env.
+      # We need to check tox_install_siblings false is required
+      # in neutron-functional job.
+      tox_install_siblings: true
+
+- project:
+    templates:
+      - check-requirements
+      - openstack-cover-jobs-neutron
+      - openstack-lower-constraints-jobs-neutron
+      - openstack-python3-victoria-jobs-neutron
+      - publish-openstack-docs-pti
+      - release-notes-jobs-python3
+    check:
+      jobs:
+        - neutron-dynamic-routing-functional
+        - neutron-tempest-plugin-dynamic-routing
+    gate:
+      jobs:
+        - neutron-dynamic-routing-functional
+        - neutron-tempest-plugin-dynamic-routing
