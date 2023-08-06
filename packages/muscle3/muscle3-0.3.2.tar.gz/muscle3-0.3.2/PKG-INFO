@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: muscle3
+Version: 0.3.2
+Summary: Version 3 of the MUltiScale Coupling Library and Environment
+Home-page: https://github.com/multiscale/muscle3
+Author: Lourens Veen
+Author-email: l.veen@esciencecenter.nl
+License: Apache License 2.0
+Description: UNKNOWN
+Keywords: multiscale,coupling,MUSCLE
+Platform: UNKNOWN
+Classifier: Development Status :: 1 - Planning
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Python: >=3.5, <4
+Provides-Extra: dev
