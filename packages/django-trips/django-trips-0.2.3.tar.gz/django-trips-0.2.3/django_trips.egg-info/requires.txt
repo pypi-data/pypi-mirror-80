@@ -1,0 +1,7 @@
+factory_boy
+setuptools
+mysqlclient
+django-config-models
+djangorestframework
+django-cors-headers
+Django<2.3
