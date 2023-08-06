@@ -1,0 +1,10 @@
+[console_scripts]
+blake2b = gethash.blake2b:main
+blake2s = gethash.blake2s:main
+md5 = gethash.md5:main
+sha1 = gethash.sha1:main
+sha256 = gethash.sha256:main
+sha3-256 = gethash.sha3_256:main
+sha3-512 = gethash.sha3_512:main
+sha512 = gethash.sha512:main
+
