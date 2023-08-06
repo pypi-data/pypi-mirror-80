@@ -1,0 +1,84 @@
+CHANGES
+=======
+
+v0.4.1
+------
+
+* Fix Files parsing for JPG extensions
+* Add Zenodo DOI
+
+v0.4
+----
+
+* Remove travis skip install and after\_success
+* Deploy on tags
+* Fix pypi urls
+* Fallback to old travis CI
+* Fix travis indent
+* Move python version to test stage
+* Update travis stages
+* Fix Python 2 Cassini CLI url
+* Update README. Fix #1
+* Update Jupyter Notebooks for API v2 (#1)
+* Upgrade scripts to API v2 (#1)
+* Add new API v2 tests (#1)
+* Add new API v2 json ouputs (#1)
+
+v0.3.2
+------
+
+* Fix None type in column name
+
+v0.3.1
+------
+
+* Fix wrong notebook urls
+* Add CLI jupyter notebook
+* Fix README cassini-vims entry point
+* Add Field search to CLI
+* Add files download to CLI
+* Add CLI image preview download
+* Add Metadata to CLI
+* Move CLI to a separate folder
+
+v0.3.0
+------
+
+* Push Development Status to beta
+* Add entry\_points
+
+v0.2.1
+------
+
+* Update Jupyter Notebook examples
+* Fix Category API location
+* Add DataDict to Categories
+* Add DataDict to Fields and add \`find\` feature on DataDict
+* Add DataDict in Range
+* Add DataDict to Mults
+
+v0.2.0
+------
+
+* Fix links in README
+* Add Jupyter Notebook examples
+* Add DataDict and Downloadable class to Files
+* Create downloadable class
+* Edit Metadata/Constrains to DataDict object
+* Add DataDict class
+* Change Image class to be more explicit
+* Change API limit default call
+* Change Data class and add DataElement
+* Fix PyPI badge
+
+v0.1.0
+------
+
+* Push development status to Alpha
+* Add category query
+* Add download for image previews
+* Add fields query
+* Change pytest options
+* Add field query
+* Add range endpoints query
+* Add Mults parameter query
