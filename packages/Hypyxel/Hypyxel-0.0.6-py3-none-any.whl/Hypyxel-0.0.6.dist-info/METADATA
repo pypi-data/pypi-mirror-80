@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: Hypyxel
+Version: 0.0.6
+Summary: A python wrapper for the Hypixel API.
+
+## Usage:
+**Skyblock Stats**: `from hypy import skyblock`
+**Skyblock Stats**: `from hypy import skyblock`
+`get_endpoints` returns a dict of all functions and the associated endpoint
+Home-page: https://github.com/CraziiAce/HyPy
+Author: CraziiAce
+Author-email: teddyjraz@gmail.com
+License: UNKNOWN
+Description: WIP
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
