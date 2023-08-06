@@ -1,0 +1,1830 @@
+''' Wrapper for nice plots with tikz, pyqtgraph and matplotlib.
+
+Author:
+    Mario Krattenmacher | Mario.Krattenmacher@tu-dresden.de
+    Markus Mueller | Markus.Mueller3@tu-dresden.de
+'''
+# DMT
+# Copyright (C) 2019  Markus Müller and Mario Krattenmacher and the DMT contributors <https://gitlab.hrz.tu-chemnitz.de/CEDIC_Bipolar/DMT/>
+#
+# This file is part of DMT.
+#
+# DMT is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# DMT is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>
+import os
+import sys
+import re
+import numpy as np
+from pathlib import Path
+from cycler import cycler
+from DMT.core import tex_to_text, natural_scales
+from DMT.external import build_tex, build_svg, clean_tex_files
+
+if 'PYQTGRAPH_QT_LIB' not in os.environ: # add PYQTGRAPH_QT_LIB environment variable.
+    os.environ['PYQTGRAPH_QT_LIB'] = 'PySide2'
+
+try:
+    import pyqtgraph
+    from pyqtgraph.Qt import QtCore
+except ImportError:
+    print("DMT->Plot: Failed to import plotting module pyqtgraph.")
+try:
+    import matplotlib
+    import matplotlib.pyplot as plt
+    import matplotlib._pylab_helpers
+    import matplotlib.ticker as ticker
+except ImportError:
+    print("DMT->Plot: Failed to import plotting module matplotlib.")
+
+## Styles that can be used in the "style" argument given to the __init__ of Plot.
+PLOT_STYLES                   = []
+BLACK_WHITE                  = 'bw'
+PLOT_STYLES.append(BLACK_WHITE)
+BLACK_SOLID                  = 'black_solid'
+PLOT_STYLES.append(BLACK_SOLID)
+BLACK_DASHED                 = 'black_dashed'
+PLOT_STYLES.append(BLACK_DASHED)
+BLACK_LINESTYLE              = 'black_linestyle'
+PLOT_STYLES.append(BLACK_LINESTYLE)
+COLOR                        = 'color'
+PLOT_STYLES.append(COLOR)
+MARKERS_COLOR                = 'markers_color'
+PLOT_STYLES.append(MARKERS_COLOR)
+MARKERS_LINES_COLOR          = 'markers_lines_color'
+PLOT_STYLES.append(MARKERS_LINES_COLOR)
+MARKERS                      = 'markers'
+PLOT_STYLES.append(MARKERS)
+MARKERS_LINES                = 'markers_lines'
+PLOT_STYLES.append(MARKERS_LINES)
+XTRACTION                    = 'xtraction'
+PLOT_STYLES.append(XTRACTION)
+XTRACTION_COLOR              = 'xtraction_color'
+PLOT_STYLES.append(XTRACTION_COLOR)
+COMPARISON_3                 = 'comparison_3'
+PLOT_STYLES.append(COMPARISON_3)
+COMPARISON_4                 = 'comparison_4'
+PLOT_STYLES.append(COMPARISON_4)
+XTRACTION_INTERPOLATED       = 'xtraction_interpolated'
+PLOT_STYLES.append(XTRACTION_INTERPOLATED)
+XTRACTION_INTERPOLATED_COLOR = 'xtraction_interpolated_color'
+PLOT_STYLES.append(XTRACTION_INTERPOLATED_COLOR)
+MIX                          = 'mix'
+PLOT_STYLES.append(MIX)
+
+### Translation dictionaries from matplotlib to tikz
+_DICT_MARKERS_MPL_TO_PGF = {
+    '.': r"mark=*, mark options={solid, fill}, ",
+    # ',',# do not know how to translate them ...
+    'o': r"mark=o, mark options={solid, fill}, ",
+    'ö': r"mark=*, mark options={solid, fill=black}, text mark as node=true, ", #cheat: mark points in plots with this marker
+    'v': r"mark=triangle, mark options={solid, rotate=180}, ",
+    '^': r"mark=triangle, mark options={solid, rotate=0}, ",
+    '<': r"mark=triangle, mark options={solid, rotate=270}, ",
+    '>': r"mark=triangle, mark options={solid, rotate=90}, ",
+    '1': r"mark=text, mark options={solid, rotate=0}, text mark={v}, ", # there are no "tri_down" markers in pgf
+    '2': r"mark=text, mark options={solid, rotate=180}, text mark={v}, ", # needs verification...
+    '3': r"mark=text, mark options={solid, rotate=270}, text mark={v}, ",
+    '4': r"mark=text, mark options={solid, rotate=90}, text mark={v}, ",
+    's': r"mark=square, mark options={solid}, ",
+    'p': r"mark=pentagon, mark options={solid}, ",
+    '*': r"mark=asterisk, mark options={solid}, ",
+    # 'h', # there are no hexagons in tikz
+    # 'H',
+    '+': r"mark=+, mark options={solid}, ",
+    'x': r"mark=x, mark options={solid}, ",
+    'D': r"mark=diamond, mark options={solid}, ",
+    'd': r"mark=diamond, mark options={solid}, ", # what is a thin diamond??
+    '|': r"mark=|, mark options={solid}, ",
+    '_': r"mark=-, mark options={solid}, ",
+    None: r" ",
+}
+_DICT_LINES_MPL_TO_PGF = {
+    ' ' : "only marks, ",
+    '--': "dashed, ",
+    '-.': "dashdotted, ",
+    '-' : "solid, ",
+    '.' : "dotted, ", 
+    ':' : "dotted, ", # or densely dotted ??
+}
+_DICT_COLORS_MPL  = {
+    'b': "blue",
+    'g': "green",
+    'r': "red",
+    'c': "cyan",
+    'm': "magenta",
+    'y': "yellow",
+    'k': "black",
+    'w': "white",
+}
+
+class Plot(object):
+    ''' Class that represents plots with different plotting backends. Many convenience functions for device modeling are supported.
+
+    Attributes
+    ----------
+    legend_location : str
+        Use valid location strings for matplotlib!
+    '''
+    qt_application = None
+    list_pg_windows = []
+
+    def __init__(self, plot_name, style='color',
+    x_label=None, y_label=None, x_specifier=None, y_specifier=None, x_scale=1, y_scale=1, x_log=False, y_log=False,
+    legend_location='upper right', num=None):
+        """
+        Parameters
+        ----------
+        plot_name : str
+            Name of the plot object, also used for captions and saving the object.
+        style : str, optional
+            A string that equals one of the styles at the top of this script. These are convenience wrapper for automatic styling of lines, added to the plot.
+        x_label : str, optional
+            String that is used to label the x_axis.
+        y_label : str, optional
+            String that is used to label the y_axis.
+        x_specifier : DMT.core.SpecifierStr, optional
+            A specifier that defines the quantity along the x_axis. Together with the argument "x_scale" this keyword may be used instead of "x_label" to generate x-axis labels automatically.
+        x_scale : float, optional
+            The x-axis values displayed in the plot are the data stored in the plot times this value.
+        y_specifier : DMT.core.SpecifierStr, optional
+            A specifier that defines the quantity along the y_axis. Together with the argument "y_scale" this keyword may be used instead of "y_label" to generate x-axis labels automatically.
+        y_scale : float, optional
+            The y-axis values displayed in the plot are the data stored in the plot times this value.
+        legend_location : str, optional
+            A string that defines the postition of the legend. Allowed: "upper right", "upper left", "lower left", "lower right"
+        num : str, optional
+            This string is internally used to identify the plot by the different plotting engines. By the default, this string equals plot_name, however if more than two plots with the same name are initialized, num needs to be given different for every of them so that the plotting enginge can distinguish the plot objects.
+        x_log : {True,False}, optional
+            If true, use a logarithmic x-axis.
+        y_log : {True,False}, optional
+            If true, use a logarithmic y-axis.
+
+        Attributes
+        ----------
+        name : str
+            The name of this plot, used to caption and store the plot. By default, also the identifier for the plot by the plotting engine.
+        num  : str
+            The plot is identified by this string by the plotting engine.
+        x_label : str
+            This string is displayed below the x-axis.
+        y_label : str
+            This string is displayed below the y-axis.
+        _cycler : cycler.Cycler
+            This object is iteratively called to produce the line styles for every line.
+        data : [{'x':np.ndarray, 'y':np.ndarray, 'label':str, 'style':str, 'kwargs':{}}]
+            See the Plot.add_data method for details.
+        fig  : FigureHandle
+            The handle of the figure in the plotting engine.
+        axis : AxisHandle
+            The axis handle of the figure in the plotting engine.
+        mw_pg : pyqtgraph widget handle
+        pw_pg : pyqtgraph window handle
+        x_limits : (float,float)
+            The x_axis is limited to display data between x_limis[0] and x_limits[1]. If either element is None, infinity is used.
+        y_limits : (float,float)
+            The y_axis is limited to display data between y_limis[0] and y_limits[1]. If either element is None, infinity is used.
+        legend_location : str
+            Specifies the location of the legend. See the "Parameters" section.
+        legend_frame : QtObject
+            Handle of the legend in a plotting engine.
+        x_axis_scale : str
+            String that specifies the scale of the x_axis. May differ for different plotting engines.
+        y_axis_scale : str
+            String that specifies the scale of the y_axis. May differ for different plotting engines.
+
+        """
+        self.name    = plot_name
+
+        #unique identifier to access figure handle later
+        if num is None:
+            self.num     = plot_name
+        else:
+            self.num     = num
+
+        self.x_scale = x_scale
+        self.y_scale = y_scale
+        self.x_label = ''
+        self.y_label = ''
+
+        try:
+            if self.x_scale is None and x_specifier is not None:
+                x_scale = natural_scales[x_specifier.specifier]
+        except KeyError:
+            raise IOError('can not find natural scale for specifier of x-axis:' + str(x_specifier))
+        try:
+            if self.y_scale is None and y_specifier is not None:
+                y_scale = natural_scales[y_specifier.specifier]
+        except KeyError:
+            raise IOError('can not find natural scale for specifier of x-axis:' + str(y_specifier))
+
+        if x_label is None and x_specifier is None:
+            #try to get x_label from provided plot_name
+            #(.+)\((.+)\)
+            self.x_label = '$' + re.search(r'(.+)\((.+)\)', self.name).group(2) + '$'
+        else:
+            self.set_x_label(x_label=x_label, x_specifier=x_specifier, x_scale=x_scale)
+
+
+        if y_label is None and y_specifier is None:
+            #try to get y_label from provided plot_name
+            #(.+)\((.+)\)
+            self.y_label = '$' + re.search(r'(.+)\((.+)\)', self.name).group(1) + '$'
+        else:
+            self.set_y_label(y_label=y_label, y_specifier=y_specifier, y_scale=y_scale)
+
+
+        self._cycler = None
+        self.set_cycler(style)
+
+        self.lines = []
+
+        # only init the data list, it is filled later
+        # use add_data_set to do so
+        self.data = []
+        self.fig   = None
+        self.ax    = None
+
+        # PyQtGraph window and widget:
+        self.mw_pg = None
+        self.pw_pg = None
+
+        # already prepare them...
+        self.x_limits = (None, None)
+        self.y_limits = (None, None)
+        self.legend_location  = legend_location
+        self.legend_frame     = True
+
+        if x_log:
+            self.x_axis_scale = 'log'
+        else:
+            self.x_axis_scale = 'linear'
+
+        if y_log:
+            self.y_axis_scale = 'log'
+        else:
+            self.y_axis_scale = 'linear'
+        #rc params spec
+        matplotlib.rcParams['text.usetex'] = True
+        packages = [
+            '\\usepackage{amsmath}\n',
+            '\\usepackage{mathtools}\n',
+            '\\usepackage{amssymb}\n',
+            '\\usepackage{siunitx}\n',
+            '\\DeclareSIUnit\\sq{\\ensuremath{\\Box}}\n',
+            '\\DeclareSIUnit\\degC{\\degreeCelsius}\n',
+        ]
+        packages_to_add = []
+        str_user_packages = ''.join(matplotlib.rcParams['text.latex.preamble'])
+        for package in packages:
+            if package not in str_user_packages:
+                packages_to_add.append(package)
+
+        try:
+            matplotlib.rcParams['text.latex.preamble'] += packages_to_add
+        except TypeError:
+            # must be str ?!?
+            matplotlib.rcParams['text.latex.preamble'] += ''.join(packages_to_add)
+
+
+    def set_x_label(self, x_label=None, x_specifier=None, x_scale=None):
+        """ Set the x label. Either using directly a string or a specifier.
+
+        Parameters
+        --------------
+        x_label : str
+        x_specifier : SpecifierStr
+        x_scale : float
+            If given, self.x_scale is overwritten with this value.
+
+        Raises
+        -----------
+        IOError
+            If neither x_label nor x_specifier were given.
+        """
+        if x_scale is not None:
+            self.x_scale = x_scale
+
+        if x_label is not None:
+            self.x_label = x_label
+        elif x_specifier is not None:
+            self.x_label = x_specifier.to_label(scale=self.x_scale)
+        else:
+            raise IOError('Either label or specifier have to be set!')
+
+    def set_y_label(self, y_label=None, y_specifier=None, y_scale=None):
+        """ Set the y label. Either using directly a string or a specifier.
+
+        Parameters
+        --------------
+        y_label : str
+        y_specifier : SpecifierStr
+        y_scale : float
+            If given, self.y_scale is overwritten with this value.
+
+        Raises
+        -----------
+        IOError
+            If neither y_label nor y_specifier were given.
+        """
+        if y_scale is not None:
+            self.y_scale = y_scale
+
+        if y_label is not None:
+            self.y_label = y_label
+        elif y_specifier is not None:
+            self.y_label = y_specifier.to_label(scale=self.y_scale)
+        else:
+            raise IOError('Either label or specifier have to be set!')
+
+
+    def set_cycler(self, style):
+        """ Sets the line cycler. Possible styles are defined in the top of this file for convenience.
+
+        Parameters
+        ----------
+        style : str
+            Style for plotting of the lines. Possible are:
+            'color', 'bw', 'markers_color', 'markers', 'markers_lines',
+            'xtraction', 'xtraction_color', 'xtraction_interpolated', 'xtraction_interpolated_color',
+        """
+        markers = [char for char in 'x+v^*<>.so']
+        linestyles = ['-', '--', '-.', ':']
+        dashed = ['--']
+        colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf']
+
+        if style == BLACK_WHITE:
+            self._cycler = cycler('color', ['black']) * cycler('linestyle', '-') * cycler('marker', markers)
+
+        elif style == BLACK_SOLID:
+            self._cycler = cycler('color', ['black']) * cycler('linestyle', '-')
+
+        elif style == BLACK_DASHED:
+            self._cycler = cycler('color', ['black']) * cycler('linestyle', dashed)
+
+        elif style == BLACK_LINESTYLE:
+            self._cycler = cycler('color', ['black']) * cycler('linestyle', linestyles)
+
+        elif style == COLOR:
+            # colors from default matplotlibrc
+            self._cycler = cycler('color', colors) * cycler('linestyle', '-')
+
+        elif style == MARKERS_COLOR:
+            # colors from default matplotlibrc
+            self._cycler = cycler('color', colors) + cycler('marker', markers)
+
+        elif style == MARKERS_LINES_COLOR:
+            # colors from default matplotlibrc
+            nmin = np.min([len(colors),len(markers),len(linestyles)])
+            self._cycler = cycler('color', colors[:nmin]) + cycler('marker', markers[:nmin]) + cycler('linestyle', linestyles[:nmin])
+
+        elif style == MARKERS:
+            #matplotlib.rcParams['axes.prop_cycle'] = cycler('marker', [char for char in 'oxs+v^*<>.']) * cycler(color= ['k'])
+            self._cycler = cycler('color', ['black']) * cycler('linestyle', ' ') * cycler('marker', markers)
+
+        elif style == MARKERS_LINES:
+            #matplotlib.rcParams['axes.prop_cycle'] = cycler('marker', [char for char in 'oxs+v^*<>.']) * cycler(color= ['k'])
+            self._cycler = cycler('color', ['black']) * cycler('linestyle', linestyles) * cycler('marker', markers)
+
+        elif style == XTRACTION:
+            #matplotlib.rcParams['axes.prop_cycle'] = cycler('marker', [char for char in 'oxs+v^*<>.']) * cycler(color= ['k'])
+            xtraction_markers = []
+            for marker in markers:
+                xtraction_markers.append(marker)
+                xtraction_markers.append(None)
+
+            xtraction_lstyle = []
+            for marker in xtraction_markers:
+                if marker is None:
+                    xtraction_lstyle.append('-')
+                else:
+                    xtraction_lstyle.append('')
+
+            self._cycler = cycler('color', ['black']) * ( cycler('marker', xtraction_markers) + cycler('linestyle',xtraction_lstyle) )
+
+        elif style == XTRACTION_COLOR:
+            xtraction_markers = []
+            for marker in markers:
+                xtraction_markers.append(marker)
+                xtraction_markers.append(None)
+
+            xtraction_lstyle = []
+            for marker in xtraction_markers:
+                if marker is None:
+                    xtraction_lstyle.append('-')
+                else:
+                    xtraction_lstyle.append('')
+            colors2 = []
+            for color in colors:
+                colors2.append(color)
+                colors2.append(color)
+
+            self._cycler = cycler('color', colors2) + ( cycler('marker', xtraction_markers) + cycler('linestyle', xtraction_lstyle) )
+
+        elif style == COMPARISON_3:
+            #find the limiting style component in terms of numbers
+            n_styles = np.argmin([len(markers), len(colors)])
+            n_styles = [len(markers), len(colors)][n_styles]
+
+            xtraction_markers = []
+            for marker in markers[:n_styles]:
+                xtraction_markers.append(marker)
+                xtraction_markers.append(None)
+                xtraction_markers.append(None)
+
+            xtraction_lstyle = []
+            for marker in markers[:n_styles]:
+                xtraction_lstyle.append('')
+                xtraction_lstyle.append('-')
+                xtraction_lstyle.append('--')
+
+            colors2 = []
+            for color in colors[:n_styles]:
+                colors2.append(color)
+                colors2.append(color)
+                colors2.append(color)
+
+            self._cycler = cycler('color', colors2) + ( cycler('marker', xtraction_markers) + cycler('linestyle',xtraction_lstyle) )
+
+        elif style == COMPARISON_4:
+            #find the limiting style component in terms of numbers
+            n_styles = np.argmin([len(markers), len(colors)])
+            n_styles = [len(markers), len(colors)][n_styles]
+
+            xtraction_markers = []
+            for marker in markers[:n_styles]:
+                xtraction_markers.append(None)
+                xtraction_markers.append(marker)
+                xtraction_markers.append(None)
+                xtraction_markers.append(marker)
+
+            xtraction_lstyle = []
+            for marker in markers[:n_styles]:
+                xtraction_lstyle.append('-')
+                xtraction_lstyle.append('')
+                xtraction_lstyle.append('--')
+                xtraction_lstyle.append('-.')
+
+            colors2 = []
+            for color in colors[:n_styles]:
+                colors2.append(color)
+                colors2.append(color)
+                colors2.append(color)
+                colors2.append(color)
+
+            self._cycler = cycler('color', colors2) + ( cycler('marker', xtraction_markers) + cycler('linestyle',xtraction_lstyle) )
+
+        elif style == XTRACTION_INTERPOLATED:
+            markers3 = []
+            for marker in markers:
+                markers3.append(marker)
+                markers3.append(None)
+                markers3.append(None)
+
+            linestyles3 = []
+            for _color in colors:
+                linestyles3.append('')
+                linestyles3.append('--')
+                linestyles3.append('-')
+
+            self._cycler = cycler('color', ['black']) * ( cycler('marker', markers3) + cycler('linestyle',linestyles3) )
+
+
+        elif style == XTRACTION_INTERPOLATED_COLOR:
+            markers3 = []
+            for marker in markers:
+                markers3.append(marker)
+                markers3.append(None)
+                markers3.append(None)
+
+            linestyles3 = []
+            for _color in colors:
+                linestyles3.append('')
+                linestyles3.append('--')
+                linestyles3.append('-')
+
+            colors3 = []
+            for color in colors:
+                colors3.append(color)
+                colors3.append(color)
+                colors3.append(color)
+
+            self._cycler = cycler('color', colors3) + ( cycler('marker', markers3) + cycler('linestyle',linestyles3) )
+
+        elif style == MIX: # wild mix if colors and markers
+            self._cycler = (cycler('color', colors) + cycler('marker', markers)) *  cycler('linestyle', ['-'])
+
+        else:
+            raise OSError('The plot style ' + style + ' is unknown!')
+
+    def get_label(self, lbl):
+        """ Try to make a latex string out of lbl, assuming lbl contains an electrical variable
+
+        Returns
+        -------
+        lbl : str
+            A string that contains the possibly modified label in Tex notation.
+        """
+        if '/' in lbl:
+            lbl = lbl.split('/')
+            unit = lbl[1]
+            lbl = lbl[0]
+        else:
+            unit = ''
+
+        if '_' in lbl:
+            lbl = lbl.split('_')
+            lbl = lbl[0] + r'_{\mathrm{' + lbl[1] + '}}'
+
+        if lbl[0] in 'Jj':
+            unit = r'\si{\milli\ampere\per\square\micro\meter}'
+            # unit = r'\ \mathrm{mA/\mu m^2}'
+        elif lbl[0] in 'Ii':
+            unit = r'\si{\milli\ampere}'
+            # unit = r'\ \mathrm{mA}'
+        elif lbl[0] in 'fF':
+            unit = r'\si{\giga\hertz}'
+            # unit = r'\ \mathrm{GHz}'
+        elif lbl[0] in 'M':
+            unit = r'\si{\decibel}'
+            # unit = r'\ \mathrm{dB}'
+        elif lbl[0] in 'VvUu':
+            unit = r'\si{\volt}'
+            # unit = r'\ \mathrm{V}'
+        elif lbl[0] in 'C':
+            unit = r'\si{\femto\farad}'
+            # unit = r'\ \mathrm{F}'
+        elif lbl[0] in 'Rr':
+            unit = r'\si{\ohm}'
+            # unit = r'\ \mathrm{\Omega}'
+        elif lbl[0] in 'T':
+            unit = r'\si{\kelvin}'
+        elif 'ratio' in lbl:
+            unit = ''
+
+        if 'to' in lbl:
+            lib = lib.split('to')
+            lib = lib[0] + r'/' + lib[1]
+            unit= ''
+
+        if unit:
+            return '$' + lbl + '/' + unit + '$'
+        else:
+            return '$' + lbl + '$'
+
+    def add_data_set(self, x, y, label=None, style=None, **kwargs):
+        ''' Add y(x) to the plot
+
+        Each data set is a dict.
+
+        Parameters
+        -----------
+        x : array-like
+            X data of this line.
+        y : array-like
+            Y data of this line.
+        label : str, optional
+            Legend entry for this line. If not given, no entry is used for this line.
+        style : string, optional
+            Matplotlib style descriptor for this line.
+        '''
+        self.data.append({
+            'x': x,
+            'y': y,
+            'label': label,
+            'style': style,
+            'kwargs': kwargs
+        })
+
+    def add_data_set_multiple_y(self, x, *y, label=None):
+        ''' Add y(x) to the plot
+
+        Each data set is a tuple with five entries, no need to create a dictionary, keeps it simple
+
+        Parameters
+        -----------
+        x : array-like
+        *y : array-likes
+            multiple y arrays to plot versus x
+        label : str or list(str), optional
+            Legend entry/ies
+        '''
+        if label is None or not label: # no or empty label
+            label = []
+            for _i in range(len(y)):
+                label.append(None)
+        elif isinstance(label, str):
+            label = [label]
+
+        if len(y) != len(label):
+            raise IOError("To set multiple y(x) at the same time, the number of labels must be equal to the number of y datas")
+
+        for y_a, label_a in zip(y, label):
+            self.add_data_set(x, y_a, label=label_a)
+
+    def plot_py(self, show=True, font_size=None, allow_grid=False, tight_layout=True, figure_size=None, sub_plot=(1, 1, 1), repeated_labels=False):
+        ''' Plots using matplotlib.pyplot, without IPython shell. If plot is displayed, the python session is halted.
+
+        Parameters
+        -----------
+        show : {True, False}, optional
+            Set to False if the plot should only be prepared, use show_py later to show it
+        font_size : int, optional
+            Font size in the figure.
+        allow_grid : {True, False}, optional
+            If True, a grid is activated.
+        tight_layout : {True, False}, optional
+            Applies the tight_layout method from matplotlib on the plot.
+            See: https://matplotlib.org/tutorials/intermediate/tight_layout_guide.html
+        figure_size : optional
+            Directly passed to matplotlib.pyplot.figure figsize parameter.
+        sub_plot : tuple, optional
+            Position of the subplot inside a figure.
+        repeated_labels : {True, False}, optional
+            If True, repeated labels will be removed from the plot. E.g. when this plot holds 10 lines with the same label, only the first label is printed to the legend.
+
+        Notes
+        -----
+        ..todo: Interactive Mode.
+        '''
+        # get the figure
+        self.fig   = plt.figure(num=self.num, figsize=figure_size)
+        if self.fig.axes and sub_plot == (1, 1, 1):
+            self.ax    = self.fig.axes[0]
+            print('Adding data to figure with num ' + self.num + ' and name ' + self.name)
+        elif self.fig.axes:
+            self.ax    = self.fig.add_subplot(*sub_plot)
+            print('Adding subplot to figure with num ' + self.num + ' and name ' + self.name)
+        else:
+            self.ax    = self.fig.add_subplot(*sub_plot)
+            print('Init figure with num ' + self.num + ' and name ' + self.name)
+
+        # setting the window title using the matplotlib figure manager
+        # pylint: disable = protected-access
+        fig_manager = matplotlib._pylab_helpers.Gcf.get_fig_manager(self.fig.number)
+        fig_manager.set_window_title(self.name)
+
+        if font_size is not None:
+            matplotlib.rcParams.update({'font.size': font_size})
+
+
+        # set the line cycler
+        if not self.ax.lines: # but only if the lines are empty..
+            self.ax.set_prop_cycle(self._cycler)
+
+        used_labels = [] #for the repeated_labels kw argument of this routine
+        # actual plotting of the data
+        for _i, dict_line in enumerate(self.data):
+            # x and y should be numpy vectors, stable conversion is given (more tests necessary)
+            x = dict_line['x']
+            y = dict_line['y']
+            if not isinstance(x, np.ndarray):
+                try:
+                    x = [float(x_a) for x_a in x]
+                except TypeError:
+                    pass
+                x = np.asanyarray(x)
+            if not isinstance(y, np.ndarray):
+                try:
+                    y = [float(y_a) for y_a in y]
+                except TypeError:
+                    pass
+                y = np.asanyarray(y)
+
+            if self.x_axis_scale == 'log':
+                x = abs(x)
+            if self.y_axis_scale == 'log':
+                y = abs(y)
+
+            label = dict_line['label']
+            if label in used_labels:
+                label = None
+            else:
+                used_labels.append(label)
+
+            if 'style' in dict_line and dict_line['style'] is not None:
+                try:
+                    style = dict_line['style'].replace('ö','o') #ö not supported in matplotlib
+                    if 'o' in dict_line['style']: # o is an empty circle from now on! Use '.' for filled points
+                        line, = self.ax.plot(x*self.x_scale, y*self.y_scale, style, fillstyle='none', label=label, **dict_line['kwargs'])
+                    else:
+                        line, = self.ax.plot(x*self.x_scale, y*self.y_scale, style, label=label, **dict_line['kwargs'])
+                except ValueError as err:
+                    raise ValueError('Too many values to unpack in plot ' + self.name + ' for line with label ' + str(label)) from err
+            else:
+                try:
+                    line, = self.ax.plot(x*self.x_scale, y*self.y_scale, label=label, **dict_line['kwargs'])
+                except ValueError as err:
+                    raise ValueError('Too many values to unpack in plot ' + self.name + ' for line with label ' + str(label)) from err
+            self.lines.append(line)
+
+        # labels and legend
+        self.ax.legend(loc=self.legend_location, frameon=self.legend_frame)
+        self.ax.set_xlabel(self.x_label)
+        self.ax.set_ylabel(self.y_label)
+
+        # set scale and limits
+        self.ax.set_xscale(self.x_axis_scale)
+        self.ax.set_yscale(self.y_axis_scale)
+
+        self.ax.set_xlim(self.x_limits)
+        if not all(lim is None for lim in self.x_limits):
+            self.ax.set_xlim(left=self.x_limits[0], right=self.x_limits[1])
+        # else:
+        #     self.ax.set_autoscalex_on(True)
+
+        if not all(lim is None for lim in self.y_limits):
+            self.ax.set_ylim(bottom=self.y_limits[0], top=self.y_limits[1])
+        # else:
+        #     self.ax.set_autoscaley_on(True)
+
+        if allow_grid:
+            # Don't allow the axis to be on top of your data
+            self.ax.set_axisbelow(True)
+
+            # Turn on the minor TICKS, which are required for the minor GRID
+            self.ax.minorticks_on()
+
+            # Customize the major grid
+            self.ax.grid(which='major', linewidth=0.65, linestyle='-', color='.85')
+            # Customize the minor grid
+            self.ax.grid(which='minor', linewidth=0.65, linestyle='-', color='.85')
+
+        if tight_layout:
+            plt.tight_layout()
+            self.fig.subplots_adjust(hspace=0.02, wspace=0.02)
+
+        if show:
+            plt.show() # self.fig)
+            #input("Press any key to continue!")
+
+    def show_py(self):
+        """ Calls .show on the matplotlib figure
+        """
+        plt.show() # self.fig)
+
+    def save_png(self, directory):
+        """ Saves the plot to a png
+        """
+        self.fig.savefig(os.path.join(directory, self.num+'.png'), format='png', dpi=600)
+
+    def plot_pyqtgraph(self, only_widget=False, show=True, figure_size=(800,800)):
+        """ Plots the figure using PyQtGraph
+
+        Parameters
+        ---------------
+        only_widget : Bool, False
+            If True, only a plot widget is returned that can be used in other Qt applications. If False, a full QApplication with layout is returned.
+        show        : {True, False}, optional
+            If True, the QtEventLoop is started at the end if the plotting.
+        figure_size : tuple, optional
+            Size of the main window
+        """
+
+        pyqtgraph.setConfigOption('background', 'w')
+        pyqtgraph.setConfigOption('foreground', 'k')
+
+        if Plot.qt_application is None and not only_widget:
+            try:
+                Plot.qt_application = pyqtgraph.Qt.QtGui.QApplication([])
+            except RuntimeError:
+                Plot.qt_application = 'Already started'
+
+        self.pw_pg = pyqtgraph.PlotWidget(name=self.name)
+
+        if not only_widget:
+            # make own window
+            self.mw_pg = pyqtgraph.Qt.QtGui.QMainWindow()
+            self.mw_pg.setWindowTitle(self.num)
+            self.mw_pg.resize(*figure_size)
+            cw = pyqtgraph.Qt.QtGui.QWidget()
+            self.mw_pg.setCentralWidget(cw)
+            qt_layout = pyqtgraph.Qt.QtGui.QVBoxLayout()
+            cw.setLayout(qt_layout)
+            qt_layout.addWidget(self.pw_pg)
+
+        x_label = self.x_label
+        y_label = self.y_label
+        x_label = tex_to_text(x_label )
+        y_label = tex_to_text(y_label)
+
+        # labels and legend
+        self.pw_pg.setLabel('bottom', x_label)
+        self.pw_pg.setLabel('left'  , y_label)
+        legend = self.pw_pg.addLegend() # loc=self.legend_location, frameon=self.legend_frame)
+        legend_pos = { #not sure if correct
+            "upper right": {'itemPos':(1,0), 'parentPos':(1,0), 'offset':(-10,10)},
+            "upper left" : {'itemPos':(0,0), 'parentPos':(0,0), 'offset':(10,10)},
+            "lower right": {'itemPos':(1,1), 'parentPos':(1,1), 'offset':(-10,-10)},
+            "lower left" : {'itemPos':(0,1), 'parentPos':(0,1), 'offset':(10,-10)},
+            None: {'itemPos':(0,0), 'parentPos':(0,0), 'offset':(10,10)},
+        }
+        legend.anchor(**legend_pos[self.legend_location])
+
+        # actual plotting of the data
+        for i_line, dict_line in enumerate(self.data):
+            # x and y should be numpy vectors, stable conversion is given (more tests necessary)
+            x = dict_line['x']
+            y = dict_line['y']
+            if not isinstance(x, np.ndarray):
+                # try:
+                #     x = [float(x_a) for x_a in x]
+                # except TypeError:
+                #     pass
+                x = np.asanyarray(x)
+            if not isinstance(y, np.ndarray):
+                # try:
+                #     y = [float(y_a) for y_a in y]
+                # except TypeError:
+                #     pass
+                y = np.asanyarray(y)
+
+            if self.x_axis_scale == 'log':
+                x = np.abs(x)
+            else:
+                x = np.real(x)
+
+            if self.y_axis_scale == 'log':
+                y = np.abs(y)
+            else:
+                y = np.real(y)
+
+            label = dict_line['label']
+            if label is not None:
+                #workaround since siunitx is not supported yet in pandoc
+                label = tex_to_text(label)
+                #insert space after <p>, so that label is not ON the symbol
+                label = label.replace('\n','')
+
+            if 'style' in dict_line and dict_line['style'] is not None:
+                dict_style = self._convert_mpl_to_pyqt(dict_line['style'])
+            else:
+                dict_style = self._get_pyqt_from_cycler(i_line)
+
+            #https://groups.google.com/forum/#!topic/pyqtgraph/X7fL1KfXalY
+            dict_style['symbolSize'] = 10
+
+            try:
+                self.pw_pg.plot(x=x*self.x_scale, y=y*self.y_scale, name=label, **dict_style, **dict_line['kwargs'])
+            except ValueError as err:
+                raise ValueError('Too many values to unpack in plot ' + self.name + ' for line with label ' + str(label)) from err
+
+        # set scale
+        self.pw_pg.setLogMode(
+            (self.x_axis_scale == 'log'),
+            (self.y_axis_scale == 'log')
+        )
+
+        # limits
+        padding = None
+        if self.x_limits[0] is None:
+            if self.data: #fails for empty plots
+                x_min = np.min([np.min(dict_line['x']) for dict_line in self.data])*self.x_scale
+                x_min = 0.9*x_min if x_min > 0 else 1.1*x_min
+                # x_min = np.floor(0.9*x_min) if x_min > 0 else np.floor(1.1*x_min)
+            else:
+                x_min = 0
+        else:
+            x_min = self.x_limits[0]
+            padding = 0.0
+
+        if self.x_limits[1] is None:
+            if self.data: #fails for empty plots
+                x_max = np.max([np.max(dict_line['x']) for dict_line in self.data])*self.x_scale
+                x_max = 1.1*x_max if x_max > 0 else 0.9*x_max
+                # x_max = np.ceil(1.1*x_max) if x_max > 0 else np.ceil(0.9*x_max)
+            else:
+                x_max = 1
+        else:
+            x_max = self.x_limits[1]
+            padding = 0.0
+
+        if self.x_axis_scale == 'log':
+            x_min = np.log10(x_min) if x_min > 0 else np.log10(1e-30)
+            x_max = np.log10(x_max) if x_max > 0 else np.log10(1e-30)
+        self.pw_pg.setXRange(np.real(x_min), np.real(x_max), padding=padding)
+
+        padding = None
+        if self.y_limits[0] is None:
+            if self.data: #fails for empty plots
+                try:
+                    y_min = np.min([np.min(dict_line['y']) for dict_line in self.data])*self.y_scale
+                    y_min = 0.9*y_min if y_min > 0 else 1.1*y_min
+                except ValueError:
+                    y_min = 0.0
+                # y_min = np.floor(0.9*y_min) if y_min > 0 else np.floor(1.1*y_min)
+            else:
+                y_min = 0.0
+        else:
+            y_min = self.y_limits[0]
+            padding = 0.0
+
+        if self.y_limits[1] is None:
+            if self.data: #fails for empty plots
+                try:
+                    y_max = np.max([np.max(dict_line['y']) for dict_line in self.data])*self.y_scale
+                    y_max = 1.1*y_max if y_max > 0 else 0.9*y_max
+                except ValueError:
+                    y_max = 1.0
+            else:
+                y_max = 1.0
+        else:
+            y_max = self.y_limits[1]
+            padding = 0.0
+
+        if self.y_axis_scale == 'log':
+            y_min = np.log10(y_min) if y_min > 0 else np.log10(1e-30)
+            y_max = np.log10(y_max) if y_max > 0 else np.log10(1e-30)
+        self.pw_pg.setYRange(np.real(y_min), np.real(y_max), padding=padding)
+
+        # grid
+        self.pw_pg.getPlotItem().showGrid(True, True)
+
+        if self.mw_pg is not None:
+            self.mw_pg.show()
+
+        ## Start Qt event loop unless running in interactive mode or using pyside.
+        if show:
+            if sys.flags.interactive != 1 or not hasattr(pyqtgraph.Qt.QtCore, 'PYQT_VERSION'):
+                pyqtgraph.QtGui.QApplication.exec_()
+
+        if only_widget:
+            return self.pw_pg
+        else:
+            return qt_layout
+
+    def show_pyqtgraph(self):
+        """ Reshows the PyQtGraph main window and startes the Qt event loop
+        """
+        self.mw_pg.show()
+        pyqtgraph.QtGui.QApplication.exec_()
+
+    def _convert_mpl_to_pyqt(self, mpl_style):
+        """ Returns a corresponding PyQtGraph style for a given matplotlib style.
+
+        This can be very complicated as PyQtGraph directly uses a QtPen/QtBrush...
+
+        Parameters
+        -----------
+        mpl_style : str
+            For example 'k-o' for a solid black line with circle symbols
+
+        Returns
+        --------
+        dict_style : dict
+            Dictionary with kwargs for pyqtgraph.plot() and similar routines
+        """
+        kwargs_pen = {}
+
+        dict_style = {
+            'pen': None, # The pen to use when drawing plot lines, or None to disable lines.
+            'symbol': None, #  A string describing the shape of symbols to use for each point. Optionally, this may also be a sequence of strings with a different symbol for each point.
+            'symbolPen': 'k', #  The pen (or sequence of pens) to use when drawing the symbol outline.
+            'symbolBrush': None, # The brush (or sequence of brushes) to use when filling the symbol.
+            # 'fillLevel': None, # Fills the area under the plot curve to this Y-value.
+            # 'brush': None, # The brush to use when filling under the curve.
+        }
+
+        if mpl_style:
+            for mpl_color in _DICT_COLORS_MPL:
+                if mpl_color in mpl_style:
+                    kwargs_pen['color'] = mpl_color
+                    kwargs_pen['width'] = 2
+                    dict_style['symbolPen'] = mpl_color
+                    # dict_style['symbolBrush'] = mpl_color
+                    mpl_style = mpl_style.replace(mpl_color, '')
+                    break
+
+        if mpl_style:
+            for mpl_line in sorted(_DICT_LINES_MPL_TO_PGF, key=len, reverse=True): # sort descending length, only for the keys
+                if mpl_line in mpl_style:
+                    mpl_style = mpl_style.replace(mpl_line, '')
+                    kwargs_pen['style'] = {
+                        '--': QtCore.Qt.DashLine, # dashed
+                        '-.': QtCore.Qt.DashDotLine, # dashdotted
+                        '-': QtCore.Qt.SolidLine, # solid
+                        ':': QtCore.Qt.DotLine, # dotted
+                        ' ': QtCore.Qt.NoPen, # dotted
+                    }[mpl_line]
+                    break
+
+        if 'color' not in kwargs_pen:
+            kwargs_pen['color'] = 'k'
+            kwargs_pen['width'] = 2
+
+        if kwargs_pen:
+            dict_style['pen'] = pyqtgraph.mkPen(**kwargs_pen)
+        else:
+            dict_style['pen'] = pyqtgraph.mkPen(None) # equal to only symbols ...
+
+        if mpl_style:
+            for mpl_marker in _DICT_MARKERS_MPL_TO_PGF: # get only the keys...
+                if mpl_marker is not None and mpl_marker in mpl_style:
+                    dict_style['symbol'] = {
+                        'x': 'd',
+                        '+': '+',
+                        'v': 't',
+                        '^': 't1',
+                        '*': 'star',
+                        '<': 't2',
+                        '>': 't3',
+                        't4': 't3', #t4 not available in pyqtgraph, what to do?
+                        '.': 'p',
+                        's': 's',
+                        'o': 'o',
+                    }[mpl_marker]
+                    mpl_style  = mpl_style.replace(mpl_marker, '')
+                    break
+
+        if mpl_style:
+            raise IOError("A part of the mpl style was not removed and therefore not used in the pgf style. Unused: " + mpl_style)
+
+        return dict_style
+
+    def _get_pyqt_from_cycler(self, i_line):
+        """ Returns a corresponding PyQtGraph style for the used style cycler.
+
+        This can be very complicated as PyQtGraph directly uses a QtPen/QtBrush...
+
+        Parameters
+        -----------
+        i_line : int
+            Number of the line to draw.
+
+        Returns
+        --------
+        dict_style : dict
+            Dictionary with kwargs for pyqtgraph.plot() and similar routines
+        """
+
+        while i_line >= len(self._cycler): # make sure i_line is a valid index for a list generate from the cycler
+            i_line -= len(self._cycler)
+
+        kwargs_pen = {}
+
+        dict_style = {
+            'pen': None, # The pen to use when drawing plot lines, or None to disable lines.
+            'symbol': None, #  A string describing the shape of symbols to use for each point. Optionally, this may also be a sequence of strings with a different symbol for each point.
+            'symbolPen': 'k', #  The pen (or sequence of pens) to use when drawing the symbol outline.
+            'symbolBrush': None, # The brush (or sequence of brushes) to use when filling the symbol.
+            # 'fillLevel': None, # Fills the area under the plot curve to this Y-value.
+            # 'brush': None, # The brush to use when filling under the curve.
+        }
+
+        try:
+            color = [ele["color"] for ele in self._cycler][i_line]
+            if color == 'black':
+                color = 'k'
+            dict_style['symbolPen'] = color
+        except KeyError:
+            # no color ->
+            color = None
+
+        try:
+            line_style = [ele["linestyle"] for ele in self._cycler][i_line]
+        except KeyError:
+            # no line style: should be no line...
+            line_style = None
+
+        if line_style is not None and line_style:
+            kwargs_pen['style'] = {
+                '--': QtCore.Qt.DashLine, # dashed
+                '-.': QtCore.Qt.DashDotLine, # dashdotted
+                '-': QtCore.Qt.SolidLine, # solid
+                ':': QtCore.Qt.DotLine, # dotted
+            }[line_style]
+
+            kwargs_pen['width'] = 2
+            if color is None:
+                kwargs_pen['color'] = 'k'
+            else:
+                kwargs_pen['color'] = color
+
+        if kwargs_pen:
+            dict_style['pen'] = pyqtgraph.mkPen(**kwargs_pen)
+        else:
+            dict_style['pen'] = pyqtgraph.mkPen(None) # equal to only symbols ...
+
+        try:
+            mpl_marker = [ele["marker"] for ele in self._cycler][i_line]
+        except KeyError:
+            mpl_marker = None
+
+        dict_style['symbol'] = {
+            'x': 'd',
+            '+': '+',
+            'v': 't',
+            '^': 't1',
+            '*': 'star',
+            '<': 't3',
+            '>': 'h', #not available in pyqtgraph
+            '.': 'p',
+            's': 's',
+            'o': 'o',
+            None: None,
+        }[mpl_marker]
+
+        return dict_style
+
+    def save_tikz(self, directory, file_name=None, width="\\textwidth", height=None, mark_repeat=1,
+    standalone=False, build=False, clean=False, fontsize='normalsize', svg=False, skip_every=lambda x: x, n_ticks_x=None, n_ticks_y=None, legend_location=None):
+        """ Save plot in directory and return name of the tikz file. The name of the tikz file will be the figure attribute self.num, if not given.
+        Parameters
+        ----------
+        skip_every : callable
+            Apply this callable to the lines in the plot and only plot what is returned.
+        clean : Boolean, False
+            Remove all files except the rendered picture after build.
+        """
+        if not isinstance(directory, Path):
+            directory = Path(directory)
+        os.makedirs(directory, exist_ok=True)
+
+        legend_pos = {
+            "lower left":  "at={(0.02,0.02)}, anchor=south west,",
+            "upper left":  "at={(0.02,0.98)}, anchor=north west,",
+            "lower right": "at={(0.98,0.02)}, anchor=south east,",
+            "upper right": "at={(0.98,0.98)}, anchor=north east,",
+            "upper right outer": "at={(1.02,1.00)}, anchor=north west,",
+            None: "at={(0.98,0.98)}, anchor=north east,",
+        }
+        if legend_location is None:
+            legend_location = legend_pos[self.legend_location]
+        else:
+            legend_location = legend_pos[legend_location]
+
+        str_tikz_picture = "\\begin{tikzpicture}[font=\\" + fontsize + "]\n" + "\\pgfplotsset{every axis/.append style={very thick}},\n"
+        str_height = "" if height is None else "height=" + height + ",\n"
+        str_width  = "width=0.951*\\figurewidth,\n" if width == "\\textwidth" else "width=" + width + ",\n"
+        str_x_log  = "" if self.x_axis_scale == "linear" else "xmode=log,\n"
+        str_y_log  = "" if self.y_axis_scale == "linear" else "ymode=log,\n"
+
+        if self.legend_frame:
+            str_legend_frame = ""
+        else:
+            str_legend_frame = ", fill=none, draw=none"
+
+        str_limits = ''
+        str_x_ticks = ''
+        str_y_ticks = ''
+        if self.ax is not None:
+            self.ax.set_xlim(self.x_limits[0], self.x_limits[1])
+            self.ax.set_ylim(self.y_limits[0], self.y_limits[1])
+
+            x_axis = self.ax.get_xaxis()
+            #x_min, x_max = min(x_axis.get_data_interval()), max(x_axis.get_data_interval())
+            x_min, x_max = self.ax.get_xlim()
+            str_limits += 'xmin={0:g},\n'.format(x_min)
+            str_limits += 'xmax={0:g},\n'.format(x_max)
+            #str_limits += 'restrict x to domain={0:g}:{1:g},\n'.format(x_min,x_max)
+            if x_axis._scale.name == 'linear':
+                str_limits += 'restrict x to domain={0:g}:{1:g},\n'.format(x_min,x_max)
+            else:
+                str_limits += 'restrict x to domain={0:g}:{1:g},\n'.format(np.log10(x_min),np.log10(x_max))
+            str_limits += 'log basis x=10,\n'
+
+            y_axis = self.ax.get_yaxis()
+            #y_min, y_max = min(y_axis.get_data_interval()), max(y_axis.get_data_interval())
+            y_min, y_max = self.ax.get_ylim()
+            str_limits += 'ymin={0:g},\n'.format(y_min)
+            str_limits += 'ymax={0:g},\n'.format(y_max)
+            str_limits += 'restrict y to domain={0:g}:{1:g},\n'.format(y_min,y_max)
+            if y_axis._scale.name == 'linear':
+                str_limits += 'restrict y to domain={0:g}:{1:g},\n'.format(y_min,y_max)
+            else:
+                str_limits += 'restrict y to domain={0:g}:{1:g},\n'.format(np.log10(y_min),np.log10(y_max))
+            str_limits += 'log basis y=10,\n'
+
+            # #adjust the size of figure, which also makes nice ticks
+            # #assumes that 'in' are the last characters
+            # self.fig.tight_layout()
+            # self.fig.set_size_inches(float(width[:-2]),float(height[:-2]),forward=True)
+            if n_ticks_y is not None:
+                #self.ax.yaxis.set_major_locator(plt.MaxNLocator(n_ticks_y))
+                ymin, ymax = self.ax.get_ylim()
+                print(str(ymin))
+                print(str(ymax))
+                print(self.y_limits)
+                self.ax.xaxis.set_major_locator(ticker.MaxNLocator(n_ticks_y))
+            if n_ticks_x is not None:
+                #self.ax.xaxis.set_major_locator(plt.MaxNLocator(n_ticks_x))
+                xmin, xmax = self.ax.get_xlim()
+                print(str(xmin))
+                print(str(xmax))
+                print(self.x_limits)
+                self.ax.xaxis.set_major_locator(ticker.MaxNLocator(n_ticks_x))
+
+            # also get ticks and the ticks labels!
+            x_major_ticks = [tick for tick in x_axis.get_majorticklabels()]# if (tick._x>=x_min) and (tick._x<=x_max)] # pylint: disable=protected-access
+            x_minor_ticks = [tick for tick in x_axis.get_minorticklabels()]# if (tick._x>=x_min) and (tick._x<=x_max)] # pylint: disable=protected-access
+            str_x_ticks = 'xtick={' + ','.join(['{0:g}'.format(tick._x) for tick in x_major_ticks]) + '},\n'         # pylint: disable=protected-access
+            str_x_ticks += 'xticklabels={' + ','.join([tick._text for tick in x_major_ticks]) + '},\n'                # pylint: disable=no-member, protected-access
+            str_x_ticks += 'minor xtick={' + ','.join(['{0:g}'.format(tick._x) for tick in x_minor_ticks]) + '},\n'  # pylint: disable=no-member, protected-access
+
+            y_major_ticks = [tick for tick in y_axis.get_majorticklabels() if (tick._y>=y_min) and (tick._y<=y_max)] # pylint: disable=protected-access
+            y_minor_ticks = [tick for tick in y_axis.get_minorticklabels() if (tick._y>=y_min) and (tick._y<=y_max)] # pylint: disable=protected-access
+            str_y_ticks = 'ytick={' + ','.join(['{0:g}'.format(tick._y) for tick in y_major_ticks]) + '},\n'         # pylint: disable=protected-access
+            str_y_ticks += 'yticklabels={' + ','.join([tick._text for tick in y_major_ticks]) + '},\n'                # pylint: disable=no-member, protected-access
+            str_y_ticks += 'minor ytick={' + ','.join(['{0:g}'.format(tick._y) for tick in y_minor_ticks]) + '},\n'  # pylint: disable=no-member, protected-access
+        elif self.pw_pg is not None:
+            # self.pw_pg.
+            view_range = self.pw_pg.viewRange()
+            if self.x_axis_scale == 'linear':
+                x_min, x_max = view_range[0]
+            else:
+                x_min = np.float_power(10, view_range[0][0])
+                x_max = np.float_power(10, view_range[0][1])
+            if self.y_axis_scale == 'linear':
+                y_min, y_max = view_range[1]
+            else:
+                y_min = np.float_power(10, view_range[1][0])
+                y_max = np.float_power(10, view_range[1][1])
+
+            str_limits += 'xmin={0:g},\n'.format(x_min)
+            str_limits += 'xmax={0:g},\n'.format(x_max)
+            str_limits += 'restrict x to domain={0:g}:{1:g},\n'.format(view_range[0][0], view_range[0][1])
+            str_limits += 'log basis x=10,\n'
+            str_limits += 'ymin={0:g},\n'.format(y_min)
+            str_limits += 'ymax={0:g},\n'.format(y_max)
+            str_limits += 'restrict y to domain={0:g}:{1:g},\n'.format(view_range[1][0], view_range[1][1])
+            str_limits += 'log basis y=10,\n'
+
+            # x_axis = self.pw_pg.getPlotItem().getAxis('bottom')
+            # x_ticks = x_axis.tickValues(x_min, x_max, spacing) # TODO find good spacing!
+            # y_axis = self.pw_pg.getPlotItem().getAxis('left')
+        else:
+            str_limits += '% xmin=0,\n' if self.x_limits[0] is None else 'xmin={0:g},\n'.format(self.x_limits[0])
+            str_limits += '% xmax=0,\n' if self.x_limits[1] is None else 'xmax={0:g},\n'.format(self.x_limits[1])
+            if self.x_limits[0] is None or self.x_limits[1] is None:
+                str_limits += '% restrict x to domain=0:1,\n'
+            else:
+                if self.x_axis_scale == 'linear':
+                    str_limits += 'restrict x to domain={0:g}:{1:g},\n'.format(self.x_limits[0],self.x_limits[1])
+                else:
+                    str_limits += 'restrict x to domain={0:g}:{1:g},\n'.format(np.log10(self.x_limits[0]),np.log10(self.x_limits[1]))
+
+            str_limits += 'log basis x=10,\n'
+            str_limits += '% ymin=0,\n' if self.y_limits[0] is None else 'ymin={0:g},\n'.format(self.y_limits[0])
+            str_limits += '% ymax=0,\n' if self.y_limits[1] is None else 'ymax={0:g},\n'.format(self.y_limits[1])
+            if self.y_limits[0] is None or self.y_limits[1] is None:
+                str_limits += '% restrict y to domain=0:1,\n'
+            else:
+                if self.y_axis_scale == 'linear':
+                    str_limits += 'restrict y to domain={0:g}:{1:g},\n'.format(self.y_limits[0],self.y_limits[1])
+                else:
+                    str_limits += 'restrict y to domain={0:g}:{1:g},\n'.format(np.log10(self.y_limits[0]),np.log10(self.y_limits[1]))
+            str_limits += 'log basis y=10,\n'
+            print('using pgf')
+
+        ### header
+        str_axis = (
+            "\n\\begin{axis}[\n"
+            #+ fontsize+",\n"
+            + str_width
+            + str_height
+            + "xlabel={" + self.x_label + "},\n"
+            + "ylabel={" + self.y_label + "},\n"
+            + str_x_log
+            + str_y_log
+            + str_limits
+            + str_x_ticks
+            + str_y_ticks
+            + "xmajorgrids,\n"
+            + "enlargelimits=false,\n"
+            + "scaled ticks=false,\n"
+            + "ymajorgrids,\n"
+            + "x tick style={color=black},\n"
+            + "y tick style={color=black},\n"
+            + "x grid style={white!69.01960784313725!black},\n"
+            + "y grid style={white!69.01960784313725!black},\n"
+            # + "y tick label style={/pgf/number format/fixed, /pgf/number format/fixed zerofill, /pgf/number format/precision=3 },\n"
+            + "/tikz/mark repeat=" + str(mark_repeat) + ",\n"
+            + "legend style={" + legend_location + "legend cell align=left, align=left" + str_legend_frame + "},\n"
+            + "]\n"
+        )
+
+        ### Lines
+        str_lines = ""
+        colors = []
+        try:
+            mark_delta = np.int(mark_repeat/len(self.data))
+        except ZeroDivisionError:
+            mark_delta = 1
+            print("DMT->plot->{:s}: Plot has no data, generating axis anyways.".format(self.name))
+
+        for nr_line, dict_line in enumerate(self.data):
+            str_addplot, colors = self._tikz_addplot(dict_line, nr_line, colors=colors, mark_delta=mark_delta)
+            str_lines += str_addplot
+
+        ### footer
+        str_footer = "\\end{axis}\n\n\\end{tikzpicture}\n"
+
+        ### merge:
+        str_tikz_picture += (
+            self._convert_colors_to_texdefines(colors) # needs work!
+            + str_axis
+            + str_lines
+            + str_footer
+        )
+
+        if standalone:
+            str_tikz_picture = (
+                "\\documentclass[class=IEEEtran]{standalone}\n"
+                + "\\usepackage{tikz,amsmath,siunitx}\n"
+                + "\\usetikzlibrary{arrows,snakes,backgrounds,patterns,matrix,shapes,fit,calc,shadows,plotmarks}\n"
+                + "\\usepackage[graphics,tightpage,active]{preview}\n"
+                + "\\usepackage{pgfplots}\n"
+                + "\\pgfplotsset{compat=newest}\n"
+                + "\\usetikzlibrary{shapes.geometric}\n"
+                + "\\PreviewEnvironment{tikzpicture}\n"
+                + "\\PreviewEnvironment{equation}\n"
+                + "\\PreviewEnvironment{equation*}\n"
+                + "\\newlength\\figurewidth\n"
+                + "\\begin{document}\n"
+                + "\\setlength\\figurewidth{" + width + "}\n"
+                + str_tikz_picture
+                + "\\end{document}\n"
+            )
+
+        if file_name is None:
+            file_name = self.slugify(self.num) + '.tex'
+        elif not file_name.endswith('.tex'):
+            file_name = file_name + '.tex'
+
+        path_file = directory / file_name
+        path_file.write_text(str_tikz_picture)
+
+        if build:
+            if not standalone:
+                raise IOError('To build a single TikZ picture, you should also activate standalone!')
+
+            if svg:
+                build_svg(path_file, wait=clean)
+                ending_to_keep = '.svg'
+            else:
+                build_tex(path_file, wait=clean)
+                ending_to_keep = '.pdf'
+
+            if clean:
+                clean_tex_files(directory, file_name.replace('.tex', ''), keep=(ending_to_keep, '.tex'))
+
+
+        return file_name
+
+    def slugify(self, s):
+        """ https://stackoverflow.com/questions/295135/turn-a-string-into-a-valid-filename
+        Normalizes string, converts to lowercase, removes non-alpha characters,
+        and converts spaces to hyphens.
+        """
+        s = str(s).strip().replace(' ', '_')
+        s = s.replace('.','_dot_')
+        return re.sub(r'(?u)[^-\w.]', '', s)
+
+    def _tikz_addplot(self, dict_line, nr_line, colors=None, mark_delta=None):
+        """ Transforms a line into a pgfplots addplot command.
+
+        Parameters
+        -----------
+        dict_line : (x_data, y_data, label, style)
+            See the description in Plot.add_data .
+        nr_line : int
+            Number of the line in self.data.
+        """
+        x_data = dict_line['x']
+        y_data = dict_line['y']
+        if self.x_axis_scale == 'log':
+            x_data = np.abs(x_data)
+        if self.y_axis_scale == 'log':
+            y_data = np.abs(y_data)
+
+        label = dict_line['label']
+        style  = dict_line['style']
+        line_width = dict_line['kwargs'].get('line_width', None)
+        mark_size = dict_line['kwargs'].get('markersize', None)
+        if colors is None:
+            colors = []
+
+        if style is None:
+            opts_style, colors = self._get_pgfplotset_for_line_nr(nr_line, colors)
+        else:
+            opts_style, colors = self._convert_mpl_to_pfg(style, colors)
+
+        if "mark phase" not in opts_style:
+            mark_phase = np.int(nr_line)*mark_delta if (mark_delta is not None) else np.int(1)
+            opts_style += "mark phase={:d}, ".format(mark_phase)
+
+        if line_width is not None:
+            opts_style += "line width={0:f}pt, ".format(line_width)
+
+        if mark_size is not None:
+            opts_style += "mark size={0:f}pt, ".format(mark_size)
+
+        if label is None:
+            opts_style += "forget plot, "
+
+        str_addplot = "\\addplot [" + opts_style + "]\n"
+        #str_addplot += "  table[row sep=crcr, x expr=\\thisrowno{0}*10^0, y expr=\\thisrowno{1}*10^0]{\n"
+        str_addplot += "  table[row sep=crcr, x expr=\\thisrowno{{0}}*{0:e}, y expr=\\thisrowno{{1}}*{1:e}]{{\n".format(self.x_scale, self.y_scale)
+
+        if np.iscomplex(x_data).any() or np.iscomplex(y_data).any():
+            raise IOError('DMT: tikz_addplot: can not plot complex numbers.')
+
+        # for x, y  in zip(np.abs(x_data), np.abs(y_data)): # why abs??
+        for x, y  in zip(x_data, y_data):
+            str_addplot += "{0:g} {1:g}\\\\\n".format(x, y)
+
+        str_addplot += "};\n"
+
+        if label is None:
+            str_addplot += "% \\addlegendentry{}\n"
+        else:
+            str_addplot += "\\addlegendentry{" + label + "}\n"
+
+        return str_addplot, colors
+
+    def _convert_mpl_to_pfg(self, mpl_style, colors):
+        """ Converts a matplotlib style text to a valid pgfplots options string.
+        """
+        pgf_color = 'color=black, '
+        pgf_line = 'only marks, '
+        pgf_marker = ''# is a default case needed ?
+
+        if mpl_style:
+            for mpl_color in _DICT_COLORS_MPL:
+                if mpl_color in mpl_style:
+                    pgf_color = "color=" + _DICT_COLORS_MPL[mpl_color] + ", "
+                    mpl_style = mpl_style.replace(mpl_color, '')
+                    break
+
+        if mpl_style:
+            for mpl_line in sorted(_DICT_LINES_MPL_TO_PGF.keys(), key=len, reverse=True): # sort descending length
+                if mpl_line in mpl_style:
+                    pgf_line  = _DICT_LINES_MPL_TO_PGF[mpl_line]
+                    mpl_style = mpl_style.replace(mpl_line, '')
+                    break
+
+        if mpl_style:
+            for mpl_marker in _DICT_MARKERS_MPL_TO_PGF:
+                if mpl_marker in mpl_style:
+                    pgf_marker = _DICT_MARKERS_MPL_TO_PGF[mpl_marker] + "mark phase=0, "
+                    mpl_style  = mpl_style.replace(mpl_marker, '')
+                    break
+
+        if mpl_style:
+            raise IOError("A part of the mpl style was not removed and therefore not used in the pgf style. Unused: " + mpl_style)
+
+        return pgf_color + pgf_line + pgf_marker, colors
+
+    def _get_pgfplotset_for_line_nr(self, line_nr, colors):
+        """ Converts the style cycler self._cylcer into a valid  pgfplots options string.
+        """
+        # markers = [char for char in 'oxs+v^*<>.']
+        # linestyles = ['-', '--', '-.', ':']
+        # colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf']
+
+        while line_nr >= len(self._cycler): # make sure line_nr is a valid index for a list generate from the cycler
+            line_nr -= len(self._cycler)
+
+        pgf_color = ""
+        try:
+            color = [ele["color"] for ele in self._cycler][line_nr]
+            for i_color, color_a in enumerate(colors):
+                if color == color_a:
+                    pgf_color = "color=color" + str(i_color) + ", "
+                    break
+            if not pgf_color:
+                pgf_color = "color=color" + str(len(colors)) + ", "
+                colors.append(color)
+        except KeyError:
+            pgf_color = 'color=black, '
+            # do not need to append black...
+
+        pgf_line = []
+        for ele in self._cycler:
+            try:
+                pgf_line.append(_DICT_LINES_MPL_TO_PGF[ele["linestyle"]])
+            except KeyError:
+                pgf_line.append( 'only marks, ' )
+
+        pgf_line=pgf_line[line_nr]
+
+        try:
+            pgf_marker = [_DICT_MARKERS_MPL_TO_PGF[ele["marker"]] for ele in self._cycler][line_nr]
+        except KeyError:
+            pgf_marker = ""
+
+        return pgf_color + pgf_line + pgf_marker, colors
+
+    def _convert_colors_to_texdefines(self, colors):
+        """ Converting the list of tuples into valid XColor LaTeX strings
+        """
+        str_tex = ""
+
+        for i_color, color_a in enumerate(colors):
+            color = tuple(matplotlib.colors.to_rgb(color_a))
+            str_tex += (
+                "\\definecolor{{color{0:d}}}{{rgb}}{{{1:.5f}, {2:.5f}, {2:.5f}}}\n".format(i_color, *color)
+            )
+
+        return str_tex
+
+
+class Plot2YAxis(object):
+    """ Provides a plot with 2 y-Axes
+
+    WARNING: Legend does not work with cyclers :(. You have to set the styles manually.
+
+    """
+    def __init__(self, name, plot_left, plot_right, legend_location='upper right'):
+        self.name = name
+
+        # do not check anything here!
+
+        self.plot_left = plot_left
+        self.plot_right = plot_right
+
+        self.legend_location = legend_location
+        self.legend_frame = True
+
+        self.fig = None
+        self.ax_left = None
+        self.ax_right = None
+
+        self.lines_left = []
+        self.lines_right = []
+
+    def plot_py(self, show=True, font_size=None, allowGrid=False, tight_layout=True, figure_size=None):
+        """ Plots the 2 axis plot with the same arguments as the usual plot class
+        """
+        # get a new figure
+        self.fig = plt.figure(num=self.name, figsize=figure_size )
+        print('init 2 axis figure with name ' + self.name +r'\n')
+        # setting the window title using the matplotlib figure manager
+        # pylint: disable = protected-access
+        fig_manager = matplotlib._pylab_helpers.Gcf.get_fig_manager(self.fig.number)
+        fig_manager.set_window_title(self.name)
+
+        if font_size is not None:
+            matplotlib.rcParams.update({'font.size': font_size})
+
+        #rc params spec
+        matplotlib.rcParams['text.usetex'] = True
+        packages = [
+            '\\usepackage{amsmath}\n',
+            '\\usepackage{mathtools}\n',
+            '\\usepackage{amssymb}\n',
+            '\\usepackage{siunitx}\n',
+            '\\DeclareSIUnit\\sq{\\ensuremath{\\Box}}\n',
+            '\\DeclareSIUnit\\degC{\\degreeCelsius}\n',
+        ]
+        packages_to_add = []
+        str_user_packages = ''.join(matplotlib.rcParams['text.latex.preamble'])
+        for package in packages:
+            if package not in str_user_packages:
+                packages_to_add.append(package)
+
+        try:
+            matplotlib.rcParams['text.latex.preamble'] += packages_to_add
+        except TypeError:
+            matplotlib.rcParams['text.latex.preamble'] += ''.join(packages_to_add)
+
+        ####################################### left axis
+        self.ax_left = self.fig.add_subplot(111)
+        # set the line cycler
+        self.ax_left.set_prop_cycle(self.plot_left._cycler) # does not work properly in combination with legends
+
+        # plotting of the data left
+        for _i, dict_line in enumerate(self.plot_left.data):
+            # x and y should be numpy vectors, stable conversion is given (more tests necessary)
+            x = dict_line['x']
+            y = dict_line['y']
+            if not isinstance(x, np.ndarray):
+                try:
+                    x = [float(x_a) for x_a in x]
+                except TypeError:
+                    pass
+                x = np.asanyarray(x)
+            if not isinstance(y, np.ndarray):
+                try:
+                    y = [float(y_a) for y_a in y]
+                except TypeError:
+                    pass
+                y = np.asanyarray(y)
+
+            if self.plot_left.x_axis_scale == 'log':
+                x = np.abs(x)
+            if self.plot_left.y_axis_scale == 'log':
+                y = np.abs(y)
+
+            label = dict_line['label']
+
+            if 'style' in dict_line and dict_line['style'] is not None:
+                try:
+                    if 'o' in dict_line['style']: # o is an empty circle from now on! Use '.' for filled points
+                        line, = self.ax_left.plot(x*self.plot_left.x_scale, y*self.plot_left.y_scale, dict_line['style'], fillstyle='none', label=label, **dict_line['kwargs'])
+                    else:
+                        line, = self.ax_left.plot(x*self.plot_left.x_scale, y*self.plot_left.y_scale, dict_line['style'], label=label, **dict_line['kwargs'])
+                except ValueError as err:
+                    raise ValueError('Too many values to unpack in plot ' + self.plot_left.name + ' for line with label ' + str(label)) from err
+            else:
+                try:
+                    line, = self.ax_left.plot(x*self.plot_left.x_scale, y*self.plot_left.y_scale, label=label, **dict_line['kwargs'])
+                except ValueError as err:
+                    raise ValueError('Too many values to unpack in plot ' + self.plot_left.name + ' for line with label ' + str(label)) from err
+            self.lines_left.append(line)
+
+        # labels
+        self.ax_left.set_xlabel(self.plot_left.x_label)
+        self.ax_left.set_ylabel(self.plot_left.y_label)
+
+        # set scale and limits
+        self.ax_left.set_xscale(self.plot_left.x_axis_scale)
+        self.ax_left.set_yscale(self.plot_left.y_axis_scale)
+
+        self.ax_left.set_xlim(self.plot_left.x_limits)
+        if not all(lim is None for lim in self.plot_left.x_limits):
+            self.ax_left.set_xlim(left=self.plot_left.x_limits[0], right=self.plot_left.x_limits[1])
+
+        if not all(lim is None for lim in self.plot_left.y_limits):
+            self.ax_left.set_ylim(bottom=self.plot_left.y_limits[0], top=self.plot_left.y_limits[1])
+
+        ####################################### right axis
+        self.ax_right = self.ax_left.twinx()
+        # set the line cycler
+        self.ax_right.set_prop_cycle(self.plot_right._cycler) # does not work properly in combination with legends
+
+        # plotting of the data right
+        for _i, dict_line in enumerate(self.plot_right.data):
+            # x and y should be numpy vectors, stable conversion is given (more tests necessary)
+            x = dict_line['x']
+            y = dict_line['y']
+            if not isinstance(x, np.ndarray):
+                try:
+                    x = [float(x_a) for x_a in x]
+                except TypeError:
+                    pass
+                x = np.asanyarray(x)
+            if not isinstance(y, np.ndarray):
+                try:
+                    y = [float(y_a) for y_a in y]
+                except TypeError:
+                    pass
+                y = np.asanyarray(y)
+
+            if self.plot_right.x_axis_scale == 'log':
+                x = np.abs(x)
+            if self.plot_right.y_axis_scale == 'log':
+                y = np.abs(y)
+
+            label = dict_line['label']
+            x_left = self.ax_left.get_xlim()[0]-1
+            y_left = self.ax_left.get_ylim()[0]-1
+
+            # plot now on right and left axis at the sime time to ensure legend
+            if 'style' in dict_line and dict_line['style'] is not None:
+                try:
+                    if 'o' in dict_line['style']: # o is an empty circle from now on! Use '.' for filled points
+                        line, = self.ax_right.plot(x*self.plot_right.x_scale, y*self.plot_right.y_scale, dict_line['style'], fillstyle='none', label=label, **dict_line['kwargs'])
+                        _line, = self.ax_left.plot(x_left, y_left, dict_line['style'], fillstyle='none', label=label, **dict_line['kwargs'])
+                    else:
+                        line, = self.ax_right.plot(x*self.plot_right.x_scale, y*self.plot_right.y_scale, dict_line['style'], label=label, **dict_line['kwargs'])
+                        _line, = self.ax_left.plot(x_left, y_left, dict_line['style'], label=label, **dict_line['kwargs'])
+                except ValueError as err:
+                    raise ValueError('Too many values to unpack in plot ' + self.plot_right.name + ' for line with label ' + str(label)) from err
+            else:
+                try:
+                    line, = self.ax_right.plot(x*self.plot_right.x_scale, y*self.plot_right.y_scale, label=label, **dict_line['kwargs'])
+                    _line, = self.ax_left.plot(x_left, y_left, label=label, **dict_line['kwargs'])
+                except ValueError as err:
+                    raise ValueError('Too many values to unpack in plot ' + self.plot_right.name + ' for line with label ' + str(label)) from err
+            self.lines_right.append(line)
+
+        # labels (only y label needed)
+        self.ax_right.set_ylabel(self.plot_right.y_label)
+
+        # set scale and limits (only y label needed)
+        self.ax_right.set_yscale(self.plot_right.y_axis_scale)
+
+        if not all(lim is None for lim in self.plot_right.y_limits):
+            self.ax_right.set_ylim(bottom=self.plot_right.y_limits[0], top=self.plot_right.y_limits[1])
+
+        # legend ( only once ! )
+        self.ax_left.legend(loc=self.legend_location, frameon=self.legend_frame)
+
+        if allowGrid:
+            # Don't allow the axis to be on top of your data
+            self.ax_left.set_axisbelow(True)
+            # self.ax_right.set_axisbelow(True)
+
+            # Turn on the minor TICKS, which are required for the minor GRID
+            self.ax_left.minorticks_on()
+            # self.ax_right.minorticks_on()
+
+            # Customize the major grid and show only one grid!
+            self.ax_left.grid(which='major', linewidth=0.65, linestyle='-', color='.85')
+            # Customize the minor grid and show only one grid!
+            self.ax_left.grid(which='minor', linewidth=0.65, linestyle='-', color='.85')
+
+        if tight_layout:
+            plt.tight_layout()
+
+        if show:
+            plt.show()
+
+    def plot_pyqtgraph(self, *args, **kwargs):
+        """ At the moment only a pass through to the left plot...
+        """
+        self.plot_left.plot_pyqtgraph(*args, **kwargs)
+
+    def show_pyqtgraph(self, *args, **kwargs):
+        self.plot_left.show_pyqtgraph(*args, **kwargs)
+
+    def save_tikz(self, directory, file_name=None, width="\\textwidth", height=None, mark_repeat=1, standalone=False, build=False, clean=False):
+        """ Save plot in directory and return name of the tikz file. The name of the tikz file will be the figure attribute self.name if not given.
+        """
+        if not isinstance(directory, Path):
+            directory = Path(directory)
+        os.makedirs(directory, exist_ok=True)
+
+        # create tikz files from the subplots
+        file_tikz_left = self.plot_left.save_tikz(directory, width=width, height=height, mark_repeat=mark_repeat, standalone=standalone)
+        file_tikz_right = self.plot_right.save_tikz(directory, width=width, height=height, mark_repeat=mark_repeat, standalone=standalone)
+
+        # open, read and delete the tikz files
+        path_file_left = directory / file_tikz_left
+        str_tikz_left  = path_file_left.read_text()
+        path_file_left.unlink()
+
+        path_file_right = directory / file_tikz_right
+        str_tikz_right  = path_file_right.read_text()
+        path_file_right.unlink()
+
+        # change str_tikz_right:
+        lines_str_tikz_right = str_tikz_right.splitlines()
+        # find start:
+        i_start = next(i_line for i_line, line in enumerate(lines_str_tikz_right) if r'\begin{axis}[' in line)
+        lines_to_del = []
+        i_line = 0
+
+        for i_line, line in enumerate(lines_str_tikz_right[i_start:]): # iterate over a copy..
+            if line == ']':
+                break
+
+            if line.startswith('xlabel') or line.startswith('xmajorgrids') or line.startswith('xminorgrids') or line.startswith('xtick') or line.startswith('minor xtick') or line.startswith('x '):
+                lines_to_del.append(i_start+i_line)
+
+        lines_str_tikz_right.insert(
+            i_start+i_line,
+            (
+                'hide x axis=true,\n'
+                + 'every outer y axis line/.append style={black},\n'
+                + 'every y tick label/.append style={font=\\color{black}},\n'
+                + 'every y tick/.append style={black},\n'
+                + 'ylabel style={at={(1.10, 0.5)}, anchor=north},\n'
+                + 'yticklabel style={text width=0.6em,align=left},\n'
+                + 'yticklabel pos=right,\n'
+                + 'axis x line*=bottom,\n'
+                + 'axis y line*=right,'
+            )
+        )
+
+        for i_del in lines_to_del[::-1]:
+            del lines_str_tikz_right[i_del]
+
+        str_tikz_right = '\n'.join(lines_str_tikz_right)
+
+        # merge the strings
+        # from left plot everythin including \end{axis} and before end{tikzpicture}
+        i_left_end = str_tikz_left.find(r'\end{tikzpicture}')
+        str_tikz_picture = str_tikz_left[:i_left_end]
+
+        # append right plot starting after \begin{tikzpicture} and before \begin{axis}
+        i_right_start = str_tikz_right.find(r'\begin{axis}')
+        str_tikz_picture += '\n' + str_tikz_right[i_right_start:]
+
+        # save the new tikz file
+        if file_name is None:
+            file_name = self.plot_left.slugify(self.name) + '.tex'
+
+        path_file = directory / file_name
+        path_file.write_text(str_tikz_picture)
+
+        if build:
+            if not standalone:
+                raise IOError('To build a single TikZ picture, you should also activate standalone!')
+
+            build_tex(path_file)
+
+            if clean:
+                clean_tex_files(directory, file_name.replace('.tex', ''), keep=('.pdf', '.tex'))
+
+        return file_name
