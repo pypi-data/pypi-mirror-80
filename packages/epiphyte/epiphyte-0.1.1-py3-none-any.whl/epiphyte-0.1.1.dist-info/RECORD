@@ -1,0 +1,16 @@
+annotation/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+annotation/data_driven_annotation/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+annotation/data_driven_annotation/cpt.py,sha256=evZWo4Upd6vF41egE6iqqJdkCiLpvrrgZ59F3vAJU2I,5154
+annotation/stimulus_driven_annotation/__init__.py,sha256=AbpHGcgLb-kRsJGnwFEktk7uzpZOCcBY74-YBdrKVGs,1
+annotation/stimulus_driven_annotation/movies/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+annotation/stimulus_driven_annotation/movies/annotation_utils.py,sha256=OABmGoVOJ6Z-ktK90Qi9D9KTcj10B6ycHO-kIYF-TKs,2537
+annotation/stimulus_driven_annotation/movies/pause_handling.py,sha256=qh4gJxhCAoY3ye4OE8-QgWDEa4in5Oozb2_h1f6cV8c,2561
+annotation/stimulus_driven_annotation/movies/processing_labels.py,sha256=XrEcItZVrlZrOFqzktloXZwB1rw_9CUko8ijLkSrYD4,5722
+annotation/stimulus_driven_annotation/movies/watch_log.py,sha256=lz8FlIwEFL5-9jK2uvfHLXlXRBcoiLCXbJEFc_sT580,3204
+mock_data/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+mock_data/mock_data_utils.py,sha256=pMA0aznqGVSi0OS0e7qRS7vBzhzRge1v6s7QSXilMP8,12337
+epiphyte-0.1.1.dist-info/LICENSE,sha256=44rlJtIciNTK8BUJhfcBgzv-ajRNba_LDTtBfnPfNb0,33284
+epiphyte-0.1.1.dist-info/METADATA,sha256=98tPYvK_r00HAwE5WS6lU1lSTAf4Ht6y6kNG3bHFKi0,656
+epiphyte-0.1.1.dist-info/WHEEL,sha256=EVRjI69F5qVjm_YgqcTXPnTAv3BfSUr0WVAHuSP3Xoo,92
+epiphyte-0.1.1.dist-info/top_level.txt,sha256=-gbRgHHKNDWuuRz9NU9drgqfwv0AKtnFqw2nKkaAzjI,21
+epiphyte-0.1.1.dist-info/RECORD,,
