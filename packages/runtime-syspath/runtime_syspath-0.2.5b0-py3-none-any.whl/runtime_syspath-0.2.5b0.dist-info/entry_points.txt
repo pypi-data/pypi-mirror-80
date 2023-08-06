@@ -1,0 +1,3 @@
+[console_scripts]
+syspath_sleuth_injector=runtime_syspath.syspath_sleuth.__main__:syspath_sleuth_main
+
