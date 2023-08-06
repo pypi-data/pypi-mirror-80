@@ -1,0 +1,8 @@
+backoff==1.8.0
+requests==2.22.0
+singer-python==5.9.0
+jsonlines==1.2.0
+
+[dev]
+pytest
+requests_mock
