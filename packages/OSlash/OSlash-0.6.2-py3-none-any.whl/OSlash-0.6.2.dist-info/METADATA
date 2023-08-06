@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: OSlash
+Version: 0.6.2
+Summary: OSlash (Ø) for Python 3.8+
+Home-page: https://github.com/dbrattli/oslash
+Author: Dag Brattli
+Author-email: dag@brattli.net
+License: MIT License
+Download-URL: https://github.com/dbrattli/oslash
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Other Environment
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Dist: typing-extensions
+
+A functional library for playing with Functors, Applicatives, and Monads in Python.
+
+
