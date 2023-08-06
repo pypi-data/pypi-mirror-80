@@ -1,0 +1,24 @@
+Metadata-Version: 2.1
+Name: sportorg
+Version: 1.4.0
+Summary: SportOrg, python, sportident, orienteering
+Author: Danil Akhtarov
+Author-email: daxartio@gmail.com
+Requires-Python: >=3.8,<3.9
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Provides-Extra: win
+Requires-Dist: PySide2 (>=5,<6)
+Requires-Dist: boltons (>=20,<21)
+Requires-Dist: docxtpl (>=0,<1)
+Requires-Dist: jinja2 (>=2,<3)
+Requires-Dist: playsound (>=1,<2)
+Requires-Dist: polib (>=1,<2)
+Requires-Dist: pydantic (>=1,<2)
+Requires-Dist: python-dateutil (>=2,<3)
+Requires-Dist: python-dotenv (>=0.14,<0.15)
+Requires-Dist: pywin32 (>=228,<229); extra == "win"
+Requires-Dist: pywinusb (>=0,<1)
+Requires-Dist: requests (>=2,<3)
+Requires-Dist: shiboken2 (>=5.15,<6.0)
+Requires-Dist: sportident (>=1,<2)
