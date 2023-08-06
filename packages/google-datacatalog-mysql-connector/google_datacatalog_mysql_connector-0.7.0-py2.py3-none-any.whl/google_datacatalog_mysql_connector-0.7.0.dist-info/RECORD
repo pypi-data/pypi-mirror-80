@@ -1,0 +1,16 @@
+google_datacatalog_mysql_connector-0.7.0-py3.7-nspkg.pth,sha256=0wj0-KQuR48P54VNutEzLALi6TIW02bvMPohv0KaVpc,1800
+google/datacatalog_connectors/mysql_/__init__.py,sha256=-VLBsnBfHP6SASA4FPG-eOgxWgQrTA8GfgjJ9VxB2r8,729
+google/datacatalog_connectors/mysql_/datacatalog_cli.py,sha256=1terqLJyyijhktevKT3_icHX_Tvf50y2V3Q-D8S8Tx8,3726
+google/datacatalog_connectors/mysql_/config/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+google/datacatalog_connectors/mysql_/config/metadata_definition.json,sha256=YLuioiDOB5_VmCyjFwPxlFeu72O6WOX2lg4UcmY8ZJM,1303
+google/datacatalog_connectors/mysql_/config/metadata_query.sql,sha256=jJFBxaReulcT9BWmp33tfEPyT-l8oJFtNJExpaxzKec,1345
+google/datacatalog_connectors/mysql_/config/num_rows_query.sql,sha256=-NpxQ_zR8_vGjvtmKAFpkOyzlQGdJfezh1Csdfi5WL8,261
+google/datacatalog_connectors/mysql_/scrape/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+google/datacatalog_connectors/mysql_/scrape/metadata_scraper.py,sha256=qAAhsGil4DSgq0VZYzhfisLc2pzGQU72M5Qn_NqZOj8,1450
+google/datacatalog_connectors/mysql_/scrape/query_assembler.py,sha256=T4zk_XRv3-AMw_pqx7K20zt5K5jNMcmzK-veyZmFfHM,432
+google_datacatalog_mysql_connector-0.7.0.dist-info/METADATA,sha256=0IlllEnCfhK7wVU4XqtHSlkleeLHF1JV1wQltrPc9Fg,10574
+google_datacatalog_mysql_connector-0.7.0.dist-info/WHEEL,sha256=ADKeyaGyKF5DwBNE0sRE5pvW-bSkFMJfBuhzZ3rceP4,110
+google_datacatalog_mysql_connector-0.7.0.dist-info/entry_points.txt,sha256=sx-Orlte-Hnocip9eSPT1foMLXa5kbH2D0yC_O7Qutk,98
+google_datacatalog_mysql_connector-0.7.0.dist-info/namespace_packages.txt,sha256=WwtlfkJREfw6CgfAVUCphYiIRxhJeEPNoEZfXtG54zU,37
+google_datacatalog_mysql_connector-0.7.0.dist-info/top_level.txt,sha256=_1QvSJIhFAGfxb79D6DhB7SUw2X6T4rwnz_LLrbcD3c,7
+google_datacatalog_mysql_connector-0.7.0.dist-info/RECORD,,
