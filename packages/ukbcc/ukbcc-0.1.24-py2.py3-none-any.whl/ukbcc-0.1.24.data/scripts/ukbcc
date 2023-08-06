@@ -1,0 +1,5 @@
+#!python
+
+from ukbcc.webapp.webapp import main
+
+main()
