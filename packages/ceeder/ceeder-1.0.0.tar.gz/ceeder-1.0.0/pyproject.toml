@@ -1,0 +1,52 @@
+[tool.poetry]
+name = "ceeder"
+version = "1.0.0"
+description = "Library for working with CDR files and analytics."
+authors = ["max thomas <max@qntfy.com>"]
+
+license = "MIT"
+readme = 'README.md'  # Markdown files are supported
+
+repository = "https://github.com/qntfy/ceeder"
+homepage = "https://github.com/qntfy/ceeder"
+
+keywords = ['ceeder', 'cdr']
+
+packages = [
+    { include = "ceeder", from = "src" },
+]
+
+
+[tool.poetry.dependencies]
+python = "*"
+falcon = "^2.0.0"
+jsonschema = "^3.2.0"
+
+
+[tool.poetry.dev-dependencies]
+pytest = "^3.6"
+
+
+[tool.black]
+line-length = 88
+target-version = ['py37']
+include = '\.pyi?$'
+exclude = '''
+
+(
+  /(
+      \.eggs         # exclude a few common directories in the
+    | \.git          # root of the project
+    | \.tox
+    | \.venv
+    | _build
+    | build
+    | dist
+  )/
+)
+'''
+
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
