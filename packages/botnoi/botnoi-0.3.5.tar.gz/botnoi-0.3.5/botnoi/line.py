@@ -1,0 +1,94 @@
+import os
+import logging
+from flask import Flask, request
+from requests import post
+from threading import Thread
+os.system("pip install pyngrok")
+from pyngrok import ngrok
+
+
+log = logging.getLogger('werkzeug')  # Flask
+log.setLevel(logging.ERROR)     # silence it
+
+
+class Webhook:
+    """ Line Webhook 
+    
+    Usage: 
+    > webhook = Webhook(access_token)
+    > webhook.start()   # then setup with this URL 
+    > webhook.reply = lambda x: x   # just repeat
+    """
+    def __init__(self, access_token, port=5000):
+        self.a_token = access_token
+        self.port = port
+        app = Flask("Line")   # to be webhook
+        app.add_url_rule('/', None, self.serve, methods=['GET','POST'])
+        app.add_url_rule('/shutdown', None, self.shutdown)
+        self.app = app
+
+    def shutdown(self):
+        request.environ.get('werkzeug.server.shutdown')()
+        return 'Server shutting down...'
+
+    def serve(self):
+        try:
+            self.event = request.json['events'][0]
+            self.token = event['replyToken']
+            self.text = event['message']['text']
+            self.send_reply(token, token)    
+            return '{}', 200
+        except:
+            return "OK", 200
+
+    def send_reply(self, token, text):
+        url = 'https://api.line.me/v2/bot/message/reply'
+        headers = {'Authorization': 'Bearer ' + self.a_token}
+        data = {
+            "replyToken": token,
+            "messages":[{
+                "type":"text",
+                "text": self.reply(text) 
+            }]
+        }
+        post(url, headers=headers, json=data)
+
+    def reply(self, text):
+        """ change this to what you like """
+        return text
+
+    def start(self, port=None):
+        if port:
+            self.port = port  # remember
+        else:
+            port = self.port
+        url = ngrok.connect(port)
+        self.url = url.replace('http', 'https')
+        print(f"Webhook URL = {self.url}")
+    
+        self.thread = Thread(None, self.app.run, kwargs={"port":port})
+        self.thread.start()
+
+    def stop(self):
+        """ must stop so many things"""
+        ngrok.kill()
+        os.system(f"curl 127.0.0.1:{self.port}/shutdown")
+        self.thread.join()
+
+
+class lineevent():
+  def __init__(self,event):
+    self.event = event
+    self.eventtype = event['events'][0]['type']
+    self.msgid  = event['events'][0]['message']['id']
+    self.time = event['events'][0]['timestamp']
+    self.token = event['events'][0]['replyToken']
+    self.idpage = event['destination']
+    self.userid = event['events'][0]['source']['userId']
+  def extractmessage(self):
+    self.message = event['events'][0]['message']['text']
+
+
+
+
+
