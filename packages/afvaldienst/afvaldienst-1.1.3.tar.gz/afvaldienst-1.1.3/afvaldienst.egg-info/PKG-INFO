@@ -1,0 +1,112 @@
+Metadata-Version: 2.1
+Name: afvaldienst
+Version: 1.1.3
+Summary: Getting information on trash for the Netherlands for mijnafvalwijzer.nl and afvalstoffendienstkalender.nl
+Home-page: https://github.com/xirixiz/afvaldienst
+Author: Bram van Dartel
+Author-email: spam@rootrulez.com
+License: MIT
+Description: Afvaldienst library
+        ===================
+        
+        This library is meant to interface with mijnafvalwijzer.nl and/or afvalstoffendienstkalender.nl
+        It is meant to use with home automation projects like Home Assistant.
+        
+        
+        Installation
+        ------------
+        
+        .. code:: bash
+        
+            pip install afvaldienst
+        
+        
+        Uninstallation
+        --------------
+        
+        .. code:: bash
+        
+            pip uninstall afvaldienst
+        
+        
+        Usage
+        -----
+        
+        .. code:: python
+        
+            >>> from Afvaldienst import Afvaldienst
+            >>> provider = 'mijnafvalwijzer'
+            >>> api_token = ''
+            >>> zipcode = '1111AA'
+            >>> housenumber = '1'
+            >>> suffix = ''
+            >>> start_date = 'True or False'     (start counting wihth Today's date or with Tomorrow's date)
+            >>> trash = Afvaldienst(provider, api_token, zipcode, housenumber, suffix)
+        
+            >>> trash.trash_json
+            [{'nameType': 'gft', 'type': 'gft', 'date': '2019-12-20'}, {'nameType': 'pmd', 'type': 'pmd', 'date': '2019-12-28'}]
+        
+            >>> trash.trash_schedule
+            [{'key': 'pmd', 'value': '31-10-2019', 'days_remaining': 8}, {'key': 'restafval', 'value': '15-11-2019', 'days_remaining': 23}, {'key': 'papier', 'value': '20-11-2019', 'days_remaining': 28}]
+        
+            >>> trash.trash_schedule_custom
+            [{'key': 'first_next_in_days', 'value': 8}, {'key': 'today', 'value': 'None'}, {'key': 'tomorrow', 'value': 'None'},
+        
+            >>> trash.trash_types
+            ['gft', 'kerstbomen', 'pmd', 'restafval', 'papier']
+        
+        
+        Or use the scraper:
+        
+            >>>from AfvaldienstScraper import AfvaldienstScraper
+            >>> provider = 'mijnafvalwijzer'
+            >>> zipcode = '1111AA'
+            >>> housenumber = '1'
+            >>> start_date = 'True or False'     (start counting wihth Today's date or with Tomorrow's date)
+            >>> trash = AfvaldienstScraper(provider, zipcode, housenumber)
+        
+            >>> trash.trash_schedule
+            [{'key': 'pmd', 'value': '31-10-2019', 'days_remaining': 8}, {'key': 'restafval', 'value': '15-11-2019', 'days_remaining': 23}, {'key': 'papier', 'value': '20-11-2019', 'days_remaining': 28}]
+        
+            >>> trash.trash_schedule_custom
+            [{'key': 'first_next_in_days', 'value': 8}, {'key': 'today', 'value': 'None'}, {'key': 'tomorrow', 'value': 'None'},
+        
+            >>> trash.trash_types
+            ['gft', 'kerstbomen', 'pmd', 'textiel', 'restafval', 'papier']
+        
+            >>>> trash.trash_types_from_schedule
+            ['gft', 'papier', 'pmd', 'restafval', 'textiel', 'kerstbomen', 'today', 'tomorrow', 'day_after_tomorrow', 'first_next_in_days', 'first_next_item', 'first_next_date']
+        
+        
+        Contributors are most welcome
+        -----------------------------
+        * I'm still learning how to code properly.
+        
+        
+        .. :changelog:
+        ---------------
+        x.x.x (2020-09-25)
+        ++++++++++++++++
+        **Some release**
+        - Ignoring updating this file all the time :)
+        
+Keywords: afval afvaldienst afvalwijzer garbage trash mijnafvalwijzer afvalstoffendienstkalender dutch
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: Intended Audience :: Other Audience
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Natural Language :: English
+Classifier: Natural Language :: Dutch
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: Unix
+Classifier: Operating System :: MacOS
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Description-Content-Type: text/markdown
