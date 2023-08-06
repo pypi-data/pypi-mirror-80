@@ -1,0 +1,11 @@
+MANIFEST.in
+README.md
+setup.py
+scripts/distribute.sh
+src/class_serializer/__init__.py
+src/class_serializer/serializable.py
+src/class_serializer.egg-info/PKG-INFO
+src/class_serializer.egg-info/SOURCES.txt
+src/class_serializer.egg-info/dependency_links.txt
+src/class_serializer.egg-info/requires.txt
+src/class_serializer.egg-info/top_level.txt
