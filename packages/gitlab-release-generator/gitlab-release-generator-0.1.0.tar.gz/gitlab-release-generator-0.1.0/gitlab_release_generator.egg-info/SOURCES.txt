@@ -1,0 +1,11 @@
+README.md
+setup.py
+gitlab_release_generator.egg-info/PKG-INFO
+gitlab_release_generator.egg-info/SOURCES.txt
+gitlab_release_generator.egg-info/dependency_links.txt
+gitlab_release_generator.egg-info/entry_points.txt
+gitlab_release_generator.egg-info/requires.txt
+gitlab_release_generator.egg-info/top_level.txt
+src/__init__.py
+src/cli.py
+src/version.py

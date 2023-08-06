@@ -1,0 +1,16 @@
+Metadata-Version: 1.2
+Name: gitlab-release-generator
+Version: 0.1.0
+Summary: GitLab Release Generator command-line tool.
+Home-page: https://github.com/NathanUrwin/gitlab-release-generator
+Author: Nathan Urwin
+Author-email: me@nathanurwin.com
+License: UNKNOWN
+Download-URL: https://github.com/NathanUrwin/gitlab-release-generator/archive/0.1.0.tar.gz
+Description: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Programming Language :: Python :: 3.8
+Requires-Python: >=0.1.0
