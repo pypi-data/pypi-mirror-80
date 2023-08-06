@@ -1,0 +1,23 @@
+@define-color kiwi_error_color #ffd5d5;
+@define-color kiwi_mandatory_color #fcf6c6;
+
+.kiwi-validation-error-fg {
+    /* This is the Scarlet Red from the tango pallet */
+    color: #ef2929;
+}
+
+.kiwi-validation-error-bg {
+    background: @kiwi_error_color;
+    background-color: @kiwi_error_color;
+}
+
+.kiwi-validation-mandatory-bg {
+    background: @kiwi_mandatory_color;
+    background-color: @kiwi_mandatory_color;
+}
+
+MultiComboCloseButton {
+    outline-offset: 0;
+    outline-width: 0;
+    padding: 0;
+}
