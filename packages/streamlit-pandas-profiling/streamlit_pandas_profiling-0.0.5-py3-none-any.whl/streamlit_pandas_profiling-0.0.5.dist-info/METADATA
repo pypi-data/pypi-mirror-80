@@ -1,0 +1,41 @@
+Metadata-Version: 2.1
+Name: streamlit-pandas-profiling
+Version: 0.0.5
+Summary: Pandas profiling component for Streamlit
+Home-page: https://github.com/Ghasel/streamlit-pandas-profiling
+Author: Synode
+Author-email: 
+License: UNKNOWN
+Platform: UNKNOWN
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: streamlit (>=0.63)
+Requires-Dist: pandas-profiling
+
+# Streamlit Pandas Profiling
+
+[Pandas profiling](https://github.com/pandas-profiling/pandas-profiling) component for [Streamlit](https://www.streamlit.io/).
+
+## Installation
+
+In your python virtual environment, run:
+
+```sh
+pip install streamlit-pandas-profiling
+```
+
+## Demo
+
+You can try this component by running:
+
+```sh
+# Install dependencies
+pip install numpy pandas pandas-profiling
+
+# Run demo app
+streamlit run https://raw.githubusercontent.com/Ghasel/streamlit-pandas-profiling/master/examples/streamlit_pandas_profiling_demo.py
+```
+
+![Demo](examples/streamlit_pandas_profiling_demo.gif)
+
+
