@@ -1,0 +1,5 @@
+[console_scripts]
+pywandio-cat = wandio.opener:read_main
+pywandio-stat = wandio.opener:stat_main
+pywandio-write = wandio.opener:write_main
+
