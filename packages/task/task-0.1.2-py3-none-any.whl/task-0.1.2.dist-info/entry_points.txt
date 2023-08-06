@@ -1,0 +1,4 @@
+[console_scripts]
+pytask=etna_cli.etna:main
+task=etna_cli.etna:main
+
