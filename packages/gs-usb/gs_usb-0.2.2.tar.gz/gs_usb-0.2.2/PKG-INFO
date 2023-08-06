@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: gs_usb
+Version: 0.2.2
+Summary: Python Windows/Linux CAN driver based on WCID for Geschwister Schneider USB/CAN devices and candleLight USB CAN interfaces.
+Home-page: https://github.com/jxltom/gs_usb
+Author: jxltom
+Author-email: jxltom@gmail.com
+License: MIT
+Description: 
+        # gs_usb
+        
+        Python Windows/Linux CAN driver based on WCID for Geschwister Schneider USB/CAN devices and candleLight USB CAN interfaces.
+        
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Description-Content-Type: text/markdown
