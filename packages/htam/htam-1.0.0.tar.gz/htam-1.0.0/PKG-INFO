@@ -1,0 +1,32 @@
+Metadata-Version: 1.1
+Name: htam
+Version: 1.0.0
+Summary: Math package with 13 useful math functions like prime-counting function or modular congruences solver. This package is in constant improvement and you can email me to give me any idea.
+Home-page: UNKNOWN
+Author: Cristiano Sansò
+Author-email: cristiano.sanso.04@gmail.com
+License: MIT
+Description: Hi, thanks for downloading htam (math backwards lol)
+        This is my first package and it includes a lot of cool math functions.
+        
+        I created it because I like maths and to test my python skills.
+        
+        - Run htam.info() to see general informations about htam and all functions included
+        - Run htam.info(function_name) to see detailed informations about that function
+        
+        If you run into any issue, please send me an email and i will update the package as soon as I can.
+        
+        I'm still working to improve this package, so, if you have any idea for a future update or a re-styling of an already existing function, please let me know with an email, I would really appreciate it.
+        
+        Enjoy :)
+        
+        
+        
+        - Current htam version: 
+        
+        1.0.0
+Keywords: math
+Platform: UNKNOWN
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
