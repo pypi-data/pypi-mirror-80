@@ -1,0 +1,14 @@
+.gitattributes
+LICENSE
+README.md
+setup.py
+images/artificial_results.png
+images/average_intensity.png
+images/embryo_example.png
+intensipy/__init__.py
+intensipy/models.py
+intensipy.egg-info/PKG-INFO
+intensipy.egg-info/SOURCES.txt
+intensipy.egg-info/dependency_links.txt
+intensipy.egg-info/requires.txt
+intensipy.egg-info/top_level.txt
