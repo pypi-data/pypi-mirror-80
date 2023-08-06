@@ -1,0 +1,30 @@
+Metadata-Version: 2.1
+Name: Market-Analytics
+Version: 0.0.8
+Summary: Toolkit for Stock Market analysis and visualization
+Home-page: https://github.com/wesleyLaurence/Stock-Market-Analytics
+Author: Wesley Laurence
+Author-email: wesleylaurencetech@gmail.com
+License: UNKNOWN
+Description: # Stock-Market-Analytics
+        System for live/historical stock market analysis and visualization. 
+        - Access and analyze company information/financials
+        - Integrated with MongoDB Atlas cloud database
+        - Visualize stock prices in real time using Jupyter Notebook
+        - Extract Data From:
+            * Yahoo_Finance
+            * Wikipedia 
+            * Twitter
+        
+        Features in Development:
+        - Power BI & Tableau dashboards
+        - Twitter sentiment analysis
+        - Machine learning models for predictive analytics
+        - Flask REST API and web app
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
