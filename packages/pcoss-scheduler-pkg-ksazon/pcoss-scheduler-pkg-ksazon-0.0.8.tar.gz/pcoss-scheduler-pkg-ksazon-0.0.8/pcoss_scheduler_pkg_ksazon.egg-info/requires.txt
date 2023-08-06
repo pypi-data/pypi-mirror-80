@@ -1,0 +1,9 @@
+networkx
+pandas
+numpy
+matplotlib>=3
+aiohttp
+requests
+urllib3
+toml
+plotly
