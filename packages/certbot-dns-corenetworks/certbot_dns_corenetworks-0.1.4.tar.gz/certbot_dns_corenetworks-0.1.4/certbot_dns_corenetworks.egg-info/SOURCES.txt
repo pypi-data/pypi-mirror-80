@@ -1,0 +1,15 @@
+LICENSE
+README.md
+setup.cfg
+setup.py
+certbot_dns_corenetworks/__init__.py
+certbot_dns_corenetworks/dns_corenetworks.py
+certbot_dns_corenetworks.egg-info/PKG-INFO
+certbot_dns_corenetworks.egg-info/SOURCES.txt
+certbot_dns_corenetworks.egg-info/dependency_links.txt
+certbot_dns_corenetworks.egg-info/entry_points.txt
+certbot_dns_corenetworks.egg-info/not-zip-safe
+certbot_dns_corenetworks.egg-info/requires.txt
+certbot_dns_corenetworks.egg-info/top_level.txt
+tests/__init__.py
+tests/dns_corenetwork_test.py
