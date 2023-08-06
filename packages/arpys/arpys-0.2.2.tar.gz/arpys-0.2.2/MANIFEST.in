@@ -1,0 +1,6 @@
+include README.md
+include COPYING
+include COPYING.LESSER
+include LICENSE-3RD-PARTY.txt
+include arpys/utilities/cmaps/*
+include requirements.txt
