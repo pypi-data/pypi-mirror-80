@@ -1,0 +1,105 @@
+version 0.9.0 (SH Sep 27 2020)
+- Added option to scale up small images while making thumbnails
+- Allow to hide the options of the condition modules to save screen space
+
+version 0.8.1 (SH Jan 23 2020)
+- Spelling in the README
+- No code changes
+
+version 0.8.0 (SH Jan 16 2020)
+- Redisplay number of columns of thumbs when no conditions are active
+  and the window is resized
+- feature-complete
+
+version 0.7.7 (SH Jan 13 2020)
+- Improved the move logic.
+  * Chosen folders can now optionally be saved and restore
+  * In the view window number keys are shortcuts for move to a specific folder:
+  * pressing 1 will move the picture to the first folder in the list
+  * pressing 2 will move the picture to the second folder in the list
+    etc  
+
+version 0.7.6 (SH Jan 10 2020)
+- Add move-file logic with 3 configurable target folders
+
+version 0.7.5 (SH Jan 10 2020)
+- A bit more safety when loading files:
+  Limit the number of files to scan to something reasonable (~1000)
+  Wrap PhotoImage in try...except to avoid out-of-memory
+
+version 0.7.4 (SH Jan  9 2020)
+- Using ttk sliders instead of unthemed tk sliders
+
+version 0.7.3 (SH Jan  8 2020)
+- zoom in viewer window using mouse wheel
+- class variables in condition modules
+
+version 0.7.2 (SH Jan  7 2020)
+- reduced maximum thumbnail size to avoid running out of memory
+- more systematic variable naming scheme
+- removed more code duplication from condition modules
+
+version 0.7.1 (SH Jan  6 2020)
+- fixed bug in initialising conditions that triggered many onChange events
+
+version 0.7.0 (SH Jan  6 2020)
+- removed more duplicate code using decorators in controller
+- removed dependencies on statistics module
+  * small speed up
+  * no more dependency on python 3.8 for statistics.quantiles
+  
+version 0.6.5 (SH Jan  5 2020)
+- deal with matching groups as dicts, much cleaner implementation
+- results are now sorted by filename for each row of matches and by
+  filename for the first shown image
+  
+version 0.6.4 (SH Jan  4 2020)
+- better regrouping algorithm for reducing the series of matches
+- further compacting of condition modules
+
+version 0.6.3 (SH Jan  3 2020)
+- Small layout improvement
+- fixed bug in file delete in viewer windows
+
+version 0.6.2 (SH Jan  2 2020)
+- options to configure thumbnails
+- fixed bug in match-making
+
+version 0.6.1 (SH Jan  1 2020)
+- removed duplicate code in condition modules. They are now faster and
+  much cleaner in design
+- Hiding or showing button below thumbnails without recalculating thumbnails
+
+version 0.6.0 (SH Dec 31 2019)
+- use ttk for theming
+- remove most of the custom style for better fit with host OS
+- clicking anywhere in the thumb pane deselects
+
+version 0.5.2 (SH Dec 30 2019)
+- made imports relative
+
+version 0.5.1 (SH Dec 30 2019)
+- removed ImageHash dependency
+- replaced dhash (horizontal and vertical) versions by my own pure python version
+
+version 0.5.0 (SH Dec 27 2019)
+- fully functional version
+- adapted some text to be more user friendly and less technical
+- merged color matching routines
+
+version 0.4.3 (SH Dec 26 2019)
+- whitespace fixes
+- allow showing 16bit grayscal pngs
+- some code cleaning
+
+version 0.4.2 (SH Dec 19 2019):
+- use get/set consistently for configuration module
+- fix bug not showing last remaining photo
+- added some tool tips to inform about hashing values
+
+version 0.4.1 (SH Dec 17 2019):
+- small bugs in the requirements specifications
+- added NEWS file
+
+version 0.4 (SH Dec 16 2019):
+- first functional version uploaded to PyPi
