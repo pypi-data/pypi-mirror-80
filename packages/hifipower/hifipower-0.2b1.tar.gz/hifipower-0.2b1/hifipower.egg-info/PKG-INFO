@@ -1,0 +1,36 @@
+Metadata-Version: 1.1
+Name: hifipower
+Version: 0.2b1
+Summary: On/off control via web API for hi-fi audio equipment
+Home-page: http://github.com/elegantandrogyne/hifipower
+Author: Keri Szafir
+Author-email: keri.szafir@gmail.com
+License: MIT
+Description: # hifipower
+        
+        high fidelity equipment power controller daemon
+        -----------------------------------------------
+        
+        A daemon running on an Orange Pi or RPi, exposing a web API for switching the audio equipment on or off, using a relay connected with one of the GPIO pins.
+        
+        This software reads a configuration file (``/etc/hifipowerd.conf``) and gets the pin numbers for shutdown and reboot buttons, automatic mode sense and relay drive output. Then the web API is started, exposing three endpoints:
+        
+        ``address/hifi/power`` (GET) - get the current state as JSON,
+        
+        ``address/hifi/power/on`` (GET) - turns the power on,
+        
+        ``address/hifi/power/off`` (GET) - turns the power off.
+        
+        Future features
+        ---------------
+        
+        Use PulseAudio or ALSA to detect lack of audio signal on the input (configurable), then if no audio is present for a preset time (e.g. 10 minutes), turn the equipment off automatically. Prevents idle power draw by e.g. vacuum tube amplifiers.
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Topic :: System :: Hardware :: Hardware Drivers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Framework :: Flask
