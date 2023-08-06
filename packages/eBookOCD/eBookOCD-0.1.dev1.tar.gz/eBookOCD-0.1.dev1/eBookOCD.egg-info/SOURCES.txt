@@ -1,0 +1,17 @@
+MANIFEST.in
+README.rst
+setup.py
+eBookOCD.egg-info/PKG-INFO
+eBookOCD.egg-info/SOURCES.txt
+eBookOCD.egg-info/dependency_links.txt
+eBookOCD.egg-info/entry_points.txt
+eBookOCD.egg-info/requires.txt
+eBookOCD.egg-info/top_level.txt
+ebookocd/__init__.py
+ebookocd/__main__.py
+ebookocd/api.py
+ebookocd/core.py
+ebookocd/transform/__init__.py
+ebookocd/transform/default.py
+ebookocd/transform/drizzt.py
+ebookocd/transform/monty.py
