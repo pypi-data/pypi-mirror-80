@@ -1,0 +1,98 @@
+Metadata-Version: 2.1
+Name: rpa-openapi
+Version: 1.0.0
+Summary: This is the SDK for AlibabaCloudRPA OpenAPI.
+Home-page: https://www.aliyun.com/product/codestore
+Author: AlibabaCloudRPA
+Author-email: 
+License: GPL
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3.5
+Requires-Python: >=3.5
+Description-Content-Type: text/markdown
+Requires-Dist: requests (!=2.23.0)
+Requires-Dist: pydantic (!=1.5.1)
+
+# 阿里云RPA OpenAPI SDK
+
+
+
+## 查询客户端信息
+```python
+from rpa_openapi.RPAClient import RPAClient
+from rpa_openapi.V20200430.QueryClientViewsRequest import QueryClientViewsRequest
+from rpa_openapi.V20200430.ResponseModels import QueryClientViewsResponse
+
+AccessKeyId = "你的AccessKeyId"
+AccessSecret = "你的AccessSecret"
+
+rpa_client = RPAClient(AccessKeyId, AccessSecret)
+query_client_views_request = QueryClientViewsRequest()
+query_client_views_request.current_page = 1
+query_client_views_request.page_size = 1
+query_client_views_response = rpa_client.do_action(query_client_views_request)
+print(query_client_views_response.json())
+query_client_views_response_data = QueryClientViewsResponse(**query_client_views_response.json())
+# requestId
+print("requestId: ", query_client_views_response_data.requestId)
+# success
+print("success: ", query_client_views_response_data.success)
+# code
+print("code: ", query_client_views_response_data.code)
+# msg
+print("msg: ", query_client_views_response_data.msg)
+# msgCode
+print("msgCode: ", query_client_views_response_data.msgCode)
+# uuid
+print("uuid: ", query_client_views_response_data.data[0].uuid)
+# groupId
+print("groupId: ", query_client_views_response_data.data[0].groupId)
+# clientType
+print("clientType: ", query_client_views_response_data.data[0].clientType)
+# name
+print("name: ", query_client_views_response_data.data[0].name)
+# ip
+print("ip: ", query_client_views_response_data.data[0].ip)
+# macAddress
+print("macAddress: ", query_client_views_response_data.data[0].macAddress)
+# status
+print("status: ", query_client_views_response_data.data[0].status)
+# dispatchMode
+print("dispatchMode: ", query_client_views_response_data.data[0].dispatchMode)
+# remark
+print("remark: ", query_client_views_response_data.data[0].remark)
+# connectTime
+print("connectTime: ", query_client_views_response_data.data[0].connectTime)
+# disconnectTime
+print("disconnectTime: ", query_client_views_response_data.data[0].disconnectTime)
+# userId
+print("userId: ", query_client_views_response_data.data[0].userId)
+# userName
+print("userName: ", query_client_views_response_data.data[0].userName)
+# appId
+print("appId: ", query_client_views_response_data.data[0].appId)
+# appName
+print("appName: ", query_client_views_response_data.data[0].appName)
+# taskId
+print("taskId: ", query_client_views_response_data.data[0].taskId)
+# connectStatus
+print("connectStatus: ", query_client_views_response_data.data[0].connectStatus)
+# currentPage
+print("currentPage: ", query_client_views_response_data.pager.currentPage)
+# totalPage
+print("totalPage: ", query_client_views_response_data.pager.currentPage)
+# pageSize
+print("pageSize: ", query_client_views_response_data.pager.pageSize)
+# total
+print("total: ", query_client_views_response_data.pager.total)
+# limit
+print("limit: ", query_client_views_response_data.pager.limit)
+# offset
+print("offset: ", query_client_views_response_data.pager.offset)
+# instanceId
+print("instanceId: ", query_client_views_response_data.instanceId)
+```
+
