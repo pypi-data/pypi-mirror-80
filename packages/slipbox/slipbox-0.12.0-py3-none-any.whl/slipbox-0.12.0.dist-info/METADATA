@@ -1,0 +1,63 @@
+Metadata-Version: 2.1
+Name: slipbox
+Version: 0.12.0
+Summary: Static-site generator for Zettelkasten notes
+Home-page: https://github.com/lggruspe/slipbox
+Author: Levi Gruspe
+Author-email: mail.levig@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Environment :: Console
+Classifier: Operating System :: POSIX
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+
+slipbox
+=======
+
+`slipbox` is a static site generator for Zettelkasten notes.
+
+Features
+--------
+
+- Citations via `pandoc-citeproc`
+- Stores notes data in an sqlite3 database
+- Single-page HTML output with backlinks and Folgezettel links
+- Incremental compilation
+- Fuzzy text search
+- Interactive visualization of Folgezettels
+
+Requirements
+------------
+
+- `pandoc` (should be compiled with `pandoc-types` 1.21)
+- `pandoc-citeproc`
+- `python3`
+
+Installation and usage
+----------------------
+
+```bash
+pip install slipbox
+slipbox init my-slipbox
+cd my-slipbox
+# ...add notes
+python -m slipbox build
+```
+
+See [docs/index.md](https://github.com/lggruspe/slipbox/blob/master/docs/index.md)
+and <https://lggruspe.github.io/slipbox>.
+
+License
+-------
+
+MIT.
+
+Credits
+-------
+
+This project includes [pandoc.css](https://gist.github.com/killercup/5917178).
+
+
