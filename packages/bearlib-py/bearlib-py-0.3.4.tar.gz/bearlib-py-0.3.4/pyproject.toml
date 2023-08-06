@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "bearlib-py"
+version = "0.3.4"
+description = "A library of utilities and standardizations used for writing Python code for UNCO applications and scripts."
+authors = ["Zevaryx <zevaryx@gmail.com>"]
+license = "GPL-3.0-or-later"
+
+packages = [
+  { include="bearlib-py", from="."}
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+requests = "^2.24.0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
