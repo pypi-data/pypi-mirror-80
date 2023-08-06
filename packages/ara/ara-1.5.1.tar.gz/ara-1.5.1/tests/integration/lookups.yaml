@@ -1,0 +1,64 @@
+- name: Assert playbook properties
+  hosts: localhost
+  gather_facts: yes
+  vars:
+    ara_playbook_name: ARA self tests
+    ara_playbook_labels:
+      - lookup-tests
+  tasks:
+    - name: Retrieve the current playbook so we can get the ID
+      ara_playbook:
+      register: playbook_query
+
+    - name: Recover data from ARA
+      vars:
+        playbook_id: "{{ playbook_query.playbook.id | string }}"
+      set_fact:
+        playbook: "{{ lookup('ara_api', '/api/v1/playbooks/' + playbook_id) }}"
+        tasks: "{{ lookup('ara_api', '/api/v1/tasks?playbook=' + playbook_id) }}"
+        results: "{{ lookup('ara_api', '/api/v1/results?playbook=' + playbook_id) }}"
+
+    - name: Assert playbook properties
+      assert:
+        that:
+          - playbook.name == 'ARA self tests'
+          - "playbook.labels | selectattr('name', 'search', 'lookup-tests') | list | length == 1"
+          - playbook.ansible_version == ansible_version.full
+          - playbook_dir in playbook.path
+          - "'tests/integration/lookups.yaml' in playbook.path"
+
+    #####
+    # Examples taken from docs on Ansible plugins and use cases
+    #####
+    - name: Get failed results
+      set_fact:
+        failed: "{{ lookup('ara_api', '/api/v1/results?status=failed') }}"
+
+    - name: Print task data from failed results
+      vars:
+        task_id: "{{ item.task | string }}"
+        task: "{{ lookup('ara_api', '/api/v1/tasks/' + task_id ) }}"
+        host_id: "{{ item.host | string }}"
+        host: "{{ lookup('ara_api', '/api/v1/hosts/' + host_id) }}"
+      debug:
+        msg: "{{ host.name }} failed | {{ task.name }} ({{ task.path }}:{{ task.lineno }})"
+      loop: "{{ failed.results }}"
+
+    - name: Get the currently running playbook
+      ara_playbook:
+      register: query
+
+    - name: Retrieve playbook id
+      set_fact:
+        playbook_id: "{{ query.playbook.id | string }}"
+
+    # With the playbook id we can create a link to the playbook report
+    - name: Recover base url from ara
+      set_fact:
+        api_base_url: "{{ lookup('ara_api', '/api/') }}"
+
+    - name: Print link to playbook report
+      vars:
+        ui_base_url: "{{ api_base_url.api[0] | regex_replace('/api/v1/', '') }}"
+      debug:
+        msg: "{{ ui_base_url }}/playbooks/{{ playbook_id }}.html"
