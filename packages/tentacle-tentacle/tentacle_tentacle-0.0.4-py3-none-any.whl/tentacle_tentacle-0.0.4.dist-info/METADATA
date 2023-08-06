@@ -1,0 +1,37 @@
+Metadata-Version: 2.1
+Name: tentacle-tentacle
+Version: 0.0.4
+Summary: Manage sensors and measurements
+Home-page: https://willipink.eu/git/tentacle
+Author: Münch Willert
+Author-email: moritzmuench@mailbox.org
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+
+Tentacle is a framework for the Raspberry Pi to facilitate the setup, logging and monitoring of arbitrary sensors. The main objective is to come up with a design that makes the first steps in the world of electronics and computer science a lot easier.
+
+* [Setup](doc/setup.md)
+* [List of supported sensors](doc/sensors.md)
+* [Documentation](doc/README.md)
+
+
+## Motivation
+There are many guides on how to do everything with any sensor you can hook up to the pi. Yet it still can get frustrating quite fast to do it yourself without committing nightshifts to learn about how to wire it up, write a little python program and of course how to enable the mighty gpio ports or the i2c bus on your Pi.
+
+Some ideas simply get delayed or even paused during their development due to such time consuming sidequests. The first Pi was launched early in 2012 so why is measuring and monitoring still kind of a hassle? One answer is because the knowledge required to do it yourself is saved in form of tutorials, videos, forum discussions and much more. This is not satisfying when the main objective is to get the sensors working to actually do something with them.
+
+## Concept
+1. Simple plug and play setup of the hard- and software. The goal is to be able to directly use the kit without prior programming or setup of the pi computer.
+2. Start to customize the basic setup by using triggers in your own scripts.
+3. Start to write your own sensor-libs, trigger-mechanism and much more.
+
+Authors: Moritz Münch and Thorben Willert
+
+Written with `<3` and python. License: GNU GPLv3
+
+
