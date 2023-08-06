@@ -1,0 +1,388 @@
+Metadata-Version: 2.1
+Name: hstaxe
+Version: 0.6.0
+Summary: Spectral extraction tools for Hubble Space Telescope Grisms
+Home-page: https://github.com/spacetelescope/hstaxe
+Author: hstaxe and aXe developers
+License: 3-Clause BSD
+Description: Spectral extraction tools for Hubble Space Telescope Grisms ala aXe
+Platform: UNKNOWN
+Classifier: 
+
+Classifier: I
+Classifier: n
+Classifier: t
+Classifier: e
+Classifier: n
+Classifier: d
+Classifier: e
+Classifier: d
+Classifier:  
+Classifier: A
+Classifier: u
+Classifier: d
+Classifier: i
+Classifier: e
+Classifier: n
+Classifier: c
+Classifier: e
+Classifier:  
+Classifier: :
+Classifier: :
+Classifier:  
+Classifier: S
+Classifier: c
+Classifier: i
+Classifier: e
+Classifier: n
+Classifier: c
+Classifier: e
+Classifier: /
+Classifier: R
+Classifier: e
+Classifier: s
+Classifier: e
+Classifier: a
+Classifier: r
+Classifier: c
+Classifier: h
+Classifier: 
+
+Classifier: L
+Classifier: i
+Classifier: c
+Classifier: e
+Classifier: n
+Classifier: s
+Classifier: e
+Classifier:  
+Classifier: :
+Classifier: :
+Classifier:  
+Classifier: O
+Classifier: S
+Classifier: I
+Classifier:  
+Classifier: A
+Classifier: p
+Classifier: p
+Classifier: r
+Classifier: o
+Classifier: v
+Classifier: e
+Classifier: d
+Classifier:  
+Classifier: :
+Classifier: :
+Classifier:  
+Classifier: B
+Classifier: S
+Classifier: D
+Classifier:  
+Classifier: L
+Classifier: i
+Classifier: c
+Classifier: e
+Classifier: n
+Classifier: s
+Classifier: e
+Classifier: 
+
+Classifier: D
+Classifier: e
+Classifier: v
+Classifier: e
+Classifier: l
+Classifier: o
+Classifier: p
+Classifier: m
+Classifier: e
+Classifier: n
+Classifier: t
+Classifier:  
+Classifier: S
+Classifier: t
+Classifier: a
+Classifier: t
+Classifier: u
+Classifier: s
+Classifier:  
+Classifier: :
+Classifier: :
+Classifier:  
+Classifier: 4
+Classifier:  
+Classifier: -
+Classifier:  
+Classifier: B
+Classifier: e
+Classifier: t
+Classifier: a
+Classifier: 
+
+Classifier: P
+Classifier: r
+Classifier: o
+Classifier: g
+Classifier: r
+Classifier: a
+Classifier: m
+Classifier: m
+Classifier: i
+Classifier: n
+Classifier: g
+Classifier:  
+Classifier: L
+Classifier: a
+Classifier: n
+Classifier: g
+Classifier: u
+Classifier: a
+Classifier: g
+Classifier: e
+Classifier:  
+Classifier: :
+Classifier: :
+Classifier:  
+Classifier: P
+Classifier: y
+Classifier: t
+Classifier: h
+Classifier: o
+Classifier: n
+Classifier: 
+
+Classifier: P
+Classifier: r
+Classifier: o
+Classifier: g
+Classifier: r
+Classifier: a
+Classifier: m
+Classifier: m
+Classifier: i
+Classifier: n
+Classifier: g
+Classifier:  
+Classifier: L
+Classifier: a
+Classifier: n
+Classifier: g
+Classifier: u
+Classifier: a
+Classifier: g
+Classifier: e
+Classifier:  
+Classifier: :
+Classifier: :
+Classifier:  
+Classifier: C
+Classifier: 
+
+Classifier: P
+Classifier: r
+Classifier: o
+Classifier: g
+Classifier: r
+Classifier: a
+Classifier: m
+Classifier: m
+Classifier: i
+Classifier: n
+Classifier: g
+Classifier:  
+Classifier: L
+Classifier: a
+Classifier: n
+Classifier: g
+Classifier: u
+Classifier: a
+Classifier: g
+Classifier: e
+Classifier:  
+Classifier: :
+Classifier: :
+Classifier:  
+Classifier: P
+Classifier: y
+Classifier: t
+Classifier: h
+Classifier: o
+Classifier: n
+Classifier:  
+Classifier: :
+Classifier: :
+Classifier:  
+Classifier: 3
+Classifier: 
+
+Classifier: P
+Classifier: r
+Classifier: o
+Classifier: g
+Classifier: r
+Classifier: a
+Classifier: m
+Classifier: m
+Classifier: i
+Classifier: n
+Classifier: g
+Classifier:  
+Classifier: L
+Classifier: a
+Classifier: n
+Classifier: g
+Classifier: u
+Classifier: a
+Classifier: g
+Classifier: e
+Classifier:  
+Classifier: :
+Classifier: :
+Classifier:  
+Classifier: P
+Classifier: y
+Classifier: t
+Classifier: h
+Classifier: o
+Classifier: n
+Classifier:  
+Classifier: :
+Classifier: :
+Classifier:  
+Classifier: I
+Classifier: m
+Classifier: p
+Classifier: l
+Classifier: e
+Classifier: m
+Classifier: e
+Classifier: n
+Classifier: t
+Classifier: a
+Classifier: t
+Classifier: i
+Classifier: o
+Classifier: n
+Classifier:  
+Classifier: :
+Classifier: :
+Classifier:  
+Classifier: C
+Classifier: P
+Classifier: y
+Classifier: t
+Classifier: h
+Classifier: o
+Classifier: n
+Classifier: 
+
+Classifier: T
+Classifier: o
+Classifier: p
+Classifier: i
+Classifier: c
+Classifier:  
+Classifier: :
+Classifier: :
+Classifier:  
+Classifier: S
+Classifier: c
+Classifier: i
+Classifier: e
+Classifier: n
+Classifier: t
+Classifier: i
+Classifier: f
+Classifier: i
+Classifier: c
+Classifier: /
+Classifier: E
+Classifier: n
+Classifier: g
+Classifier: i
+Classifier: n
+Classifier: e
+Classifier: e
+Classifier: r
+Classifier: i
+Classifier: n
+Classifier: g
+Classifier:  
+Classifier: :
+Classifier: :
+Classifier:  
+Classifier: A
+Classifier: s
+Classifier: t
+Classifier: r
+Classifier: o
+Classifier: n
+Classifier: o
+Classifier: m
+Classifier: y
+Classifier: 
+
+Classifier: T
+Classifier: o
+Classifier: p
+Classifier: i
+Classifier: c
+Classifier:  
+Classifier: :
+Classifier: :
+Classifier:  
+Classifier: S
+Classifier: o
+Classifier: f
+Classifier: t
+Classifier: w
+Classifier: a
+Classifier: r
+Classifier: e
+Classifier:  
+Classifier: D
+Classifier: e
+Classifier: v
+Classifier: e
+Classifier: l
+Classifier: o
+Classifier: p
+Classifier: m
+Classifier: e
+Classifier: n
+Classifier: t
+Classifier:  
+Classifier: :
+Classifier: :
+Classifier:  
+Classifier: L
+Classifier: i
+Classifier: b
+Classifier: r
+Classifier: a
+Classifier: r
+Classifier: i
+Classifier: e
+Classifier: s
+Classifier:  
+Classifier: :
+Classifier: :
+Classifier:  
+Classifier: P
+Classifier: y
+Classifier: t
+Classifier: h
+Classifier: o
+Classifier: n
+Classifier:  
+Classifier: M
+Classifier: o
+Classifier: d
+Classifier: u
+Classifier: l
+Classifier: e
+Classifier: s
+Provides: hstaxe
+Provides-Extra: docs
+Provides-Extra: tests

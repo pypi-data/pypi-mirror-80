@@ -1,0 +1,17 @@
+numpy
+astropy
+cfitsio
+gsl
+stwcs
+stsci.imagestats
+drizzlepac
+drizzle
+wcstools
+
+[docs]
+sphinx
+sphinx-automodapi
+sphinx_rtd_theme
+
+[tests]
+pytest
