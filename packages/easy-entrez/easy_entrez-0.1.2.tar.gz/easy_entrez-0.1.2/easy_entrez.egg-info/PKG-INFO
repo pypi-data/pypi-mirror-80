@@ -1,0 +1,65 @@
+Metadata-Version: 1.1
+Name: easy-entrez
+Version: 0.1.2
+Summary: Python REST API for Entrez E-Utilities: stateless, easy to use, reliable.
+Home-page: https://github.com/krassowski/easy-entrez
+Author: Michal Krassowski
+Author-email: krassowski.michal+pypi@gmail.com
+License: MIT
+Description: easy-entrez
+        ===========
+        
+        **Goal:** Create Python REST API for Entrez E-Utilities, which will be
+        easy to use and reliable, but limited in scope (no stateful/history
+        queries).
+        
+        **Stats:** Beta
+        
+        .. code:: python
+        
+           from easy_entrez import EntrezAPI
+        
+           entrez_api = EntrezAPI(
+               'your-tool-name',
+               'e@mail.com',
+               # optional
+               return_type='json'
+           )
+        
+           # find up to 10 000 results for cancer in human
+           result = entrez_api.search('cancer AND human[organism]', max_results=10_000)
+        
+           # data will be populated with JSON or XML (depending on the `return_type` value)
+           result.data
+        
+        See more in the `Demo notebook <./Demo.ipynb>`__.
+        
+        Installation
+        ~~~~~~~~~~~~
+        
+        Requires Python 3.6+. Install with:
+        
+        .. code:: bash
+        
+           pip install easy-entrez
+        
+        Alternatives:
+        ~~~~~~~~~~~~~
+        
+        -  `biopython.Entrez <https://biopython.org/docs/1.74/api/Bio.Entrez.html>`__
+        -  entrezpy
+        
+Keywords: entrez,pubmed,e-utilities,ncbi,rest,api
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Topic :: Utilities
+Classifier: Topic :: Scientific/Engineering :: Bio-Informatics
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Science/Research
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
