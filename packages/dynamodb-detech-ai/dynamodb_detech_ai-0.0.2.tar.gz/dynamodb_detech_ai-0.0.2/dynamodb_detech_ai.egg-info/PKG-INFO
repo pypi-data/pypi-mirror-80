@@ -1,0 +1,67 @@
+Metadata-Version: 2.1
+Name: dynamodb-detech-ai
+Version: 0.0.2
+Summary: DynamoDB utils
+Home-page: https://github.com/detech-ai/Data_Pipelines
+Author: Example Author
+Author-email: j.velez2210@gmail.com
+License: UNKNOWN
+Description: # DynamoDB Package for detech.ai
+        
+        This is a simple package to access Dynamodb.
+        
+        # Imports
+        import detech_query_pkg
+        
+        from detech_query_pkg import dynamodb
+        
+        from detech_query_pkg.utils import dynamodb_utils
+        
+        # Functions
+        ## dynamodb
+        def insert_alert(alert_id, metric_id, org_id, app_id, team_id, assigned_to, start_time, end_time, alert_description, is_acknowledged, anomalies_dict, related_prev_anomalies,  service_graph, significance_score, dynamodb)
+        
+        def get_alert_item_by_key(anom_id, dynamodb)
+        
+        def update_alert_with_related_anomalies(alert_id,start_time, corr_anoms_dict, related_prev_anomalies, dynamodb)
+        
+        def terminate_alert(alert_id,start_time, end_timestamp, dynamodb)
+        
+        def create_metric(metric_id, date_bucket, anom_alarm_id, metric_name, provider, namespace, agent, org_id, app_id, alignment, groupby, first, last, data_points_list, dynamodb)
+        
+        def get_metric_item_by_key(metric_id, curr_date, dynamodb)
+        
+        def scan_metrics_by_encrypted_id(anom_alarm_id, dynamodb)
+        
+        def query_alerts_configs_by_key(metric_id, dynamodb)
+        
+        def insert_alert_config(metric_id, alert_title, severity, alert_type, alert_direction, description, duration, duration_unit, rule_dict, recipients_list, owner_dict, dynamodb)
+        
+        def query_most_recent_metric_fetching_log(component_id, dynamodb)
+        
+        ## dynamodb_utils
+        def put_item(item_dict, table_name, dynamodb)
+        
+        def get_item(key_dict, table_name, dynamodb)
+        
+        def update_item(key_dict, update_expression, expression_attr_values, table_name, dynamodb)
+        
+        def update_item_conditionally(key_dict, condition_expression, update_expression, expression_attr_values, table_name, dynamodb)
+        
+        def delete_item_conditionally(key_dict, condition_expression, expression_attr_values, table_name, dynamodb)
+        
+        def query_by_key(key_condition, table_name, dynamodb)
+        
+        def query_and_project_by_key_condition(projection_expr, expr_attr_names, key_condition, table_name, dynamodb)
+        
+        def scan_table(scan_kwargs, table_name, dynamodb)
+        
+        def query_by_key_min_max(key_condition, table_name, is_min, dynamodb)
+        
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
