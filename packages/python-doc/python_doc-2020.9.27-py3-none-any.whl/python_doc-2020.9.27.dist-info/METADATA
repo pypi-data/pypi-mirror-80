@@ -1,0 +1,32 @@
+Metadata-Version: 2.1
+Name: python-doc
+Version: 2020.9.27
+Summary: Opens the documentation for the given Python with the default browser.
+Home-page: https://github.com/vinayak-mehta/python-doc
+Author: Vinayak Mehta
+Author-email: vmehta94@gmail.com
+License: Apache 2.0
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Description-Content-Type: text/markdown
+Requires-Dist: Click (>=7.0)
+Provides-Extra: dev
+Requires-Dist: Click (>=7.0) ; extra == 'dev'
+Requires-Dist: Sphinx (>=2.2.1) ; extra == 'dev'
+
+# python-doc
+
+Opens the documentation for the given Python with the default browser.
+
+## Versioning
+
+`python-doc` uses [Calendar Versioning](https://calver.org/). For the available versions, see the tags on the GitHub repository.
+
+## License
+
+This project is licensed under the Apache License, see the [LICENSE](https://github.com/vinayak-mehta/python-doc/blob/master/LICENSE) file for details.
+
+
