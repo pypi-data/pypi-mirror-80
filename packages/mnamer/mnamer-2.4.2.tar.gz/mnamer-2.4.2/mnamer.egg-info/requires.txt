@@ -1,0 +1,9 @@
+appdirs==1.*
+babelfish==0.5.*
+guessit==3.1.*
+requests_cache>=0.5
+requests==2.*
+teletype>=1.0
+
+[:python_version < "3.7"]
+dataclasses
