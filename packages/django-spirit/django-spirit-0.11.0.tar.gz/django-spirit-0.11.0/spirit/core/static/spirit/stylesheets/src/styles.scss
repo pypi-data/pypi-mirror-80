@@ -1,0 +1,11 @@
+//modules
+@import "modules/colors";
+
+//elements
+@import "elements/fonts";
+@import "elements/global";
+
+// namespace
+.spirit {
+  @import "base";
+}
