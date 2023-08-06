@@ -1,0 +1,103 @@
+Metadata-Version: 2.1
+Name: traits_futures
+Version: 0.2.0
+Summary: Patterns for reactive background tasks
+Home-page: https://github.com/enthought/traits-futures
+Author: Enthought
+Author-email: info@enthought.com
+License: BSD
+Description: ..
+           (C) Copyright 2018-2020 Enthought, Inc., Austin, TX
+           All rights reserved.
+        
+           This software is provided without warranty under the terms of the BSD
+           license included in LICENSE.txt and may be redistributed only under
+           the conditions described in the aforementioned license. The license
+           is also available online at http://www.enthought.com/licenses/BSD.txt
+        
+           Thanks for using Enthought open source!
+        
+        Traits Futures
+        --------------
+        
+        The **traits_futures** package demonstrates robust design patterns for reactive
+        background jobs triggered from a TraitsUI application.
+        
+        Motivating example
+        ------------------
+        A customer has asked you to wrap their black-box optimization code in a GUI.
+        
+        You build a simple TraitsUI GUI that allows the user to set inputs and options
+        and then press the big green "Calculate" button. The requirements look
+        something like this:
+        
+        - The UI should remain usable and responsive while the background calculation
+          is running.
+        - The UI should update (e.g., show a plot, or show results) in response to the
+          background calculation completing normally.
+        - The background calculation should be cancellable.
+        - The UI should react appropriately if the background calculation raises an
+          exception.
+        
+        And there are some further ease-of-development requirements:
+        
+        - As far as possible, the UI developer shouldn't have to think about managing
+          the background threads or re-dispatching incoming information from the
+          background task(s). The UI developer should be able to simply listen to and
+          react to suitable traits for information coming in from the background task.
+        - It should be possible to switch between using background threads and
+          background process (and possibly also coroutines) with minimal effort.
+        
+        Getting started
+        ---------------
+        The ``ci`` helper package in the source repository aids in setting up a
+        development environment and running tests and examples. It requires EDM, along
+        with a Python bootstrap environment equipped with ``click`` and ``setuptools``.
+        
+        To create a development environment, run::
+        
+            python -m ci build
+        
+        from the top-level of the repository, within the Python bootstrap environment.
+        
+        To run tests for the traits_futures EDM environment, do::
+        
+            python -m ci test
+        
+        To run tests under coverage::
+        
+            python -m ci coverage
+        
+        To run a style check::
+        
+            python -m ci flake8
+        
+        To build the documentation::
+        
+            python -m ci doc
+        
+        The example scripts can be run with::
+        
+            python -m ci example <example-name>
+        
+        Run ``python -m ci example`` to see the list of available examples.
+        
+        All of the above commands take two options. The ``--python-version`` option
+        lets you specify the Python version to use for the development environment. The
+        ``--toolkit`` option allows you to specify a GUI backend. Run ``python -m ci
+        <command> --help`` for more information on any of these commands.
+        
+Keywords: background concurrency futures gui traits traitsui
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Requires-Python: >=3.5
+Description-Content-Type: text/x-rst
