@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "pytsmod"
+version = "0.3.0"
+description = "An open-source Python library for audio time-scale modification."
+authors = ["Sangeon Yong <koragon2@kaist.ac.kr>"]
+
+license = "GPL-3.0"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.6"
+numpy = "^1.16.0"
+scipy = "^1.0.0"
+soundfile = "^0.10.0"
+librosa = "^0.8"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+flake8 = "^3.8.3"
+
+[tool.poetry.scripts]
+tsmod = 'pytsmod.console:run'
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
