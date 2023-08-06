@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "dht22-to-gbq"
+version = "0.1.1"
+description = "Requests data from a DHT22 sensor and inserts it into Google BigQuery."
+authors = ["Jan-Benedikt Jagusch <jan.jagusch@gmail.com>"]
+license = "MIT"
+packages = [
+	{include = "dht_to_gbq"}
+]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+google-cloud-bigquery = "^1.28.0"
+adafruit-dht-fixed = "^1.4.2"
+
+[tool.poetry.dev-dependencies]
+black = "^20.8b1"
+pylint = "^2.6.0"
+
+[tool.poetry.scripts]
+dht_to_gbq = "dht_to_gbq.__init__:main"
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
+

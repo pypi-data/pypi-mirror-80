@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: dht22-to-gbq
+Version: 0.1.1
+Summary: Requests data from a DHT22 sensor and inserts it into Google BigQuery.
+License: MIT
+Author: Jan-Benedikt Jagusch
+Author-email: jan.jagusch@gmail.com
+Requires-Python: >=3.7,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: adafruit-dht-fixed (>=1.4.2,<2.0.0)
+Requires-Dist: google-cloud-bigquery (>=1.28.0,<2.0.0)
