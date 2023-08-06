@@ -1,0 +1,66 @@
+"""This module contains script entrypoints for nukeddit.
+"""
+import argparse
+import yaml
+import os
+import pkg_resources
+from appdirs import user_config_dir
+from nukeddit import default_config, __version__
+from nukeddit.shredder import Shredder
+
+def main():
+    parser = argparse.ArgumentParser(description="Command-line frontend to the nukeddit library.")
+    parser.add_argument("-c", "--config", help="Config file to use instead of the default nukeddit.yml")
+    parser.add_argument("-g", "--generate-configs", help="Write nukeddit and praw config files to current directory.",
+                        action="store_true")
+    parser.add_argument("-u", "--user", help="User section from praw.ini if not default", default="default")
+    parser.add_argument("-n", "--nuke", help="Nuke your account.",
+                        action="store_true")
+    parser.add_argument("-v", "--version", help="Nukeddit version.",
+                        action="store_true")
+    args = parser.parse_args()
+
+    if args.version:
+        print(__version__)
+    elif args.generate_configs:
+        if not os.path.isfile("nukeddit.yml"):
+            print("Writing nukeddit.yml file...")
+            with open("nukeddit.yml", "wb") as fout:
+                fout.write(pkg_resources.resource_string("nukeddit", "nukeddit.yml.example"))
+        if not os.path.isfile("praw.ini"):
+            print("Writing praw.ini file...")
+            with open("praw.ini", "wb") as fout:
+                fout.write(pkg_resources.resource_string("nukeddit", "praw.ini.example"))
+        return
+    elif args.nuke:
+        config_dir = user_config_dir("nukeddit/nukeddit.yml")
+        if args.config:
+            config_filename = args.config
+        elif os.path.exists(config_dir):
+            config_filename = config_dir
+        else:
+            config_filename = "nukeddit.yml"
+        if not os.path.isfile(config_filename):
+            print("No nukeddit configuration file was found or provided. Run this script with -g to generate one.")
+            return
+        with open(config_filename) as fh:
+            # Not doing a simple update() here because it's preferable to only set attributes that are "whitelisted" as
+            # configuration options in the form of default values.
+            user_config = yaml.safe_load(fh)
+            for option in default_config:
+                if option in user_config:
+                    default_config[option] = user_config[option]
+        shredder = Shredder(default_config, args.user)
+        shredder.shred()
+    else:
+        print("MISSING ARGUMENT!")
+        parser.print_help()
+        return
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except KeyboardInterrupt:
+        print("Nukeddit aborted by user")
+        quit()
