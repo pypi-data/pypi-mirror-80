@@ -1,0 +1,41 @@
+Metadata-Version: 2.1
+Name: mirai-translate
+Version: 0.1.2
+Summary: Unofficial Mirai Translate API for Python
+Home-page: https://github.com/reiyw/mirai-translate
+Author: reiyw
+Author-email: reiyw.setuve@gmail.com
+Requires-Python: >=3.7,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: beautifulsoup4 (>=4.9.1,<5.0.0)
+Requires-Dist: httpx (>=0.13.2,<0.14.0)
+Project-URL: Repository, https://github.com/reiyw/mirai-translate
+Description-Content-Type: text/markdown
+
+# mirai-translate
+
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/mirai-translate)
+![PyPI](https://img.shields.io/pypi/v/mirai-translate)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/reiyw/mirai-translate/Tests)
+
+mirai-translate is an unofficial [Mirai Translate](https://miraitranslate.com/en/) API for Python.
+
+```
+pip install mirai-translate
+```
+
+```python
+>>> from mirai_translate import Client
+>>> cli = Client()
+>>> cli.translate('テスト', 'ja', 'en')
+'Test'
+```
+
+## Disclaimer
+
+mirai-translate simply accesses [Translation Demo](https://miraitranslate.com/en/trial/) and requests to the behind API server.
+I believe there is no illegality in using this library.
+However, you might want to read the [Terms of Use for Mirai Translate](https://miraitranslate.com/en/trial/pdf/kiyaku.pdf).
+
