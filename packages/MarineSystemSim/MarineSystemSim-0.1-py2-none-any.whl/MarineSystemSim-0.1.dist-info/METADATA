@@ -1,0 +1,15 @@
+Metadata-Version: 2.0
+Name: MarineSystemSim
+Version: 0.1
+Summary: Python package for Marine Systems Simulation (e.g., models for marine vessels)
+Home-page: http://www.github.com/rgmaidana/python-mss
+Author: Renan Maidana
+Author-email: renan.g.maidana@ntnu.no
+License: MIT
+Platform: UNKNOWN
+Requires-Dist: numpy
+Requires-Dist: scipy
+
+UNKNOWN
+
+
