@@ -1,0 +1,1 @@
+This is a simple binary convertor library for non nested python data structures, that takes one argument and provide the correpsonding binary output
