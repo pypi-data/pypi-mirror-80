@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: geok
+Version: 0.1.0
+Summary: pydantic validation for Esri geometries.
+License: MIT
+Author: Samuel Cook
+Author-email: scook@esri.com
+Requires-Python: >=3.7,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: arcgis (>=1.8.2,<2.0.0)
+Requires-Dist: pydantic (>=1.6.1,<2.0.0)
