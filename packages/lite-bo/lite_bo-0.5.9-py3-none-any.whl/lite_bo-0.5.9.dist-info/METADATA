@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: lite-bo
+Version: 0.5.9
+Summary: UNKNOWN
+Home-page: UNKNOWN
+Author: ThomasYoung
+License: UNKNOWN
+Platform: UNKNOWN
+Requires-Python: >=3.5.2
+Requires-Dist: dill
+Requires-Dist: cython
+Requires-Dist: psutil
+Requires-Dist: pyrfr (>=0.5.0)
+Requires-Dist: setuptools
+Requires-Dist: numpy (>=1.7.1)
+Requires-Dist: scipy (>=0.18.1)
+Requires-Dist: ConfigSpace (<0.5,>=0.4.6)
+Requires-Dist: scikit-learn (==0.21.3)
+
+UNKNOWN
+
+
