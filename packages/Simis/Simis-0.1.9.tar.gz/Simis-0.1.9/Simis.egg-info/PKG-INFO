@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: Simis
+Version: 0.1.9
+Summary: A package for communicating with the Ashes wind turbine simulation software in order to run custom simulation code.
+Home-page: https://www.simis.io
+Author: Simis AS
+Author-email: support@simis.io
+License: UNKNOWN
+Description: # Simis v0.0.3
+        
+        This package allows to modify the model (e.g. applying loads) within a time simulation in our software Ashes (Aero-Servo-Hydro-Elastic-Simulation) using custom Python code.
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: Other/Proprietary License
+Classifier: Operating System :: Microsoft :: Windows
+Description-Content-Type: text/markdown
