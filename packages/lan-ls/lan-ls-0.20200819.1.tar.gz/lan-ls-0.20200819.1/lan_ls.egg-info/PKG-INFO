@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: lan-ls
+Version: 0.20200819.1
+Summary: List devices on your LAN
+Home-page: https://github.com/davidvilla/lan-ls
+Author: David Villa Alises
+Author-email: David.Villa@gmail.com
+License: GPL v2 or later
+Description: Discover LAN neighbors.
+        
+        * code repository: https://github.com/davidvilla/lanscan
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Description-Content-Type: text/markdown
