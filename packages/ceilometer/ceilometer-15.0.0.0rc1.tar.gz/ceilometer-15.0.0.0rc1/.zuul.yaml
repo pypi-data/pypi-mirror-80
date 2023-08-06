@@ -1,0 +1,65 @@
+- job:
+    name: grenade-ceilometer
+    parent: grenade
+    required-projects:
+      - opendev.org/openstack/grenade
+      - opendev.org/openstack/ceilometer
+    vars:
+      grenade_devstack_localrc:
+        shared:
+          CEILOMETER_BACKEND: none
+      devstack_plugins:
+        ceilometer: https://opendev.org/openstack/ceilometer
+      devstack_services:
+        ceilometer-acompute: true
+        ceilometer-acentral: true
+        ceilometer-aipmi: true
+        ceilometer-anotification: true
+    irrelevant-files: &ceilometer-irrelevant-files
+      - ^(test-|)requirements.txt$
+      - ^setup.cfg$
+      - ^doc/.*$
+      - ^.*\.rst$
+      - ^releasenotes/.*$
+      - ^ceilometer/tests/.*$
+
+- project:
+    templates:
+      - openstack-cover-jobs
+      - openstack-python3-victoria-jobs
+      - publish-openstack-docs-pti
+      - periodic-stable-jobs
+      - release-notes-jobs-python3
+      - openstack-lower-constraints-jobs
+    check:
+      jobs:
+        - grenade-ceilometer
+        - telemetry-dsvm-integration:
+            irrelevant-files: *ceilometer-irrelevant-files
+        - telemetry-dsvm-integration-ipv6-only:
+            irrelevant-files: *ceilometer-irrelevant-files
+    gate:
+      queue: telemetry
+      jobs:
+        - grenade-ceilometer
+        - telemetry-dsvm-integration:
+            irrelevant-files: *ceilometer-irrelevant-files
+        - telemetry-dsvm-integration-ipv6-only:
+            irrelevant-files: *ceilometer-irrelevant-files
+    experimental:
+      jobs:
+        # TripleO jobs that deploy Telemetry.
+        # Note we don't use a project-template here, so it's easier
+        # to disable voting on one specific job if things go wrong.
+        # tripleo-ci-centos-7-scenario00(1|2)-multinode-oooq will only
+        # run on stable/pike while the -container will run in Queens
+        # and beyond.
+        # If you need any support to debug these jobs in case of
+        # failures, please reach us on #tripleo IRC channel.
+        # NOTE(sileht): These job takes 3 hours and fail most of the times.
+        # While other jobs take 20-30 minutes
+        # We can reenable it when they take less times.
+        - tripleo-ci-centos-7-scenario001-multinode-oooq
+        - tripleo-ci-centos-7-scenario001-standalone
+        - tripleo-ci-centos-7-scenario002-multinode-oooq
+        - tripleo-ci-centos-7-scenario002-standalone
