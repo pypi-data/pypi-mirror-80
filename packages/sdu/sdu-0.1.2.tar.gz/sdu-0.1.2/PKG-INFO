@@ -1,0 +1,146 @@
+Metadata-Version: 2.1
+Name: sdu
+Version: 0.1.2
+Summary: A set of utilites to make developing scripts simpler and easier
+Home-page: https://github.com/Descent098/sdu
+Author: Kieran Wood
+Author-email: kieran@canadiancoding.ca
+License: UNKNOWN
+Description: ![sdu logo](https://raw.githubusercontent.com/Descent098/sdu/master/sdu.png)
+        
+        [![DeepSource](https://deepsource.io/gh/Descent098/sdu.svg/?label=active+issues&show_trend=true)](https://deepsource.io/gh/Descent098/sdu/?ref=repository-badge)
+        
+        # Script Development Utilities
+        
+        A set of utilities to make developing scripts simpler and easier
+        
+        ## Table of contents
+        - [Goals](#goals)
+        - [Installation](#installation)
+            - [From PyPi](#from-pypi)
+            - [From source](#from-source)
+        - [Usage & Documentation](#usage--documentation)
+        - [Modules](#modules)
+          - [autocomplete](#autocomplete)
+          - [cli](#cli)
+          - [paths](#paths)
+          - [type_conversions](#type_conversions)
+          - [validation](#validation)
+        - [Contributing](#contributing)
+        
+        ## Goals
+        
+        There are several goals with this project:
+        
+        1. Provide a useful API for well developed functions with error catching and testing for commonly annoying situations
+        
+        2. Provide cross-platform implementations of functions (where possible)
+        
+        3. Give people access to source code to learn how the functions work and just pull what's needed
+        
+        4. Serve as a repository of general knowledge to share solutions to issues with people
+        
+        ## Installation
+        
+        ### From PyPi
+        
+        1. Run ```pip install sdu``` or ```sudo pip3 install sdu```
+        
+        ### From source
+        
+        1. Clone this repo: (put github/source code link here)
+        2. Run ```pip install .``` or ```sudo pip3 install .```in the root directory
+        
+        
+        
+        ## Usage & Documentation
+        
+        For usage please see the  API documentation ([https://kieranwood.ca/sdu](https://kieranwood.ca/sdu)).
+        
+        For details on how contributing to the project, please see [CONTRIBUTING.md](https://github.com/Descent098/sdu/blob/master/CONTRIBUTING.md), for details on upcoming changes see [our roadmap](https://github.com/Descent098/sdu/projects).
+        
+        For most recent changes see [CHANGELOG.md](https://github.com/Descent098/sdu/blob/master/CHANGELOG.md).
+        
+        ## Modules
+        
+        ### autocomplete
+        
+        This module is used to generate autocomplete files for bash
+        
+        
+        ### cli
+        
+        A module for helpful utilities with generating CLI's such as:
+        
+        
+        - Clearing the terminal
+        
+        ### paths
+        This module contains many useful utilities for dealing with system paths such as:
+        - A pre and post processing pipeline for system paths
+        - Ability to add paths to the PATH variable
+        
+        ### type_conversions
+        
+        Quick and common conversions between types with sensible options such as:
+        
+        - Converting a dictionary (and second dimension dictionary keys) to defaultdict(s)
+        
+        ### validation
+        
+        Contains a set of common validation schemes such as:
+        
+        - Validating number input is between a set value at the command line
+        
+        - Validate provided string is an accepted value
+        # Changelog
+        
+        ## V0.1.1; September 24th
+        
+        Fixing logo on pypi :)
+        
+        ### Bug fixes
+        
+        - Fixed logo 404 on PyPi 
+        
+        ## V0.1.0; September 24th
+        Focus was on adding more functionality, and modernizing the package setup.
+        
+        ### Features
+        - Added tests for ```paths```, ```type_conversions``` and ```validation```
+        - Removed ```type_conversion.stringify_list``` since functionality can be one-lined using ```str.join```
+        - Added ```type_conversion.dict_to_defaultdict```; Takes in a dictionary, and a default Callable then converts the dict to a defaultdict
+        - Changed From Apache V2 to MIT liscence
+        - Added ```paths.add_to_path``` for adding specified paths to system paths
+        - Added testing for ```sdu.paths```, ```sdu.validation```, ```sdu.autocomplete```, and ```sdu.type_conversions```
+        - Changed ```sdu.terminal``` to ```sdu.cli```
+        - Added ```sdu.autocomplete``` for generating bash autocomplete files
+        
+        ### Documentation Improvements
+        - Changed to second point releases (from 0.0.x to 0.x.0)
+        - Improved the index documentation to be more clear and concise of an overview
+        - Added bullet points to each package for a quick overview of what each module can be used for
+        - Overhauled readme to be more useful
+        
+        ### Bug Fixes
+        - Fixed some preprocessing bugs with windows in ```path.preprocess_paths()```
+        
+        ## V0.0.1; February 8th 2020
+        
+        Released existing code for the project, looking to properly implement in v0.1.0
+        
+        ### Features
+        
+        - Traversing directories in terminal and GUI
+        - Validating number selections
+        - Normalized serialization and de-serialization of paths
+        
+        ### Documentation improvements
+        
+        - Created documentation site
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Classifier: Development Status :: 4 - Beta
+Description-Content-Type: text/markdown
+Provides-Extra: dev
