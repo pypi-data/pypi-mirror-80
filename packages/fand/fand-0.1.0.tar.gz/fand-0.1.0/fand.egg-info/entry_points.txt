@@ -1,0 +1,5 @@
+[console_scripts]
+fanctl = fand.fanctl:main
+fand-clientrpi = fand.clientrpi:main
+fand-server = fand.server:main
+
