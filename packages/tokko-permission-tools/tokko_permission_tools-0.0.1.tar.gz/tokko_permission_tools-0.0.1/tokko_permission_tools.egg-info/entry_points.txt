@@ -1,0 +1,4 @@
+
+        [console_scripts]
+        tokky-permission=tokko_permission_tools.cli:main
+    
