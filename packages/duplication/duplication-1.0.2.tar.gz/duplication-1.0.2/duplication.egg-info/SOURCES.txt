@@ -1,0 +1,12 @@
+LICENSE
+MANIFEST.in
+README.md
+setup.py
+duplication/__init__.py
+duplication/minhash_duplication.py
+duplication/simhash_duplication.py
+duplication.egg-info/PKG-INFO
+duplication.egg-info/SOURCES.txt
+duplication.egg-info/dependency_links.txt
+duplication.egg-info/top_level.txt
+duplication/data/test.xlsx

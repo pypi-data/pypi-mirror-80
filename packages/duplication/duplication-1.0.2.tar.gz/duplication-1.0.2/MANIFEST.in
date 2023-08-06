@@ -1,0 +1,6 @@
+include LICENSE
+include ./duplication/data/*.xlsx
+include *.in
+include *.ini
+include *.rst
+include *.txt
