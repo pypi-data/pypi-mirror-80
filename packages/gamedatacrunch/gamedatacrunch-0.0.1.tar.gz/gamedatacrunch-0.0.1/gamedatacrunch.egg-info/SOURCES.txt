@@ -1,0 +1,16 @@
+README.md
+setup.cfg
+setup.py
+gamedatacrunch/__init__.py
+gamedatacrunch/download.py
+gamedatacrunch/load.py
+gamedatacrunch/utils.py
+gamedatacrunch.egg-info/PKG-INFO
+gamedatacrunch.egg-info/SOURCES.txt
+gamedatacrunch.egg-info/dependency_links.txt
+gamedatacrunch.egg-info/requires.txt
+gamedatacrunch.egg-info/top_level.txt
+gamedatacrunch/tests/__init__.py
+gamedatacrunch/tests/test_download.py
+gamedatacrunch/tests/test_load.py
+gamedatacrunch/tests/test_utils.py
