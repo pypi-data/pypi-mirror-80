@@ -1,0 +1,40 @@
+Metadata-Version: 2.1
+Name: signalfx-opentelemetry
+Version: 0.0.1
+Summary: SignalFx OpenTelemetry Python
+Home-page: https://github.com/signalfx/signalfx-otel-python
+Author: SignalFx
+Author-email: signalfx-oss@splunk.com,
+License: Apache-2.0
+Description: SignalFx OpenTelemetry Python
+        ============================================
+        
+        |pypi|
+        
+        .. |pypi| image:: https://badge.fury.io/py/signalfx-otel-python.svg
+           :target: https://pypi.org/project/signalfx-otel-python/
+        
+        Installation
+        ------------
+        
+        ::
+        
+            pip install signalfx-otel
+        
+        References
+        ----------
+        
+        * `OpenTelemetry Project <https://opentelemetry.io/>`_
+        
+Platform: any
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Python: >=3.5
+Description-Content-Type: text/x-rst

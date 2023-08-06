@@ -1,0 +1,4 @@
+opentelemetry-api>=0.13.b
+opentelemetry-sdk>=0.13b
+opentelemetry-instrumentation>=0.13b
+opentelemetry-exporter-zipkin>=0.13b
