@@ -1,0 +1,56 @@
+Metadata-Version: 2.1
+Name: storeweights
+Version: 1.0.1
+Summary: Storing PyTorch checkpoints in efficient way
+Home-page: https://github.com/apthagowda97/storeweights
+Author: Aptha K S
+Author-email: iamuraptha@gmail.com
+License: MIT
+Platform: UNKNOWN
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: numpy
+
+# storeweights
+Storing PyTorch checkpoints in efficient way.
+
+## Install
+`pip install storeweights`
+
+## Running
+
+`from storeweights import weights`
+
+
+```
+##PyTorch code ....
+model = TheModelClass()
+optimizer = optim.SGD(model.parameters(), lr=0.001, momentum=0.9)
+
+....
+```
+
+### Saving model (local)
+
+`weights.save('model_name',model,optimizer,extra_info={'epoch':40})`
+
+### Loading model (local)
+
+`weights.load('model_name',model,optimizer,return_extra_info=True)`
+
+### Saving model (gdrive colab)
+
+`weights.save('model_name',model,optimizer,extra_info={'epoch':40},gdrive=True)`
+
+### Loading model (gdrive colab)
+
+`weights.load('model_name',model,optimizer,return_extra_info=True,gdrive=True)`
+
+
+
+
+
