@@ -1,0 +1,13 @@
+Django>=2.2
+Pillow
+lxml
+beautifulsoup4
+requests
+weasyprint
+
+[dev]
+flake8
+coverage
+codecov
+bpython
+factory-boy
