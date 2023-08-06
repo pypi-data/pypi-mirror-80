@@ -1,0 +1,16 @@
+MANIFEST.in
+README.md
+setup.py
+seedoku/__init__.py
+seedoku/__main__.py
+seedoku/sudoku.py
+seedoku.egg-info/PKG-INFO
+seedoku.egg-info/SOURCES.txt
+seedoku.egg-info/dependency_links.txt
+seedoku.egg-info/entry_points.txt
+seedoku.egg-info/requires.txt
+seedoku.egg-info/top_level.txt
+seedoku/trackers/anchors.csv
+seedoku/trackers/hand_tracker.py
+seedoku/trackers/non_maximum_suppression.py
+seedoku/trackers/palm_detection_without_custom_op.tflite
