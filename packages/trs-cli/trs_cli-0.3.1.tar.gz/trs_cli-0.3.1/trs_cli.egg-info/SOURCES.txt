@@ -1,0 +1,12 @@
+MANIFEST.in
+README.md
+setup.cfg
+setup.py
+trs_cli/__init__.py
+trs_cli/client.py
+trs_cli/errors.py
+trs_cli/models.py
+trs_cli.egg-info/PKG-INFO
+trs_cli.egg-info/SOURCES.txt
+trs_cli.egg-info/dependency_links.txt
+trs_cli.egg-info/top_level.txt
