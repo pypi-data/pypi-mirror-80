@@ -1,0 +1,99 @@
+Metadata-Version: 2.1
+Name: pycreator
+Version: 0.2.1
+Summary: Automatically create a command application
+Home-page: https://github.com/NexSabre/pycreator
+Author: Nex Sabre
+Author-email: nexsabre@protonmail.com
+License: UNKNOWN
+Description: # pycreator
+        Create boilerplate application thru the command-line!
+        
+        ## TLDR; 
+        ```
+        pip install pycreator       # to install pycreator
+        pycreator goes brrr         # where brr is the name
+        ```
+        
+        ## Usage
+        
+        ### create
+        This command allow to create a Python boilerplate application with the structure as showed below.
+        Available commands for `create`:
+        ```
+        -n, --name      -- application name (required)
+        -l, --location  -- location to create a new package. If none it will create at working directory
+        ```
+        
+        Structure of example application named `brrr` (`pycreator create -n brrr`)
+        ```
+        brrr
+        â”‚   LICENSE.md
+        â”‚   README.md
+        â”‚   VERSION
+        â”‚
+        â””â”€â”€â”€src
+            â””â”€â”€â”€brrr
+                â”‚   setup.py
+                â”‚   __init__.py
+                â”‚
+                â”śâ”€â”€â”€actions
+                â”‚   â”‚   action.py
+                â”‚   â”‚   action_dispatcher.py
+                â”‚   â”‚   version.py
+                â”‚   â”‚   __init__.py
+                â”‚   â”‚
+                â”‚   â””â”€â”€â”€example_action
+                â”‚           example_action.py
+                â”‚           __init__.py
+                â”‚
+                â”śâ”€â”€â”€core
+                â”‚       __init__.py
+                â”‚
+                â”śâ”€â”€â”€framework
+                â”‚       messages.py
+                â”‚       __init__.py
+                â”‚
+                â””â”€â”€â”€main
+                        main.py
+                        __init__.py
+        ```
+        
+        ### add 
+        _Note:_ This is experimental function and it does not work always correct
+        
+        The `add` function allow to add a new action into `actions` directory. 
+        To use it please be at `brrr` directory under `src` (please see an example above) and the type: 
+        ```
+        pycreator add -n action_name
+        ```
+        New folder `action_name` and `action_name.py` will be created. 
+        
+        _Note:_ Please import a new action in `actions_dispatcher.py` file manually.
+        
+        New action should be added here, into `ACTION_HANDLERS`
+        ```
+        class ActionDispatcher:
+            ACTION_HANDLERS = [AddAction,
+                               CreateAction,
+                               GoesAction,
+                               ShowVersion]
+                               
+        ```
+        
+        ## Build
+        Boilerplate app comes with preconfigured `setup.py` file which allow to create a `.whl` package.
+        To build a package, go to `src` dir a type in the terminal:
+        ```
+        pip install setuptools wheel
+        python setup.py sdist bdist_wheel
+        ```
+        After operation in the newly created dir `dist/` you should find a `*.tar.gz` & `*.whl` packages.
+        
+        
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
