@@ -1,0 +1,13 @@
+filelock
+google-api-core
+google-auth
+google-cloud-datastore
+google-api-python-client
+google-cloud-pubsub
+google-cloud-storage
+google-cloud-core
+psq
+six
+urllib3[secure]
+google-auth
+httplib2==0.17.4
