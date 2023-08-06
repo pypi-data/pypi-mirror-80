@@ -1,0 +1,9 @@
+bitstruct
+wheel
+
+[Codec2]
+Cython
+numpy
+soundcard
+samplerate
+pycodec2
