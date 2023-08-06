@@ -1,0 +1,5 @@
+Django<4.0,>=1.11
+django-mustache
+djangorestframework<3.12,>=3.8.0
+html-json-forms
+natural-keys>=1.6.0
