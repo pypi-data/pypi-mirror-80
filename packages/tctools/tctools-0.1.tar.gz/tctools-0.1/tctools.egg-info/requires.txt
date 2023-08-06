@@ -1,0 +1,4 @@
+pymysql
+pika
+redis==2.10.6
+redis-py-cluster==1.3.6
