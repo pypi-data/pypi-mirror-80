@@ -1,0 +1,47 @@
+Metadata-Version: 2.1
+Name: insta-scrape
+Version: 0.0.4
+Summary: Super lightweight Instagram web scraper for data analysis
+Home-page: https://github.com/chris-greening/instascrape
+Author: Chris Greening
+Author-email: chris@christophergreening.com
+License: UNKNOWN
+Description: # instascrape
+        
+        > Lightweight Python 3 web scraper for data mining Instagram easily and efficiently!
+        
+        ## Installation
+        
+        ### Clone 
+        - Clone to your local machine using 
+        ```shell
+        $ git clone https://github.com/chris-greening/instascrape.git 
+        ```
+        ### Setup 
+        - Install required dependencies using 
+        ```shell
+        $ pip3 install -f requirements.txt
+        ```
+        
+        ## Features
+        - Post
+        > Instantly scrape dozens of data points from a single Instagram post
+        ```python
+        from instascrape.post import Post 
+        url = 'https://www.instagram.com/p/CFcSLyBgseW/'
+        post = Post(url)
+        post.load()
+        print(post.likes)        
+        print(post.upload_date)
+        ```
+        
+        ## Support 
+        Reach out to me if you have questions or ideas!
+        - chris@christophergreening.com
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
