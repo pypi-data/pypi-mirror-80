@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: mdformat_tables
+Version: 0.0.1
+Summary: An mdformat plugin for rendering tables.
+Home-page: https://github.com/executablebooks/mdformat-tables
+License: UNKNOWN
+Keywords: mdformat,markdown,markdown-it
+Author: Chris Sewell
+Author-email: executablebooks@gmail.com
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Dist: mdformat~=0.3.1
+Requires-Dist: pytest~=6.0 ; extra == "testing"
+Requires-Dist: coverage ; extra == "testing"
+Requires-Dist: pytest-cov ; extra == "testing"
+Provides-Extra: testing
+
+# mdformat-tables [IN-DEVELOPMENT]
+
+An [mdformat](https://github.com/executablebooks/mdformat) plugin for rendering tables.
+
