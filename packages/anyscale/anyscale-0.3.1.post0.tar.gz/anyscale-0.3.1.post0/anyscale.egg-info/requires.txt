@@ -1,0 +1,13 @@
+aiohttp
+boto3
+Click>=7.0
+GitPython
+jinja2
+jsonpatch
+jsonschema
+packaging
+ray>=0.8.5
+requests
+tabulate
+wrapt
+yaspin
