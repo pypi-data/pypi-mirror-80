@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: py2graphql
+Version: 0.14.4
+Summary: Pythonic GraphQL Client
+Author: Willem Thiart
+Author-email: himself@willemthiart.com
+Requires-Python: >=3.7,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: addict (>=2.2.1,<3.0.0)
+Requires-Dist: aiohttp (>=3.6.2,<4.0.0)
+Requires-Dist: requests (>=2.24.0,<3.0.0)
+Requires-Dist: tenacity (>=6.2.0,<7.0.0)
