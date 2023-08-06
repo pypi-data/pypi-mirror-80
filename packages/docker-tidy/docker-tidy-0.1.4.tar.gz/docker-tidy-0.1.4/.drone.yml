@@ -1,0 +1,647 @@
+---
+kind: pipeline
+name: lint
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: flake8
+  image: python:3.8
+  commands:
+  - pip install pipenv -qq
+  - pipenv --bare install --dev --keep-outdated
+  - pipenv run flake8 ./dockertidy
+  environment:
+    PY_COLORS: 1
+
+trigger:
+  ref:
+  - refs/heads/master
+  - refs/tags/**
+  - refs/pull/**
+
+---
+kind: pipeline
+name: dependencies
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: pipenv
+  image: python:3.8
+  commands:
+  - pip install pipenv -qq
+  - pipenv --bare install --keep-outdated
+  - pipenv --bare install --dev --keep-outdated
+  - pipenv run pipenv-setup check
+  environment:
+    PY_COLORS: 1
+
+trigger:
+  ref:
+  - refs/heads/master
+  - refs/tags/**
+  - refs/pull/**
+
+depends_on:
+- lint
+
+---
+kind: pipeline
+name: test
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: python35-pytest
+  image: python:3.5
+  commands:
+  - pip install pipenv -qq
+  - pipenv --bare install --dev --keep-outdated
+  - pipenv run pytest dockertidy --cov=dockertidy --cov-append --no-cov-on-fail
+  - pip install -qq .
+  - docker-tidy --help
+  - docker-tidy --version
+  environment:
+    PY_COLORS: 1
+    SETUPTOOLS_SCM_PRETEND_VERSION: ${DRONE_TAG##v}
+  depends_on:
+  - clone
+
+- name: python36-pytest
+  image: python:3.6
+  commands:
+  - pip install pipenv -qq
+  - pipenv --bare install --dev --keep-outdated
+  - pipenv run pytest dockertidy --cov=dockertidy --cov-append --no-cov-on-fail
+  - pip install -qq .
+  - docker-tidy --help
+  - docker-tidy --version
+  environment:
+    PY_COLORS: 1
+    SETUPTOOLS_SCM_PRETEND_VERSION: ${DRONE_TAG##v}
+  depends_on:
+  - clone
+
+- name: python37-pytest
+  image: python:3.7
+  commands:
+  - pip install pipenv -qq
+  - pipenv --bare install --dev --keep-outdated
+  - pipenv run pytest dockertidy --cov=dockertidy --cov-append --no-cov-on-fail
+  - pip install -qq .
+  - docker-tidy --help
+  - docker-tidy --version
+  environment:
+    PY_COLORS: 1
+    SETUPTOOLS_SCM_PRETEND_VERSION: ${DRONE_TAG##v}
+  depends_on:
+  - clone
+
+- name: python38-pytest
+  image: python:3.8
+  commands:
+  - pip install pipenv -qq
+  - pipenv --bare install --dev --keep-outdated
+  - pipenv run pytest dockertidy --cov=dockertidy --cov-append --no-cov-on-fail
+  - pip install -qq .
+  - docker-tidy --help
+  - docker-tidy --version
+  environment:
+    PY_COLORS: 1
+    SETUPTOOLS_SCM_PRETEND_VERSION: ${DRONE_TAG##v}
+  depends_on:
+  - clone
+
+- name: codecov
+  image: python:3.8
+  commands:
+  - pip install codecov -qq
+  - codecov --required -X gcov
+  environment:
+    CODECOV_TOKEN:
+      from_secret: codecov_token
+    PY_COLORS: 1
+  depends_on:
+  - python35-pytest
+  - python36-pytest
+  - python37-pytest
+  - python38-pytest
+
+trigger:
+  ref:
+  - refs/heads/master
+  - refs/tags/**
+  - refs/pull/**
+
+depends_on:
+- dependencies
+
+---
+kind: pipeline
+name: security
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: bandit
+  image: python:3.8
+  commands:
+  - pip install pipenv -qq
+  - pipenv --bare install --dev --keep-outdated
+  - pipenv run bandit -r ./dockertidy -x ./dockertidy/test
+  environment:
+    PY_COLORS: 1
+
+trigger:
+  ref:
+  - refs/heads/master
+  - refs/tags/**
+  - refs/pull/**
+
+depends_on:
+- test
+
+---
+kind: pipeline
+name: build-package
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: build
+  image: python:3.8
+  commands:
+  - python setup.py sdist bdist_wheel
+  environment:
+    SETUPTOOLS_SCM_PRETEND_VERSION: ${DRONE_TAG##v}
+
+- name: checksum
+  image: alpine
+  commands:
+  - cd dist/ && sha256sum * > ../sha256sum.txt
+
+- name: publish-github
+  image: plugins/github-release
+  settings:
+    api_key:
+      from_secret: github_token
+    files:
+    - dist/*
+    - sha256sum.txt
+    note: CHANGELOG.md
+    overwrite: true
+    title: ${DRONE_TAG}
+  when:
+    ref:
+    - refs/tags/**
+
+- name: publish-pypi
+  image: plugins/pypi
+  settings:
+    password:
+      from_secret: pypi_password
+    repository: https://upload.pypi.org/legacy/
+    skip_build: true
+    username:
+      from_secret: pypi_username
+  when:
+    ref:
+    - refs/tags/**
+
+trigger:
+  ref:
+  - refs/heads/master
+  - refs/tags/**
+  - refs/pull/**
+
+depends_on:
+- security
+
+---
+kind: pipeline
+name: build-container-amd64
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: build
+  image: python:3.8
+  commands:
+  - python setup.py bdist_wheel
+  environment:
+    SETUPTOOLS_SCM_PRETEND_VERSION: ${DRONE_TAG##v}
+
+- name: dryrun
+  image: plugins/docker:18-linux-amd64
+  settings:
+    dockerfile: docker/Dockerfile
+    dry_run: true
+    password:
+      from_secret: docker_password
+    repo: thegeeklab/${DRONE_REPO_NAME}
+    username:
+      from_secret: docker_username
+  when:
+    ref:
+    - refs/pull/**
+  depends_on:
+  - build
+
+- name: publish-dockerhub
+  image: plugins/docker:18-linux-amd64
+  settings:
+    auto_tag: true
+    auto_tag_suffix: amd64
+    dockerfile: docker/Dockerfile
+    password:
+      from_secret: docker_password
+    repo: thegeeklab/${DRONE_REPO_NAME}
+    username:
+      from_secret: docker_username
+  when:
+    ref:
+    - refs/heads/master
+    - refs/tags/**
+  depends_on:
+  - dryrun
+
+- name: publish-quay
+  image: plugins/docker:18-linux-amd64
+  settings:
+    auto_tag: true
+    auto_tag_suffix: amd64
+    dockerfile: docker/Dockerfile
+    password:
+      from_secret: quay_password
+    registry: quay.io
+    repo: quay.io/thegeeklab/${DRONE_REPO_NAME}
+    username:
+      from_secret: quay_username
+  when:
+    ref:
+    - refs/heads/master
+    - refs/tags/**
+  depends_on:
+  - dryrun
+
+trigger:
+  ref:
+  - refs/heads/master
+  - refs/tags/**
+  - refs/pull/**
+
+depends_on:
+- security
+
+---
+kind: pipeline
+name: build-container-arm64
+
+platform:
+  os: linux
+  arch: arm64
+
+steps:
+- name: build
+  image: python:3.8
+  commands:
+  - python setup.py bdist_wheel
+  environment:
+    SETUPTOOLS_SCM_PRETEND_VERSION: ${DRONE_TAG##v}
+
+- name: dryrun
+  image: plugins/docker:18-linux-arm64
+  settings:
+    dockerfile: docker/Dockerfile
+    dry_run: true
+    password:
+      from_secret: docker_password
+    repo: thegeeklab/${DRONE_REPO_NAME}
+    username:
+      from_secret: docker_username
+  when:
+    ref:
+    - refs/pull/**
+  depends_on:
+  - build
+
+- name: publish-dockerhub
+  image: plugins/docker:18-linux-arm64
+  settings:
+    auto_tag: true
+    auto_tag_suffix: arm64
+    dockerfile: docker/Dockerfile
+    password:
+      from_secret: docker_password
+    repo: thegeeklab/${DRONE_REPO_NAME}
+    username:
+      from_secret: docker_username
+  when:
+    ref:
+    - refs/heads/master
+    - refs/tags/**
+  depends_on:
+  - dryrun
+
+- name: publish-quay
+  image: plugins/docker:18-linux-arm64
+  settings:
+    auto_tag: true
+    auto_tag_suffix: arm64
+    dockerfile: docker/Dockerfile
+    password:
+      from_secret: quay_password
+    registry: quay.io
+    repo: quay.io/thegeeklab/${DRONE_REPO_NAME}
+    username:
+      from_secret: quay_username
+  when:
+    ref:
+    - refs/heads/master
+    - refs/tags/**
+  depends_on:
+  - dryrun
+
+trigger:
+  ref:
+  - refs/heads/master
+  - refs/tags/**
+  - refs/pull/**
+
+depends_on:
+- security
+
+---
+kind: pipeline
+name: build-container-arm
+
+platform:
+  os: linux
+  arch: arm
+
+steps:
+- name: build
+  image: python:3.8
+  commands:
+  - python setup.py bdist_wheel
+  environment:
+    SETUPTOOLS_SCM_PRETEND_VERSION: ${DRONE_TAG##v}
+
+- name: dryrun
+  image: plugins/docker:18-linux-arm
+  settings:
+    dockerfile: docker/Dockerfile
+    dry_run: true
+    password:
+      from_secret: docker_password
+    repo: thegeeklab/${DRONE_REPO_NAME}
+    username:
+      from_secret: docker_username
+  when:
+    ref:
+    - refs/pull/**
+  depends_on:
+  - build
+
+- name: publish-dockerhub
+  image: plugins/docker:18-linux-arm
+  settings:
+    auto_tag: true
+    auto_tag_suffix: arm
+    dockerfile: docker/Dockerfile
+    password:
+      from_secret: docker_password
+    repo: thegeeklab/${DRONE_REPO_NAME}
+    username:
+      from_secret: docker_username
+  when:
+    ref:
+    - refs/heads/master
+    - refs/tags/**
+  depends_on:
+  - dryrun
+
+- name: publish-quay
+  image: plugins/docker:18-linux-arm
+  settings:
+    auto_tag: true
+    auto_tag_suffix: arm
+    dockerfile: docker/Dockerfile
+    password:
+      from_secret: quay_password
+    registry: quay.io
+    repo: quay.io/thegeeklab/${DRONE_REPO_NAME}
+    username:
+      from_secret: quay_username
+  when:
+    ref:
+    - refs/heads/master
+    - refs/tags/**
+  depends_on:
+  - dryrun
+
+trigger:
+  ref:
+  - refs/heads/master
+  - refs/tags/**
+  - refs/pull/**
+
+depends_on:
+- security
+
+---
+kind: pipeline
+name: docs
+
+platform:
+  os: linux
+  arch: amd64
+
+concurrency:
+  limit: 1
+
+steps:
+- name: assets
+  image: byrnedo/alpine-curl
+  commands:
+  - mkdir -p docs/themes/hugo-geekdoc/
+  - curl -L https://github.com/xoxys/hugo-geekdoc/releases/latest/download/hugo-geekdoc.tar.gz | tar -xz -C docs/themes/hugo-geekdoc/ --strip-components=1
+
+- name: markdownlint
+  image: node:lts-alpine
+  commands:
+  - npm install -g markdownlint-cli
+  - markdownlint 'docs/content/**/*.md' 'README.md'
+  environment:
+    FORCE_COLOR: true
+    NPM_CONFIG_LOGLEVEL: error
+
+- name: spellcheck
+  image: node:lts-alpine
+  commands:
+  - npm install -g spellchecker-cli
+  - spellchecker --files 'docs/content/**/*.md' 'README.md' -d .dictionary -p spell indefinite-article syntax-urls --no-suggestions
+  environment:
+    FORCE_COLOR: true
+    NPM_CONFIG_LOGLEVEL: error
+
+- name: testbuild
+  image: klakegg/hugo:0.74.3-ext-alpine
+  commands:
+  - hugo-official -s docs/ -b http://localhost/
+
+- name: link-validation
+  image: thegeeklab/link-validator
+  commands:
+  - link-validator -ro
+  environment:
+    LINK_VALIDATOR_BASE_DIR: docs/public
+
+- name: build
+  image: klakegg/hugo:0.74.3-ext-alpine
+  commands:
+  - hugo-official -s docs/
+
+- name: beautify
+  image: node:lts-alpine
+  commands:
+  - npm install -g js-beautify
+  - html-beautify -r -f 'docs/public/**/*.html'
+  environment:
+    FORCE_COLOR: true
+    NPM_CONFIG_LOGLEVEL: error
+
+- name: publish
+  image: plugins/s3-sync
+  settings:
+    access_key:
+      from_secret: s3_access_key
+    bucket: geekdocs
+    delete: true
+    endpoint: https://sp.rknet.org
+    path_style: true
+    secret_key:
+      from_secret: s3_secret_access_key
+    source: docs/public/
+    strip_prefix: docs/public/
+    target: /${DRONE_REPO_NAME}
+
+trigger:
+  ref:
+  - refs/heads/master
+  - refs/tags/**
+
+depends_on:
+- build-package
+- build-container-amd64
+- build-container-arm64
+- build-container-arm
+
+---
+kind: pipeline
+name: notifications
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: manifest-dockerhub
+  image: plugins/manifest
+  settings:
+    auto_tag: true
+    ignore_missing: true
+    password:
+      from_secret: docker_password
+    spec: docker/manifest.tmpl
+    username:
+      from_secret: docker_username
+  when:
+    status:
+    - success
+
+- name: manifest-quay
+  image: plugins/manifest
+  settings:
+    auto_tag: true
+    ignore_missing: true
+    password:
+      from_secret: quay_password
+    spec: docker/manifest-quay.tmpl
+    username:
+      from_secret: quay_username
+  when:
+    status:
+    - success
+
+- name: pushrm-dockerhub
+  image: chko/docker-pushrm:1
+  environment:
+    DOCKER_PASS:
+      from_secret: docker_password
+    DOCKER_USER:
+      from_secret: docker_username
+    PUSHRM_FILE: README.md
+    PUSHRM_SHORT: Drone plugin to add comments to GitHub Issues/PRs
+    PUSHRM_TARGET: thegeeklab/${DRONE_REPO_NAME}
+  when:
+    status:
+    - success
+
+- name: pushrm-quay
+  image: chko/docker-pushrm:1
+  environment:
+    APIKEY__QUAY_IO:
+      from_secret: quay_token
+    PUSHRM_FILE: README.md
+    PUSHRM_TARGET: quay.io/thegeeklab/${DRONE_REPO_NAME}
+  when:
+    status:
+    - success
+
+- name: matrix
+  image: plugins/matrix
+  settings:
+    homeserver:
+      from_secret: matrix_homeserver
+    password:
+      from_secret: matrix_password
+    roomid:
+      from_secret: matrix_roomid
+    template: "Status: **{{ build.status }}**<br/> Build: [{{ repo.Owner }}/{{ repo.Name }}]({{ build.link }}) ({{ build.branch }}) by {{ build.author }}<br/> Message: {{ build.message }}"
+    username:
+      from_secret: matrix_username
+  when:
+    status:
+    - success
+    - failure
+
+trigger:
+  ref:
+  - refs/heads/master
+  - refs/tags/**
+  status:
+  - success
+  - failure
+
+depends_on:
+- docs
+
+---
+kind: signature
+hmac: 71d089dacfa86733fec2b3555b1bfedc175297c9b7add39320c87fe8d0424401
+
+...
