@@ -1,0 +1,20 @@
+click>=6
+
+[arduino]
+pyserial>=3.0
+
+[dev]
+coverage==5.1
+flake8==3.7.9
+isort==4.3.21
+mypy==0.770
+pytest==5.4.2
+requests
+sphinx==3.0.3
+wheel
+
+[dev:python_version >= "3.6"]
+black==19.10b0
+
+[metrics]
+prometheus-client
