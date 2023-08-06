@@ -1,0 +1,26 @@
+Metadata-Version: 2.1
+Name: hanspitools
+Version: 0.0.10
+Summary: Hanspi's collection of math functions
+Home-page: UNKNOWN
+Author: Hanspeter Schmid
+Author-email: hanspeter.schmid@fhnw.ch
+License: UNKNOWN
+Description: # Hanspeter Schmid's collection of math functions:Hanspeter
+        
+        these are the functions  that I use myself to create documentation in Jupyter
+        with SymPy and NumPy.
+        
+        They are mainly for me and my students, but if you like them, usen them!
+        
+        I am still developing this, so anything may change anytime.
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Science/Research
+Classifier: Topic :: Scientific/Engineering :: Mathematics
+Classifier: Topic :: Utilities
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
