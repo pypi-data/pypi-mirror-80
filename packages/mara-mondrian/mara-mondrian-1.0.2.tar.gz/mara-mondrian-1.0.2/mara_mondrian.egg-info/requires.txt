@@ -1,0 +1,5 @@
+flask>=0.12
+mara-page>=1.1.0
+mara-schema>=1.0.0
+lxml>=3.8.0
+requests
