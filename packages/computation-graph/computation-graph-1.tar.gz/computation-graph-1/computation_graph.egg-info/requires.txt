@@ -1,0 +1,7 @@
+toolz
+gamla>=30
+toposort
+
+[test]
+pygraphviz
+pytest>=5.4.0
