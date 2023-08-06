@@ -1,0 +1,15 @@
+LICENSE
+MANIFEST.in
+README.md
+benchmark.py
+pyproject.toml
+requirements-dev.txt
+setup.cfg
+setup.py
+test_wasabigeom.py
+wasabigeom.pyx
+wasabi_geom.egg-info/PKG-INFO
+wasabi_geom.egg-info/SOURCES.txt
+wasabi_geom.egg-info/dependency_links.txt
+wasabi_geom.egg-info/not-zip-safe
+wasabi_geom.egg-info/top_level.txt
