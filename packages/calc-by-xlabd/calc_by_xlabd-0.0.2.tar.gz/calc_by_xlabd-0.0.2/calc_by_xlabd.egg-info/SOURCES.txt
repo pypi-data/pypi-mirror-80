@@ -1,0 +1,14 @@
+CHANGELOG.txt
+LICENSE.txt
+MANIFEST.in
+README.txt
+setup.py
+calc_by_xlabd/__init__.py
+calc_by_xlabd/add.py
+calc_by_xlabd/div.py
+calc_by_xlabd/mul.py
+calc_by_xlabd/sub.py
+calc_by_xlabd.egg-info/PKG-INFO
+calc_by_xlabd.egg-info/SOURCES.txt
+calc_by_xlabd.egg-info/dependency_links.txt
+calc_by_xlabd.egg-info/top_level.txt
