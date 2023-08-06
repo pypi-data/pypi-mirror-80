@@ -1,0 +1,33 @@
+Metadata-Version: 2.1
+Name: tpa-map-interface
+Version: 0.1
+Summary: Interface to access local acceleration limitations for trajectory planning at TUM/FTM
+Home-page: https://github.com/TUMFTM
+Author: Leonhard Hermansdorfer
+Author-email: leo.hermansdorfer@tum.de
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+Requires-Dist: numpy (>=1.18.1)
+Requires-Dist: ad-interface-functions (>=0.21)
+Requires-Dist: trajectory-planning-helpers (>=0.74)
+Requires-Dist: pyzmq (>=19.0.2)
+
+# Description
+This repository provides an interface to access local acceleration limitations for trajectory planning at TUM/FTM. In
+addition to location-dependent acceleration limits, vehicle velocity dependent acceleration limits can be accessed when
+provided.
+The initial acceleration limits are loaded from a csv-file. There is an option to update the local acceleration in
+real-time when the tire performance assessment module is running in parallel and communication is enabled.
+
+# List of components
+* `MapInterface.py`: Provides an interface to the local trajectory planner and to the tire performance assessment module
+* `import_veh_dyn_info.py`: Imports local acceleration limitation from file
+
+
