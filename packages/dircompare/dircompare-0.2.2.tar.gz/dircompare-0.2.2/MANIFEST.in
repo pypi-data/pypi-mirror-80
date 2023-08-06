@@ -1,0 +1,7 @@
+include LICENSE
+include dircompare/deps/*
+include dircompare/deps/codeformats/*
+recursive-exclude * __pycache__
+recursive-exclude * *.pyc
+recursive-exclude * *.pyo
+prune test*
