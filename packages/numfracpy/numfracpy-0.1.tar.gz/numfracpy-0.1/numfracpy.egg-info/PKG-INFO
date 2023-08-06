@@ -1,0 +1,30 @@
+Metadata-Version: 2.1
+Name: numfracpy
+Version: 0.1
+Summary: Package to perform calculations in fractional calculus
+Home-page: https://github.com/jhlopezm/NUMFRACPY
+Author: Jorge Hernan Lopez, Alejandro Perez
+Author-email: jhlopezm2@gmail.com, aaappprrr@gmail.com
+License: UNKNOWN
+Description: This library performs different calculations in the framework of Fractional Calculus. Among these calculations are:
+        Implementing Mittag-Leffler functions
+        Riemann-Liouville integral
+        Caputo derivative
+        Riemann-Liouville derivative
+        Solving a fractional differential equation
+        
+        You can install this package by following the instructions in:
+        https://packaging.python.org/tutorials/installing-packages/
+        and you should use the name of the library "numfracpy".
+        
+        You can find examples of these calculations in the notebooks uploaded in the page:
+        https://github.com/jhlopezm/NUMFRACPY
+        
+        
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
