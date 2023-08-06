@@ -1,0 +1,19 @@
+Metadata-Version: 1.2
+Name: zarrdump
+Version: 0.1.0
+Summary: Describe zarr stores from the command line.
+Home-page: UNKNOWN
+Author: Oliver Watt-Meyer
+Author-email: oliverwatt@gmail.com
+License: BSD 3-Clause license
+Description: UNKNOWN
+Keywords: zarr
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Requires-Python: >=3.6
