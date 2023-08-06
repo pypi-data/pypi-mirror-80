@@ -1,0 +1,13 @@
+create_jupyter_git/__init__.py,sha256=ugyuFliEqtAwQmH4sTlc16YXKYbFWDmfyk87fErB8-8,21
+create_jupyter_git/__main__.py,sha256=9vqxxVb9Ld1ULKY8ZHsFraf2F3UA7Nh9g9iDGo3-vj8,147
+create_jupyter_git/is_cwd_git_repo.py,sha256=cifFMXgYpAdTncW3142tF5FPvzr8KHa7rjGgjMsxfGk,203
+create_jupyter_git/setup_notebook_version_control.py,sha256=bvlH5p7wBp58LtY97ycwbtPtbHPJU4VRjkmSFlrpxso,2515
+create_jupyter_git/repo_template/.gitignore,sha256=1W9DdrabtLRK2Wbunkgki5fF_e0r5KeolYLsMHQTcbk,3602
+create_jupyter_git/repo_template/notebooks/jupyter_notebook_config.py,sha256=zW2qClc_2oTIPVMvmyGBS7ZYZkaiHSX3HZY0-AN60Jw,47207
+create_jupyter_git/repo_template/scripts/ipynb_output_filter.py,sha256=Asy9o7xdgcNlPX77NP3zXhSLAPosJAu72tyP7V9K9G8,1436
+jupyter_notes/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+create_jupyter_git-0.0.1.dist-info/METADATA,sha256=Pg8FKC-ymXVzSGjSnv9vao-fj0iuV0yjxnIP7g6J6_k,4380
+create_jupyter_git-0.0.1.dist-info/WHEEL,sha256=U88EhGIw8Sj2_phqajeu_EAi3RAo8-C6zV3REsWbWbs,92
+create_jupyter_git-0.0.1.dist-info/entry_points.txt,sha256=x9Zmr4UCzGBlAxLsevkt3_x-PcvTHFZI0QeYI4mJM2Y,104
+create_jupyter_git-0.0.1.dist-info/top_level.txt,sha256=Nbc4HAtX29CDkR49PLKeCqAGoW7tzzJgY1zBTVW-7Fo,19
+create_jupyter_git-0.0.1.dist-info/RECORD,,
