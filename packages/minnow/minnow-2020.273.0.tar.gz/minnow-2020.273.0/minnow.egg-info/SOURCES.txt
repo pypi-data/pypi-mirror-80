@@ -1,0 +1,14 @@
+MANIFEST.in
+README.md
+setup.cfg
+setup.py
+minnow/__init__.py
+minnow/exceptions.py
+minnow/processor.py
+minnow/properties.py
+minnow/utils.py
+minnow.egg-info/PKG-INFO
+minnow.egg-info/SOURCES.txt
+minnow.egg-info/dependency_links.txt
+minnow.egg-info/requires.txt
+minnow.egg-info/top_level.txt
