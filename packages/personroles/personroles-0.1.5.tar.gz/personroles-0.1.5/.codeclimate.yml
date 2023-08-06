@@ -1,0 +1,22 @@
+plugins:
+  eslint:
+    enabled: true
+    channel: eslint-5
+
+exclude_patterns:
+- "lib/foundation.js"
+- "**/*.rb"
+- "config/"
+- "db/"
+- "dist/"
+- "features/"
+- "**/node_modules/"
+- "script/"
+- "**/spec/"
+- "**/test/"
+- "**/tests/"
+- "**/reports/"
+- "Tests/"
+- "**/vendor/"
+- "**/*_test.go"
+- "**/*.d.ts"
