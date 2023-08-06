@@ -1,0 +1,12 @@
+Django>=2.2.0
+
+[dev]
+black
+check-manifest
+flake8
+isort>=5
+psycopg2-binary
+pytest
+pytest-django
+pytest-mock
+tox
