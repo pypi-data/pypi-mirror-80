@@ -1,0 +1,3 @@
+[console_scripts]
+access_db = scripts.access_db:access
+
