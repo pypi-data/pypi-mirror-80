@@ -1,0 +1,12 @@
+
+[dev]
+twine
+wheel
+setuptools-scm
+setuptools-lint
+requirements-builder
+
+[tests]
+flask
+pylint
+flake8
