@@ -1,0 +1,13 @@
+README.md
+setup.cfg
+setup.py
+dictparse/__init__.py
+dictparse/exceptions.py
+dictparse/parser.py
+dictparse.egg-info/PKG-INFO
+dictparse.egg-info/SOURCES.txt
+dictparse.egg-info/dependency_links.txt
+dictparse.egg-info/top_level.txt
+tests/__init__.py
+tests/test_namespace.py
+tests/test_parser.py
