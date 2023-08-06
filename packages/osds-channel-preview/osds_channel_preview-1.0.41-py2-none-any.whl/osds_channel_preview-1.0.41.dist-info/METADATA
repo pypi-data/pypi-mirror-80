@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: osds-channel-preview
+Version: 1.0.41
+Summary: PyTorch Object Storage Dataset
+Home-page: http://github.com/osipov/osds
+Author: CounterFactual.AI
+Author-email: osds@counterfactual.ai
+License: GPL v2.0
+Platform: UNKNOWN
+Requires-Dist: fsspec (==0.8.3)
+Requires-Dist: torch
+Requires-Dist: pandas
+Requires-Dist: s3fs (==0.4.2)
+Requires-Dist: gcsfs (==0.6.2)
+
+UNKNOWN
+
+
