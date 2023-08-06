@@ -1,0 +1,17 @@
+Metadata-Version: 1.2
+Name: datafold
+Version: 1.1.2
+Summary: datafold is Python software for data-driven algorithms with manifold assumption
+Home-page: https://datafold-dev.gitlab.io/datafold
+Author: datafold development team
+Author-email: daniel.lehmberg@hm.edu
+License: MIT
+Description: datafold is a Python package that provides data-driven models for point clouds to find an explicit manifold parametrization and to identify non-linear dynamical systems on these manifolds.
+Keywords: machine learning, dynamical system, data-driven, time series, time series regression, time series forecasting, manifold learning
+Platform: UNKNOWN
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Topic :: Scientific/Engineering
+Requires-Python: >=3.6

@@ -1,0 +1,7 @@
+numpy<1.20.0,>=1.18.0
+scikit-learn<0.24.0,>=0.23.0
+scipy<1.6,>=1.4.0
+pandas<1.2.0,>=1.1.0
+numexpr<3.0.0,>=2.7.1
+matplotlib>=3.2.0
+findiff==0.8.3
