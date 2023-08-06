@@ -1,0 +1,42 @@
+Metadata-Version: 2.1
+Name: generalfile
+Version: 2.0.1
+Summary: Easily manage files cross platform.
+Home-page: https://github.com/Mandera/generalfile
+Author: Rickard "Mandera" Abraham
+License: UNKNOWN
+Description: # Package: generalfile
+        File manager for intuitive cross-platform compatability with gathered useful functionality.
+        Generalfile operates on the middle ground of all relevant operating systems.
+        E.g. Windows being case insensitive -> Don't allow paths with same name but differeing case.
+        Uses a race condition safe lock mechanism for all file operations.
+        
+        ## Installation
+        ```
+        pip install generalfile
+        ```
+        
+        ## Usage example
+        ```python
+        from generalfile import Path
+        
+        Path("newfolder/test.txt").write("foobar")  # Automatically creates new folder
+        assert Path("newfolder/test.txt").read() == "foobar"
+        Path("newfolder").delete()  # Delete entire folder
+        
+        with Path("foo/bar.txt").lock():  # Recursively lock a file or even a folder which doesn't have to exist.
+            pass  # The lock is created in a seperate folder, so you're free to do whatever you want in here
+        ```
+        
+Platform: UNKNOWN
+Classifier: Operating System :: Microsoft :: Windows :: Windows 7
+Classifier: Operating System :: Microsoft :: Windows :: Windows 10
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Operating System :: MacOS
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Topic :: Desktop Environment :: File Managers
+Description-Content-Type: text/markdown
+Provides-Extra: spreadsheet
