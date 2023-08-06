@@ -1,0 +1,41 @@
+Metadata-Version: 2.1
+Name: pyobiee
+Version: 0.1.1
+Summary: Python wrapper for OBIEE
+Home-page: https://github.com/kazei92/pyobiee
+Author: Timur Kazyev
+Author-email: kazyev@me.com
+License: UNKNOWN
+Description: # Installation
+        ```pip install pyobiee```
+        
+        Dependencies: zeep, pandas, requests<br>
+        If there is an issue with installing zeep, please do it manually:<br>
+        ```pip install zeep```
+        
+        
+        # General Information
+        pyobiee is a custom connector for OBIEE (Oracle Business Intelligence Enterprise Edition).
+        
+        It has two main functions (methods):
+        1. downloadReport - Downloading data from a custom OBIEE report (needs report's path)
+        2. executeSQL - Executing a SQL query and then downloading its data.
+        
+        All that using SOAP protocol, Python SOAP client - zeep and OBIEE XMLViewService.
+        
+        Links:
+        1. zeep - https://python-zeep.readthedocs.io/en/master/
+        2. OBIEE XMLViewService - https://docs.oracle.com/cd/E23943_01/bi.1111/e16364/methods.htm#BIEIT335
+        
+        Data is returned in pandas DataFrame format to facilitate exporting, further processing and integration with Power BI Desktop
+        
+        # Documentation
+        Documentation (in progress) is here - https://github.com/kazei92/pyobiee/wiki
+        
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.5
+Description-Content-Type: text/markdown
