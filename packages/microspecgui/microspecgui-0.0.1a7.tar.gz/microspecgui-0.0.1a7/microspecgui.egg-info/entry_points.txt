@@ -1,0 +1,3 @@
+[console_scripts]
+microspec-gui = microspecgui.__main__:main
+

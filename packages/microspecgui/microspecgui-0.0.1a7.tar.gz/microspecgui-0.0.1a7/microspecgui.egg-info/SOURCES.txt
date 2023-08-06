@@ -1,0 +1,15 @@
+LICENSE.md
+MANIFEST.in
+README.md
+setup.py
+doc/PyPI.md
+microspecgui/__init__.py
+microspecgui/__main__.py
+microspecgui.egg-info/PKG-INFO
+microspecgui.egg-info/SOURCES.txt
+microspecgui.egg-info/dependency_links.txt
+microspecgui.egg-info/entry_points.txt
+microspecgui.egg-info/requires.txt
+microspecgui.egg-info/top_level.txt
+microspecgui/_gui/consola.ttf
+microspecgui/_gui/icon.png
