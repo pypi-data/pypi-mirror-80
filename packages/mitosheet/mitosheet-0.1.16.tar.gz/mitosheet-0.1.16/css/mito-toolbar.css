@@ -1,0 +1,25 @@
+.mito-toolbar-container {
+    width: 100%;
+  
+    background-color: rgb(194, 194, 194);
+  
+    /* We make the toolbar a flexbox, for the toolbar icons/actions */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+  
+    /* border-box to set the border inside the div, so it doesn't get chopped */
+    box-sizing: border-box; 
+    -moz-box-sizing: border-box; /* Firefox */
+    -webkit-box-sizing: border-box; /* Older Webkit browsers */
+  
+    /* Border the whole thing for now */
+    border: 1px solid;
+  }
+  
+  .mito-toolbar-item {
+    /* Pad toolbar items, so they don't get to close to the edge */
+    padding-left: 2.5px;
+    /* (or eachother) */
+    padding-right: 5px;
+  }

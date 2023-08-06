@@ -1,0 +1,29 @@
+.mito-container {
+    display: flex;
+    flex-direction: column;
+}
+
+/* shade toolbar grey and set to the length of the mito sheet */
+.toolbar {
+    background-color: #C2C2C2;
+    width: 100%;
+}
+
+.vertical-line {
+    border-left: 2px solid #999696;
+    height: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.modal{
+    /* Render above other divs */
+    z-index: 2;
+    position: absolute;
+
+    width: 100%;
+    align-items: center;
+    text-align: center;
+
+    margin-top: 30px;
+}
