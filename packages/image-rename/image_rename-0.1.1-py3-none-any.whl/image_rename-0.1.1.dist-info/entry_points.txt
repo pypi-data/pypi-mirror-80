@@ -1,0 +1,3 @@
+[console_scripts]
+img_rename = image_rename.cli:main
+
