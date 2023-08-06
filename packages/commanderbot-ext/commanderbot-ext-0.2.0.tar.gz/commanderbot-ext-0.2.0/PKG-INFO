@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: commanderbot-ext
+Version: 0.2.0
+Summary: A collection of cogs and extensions for discord.py bots.
+Home-page: https://github.com/CommanderBot-Dev/commanderbot-ext
+License: MIT
+Keywords: discord,bot
+Author: Arcensoth
+Author-email: arcensoth@gmail.com
+Requires-Python: >=3.8,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: commanderbot-lib (>=0.1.0,<0.2.0)
+Requires-Dist: discord.py (>=1.4.1,<2.0.0)
+Project-URL: Repository, https://github.com/CommanderBot-Dev/commanderbot-ext
+Description-Content-Type: text/markdown
+
+# CommanderBot Ext
+
+A collection of cogs and extensions for discord.py bots.
+
