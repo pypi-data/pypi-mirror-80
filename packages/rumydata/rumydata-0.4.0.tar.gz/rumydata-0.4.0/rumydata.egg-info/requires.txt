@@ -1,0 +1,13 @@
+
+[Excel]
+openpyxl
+
+[HTML]
+markdown
+
+[Testing]
+pytest
+pytest-mock
+pytest-cov
+openpyxl
+markdown
