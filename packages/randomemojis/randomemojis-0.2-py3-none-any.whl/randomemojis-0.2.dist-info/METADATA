@@ -1,0 +1,83 @@
+Metadata-Version: 2.1
+Name: randomemojis
+Version: 0.2
+Summary: RandomEmojis: Generates random emoji(s) where {x ∈ R+}
+Home-page: https://github.com/yusuf8ahmed/RandomEmojis
+Author: Yusuf Ahmed
+Author-email: yusufahmed172@gmail.com
+License: UNKNOWN
+Keywords: random emojis
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Intended Audience :: End Users/Desktop
+Requires-Python: >=3
+Description-Content-Type: text/markdown
+Requires-Dist: aiocontextvars (==0.2.2)
+Requires-Dist: attrs (==20.2.0)
+Requires-Dist: certifi (==2020.6.20)
+Requires-Dist: chardet (==3.0.4)
+Requires-Dist: click (==7.1.2)
+Requires-Dist: contextvars (==2.4)
+Requires-Dist: idna (==2.10)
+Requires-Dist: immutables (==0.14)
+Requires-Dist: importlib-metadata (==1.7.0)
+Requires-Dist: iniconfig (==1.0.1)
+Requires-Dist: loguru (==0.5.3)
+Requires-Dist: lxml (==4.5.2)
+Requires-Dist: more-itertools (==8.5.0)
+Requires-Dist: packaging (==20.4)
+Requires-Dist: pluggy (==0.13.1)
+Requires-Dist: py (==1.9.0)
+Requires-Dist: pyparsing (==2.4.7)
+Requires-Dist: pytest (==6.0.2)
+Requires-Dist: requests (==2.24.0)
+Requires-Dist: six (==1.15.0)
+Requires-Dist: toml (==0.10.1)
+Requires-Dist: urllib3 (==1.25.10)
+Requires-Dist: zipp (==3.1.0)
+
+<p align="center">
+  <a>
+    <img src="image/EmojisPython.svg">
+    <br>
+  </a>
+</p>
+
+## What is the RandomEmojis project?
+Welcome! This project is a custom python command line application using the click library built by the dudes that made flask. This application generates random emoji(s) and can even show the emojis link. WOW!1!!
+
+## Getting Started
+
+  ### Requirements
+  - python 3.7+ and pip is required to use/download randomemojis
+
+  ### Installation
+  ```bash
+  # Production
+  pip install randomemojis
+  # Testing
+  git clone https://github.com/yusuf8ahmed/RandomEmojis
+  ```
+  #### Usage
+  ```bash
+  # Production
+  emojis 3
+  # Testing
+  python emojis 3
+  ```
+  #### Advance Info
+  ```bash
+  Usage: emojis [OPTIONS] [NUMBER]
+
+  Emojis: generates random emojis duh
+
+  Options:
+    -l, --link     display generated emoji(s) url
+    -v, --verbose  show verbose messages
+    --help         Show this message and exit.
+  ```
+
+
