@@ -1,0 +1,52 @@
+Metadata-Version: 2.1
+Name: yasmine-cli
+Version: 0.0.3
+Summary: Command line tool for editing StationXML files
+Home-page: https://gitlab.isti.com/mhagerty/yasmine-cli
+Author: Mike Hagerty
+Author-email: mhagerty@isti.com
+License: MIT
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Requires-Dist: obspy (>=1.2)
+Requires-Dist: PyYAML
+
+===============================
+Yasmine CLI
+===============================
+
+.. image:: https://img.shields.io/travis/mhagerty/yasmine-cli.svg
+        :target: https://travis-ci.org/mhagerty/yasmine-cli
+
+.. image:: https://img.shields.io/pypi/v/yasmine-cli.svg
+        :target: https://pypi.python.org/pypi/yasmine-cli
+
+
+Command line tool for editing StationXML files
+
+* Free software: MIT license
+* Documentation: (COMING SOON!) https://yasmine-cli.readthedocs.org.
+
+Features
+--------
+
+* TODO
+
+
+
+
+History
+-------
+
+Pre-release
+
+
