@@ -1,0 +1,28 @@
+gtab/__init__.py,sha256=sSkjSO--a7ZsWpmb-raNn47v2Xp8o2sx-bQvKVEhyfE,22
+gtab/command_line.py,sha256=M7QpIxnWU4SsHVSazi9QHZIHX4sB18ae43aegwbYCh0,6501
+gtab/core.py,sha256=N1FfqNIE9Ttm4h1pjrtB7xZiGJzhyDMFzXqYL4QVkCQ,43001
+gtab/config/config_cl.json,sha256=6LFm7TKAPFbCFOSJkH2xeaUNNPFHV4WCDCWwX1bWq8Q,809
+gtab/config/config_py.json,sha256=6LFm7TKAPFbCFOSJkH2xeaUNNPFHV4WCDCWwX1bWq8Q,809
+gtab/config/dir_cl.json,sha256=TU1v3KxHFohFzV2Opj5msNWnnMwFHJf3Vdk9Zs9nniY,101
+gtab/data/anchor_candidate_list.txt,sha256=C8t3BePxXzV-GYZosa3RZV14zf4INWCwnG6H3TvQ1Ko,61505
+gtab/data/internal/freebase/freebase_foods_all.tsv,sha256=e-IQrOD254C4ieQgmfJVmcDjweoDwk4LLbm3cfxm1ew,413158
+gtab/data/internal/freebase/freebase_foods_filtered.tsv,sha256=9WfrIr7VLtLSXHFqMo1IajTTCju-1T21VYiVc78yuwk,412195
+gtab/data/internal/freebase/freebase_foods_isdish.tsv,sha256=mXS-gG6mqgApgSfWVMCxkIq-xcWx5iw4MDGUP1dF8xQ,154254
+gtab/data/internal/freebase/freebase_foods_isfood.tsv,sha256=lcIdTZSD-SkYbd04ELAjMIFVhVHOPQASjckZs409Ddc,381249
+gtab/data/internal/google_keywords/google_keywords_geo=IT_timeframe=2019-01-01 2020-08-01.pkl,sha256=Lbg-kOmXm4_s9m71-kL4_GiYaTRn6C1vZaaBE0ksqMI,5371
+gtab/data/internal/google_keywords/google_keywords_geo=_timeframe=2019-01-01 2020-08-01.pkl,sha256=XmrGs9L1YVZspcS6W6b7DPvI4guu-ivI8SMGzE8OsTk,6420
+gtab/data/internal/google_pairs/google_pairs_geo=IT_timeframe=2019-01-01 2020-08-01.pkl,sha256=LJccHKG0CKRvFY77xQ0iWQ8SsSoGk7lAKItXD8VihBI,20694
+gtab/data/internal/google_pairs/google_pairs_geo=_timeframe=2019-01-01 2020-08-01.pkl,sha256=EU300il7IPk4uL8WOLR6lI2g3HtmJCM82CAUmNnd0Rc,24675
+gtab/data/internal/google_results/google_results_geo=IT_timeframe=2019-01-01 2020-08-01.pkl,sha256=D3hXN6nYwFSxnIB1RPGCyZUwxktluMdKmVntvw0DkOI,919175
+gtab/data/internal/google_results/google_results_geo=_timeframe=2019-01-01 2020-08-01.pkl,sha256=KI3J8QlEm0LQcFF6R2KQVm0b20e33CA-vAPyzHyMKAA,1151411
+gtab/logs/log_geo=IT_timeframe=2019-01-01 2020-08-01.txt,sha256=DMTjz7Ooj-zsj4jefoA0rvC_zGLVDjSFb-HaUgMMDqk,5253
+gtab/logs/log_geo=_timeframe=2019-01-01 2020-08-01.txt,sha256=0Rc9PIfylNfrlMIIl1JSyyWI0zG-cCAgiJxpOf4g-gk,46721
+gtab/output/.DS_Store,sha256=LttLgDK1QVQ_YkTO-ipuDcAoOZpxV3n5lS9DJE5Wj1Y,6148
+gtab/output/google_anchorbanks/google_anchorbank_geo=IT_timeframe=2019-01-01 2020-08-01.tsv,sha256=68HKei6C2zrZ_BhNGKD0HEMs_PvYVl5uxzie5YddpwU,938
+gtab/output/google_anchorbanks/google_anchorbank_geo=_timeframe=2019-01-01 2020-08-01.tsv,sha256=Tjs7Db5jm2w5XsykVK3HCgVbe5rZD58NSiPjysjGzPU,1028
+gtab-0.4.dist-info/LICENSE,sha256=LvqFmRr8GsWhCYI3laHpVpWYB2OM7fFoBi95BbVAYPM,1066
+gtab-0.4.dist-info/METADATA,sha256=VueX_2BRxN9Q_rKj6srLVSfmZn5WlX07d-PwGzQLJC0,605
+gtab-0.4.dist-info/WHEEL,sha256=EVRjI69F5qVjm_YgqcTXPnTAv3BfSUr0WVAHuSP3Xoo,92
+gtab-0.4.dist-info/entry_points.txt,sha256=OPYjndo54EvV3gudEtotgdiyTI8A3FqonmwklRXvIAw,532
+gtab-0.4.dist-info/top_level.txt,sha256=nW2rFsW3BZXx3XkJLwv6mGzF_rssdNtkWx26wh1V-1Y,5
+gtab-0.4.dist-info/RECORD,,
