@@ -1,0 +1,6 @@
+torch>=1.5.1
+pytorch-lightning==0.8.5
+transformers==3.0.2
+Korpora>=0.1.0
+flask==1.1.2
+flask_ngrok>=0.0.25
