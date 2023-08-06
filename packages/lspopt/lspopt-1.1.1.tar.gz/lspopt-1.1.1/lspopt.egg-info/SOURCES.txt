@@ -1,0 +1,17 @@
+LICENSE
+MANIFEST.in
+Pipfile
+README.md
+requirements.txt
+setup.cfg
+setup.py
+lspopt/__init__.py
+lspopt/__version__.py
+lspopt/lsp.py
+lspopt/utils.py
+lspopt.egg-info/PKG-INFO
+lspopt.egg-info/SOURCES.txt
+lspopt.egg-info/dependency_links.txt
+lspopt.egg-info/requires.txt
+lspopt.egg-info/top_level.txt
+lspopt/data/__init__.py
