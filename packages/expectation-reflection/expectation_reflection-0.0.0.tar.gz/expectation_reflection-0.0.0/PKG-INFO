@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: expectation_reflection
+Version: 0.0.0
+Summary: Expectation Reflection for classification
+Home-page: https://github.com/danhtaihoang/expectation_reflection
+Author: Danh-Tai HOANG
+Author-email: hoangdanhtai@gmail.com
+License: MIT
+Description: # Expectation Reflection
+        In the first version, we apply Expectation Refection for binary classication. We will extend this method for regression tasks in the near feature.
+Keywords: machine learning,classification,inference,statistics
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
