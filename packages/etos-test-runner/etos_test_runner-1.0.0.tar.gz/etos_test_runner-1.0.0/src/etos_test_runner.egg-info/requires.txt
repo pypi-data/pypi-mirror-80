@@ -1,0 +1,9 @@
+graphql-core==2.2.1
+eiffellib==1.1.0
+requests==2.24.0
+etos_lib==1.0.0
+packageurl-python==0.9.1
+
+[testing]
+pytest
+pytest-cov
