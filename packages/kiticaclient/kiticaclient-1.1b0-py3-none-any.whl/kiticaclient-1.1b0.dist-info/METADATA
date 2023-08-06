@@ -1,0 +1,156 @@
+Metadata-Version: 2.1
+Name: kiticaclient
+Version: 1.1b0
+Summary: Kitica Devicepool Client.
+Home-page: https://github.com/MainSystemDev/kitica
+Author: Joshua Kim Rivera
+Author-email: joshua.rivera@mnltechnology.com
+License: Type license() to see the full license text
+Platform: any
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Software Development :: Testing
+Description-Content-Type: text/markdown
+Requires-Dist: certifi (==2019.11.28)
+Requires-Dist: chardet (==3.0.4)
+Requires-Dist: idna (==2.8)
+Requires-Dist: pure-python-adb (==0.2.3.dev0)
+Requires-Dist: python-box (==4.0.4)
+Requires-Dist: PyYAML (==5.3)
+Requires-Dist: requests (==2.22.0)
+Requires-Dist: ruamel.yaml (==0.16.7)
+Requires-Dist: ruamel.yaml.clib (==0.2.0)
+Requires-Dist: toml (==0.10.0)
+Requires-Dist: urllib3 (==1.25.8)
+
+Kitica Host Client Listener
+================
+
+## Setting up Adb/iOS Host Client Listener Service
+
+This host listener configuration service was made for *nix systems.
+
+There is still no support for Windows OS.
+
+Before proceeding to the installation steps, it is important to note that
+you should have setup the following first:
+
+* Python
+* pip  
+* virtualenv
+* adb server if using adb client
+* ios deploy for ios client
+
+If you dont have this setup already, feel free to search the web for sources on how to.
+
+### Step 1 - Setting up Environment & Python Dependencies
+1. Clone this repository
+2. Navigate to the kitica client directory ``thisrepository/client``
+3. Run
+   ```bash
+   virtualenv venv
+   ```
+   This will create a python virtualenv which the listener service would use.  
+   If you are successful, you would see something like this on your terminal.
+   ```bash
+    Using base prefix '/usr'
+    New python executable in /home/joshuarivera/kitica/client/venv/bin/python3
+    Also creating executable in /home/joshuarivera/kitica/client/venv/bin/python
+    Installing setuptools, pip, wheel...
+    done.
+   ``` 
+4. Activate the created virtual environment instance by running
+    ```bash
+    source venv/bin/activate
+    ```
+    This will activate the virtualenv you just created.  
+5. With the virtualenv setup, we are now ready to install the python dependencies.  
+    Run:
+    ```bash
+    pip install -r requirements.txt
+    ```
+    What this does is install all the listed dependencies listed in the requirements.txt fle to the activated virtualenv.  
+6. Setup the system environment variable for the virtual environment.  
+    First, open the ``/thisrepository/client/_set_envs.pth`` to set the __KITICA_LISTENER_API__ Environment Variable.
+    ```pth
+    import os; os.environ['KITICA_LISTENER_API'] = 'http://kitica.server.api/hosts/listener'
+    ```
+    After setting the value for the api server. Copy the file inside the virtualenv.
+   ```bash
+   cp _set_envs.pth venv/lib/python3.6/site-packages/
+   ```
+7. With the virtual environment setup and dependencies installed, we should now be able to run our android client listener without errors.
+    ```bash
+    # for adb client
+    python android.py
+    # for ios client
+    python ios.py
+    ```
+    If no error occured, We are now ready to move to Step 2.
+
+### Step 2 - Creating a System Service for the Listener Client.
+1. Ok, now that our dependencies are good, we can now create a service instance for the listener client. To create a new system service, run:
+    ```bash
+    # for adb client
+    sudo nano /etc/systemd/system/kitica-adb-client.service
+    # for iOS client
+    sudo nano /etc/systemd/system/kitica-ios-client.service
+    ```
+    Copy the configuration below, edit the 
+    ```service
+    [Unit]
+    Description=Kitica Listener Instance
+    After=network.target
+
+    [Service]
+    User=changeme
+    Group=changeme
+
+    WorkingDirectory=/path/to/the/repository/kitica/client
+    Environment="PATH=/path/to/the/repository/kitica/client/venv/bin"
+
+    ExecStart=/path/to/the/repository/kitica/client/venv/bin/python3 /path/to/the/repository/kitica/client/<abd or ios>.py
+
+    [Install]
+    WantedBy=multi-user.target
+
+    ```
+    Save then quit.
+2. Now that we have created a service file, we can now try to start it.
+    ```bash
+    sudo systemctl daemon-reload
+    # for adb client
+    sudo systemctl start kitica_android_client
+    # for ios client
+    sudo systemctl start kitica_ios_client
+    ```
+    If all goes well, you should not see any error.  
+3. For the client to be able to auto start on boot and behave more like a listener, simply run:
+    ```bash
+    # for adb client
+    sudo systemctl enable kitica_android_client
+    # for ios client
+    sudo systemctl enable kitica_ios_client
+    ```
+    Check the status after...
+    ```bash
+    # for adb client
+    sudo systemctl status kitica_android_client
+    # for ios client
+    sudo systemctl status kitica_ios_client
+    ```
+    You should see something like this.
+    ```bash
+    ● kiticalistener.service - Kitica Android Listener Instance
+   Loaded: loaded (/etc/systemd/system/kiticalistener.service; disabled; vendor preset: enabled)
+   Active: active (running) since Sat 2020-02-08 00:39:40 PST; 1min ago
+    Main PID: 7563 (python3)
+        Tasks: 1 (limit: 4915)
+    CGroup: /system.slice/kiticalistener.service
+            └─7563 /path/to/the repository/client/venv/bin/python3 /path/to/the repository/client/android.py
+    ```
+4. Congratulations! You had setup a kitica android client listener as a service.
+
+
