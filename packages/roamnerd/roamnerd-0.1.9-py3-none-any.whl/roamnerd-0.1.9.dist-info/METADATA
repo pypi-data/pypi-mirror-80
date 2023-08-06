@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: roamnerd
+Version: 0.1.9
+Summary: A command-line tool for accessing the roamNERd API to annotate .txt files
+License: GPL-3.0
+Author: hmprt
+Author-email: hmprt@protonmail.com
+Requires-Python: >=3.0,<4.0
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: argh (>=0.26.2,<0.27.0)
+Requires-Dist: requests (>=2.24.0,<3.0.0)
