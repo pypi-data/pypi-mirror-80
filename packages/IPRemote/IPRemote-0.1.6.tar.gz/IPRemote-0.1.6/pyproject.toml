@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "IPRemote"
+version = "0.1.5"
+description = "Remote control Samsung televisions via TCP/IP connection"
+authors = ['Michael Vaughn <mikish.vaughn@gmail.com>'']
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/MikishVaughn/IPRemote"
+repository = "https://github.com/MikishVaughn/IPRemote"
+keywords = ["Samsung TV", "IP Control"]
+
+include = [
+	"LICENSE"
+	]
+	
+[tool.poetry.dependencies]
+python = "^3.8"
+
+[tool.poetry.dev-dependencies]
+pytest = "^3.0"
+
+[build-system]
+requires = [
+	"poetry>=0.12", 
+	"websocket-client",
+    "requests",
+    "lxml",
+    "six",
+    "ifaddr",
+    "pycryptodome"]
+
+build-backend = "poetry.masonry.api"
