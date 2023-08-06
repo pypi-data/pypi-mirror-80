@@ -1,0 +1,30 @@
+1.Functional description
+	功能描述
+
+	This is a Python program Dynamic Encryption Pack, password, the default daily updates, you can let the user focus on your daily send the password to get software use rights
+	这是一个给python程序动态加密的包，密码默认每日更新，你可以让用户关注你，每日发送的密码，来获取软件使用权限的
+
+2.Encryption method
+	加密方式
+	Gets the current is add a few months a couple of months and days in future, use md5 encryption, and take the encrypted string of 1 to 6 - bit
+	获取当前是几月几日后将月与日相加，使用md5加密，并取加密后字符串的1到6位
+
+3.method of application
+	使用方法
+-------------------------------	
+	from otpwd.Otpwd import *
+	epts=Ept()
+	name=epts.main()
+	if name=='vk':
+		Your main program
+-------------------------------
+	You can modify otp. PY pwd_ functions to implement your own encryption method and algorithm, change the frequency of password changes ( the default ONE DAY AT A TIME )
+	你可以通过修改Otpwd.py里的pwd_函数来实现自己的加密方式与算法，更改密码变动的频率（默认一天一次）
+	
+	You can comment out when used in otpwd. PY, line 19th print password
+	正式使用时您可以将Otpwd.py第19行的打印密码注释掉
+4.Required Module
+	需要用到的模块
+	import time
+	import hashlib
+	import tkinter
