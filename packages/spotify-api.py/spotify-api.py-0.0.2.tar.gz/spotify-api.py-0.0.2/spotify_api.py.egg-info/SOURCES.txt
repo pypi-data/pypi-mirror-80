@@ -1,0 +1,14 @@
+README.md
+setup.py
+spotify_api.py.egg-info/PKG-INFO
+spotify_api.py.egg-info/SOURCES.txt
+spotify_api.py.egg-info/dependency_links.txt
+spotify_api.py.egg-info/top_level.txt
+spotifyapi/Album.py
+spotifyapi/Artist.py
+spotifyapi/Exception.py
+spotifyapi/Oauth.py
+spotifyapi/Track.py
+spotifyapi/User.py
+spotifyapi/Util.py
+spotifyapi/__init__.py
