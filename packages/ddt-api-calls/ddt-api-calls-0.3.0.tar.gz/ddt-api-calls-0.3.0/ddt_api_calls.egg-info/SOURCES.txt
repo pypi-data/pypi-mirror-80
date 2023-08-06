@@ -1,0 +1,15 @@
+LICENSE
+MANIFEST.in
+README.rst
+setup.cfg
+setup.py
+ddt_api_calls/__init__.py
+ddt_api_calls/apps.py
+ddt_api_calls/panels.py
+ddt_api_calls.egg-info/PKG-INFO
+ddt_api_calls.egg-info/SOURCES.txt
+ddt_api_calls.egg-info/dependency_links.txt
+ddt_api_calls.egg-info/not-zip-safe
+ddt_api_calls.egg-info/requires.txt
+ddt_api_calls.egg-info/top_level.txt
+ddt_api_calls/templates/ddt_api_calls/requests.html

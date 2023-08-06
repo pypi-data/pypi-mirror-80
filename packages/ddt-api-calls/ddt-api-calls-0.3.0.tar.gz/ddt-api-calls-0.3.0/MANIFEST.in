@@ -1,0 +1,8 @@
+include *.rst
+include LICENSE
+recursive-include ddt_api_calls *.html
+recursive-include ddt_api_calls *.txt
+recursive-include ddt_api_calls *.po
+global-exclude __pycache__
+global-exclude *.py[co]
+
