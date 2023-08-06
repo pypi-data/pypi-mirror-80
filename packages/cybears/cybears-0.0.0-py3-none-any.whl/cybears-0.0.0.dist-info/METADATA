@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: cybears
+Version: 0.0.0
+Summary: cybears CTF tools and things
+Home-page: https://gitlab.com/cybears
+Author: @cybearsCTF
+License: BSD 2-clause
+Platform: UNKNOWN
+Classifier: Development Status :: 1 - Planning
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Topic :: Security
+Description-Content-Type: text/markdown
+Requires-Dist: requests (>=2.24.0)
+
+# cybears
+
+## Overview
+
+Simple set of utilities and other tools as a pypi package
+for doing CTF things.
+
+## Installation
+
+You can download and install the latest version of this software from the Python package index (PyPI) as follows:
+
+    pip install cybears
+
+## Usage
+
+The package is a collection of modules with different
+uses.
+
+TODO: readthedocs sphinx build 
+
