@@ -1,0 +1,53 @@
+Metadata-Version: 2.1
+Name: jsonpath-kv
+Version: 0.0.7
+Summary: Gets the value in the JSON data
+Home-page: https://github.com/WangHaoz/GetJsonValue
+Author: Wanghao
+Author-email: 947001731@qq.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+
+# **jsonpath-kv**
+    pip install jsonpath-kv
+    from jsonpath_kv import jsonvalue
+## 正常的dict
+    user_dict = {
+        "sites":
+            [
+                { "name":"runoob" , "url":"www.runoob.com" },
+                { "name":"google" , "url":"www.google.com" },
+                { "name":"weibo" , "url":"www.weibo.com" }
+            ]
+    }
+    r = jsonvalue.get(user_dict,'url')
+    print(r)
+    output: ['www.runoob.com', 'www.google.com', 'www.weibo.com']
+## json字符串
+    user_json = '{ "sites": [ { "name":"runoob" , "url":"www.runoob.com" }, { "name":"google" , "url":"www.google.com" }, { "name":"weibo" , "url":"www.weibo.com" } ] }'
+    r = jsonvalue.get(user_dict,'url')
+    print(r)
+    output: ['runoob', 'google', 'weibo']
+## 当所取key在字符串包裹里时
+    user_json = { "sites": '[ { "name":"runoob" , "url":"www.runoob.com" }, { "name":"google" , "url":"www.google.com" }, { "name":"weibo" , "url":"www.weibo.com" } ]'}
+    r = jsonvalue.get(user_dict,'url')
+    print(r)
+    output: ['runoob', 'google', 'weibo']
+## 当所取key在字符串包裹里时
+    user_dict = {"sites": "{ \"name\":\"google\" , \"url\":\"www.google.com\" }"}
+    r = jsonvalue.get(user_dict,'name')
+    print(r)
+    output: ['google']
+## key不存在时返回false
+    user_dict = {"sites": "{ \"name\":\"google\" , \"url\":\"www.google.com\" }"}
+    r = jsonvalue.get(user_dict, 'address')
+    print(r)
+    output: False
+
+
+
+
