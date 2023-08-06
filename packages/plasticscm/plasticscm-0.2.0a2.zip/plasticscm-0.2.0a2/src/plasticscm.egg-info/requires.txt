@@ -1,0 +1,11 @@
+setuptools>=42.0.2
+atpublic>=2.0.0
+requests>=2.24.0
+python-dateutil>=2.8.1
+
+[doc]
+Sphinx>=3.2.1
+restructuredtext-lint>=1.3.1
+
+[test]
+httmock>=1.3.0
