@@ -1,0 +1,47 @@
+Metadata-Version: 2.1
+Name: chatbotpackage
+Version: 0.13
+Summary: chatbotpackage
+Home-page: https://github.com/shinjiniray/chatbotpackage.git
+Author: Shinjini Ray
+Author-email: shinjini.ray@gmail.com
+License: MIT
+Download-URL: https://pypi.org/project/chatbotpackage
+Keywords: chatbot,neuralnetwork
+Platform: UNKNOWN
+Description-Content-Type: text/markdown
+Requires-Dist: Flask
+Requires-Dist: Werkzeug
+Requires-Dist: keras (==2.4.3)
+Requires-Dist: pymongo
+Requires-Dist: nltk
+Requires-Dist: scipy (==1.4.1)
+Requires-Dist: numpy (==1.18.5)
+Requires-Dist: configparser
+Requires-Dist: flask-socketio
+Requires-Dist: tensorflow (==2.3.0)
+Requires-Dist: dnspython (==1.16.0)
+Requires-Dist: gunicorn
+Requires-Dist: eventlet (==0.26.1)
+Requires-Dist: greenlet (==0.4.16)
+Requires-Dist: gevent-websocket
+Requires-Dist: monotonic (==1.5)
+Requires-Dist: certifi (==2020.6.20)
+Requires-Dist: chardet (==3.0.4)
+Requires-Dist: Click (==7.1.2)
+Requires-Dist: idna (==2.10)
+Requires-Dist: itsdangerous (==1.1.0)
+Requires-Dist: Jinja2 (==2.11.2)
+Requires-Dist: MarkupSafe (==1.1.1)
+Requires-Dist: PyJWT (==1.7.1)
+Requires-Dist: pytz (==2020.1)
+Requires-Dist: requests (==2.24.0)
+Requires-Dist: six (==1.15.0)
+Requires-Dist: twilio (==6.45.0)
+Requires-Dist: urllib3 (==1.25.10)
+Requires-Dist: pyopenssl
+
+# chatbotpackage
+
+## History
+
