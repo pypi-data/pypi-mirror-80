@@ -1,0 +1,13 @@
+gkdbutils/__init__.py,sha256=Vdq_hvi-6GrIM35TpCXLVO8psvbUHfsrCP-r_jcBW30,24
+gkdbutils/__version__.py,sha256=-Wqu9UyJphp-2_EahEsqQvkcE0VBhm1-N7D6e5rANdY,22
+gkdbutils/ingesters/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+gkdbutils/ingesters/cassandra/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+gkdbutils/ingesters/cassandra/ingestGenericDatabaseTable.py,sha256=GoORFM-qp8Mb4mvJE4fKMBxyJtE-1FjM6k4496sB2ls,10183
+gkdbutils/ingesters/mysql/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+gkdbutils/ingesters/mysql/ingestGenericDatabaseTable.py,sha256=1CD1eGcdAX_rCnTmH_SaDoAbr1hNxVhO0HVbHX-z-Xw,8371
+gkdbutils-0.0.4.dist-info/LICENSE,sha256=CvfTDb5oDPgzTkjVWg-1rEJedx6xSkV6VVurBHowhUE,1055
+gkdbutils-0.0.4.dist-info/METADATA,sha256=XeeeZtO4NaK45JsgpUDEC97kAM64s2vR81xCqji8KK4,567
+gkdbutils-0.0.4.dist-info/WHEEL,sha256=g4nMs7d-Xl9-xC9XovUrsDHGXt-FT0E17Yqo92DEfvY,92
+gkdbutils-0.0.4.dist-info/entry_points.txt,sha256=1BI6lJbPTHX1Dhusg40U9GB8MQnrDwbA-xXFsaXmWu4,171
+gkdbutils-0.0.4.dist-info/top_level.txt,sha256=oc_-nU-XiXQDRrsC39N9UGJdzgXeOB69ENb5Zfsl1dE,10
+gkdbutils-0.0.4.dist-info/RECORD,,
