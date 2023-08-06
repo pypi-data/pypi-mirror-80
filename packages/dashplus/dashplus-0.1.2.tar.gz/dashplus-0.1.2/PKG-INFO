@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: dashplus
+Version: 0.1.2
+Summary: A superset of Dash for Autodesk Maya.
+Home-page: https://github.com/danbradham/dashplus
+License: MIT
+Author: Dan Bradham
+Author-email: danielbradham@gmail.com
+Requires-Python: >=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Project-URL: Repository, https://github.com/danbradham/dashplus
