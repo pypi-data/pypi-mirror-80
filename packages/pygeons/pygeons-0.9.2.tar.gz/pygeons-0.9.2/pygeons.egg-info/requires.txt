@@ -1,0 +1,15 @@
+marisa_trie
+pySmartDL
+pyyaml
+smart_open
+
+[test]
+marisa_trie
+pySmartDL
+pyyaml
+smart_open
+pytest-runner
+pytest
+parameterizedtestcase
+mock
+nose
