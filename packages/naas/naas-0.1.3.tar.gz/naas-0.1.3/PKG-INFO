@@ -1,0 +1,62 @@
+Metadata-Version: 2.1
+Name: naas
+Version: 0.1.3
+Summary: scheduler system for notebooks
+Home-page: https://github.com/cashstory/naas
+Author: Martin Donadieu
+Author-email: martindonadieu@gmail.com
+License: UNKNOWN
+Description: # Naas (Notebooks As Automated Services)
+        
+        Schedule notebooks, to automate all your tasks.
+        
+        Use the power of scripting in the cloud.
+        Whenever you need it (even when you sleep).
+        
+        * Schedule your scripts
+        * Use Notebooks as API
+        * Share assets securely
+        
+        ## Install
+        
+        `pip3 install naas`
+        
+        
+        # DEVELOPMENT
+        
+        ## Install
+        
+        `pip3 install -r requirements.txt`
+        
+        ## Run test 
+        
+        `pytest -x`  
+        
+        ## test local server
+        
+        `./test_runner.sh`
+        
+        open manager :
+        
+        `localhost:5000/`
+        
+        ## check lint
+        
+        `python3 -m black naas` format better
+        `python3 -m flake8 naas` check if any left error
+        
+        ## publish
+        
+        bump version
+        `cz bump --changelog`
+        create release
+        `python3 setup.py sdist`
+        upload release
+        `python3 -m twine upload dist/* -u YOUR_USERNAME`
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3.6
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+Provides-Extra: dev
