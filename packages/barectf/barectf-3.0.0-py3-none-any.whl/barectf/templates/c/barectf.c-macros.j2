@@ -1,0 +1,66 @@
+{#
+ # The MIT License (MIT)
+ #
+ # Copyright (c) 2020 Philippe Proulx <pproulx@efficios.com>
+ #
+ # Permission is hereby granted, free of charge, to any person obtaining
+ # a copy of this software and associated documentation files (the
+ # "Software"), to deal in the Software without restriction, including
+ # without limitation the rights to use, copy, modify, merge, publish,
+ # distribute, sublicense, and/or sell copies of the Software, and to
+ # permit persons to whom the Software is furnished to do so, subject to
+ # the following conditions:
+ #
+ # The above copyright notice and this permission notice shall be
+ # included in all copies or substantial portions of the Software.
+ #
+ # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ # EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ # MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ # IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+ # CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ # TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+ # SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ #}
+
+{% import 'common.j2' as common %}
+
+{% set prefix = common.prefix %}
+{% set ucprefix = common.ucprefix %}
+{% set cg_opts = cfg.options.code_generation_options %}
+
+{#
+ # Generates the preamble of the packet opening/closing functions for
+ # the data stream type `dst`.
+ #}
+{% macro open_close_func_preamble(dst, ts_feature) %}
+struct {{ prefix }}ctx * const ctx = &sctx->parent;
+{% if dst.default_clock_type and ts_feature %}
+const {{ cg_opts.clock_type_c_types[dst.default_clock_type] }} ts = ctx->use_cur_last_event_ts ?
+	sctx->cur_last_event_ts :
+	ctx->cbs.{{ dst.default_clock_type.name }}_clock_get_value(ctx->data);
+{% endif %}
+const int saved_in_tracing_section = ctx->in_tracing_section;
+{%- endmacro %}
+
+{#
+ # Generates a list of function call parameters for the members of
+ # the structure field type `ft`.
+ #
+ # Each parameter has the prefix `param_prefix`.
+ #
+ # The list always starts with a comma (if there's at least one member).
+ #
+ # Example:
+ #
+ #     , cc_peer_id, sc_addr, p_msg_id, p_msg
+ #}
+{% macro ft_call_params(param_prefix, ft, only_dyn=false) %}
+{% if ft %}
+	{% for member_name, member in ft.members.items() %}
+		{% if not only_dyn or member.field_type.size_is_dynamic or member.field_type._is_len %}
+, {{ param_prefix }}_{{ member_name }}
+		{%- endif %}
+	{% endfor %}
+{% endif %}
+{% endmacro %}
