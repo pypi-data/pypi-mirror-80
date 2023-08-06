@@ -1,0 +1,14 @@
+MANIFEST.in
+README.md
+setup.py
+d3heatmap/__init__.py
+d3heatmap/d3heatmap.py
+d3heatmap/examples.py
+d3heatmap.egg-info/PKG-INFO
+d3heatmap.egg-info/SOURCES.txt
+d3heatmap.egg-info/dependency_links.txt
+d3heatmap.egg-info/requires.txt
+d3heatmap.egg-info/top_level.txt
+d3heatmap/d3js/__init__.py
+d3heatmap/utils/__init__.py
+d3heatmap/utils/adjmat_vec.py
