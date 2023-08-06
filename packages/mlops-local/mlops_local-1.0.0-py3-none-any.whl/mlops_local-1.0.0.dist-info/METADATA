@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: mlops-local
+Version: 1.0.0
+Summary: Package to test preprocessing and ML scripts locally before pushing to the MLOps platform
+Home-page: UNKNOWN
+Author: Petter Hultin Gustafsson
+Author-email: petter@mlops.cloud
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: Click
+Requires-Dist: docker
+Requires-Dist: gitpython
+
+# MLOps local test environment
+This package is a support role when using the MLOps platform.
+With it, you can test preprocessing jobs and machine learning algorithms locally, using 
+the in-browser interpreter and debugger, before committing your work to the platform.
+
