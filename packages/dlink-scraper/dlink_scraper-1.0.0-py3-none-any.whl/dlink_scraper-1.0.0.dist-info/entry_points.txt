@@ -1,0 +1,4 @@
+[console_scripts]
+dlinkscraper = dlinkscraper.__main__:main
+dlinkscraper-duckdns-update = dlinkscraper._duckdns_update_script:main
+
