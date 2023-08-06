@@ -1,0 +1,41 @@
+Metadata-Version: 2.1
+Name: say-message
+Version: 0.0.1
+Summary: A library that print a message.
+Home-page: https://github.com/eocode/First-Python-Package
+Author: Elias Ojeda Medina
+Author-email: hola@eliasojedamedina.com
+License: UNKNOWN
+Description: # First-Python-Package
+        A simple pyhton package to say messages
+        
+        
+        
+        Build the solution
+        
+        ```sh
+        python -m pip install --user --upgrade setuptools wheel
+        python setup.py sdist bdist_wheel
+        python -m pip install --user --upgrade twine
+        python -m twine upload dist/*
+        ```
+        
+        # Run test
+        
+        ```sh
+        python -m unittest
+        ```
+        
+          
+        Change Log
+        ===========
+        
+        0.0.1 (09/24/2020)
+        --------------------
+        -First Release
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
