@@ -1,0 +1,47 @@
+Metadata-Version: 1.1
+Name: kdlutils
+Version: 1.5.7
+Summary: This library has several helper functions for deep learning
+Home-page: https://github.com/kaustubh-sadekar/githubActions
+Author: kaustubh sadekar
+Author-email: UNKNOWN
+License: MIT
+Download-URL: https://github.com/kaustubh-sadekar/githubActions/archive/v_1.5.7.tar.gz
+Description: githubActions
+        =============
+        
+        This repository contains a small collection of utility functions.
+        
+        Installing the library in colab
+        ===============================
+        
+        .. code:: shell
+        
+            !git clone https://github.com/kaustubh-sadekar/dlutils.git
+            !sudo python3 dlutils/setup.py install
+        
+        Example code for testing in colab
+        =================================
+        
+        .. code:: python
+        
+            import sys
+            sys.path.append("dlutils/")
+            import kdlutils
+            input_dim = (1,600,800)
+            layersList = [{'conv':(1,7,3,1,1,1)},{'mp':(2,2,0,1)},{'conv':(7,14,3,1,1,1)},{'mp':(2,2,0,1)},{'conv':(14,30,3,1,1,1)},{'mp':(2,2,0,1)}]
+            out = kdlutils.kdlutils.getOutShape(input_dim,layersList)
+            print(out)
+        
+        Documentation and new codes will be uploaded soon.
+        
+Keywords: Deep Learning,Helper functions
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
