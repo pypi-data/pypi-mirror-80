@@ -1,0 +1,95 @@
+# The vn100-inm-pt package
+
+## 1. How to use?
+
+### 1.a. Requirements.
+
+First of all, there must be ready the following 4 items:
+
+1. The user's health_diagnostics callback function: this must be a string message argument field. For example:
+~~~
+def onerror(msg: str):
+    print("health: {}".format(msg))
+~~~
+2. The inm_output callback function: this must be a dictionary message argument field. For example:
+~~~
+def ondata(msg: dict):
+    print("data: {}".format(msg))
+~~~
+3. The vn-100's structural data message architecture descriptor database: this is an SQLite database. The manufacturer default name is "vn100.db".
+4. The vn-100's structural data message architecture descriptor database connection implementation: this is a SQLite database connection, from the python's default sqlite3 library.
+For example, you can get a connection with the following function:
+~~~
+import sqlite3
+import os
+def sqlite3_db_connection(db_filename: str):
+    # Check if db_file is a file:
+    print(os.path.isfile(db_filename))
+    if (not os.path.isfile(db_filename)):
+        raise FileNotFoundError("The SQLite database file {} doesn't exist.".format(
+            db_filename))
+    return sqlite3.connect(db_filename)
+~~~
+
+### 1.b. The "run" basic implementation
+Now you are ready for make the implementation of the "run" main function. So, you must write the following code piece:
+~~~
+from vn100 import run
+run(
+    onerror=onerror,
+    ondata=ondata,
+    db_connection=sqlite3_db_connection("vn100.db"))
+~~~
+
+Now yo can run this python script. First it will check the INM settings, next it will begin to print the output data through the "ondata" function callback. For any reason, if the callback functions or internal functions becomes slower, warning or error messages will be printed through the "onerror" function callback.
+
+
+## 2. A briefing about the full implementation.
+
+The full arguments list that could be passed when it's created are as follows:
+~~~
+from vn100 import run
+run(
+    onerror: Callable=None, 
+    ondata: Callable=None, 
+    hwconfig: dict=hwc, 
+    mpconfig: dict=mpc, 
+    inm_config: dict=inm_usd, 
+    db_connection: Any=None, 
+    spsettings: dict=sps, 
+    connsettings: dict=usc)
+~~~
+
+Where:
+
+- onerror: is the user callback function with a string argument, where the health watchdogs will report delays or lack failures from the library framework operation.
+
+- ondata: is the user callback function with a dictionary argument, where the INM parsed output messages will be written.
+
+**Note: If both "onerror" and "ondata" is not passed (default is None for both), the system won't start.**
+
+- hwconfig: is a dictionary with all the health watchdogs timers values. It's recommended leave the default configuration (don't worry for pass it).
+
+- mpconfig: is a dictionary with all the main performance configuration. Buffer sizes, dead-time function timers are on this. It's recommended leave the default configuration (don't worry for pass it).
+
+- inm_config: is a dictionary with some INM user settings. There can specify the output variables, some of them, update asynchronous data output frequency, INM serial port settings, low-pass FIR and Kalman filters, and more. See the VN-100 user's manual for detailed information.
+
+- db_connection: is an instance of the sqlite3.connect('filename'), from the Python's sqlite3 default library, where the filename argument shall be the filename of the vn-100's structural data message architecture descriptor database. The manufacturer default name is "vn100.db".
+
+- spsettings: is a dictionary with the serial port settings of this machine. Bit (or baud) rate, parity, data bits and stop bits must be coherent respect to the INM serial port settings values. The next is the default dictionary values:
+
+~~~
+serial_port_settings = {
+    "port": "/dev/ttyUSB0",
+    "bit_rate": 115200
+}
+~~~
+
+- connsettings: is a dictionary with the RPC communication channel settings. This is a UDP port, with the IP address and port number. The next is the default dictionary values:
+
+~~~
+udp_connection_settings = {
+    "IP_address": "0.0.0.0",
+    "port": 27800
+}
+~~~
