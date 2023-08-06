@@ -1,0 +1,12 @@
+README.md
+setup.py
+setup_pypi.py
+FileCensus.egg-info/PKG-INFO
+FileCensus.egg-info/SOURCES.txt
+FileCensus.egg-info/dependency_links.txt
+FileCensus.egg-info/top_level.txt
+__EULA/README.rst
+__README/README.rst
+filecensus/__init__.py
+tests/__init__.py
+tests/test_filecensus.py
