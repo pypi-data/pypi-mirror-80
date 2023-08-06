@@ -1,0 +1,99 @@
+#!/usr/bin/env retro
+
+This is used to assemble the Markdown copy of the RETRO Handbook.
+
+The individual chapters are in the `book/` directory. This is set
+using the `BOOK-BASE` constant.
+
+~~~
+'doc/book/  'BOOK-BASE s:const
+~~~
+
+The chapters are specified it the `TOC`, a named array. These are
+the file names, they will be included in order. I am structuring
+it using separate file to make the actual editing process easier
+for me.
+
+~~~
+{
+  'general/introduction
+  'general/copyrights
+  'building/obtaining
+  'building/unix
+  'building/windows
+  'building/alternatives
+  'building/advanced
+  'general/starting
+  'general/basic-interactions
+  'general/retro-unu
+  'general/quick-tutorial
+  'general/syntax
+  'toolchain/info/additional-tools
+  'toolchain/info/retro-compiler
+  'toolchain/man/retro
+  'toolchain/man/retro-describe
+  'toolchain/man/retro-document
+  'toolchain/man/retro-embedimage
+  'toolchain/man/retro-extend
+  'toolchain/man/retro-locate
+  'toolchain/man/retro-muri
+  'toolchain/man/retro-tags
+  'techniques/naming-conventions
+  'techniques/return-stack
+  'techniques/stack-diagrams
+  'techniques/arrays
+  'techniques/assembly
+  'techniques/buffer
+  'techniques/characters
+  'techniques/definitions
+  'techniques/dictionary
+  'techniques/floating-point
+  'techniques/files
+  'techniques/loops
+  'techniques/numbers
+  'techniques/pointers
+  'techniques/quotes
+  'techniques/sockets
+  'techniques/scripting
+  'techniques/strings
+  'techniques/using-combinators
+  'techniques/word-classes
+  'techniques/checking-the-version
+  'techniques/errors
+  'techniques/lexical-scope
+  'techniques/the-stacks
+  'internals/nga
+  'internals/interface-layers
+  'internals/io
+  'internals/image
+  'glossary/using
+  'tech-notes/historical-papers
+  'tech-notes/metacompilation
+  'tech-notes/self-hosting
+  'tech-notes/prefixes
+  'tech-notes/kernel-words
+  'tech-notes/ngaro-to-nga
+  'tech-notes/retro11-retrospective
+  'tech-notes/security
+  'tech-notes/underscores-in-names
+  'tech-notes/code-it-yourself
+  'general/deprecation
+} 'TOC const
+~~~
+
+
+~~~
+'Out var
+
+:import        here swap BOOK-BASE s:prepend file:slurp ;
+:/n            ASCII:LF @Out file:write ;
+:add-to-book   here [ @Out file:write ] s:for-each /n ;
+:process-files [ import add-to-book $. c:put ] a:for-each nl ;
+:open          'doc/RETRO-Book.md file:open<for-writing> !Out ;
+:close         @Out file:close ;
+:assemble      open process-files close ;
+~~~
+
+~~~
+TOC assemble
+~~~
