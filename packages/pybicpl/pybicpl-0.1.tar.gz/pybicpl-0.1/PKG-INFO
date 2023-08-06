@@ -1,0 +1,17 @@
+Metadata-Version: 1.2
+Name: pybicpl
+Version: 0.1
+Summary: Python interface for basic MNI .obj file format. Supports read, write, and calculations on a vertex neighbor graph.
+Home-page: https://github.com/FNNDSC/pybicpl
+Author: Jennings Zhang
+Author-email: Jennings.Zhang@childrens.harvard.edu
+License: MIT
+Description: # pybicpl
+        
+        Python interface for basic MNI .obj file format.
+        Supports read, write, and calculations on a vertex neighbor graph.
+        
+        ![slideshow](doc/slide.png)
+        
+Platform: UNKNOWN
+Requires-Python: >=3.6
