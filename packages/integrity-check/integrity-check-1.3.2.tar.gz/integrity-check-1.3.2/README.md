@@ -1,0 +1,1 @@
+You can use this module to do run-time assert like checking
