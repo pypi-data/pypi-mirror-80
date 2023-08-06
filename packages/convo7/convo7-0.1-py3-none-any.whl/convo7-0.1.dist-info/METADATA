@@ -1,0 +1,84 @@
+Metadata-Version: 2.1
+Name: convo7
+Version: 0.1
+Summary: Convo: the AI powered chatbot API
+Home-page: UNKNOWN
+Author: OodlesTechnologies
+Author-email: vaibhav.garg.334@gmail.com.com
+License: MIT
+Platform: UNKNOWN
+Requires-Python: >=3.6,<3.8
+Requires-Dist: PyJWT (<1.8,>=1.7)
+Requires-Dist: SQLAlchemy (<1.4.0,>=1.3.3)
+Requires-Dist: absl-py (<0.10,>=0.9)
+Requires-Dist: aiohttp (<3.7,>=3.6)
+Requires-Dist: apscheduler (<3.7,>=3.6)
+Requires-Dist: async-generator (<1.11,>=1.10)
+Requires-Dist: attrs (<19.4,>=19.3)
+Requires-Dist: boto3 (<2.0,>=1.12)
+Requires-Dist: cloudpickle (<1.4,>=1.2)
+Requires-Dist: colorclass (<2.3,>=2.2)
+Requires-Dist: coloredlogs (<11.0,>=10.0)
+Requires-Dist: colorhash (<1.1.0,>=1.0.2)
+Requires-Dist: fbmessenger (<6.1.0,>=6.0.0)
+Requires-Dist: gevent (<1.6,>=1.4)
+Requires-Dist: jsonpickle (<1.5,>=1.3)
+Requires-Dist: jsonschema (<3.3,>=3.2)
+Requires-Dist: kafka-python (<2.0,>=1.4)
+Requires-Dist: matplotlib (<3.3,>=3.1)
+Requires-Dist: mattermostwrapper (<2.3,>=2.2)
+Requires-Dist: multidict (<5.0,>=4.6)
+Requires-Dist: networkx (<2.5.0,>=2.4.0)
+Requires-Dist: numpy (<2.0,>=1.16)
+Requires-Dist: oauth2client (==4.1.3)
+Requires-Dist: packaging (<21.0,>=20.0)
+Requires-Dist: pika (<1.2.0,>=1.1.0)
+Requires-Dist: prompt-toolkit (<3.0,>=2.0)
+Requires-Dist: psycopg2-binary (<2.9.0,>=2.8.2)
+Requires-Dist: pydot (<1.5,>=1.4)
+Requires-Dist: pykwalify (<1.8.0,>=1.7.0)
+Requires-Dist: pymongo[srv,tls] (<3.9.0,>=3.8.0)
+Requires-Dist: python-dateutil (<2.9,>=2.8)
+Requires-Dist: python-engineio (<3.13,>=3.11)
+Requires-Dist: python-socketio (<4.6,>=4.4)
+Requires-Dist: python-telegram-bot (<13.0,>=11.1)
+Requires-Dist: pytz (<2020.0,>=2019.1)
+Requires-Dist: questionary (<1.6.0,>=1.5.1)
+Requires-Dist: redis (<4.0,>=3.4)
+Requires-Dist: regex (<2020.7,>=2020.6)
+Requires-Dist: requests (<3.0,>=2.23)
+Requires-Dist: rocketchat-API (<1.4.0,>=0.6.31)
+Requires-Dist: ruamel.yaml (<0.17,>=0.16)
+Requires-Dist: sanic-cors (<0.11.0,>=0.10.0b1)
+Requires-Dist: sanic-jwt (<1.5.0,>=1.3.2)
+Requires-Dist: sanic (<20.0.0,>=19.12.2)
+Requires-Dist: scikit-learn (<0.23,>=0.22)
+Requires-Dist: scipy (<2.0.0,>=1.4.1)
+Requires-Dist: setuptools (>=41.0.0)
+Requires-Dist: sklearn-crfsuite (<0.4,>=0.3)
+Requires-Dist: slackclient (<3.0.0,>=2.0.0)
+Requires-Dist: tensorflow-addons (<0.8.0,>=0.7.1)
+Requires-Dist: tensorflow-estimator (==2.1.0)
+Requires-Dist: tensorflow-probability (<0.10,>=0.7)
+Requires-Dist: tensorflow (<2.2,>=2.1)
+Requires-Dist: tensorflow-hub (<0.9,>=0.7)
+Requires-Dist: terminaltables (<3.2.0,>=3.1.0)
+Requires-Dist: tqdm (<4.46,>=4.31)
+Requires-Dist: twilio (<6.27,>=6.26)
+Requires-Dist: ujson (<3.0,>=1.35)
+Requires-Dist: webexteamssdk (<1.4.0,>=1.1.1)
+Provides-Extra: convert
+Requires-Dist: tensorflow-text (==2.1.0rc0) ; extra == 'convert'
+Provides-Extra: full
+Requires-Dist: spacy (<2.2,>=2.1) ; extra == 'full'
+Requires-Dist: tensorflow-text (==2.1.0rc0) ; extra == 'full'
+Requires-Dist: transformers (<2.5,>=2.4) ; extra == 'full'
+Requires-Dist: jieba (==0.39) ; extra == 'full'
+Provides-Extra: spacy
+Requires-Dist: spacy (<2.2,>=2.1) ; extra == 'spacy'
+Provides-Extra: transformers
+Requires-Dist: transformers (<2.5,>=2.4) ; extra == 'transformers'
+
+UNKNOWN
+
+

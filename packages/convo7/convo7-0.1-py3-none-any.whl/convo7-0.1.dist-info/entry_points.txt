@@ -1,0 +1,3 @@
+[console_scripts]
+convo = convo.__main__:main
+
