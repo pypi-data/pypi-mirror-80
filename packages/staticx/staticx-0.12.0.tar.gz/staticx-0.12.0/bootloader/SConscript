@@ -1,0 +1,30 @@
+import sys
+
+Import('env')
+
+env.Append(
+    CCFLAGS = ['-static'],
+    LINKFLAGS = ['-static'],
+    CPPPATH = [
+        '#libtar',
+        '#libxz',
+    ],
+)
+
+bootloader = env.Program(
+    target = 'bootloader',
+    source = [
+        'error.c',
+        'elfutil.c',
+        'extract.c',
+        'main.c',
+        'mmap.c',
+        'util.c',
+    ],
+    LIBS = [
+        'tar',
+        'xz',
+    ],
+)
+
+Return('bootloader')
