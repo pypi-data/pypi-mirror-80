@@ -1,0 +1,9 @@
+networkx
+pandas>=1.1
+numpy
+matplotlib>=3
+aiohttp>=3.6
+requests
+urllib3
+toml
+plotly
