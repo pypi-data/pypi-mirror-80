@@ -1,0 +1,16 @@
+sox==1.4.0
+pyrsistent==0.15.4
+jams>=0.3.2
+numpy>=1.13.3
+soundfile
+
+[docs]
+sphinx
+sphinx_rtd_theme
+sphinx_issues
+
+[tests]
+backports.tempfile
+pytest
+pytest-cov
+tqdm
