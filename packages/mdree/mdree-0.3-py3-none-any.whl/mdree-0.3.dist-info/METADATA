@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: mdree
+Version: 0.3
+Summary: Tool for constructiong trees with independant nodes
+Home-page: https://github.com/estcube/mdree
+Author: Mathias Plans
+Author-email: mathiasplans15@gmail.com
+License: MIT
+Platform: UNKNOWN
+
+# sdepend
+Local dependency manager for SCons scripts
+
+
