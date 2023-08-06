@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: falocalrepo-database
+Version: 3.2.1
+Summary: Database functionality for falocalrepo.
+Home-page: https://gitlab.com/MatteoCampinoti94/falocalrepo-database
+License: EUPL-1.2
+Author: Matteo Campinoti
+Author-email: matteo.campinoti94@gmail.com
+Requires-Python: >=3.8,<4.0
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: License :: OSI Approved :: European Union Public Licence 1.2 (EUPL 1.2)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: Database
+Requires-Dist: faapi (==2.8.3)
+Requires-Dist: filetype (==1.0.7)
+Project-URL: Repository, https://gitlab.com/MatteoCampinoti94/falocalrepo-database
