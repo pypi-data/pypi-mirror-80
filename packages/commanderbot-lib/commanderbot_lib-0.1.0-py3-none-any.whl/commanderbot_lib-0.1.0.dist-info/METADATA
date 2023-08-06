@@ -1,0 +1,26 @@
+Metadata-Version: 2.1
+Name: commanderbot-lib
+Version: 0.1.0
+Summary: A library of utilities for discord.py bots.
+Home-page: https://github.com/CommanderBot-Dev/commanderbot-lib
+License: MIT
+Keywords: discord,bot
+Author: Arcensoth
+Author-email: arcensoth@gmail.com
+Requires-Python: >=3.8,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Provides-Extra: log-colors
+Provides-Extra: yaml
+Requires-Dist: colorama (>=0.4.3,<0.5.0); extra == "log-colors"
+Requires-Dist: colorlog (>=4.2.1,<5.0.0); extra == "log-colors"
+Requires-Dist: discord.py (>=1.4.1,<2.0.0)
+Requires-Dist: pyyaml (>=5.3.1,<6.0.0); extra == "yaml"
+Project-URL: Repository, https://github.com/CommanderBot-Dev/commanderbot-lib
+Description-Content-Type: text/markdown
+
+# CommanderBot Lib
+
+A library of utilities for discord.py bots.
+
