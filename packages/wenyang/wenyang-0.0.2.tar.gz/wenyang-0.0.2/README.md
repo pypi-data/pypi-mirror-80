@@ -1,0 +1,22 @@
+# wenyang
+A Python package example
+
+steps:
+1. Give your package a unique name {package.name} in PyPI. You can check with `pip search`.
+2. Create a new repository {package.name} on github as https://github.com/{github.username}/{package.name}
+3. `git clone https://github.com/{github.username}/{package.name}` then you will get folder {package.name} as the {root}
+3. Create README.md for the package if you did not init your repository with a README.md
+4. Read https://packaging.python.org/tutorials/packaging-projects/
+5. Create empty package as {root}/{package.name}
+6. Create {root}/setup.py
+7. Generate distribution packages
+8. `python3 -m pip install --upgrade setuptools wheel`
+9. `python3 setup.py sdist bdist_wheel`
+10. Upload the distribution archives
+11. `python3 -m pip install --upgrade twine`
+12. `python3 -m twine upload dist/*`
+13. Check the package on https://pypi.org/project/wenyang/0.0.1/
+
+references:
+1. https://github.com/pypa/sampleproject
+2. [Github-flavored Markdown](https://guides.github.com/features/mastering-markdown/)
