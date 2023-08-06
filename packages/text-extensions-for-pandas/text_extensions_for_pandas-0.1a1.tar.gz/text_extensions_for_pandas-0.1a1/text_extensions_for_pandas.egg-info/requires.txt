@@ -1,0 +1,7 @@
+numpy>=1.17
+pandas>=1.0.3
+pyarrow>=1.0.0
+regex
+fastparquet
+memoized-property
+requests
