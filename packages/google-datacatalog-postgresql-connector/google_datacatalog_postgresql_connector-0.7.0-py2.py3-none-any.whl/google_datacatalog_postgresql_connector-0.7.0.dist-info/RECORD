@@ -1,0 +1,16 @@
+google_datacatalog_postgresql_connector-0.7.0-py3.7-nspkg.pth,sha256=0wj0-KQuR48P54VNutEzLALi6TIW02bvMPohv0KaVpc,1800
+google/datacatalog_connectors/postgresql/__init__.py,sha256=QSz_2gufnJO6u-PvyRvcFL5LQW4BKvoOJRRxR-dJYyw,650
+google/datacatalog_connectors/postgresql/datacatalog_cli.py,sha256=fkI8ZUnp16tT4Gl-ID-orw24KebAMwalDufv4JZS3Ik,3968
+google/datacatalog_connectors/postgresql/config/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+google/datacatalog_connectors/postgresql/config/metadata_definition.json,sha256=Vscy6UF3h82HzpN08BET6EE5NUXwsOzLOzLrw3XUGrE,1074
+google/datacatalog_connectors/postgresql/config/metadata_query.sql,sha256=YUYFjIB_-msJdMSkJanTwgV9g2h0e1Moy0bNCb87AVI,2002
+google/datacatalog_connectors/postgresql/config/num_rows_query.sql,sha256=IKl8wZt4gv_f1vh11N5TuazLZxza9I2alGk7C4off6Y,345
+google/datacatalog_connectors/postgresql/scrape/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+google/datacatalog_connectors/postgresql/scrape/metadata_scraper.py,sha256=iSkIQd30stFgFiJ5iDELbrS0-hNqoRGOhXcvEl292zk,1531
+google/datacatalog_connectors/postgresql/scrape/query_assembler.py,sha256=HfO1yOzUKtM7ltEHXrnBvpaRfbX1IE472Kor_5Uj1ic,426
+google_datacatalog_postgresql_connector-0.7.0.dist-info/METADATA,sha256=oRmtOJcKj4euZ0yrjEgXGezd1dlpgFPo0dVjuzw2oJs,11559
+google_datacatalog_postgresql_connector-0.7.0.dist-info/WHEEL,sha256=ADKeyaGyKF5DwBNE0sRE5pvW-bSkFMJfBuhzZ3rceP4,110
+google_datacatalog_postgresql_connector-0.7.0.dist-info/entry_points.txt,sha256=IIMlbA5sUQZ6kyXzFCDXXpubHejK4GCgemhwUqgwXLI,107
+google_datacatalog_postgresql_connector-0.7.0.dist-info/namespace_packages.txt,sha256=WwtlfkJREfw6CgfAVUCphYiIRxhJeEPNoEZfXtG54zU,37
+google_datacatalog_postgresql_connector-0.7.0.dist-info/top_level.txt,sha256=_1QvSJIhFAGfxb79D6DhB7SUw2X6T4rwnz_LLrbcD3c,7
+google_datacatalog_postgresql_connector-0.7.0.dist-info/RECORD,,

@@ -1,0 +1,3 @@
+[console_scripts]
+google-datacatalog-postgresql-connector = google.datacatalog_connectors.postgresql:main
+
