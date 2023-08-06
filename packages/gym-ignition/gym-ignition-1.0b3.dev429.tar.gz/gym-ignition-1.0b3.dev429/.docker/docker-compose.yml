@@ -1,0 +1,80 @@
+version: '3.0'
+
+services:
+
+  base:
+    build:
+      args:
+        from: ubuntu:focal
+      context: .
+      dockerfile: base.Dockerfile
+    image: diegoferigo/gym-ignition:base
+
+  # ======
+  # MASTER
+  # ======
+
+  ci-master:
+    build:
+      args:
+        from: diegoferigo/gym-ignition:base
+        ignition_codename: citadel
+      context: .
+      dockerfile: cicd-master.Dockerfile
+    image: diegoferigo/gym-ignition:ci-master
+
+  pypi-master:
+    build:
+      args:
+        from: diegoferigo/gym-ignition:base
+        ignition_codename: citadel
+      context: .
+      dockerfile: cicd-master.Dockerfile
+    image: diegoferigo/gym-ignition:pypi-master
+
+  # =====
+  # DEVEL
+  # =====
+
+  ci-devel:
+    build:
+      args:
+        from: diegoferigo/gym-ignition:base
+        ignition_codename: citadel
+        CMAKE_BUILD_TYPE: Debug
+      context: .
+      dockerfile: cicd-devel.Dockerfile
+    image: diegoferigo/gym-ignition:ci-devel
+
+  pypi-devel:
+    build:
+      args:
+        from: diegoferigo/gym-ignition:base
+        ignition_codename: citadel
+        CMAKE_BUILD_TYPE: Release
+      context: .
+      dockerfile: cicd-devel.Dockerfile
+    image: diegoferigo/gym-ignition:pypi-devel
+
+  # ====
+  # DEMO
+  # ====
+
+  latest:
+    build:
+      args:
+        from: diegoferigo/gym-ignition:pypi-master
+        branch: master
+      context: .
+      dockerfile: Dockerfile
+    image: diegoferigo/gym-ignition:latest
+
+  nightly:
+    build:
+      args:
+        from: diegoferigo/gym-ignition:ci-devel
+        branch: devel
+        pip_options: --pre
+      context: .
+      dockerfile: Dockerfile
+    image: diegoferigo/gym-ignition:nightly

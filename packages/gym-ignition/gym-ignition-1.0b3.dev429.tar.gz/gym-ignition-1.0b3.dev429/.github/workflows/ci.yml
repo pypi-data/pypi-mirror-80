@@ -1,0 +1,187 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  developer:
+    name: Developer installation
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: [3.8]
+        build_type: [Debug]
+        compiler:
+          #- gcc7
+          #- gcc8
+          - gcc9
+          #- clang9
+          #- clang10
+          #- clang11
+
+    steps:
+
+      - uses: actions/checkout@master
+      - run: git fetch --prune --unshallow
+
+      - name: Setup Environment
+        run: |
+          case ${{ matrix.compiler }} in
+            gcc7)   CC=gcc-7 ;  CXX=g++-7 ;;
+            gcc8)   CC=gcc-8 ;  CXX=g++-8 ;;
+            gcc9)   CC=gcc   ;  CXX=g++   ;;
+            clang6) CC=clang;   CXX=clang++ ;;
+            clang7) CC=clang-7; CXX=clang++-7 ;;
+            clang8) CC=clang-8; CXX=clang++-8 ;;
+            *) echo "Compiler not supported" && exit 1 ;;
+          esac
+          echo "::set-env name=CC::$CC"
+          echo "::set-env name=CXX::$CXX"
+          echo "::set-env name=PYTHON_VERSION::${{ matrix.python }}"
+          env
+
+      - name: Setup docker image [master]
+        if: |
+          github.ref == 'refs/heads/master' ||
+          (github.event_name == 'pull_request' && github.event.pull_request.head.ref == 'refs/heads/master')
+        run: |
+          docker run -d -i --name ci -v $(pwd):/github -w /github \
+            -v /home/runner/work/_temp/:/home/runner/work/_temp/:rw \
+            -e PYTHON_VERSION=${{ matrix.python }} -e CC=$CC -e CXX=$CXX \
+            diegoferigo/gym-ignition:ci-master bash
+
+      - name: Setup docker image [other]
+        if: |
+          (github.event_name == 'push' && github.ref != 'refs/heads/master') ||
+          (github.event_name == 'pull_request' && github.event.pull_request.head.ref != 'refs/heads/master')
+        run: |
+          docker run -d -i --name ci -v $(pwd):/github -w /github \
+            -v /home/runner/work/_temp/:/home/runner/work/_temp/:rw \
+            -e PYTHON_VERSION=${{ matrix.python }} -e CC=$CC -e CXX=$CXX \
+            diegoferigo/gym-ignition:ci-devel bash
+
+      - name: Wait entrypoint
+        run: sleep 30
+
+      - name: Build and Install C++
+        shell: docker exec -i ci bash -i -e {0}
+        run: |
+          env
+          mkdir build && cd build
+          cmake .. -GNinja -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
+          cmake --build . --target install
+
+      - name: Setup Python Package
+        shell: docker exec -i ci bash -i -e {0}
+        run: pip install -e .
+
+      - name: Python Tests [ScenarI/O]
+        shell: docker exec -i ci bash -i -e {0}
+        run: |
+          cd tests
+          pytest -m "scenario"
+
+      - name: Python Tests with Valgrind [ScenarI/O]
+        shell: docker exec -i ci bash -i -e {0}
+        if: failure()
+        run: |
+          pip install colour-valgrind
+          cd tests
+          valgrind --log-file=/tmp/valgrind.log pytest -s -m "scenario" || colour-valgrind -t /tmp/valgrind.log
+
+      - name: Python Tests [gym_ignition]
+        shell: docker exec -i ci bash -i -e {0}
+        run: |
+          cd tests
+          pytest -m "gym_ignition"
+
+      - name: Python Tests with Valgrind [gym_ignition]
+        shell: docker exec -i ci bash -i -e {0}
+        if: failure()
+        run: |
+          pip install colour-valgrind
+          cd tests
+          valgrind --log-file=/tmp/valgrind.log pytest -s -m "gym_ignition" || colour-valgrind -t /tmp/valgrind.log
+
+  user:
+    name: User installation
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        python:
+          - 3.8
+        os:
+          - ubuntu-latest
+
+    steps:
+
+      - uses: actions/checkout@master
+      - run: git fetch --prune --unshallow
+
+      - name: Setup docker image [master]
+        if: |
+          github.ref == 'refs/heads/master' ||
+          (github.event_name == 'pull_request' && github.event.pull_request.head.ref == 'refs/heads/master')
+        run: |
+          docker run -d -i --name ci -v $(pwd):/github -w /github \
+            -v /home/runner/work/_temp/:/home/runner/work/_temp/:rw \
+            -e PYTHON_VERSION=${{ matrix.python }} -e CC=$CC -e CXX=$CXX \
+            diegoferigo/gym-ignition:ci-master bash
+        env:
+          CC: gcc
+          CXX: g++
+
+      - name: Setup docker image [other]
+        if: |
+          (github.event_name == 'push' && github.ref != 'refs/heads/master') ||
+          (github.event_name == 'pull_request' && github.event.pull_request.head.ref != 'refs/heads/master')
+        run: |
+          docker run -d -i --name ci -v $(pwd):/github -w /github \
+            -v /home/runner/work/_temp/:/home/runner/work/_temp/:rw \
+            -e PYTHON_VERSION=${{ matrix.python }} -e CC=$CC -e CXX=$CXX \
+            diegoferigo/gym-ignition:ci-devel bash
+        env:
+          CC: gcc
+          CXX: g++
+
+      - name: Wait entrypoint
+        run: sleep 30
+
+      - name: Create wheel
+        shell: docker exec -i ci bash -i -e {0}
+        run: python setup.py bdist_wheel
+
+      - name: Install local wheel
+        shell: docker exec -i ci bash -i -e {0}
+        run: |
+          cd dist
+          pip install -v *.whl
+
+      - name: Python Tests [ScenarI/O]
+        shell: docker exec -i ci bash -i -e {0}
+        run: |
+          cd tests
+          pytest -m "scenario"
+
+      - name: Python Tests with Valgrind [ScenarI/O]
+        shell: docker exec -i ci bash -i -e {0}
+        if: failure()
+        run: |
+          pip3 install colour-valgrind
+          cd tests
+          valgrind --log-file=/tmp/valgrind.log pytest -s -m "scenario" || colour-valgrind -t /tmp/valgrind.log
+
+      - name: Python Tests [gym_ignition]
+        shell: docker exec -i ci bash -i -e {0}
+        run: |
+          cd tests
+          pytest -m "gym_ignition"
+
+      - name: Python Tests with Valgrind [gym_ignition]
+        shell: docker exec -i ci bash -i -e {0}
+        if: failure()
+        run: |
+          pip3 install colour-valgrind
+          cd tests
+          valgrind --log-file=/tmp/valgrind.log pytest -s -m "gym_ignition" || colour-valgrind -t /tmp/valgrind.log
