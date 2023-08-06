@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: streamhub
+Version: 0.2.17
+Summary: Streamhub helper lib to make it easier to write Singer target for Streamhub Activate
+Home-page: https://bitbucket.org/fivecool/streamhub-singer
+Author: Streamhub
+Author-email: tony@streamhub.co.uk
+License: MIT
+Platform: UNKNOWN
+Requires-Python: >=3.6
+Requires-Dist: boto3 (>=1.10.8)
+Requires-Dist: botocore (>=1.13.8)
+Requires-Dist: singer-python (==5.9.0)
+Requires-Dist: jsonschema (==2.6.0)
+
+This is a library to facilitate the creation of Singer taps and targets for the Streamhub platform.
+
+
