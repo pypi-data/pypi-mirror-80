@@ -1,0 +1,9 @@
+pytest>=5
+
+[docs]
+Sphinx>=3
+
+[test]
+coverage>=5
+coverage_enable_subprocess>=1
+pytest>=4
