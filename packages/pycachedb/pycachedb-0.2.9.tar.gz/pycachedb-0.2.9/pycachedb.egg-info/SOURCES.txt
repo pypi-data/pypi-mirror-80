@@ -1,0 +1,10 @@
+MANIFEST.in
+README.md
+pycachedb
+setup.py
+pycachedb.egg-info/PKG-INFO
+pycachedb.egg-info/SOURCES.txt
+pycachedb.egg-info/dependency_links.txt
+pycachedb.egg-info/top_level.txt
+src/main/pycachedb/embedded_cache.py
+src/main/pycachedb/db/log.db

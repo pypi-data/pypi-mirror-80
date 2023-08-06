@@ -1,0 +1,13 @@
+Metadata-Version: 2.1
+Name: pycachedb
+Version: 0.2.9
+Summary: PyCacheDB is a smallest embedded kay-value caching library.
+Home-page: https://github.com/superoutput/pycachedb
+Author: Savage Lasa
+Author-email: superoutput@gmail.com
+License: Savage
+Description: # pycachedb
+        PyCacheDB is a smallest embedded kay-value caching library. It is divided into smallest independent service units and easy to use.
+Keywords: python cache caching cached embedded database db
+Platform: UNKNOWN
+Description-Content-Type: text/markdown
