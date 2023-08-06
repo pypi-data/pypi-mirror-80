@@ -1,0 +1,15 @@
+cffi>=1.0.0
+enum34>=1.1.10
+
+[docs]
+mkdocs
+inari[mkdocs]
+mkdocs-material
+black
+pygments
+pymdown-extensions
+
+[tests]
+pytest
+pytest-ordering
+pytest-cov
