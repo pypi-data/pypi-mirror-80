@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: cc-sdk-mini
+Version: 0.0.7
+Summary: A lightweight SDK for Trend Micro Cloud Conformity
+Home-page: https://github.com/trendmicro/thus/tree/master/cc-sdk-mini
+Author: Brendan Johnson
+Author-email: brendan_johnson@trendmicro.com
+License: UNKNOWN
+Description: # cc-sdk-mini
+        
+        A lightweight SDK for Trend Micro Cloud Conformity. 
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: Natural Language :: English
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
