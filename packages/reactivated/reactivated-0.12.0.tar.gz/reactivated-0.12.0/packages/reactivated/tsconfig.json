@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "types": ["node"],
+        "strict": true,
+        "sourceMap": true,
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "target": "es5",
+        "jsx": "react",
+        // "allowSyntheticDefaultImports": true,
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "lib": ["dom", "es6"],
+        "outDir": "./",
+        "declaration": true
+    },
+    "include": ["./**/*"],
+    "exclude": ["node_modules", "dist/"]
+}

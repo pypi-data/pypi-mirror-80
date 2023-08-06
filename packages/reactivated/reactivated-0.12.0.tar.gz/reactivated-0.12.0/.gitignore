@@ -1,0 +1,24 @@
+*.pyc
+*.sqlite3
+.coverage
+.DS_Store
+.venv
+node_modules
+.mypy_cache
+client/exports.tsx
+server/settings/__init__.py
+dist/
+build/
+lib/
+*.egg-info
+
+
+website/translated_docs
+website/build/
+website/yarn.lock
+website/node_modules
+website/i18n/*
+sample/client/generated.tsx
+
+# pytest
+.cache
