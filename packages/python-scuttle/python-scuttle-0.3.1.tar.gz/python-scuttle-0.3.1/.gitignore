@@ -1,0 +1,12 @@
+__pycache__
+*.secret.*
+*.vim
+*.sw*
+env
+.venv
+.vscode
+.cache
+*.egg-info
+.eggs
+dist
+build
