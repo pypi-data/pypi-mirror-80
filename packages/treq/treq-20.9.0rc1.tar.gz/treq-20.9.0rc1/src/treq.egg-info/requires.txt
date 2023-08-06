@@ -1,0 +1,18 @@
+incremental
+requests>=2.1.0
+hyperlink>=19.0.0
+six
+attrs
+
+[:python_version < "3.7"]
+Twisted[tls]>=16.4.0
+
+[:python_version >= "3.7"]
+Twisted[tls]>=18.7.0
+
+[dev]
+mock
+pep8
+pyflakes
+sphinx
+httpbin==0.5.0
