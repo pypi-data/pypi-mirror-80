@@ -1,0 +1,55 @@
+Metadata-Version: 2.1
+Name: turbulette
+Version: 0.2.0
+Summary: A Framework to build async GraphQL APIs with Ariadne and GINO
+Home-page: https://github.com/gazorby/turbulette
+License: MIT
+Keywords: grapql,api,asyncio,gino,ariadne
+Author: Matthieu MN
+Author-email: matthieu.macnab@pm.me
+Maintainer: Matthieu MN
+Maintainer-email: matthieu.macnab@pm.me
+Requires-Python: >=3.6,<4.0
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Software Development :: Libraries :: Application Frameworks
+Classifier: Typing :: Typed
+Requires-Dist: alembic (>=1.4.2,<2.0.0)
+Requires-Dist: argon2-cffi (>=20.1.0,<21.0.0)
+Requires-Dist: ariadne (>=0.11,<0.13)
+Requires-Dist: async-caches (>=0.3.0,<0.4.0)
+Requires-Dist: click (>=7.1.2,<8.0.0)
+Requires-Dist: gino-enum-tables (>=1.0.7,<2.0.0)
+Requires-Dist: gino[starlette] (>=1.0.1,<2.0.0)
+Requires-Dist: passlib[bcrypt] (>=1.7.2,<2.0.0)
+Requires-Dist: psycopg2 (>=2.8.5,<3.0.0)
+Requires-Dist: pydantic[email] (>=1.6.1,<2.0.0)
+Requires-Dist: python-jwt (>=3.2.6,<4.0.0)
+Requires-Dist: simple-settings (>=0.19.1,<0.20.0)
+Project-URL: Ariadne, https://ariadnegraphql.org/
+Project-URL: GINO, https://python-gino.org/docs/en/master/index.html
+Project-URL: Repository, https://github.com/gazorby/turbulette
+Description-Content-Type: text/markdown
+
+# Turbulette
+
+![test](https://github.com/python-turbulette/turbulette/workflows/test/badge.svg)
+[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/e244bb031e044079af419dabd40bb7fc)](https://www.codacy.com/gh/python-turbulette/turbulette/dashboard?utm_source=github.com&utm_medium=referral&utm_content=python-turbulette/turbulette&utm_campaign=Badge_Coverage)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/e244bb031e044079af419dabd40bb7fc)](https://www.codacy.com/gh/python-turbulette/turbulette/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=python-turbulette/turbulette&amp;utm_campaign=Badge_Grade)
+[![Checked with mypy](http://www.mypy-lang.org/static/mypy_badge.svg)](http://mypy-lang.org/)
+[![Generic badge](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit)
+[![Generic badge](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
+
+WIP
+
