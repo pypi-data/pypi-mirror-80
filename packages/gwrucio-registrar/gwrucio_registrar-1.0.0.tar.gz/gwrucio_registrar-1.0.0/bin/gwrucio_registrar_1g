@@ -1,0 +1,555 @@
+#!/usr/bin/env python
+#
+# Copyright (C) 2018  James Alexander Clark <james.clark@ligo.org>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+"""
+Command line tool to register LIGO/Virgo datasets into rucio.
+
+Data may be registered as individual files, ascii lists of files, or registered
+on the fly as a background process monitoring a DiskCacheFile.
+"""
+
+import logging
+import os
+import signal
+import sys
+import time
+import argparse
+import yaml
+import argcomplete
+
+import rucio.rse.rsemanager as rsemgr
+from gwrucio.register import DataSetInjector
+from ldr.diskcache import DiskCacheFile
+
+# Number of seconds between unix and GPS epochs
+EPOCH_DIFFERENCE = 315964782
+
+SUCCESS = 0
+FAILURE = 1
+MAX_CACHE_TRIES = 5
+
+LOGGER = logging.getLogger('user')
+
+
+def setup_logger(logger):
+    """
+    Configures logging information. Lifted from `rucio`.
+    """
+
+    logger.setLevel(logging.INFO)
+    hdlr = logging.StreamHandler()
+
+    def emit_decorator(fnc):
+        """
+        Format logger
+        """
+        def func(*args):
+            """
+            Logging colours
+            """
+            levelno = args[0].levelno
+            if levelno >= logging.CRITICAL:
+                color = '\033[31;1m'
+            elif levelno >= logging.ERROR:
+                color = '\033[31;1m'
+            elif levelno >= logging.WARNING:
+                color = '\033[33;1m'
+            elif levelno >= logging.INFO:
+                color = '\033[32;1m'
+            elif levelno >= logging.DEBUG:
+                color = '\033[36;1m'
+            else:
+                color = '\033[0m'
+            # pylint: disable=line-too-long
+            formatter = logging.Formatter('{0}%(asctime)s\t%(levelname)s\t%(message)s\033[0m'.format(color))  # noqa: E501
+            hdlr.setFormatter(formatter)
+            return fnc(*args)
+        return func
+    hdlr.emit = emit_decorator(hdlr.emit)
+    logger.addHandler(hdlr)
+
+
+setup_logger(LOGGER)
+
+
+def signal_handler(sig, frame):
+    """
+    Catch INTERRUPTs
+    """
+    # pylint: disable=unused-argument
+    LOGGER.error('Interrupt received')
+    # Do some cleanup?
+    sys.exit(1)
+
+
+def get_parser():
+    """
+    Command line parser
+    """
+
+    oparser = argparse.ArgumentParser(description=__doc__)
+
+    oparser.add_argument('-r',
+                         "--rse",
+                         type=str,
+                         default=None,
+                         required=True,
+                         help="""RSE to register files at""")
+
+    oparser.add_argument('-y',
+                         "--reg-yaml",
+                         type=str,
+                         default=None,
+                         required=True,
+                         help="""YAML instructions
+                         describing dataset""")
+
+    oparser.add_argument('-u',
+                         "--allow-uploads",
+                         default=False,
+                         required=False,
+                         help="""Test for file existence and attempt
+                         uploads""")
+
+    oparser.add_argument("--dry-run",
+                         default=False,
+                         action="store_true",
+                         help="""Find files, construct replica list but don't
+                         actually upload to rucio""")
+
+    oparser.add_argument("--verbose",
+                         default=False,
+                         action="store_true",
+                         help="""Print all logging info""")
+
+    subparsers = oparser.add_subparsers()
+
+    #
+    # Parser for adding files manually
+    #
+    add_files_parser = subparsers.add_parser(
+        'add-files',
+        formatter_class=argparse.RawDescriptionHelpFormatter,  # noqa: E501
+        help="Register individual files.",
+        epilog="""Usage example
+^^^^^^^^^^^^^
+
+To register a pair of files:
+
+  $ gwrucio_register_data -r H_HOFT_ER13.yml add-files H-H1_HOFT_C00.txt
+
+where H-H1_HOFT_C00.txt looks something like,
+```
+/archive/frames/H-H1_HOFT_C00-1164353536-4096.gwf
+/archive/frames/H-H1_HOFT_C00-1164353536-4096.gwf
+```
+
+H_HOFT_ER13.yml is a YAML file with
+ - dataset-name (section name, required)
+ - scope (required)
+ - RSE (required)
+ - dataset GPS min (will be ignored)
+ - dataset GPS max (will be ignored)
+
+E.g., YAML should look like:
+
+"H1_ER10_hoft":
+  scope: "ER10"
+  rse: "LIGO-CIT"
+
+Note: register a list of files from a text file:
+
+  $ gwrucio_register_data -r H_HOFT_ER13.yml add-files $(< H-H1_HOFT_C00-11643.txt)
+
+    """)  # noqa:E501
+
+    add_files_parser.set_defaults(which='add_files')
+
+    add_files_parser.add_argument(dest="files",
+                                  nargs='+',
+                                  help="""Files for
+                                  registration (text file list)""")
+
+    add_files_parser.add_argument("--file-infos",
+                                  type=str,
+                                  required=False,
+                                  help="""File list with bytes, adler32,
+                                  md5""")
+
+    add_files_parser.add_argument("--rset",
+                                  type=str,
+                                  default=None,
+                                  required=True,
+                                  help="""Registration set in
+                                  the YAML configuration you wish to register
+                                  (only 1 permitted at this time)""")
+
+    #
+    # Running in daemon mode / from a diskcache
+    #
+    daemon_parser = subparsers.add_parser(
+        'daemon',
+        formatter_class=argparse.RawDescriptionHelpFormatter,  # noqa: E501
+        help='Monitor a diskcache and register files on the fly.',  # noqa: E501
+        epilog="""Usage example
+^^^^^^^^^^^^^^^
+
+Monitor and files appearing in
+/var/lib/diskcache/frame_cache_dump:
+
+\t$ gwrucio_register_data -r H_HOFT_ER13.yml daemon
+
+Where H_HOFT_ER13.yml is a YAML file with:
+
+- dataset-name (section name, required)
+- scope (required)
+- RSE (required)
+- regexp for file pattern (typically frame-type, required)
+- dataset GPS min (required)
+- dataset GPS max (required)
+
+E.g., YAML should look like:
+
+"H-H1_HOFT_C02":
+  scope: "ER10"
+  rse: "LIGO-CIT"
+  regexp: "H-H1_HOFT_C02"
+
+    """)
+
+    daemon_parser.set_defaults(which='daemon')
+
+    daemon_parser.add_argument(dest="cachefile",
+                               nargs='?',
+                               default="/var/lib/diskcache/frame_cache_dump",
+                               help="""Path to diskcache ascii dump [default:
+                               /var/lib/diskcache/frame_cache_dump]""")
+
+    daemon_parser.add_argument("--run-once",
+                               action='store_true',
+                               default=False,
+                               help="""Run a single iteration""")
+
+    daemon_parser.add_argument("--force-check",
+                               action='store_true',
+                               default=False,
+                               help="""Always attempt to register files
+                               (regardless of whether diskcache has been
+                               modified)""")
+
+    daemon_parser.add_argument("--daemon-sleep",
+                               type=float,
+                               default=30,
+                               required=False,
+                               help="""Seconds to wait between
+                               checking diskcache for new entries""")
+
+    daemon_parser.add_argument("--resume-file",
+                               type=str,
+                               default=None,
+                               required=False,
+                               help="""Resume registration from this updated
+                               copy of the reg-yaml""")
+    return oparser
+
+
+def get_rsets(configyml):
+    """
+    Read configuration from YAML
+
+    Returns :rset: YAML dictionary
+    """
+    with open(configyml, 'r') as stream:
+        rset = yaml.load(stream, Loader=yaml.SafeLoader)
+    return rset
+
+
+def dump_resume_file(resume_file, rsets):
+    """
+    Writes out a copy of the registration yaml file, in which the start time
+    `minimum-gps` has been updated to the most recently registered frame time.
+
+    :param resume_file: Path for the updated registration file from which
+    subsequent registration jobs will resume.
+    :type param: str
+    :param rsets: The data sets currently being registered
+    :type rsets: dict
+
+    """
+    with open(resume_file, 'w') as stream:
+        stream.write(yaml.dump(rsets))
+
+
+def list_file_infos(filename):
+    """
+    Read a CSV file listing filenames, checksums and sizes into a dictionary of
+    file attributes
+
+    :param filename: path to CSV file with filepath, bytes, adler32, md5
+    :returns: a dictionary of dictionaries `{bytes, adler32, md5}`, keyed by
+    filenames
+    """
+    fileinfos = dict()
+    with open(filename, 'r') as finfo:
+        for line in finfo.readlines():
+            elem = line.split()
+            fileinfos[elem[0]] = {'bytes': int(elem[1]), 'adler32': elem[2],
+                                  'md5': elem[3]}
+    return fileinfos
+
+
+def add_files(aparser):
+    """
+    %(prog)s add_files [options] <dsn>
+
+    Register data interactively
+    """
+    # Connect to RSE
+    LOGGER.info('Connecting to rucio and getting host, RSE info')
+    then = time.time()
+    rse_info = rsemgr.get_rse_info(aparser.rse)
+    LOGGER.debug('connection took %fs', (time.time() - then))
+
+    with open(aparser.files[0]) as afiles:
+        filelist = afiles.read().splitlines()
+
+    if len(filelist) < 11:
+        LOGGER.info("Rset contains: %s", ','.join(filelist))
+    else:
+        LOGGER.info("1st 10 files of Rset: %s", ','.join(filelist[:10]))
+
+    # Get registration set instructions
+    rsets = get_rsets(aparser.reg_yaml)
+
+    rset = rsets[aparser.rset]
+
+    # Add the file list to the rset
+    rset['filelist'] = list(filelist)
+
+    if aparser.file_infos:
+        # Add a file-info file:
+        rset['fileinfos'] = list_file_infos(aparser.file_infos)
+
+    inject_data(aparser.rset, rset, rse_info,
+                allow_uploads=aparser.allow_uploads, dry_run=aparser.dry_run)
+
+    return SUCCESS
+
+
+def check_for_diskcache(cachefile, wait_period):
+    """
+    Check for existence of diskcache dump
+    """
+    force_check_cache = True
+    while force_check_cache:
+        try:
+            os.stat(cachefile)
+            break
+        except (IOError, OSError) as cache_error:
+            LOGGER.critical('Cache file not found')
+            LOGGER.critical(cache_error)
+            LOGGER.info('Sleeping for %d s', wait_period)
+            time.sleep(wait_period)
+
+
+def daemon(aparser):
+    """
+    %(prog)s daemon [options] <dsn>
+
+    Run data registration as daemon, using the ascii dump of diskcache
+    """
+    # pylint: disable=too-many-branches
+    LOGGER.info("Starting %s as daemon", os.path.basename(__file__))
+
+    # Connect to RSE
+    LOGGER.info('Connecting to rucio and getting host, RSE info')
+    then = time.time()
+    rse_info = rsemgr.get_rse_info(aparser.rse)
+    LOGGER.debug('connection took %fs', (time.time() - then))
+
+    # Wait for cache file to appear
+    check_for_diskcache(aparser.cachefile, aparser.daemon_sleep)
+
+    # Begin Daemon loop
+    LOGGER.info("Starting registration loop")
+    daemon_running = True
+    while daemon_running:
+
+        LOGGER.info("--------------------------------------------------")
+
+        # Get rset instructions
+        # If resume file is newer than reg_file use resume file
+        if aparser.resume_file \
+                and os.path.exists(aparser.resume_file) \
+                and os.path.getmtime(aparser.resume_file) > \
+                os.path.getmtime(aparser.reg_yaml):
+            LOGGER.info("Registering from %s", aparser.resume_file)
+            rsets = get_rsets(aparser.resume_file)
+        else:
+            LOGGER.info("Registering from %s", aparser.reg_yaml)
+            rsets = get_rsets(aparser.reg_yaml)
+
+        for rset in rsets:
+
+            cache_try_interval = aparser.daemon_sleep
+            for ntry in range(MAX_CACHE_TRIES+1):
+                try:
+                    LOGGER.debug("Finding %s in DiskCache", rset)
+                    rsets[rset]['diskcache'] = DiskCacheFile(
+                        aparser.cachefile,
+                        minimum_gps=rsets[rset]['minimum-gps'],
+                        maximum_gps=rsets[rset]['maximum-gps'],
+                        regexp=rsets[rset]['regexp'],
+                        prune=True,
+                        update_file_count=True)
+
+                    # break out of the retry-loop
+                    break
+                except (IOError, OSError, StopIteration) as cache_error:
+                    # StopIteration if cachefile is incomplete
+                    LOGGER.critical('Cannot read cache file')
+                    LOGGER.critical(cache_error)
+                    if ntry == MAX_CACHE_TRIES:
+                        LOGGER.error('Max retries reached, aborting')
+                        sys.exit(1)
+                    else:
+                        LOGGER.debug('Retry in %d s (%d/%d)',
+                                     cache_try_interval, ntry+1,
+                                     MAX_CACHE_TRIES)
+                        time.sleep(cache_try_interval)
+                        cache_try_interval *= 2
+
+            # Register any new files found
+            filelist = list(rsets[rset]['diskcache'].expand())
+            nfiles = len(filelist)
+            if filelist:
+
+                LOGGER.info("%d Files found in GPS range [%d, %d]",
+                            nfiles,
+                            rsets[rset]['minimum-gps'],
+                            rsets[rset]['maximum-gps'])
+
+                inject_data(rset, rsets[rset], rse_info,
+                            allow_uploads=aparser.allow_uploads,
+                            dry_run=aparser.dry_run)
+
+                # Update the minimum time to register from next round using
+                # segments from the diskcache
+                segment_ends = []
+                for entry in rsets[rset]['diskcache']:
+                    for seg in entry['segmentlist']:
+                        segment_ends.append(max(seg))
+                rsets[rset]['minimum-gps'] = max(segment_ends)
+            else:
+                LOGGER.info('No new files found')
+
+        if aparser.run_once:
+            # break out of the daemon while-loop
+            break
+
+        if aparser.resume_file:
+            LOGGER.info("Writing resume file to %s", aparser.resume_file)
+            # Remove diskcaches from rsets dicts before dumping resume files
+            for rset in rsets:
+                rsets[rset].pop('diskcache')
+            dump_resume_file(aparser.resume_file, rsets)
+
+        # Snooze to allow cache updates
+        LOGGER.info("Going to sleep for %d s...", aparser.daemon_sleep)
+        time.sleep(aparser.daemon_sleep)
+
+    LOGGER.info("Registration stopping condition reached")
+
+    return SUCCESS
+
+
+def inject_data(dataset_name, rset, rse_info, allow_uploads=False,
+                dry_run=False):
+    """
+    Execute the main registration loop
+
+    This could be a good place to attach different metadata and for logging,
+    too.
+    """
+
+    LOGGER.info("Evaluating registration data")
+    dataset = DataSetInjector(
+        rse_info,
+        dataset_name,
+        data=rset,
+        allow_uploads=allow_uploads,
+        logger=LOGGER)
+
+    if dry_run:
+        LOGGER.info(
+            "Dry run: ending process before rucio interactions")
+        return SUCCESS
+
+    # Register files for replication
+    dataset.add_files()
+
+    return SUCCESS
+
+
+#########################################################################
+def main():
+    """
+    Principal operations
+    """
+
+    # parse input and choose operation
+    parser = get_parser()
+    argcomplete.autocomplete(parser)
+
+    if len(sys.argv) == FAILURE:
+        parser.print_help()
+        sys.exit(FAILURE)
+
+    args = parser.parse_args(sys.argv[1:])
+
+    if args.verbose:
+        LOGGER.setLevel(logging.DEBUG)
+
+    # Add hooks for SIGTERM and SIGINT
+    signal.signal(signal.SIGTERM, signal_handler)
+    signal.signal(signal.SIGINT, signal_handler)
+
+    # Start timer
+    global_start_time = time.time()
+
+    # Available sub-commands
+    commands = {'add_files': add_files, 'daemon': daemon}
+
+    # Identify which command to execute
+    command = commands.get(args.which)
+
+    # Print PID and write to file
+    LOGGER.info("%s lauched with PID %d", os.path.basename(__file__),
+                os.getpid())
+    with open("{0}_pid".format(os.path.basename(__file__)), 'w') as pidfile:
+        pidfile.write(str(os.getpid()))
+
+    # Execute sub-command with argparser input
+    result = command(args)
+
+    # Stop timer
+    LOGGER.info("total uptime: %-0.4f sec.", (time.time() - global_start_time))
+    return result
+
+
+if __name__ == "__main__":
+    main()

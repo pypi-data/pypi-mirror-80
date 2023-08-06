@@ -1,0 +1,166 @@
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+#
+# Authors:
+# - James Alexander Clark, <james.clark@ligo.org>, 2020
+"""
+CLI to DID metadata methods. Intended as an educational utility.
+"""
+import sys
+import traceback
+import argparse
+import argcomplete
+from rucio.client.client import Client
+from rucio.common.exception import DataIdentifierNotFound
+
+
+def parse_inputs():
+    """
+    Command line parser
+    """
+
+    aparser = argparse.ArgumentParser(description=__doc__)
+
+    aparser.add_argument(dest="did",
+                         help="""DID to test""")
+    aparser.add_argument('-m',
+                         "--metadata",
+                         type=int,
+                         required=False,
+                         help="""Comma-separated key,value pair to add JSON
+                         metadata to DID""")
+
+    aparser.add_argument("--set",
+                         metavar="KEY=VALUE",
+                         nargs='+',
+                         help="Set a number of key-value pairs "
+                         "(do not put spaces before or after the = sign). "
+                         "If a value contains spaces, you should define "
+                         "it with double quotes: "
+                         'foo="this is a sentence". Note that '
+                         "values are always treated as strings.")
+
+    argcomplete.autocomplete(aparser)
+
+    aparser = aparser.parse_args(sys.argv[1:])
+
+    return aparser
+
+
+def parse_var(setting):
+    """
+    Parse a key, value pair, separated by '='
+    That's the reverse of ShellArgs.
+
+    On the command line (argparse) a declaration will typically look like:
+        foo=hello
+    or
+        foo="hello world"
+    """
+    items = setting.split('=')
+    key = items[0].strip()  # we remove blanks around keys, as is logical
+    if len(items) > 1:
+        # rejoin the rest:
+        value = '='.join(items[1:])
+    return (key, value)
+
+
+def parse_vars(items):
+    """
+    Parse a series of key-value pairs and return a dictionary
+    """
+    settings = {}
+
+    if items:
+        for item in items:
+            key, value = parse_var(item)
+            settings[key] = value
+    return settings
+
+
+def print_metadata(did):
+    """
+    Retrieve and print did metadata for this DID
+
+    :param did: DID name, of form <scope>:<lfn>
+    """
+    try:
+        did_scope, did_name = did.split(':')
+    except ValueError:
+        print(traceback.format_exc())
+        print("DID name should be <scope>:<name>")
+        sys.exit(-1)
+
+    try:
+        did_meta = CLIENT.get_metadata(scope=did_scope, name=did_name,
+                                       plugin='JSON')
+    except DataIdentifierNotFound:
+        print("No JSON metadata found, showing general metadata")
+        did_meta = CLIENT.get_metadata(scope=did_scope, name=did_name)
+
+    print(f"DID metadata for {did_scope}:{did_name}:")
+    for key in did_meta.keys():
+        print(f"{key}: {did_meta[key]}")
+
+
+def cast_metadata(metadata):
+    """
+    Cast metadata values to appropriate types.
+
+    E.g., gps-start-time should be an int.
+    """
+    ints = ['gps-start-time', 'gps-end-time', 'duration']
+
+    for meta_key in metadata:
+        if meta_key in ints:
+            metadata[meta_key] = int(metadata[meta_key])
+
+
+def add_metadata(did, metadata):
+    """
+    Add the comma-separated key,value pair
+    """
+    did_scope, did_name = did.split(':')
+
+    cast_metadata(metadata)
+
+    for meta_key in metadata:
+        CLIENT.set_metadata(scope=did_scope, name=did_name, key=meta_key,
+                            value=metadata[meta_key])
+
+
+if __name__ == "__main__":
+    # Parse input
+    ARGS = parse_inputs()
+    if ARGS.set:
+        METADATA = parse_vars(ARGS.set)
+    else:
+        METADATA = None
+
+    # Instantiate rucio client
+    CLIENT = Client()
+
+    print("----------------")
+    print("Initial metadata:")
+    print_metadata(ARGS.did)
+
+    if METADATA:
+        print("----------------")
+        print(f"Adding metadata:{METADATA}")
+        add_metadata(ARGS.did, METADATA)
+
+        print("----------------")
+        print("Metadata after update:")
+        print_metadata(ARGS.did)
