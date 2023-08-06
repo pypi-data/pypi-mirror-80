@@ -1,0 +1,29 @@
+Metadata-Version: 2.1
+Name: bioprov
+Version: 0.1.2
+Summary: BioProv - Provenance capture for bioinformatics workflows
+Home-page: https://github.com/vinisalazar/BioProv
+Author: Vini Salazar
+Author-email: viniws@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Science/Research
+Classifier: Topic :: Scientific/Engineering :: Bio-Informatics
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.6
+Requires-Python: >=3.6
+Requires-Dist: biopython
+Requires-Dist: coolname
+Requires-Dist: coveralls
+Requires-Dist: dataclasses
+Requires-Dist: pandas
+Requires-Dist: prov
+Requires-Dist: pydot
+Requires-Dist: pytest
+Requires-Dist: pytest-cov
+Requires-Dist: tqdm
+
+BioProv is a toolkit for capturing and extracting provenance data from bioinformatics workflows.
+To know more about BioProv, please visit the Homepage.
+
