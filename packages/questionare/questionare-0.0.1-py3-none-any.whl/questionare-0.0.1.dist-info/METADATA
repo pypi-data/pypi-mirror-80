@@ -1,0 +1,37 @@
+Metadata-Version: 2.1
+Name: questionare
+Version: 0.0.1
+Summary: Easiest way to make a simple survey!
+Home-page: https://github.com/CraftYun83/Questionare
+Author: CraftYun83
+Author-email: craftyun83@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+
+# Questionare by CraftYun83
+
+This is a simple library to lets you make surveys super easily with just a few commands!.
+Commands:
+-----------------------------------------------------------
+questionare.help
+
+questionare.addQuestion
+
+questionare.deleteQuestion
+
+questionare.printQuestions
+
+questionare.setFinishedText
+
+questionare.start
+
+questionare.answers
+
+questionare.reset
+-----------------------------------------------------------
+
