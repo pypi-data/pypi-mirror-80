@@ -1,0 +1,16 @@
+
+[dev]
+black
+coverage
+flake8
+ipdb
+ipython
+mypy
+pydocstyle
+pylint
+pytest
+pytest-cov
+tox
+twine
+typeguard
+wheel

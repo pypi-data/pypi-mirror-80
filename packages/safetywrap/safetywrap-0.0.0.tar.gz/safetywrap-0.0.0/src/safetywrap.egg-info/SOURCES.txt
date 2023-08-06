@@ -1,0 +1,12 @@
+README.md
+setup.cfg
+setup.py
+src/safetywrap/__init__.py
+src/safetywrap/_impl.py
+src/safetywrap/_interface.py
+src/safetywrap/py.typed
+src/safetywrap.egg-info/PKG-INFO
+src/safetywrap.egg-info/SOURCES.txt
+src/safetywrap.egg-info/dependency_links.txt
+src/safetywrap.egg-info/requires.txt
+src/safetywrap.egg-info/top_level.txt
