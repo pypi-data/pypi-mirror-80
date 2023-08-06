@@ -1,0 +1,12 @@
+Metadata-Version: 2.1
+Name: bearlib-py
+Version: 0.3.5
+Summary: A library of utilities and standardizations used for writing Python code for UNCO applications and scripts.
+License: GPL-3.0-or-later
+Author: Zevaryx
+Author-email: zevaryx@gmail.com
+Requires-Python: >=3.8,<4.0
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: requests (>=2.24.0,<3.0.0)
