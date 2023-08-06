@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+    <schema id="org.tractor" path="/org/tractor/">
+        <key type="s" name="exit-node">
+            <default>"ww"</default>
+            <summary>Exit Node</summary>
+            <description>The country you want to connect from</description>
+        </key>
+        <key type="i" name="socks-port">
+            <default>9052</default>
+            <summary>Socks Port</summary>
+            <description>Local port on which Tractor would be listen</description>
+        </key>
+        <key type="i" name="dns-port">
+            <default>9053</default>
+            <summary>DNS Port</summary>
+            <description>Local port on which you would have an anonymous name server</description>
+        </key>
+        <key type="i" name="http-port">
+            <default>9080</default>
+            <summary>HTTP Port</summary>
+            <description>Local port on which Tractor HTTP tunnel would be listen</description>
+        </key>
+        <key type="i" name="pid">
+            <default>0</default>
+            <summary>Proccess ID</summary>
+            <description>PID of the running Tractor proccess for user</description>
+        </key>
+        <key type="b" name="use-bridges">
+            <default>false</default>
+            <summary>Use Bridges</summary>
+            <description>Bridges help you to bypass tor sensorship</description>
+        </key>
+        <key type="b" name="accept-connection">
+            <default>false</default>
+            <summary>Accept Connection</summary>
+            <description>Whether or not allowing external devices to use this network</description>
+        </key>
+        <key type="s" name="obfs4-path">
+		<default>"/usr/bin/obfs4proxy"</default>
+            <summary>obfs4 proxy executable file</summary>
+            <description>default path on Ubuntu is /usr/bin/obfs4proxy</description>
+        </key>
+    </schema>
+</schemalist>
