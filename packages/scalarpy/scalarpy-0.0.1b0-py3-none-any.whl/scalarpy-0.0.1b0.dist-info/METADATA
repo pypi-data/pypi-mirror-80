@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: scalarpy
+Version: 0.0.1b0
+Summary: Welcome to ScalarPy!
+Home-page: https://github.com/pypa/sampleproject
+Author: G D Abhishek
+Author-email: gdabhishek1@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.1
+Description-Content-Type: text/markdown
+
+
+# Welcome to ScalarPy!
+
+## Scalarpy is an open-source Auto-ML library that automates the machine learning work flow starting from Data pre-processing to model deployment and simplifies your machine learning flow.
+
