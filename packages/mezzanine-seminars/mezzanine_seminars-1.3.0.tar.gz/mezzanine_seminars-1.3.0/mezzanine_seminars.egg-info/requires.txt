@@ -1,0 +1,15 @@
+django<2.0,>=1.8
+django-contrib-comments==1.8
+mezzanine<5,>=4
+mezzy<3,>=2.4
+unicodecsv
+
+[stripe]
+stripe<3,>=2.48
+
+[testing]
+django-dynamic-fixture<4,>=3
+django-functest<2,>=1
+mock
+pathlib2
+pytest-django<4,>=3
