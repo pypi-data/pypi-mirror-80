@@ -1,0 +1,17 @@
+MANIFEST.in
+README.md
+setup.py
+tqdj/__init__.py
+tqdj/_monitor.py
+tqdj/player.py
+tqdj/std.py
+tqdj/utils.py
+tqdj.egg-info/PKG-INFO
+tqdj.egg-info/SOURCES.txt
+tqdj.egg-info/dependency_links.txt
+tqdj.egg-info/top_level.txt
+tqdj/music/cruise.wav
+tqdj/music/jazzy.wav
+tqdj/music/mondays.wav
+tqdj/music/paradise.wav
+tqdj/music/time.wav
