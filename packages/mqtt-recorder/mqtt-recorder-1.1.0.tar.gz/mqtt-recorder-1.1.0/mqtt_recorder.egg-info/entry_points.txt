@@ -1,0 +1,3 @@
+[console_scripts]
+mqtt-recorder = mqtt_recorder.__main__:main
+
