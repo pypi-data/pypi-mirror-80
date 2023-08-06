@@ -1,0 +1,37 @@
+Metadata-Version: 2.1
+Name: ssnapshot
+Version: 0.0.2a1
+Summary: A utility to generate a snapshot of slurm's state
+Home-page: https://github.com/ilifu/ssnapshot
+Author: Dane Kennedy
+Author-email: dane@idia.ac.za
+License: UNKNOWN
+Description: # Project Description
+        
+        ssnapshot is a utility for producing summaries of the state of a slurm cluster.
+        
+        ## Features
+        
+        * Can export to any one of: csv, html, json, prometheus
+        * Provides summaries for running / pending jobs on a per-account basis
+        * Provides a summary of running jobs on a per-user basis
+        * Provides a summary of the cluster's partitions
+        
+        ## Bugs / Requests
+        
+        ## Changelog
+        
+        ## License
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3.8
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Environment :: Console
+Classifier: Intended Audience :: System Administrators
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: System :: Clustering
+Classifier: Topic :: System :: Logging
+Classifier: Topic :: System :: Systems Administration
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
