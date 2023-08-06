@@ -1,0 +1,7 @@
+jax==0.2.0
+jaxlib==0.1.55
+tfp-nightly==0.12.0.dev20200923
+inference_gym
+
+[:python_version < "3.7"]
+dataclasses
