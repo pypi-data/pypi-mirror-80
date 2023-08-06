@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Name: notify-me-tool
+Version: 0.1.1
+Summary: 
+Author: John Hossler
+Author-email: john.m.hossler@gmail.com
+Requires-Python: >=3.8,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: pluggy (>=0.13.1,<0.14.0)
+Requires-Dist: singleton-decorator (>=1.0.0,<2.0.0)
