@@ -1,0 +1,4 @@
+
+        [console_scripts]
+        sqlbatis=sqlbatis.cli:db
+    
