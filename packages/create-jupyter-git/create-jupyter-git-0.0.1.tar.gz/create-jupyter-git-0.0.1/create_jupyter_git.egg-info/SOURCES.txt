@@ -1,0 +1,16 @@
+MANIFEST.in
+README.md
+setup.py
+create_jupyter_git/__init__.py
+create_jupyter_git/__main__.py
+create_jupyter_git/is_cwd_git_repo.py
+create_jupyter_git/setup_notebook_version_control.py
+create_jupyter_git.egg-info/PKG-INFO
+create_jupyter_git.egg-info/SOURCES.txt
+create_jupyter_git.egg-info/dependency_links.txt
+create_jupyter_git.egg-info/entry_points.txt
+create_jupyter_git.egg-info/requires.txt
+create_jupyter_git.egg-info/top_level.txt
+create_jupyter_git/repo_template/.gitignore
+create_jupyter_git/repo_template/notebooks/jupyter_notebook_config.py
+create_jupyter_git/repo_template/scripts/ipynb_output_filter.py

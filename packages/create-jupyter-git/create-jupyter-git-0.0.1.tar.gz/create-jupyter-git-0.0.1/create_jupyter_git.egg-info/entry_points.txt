@@ -1,0 +1,3 @@
+[console_scripts]
+create-jupyter-git = create_jupyter_git.setup_notebook_version_control:generate_repo
+
