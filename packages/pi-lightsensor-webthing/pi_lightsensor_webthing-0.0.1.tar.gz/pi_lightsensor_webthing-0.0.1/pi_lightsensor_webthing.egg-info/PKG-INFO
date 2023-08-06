@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: pi-lightsensor-webthing
+Version: 0.0.1
+Summary: A web connected digital light sensor measuring the intensity of ambient light on Raspberry Pi
+Home-page: https://github.com/grro/pi_lightsensor_webthing
+Author: Gregor Roth
+Author-email: gregor.roth@web.de
+License: MIT
+Description: # pi_lightsensor_webthing
+        A web connected digital light sensor measuring the intensity of ambient light on Raspberry Pi
+        
+Keywords: webthings,home automation,digital,light,sensor,ambient,light
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Development Status :: 3 - Alpha
+Description-Content-Type: text/markdown
