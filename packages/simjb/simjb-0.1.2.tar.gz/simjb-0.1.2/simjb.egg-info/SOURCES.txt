@@ -1,0 +1,16 @@
+LICENSE
+MANIFEST.in
+README.md
+requirements.txt
+setup.py
+simjb/__init__.py
+simjb/token.py
+simjb/token_test.py
+simjb.egg-info/PKG-INFO
+simjb.egg-info/SOURCES.txt
+simjb.egg-info/dependency_links.txt
+simjb.egg-info/requires.txt
+simjb.egg-info/top_level.txt
+simjb.egg-info/zip-safe
+simjb/src/dict.txt
+simjb/src/simple-jieba_flow_v1_20191016-0347.png
