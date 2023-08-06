@@ -1,0 +1,12 @@
+[console_scripts]
+
+
+[gui_scripts]
+jdaviz = jdaviz.cli:main
+
+[jdaviz_plugins]
+cubeviz = jdaviz.configs.cubeviz
+default = jdaviz.configs.default
+mosviz = jdaviz.configs.mosviz
+specviz = jdaviz.configs.specviz
+
