@@ -1,0 +1,90 @@
+description: 
+   name: null_chain
+   description: |
+      Run N_SAMPLES steps of TIME seconds each at CONC concurrency.
+      May be used to measure overhead in merlin.
+      Iterates thru a chain of workflows.
+
+batch: 
+   type: slurm
+   dry_run: false
+   shell: /bin/bash
+
+env: 
+   variables: 
+      OUTPUT_PATH: ./
+      TIME: 1000
+      N_SAMPLES: 100000
+      MAX_SAMPLES: 100000
+      CONC: 4
+      RUN_ID: 999
+      N_WORK: 1
+      QUEUE: queue
+      WORKER: worker_s100000_c1_r999
+
+   sources: 
+
+   labels: 
+
+   dependencies: 
+
+study: 
+   - name: null_step
+     description: exit immediately
+     run: 
+        cmd: |
+            #echo $(SAMPLE)
+            sleep $(TIME)
+            exit $(MERLIN_SUCCESS)
+        task_queue: $(QUEUE)
+        shell: /bin/bash
+        max_retries: 30
+
+   - name: verify
+     description: echo done
+     run: 
+        cmd: echo "Done"
+        depends: [null_step_*]
+        task_queue: $(QUEUE)
+        shell: /bin/bash
+        max_retries: 30
+
+   - name: launch_next
+     description: launch this workflow with different args
+     run: 
+        cmd: |
+            NEXT_SAMPLES=$(($(N_SAMPLES)*10))
+            if ((NEXT_SAMPLES <= $(MAX_SAMPLES))) ; then
+                echo "Starting next iteration"
+                cd $(MERLIN_WORKSPACE)/../
+                time merlin run $(SPECROOT)/null_chain.yaml --vars N_SAMPLES=$NEXT_SAMPLES CONC=$(CONC) RUN_ID=$(RUN_ID) N_WORK=$(N_WORK) QUEUE=$(QUEUE) TIME=$(TIME) MAX_SAMPLES=$(MAX_SAMPLES)
+            else
+                echo "Chain complete"
+            fi
+        depends: [verify]
+        task_queue: $(QUEUE)
+        shell: /bin/bash
+        max_retries: 30
+
+global.parameters: 
+
+merlin: 
+   resources: 
+      workers: 
+         $(WORKER): 
+            args: -O fair --prefetch-multiplier 1 -E -l info --concurrency $(CONC) --logfile=%%p.log
+            steps: [all]
+            nodes: 
+            batch: 
+
+      task_server: celery
+      overlap: false
+
+   samples: 
+      generate: 
+         cmd: python3 $(SPECROOT)/scripts/make_samples.py --number $(N_SAMPLES) --filepath $(MERLIN_INFO)/samples_file.npy
+
+      file: $(MERLIN_INFO)/samples_file.npy
+      column_labels: [SAMPLE]
+      level_max_dirs: 25
+
