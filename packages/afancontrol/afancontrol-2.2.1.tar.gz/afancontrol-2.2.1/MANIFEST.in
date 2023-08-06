@@ -1,0 +1,5 @@
+graft pkg
+graft tests
+recursive-exclude * *.py[co]
+recursive-exclude * .DS_Store
+recursive-exclude * __pycache__
