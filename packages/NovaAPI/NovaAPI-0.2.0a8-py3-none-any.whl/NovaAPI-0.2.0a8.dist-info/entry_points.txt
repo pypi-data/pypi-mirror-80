@@ -1,0 +1,3 @@
+[console_scripts]
+generate_nova_api = nova_api:generate_api
+
