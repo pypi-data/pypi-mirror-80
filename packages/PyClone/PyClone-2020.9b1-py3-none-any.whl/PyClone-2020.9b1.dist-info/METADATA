@@ -1,0 +1,122 @@
+Metadata-Version: 2.1
+Name: PyClone
+Version: 2020.9b1
+Summary: Wraps rclone and provides an interface for an installation at the host or container level.
+Home-page: https://gitlab.com/ltgiv/pyclone
+Author: Louis T. Getterman IV
+Author-email: Thad@Getterman.org
+License: MIT
+Project-URL: Documentation, https://ltgiv.gitlab.io/pyclone/
+Project-URL: Source, https://gitlab.com/ltgiv/pyclone
+Project-URL: Tracker, https://gitlab.com/ltgiv/pyclone/issues
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: POSIX
+Classifier: Development Status :: 4 - Beta
+Description-Content-Type: text/markdown
+Requires-Dist: Logbook
+Requires-Dist: pexpect
+Requires-Dist: arrow
+
+# PyClone
+
+PyClone is a Python package that wraps [rclone](https://rclone.org/) and provides a threaded interface for an installation at the host or container level.
+
+## Usage
+
+An example for processing output from rclone that's stored as a dictionary:
+
+```python
+#!/usr/bin/env python
+
+import pyclone
+import time
+
+rclone    =    pyclone.PyClone()
+
+rclone.sync( source='/mnt/familyPhotos', remote='googleDrive', path='/backups/familyPhotos' )
+
+while rclone.tailing():
+
+    if rclone.readline():
+        print( rclone.line )
+
+    time.sleep( 0.5 )
+
+rclone.stop()
+```
+
+
+
+## Contributors
+ - [Louis T. Getterman IV](https://thad.getterman.org/about)
+
+Have something to contribute to this project?  Please see the document, [How to contribute](HOW_TO_CONTRIBUTE.md).
+
+## Project
+
+### Status
+
+![Module version](https://img.shields.io/pypi/v/pyclone.svg)
+
+![Module status](https://img.shields.io/pypi/status/pyclone.svg)
+
+### Tests
+
+[![Pipeline Status](https://gitlab.com/ltgiv/pyclone/badges/master/pipeline.svg)](https://gitlab.com/ltgiv/pyclone)
+
+### Downloads
+
+![Downloads per month](https://img.shields.io/pypi/dm/pyclone.svg)
+
+![Downloads per week](https://img.shields.io/pypi/dw/pyclone.svg)
+
+![Downloads per day](https://img.shields.io/pypi/dd/pyclone.svg)
+
+### About
+
+![Module license](https://img.shields.io/pypi/l/pyclone.svg)
+
+![PyPI Wheel](https://img.shields.io/pypi/wheel/pyclone.svg)
+
+![Python versions supported](https://img.shields.io/pypi/pyversions/pyclone.svg)
+
+![Python implementation](https://img.shields.io/pypi/implementation/pyclone.svg)
+
+## Links
+
+ - [Package](https://pypi.org/project/pyclone/)
+ - [Documentation](https://ltgiv.gitlab.io/pyclone/)
+ - [Source](https://gitlab.com/ltgiv/pyclone)
+ - [Tracker](https://gitlab.com/ltgiv/pyclone/issues)
+
+## License
+
+```
+MIT License
+
+Copyright (c) 2020 Louis T. Getterman IV
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+> Written with [Typora](https://typora.io/).
+
+
