@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: cimpy
+Version: 1.0.2
+Summary: Python package for import, modification and export of CIM grid data
+Home-page: UNKNOWN
+Author: Institute for Automation of Complex Power Systems
+Author-email: acs-software@eonerc.rwth-aachen.de
+License: MPL-2.0
+Platform: UNKNOWN
+Requires-Dist: lxml
+Requires-Dist: xmltodict
+Requires-Dist: chevron
+
+UNKNOWN
+
+
