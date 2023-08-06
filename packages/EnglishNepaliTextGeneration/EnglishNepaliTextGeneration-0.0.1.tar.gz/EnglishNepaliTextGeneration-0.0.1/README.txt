@@ -1,0 +1,1 @@
+Similar Sentence Generation and Text Generation based on Previous Words are the functionalities of this library.This library helps in generating five simillar kinds of sentences and also six words based on the previous words.The user can generate sentences in english as well as in Nepali.The library has four methods.Two methods are for english and two methods are for Nepali.

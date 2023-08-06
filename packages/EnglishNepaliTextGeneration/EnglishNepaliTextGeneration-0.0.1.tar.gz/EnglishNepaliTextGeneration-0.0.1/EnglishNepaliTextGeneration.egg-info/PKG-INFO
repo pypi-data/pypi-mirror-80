@@ -1,0 +1,25 @@
+Metadata-Version: 1.1
+Name: EnglishNepaliTextGeneration
+Version: 0.0.1
+Summary: Similar Sentence Generation and Text Generation based on Previous Words
+Home-page: UNKNOWN
+Author: sakl Ansari
+Author-email: sakilansari4@gmail.com
+License: MIT
+Description: Similar Sentence Generation and Text Generation based on Previous Words are the functionalities of this library.This library helps in generating five simillar kinds of sentences and also six words based on the previous words.The user can generate sentences in english as well as in Nepali.The library has four methods.Two methods are for english and two methods are for Nepali.
+        
+        
+        Change Log
+        ==========
+        
+        0.0.1 (27/09/2020)
+        -------------------
+        - First Release
+        
+Keywords: textSummarizationLibrary
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Education
+Classifier: Operating System :: Microsoft :: Windows :: Windows 10
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
