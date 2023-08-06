@@ -1,0 +1,16 @@
+LICENSE
+MANIFEST.in
+README.md
+build_libyuv.sh
+setup.py
+multicam/__init__.py
+multicam/multicam.py
+multicam.egg-info/PKG-INFO
+multicam.egg-info/SOURCES.txt
+multicam.egg-info/dependency_links.txt
+multicam.egg-info/requires.txt
+multicam.egg-info/top_level.txt
+src/multicam.c
+src/multicam.h
+src/v4l2.c
+src/v4l2.h
