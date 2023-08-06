@@ -1,0 +1,17 @@
+{% extends "error/error_base.html" %}
+
+{% block error_message %}
+	404 Not Found
+{% endblock %}
+{% block error_content %}
+
+<p class="mt-30">
+    Sorry, the page you are looking is not found. Please contact us if you think there is something wrong. Thanks you.
+</p>
+
+<div class="error-actions mt-30 mb-50">
+    <a href="{{ url_for('main_bp.contact_us_page') }}" class="btn btn-default btn-lg">
+		<span class="glyphicon glyphicon-envelope">
+	</span> Contact Support </a>
+</div>
+{% endblock %}

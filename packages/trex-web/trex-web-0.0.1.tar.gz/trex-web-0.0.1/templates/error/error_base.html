@@ -1,0 +1,27 @@
+{% extends "shared/skeleton/landing/structure.html" %}
+
+{% block content %}
+	
+<section class="section-padd4">
+
+	<div class="container content">
+	    <div class="row justify-content-md-center">
+	    	<div class="white-panel solid-line-grey col-md-10 opacity">
+	    		<h2 class="mt-30 mb-20">
+	    			{% block error_message %}{% endblock %}
+	    		</h2>
+				
+				{% block error_content %}{% endblock %}
+	    		
+	        </div>
+	        
+	   	</div>
+	   	
+	</div> 
+    
+</section>
+
+{% endblock %}
+
+
+

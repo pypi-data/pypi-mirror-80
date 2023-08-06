@@ -1,0 +1,17 @@
+{% extends "error/error_base.html" %}
+
+{% block error_message %}
+	401 Unknown User Access
+{% endblock %}
+{% block error_content %}
+
+<p class="mt-30">
+    Sorry, you are not authoized to proceed. You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required
+</p>
+
+<div class="error-actions mt-30 mb-50">
+    <a href="{{ url_for('main_bp.contact_us_page') }}" class="btn btn-default btn-lg">
+		<span class="glyphicon glyphicon-envelope">
+	</span> Contact Support </a>
+</div>
+{% endblock %}
