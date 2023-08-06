@@ -1,0 +1,24 @@
+Metadata-Version: 2.1
+Name: TheAlgorithms-pkg
+Version: 0.0.5
+Summary: A sample package to demonstrate how the packaging work
+Home-page: https://github.com/tivpheakkdey/TheAlgoritms_pkg
+Author: Vireakpheakkdey Tiv
+Author-email: vtiv@deakin.edu.au
+License: UNKNOWN
+Download-URL: https://github.com/tivpheakkdey/TheAlgoritms_pkg/archive/0.0.5.tar.gz
+Description: #Library Package
+        
+        This package is prototype to demonstrate how the finally product will be package up.
+        Currently included in the package folder are some implemetation from the GitHub project plus one additional algorithm not in the project:
+        * caesar_cipher.py
+        * vigenere_cipher.py
+        * xor_cipher.py
+        * autokey_cipher.py (new)
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
