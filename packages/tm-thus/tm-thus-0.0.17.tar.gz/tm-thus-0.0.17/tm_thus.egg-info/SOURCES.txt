@@ -1,0 +1,17 @@
+README.md
+setup.cfg
+setup.py
+bin/thus
+bin/thus.bat
+bin/thus_completer_bash.sh
+bin/thus_completer_zsh.sh
+thus/__init__.py
+thus/__main__.py
+thus/clidriver.py
+thus/config.py
+thus/session.py
+tm_thus.egg-info/PKG-INFO
+tm_thus.egg-info/SOURCES.txt
+tm_thus.egg-info/dependency_links.txt
+tm_thus.egg-info/requires.txt
+tm_thus.egg-info/top_level.txt
