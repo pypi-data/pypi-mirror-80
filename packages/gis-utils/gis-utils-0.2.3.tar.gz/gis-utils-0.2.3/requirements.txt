@@ -1,0 +1,12 @@
+# List required packages in this file, one per line.
+matplotlib
+numpy
+scipy
+pandas
+#gdal
+fiona
+#rasterio
+#rasterstats
+shapely
+#rtree
+pyproj>=2.0
