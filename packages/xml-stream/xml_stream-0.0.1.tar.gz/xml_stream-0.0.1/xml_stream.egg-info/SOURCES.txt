@@ -1,0 +1,12 @@
+MANIFEST.in
+README.md
+setup.py
+test/test_read_file.py
+test/test_read_string.py
+xml_stream/__init__.py
+xml_stream/_utils.py
+xml_stream/data_types.py
+xml_stream.egg-info/PKG-INFO
+xml_stream.egg-info/SOURCES.txt
+xml_stream.egg-info/dependency_links.txt
+xml_stream.egg-info/top_level.txt
