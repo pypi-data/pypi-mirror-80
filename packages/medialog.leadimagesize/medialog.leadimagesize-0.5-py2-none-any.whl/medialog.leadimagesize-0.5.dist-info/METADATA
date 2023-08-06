@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: medialog.leadimagesize
+Version: 0.5
+Summary: Makes it possible to choose size for lead image.
+Home-page: http://github.com/espenmn/medialog.leadimagesize
+Author: Grieg Medialog [Espen Moe-Nilssen]
+Author-email: espen@medialog.no
+License: GPL
+Keywords: plone zope leadimagesize
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Framework :: Plone
+Classifier: Framework :: Plone :: 5.0
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.7
+Requires-Dist: medialog.controlpanel
+Requires-Dist: plone.api
+
+a simple package that adds an option to choose size of leadimage
+
+
