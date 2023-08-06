@@ -1,0 +1,3 @@
+[mdformat.codeformatter]
+python=mdformat_black:format_python
+
