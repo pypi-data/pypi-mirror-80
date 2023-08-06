@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: bashrc
+Version: 0.13.1
+Summary: bashrc
+Home-page: https://github.com/j5pu/
+Author: José Antonio Puértolas Montañés
+Author-email: j5pu@github.com
+License: UNKNOWN
+Platform: UNKNOWN
+Requires-Dist: ansible
+Requires-Dist: bump2version
+Requires-Dist: docker
+Requires-Dist: mackup
+Requires-Dist: pip
+Requires-Dist: setuptools
+Requires-Dist: twine
+Requires-Dist: wheel
+
+UNKNOWN
+
+
