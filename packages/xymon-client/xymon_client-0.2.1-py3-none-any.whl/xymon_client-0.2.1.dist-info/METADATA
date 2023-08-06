@@ -1,0 +1,36 @@
+Metadata-Version: 2.1
+Name: xymon-client
+Version: 0.2.1
+Summary: a minimalist Xymon client library in Python
+Home-page: https://gitlab.com/romain-dartigues/python-xymon-client
+Author: Romain Dartigues
+License: BSD 3-Clause License
+Keywords: bb,BigBrother,xymon
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Plugins
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: System :: Monitoring
+Requires-Python: >=2.7
+Description-Content-Type: text/markdown
+
+# python-xymon-client
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/054a56e80f3a4ce1aa519f23752413c1)](https://app.codacy.com/app/Romain-Dartigues-org/python-xymon-client?utm_source=github.com&utm_medium=referral&utm_content=romain-dartigues/python-xymon-client&utm_campaign=Badge_Grade_Dashboard)
+[![Documentation Status](https://readthedocs.org/projects/python-xymon-client/badge/?version=latest)](https://python-xymon-client.readthedocs.io/en/latest/?badge=latest)
+
+A minimalist [Xymon](https://www.xymon.com/) client library in Python.
+
+Documentation is in the docs/ directory or [online](http://python-xymon-client.readthedocs.io/en/latest/).
+
+Alternatives:
+
+* https://github.com/skurfer/python-xymon
+
+
