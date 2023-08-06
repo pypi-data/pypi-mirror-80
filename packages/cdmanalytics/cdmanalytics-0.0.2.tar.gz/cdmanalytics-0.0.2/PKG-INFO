@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: cdmanalytics
+Version: 0.0.2
+Summary: CDM Analytics - Big Data Toolset
+Home-page: https://cdmanalytics.com
+Author: CDM Analytics
+Author-email: sales@canaryinthedatamine.com
+License: Proprietary
+Description: CDM Analytics internally developed toolbox for the analysis, manipulation, and deployment of large analytical datasets.
+        More information at: cdmanalytics.com
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: Other/Proprietary License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
