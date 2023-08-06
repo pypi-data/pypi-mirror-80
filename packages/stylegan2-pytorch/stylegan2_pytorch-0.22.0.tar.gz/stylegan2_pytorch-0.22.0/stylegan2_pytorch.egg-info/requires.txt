@@ -1,0 +1,10 @@
+fire
+numpy
+retry
+tqdm
+torch
+torchvision
+pillow
+contrastive_learner>=0.1.0
+linear_attention_transformer
+vector-quantize-pytorch
