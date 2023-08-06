@@ -1,0 +1,39 @@
+[aiida.calculations]
+crystal17.basic = aiida_crystal17.calculations.cry_basic:CryBasicCalculation
+crystal17.doss = aiida_crystal17.calculations.prop_doss:CryDossCalculation
+crystal17.ech3 = aiida_crystal17.calculations.prop_ech3:CryEch3Calculation
+crystal17.main = aiida_crystal17.calculations.cry_main:CryMainCalculation
+crystal17.newk = aiida_crystal17.calculations.prop_newk:CryNewkCalculation
+crystal17.ppan = aiida_crystal17.calculations.prop_ppan:CryPpanCalculation
+
+[aiida.cmdline.data]
+crystal17.basis = aiida_crystal17.cmndline.basis_set:basisset
+crystal17.parse = aiida_crystal17.cmndline.cmd_parser:parse
+crystal17.symmetry = aiida_crystal17.cmndline.symmetry:symmetry
+
+[aiida.data]
+crystal17.basisset = aiida_crystal17.data.basis_set:BasisSetData
+crystal17.gcube = aiida_crystal17.data.gcube:GaussianCube
+crystal17.kinds = aiida_crystal17.data.kinds:KindData
+crystal17.parameters = aiida_crystal17.data.input_params:CryInputParamsData
+crystal17.symmetry = aiida_crystal17.data.symmetry:SymmetryData
+
+[aiida.groups]
+crystal17.basisset = aiida_crystal17.data.basis_set:BasisSetFamily
+
+[aiida.parsers]
+crystal17.doss = aiida_crystal17.parsers.cry_doss:CryDossParser
+crystal17.ech3 = aiida_crystal17.parsers.cry_ech3:CryEch3Parser
+crystal17.main = aiida_crystal17.parsers.cry_main:CryMainParser
+crystal17.newk = aiida_crystal17.parsers.cry_newk:CryNewkParser
+crystal17.ppan = aiida_crystal17.parsers.cry_ppan:CryPpanParser
+
+[aiida.workflows]
+crystal17.main.base = aiida_crystal17.workflows.crystal_main.base:CryMainBaseWorkChain
+crystal17.properties = aiida_crystal17.workflows.crystal_props.base:CryPropertiesWorkChain
+crystal17.sym3d = aiida_crystal17.workflows.symmetrise_3d_struct:Symmetrise3DStructure
+
+[console_scripts]
+mock_crystal17 = aiida_crystal17.tests.mock_crystal17:main
+mock_properties17 = aiida_crystal17.tests.mock_properties17:main
+
