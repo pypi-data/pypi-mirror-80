@@ -1,0 +1,7 @@
+boto3>=1.14.63
+marshmallow>=3.8.0
+
+[dev]
+pytest
+mypy
+pylint
