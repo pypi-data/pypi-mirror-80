@@ -1,0 +1,5 @@
+
+        [console_scripts]
+        s2smake=pyreshaper.cli.s2smake:main
+        s2srun=pyreshaper.cli.s2srun:main
+        
