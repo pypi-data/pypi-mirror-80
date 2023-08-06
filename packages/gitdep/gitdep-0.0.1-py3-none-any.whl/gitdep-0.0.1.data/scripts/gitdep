@@ -1,0 +1,319 @@
+#!python
+
+#  Copyright 2020 Caian Benedicto <caianbene@gmail.com>
+#
+#  This file is part of gitdep.
+#
+#  gitdep is free software: you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation, either version 3 of the License, or
+#  (at your option) any later version.
+#
+#  gitdep is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+#  You should have received a copy of the GNU General Public License
+#  along with gitdep.  If not, see <http://www.gnu.org/licenses/>.
+
+import os, subprocess, sys
+
+gd_dep_file = 'gd.txt'
+
+def log(fmt, *args):
+    """"""
+    sys.stderr.write(fmt % tuple(args) + '\n')
+
+
+class GitDependency(object):
+    """"""
+
+    REL_EQ = '=='
+    REL_GE = '>='
+    REL_LE = '<='
+
+    def __init__(self, repourl, relation, version):
+        """"""
+        assert repourl is not None and repourl != ""
+        if repourl.endswith('/'):
+            repourl = repourl[:-1] # TODO check if it is not the '/' from http:// or file:// ...
+        self._repourl = repourl
+        assert version is not None and version != ""
+        self._version = version
+        self._version_min, \
+        self._version_max = self._parse_relation(version, relation)
+        _, reponame = os.path.split(repourl)
+        reponame, repoext = os.path.splitext(reponame)
+        assert repoext == '' or repoext == '.git'
+        self._name = reponame
+        self._location = None
+
+
+    def _parse_relation(self, version, relation):
+        """"""
+        if relation == GitDependency.REL_EQ:
+            return [version, version]
+        elif relation == GitDependency.REL_GE:
+            return [version, None]
+        elif relation == GitDependency.REL_LE:
+            return [None, version]
+        else:
+            assert False # TODO
+
+
+    def _clone(self, dest_dir):
+        """"""
+        args = ["git", "clone", "--recursive", self.repourl, dest_dir]
+        proc = subprocess.Popen(args, stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE)
+        # TODO hide output and parse progress
+        proc.wait()
+        assert proc.returncode == 0 # TODO
+
+
+    def _checkout_version(self, version):
+        """"""
+        if self.location is None:
+            raise RuntimeError('Not initialized!')
+        args = ["git", "checkout", version]
+        proc = subprocess.Popen(args, stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE, cwd=self.location)
+        proc.wait()
+        assert proc.returncode == 0 # TODO
+
+
+    def _tag_to_hash(self, tag_or_hash):
+        """"""
+        if self.location is None:
+                raise RuntimeError('Not initialized!')
+        args = ["git", "rev-list", "-n", "1", tag_or_hash]
+        proc = subprocess.Popen(args, stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE, cwd=self.location)
+        proc.wait()
+        assert proc.returncode == 0 # TODO
+        return proc.stdout.read().decode('utf8').strip()
+
+
+    def _assert_version(self):
+        """"""
+        if self.location is None:
+                raise RuntimeError('Not initialized!')
+        # Ensure it is a hash and not a tag
+        version = self._tag_to_hash(self.version)
+        args = ["git", "rev-parse", "HEAD"]
+        proc = subprocess.Popen(args, stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE, cwd=self.location)
+        proc.wait()
+        assert proc.returncode == 0 # TODO
+        version = proc.stdout.read().decode('utf8').strip()
+        assert version.startswith(version)
+
+
+    def _assert_clean(self):
+        """"""
+        if self.location is None:
+                raise RuntimeError('Not initialized!')
+        args = ["git", "diff", "--quiet"]
+        proc = subprocess.Popen(args, stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE, cwd=self.location)
+        proc.wait()
+        assert proc.returncode == 0 # TODO
+
+
+    def _is_ancestor(self, ancestor, descendant):
+        """"""
+        if self.location is None:
+                raise RuntimeError('Not initialized!')
+        args = ["git", "merge-base", ancestor, "--is-ancestor", descendant]
+        proc = subprocess.Popen(args, stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE, cwd=self.location)
+        proc.wait()
+        assert proc.returncode == 0 or proc.returncode == 1 # TODO
+        return True if proc.returncode == 0 else False
+
+
+    def _compare(self, first, second):
+        """"""
+        first_greater = self._is_ancestor(second, first)
+        second_greater = self._is_ancestor(first, second)
+        if not first_greater and not second_greater:
+            return None
+        if first_greater and second_greater:
+            return 0
+        return 1 if first_greater else -1
+
+
+    def _merge_version(self, self_version, other_version, is_min):
+        """"""
+        if self_version == other_version:
+            return self_version
+        elif other_version == None:
+            return self_version
+        elif self_version == None:
+            return other_version
+        else:
+            cmpver = self._compare(self_version, other_version)
+            if cmpver is None:
+                raise RuntimeError('Parallel commits!')
+            elif cmpver == 0:
+                return self_version # TODO best commit selection?
+            elif cmpver > 0: # self > other
+                return self_version if is_min else other_version
+            else: # self < other
+                return other_version if is_min else self_version
+
+
+    def _merge_versions(self, other):
+        """"""
+        vmin = self._merge_version(self._version_min,
+            other._version_min, True)
+        vmax = self._merge_version(self._version_max,
+            other._version_max, False)
+        if vmin is None and vmax is None:
+            raise RuntimeError('Invalid version range!')
+        if vmin is not None and vmax is not None:
+            cmpver = self._compare(vmin, vmax)
+            if cmpver is None:
+                raise RuntimeError('Parallel commits!')
+            elif cmpver > 0: # min > max ??
+                raise RuntimeError('Version conflict!')
+        return vmin, vmax
+
+
+    @property
+    def name(self):
+        return self._name
+
+
+    @property
+    def repourl(self):
+        return self._repourl
+
+
+    @property
+    def version(self):
+        return self._version
+
+
+    @property
+    def location(self):
+        return self._location
+
+
+    def format_relation(self):
+        """"""
+        if self._version_min is None:
+            return '%s %s' % (GitDependency.REL_LE, self._version_max[0:7])
+        elif self._version_max is None:
+            return '%s %s' % (GitDependency.REL_GE, self._version_min[0:7])
+        elif self._version_min == self._version_max:
+            return '%s %s' % (GitDependency.REL_EQ, self._version_min[0:7])
+        else:
+            return '%s %s %s %s' % (GitDependency.REL_GE,
+                self._version_min[0:7], GitDependency.REL_LE,
+                self._version_max[0:7])
+
+
+    def initialize(self, dest_dir):
+        """"""
+        if not os.path.exists(dest_dir):
+            os.mkdir(dest_dir, 0o700) # TODO recursive
+        dest_dir = os.path.join(str(dest_dir), self.name)
+        if not os.path.exists(dest_dir):
+            self._clone(dest_dir)
+        self._location = dest_dir
+        self._assert_clean()
+        self._checkout_version(self.version)
+        self._assert_version()
+
+
+    def merge(self, other):
+        """"""
+        assert self.name == dep.name
+        version_min, version_max = self._merge_versions(other)
+        # Fallback to the min version only if there is no max version
+        version = version_min if version_max is None else version_max
+        self._checkout_version(version)
+        self._version = version
+        self._version_min = version_min
+        self._version_max = version_max
+
+
+def parse_dep(line):
+    """"""
+    line = line.strip().split()
+    assert len(line) == 3 # TODO
+    dep = GitDependency(line[0], line[1], line[2])
+    log('Found dependency %s %s', dep.name, dep.format_relation())
+    return dep
+
+
+def parse_deps(dep_files):
+    """"""
+    dep_list = None
+    for dep_file in dep_files:
+        if not os.path.exists(dep_file):
+            continue
+        if dep_list is None:
+            dep_list = []
+        with open(dep_file, 'rt') as f:
+            dep_list += [parse_dep(line) for line in f.readlines()]
+    return dep_list
+
+
+if __name__ == '__main__':
+    if len(sys.argv) <= 1:
+        log("USAGE: gitdep clonedir [extra gd.txt files]")
+        exit(1)
+    clone_dir = sys.argv[1] # TODO
+    log('Checking dependencies for repository...')
+    dep_list = parse_deps([gd_dep_file] + sys.argv[2:])
+    dep_dict = {}
+    if dep_list is None:
+        log('Could not find dependencies file!')
+        exit(1)
+    log('Cloning dependencies into %s...', clone_dir)
+    while len(dep_list) > 0:
+        # Initialize the repositories or merge them with existing ones
+        inner_dep_dict = {}
+        for dep in dep_list:
+            other = dep_dict.get(dep.name, None)
+            if other is None:
+                log("Initializing %s...", dep.name)
+                # Initialize and register the dependency
+                dep.initialize(clone_dir)
+                dep_dict[dep.name] = dep
+                # Add it to a dictionary used for further inspection
+                inner_dep_dict[dep.name] = dep
+            else:
+                log("Merging %s...", dep.name)
+                # Merge with the existing dependency
+                old_version = other.version
+                other.merge(dep)
+                if other.version != old_version:
+                    log("Moved %s from %s to %s", dep.name, old_version,
+                        dep.version)
+                    # Add the existing dependency to a dictionary used for
+                    # further inspection
+                    inner_dep_dict[dep.name] = other
+                else:
+                    log("No changes detected for %s %s", dep.name,
+                        dep.version)
+                    # Do not add it again do the scanning list because the
+                    # version did not change
+        # Recurse into the repositories for their dependencies
+        inner_dep_list = []
+        for dep in inner_dep_dict.values():
+            inner_dep_file = os.path.join(dep.location, gd_dep_file)
+            log("Scanning %s...", inner_dep_file)
+            deps = parse_deps([inner_dep_file])
+            if deps is not None:
+                log("Found %d deps.", len(deps))
+                inner_dep_list += deps
+        # Carry the dependency list for the next iteration
+        dep_list = inner_dep_list
+    # Print the result
+    for dep in dep_dict.values():
+        print('%s %s' % (dep.name, dep.version))
+    exit(0)
