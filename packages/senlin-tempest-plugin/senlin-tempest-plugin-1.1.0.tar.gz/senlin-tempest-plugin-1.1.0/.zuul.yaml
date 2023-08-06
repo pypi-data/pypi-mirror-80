@@ -1,0 +1,17 @@
+- project:
+    templates:
+      - check-requirements
+      - tempest-plugin-jobs
+    check:
+      jobs:
+        - senlin-dsvm-tempest-py3-api
+        - senlin-tempest-api-ipv6-only
+        - senlin-dsvm-tempest-py3-functional
+        - senlin-dsvm-tempest-py3-integration:
+            voting: false
+    gate:
+      queue: senlin
+      jobs:
+        - senlin-dsvm-tempest-py3-api
+        - senlin-tempest-api-ipv6-only
+        - senlin-dsvm-tempest-py3-functional
