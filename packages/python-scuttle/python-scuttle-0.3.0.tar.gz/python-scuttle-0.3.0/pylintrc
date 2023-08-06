@@ -1,0 +1,3 @@
+[DESIGN]
+# Maximum number of public methods for a class (see R0904).
+max-public-methods=50
