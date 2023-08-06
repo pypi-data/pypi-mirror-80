@@ -1,0 +1,12 @@
+luma.core>=1.16.2
+
+[docs]
+sphinx>=1.5.3
+
+[qa]
+rstcheck
+flake8
+
+[test]
+pytest<=4.5
+pytest-cov
