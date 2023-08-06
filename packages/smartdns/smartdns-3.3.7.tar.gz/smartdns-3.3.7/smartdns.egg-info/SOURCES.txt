@@ -1,0 +1,15 @@
+MANIFEST.in
+README.md
+setup.py
+smartdns/__init__.py
+smartdns/finder.py
+smartdns/monitor.py
+smartdns/runner.py
+smartdns/sdns.py
+smartdns/server.py
+smartdns.egg-info/PKG-INFO
+smartdns.egg-info/SOURCES.txt
+smartdns.egg-info/dependency_links.txt
+smartdns.egg-info/entry_points.txt
+smartdns.egg-info/requires.txt
+smartdns.egg-info/top_level.txt
