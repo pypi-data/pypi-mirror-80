@@ -1,0 +1,4 @@
+pystan>=2.19
+
+[dev]
+pytest>=6.0
