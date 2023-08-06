@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: scmdml
+Version: 2.3
+Summary: scmdml
+Home-page: https://github.com/bm2-lab/scMDML
+Author: Shaoqi Chen
+Author-email: csq_@tongji.edu.cn
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Requires-Dist: torch (>=1.2)
+Requires-Dist: pandas (>=0.23.4)
+Requires-Dist: numpy (>=1.12.0)
+Requires-Dist: scipy (>=1.0.0)
+Requires-Dist: tqdm (>=4.28.1)
+
+UNKNOWN
+
+
