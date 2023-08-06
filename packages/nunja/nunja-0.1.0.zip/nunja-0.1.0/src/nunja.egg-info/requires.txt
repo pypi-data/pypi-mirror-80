@@ -1,0 +1,11 @@
+Jinja2>=2.4
+calmjs>=3.4.1
+
+[dev]
+calmjs.dev>=2.3.0
+
+[rjs]
+calmjs.rjs
+
+[webpack]
+calmjs.webpack

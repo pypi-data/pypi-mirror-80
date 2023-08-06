@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>{{ title }}</title>
+{% for src in js -%}
+  <script type="text/javascript" src="{{ artifact_root }}{{ src }}"></script>
+{% endfor %}
+{% for src in css -%}
+  <link href="{{ artifact_root }}{{ src }}" rel="stylesheet" type="text/css" />
+{%- endfor %}
+</head>
+<body>
+{{ body|safe }}
+</body>
+</html>

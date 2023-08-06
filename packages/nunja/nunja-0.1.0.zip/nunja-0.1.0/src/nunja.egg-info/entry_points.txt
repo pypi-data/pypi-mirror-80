@@ -1,0 +1,35 @@
+[calmjs.module]
+nunja = nunja
+
+[calmjs.module.tests]
+nunja.tests = nunja.tests
+
+[calmjs.node_modules]
+nunjucks/browser/nunjucks.js = nunjucks
+
+[calmjs.registry]
+nunja.mold = nunja.registry:MoldRegistry
+nunja.mold.testing = nunja.registry:MoldRegistry
+nunja.rjs.tests = calmjs.module:ModuleRegistry
+nunja.tmpl = nunja.registry:JinjaTemplateRegistry
+
+[calmjs.toolchain.advice]
+calmjs.rjs.toolchain:RJSToolchain = nunja.spec:rjs
+calmjs.webpack.toolchain:WebpackToolchain = nunja.spec:webpack
+
+[calmjs.toolchain.advice.apply]
+nunja = nunja
+
+[nunja.mold]
+_core_ = nunja:_core_
+nunja.molds = nunja:molds
+
+[nunja.mold.testing]
+nunja.testing.mold = nunja.testing:mold
+
+[nunja.rjs.tests]
+nunja.tests.rjs = nunja.tests.rjs
+
+[nunja.tmpl]
+nunja.tmpl = nunja:templates
+
