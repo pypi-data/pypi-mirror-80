@@ -1,0 +1,9 @@
+aiohttp
+beautifulsoup4
+feedparser
+cchardet
+aiodns
+w3lib
+
+[:sys_platform != "win32"]
+uvloop
