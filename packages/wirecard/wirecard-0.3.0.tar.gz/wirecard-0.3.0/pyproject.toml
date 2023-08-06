@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "wirecard"
+version = "0.3.0"
+description = "A Python wrapper for the Wirecard REST API."
+authors = ["Jonatas Baldin <jonatas.baldin@gmail.com>"]
+readme = "README.md"
+repository = "https://github.com/Flickswitch/wirecard"
+homepage = "https://github.com/Flickswitch/wirecard"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+glom = "^20.8.0"
+requests = "^2.24"
+
+[tool.poetry.dev-dependencies]
+coverage = "^5.3"
+flake8 = "^3.8"
+flake8-import-order = "^0.18.1"
+pytest = "^6.0.2"
+pytest-vcr = "^1.0"
+
+[build-system]
+requires = ["poetry>=1.0.0"]
+build-backend = "poetry.masonry.api"
