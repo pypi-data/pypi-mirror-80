@@ -1,0 +1,32 @@
+Metadata-Version: 2.1
+Name: py-vsk
+Version: 0.0.3
+Summary: Python Functions for Vasicek Distribution
+Home-page: https://github.com/statcompute/py_vsk
+Author: WenSui Liu
+Author-email: liuwensui@gmail.com
+License: UNKNOWN
+Description: #### Introduction
+        
+        In the context of statistics, the Vasicek distribution is a continuous distribution governing the open interval between 0 and 1 with two parameters, namely Rho and P, which is similar to the Beta and Kumaraswamy distributions. 
+        
+        The Vasicek distribution has often been used to describe the portfolio credit loss in the development of Economic Capital models.
+        
+        
+        #### Core Functions
+        
+        ```
+        py_vsk
+           |-- vsk_mle() : Estimate Vasicek parameters by using MLE.
+           |-- vsk_imm() : Estimate Vasicek parameters by using indirect moment matching.
+           |-- vsk_pdf() : Calculates the probability density function of Vasicek.
+           |-- vsk_cdf() : Calculates the probability cumulative function of Vasicek.
+           |-- vsk_ppf() : Calculates the percentile point function (CDF inverse) of Vasicek.
+           `-- vsk_rvs() : Generates random numbers following the Vasicek distribution
+        ```
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
