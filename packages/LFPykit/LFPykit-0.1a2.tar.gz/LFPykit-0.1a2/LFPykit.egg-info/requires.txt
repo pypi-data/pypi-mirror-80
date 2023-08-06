@@ -1,0 +1,12 @@
+numpy>=1.18
+scipy
+meautility
+
+[docs]
+sphinx
+numpydoc
+sphinx_rtd_theme
+recommonmark
+
+[tests]
+pytest
