@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: spefit
+Version: 1.0.2
+Summary: Fitting of Single Photoelectron Spectra
+Home-page: https://gitlab.cta-observatory.org/cta-consortium/aswg/tools/spefit
+Author: Jason J Watson
+Author-email: jason.watson@desy.de
+License: BSD3
+Platform: UNKNOWN
+Requires-Python: ~=3.6
+Requires-Dist: scipy
+Requires-Dist: numpy
+Requires-Dist: tqdm (>=4.32)
+Requires-Dist: numba (>=0.50.1)
+Requires-Dist: iminuit (>=1.4.9)
+
+UNKNOWN
+
+
