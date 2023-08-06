@@ -1,0 +1,4 @@
+celery
+sailthru-client
+redis
+edx-rest-api-client<2.0.0,>=1.5.0
