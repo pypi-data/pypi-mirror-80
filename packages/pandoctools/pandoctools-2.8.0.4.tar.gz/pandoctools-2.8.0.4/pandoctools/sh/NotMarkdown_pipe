@@ -1,0 +1,28 @@
+#!/bin/bash
+export KNITTY=True
+
+pandoc "${reader_args[@]}" -t markdown |
+cat-md "${pandoc_inputs[@]}" |
+pandoc -f markdown -t json |
+knitty "$t" "${input_file}" "${reader_args[@]}" "${writer_args[@]}" |
+panfl "${panfl_args[@]}" |
+pandoc-crossref --pipe "$t" |
+if [[ "${to:0:5}" == "ipynb" ]]; then
+    panfl -t "$t" knitty.self_contained_raw_html_img
+else
+    cat
+fi |
+pandoc -f json "${writer_args[@]}" |
+if [[ "${to:0:5}" == "ipynb" ]]; then
+    jupyter nbconvert "${nbconvert_args[@]}"
+elif [[ "$to" == "html" && "${out_ext}" == "pdf" ]]; then
+    sub_mathjax_html |
+    sub_mathjax_pdf |
+    fonts_after_head |
+    pyppdf "${pyppdf_args[@]}"
+elif [[ "${to:0:4}" == "html" ]]; then
+    sub_mathjax_html
+else
+    cat
+fi
+if [[ -d "$tmpdir" ]]; then rm -rf "$tmpdir"; fi

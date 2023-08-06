@@ -1,0 +1,11 @@
+#!/bin/bash
+# Usage:
+#   source _env_to_PATH path/to/python/dir
+
+if [[ "$1" != "" ]]; then
+    if [[ "$OSTYPE" == "msys" ]]; then
+        PATH="$1:$1/Library/mingw-w64/bin:$1/Library/usr/bin:$1/Library/bin:$1/Scripts:$1/bin:$PATH"
+    else
+        PATH="$1/bin:$PATH"
+    fi
+fi

@@ -1,0 +1,7 @@
+[console_scripts]
+cat-md = pandoctools.cat_md.cat_md:cli
+pandoctools = pandoctools.cli.cli:pandoctools
+pandoctools-ready = pandoctools.ready.ready:ready
+pandoctools-resolve = pandoctools.pandoctools_resolve.resolve:cli
+regex-replace = pandoctools.regex_replace.cli:cli
+

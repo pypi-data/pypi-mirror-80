@@ -1,0 +1,172 @@
+#!/bin/bash
+# May use variables predefined in the profile:
+# --------------------------------------------------------
+#   $profile    (profile name)
+#   ${md_input_only}    (whether main document should be Markdown/Knitty only)
+
+# May use variables predefined in Pandoctools:
+#   ${in_ext}    (input file extension like "md")
+#   ${out_ext}    (output file extension like "md")
+#   ${input_file}    (input file path with extension)
+#   ${output_file}    (output file path with extension)
+#   $from    (always lowercase. Pandoc reader format + custom Pandoctools formats)
+#   $to    (always lowercase. Pandoc writer format + custom Pandoctools formats)
+#   ${important_from}    (bool: "true" "false". Whether `$from` was set by user)
+#   ${important_to}    (bool: "true" "false". Whether `$to` was set by user)
+#   ${is_bin_ext_maybe}    (Pandoctools nice guess if the ${output_file} extension
+#                           (or $to if no ext) means that Pandoc needs adding 
+#                           `-o "${output_file}"` option)
+
+#   $resolve    (echoes resolved path to a file. Searches in 
+#                `$HOME/.pandoc/pandoctools` or `%APPDATA%\pandoc\pandoctools`
+#                then in `<...>/site-packages/pandoctools/sh` folders)
+#   ${root_env}    (root Conda environment folder)
+#   ${env_path}    (Conda or venv environment folder)
+
+#   $source    (TO BE DEPRECATED: source bash script from PATH but not CWD)
+#   $scripts    (TO BE DEPRECATED: `bin` on Unix, `Scripts` on Windows)
+
+# Exports vars:
+# --------------------------------------------------------
+#   $from0    (original $from)
+#   $to0    (original $to)
+#   $from    (Pandoc reader format without custom formats)
+#   $to    (Pandoc writer format without custom formats)
+#   $t    (argument for Pandoc filters)
+
+#   ${extra_inputs0}    (format specific part of the middle inputs - extra metadata,
+#                       other files. Multiple files can be joined via this var)
+#   ${reader_args0}    (format specific part of the Pandoc reader args)
+#   ${writer_args0}    (format specific part of the Pandoc writer args)
+#   ${panfl_args0}    (format specific part of the Panflute args)
+
+#   $metadata    (profile metadata file absolute path; pre-knitty also uses $metadata)
+#   ${reader_args}    (all pandoc reader args)
+#   ${writer_args}    (all pandoc writer args)
+#   ${panfl_args}     (all panflute args)
+#   ${pandoc_inputs}    (joined "stdin" special arg, $metadata, $extra_inputs0)
+
+#   ${nbconvert_args}    (arguments for nbconvert)
+#   ${pyppdf_args}
+#   $mathjax   (MathJax settings .html file path)
+#   $tmpdir    (temp dir in the same folder as ${output_file}
+#               It should be deleted at the end of all pipes)
+
+# Exports functions:
+# --------------------------------------------------------
+#   fonts_after_head
+#   sub_mathjax_html
+#   sub_mathjax_pdf
+
+
+extra_inputs0=()
+reader_args0=()
+writer_args0=()
+panfl_args0=()
+from0="$from"
+to0="$to"
+
+tmpdir="$(dirname "${output_file}")/__temp__"
+mkdir -p "$tmpdir"
+_jupymd="ipynb-bracketed_spans-fenced_divs-link_attributes\
+-simple_tables-multiline_tables-grid_tables-pipe_tables\
+-fenced_code_attributes-markdown_in_html_blocks-table_captions-smart"
+
+
+# Deal with reader formats:
+# ---------------------------
+# mod $from only if it was autoset by pandoctools
+if [[ "${important_from}" == "true" ]]; then
+    :;
+elif [[ "${md_input_only}" == "true" ]]; then
+    from=markdown; fi
+
+
+# Deal with writer formats:
+# ---------------------------
+# mod $to only if it was autoset by Pandoctools
+# (keep $to set by user):
+if [[ "${important_to}" == "true" ]]; then
+    :;
+
+# override ipynb Markdown flavor when only output extension was specified:
+elif [[ "${out_ext}" == "ipynb" ]]; then
+    to="${_jupymd}"
+
+# Pandoctools overrides `pandoc -t html -o doc.pdf` combination:
+# (use `pandoc -t html5 -o doc.pdf` for default Pandoc behaviour)
+elif [[ "${out_ext}" == "pdf" ]]; then
+    to="html"; fi
+
+
+# --------
+if [[ "$to" == "html" && "${out_ext}" == "pdf" ]]; then
+    inheader="$tmpdir/in-header.html"
+    echo '<script type="text/javascript">' > "$inheader"
+    cat "$("$resolve" "${profile}_prism.js" --else Default_prism.js)" >> "$inheader"
+    echo '</script>' >> "$inheader"
+    pysassc "$("$resolve" "${profile}.sass" --else Default.sass)" "$tmpdir/profile.css"
+    open-fonts-css -o "$tmpdir/fonts.css"
+    writer_args0=(--mathjax --no-highlight \
+        --css "$("$resolve" "${profile}_prism.css" --else Default_prism.css)" \
+        --css "$("$resolve" _github_markdown.css)" \
+        --css "$tmpdir/profile.css" \
+        --include-in-header "$inheader" \
+        --template "$("$resolve" "${profile}.html" --else Default.html)")
+    panfl_args0=("pandoctools.language_prefix")
+
+# custom $to format: "r.ipynb" or "r.ipynb+format"
+elif [[ "${to:0:7}" == "r.ipynb" ]]; then
+    extra_inputs0=("$("$resolve" "${profile}_ipynb_R.yml" --else Default_ipynb_R.yml)")
+    # if "+format" was set:
+    if [[ "${to:7}" != "" ]]; then
+        # strip "r.":
+        to="${to:2}"
+    else
+        to="${_jupymd}"; fi
+
+elif [[ "${to:0:5}" == "ipynb" ]]; then
+    extra_inputs0=("$("$resolve" "${profile}_ipynb_py3.yml" --else Default_ipynb_py3.yml)")
+
+elif [[ "${to:0:4}" == "html" ]]; then
+    writer_args0=(--mathjax --template "$("$resolve" "${profile}.html" --else Default.html)")
+
+elif [[ "${out_ext}" == "docx" ]]; then
+    writer_args0=(--reference-doc "$("$resolve" "$profile.docx" --else Default.docx)" -o "${output_file}")
+
+elif [[ "${is_bin_ext_maybe}" == "true" ]]; then
+    writer_args0=(-o "${output_file}"); fi
+
+
+# Set other defaults:
+# ---------------------
+metadata="$("$resolve" "$profile.yml" --else Default.yml)"
+reader_args=(-f "$from" "${reader_args0[@]}")
+writer_args=(--standalone --self-contained -t "$to" "${writer_args0[@]}")
+t="$(pandoc-filter-arg "${writer_args[@]}")"
+
+pandoc_inputs=("${extra_inputs0[@]}" "$metadata" stdin)
+#   (pre-knitty also uses $metadata)
+panfl_args=(-t "$t" sugartex "${panfl_args0[@]}")
+nbconvert_args=(--to notebook --stdin --stdout)
+pyppdf_args=(-o "${output_file}" --goto temp)
+
+mathjax="$("$resolve" "${profile}_mathjax.html" --else Default_mathjax.html)"
+
+
+fonts_after_head () {
+    if [[ -f "$tmpdir/fonts.css" ]]; then
+        regex-replace -p "<head>" -t "<head><style>{}</style>" -f "$tmpdir/fonts.css"
+    else
+        cat; fi
+}
+sub_mathjax_html () {
+    regex-replace -p '<!-- before math -->.*<!-- after math -->' -t "" |
+    regex-replace -p '<!-- before css -->' -t "<!-- before css -->{}" -f "$mathjax"
+}
+sub_mathjax_pdf () {
+    regex-replace -p 'src="[^"\s]*"></script><!-- py-mathjax-path -->' -t "src=\"$(py-mathjax-path --url)\"></script>"
+}
+
+# panfl -t $t sugartex == sugartex $t == sugartex
+# panfl -t $t sugartex.kiwi == sugartex --kiwi
