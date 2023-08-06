@@ -1,0 +1,33 @@
+Source: kiwi
+Section: python
+Priority: optional
+Maintainer: Stoq Team <stoq-devel@async.com.br>
+Build-Depends: debhelper (>= 8.0.0), python3-all (>= 3.4), python3-setuptools,
+ python3-gi, gir1.2-gtk-3.0, python3-zope.interface
+Build-Depends-Indep: gettext, intltool, python3-mock (>= 0.7)
+Homepage: http://www.async.com.br/projects/kiwi/
+Vcs-Git: https://github.com/stoq/kiwi.git
+Vcs-Browser: https://github.com/stoq/kiwi/
+Standards-Version: 3.9.3
+X-Python3-Version: >= 3.4
+
+Package: python3-kiwi
+Architecture: all
+Depends: ${misc:Depends}, ${python:Depends},
+ python3-gi (>= 3.12), python3-gi-cairo (>= 3.12), gir1.2-gtk-3.0 (>= 3.10),
+ python3-setuptools (>= 20.7.0), python3-zope.interface
+Breaks: stoq (< 2.1.90)
+Replaces: kiwi, python-kiwi
+Homepage: http://www.async.com.br/projects/kiwi/
+Description: a graphical framework to construct simple UI
+ Kiwi is a framework and a set of enhanced PyGTK widgets designed to
+ make building programs with graphical interfaces both easy to write
+ and easy to maintain.
+ .
+ Kiwi consists of a set of classes and wrappers for PyGTK that were
+ developed to provide a sort of framework for applications. Fully
+ object-oriented, and roughly Smalltalk's MVC, Kiwi provides a simple,
+ practical way to build forms, windows and widgets that transparently
+ access and display your object data.
+ .
+ Kiwi is inspired by Allen Holub's Visual Proxy.
