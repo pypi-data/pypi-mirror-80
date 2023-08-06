@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: processingpy
+Version: 0.1
+Summary: A simple lib that prints out hello world
+Home-page: https://github.com/chrisoliver345/python-processing-package
+Author: Chris Oliver
+Author-email: chrisoliver275@gmail.com
+License: UNKNOWN
+Keywords: processing,pypi,package,python,p5,p5js
+Platform: UNKNOWN
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Dist: pytest (==2.9.2)
+
+UNKNOWN
+
+
