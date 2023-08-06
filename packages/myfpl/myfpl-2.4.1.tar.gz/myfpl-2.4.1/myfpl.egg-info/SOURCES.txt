@@ -1,0 +1,16 @@
+MANIFEST.in
+README.md
+setup.py
+myfpl/__init__.py
+myfpl/__main__.py
+myfpl/fixtures.py
+myfpl/gameweek.py
+myfpl/live.py
+myfpl/team.py
+myfpl.egg-info/PKG-INFO
+myfpl.egg-info/SOURCES.txt
+myfpl.egg-info/dependency_links.txt
+myfpl.egg-info/entry_points.txt
+myfpl.egg-info/requires.txt
+myfpl.egg-info/top_level.txt
+myfpl/.config/config.json
