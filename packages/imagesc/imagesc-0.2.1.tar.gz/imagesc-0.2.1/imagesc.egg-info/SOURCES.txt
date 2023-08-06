@@ -1,0 +1,14 @@
+MANIFEST.in
+README.md
+setup.py
+imagesc/__init__.py
+imagesc/examples.py
+imagesc/imagesc.py
+imagesc.egg-info/PKG-INFO
+imagesc.egg-info/SOURCES.txt
+imagesc.egg-info/dependency_links.txt
+imagesc.egg-info/requires.txt
+imagesc.egg-info/top_level.txt
+imagesc/utils/__init__.py
+imagesc/utils/adjmat_vec.py
+imagesc/utils/savefig.py
