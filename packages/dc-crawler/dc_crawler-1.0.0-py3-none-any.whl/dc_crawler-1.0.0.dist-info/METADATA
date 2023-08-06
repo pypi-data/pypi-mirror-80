@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: dc-crawler
+Version: 1.0.0
+Summary: 한국 최대의 익명 커뮤니티, DCInside 의 크롤링을 도와주는 python library 입니다.
+Home-page: https://github.com/seunghyukcho/dc-crawler
+Author: seunghyukcho
+Author-email: shhj1998@postech.ac.kr
+License: MIT
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+
+# dc-crawler
+한국 최대의 익명 커뮤니티 디시인사이드의 글, 댓글 크롤링을 도와주는 python 라이브러리입니다.
+
+
