@@ -1,0 +1,5 @@
+[console_scripts]
+NUMTdumper = metamate.metamate:main
+filtertranslate = metamate.filtertranslate:main
+numtdumper = metamate.metamate:main
+
