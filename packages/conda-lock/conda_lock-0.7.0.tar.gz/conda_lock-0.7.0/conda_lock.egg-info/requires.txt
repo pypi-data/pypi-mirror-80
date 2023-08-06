@@ -1,0 +1,5 @@
+PyYaml>=5.1
+requests>=2
+Jinja2
+toml
+ensureconda>=1.1
