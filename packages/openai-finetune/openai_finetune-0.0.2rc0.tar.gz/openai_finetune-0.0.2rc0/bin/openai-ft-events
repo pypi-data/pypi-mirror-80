@@ -1,0 +1,6 @@
+#!/usr/bin/env python3
+
+if __name__ == "__main__":
+    import sys
+    from openai_finetune import events_cli
+    sys.exit(events_cli.main())

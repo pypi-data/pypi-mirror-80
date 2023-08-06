@@ -1,0 +1,23 @@
+#!/usr/bin/env python3
+import argparse
+from openai_finetune import cli
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Run a classification fine-tuning job using OpenAI finetuning API"
+    )
+    cli.add_openai_args(parser)
+    cli.add_finetuning_args(parser, override_defaults=dict(
+        classification=True,
+        val_batch_size=32,
+        terminator='',
+        completions_every=0,
+        snapshots_every=10
+    ))
+    args = parser.parse_args()
+    cli.configure_openai(args)
+    cli.finetune(args)
+
+if __name__ == "__main__":
+    main()
+
