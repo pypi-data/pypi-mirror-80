@@ -1,0 +1,10 @@
+include LICENSE
+include APACHE-LICENSE-2.0
+include README
+include CHANGELOG
+include requirements.txt
+include test_requirements.txt
+
+# Exclude all bytecode
+global-exclude *.pyo
+global-exclude *.pyc

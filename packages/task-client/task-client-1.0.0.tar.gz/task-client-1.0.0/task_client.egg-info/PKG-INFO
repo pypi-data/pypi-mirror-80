@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: task-client
+Version: 1.0.0
+Summary: The Task Client is the client package for the Task Manager service
+Home-page: https://gitlab.com/radiology/infrastructure/task-client
+Author: H.C. Achterberg, M. Koek, A. Versteeg, H. Vrooman
+Author-email: h.achterberg@erasmusmc.nl, m.koek@erasmusmc.nl, a.versteeg@erasmusmc.nl, h.vrooman@erasmusmc.nl
+License: Apache 2.0
+Description: The task-client is the client package for the task-manager.
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Science/Research
+Classifier: Intended Audience :: Healthcare Industry
+Classifier: Intended Audience :: Information Technology
+Classifier: Intended Audience :: Education
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Topic :: Scientific/Engineering :: Information Analysis
+Classifier: Topic :: System :: Logging
+Classifier: Topic :: Utilities
+Description-Content-Type: text/x-rst
