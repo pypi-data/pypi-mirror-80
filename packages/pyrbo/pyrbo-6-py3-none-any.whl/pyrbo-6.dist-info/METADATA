@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: pyrbo
+Version: 6
+Summary: Python JIT compiler for near-native performance of low-level arithmetic
+Home-page: https://github.com/combatopera/pyrbo
+Author: Andrzej Cichocki
+License: UNKNOWN
+Platform: UNKNOWN
+Description-Content-Type: text/markdown
+Requires-Dist: Cython (>=0.29.21)
+Requires-Dist: diapyr (>=18)
+Requires-Dist: nativecommon (>=4)
+Requires-Dist: numpy (>=1.19.1)
+
+# pyrbo
+[![Build Status](https://travis-ci.org/combatopera/pyrbo.svg?branch=master)](https://travis-ci.org/combatopera/pyrbo)
+
+
