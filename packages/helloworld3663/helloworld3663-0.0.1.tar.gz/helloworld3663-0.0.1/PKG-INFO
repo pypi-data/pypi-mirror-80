@@ -1,0 +1,49 @@
+Metadata-Version: 2.1
+Name: helloworld3663
+Version: 0.0.1
+Summary: Say hello!
+Home-page: https://github.com/honeywhisperer
+Author: Nikola Trailovic
+Author-email: nikola.trailovic@gmail.com
+License: UNKNOWN
+Description: # Hello World
+        
+        This is an example project demonstrating how to publish a python module to PyPI
+        
+        
+        ## Installation
+        
+        Run the following to install:
+        
+        '''python
+        pip install helloworld3663
+        '''
+        
+        
+        ## Usage
+        
+        '''python
+        from helloworld3663 import say_hello
+        
+        # Generate "Hello, World!"
+        say_hello()
+        
+        # Generate "Hello, Everyone"
+        say_hello("Everyone")
+        '''
+        
+        # Developing Hello World
+        
+        To install helloworld3663, along with the tools you need to develop and run tests, run the following in your virtualenv:
+        
+        '''bash
+        $ pip install -e .[dev]
+        '''
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: License :: OSI Approved :: GNU General Public License v2 or later (GPLv2+)
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+Provides-Extra: dev
