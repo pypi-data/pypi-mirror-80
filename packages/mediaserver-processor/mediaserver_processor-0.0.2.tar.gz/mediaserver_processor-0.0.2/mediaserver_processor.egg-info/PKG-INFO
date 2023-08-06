@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: mediaserver-processor
+Version: 0.0.2
+Summary: Python script for mediaserver watching, resizing and adding files to a source set.
+Home-page: https://github.com/jobveldhuis/python-mediaserver-processor
+Author: Job Veldhuis
+Author-email: job@baukefrederik.me
+License: UNKNOWN
+Description: # python-mediaserver-processor
+        Image processor for mediaservers that receive items that have to be resized or reformatted to be used in a source set.
+        
+        This is a work in progress and the final product may differ slightly from the product that you can currently use.
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
