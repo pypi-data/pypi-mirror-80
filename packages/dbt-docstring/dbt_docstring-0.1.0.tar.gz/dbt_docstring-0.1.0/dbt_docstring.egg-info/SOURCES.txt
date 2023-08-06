@@ -1,0 +1,11 @@
+MANIFEST.in
+README.md
+setup.cfg
+setup.py
+dbt_docstring/__init__.py
+dbt_docstring.egg-info/PKG-INFO
+dbt_docstring.egg-info/SOURCES.txt
+dbt_docstring.egg-info/dependency_links.txt
+dbt_docstring.egg-info/entry_points.txt
+dbt_docstring.egg-info/requires.txt
+dbt_docstring.egg-info/top_level.txt
