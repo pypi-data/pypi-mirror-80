@@ -1,0 +1,15 @@
+peewee<4.0,>=3.5.0
+
+[aiomysql]
+aiomysql>=0.0.19
+
+[aiopg]
+aiopg>=0.14.0
+
+[develop]
+pylint
+wheel
+twine
+aiomysql
+aiopg
+psycopg2
