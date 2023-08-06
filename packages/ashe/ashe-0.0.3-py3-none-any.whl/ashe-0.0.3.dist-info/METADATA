@@ -1,0 +1,46 @@
+Metadata-Version: 2.1
+Name: ashe
+Version: 0.0.3
+Summary: ashe is super extension of Python.
+Home-page: https://github.com/Ailln/ashe
+Author: Ailln
+Author-email: kinggreenhall@gmail.com
+License: MIT License
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: setuptools (>=40.6.3)
+
+# ashe
+
+✨ `ashe` is a super extension of Python.
+
+## Install
+
+```bash
+pip install ashe
+```
+
+## Feature
+
+1. System
+
+   - size
+
+2. Dict
+
+   - merge
+   - remove
+
+3. String
+
+   - find
+
+## License
+
+[![](https://award.dovolopor.com?lt=License&rt=MIT&rbc=green)](./LICENSE)
+
+
