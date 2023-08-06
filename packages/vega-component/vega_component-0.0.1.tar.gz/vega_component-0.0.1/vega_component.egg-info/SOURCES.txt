@@ -1,0 +1,17 @@
+LICENSE
+MANIFEST.in
+README.md
+package.json
+setup.py
+vega_component/TextInput.py
+vega_component/VegaComponent.py
+vega_component/__init__.py
+vega_component/_imports_.py
+vega_component/metadata.json
+vega_component/package-info.json
+vega_component/vega_component.min.js
+vega_component/vega_component.min.js.map
+vega_component.egg-info/PKG-INFO
+vega_component.egg-info/SOURCES.txt
+vega_component.egg-info/dependency_links.txt
+vega_component.egg-info/top_level.txt

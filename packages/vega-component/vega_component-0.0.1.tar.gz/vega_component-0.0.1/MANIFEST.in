@@ -1,0 +1,7 @@
+include vega_component/vega_component.min.js
+include vega_component/vega_component.min.js.map
+include vega_component/metadata.json
+include vega_component/package-info.json
+include README.md
+include LICENSE
+include package.json
