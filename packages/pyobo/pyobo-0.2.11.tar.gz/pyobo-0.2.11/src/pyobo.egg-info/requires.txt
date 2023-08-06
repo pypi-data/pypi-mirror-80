@@ -1,0 +1,27 @@
+obonet
+click
+tqdm
+pyyaml
+pandas
+requests
+protmapper
+more_itertools
+humanize
+tabulate
+scrapy
+sqlalchemy
+psycopg2-binary
+flask
+flask-bootstrap
+flask-admin
+flasgger
+psutil
+
+[:python_version < "3.7"]
+dataclasses
+
+[docs]
+sphinx
+sphinx-rtd-theme
+sphinx-click
+sphinx-autodoc-typehints
