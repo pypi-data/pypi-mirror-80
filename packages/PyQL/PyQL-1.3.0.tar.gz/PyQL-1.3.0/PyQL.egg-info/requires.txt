@@ -1,0 +1,7 @@
+aniso8601
+graphql-core<3
+
+[dev]
+pytest
+pytest-cov
+sphinx
