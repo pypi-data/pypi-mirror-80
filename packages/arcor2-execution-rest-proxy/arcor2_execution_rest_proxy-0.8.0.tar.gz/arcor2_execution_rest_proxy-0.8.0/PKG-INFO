@@ -1,0 +1,30 @@
+Metadata-Version: 2.1
+Name: arcor2_execution_rest_proxy
+Version: 0.8.0
+Summary: REST Proxy for ARCOR2 Execution service.
+Home-page: UNKNOWN
+Author: Robo@FIT
+Author-email: imaterna@fit.vut.cz
+License: LGPL
+Description: # arcor2_execution_rest_proxy
+        # Changelog
+        
+        The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+        
+        
+        ## [0.8.0] - WIP
+        ### Changed
+        - The first release of the separated package.
+        - API version is now hardcoded (0.3.0 at the moment).
+        - Tokens controller added.
+          - Tokens as saved in DB in directory specified by ```ARCOR2_EXECUTION_PROXY_DB_PATH```.
+        - Added wait until the Execution service is up.
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Natural Language :: English
+Classifier: Topic :: Scientific/Engineering
+Description-Content-Type: text/markdown
