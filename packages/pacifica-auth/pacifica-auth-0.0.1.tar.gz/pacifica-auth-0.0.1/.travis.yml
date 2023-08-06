@@ -1,0 +1,29 @@
+language: python
+dist: bionic
+python: 3.6
+
+stages:
+- lint
+- test
+
+script: tox -e $TOX_ENV
+
+jobs:
+  include:
+  - stage: lint
+    script: pre-commit run -a
+  - python: 3.7
+    script: pre-commit run -a
+  - python: 3.8
+    script: pre-commit run -a
+  - stage: test
+    env: [ 'TOX_ENV=py36' ]
+  - python: 3.7
+    env: [ 'TOX_ENV=py37' ]
+  - python: 3.8
+    env: [ 'TOX_ENV=py38' ]
+
+install:
+- python -m pip install --upgrade pip virtualenv setuptools wheel
+- pip install tox pre-commit pep257 pylint requests recommonmark
+- pip install .
