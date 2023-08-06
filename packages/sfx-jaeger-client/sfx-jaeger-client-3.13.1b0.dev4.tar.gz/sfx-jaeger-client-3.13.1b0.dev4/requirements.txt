@@ -1,0 +1,4 @@
+# Modified by SignalFx
+# add dependencies in setup.py
+opentracing>=2.0,<2.4
+-e .
