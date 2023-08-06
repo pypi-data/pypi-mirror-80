@@ -1,0 +1,5 @@
+beaker-client>=27
+boto3
+click
+pyyaml
+asyncopenstackclient
