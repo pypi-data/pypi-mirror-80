@@ -1,0 +1,7 @@
+path:
+  description: Text containing a system path
+  message: Path
+  severity: INFO
+  value:
+    regex: ^(?!.*\/.*\/.*)[\.\/a-zA-Z0-9]+$
+    ignorecase: True
