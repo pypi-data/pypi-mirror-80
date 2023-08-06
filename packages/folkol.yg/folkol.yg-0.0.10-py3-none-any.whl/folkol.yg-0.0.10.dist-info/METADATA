@@ -1,0 +1,38 @@
+Metadata-Version: 2.1
+Name: folkol.yg
+Version: 0.0.10
+Summary: a unix filter for "greping" in YAML files
+Home-page: https://github.com/folkol/yg
+Author: folkol
+License: UNKNOWN
+Project-URL: Bug Reports, https://github.com/folkol/yg/issues
+Project-URL: Source, https://github.com/folkol/yg
+Keywords: shell,unix filter
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Terminals
+Classifier: Topic :: Text Processing :: Filters
+Classifier: License :: OSI Approved :: MIT License
+Requires-Python: >=3.6, <4
+Description-Content-Type: text/markdown
+Requires-Dist: pyyaml
+
+# yg — "YAML grep"
+
+Searches in YAML files for properties that matches a regex and prints them.
+
+`usage: yg pattern [files]`
+
+> For more intricate command line YAML manipulation, check out [yq](https://github.com/mikefarah/yq).
+
+## Installation
+
+`$ pip install folkol.yg`
+
+## Examples
+
+- finds Ansible variables matching nginx: yg nginx
+
+
+
