@@ -1,0 +1,4 @@
+[console_scripts]
+dqueue = dqueue.cli:main
+oda-hub = dqueue.cli:main
+
