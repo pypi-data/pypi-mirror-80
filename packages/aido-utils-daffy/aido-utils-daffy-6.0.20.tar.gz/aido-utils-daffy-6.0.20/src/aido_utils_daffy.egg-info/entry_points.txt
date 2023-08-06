@@ -1,0 +1,8 @@
+[console_scripts]
+aido-check-need-upload = aido_utils:aido_check_need_upload_main
+aido-check-not-dirty = aido_utils:aido_check_not_dirty_main
+aido-check-tagged = aido_utils:aido_check_tagged_main
+aido-dir-status = aido_utils:aido_dir_status_main
+aido-labels = aido_utils:aido_labels_main
+aido-update-reqs = aido_utils.update_req_versions:update_reqs_versions_main
+
