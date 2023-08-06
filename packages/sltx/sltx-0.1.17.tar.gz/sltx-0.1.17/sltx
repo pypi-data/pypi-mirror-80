@@ -1,0 +1,153 @@
+#!/usr/bin/env python3
+
+# Simple LaTeX Utility
+# sltx
+
+# TODO: check versioning
+# TODO: do not install if already done
+# TODO: symlink options?
+# TODO: add 'auto'/'noob' modus which will install lithie util (default-full dependencies) to the docker/whatever container (easier install/in docker too)
+# TODO: dig mode given detailed informations about errors
+
+import argparse
+import os  # list directory
+import sys  # cmd line args
+
+import sltxpkg.config as sc
+import sltxpkg.util as su
+from sltxpkg import globals as sg
+from sltxpkg.commands import (cmd_auto_setup, cmd_cleanse, cmd_compile,
+                              cmd_dependency, cmd_docker, cmd_gen_gha,
+                              cmd_raw_compile, cmd_version)
+from sltxpkg.globals import DEFAULT_CONFIG
+
+
+def valid_file(arg: str) -> str:
+    if arg is None or arg.strip() == "":
+        raise ValueError("arg vas none or empty")
+    if not os.path.isfile(arg):
+        raise FileNotFoundError("\"" + arg + "\" must be an existing file")
+    return arg
+
+
+# TODO: cleanup arguments and automatically generate the stuff
+commands = {
+    'dependency': (cmd_dependency, ('dep')),
+    'docker': (cmd_docker, ('do')),
+    'compile': (cmd_compile, ('cmp')),
+    'raw-compile': (cmd_raw_compile, ('raw-cmp')),
+    'gen-gha': (cmd_gen_gha, ('gha')),
+    'cleanse': (cmd_cleanse, ('cls')),
+    'auto-setup': (cmd_auto_setup, ()),
+    'version': (cmd_version, ())}
+
+# TODO quiet mode latex/docker output written to log but not to stdout
+
+parser = argparse.ArgumentParser(
+    description="sltx, a Simple LaTeX utility", epilog="sltx Version: " + su.get_version())
+
+cmd_parser = parser.add_subparsers(
+    title='command', description="Select the command for sltx", metavar=set(commands.keys()),
+    help="Help for the specific command. You may use shortcuts for them: " +
+    str([k[1] for k in commands.values() if len(k[1]) != 0]),
+    dest='command')
+
+p_auto_setup = cmd_parser.add_parser(
+    'auto-setup', description='Setup a basic version of sltx (this requires docker to be setup).')
+p_auto_setup.add_argument('-d', '--dependencies', dest='auto_deps', action='store_true',
+                          help='This will install the recommended dependencies on your host system. This is helpful if you have texlive installed and want your editor to recognize the libraries as well.')
+
+
+p_cleanse = cmd_parser.add_parser(
+    'cleanse', description="This will clean all additional sltx-files in the current directory (like \"sltx-log-*\" files). It may clean more, if you pass the corresponding flags. Please note, that cleanse will only read the current config. If you've changed some configurations they will be used.", aliases=['cls'])
+p_cleanse.add_argument('-C', '--cache', dest='cleanse_cache', action='store_true',
+                       help="If set, sltx will clean the cache.")
+
+# TODO: clean more?
+p_cleanse.add_argument('--all', dest='cleanse_all', action='store_true',
+                       help="If set, sltx will clean the texmf-tree (sltx) and the cache as-well.")
+
+p_cleanse.add_argument('-e', '--exclude', action='append', metavar='pattern', dest='exclude_patterns',
+                       help="Exclude all files/directories matching this pattern. May be supplied multiple times.")
+
+p_docker = cmd_parser.add_parser(
+    'docker', description='Manage the containers to compile with sltx.', aliases=['do'])
+
+p_dependency = cmd_parser.add_parser(
+    'dependency', description='Install dependencies on the host system.', aliases=['dep'])
+p_dependency.add_argument('dep', metavar='dep.yml', type=valid_file,
+                          help="the file to load the dependencies from.")
+
+p_raw_compile = cmd_parser.add_parser(
+    'raw-compile', description="Compile documents using a recipe. This will not start any docker container but will be executed inside one as well.", aliases=['raw-cmp'])
+
+p_raw_compile.add_argument('-r', '--recipe', dest='recipe',
+                           help='The recipe to instruct the main compile routine.', required=False, default=None)
+p_raw_compile.add_argument('file', metavar='file.tex', type=str,
+                           help="the file to load; it will be processed.")
+
+p_compile = cmd_parser.add_parser(
+    'compile', description="Compile documents with previously installed containers. If docker was disabled this will default to the same behavior as \"raw-compile\" passing on the recipe.", aliases=['cmp'])
+# TODO:
+# p_compile.add_argument('-d', '--dependency', nargs='1', metavar="dep.yml", dest='dep', )
+# TODO: glossary etc.
+p_compile.add_argument('-p', '--profile', dest='profile',
+                       help="allows to override the configured docker profile. This will enable docker automatically.")
+p_compile.add_argument('-r', '--recipe', dest='recipe',
+                       help='The recipe to instruct the main compile routine.', required=False, default=None)
+# TODO: use namespaces in the future
+p_compile.add_argument('--root', dest='dock_as_root',
+                       help='Run the docker container with the lithie-root setup. This may lead to permission errors when you want to delete the caches.', required=False, action='store_true')
+
+# TODO: filters:
+# p_compile.add_argument('-i', '--isolate', action='store_true', dest='isolate', help="disables mounting the current fs. This will pass the file only. Has no effect if not using docker. Note that in isolation only the *.pdf will be returned")
+p_compile.add_argument('file', metavar='file.tex', type=str,
+                       help="the file to load; it will be processed.")
+
+p_generate = cmd_parser.add_parser(
+    'gen-gha', description='Generate a GitHub workflow To automate compilation.', aliases=['gha'])
+
+# commands, parser.add_mutually_exclusive_group()
+parser.add_argument('-c', '--config', dest='config', metavar='config.yml',
+                    required=False, type=valid_file,
+                    help="the file to load the configuration from.")
+
+parser.add_argument('-t', '--threads', metavar='N', dest='threads', type=int,
+                    help="number of threads to run the installation. Default is 1. This number will only affect some routines.",
+                    default=1)
+
+# parser.add_argument('-n', '--no-archive', dest='no_archive', action='store_true',
+#                     help="If set, sltx won't create tar-balls in case of critical failures.")
+
+p_version = cmd_parser.add_parser(
+    'version', description='Show the version-info for sltx.')
+
+if(len(sys.argv) <= 1):
+    parser.parse_args(['-h'])
+
+sg.args = parser.parse_args()
+
+
+if os.path.isfile(DEFAULT_CONFIG):
+    print("Automatically loading '{DEFAULT_CONFIG}'".format(**globals()))
+    sc.load_configuration(DEFAULT_CONFIG)
+
+
+if sg.args.config is not None:
+    sc.load_configuration(sg.args.config)
+
+try:
+    tc = sg.args.command.lower()
+    # This is ugly, but it basically checks if tc is in the commands and if so, use that commands
+    # if not it searches through the list of aliasses and if it finds one it will use this
+    cmd = commands[tc][0] if tc in commands else commands[[alias[0]
+                                                           for alias in commands.items()
+                                                           if tc in alias[1][1]][0]][0]
+except KeyError:
+    print("The supplied command:", sg.args.command,
+          "is unknown. Choose one of:", list(commands.keys()))
+    exit(1)
+
+cmd()
+
+# TODO: if no deps or no generate call
