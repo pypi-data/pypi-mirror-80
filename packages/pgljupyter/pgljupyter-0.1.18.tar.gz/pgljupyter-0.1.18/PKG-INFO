@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: pgljupyter
+Version: 0.1.18
+Summary: PlantGL jupyter widget
+Home-page: https://github.com/jvail/plantgl-jupyter
+Author: Jan Vaillant
+Author-email: jan.vaillant@cirad.fr
+License: Cecill
+Description: UNKNOWN
+Keywords: Jupyter,Widgets,IPython,L-Py,PlantGL
+Platform: Linux
+Platform: Mac OS X
+Platform: Windows
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Science/Research
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Framework :: Jupyter
+Requires-Python: >=3.7
+Provides-Extra: test
+Provides-Extra: examples
+Provides-Extra: docs
