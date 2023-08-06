@@ -1,0 +1,3 @@
+[console_scripts]
+easy_skype = skype_downloader.skype_main:main
+
