@@ -1,0 +1,21 @@
+Metadata-Version: 2.0
+Name: skillpub
+Version: 0.2.83
+Summary: skillpub
+Home-page: http://skillpub.org
+Author: Chernikov Anton
+Author-email: chernikovanv@gmail.com
+License: Free To Use But Restricted
+Platform: UNKNOWN
+Requires-Python: >=3.6
+Requires-Dist: Flask (==1.0.2)
+Requires-Dist: Pillow (>=5.4.1)
+Requires-Dist: croniter (==0.3.30)
+Requires-Dist: jupyterlab (==0.35.4)
+Requires-Dist: lxml (==4.3.2)
+Requires-Dist: requests-toolbelt (==0.9.1)
+Requires-Dist: slackclient (==1.3.0)
+
+UNKNOWN
+
+
