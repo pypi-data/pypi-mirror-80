@@ -1,0 +1,42 @@
+Metadata-Version: 2.1
+Name: JsonChecker-Svtter
+Version: 0.0.1
+Summary: Check the python dict type via json file.
+Home-page: https://github.com/Svtter/JsonChecker
+Author: Svtter
+Author-email: svtter@qq.com
+License: UNKNOWN
+Description: # Json Checker
+        
+        - STATUS: FINISHED.
+        
+        
+        Check the python dict type via json file.
+        
+        
+        ## Usage
+        
+        
+        
+        ```python
+        from json_checker import json_checker
+        
+        # compare between file and python dict
+        is_equal, msg = json_checker.check_from_file('example.json', {"a": 1, "b": 2})
+        
+        # compare between two dicts
+        is_equal, msg = json_checker.structure({"a": 1, "b": 2}, {"a": 1, "b": 2})
+        
+        ```
+        
+        
+        ## LICENCE
+        
+        MIT
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown

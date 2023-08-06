@@ -1,0 +1,11 @@
+README.md
+setup.py
+JsonChecker_Svtter.egg-info/PKG-INFO
+JsonChecker_Svtter.egg-info/SOURCES.txt
+JsonChecker_Svtter.egg-info/dependency_links.txt
+JsonChecker_Svtter.egg-info/top_level.txt
+json_checker/__init__.py
+json_checker/json_checker.py
+json_checker/test.py
+tests/__init__.py
+tests/test_type_checker.py
