@@ -1,0 +1,9 @@
+.DS_Store
+*.pyc
+_build/
+_dist/
+uow.spec
+.vscode
+uow.egg-info/
+_version.py
+.eggs
