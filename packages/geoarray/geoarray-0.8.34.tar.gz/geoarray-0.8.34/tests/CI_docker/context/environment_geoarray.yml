@@ -1,0 +1,47 @@
+name: geoarray
+
+channels: &id1
+  - http://conda.anaconda.org/conda-forge
+
+dependencies:
+  - python=3.*.*
+  - pip  # avoids that conda uses the wrong pip
+  - numpy
+  - gdal>=2.1.0
+  - scikit-image
+  - matplotlib
+  - basemap
+  - shapely
+  - holoviews
+  - bokeh
+
+  # py_tools_ds
+  - geopandas
+  - pyproj
+
+  - pip:
+    - dicttoxml
+    - jsmin
+    - cerberus
+    - pyprind
+    - pint
+    - iso8601
+    - tqdm
+    - mpld3
+    - sphinx-argparse
+    - six
+    - spectral
+    - flake8
+    - pycodestyle
+    - pylint
+    - pydocstyle
+    - nose
+    - nose2
+    - nose-htmloutput
+    - coverage
+    - rednose
+    - py_tools_ds>=0.14.35
+    - pandas
+    - dill
+    - geojson
+    - folium
