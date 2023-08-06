@@ -1,0 +1,3 @@
+    [console_scripts]
+    wbia-init-testdbs = wbia.cli.testdbs:main
+    
