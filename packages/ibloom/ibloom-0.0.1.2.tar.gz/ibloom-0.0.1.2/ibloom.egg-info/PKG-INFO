@@ -1,0 +1,21 @@
+Metadata-Version: 1.1
+Name: ibloom
+Version: 0.0.1.2
+Summary: Python library which implements a Redis-backed Bloom filter.
+Home-page: https://github.com/coghost/ibloom
+Author: Hex.Li
+Author-email: imanux@sina.com
+License: MIT
+Description: UNKNOWN
+Keywords: Cython bloom filter redis
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Utilities
+Classifier: Programming Language :: C
+Classifier: Programming Language :: Cython
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
