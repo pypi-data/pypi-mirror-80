@@ -1,0 +1,12 @@
+README.md
+pyproject.toml
+setup.py
+django_object_checker.egg-info/PKG-INFO
+django_object_checker.egg-info/SOURCES.txt
+django_object_checker.egg-info/dependency_links.txt
+django_object_checker.egg-info/requires.txt
+django_object_checker.egg-info/top_level.txt
+object_checker/__init__.py
+object_checker/apps.py
+object_checker/base_object_checker.py
+object_checker/version.py
