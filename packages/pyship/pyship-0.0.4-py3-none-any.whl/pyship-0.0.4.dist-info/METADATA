@@ -1,0 +1,38 @@
+Metadata-Version: 2.1
+Name: pyship
+Version: 0.0.4
+Summary: freezer, installer and updater for Python applications
+Home-page: https://github.com/jamesabel/pyship
+Author: abel
+Author-email: j@abel.co
+License: MIT License
+Download-URL: https://github.com/jamesabel/pyship
+Keywords: freezer,installer,ship
+Platform: UNKNOWN
+Description-Content-Type: text/markdown
+Requires-Dist: setuptools
+Requires-Dist: wheel
+Requires-Dist: ismain
+Requires-Dist: balsa
+Requires-Dist: requests
+Requires-Dist: attrs
+Requires-Dist: typeguard
+Requires-Dist: toml
+Requires-Dist: pyinstaller
+Requires-Dist: semver
+Requires-Dist: python-dateutil
+Requires-Dist: wheel-inspect
+Requires-Dist: boto3
+Requires-Dist: awsimple
+Requires-Dist: pywin32
+Requires-Dist: pyshipupdate
+
+
+# pyship
+
+Enables shipping a python application to end users.
+
+[Quick Start](doc/quickstart.md)
+
+[User Guide](doc/userguide.md)
+
