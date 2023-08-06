@@ -1,0 +1,152 @@
+Metadata-Version: 2.1
+Name: pioupiou
+Version: 0.6
+Summary: A generator of avatar optimised to generate or random avatars based on multiple image layers
+Home-page: https://framagit.org/inkhey/pioupiou
+Author: Guénaël Muller
+Author-email: inkey@inkey-art.net
+License: UNKNOWN
+Keywords: avatar
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: License :: OSI Approved :: MIT License
+Requires-Python: >= 3.5
+Description-Content-Type: text/markdown
+Requires-Dist: Pillow
+Requires-Dist: name-me
+Provides-Extra: dev
+Requires-Dist: pytest ; extra == 'dev'
+Requires-Dist: flake8 ; extra == 'dev'
+Requires-Dist: isort ; extra == 'dev'
+Requires-Dist: mypy ; extra == 'dev'
+Requires-Dist: pre-commit ; extra == 'dev'
+Requires-Dist: black ; extra == 'dev'
+Provides-Extra: testing
+Requires-Dist: pytest ; extra == 'testing'
+
+# PiouPiou
+![logo](pioupiou.png)
+
+![pipeline_build_status](https://framagit.org/inkhey/pioupiou/badges/master/pipeline.svg)
+![PyPI - License](https://img.shields.io/pypi/l/pioupiou)
+![PyPI - Status](https://img.shields.io/pypi/status/pioupiou)
+[![PyPI](https://img.shields.io/pypi/v/pioupiou) ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/pioupiou) ![PyPI](https://img.shields.io/pypi/dm/pioupiou)](https://pypi.org/project/pioupiou/)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+![mypy](https://img.shields.io/badge/mypy-checked-blueviolet)
+
+
+An avatar generator optimised for generating random avatars based on multiple image layers, able to return same image from a string "seed".
+Heavily inspired by [David Revoy](http://www.peppercarrot.com)'s [cat avatar generator](https://framagit.org/Deevad/cat-avatar-generator/) and [MonsterID by Andreas Gohr's](https://www.splitbrain.org/blog/2007-01/20_monsterid_as_gravatar_fallback).
+
+This generator relies on the Pillow library to do image processing.
+
+
+See a [Demo](https://pioupiou.inkey-art.net/) (running [pioupiouweb from buxx](https://github.com/buxx/pioupiouweb)).
+
+## Install
+
+### From pypi
+
+~~~sh
+$ pip install pioupiou
+~~~
+
+### From source
+
+- clone this repository
+- `pip install -e "."`
+
+## Usage
+
+## High Level Api
+
+The high level Api will help you choose avatar between multiples themes, according to installed themes.
+
+~~~python
+from pioupiou import AvatarGenerator
+# check sample/example.py for code to build default sample themes
+from sample.example import generate_default_themes
+themes = generate_default_themes(sample_dir_path="./sample")
+avatar_generator = AvatarGenerator(themes)
+# note: you can override default theme list and/or theme chooser (mecanism to randomly choose a theme according to token)
+avatar = avatar_generator.generate_avatar(token="just a random string")
+avatar_generator.save_on_disk(avatar, path="/tmp/saved_file.png")
+# note: you can choose a specific theme according to activate theme
+avatar = avatar_generator.generate_avatar(theme_name='cat_revoy', token="just a random string")
+avatar_generator.save_on_disk(avatar, path="/tmp/saved_file_2.png")
+~~~
+
+
+## Low Level Api (AvatarTheme)
+The easy way to use it is to be based on FolderAvatarTheme. To do this, you should create many .png file of same image, all
+with transparency. You should follow a similar naming pattern as in the following example.
+
+To test it, you can, for instance, use a cat avatar [by David Revoy](http://www.peppercarrot.com):
+
+~~~python
+from pioupiou import FolderAvatarTheme
+theme = FolderAvatarTheme(folder_path="sample/cat_revoy", layers_name=["body", "fur","eyes","mouth","accessorie"])
+avatar = theme.generate_avatar(token="just a random string")
+theme.save_on_disk(avatar, path="/tmp/saved_file.png")
+~~~
+
+Or a bird avatar [by David Revoy](http://www.peppercarrot.com):
+
+~~~python
+from pioupiou import FolderAvatarTheme
+theme = FolderAvatarTheme(
+    "sample/bird_revoy",
+    layers_name=["tail", "hoop", "body", "wing", "eyes", "bec", "accessorie"],
+)
+avatar = theme.generate_avatar(token="just a random string")
+theme.save_on_disk(avatar, path="/tmp/saved_file.png")
+~~~
+
+Or a Monster avatar [by Andreas Gohr's](https://www.splitbrain.org/blog/2007-01/20_monsterid_as_gravatar_fallback):
+
+~~~python
+from pioupiou import FolderAvatarTheme
+theme = FolderAvatarTheme(
+    "sample/monster_id",
+    layers_name=["legs", "hair", "arms", "body", "eyes", "mouth"],
+)
+avatar = theme.generate_avatar(token="just a random string")
+theme.save_on_disk(avatar, path="/tmp/saved_file.png")
+~~~
+
+## Configure Chooser
+
+To generate avatars, pioupiou provides tools to help you use the algorithm you want.
+The default behaviour is to rely on `random.Random()`, but pioupiou is made to support any type of chooser.
+To do this, you just need to configure the chooser with your `AvatarTheme`:
+
+~~~python
+from pioupiou import FolderAvatarTheme
+from random import Random
+theme = FolderAvatarTheme(
+  folder_path="sample/cat_revoy",
+  layers_name=["body", "fur","eyes","mouth","accessorie"],
+  chooser=Random() # same as default, don't change anything
+)
+~~~
+
+You can use any hashlib algorithm you want from `hashlib`, using `pioupiou.chooser.HashLibChooser`.
+It will make choices using a modulo.
+
+~~~python
+from pioupiou import FolderAvatarTheme
+import hashlib
+from pioupiou.chooser import HashLibChooser
+theme = FolderAvatarTheme(
+  folder_path="sample/cat_revoy",
+  layers_name=["body", "fur","eyes","mouth","accessorie"],
+  chooser=HashLibChooser(hashlib.sha256()) # hashlib.sha256() is just an example, hashlib.md5() should also work for example.
+)
+~~~
+
+You can also implement `pioupiou.chooser.Chooser` and use a custom chooser.
+
+
