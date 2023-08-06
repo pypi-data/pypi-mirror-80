@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: palletti
+Version: 0.1.0
+Summary: Analyze dominant colors using K-Means Clustering
+Home-page: https://github.com/moritzsanne/palletti
+Author: Moritz Sanne
+Author-email: moritzsanne@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Requires-Dist: pillow (==7.2)
+Requires-Dist: matplotlib (>=3.3.1)
+Requires-Dist: numpy (>=1.19.2)
+
+UNKNOWN
+
+
