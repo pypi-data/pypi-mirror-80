@@ -1,0 +1,15 @@
+MANIFEST.in
+README.rst
+setup.cfg
+setup.py
+pydockerutils/__init__.py
+pydockerutils/configs.py
+pydockerutils/main.py
+pydockerutils/static.py
+pydockerutils/utils.py
+pydockerutils.egg-info/PKG-INFO
+pydockerutils.egg-info/SOURCES.txt
+pydockerutils.egg-info/dependency_links.txt
+pydockerutils.egg-info/entry_points.txt
+pydockerutils.egg-info/requires.txt
+pydockerutils.egg-info/top_level.txt
