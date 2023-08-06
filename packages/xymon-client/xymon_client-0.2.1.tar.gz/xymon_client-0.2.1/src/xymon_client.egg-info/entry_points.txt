@@ -1,0 +1,3 @@
+[console_scripts]
+xymon-client = xymon_client.__main__:main
+
