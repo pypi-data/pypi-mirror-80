@@ -1,0 +1,3 @@
+[console_scripts]
+mergeBams = mergeBams.__main__:run_BamMerge
+

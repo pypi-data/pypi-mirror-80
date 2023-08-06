@@ -1,0 +1,12 @@
+MANIFEST.in
+README.md
+setup.py
+mergeBams/__init__.py
+mergeBams/__main__.py
+mergeBams/mergeBams.py
+mergeBams/piperna.py
+mergeBams.egg-info/PKG-INFO
+mergeBams.egg-info/SOURCES.txt
+mergeBams.egg-info/dependency_links.txt
+mergeBams.egg-info/entry_points.txt
+mergeBams.egg-info/top_level.txt
