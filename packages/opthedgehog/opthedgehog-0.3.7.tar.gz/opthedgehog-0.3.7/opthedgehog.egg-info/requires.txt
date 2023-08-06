@@ -1,0 +1,4 @@
+numpy>=1.12.0
+bezier>=2020.5.19
+gdspy<1.6,>=1.5.2
+termcolor
