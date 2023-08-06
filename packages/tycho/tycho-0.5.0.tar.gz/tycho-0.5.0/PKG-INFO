@@ -1,0 +1,20 @@
+Metadata-Version: 1.0
+Name: tycho
+Version: 0.5.0
+Summary: UNKNOWN
+Home-page: UNKNOWN
+Author: zillow-orbital
+Author-email: UNKNOWN
+License: UNKNOWN
+Description: # Tycho
+        
+        Tycho is a change management service, with the ability to store
+        operational events and query them via tags or within time ranges.
+        
+        Tycho provides the ability to describe relationships between events
+        as well, by specifying an ID of a parent event from which the child
+        event was spawned.
+        
+        Tycho is a service from the orbital group at Zillow.
+        
+Platform: UNKNOWN
