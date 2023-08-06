@@ -1,0 +1,16 @@
+MANIFEST.in
+README.md
+setup.py
+srpp/__init__.py
+srpp/srpp.py
+srpp.egg-info/PKG-INFO
+srpp.egg-info/SOURCES.txt
+srpp.egg-info/dependency_links.txt
+srpp.egg-info/requires.txt
+srpp.egg-info/top_level.txt
+srpp/params/corr2010_curr.csv
+srpp/params/cpi.csv
+srpp/params/cpp_history.xlsx
+srpp/params/cpp_history_full.xlsx
+srpp/params/cppyear.csv
+srpp/params/qpp_history.xlsx
