@@ -1,0 +1,31 @@
+Metadata-Version: 2.1
+Name: switcher
+Version: 0.1.6
+Summary: python SDK for switch service to publish messages on topics
+Home-page: https://github.com/Kareem-Emad/switch-py
+Author: Kareem Emad
+Author-email: kareememad400@gmail.com
+License: MIT
+Download-URL: https://pypi.org/project/switcher/
+Description: # Swtich-Py
+        
+        python version of switch sdk, you can publish message on any topic using this sdk to trigger all configured
+        subscribers at switch service
+        
+        ## setup
+        
+        To install the package
+        
+        ```shell
+        pip install switcher
+        ```
+        
+        ## How To use
+        
+        to be added isa
+        
+        
+        
+Keywords: pubsub,events
+Platform: UNKNOWN
+Description-Content-Type: text/markdown
