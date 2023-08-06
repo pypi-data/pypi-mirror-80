@@ -1,0 +1,13 @@
+README.rst
+setup.cfg
+setup.py
+pymongo_auth_aws/__init__.py
+pymongo_auth_aws/auth.py
+pymongo_auth_aws/errors.py
+pymongo_auth_aws/version.py
+pymongo_auth_aws.egg-info/PKG-INFO
+pymongo_auth_aws.egg-info/SOURCES.txt
+pymongo_auth_aws.egg-info/dependency_links.txt
+pymongo_auth_aws.egg-info/requires.txt
+pymongo_auth_aws.egg-info/top_level.txt
+test/test_pymongo_auth_aws.py
