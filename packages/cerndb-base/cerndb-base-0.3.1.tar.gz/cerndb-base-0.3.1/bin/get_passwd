@@ -1,0 +1,5 @@
+#!/usr/bin/python3
+"""Executable script for Python3.6 get_passwd."""
+from cerndb.getpasswd.command_line import main
+
+main()

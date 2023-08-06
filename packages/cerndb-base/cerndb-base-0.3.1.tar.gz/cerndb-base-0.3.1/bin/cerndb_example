@@ -1,0 +1,60 @@
+#!/usr/bin/env python3
+"""Example distributed with python3-cerndb."""
+# -*- coding: utf-8 -*-
+
+# Copyright (C) 2020, CERN
+# This software is distributed under the terms of the GNU General Public
+# Licence version 3 (GPL Version 3), copied verbatim in the file "LICENSE".
+# In applying this license, CERN does not waive the privileges and immunities
+# granted to it by virtue of its status as Intergovernmental Organization
+# or submit itself to any jurisdiction.
+import sys
+from argparse import ArgumentParser
+
+from cerndb.config import CFG
+
+from cerndb.log import logger, get_logger
+
+
+# Just by importing, the logger is ready to use with the default INFO level
+# and CERNDB tag
+logger.info("Default Logger")
+
+# We can also customize our TAG for later log processing via ES/Logstash
+logger = get_logger(tag='CUSTOM-TAG')
+
+# Just by importing, the logger is ready to use with the default INFO level
+logger.info("Tag customized")
+
+# Python dictionary with the default config data (provided with the package)
+logger.info(f"CFG: {CFG}")
+# see which config file was used
+logger.info(f"Config File: {CFG.used_file}")
+
+######################################################################
+# To easily override config file values with command line arguments
+######################################################################
+
+# Simulate a user providing command-line attrs
+sys.argv += ["--debug", "--url", "https://dam"]
+
+parser = ArgumentParser()
+parser.add_argument('--debug', action="store_const",
+                    dest="log.level", const="DEBUG")
+parser.add_argument('--url',
+                    dest="connection.url")
+args = parser.parse_args()
+
+logger = get_logger(tag='CUSTOM-TAG2')
+
+logger.info("TAG check")
+
+# The default level is still INFO, so this message won't show up:
+logger.debug("First debug message!")
+
+CFG.set_args(args) 
+
+# cerndb.log logger is reinitialized automatically on set_args call
+# so the level is now DEBUG, we'll see the message and the TAG has
+# been reset to the default one
+logger.debug("Second debug message! Reloading config resets TAG!")

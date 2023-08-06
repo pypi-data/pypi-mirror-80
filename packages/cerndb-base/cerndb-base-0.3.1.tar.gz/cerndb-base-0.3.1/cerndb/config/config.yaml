@@ -1,0 +1,11 @@
+# Default configuraiton values
+log:
+  level: "INFO"
+  file: "/var/log/cerndb.log"
+  # If the tag is defined in the config file it can't be customized
+  tag: "CERNDB"
+  fmt: "%(asctime)s [%(module)s:%(lineno)d][%(process)s] %(levelname)s {0} %(message)s"
+  datefmt: '%Y-%m-%dT%H:%M:%S%z'
+getpasswd:
+  backend: files
+  password_directory: /ORA/dbs01/syscontrol/projects/systools/etc

@@ -1,0 +1,6 @@
+#!/usr/bin/python3
+"""Executable script for Python3.6 get_passwd
+"""
+from systools.getpasswd.command_line import main
+
+main()
