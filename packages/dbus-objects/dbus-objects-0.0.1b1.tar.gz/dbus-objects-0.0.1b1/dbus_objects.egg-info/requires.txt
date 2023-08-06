@@ -1,0 +1,10 @@
+treelib
+
+[jeepney]
+jeepney
+
+[test]
+pytest
+pytest-subtests
+pytest-cov
+jeepney
