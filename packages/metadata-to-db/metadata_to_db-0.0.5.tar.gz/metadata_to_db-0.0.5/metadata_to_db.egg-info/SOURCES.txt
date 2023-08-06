@@ -1,0 +1,11 @@
+README.md
+setup.py
+metadata_to_db/__init__.py
+metadata_to_db/configHandler.py
+metadata_to_db/databaseHandler.py
+metadata_to_db/dicomToDb.py
+metadata_to_db/niftiToDb.py
+metadata_to_db.egg-info/PKG-INFO
+metadata_to_db.egg-info/SOURCES.txt
+metadata_to_db.egg-info/dependency_links.txt
+metadata_to_db.egg-info/top_level.txt
