@@ -1,0 +1,27 @@
+Metadata-Version: 2.1
+Name: wc-utils
+Version: 0.0.24
+Summary: Utilities for whole-cell modeling
+Home-page: https://github.com/KarrLab/wc_utils
+Author: Karr Lab
+Author-email: info@karrlab.org
+License: MIT
+Download-URL: https://github.com/KarrLab/wc_utils
+Description: UNKNOWN
+Keywords: whole-cell modeling
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Topic :: Scientific/Engineering :: Bio-Informatics
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Provides-Extra: chem
+Provides-Extra: git
+Provides-Extra: logging
+Provides-Extra: quilt
+Provides-Extra: protonation
+Provides-Extra: tests
+Provides-Extra: docs
+Provides-Extra: all
