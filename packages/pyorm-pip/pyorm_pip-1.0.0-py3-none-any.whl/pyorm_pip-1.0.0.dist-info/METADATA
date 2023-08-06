@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: pyorm-pip
+Version: 1.0.0
+Summary: An object-relational mapper (ORM) in Python
+Home-page: https://github.com/AlexisHuvier/PyORM
+Author: AlexisHuvier
+Author-email: lavapower84@gmail.com
+License: GNU GPLv3
+Platform: UNKNOWN
+Classifier: Development Status :: 1 - Planning
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Database
+Description-Content-Type: text/markdown
+
+# PyORM
+
+An object-relational mapper (ORM) in Python
+
+
