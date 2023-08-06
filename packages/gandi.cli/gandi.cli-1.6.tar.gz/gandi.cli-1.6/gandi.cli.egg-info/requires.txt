@@ -1,0 +1,10 @@
+IPy
+click>=7.0
+pyyaml
+requests
+setuptools
+
+[test]
+pytest
+pytest-cov
+tox
