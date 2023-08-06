@@ -1,0 +1,12 @@
+Metadata-Version: 2.1
+Name: pys2let
+Version: 2.1.0rc3
+Summary: Fast spin spherical transforms
+Home-page: http://astro-informatics.github.io/s2let/
+Author: ['Boris Leistedt', 'Martin Büttner', 'Jennifer Chan', 'Jason McEwen']
+License: GPL-2
+Description: UNKNOWN
+Platform: UNKNOWN
+Provides-Extra: build
+Provides-Extra: dev
+Provides-Extra: plots
