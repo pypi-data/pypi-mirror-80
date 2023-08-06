@@ -1,0 +1,8 @@
+<div class="input-group input-group" style="width: 300px;">
+    <input type="text" class="form-control" id="entity_id"
+           placeholder="{% if ctx.entity_placeholder %}{{ ctx.entity_placeholder }}{% else %}请输入凭证编号{% endif %}"
+           autofocus="autofocus" {% if ctx.entity_id %}value="{{ ctx.entity_id }}"{% endif %}>
+    <span class="input-group-btn">
+                <button type="button" class="btn btn-primary" id="btn_search">查询</button>
+    </span>
+</div>

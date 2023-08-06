@@ -1,0 +1,65 @@
+{% extends 'extends.html' %}
+{% load static %}
+{% block message %}
+{% endblock %}
+{% block breadcrumb %}
+    {% block goback %}
+    {% endblock %}
+{% endblock %}
+{% block module %}
+    示例
+{% endblock %}
+{% block feature %}
+    列表页
+{% endblock %}
+{% block banner %}
+{% endblock %}
+{% block content %}
+    <div id="tableContent">
+        <table id="tables" class="table table-striped">
+            <tr>
+                <th class="hid">ENTITY ID</th>
+                <th>INCREMENT ID</th>
+                <th class="hid">VIP</th>
+                <th>STATUS</th>
+                <th>CREATED AT</th>
+                <th class="hid">PAYMENT METHOD</th>
+                <th class="hid">QUANTITY</th>
+                <th>GRAND TOTAL</th>
+                <th class="hid">CUSTOMER NAME</th>
+                <th class="hid">SHIPPING METHOD</th>
+            </tr>
+
+            {% if list %}
+                {% for foo in list %}
+                    <tr>
+                        <td class="hid">{{ foo.entity_id }}</td>
+                        <td>{{ foo.increment_id }}</td>
+                        {% if foo.is_vip == 1 %}
+                            <td class="hid"><img src="{% static "image/icon-yes.svg" %}"></td>
+                        {% else %}
+                            <td class="hid"></td>
+                        {% endif %}
+                        <td>{{ foo.status }}</td>
+                        <td>{{ foo.created_at }}</td>
+                        <td class="hid">{{ foo.payment_method }}</td>
+                        <td class="hid">{{ foo.quantity }}</td>
+                        <td>{{ foo.grand_total }}</td>
+                        <td class="hid">{{ foo.customer_name }}</td>
+                        <td class="hid">{{ foo.shipping_method }}</td>
+                    </tr>
+                {% endfor %}
+                </table>
+
+            {% else %}
+                <tr>
+                    <td colspan="12" style="font-size:20px;font-weight: bold;text-align: center; ">Temporarily no data
+                    </td>
+                </tr>
+                </table>
+            {% endif %}
+        <div style="width: 100%;text-align: center;">
+            {% include 'page_number.html' %}
+        </div>
+    </div>
+{% endblock %}

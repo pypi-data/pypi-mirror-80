@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block title %} Me Platform {% endblock %}</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="{% static '_vendors/bootstrap/dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static '_vendors/font-awesome/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static '_vendors/Ionicons/css/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static '_vendors/lte/dist/css/AdminLTE.min.css' %}">
+    <link rel="stylesheet" href="{% static '_vendors/lte/dist/css/skins/_all-skins.min.css' %}">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <!-- custom style -->
+    {% block stylesheet %}
+    {% endblock %}
+    <style>
+        {% block style %}
+        {% endblock %}
+    </style>
+    <script>
+        {% block scripts %}
+        {% endblock %}
+    </script>
+</head>
+<body class="hold-transition skin-purple">
+<div class="wrapper">
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Main content -->
+        <section class="content container-fluid">
+            <!--------------------------
+              | Your Page Content Here |
+              -------------------------->
+            {% block content %}
+            {% endblock %}
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+        <!-- To the right -->
+        <div class="pull-right hidden-xs">
+            {% block more_information %}
+
+            {% endblock %}
+        </div>
+        <!-- Default to the left -->
+        {% block copyright %}<strong>Copyright &copy; 2020 <a href="mailto:42319036@qq.com">Me</a>.</strong> All rights
+            reserved.{% endblock %}
+    </footer>
+<!-- ./wrapper -->
+</div>
+
+<!-- REQUIRED JS SCRIPTS -->
+
+<!-- jQuery 3 -->
+<script src="{% static '_vendors/jquery/dist/jquery.min.js' %}"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="{% static '_vendors/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+<!-- AdminLTE App -->
+<script src="{% static '_vendors/lte/dist/js/adminlte.min.js' %}"></script>
+{% block script_ext %}
+{% endblock %}
+<!-- Optionally, you can add Slimscroll and FastClick plugins.
+     Both of these plugins are recommended to enhance the
+     user experience. -->
+<script>
+</script>
+{% block jquery %}
+{% endblock %}
+</body>
+
+</html>

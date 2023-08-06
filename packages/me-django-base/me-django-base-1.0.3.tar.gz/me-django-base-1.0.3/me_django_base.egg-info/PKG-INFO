@@ -1,0 +1,49 @@
+Metadata-Version: 1.1
+Name: me-django-base
+Version: 1.0.3
+Summary: Basic Framework Web-based.
+Home-page: https://www.guof.net/
+Author: guofu
+Author-email: 42319036@qq.com
+License: BSD License
+Description: =====
+        Base
+        =====
+        
+        Base is a Django app to conduct Web-based base. For each
+        question, visitors can choose between a fixed number of answers.
+        
+        Detailed documentation is in the "docs" directory.
+        
+        Quick start
+        -----------
+        
+        1. Add "base" to your INSTALLED_APPS setting like this::
+        
+            INSTALLED_APPS = [
+                ...
+                'base',
+            ]
+        
+        2. Include the polls URLconf in your project urls.py like this::
+        
+            url(r'^base/', include('base.urls')),
+        
+        3. Run `python manage.py migrate` to create the base models.
+        
+        4. Start the development server and visit http://127.0.0.1:8000/admin/
+           to create a base (you'll need the Admin app enabled).
+        
+        5. Visit http://127.0.0.1:8000/base/ to participate in the base.
+Platform: UNKNOWN
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: Framework :: Django :: 2.2
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content

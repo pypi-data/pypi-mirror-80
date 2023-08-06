@@ -1,0 +1,28 @@
+{% load static %}
+<li class="header">HEADER</li>
+<!-- Optionally, you can add icons to the links -->
+<li class="treeview">
+    <a href="#"><i class="fa fa-area-chart command_text"></i> <span>module</span>
+        <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+    </a>
+    <ul class="treeview-menu">
+        <li class="treeitem command_text"><a href="/"><i class="fa fa-circle-o"></i>feature1</a>
+        </li>
+        <li class="treeitem command_text"><a href="/"><i class="fa fa-circle-o"></i>feature2</a></li>
+        <li class="treeitem command_text"><a href="/"><i class="fa fa-circle-o"></i>feature3</a>
+        </li>
+    </ul>
+</li>
+<li class="treeview">
+    <a href="#"><i class="fa fa-gear command_text"></i> <span>设置</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+        </span>
+    </a>
+    <ul class="treeview-menu">
+{#        <li class="treeitem command_text"><a href="{% url 'user_management' %}" class="commonText"><i class="fa fa-circle-o"></i>用户管理</a></li>#}
+{#        <li class="treeitem command_text"><a href="{% url 'privilege_management' %}"><i class="fa fa-circle-o"></i>权限管理</a></li>#}
+    </ul>
+</li>

@@ -1,0 +1,20 @@
+{% extends 'interactive.html' %}
+{% load static %}
+{% block user_name_left %}
+{{ request.user.username }}
+{% endblock %}
+{% block user_name %}
+{{ request.user.username }}
+{% endblock %}
+{% block user_information %}
+{% endblock %}
+{% block user_body %}
+{% endblock %}
+{% block user_account_footer %}
+    <!-- Menu Footer-->
+    <li class="user-footer">
+        <div class="pull-right">
+            <a href="{% url 'logout' %}" class="btn btn-danger btn-flat">退出登录</a>
+        </div>
+    </li>
+{% endblock %}
