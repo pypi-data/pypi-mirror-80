@@ -1,0 +1,17 @@
+LICENSE
+MANIFEST.in
+README.md
+setup.cfg
+setup.py
+Nukeddit.egg-info/PKG-INFO
+Nukeddit.egg-info/SOURCES.txt
+Nukeddit.egg-info/dependency_links.txt
+Nukeddit.egg-info/entry_points.txt
+Nukeddit.egg-info/requires.txt
+Nukeddit.egg-info/top_level.txt
+nukeddit/__init__.py
+nukeddit/app.py
+nukeddit/nukeddit.yml.example
+nukeddit/praw.ini.example
+nukeddit/shredder.py
+nukeddit/util.py
