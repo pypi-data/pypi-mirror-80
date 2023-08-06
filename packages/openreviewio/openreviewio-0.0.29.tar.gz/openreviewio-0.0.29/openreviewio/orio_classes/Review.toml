@@ -1,0 +1,9 @@
+type = "Object"
+
+[parameters]
+media_path = "String"
+status_history = "Array[Status]"
+notes = "Array[Note]"
+
+[parameters.optional]
+metadata = [ "Dict", "None",]

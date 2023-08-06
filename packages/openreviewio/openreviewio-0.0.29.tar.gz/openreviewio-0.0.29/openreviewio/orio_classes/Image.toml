@@ -1,0 +1,5 @@
+type = "Content"
+mime = [ "jpeg", "jpg", "png",]
+
+[parameters]
+path_to_image = "String"
