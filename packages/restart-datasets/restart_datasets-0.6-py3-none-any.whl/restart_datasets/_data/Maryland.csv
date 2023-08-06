@@ -1,0 +1,746 @@
+,occ_code,occ_title,o_group,tot_emp,area
+1251,11-0000,Management Occupations,major,169170,24
+1252,13-0000,Business and Financial Operations Occupations,major,176770,24
+1253,15-0000,Computer and Mathematical Occupations,major,133600,24
+1254,17-0000,Architecture and Engineering Occupations,major,59750,24
+1255,19-0000,"Life, Physical, and Social Science Occupations",major,43350,24
+1256,21-0000,Community and Social Service Occupations,major,43910,24
+1257,23-0000,Legal Occupations,major,25440,24
+1258,25-0000,Educational Instruction and Library Occupations,major,177330,24
+1259,27-0000,"Arts, Design, Entertainment, Sports, and Media Occupations",major,32820,24
+1260,29-0000,Healthcare Practitioners and Technical Occupations,major,169210,24
+1261,31-0000,Healthcare Support Occupations,major,97740,24
+1262,33-0000,Protective Service Occupations,major,73260,24
+1263,35-0000,Food Preparation and Serving Related Occupations,major,221750,24
+1264,37-0000,Building and Grounds Cleaning and Maintenance Occupations,major,86510,24
+1265,39-0000,Personal Care and Service Occupations,major,76990,24
+1266,41-0000,Sales and Related Occupations,major,262540,24
+1267,43-0000,Office and Administrative Support Occupations,major,335790,24
+1268,45-0000,"Farming, Fishing, and Forestry Occupations",major,3320,24
+1269,47-0000,Construction and Extraction Occupations,major,120930,24
+1270,49-0000,"Installation, Maintenance, and Repair Occupations",major,103700,24
+1271,51-0000,Production Occupations,major,80350,24
+1272,53-0000,Transportation and Material Moving Occupations,major,206760,24
+15244,11-1011,Chief Executives,detailed,**,24
+15245,11-1021,General and Operations Managers,detailed,47870,24
+15246,11-1031,Legislators,detailed,650,24
+15247,11-2011,Advertising and Promotions Managers,detailed,550,24
+15248,11-2021,Marketing Managers,detailed,4580,24
+15249,11-2022,Sales Managers,detailed,6780,24
+15250,11-2030,Public Relations and Fundraising Managers,detailed,1810,24
+15251,11-3010,Administrative Services and Facilities Managers,detailed,5720,24
+15252,11-3021,Computer and Information Systems Managers,detailed,11730,24
+15253,11-3031,Financial Managers,detailed,12840,24
+15254,11-3051,Industrial Production Managers,detailed,1650,24
+15255,11-3061,Purchasing Managers,detailed,1790,24
+15256,11-3071,"Transportation, Storage, and Distribution Managers",detailed,2370,24
+15257,11-3111,Compensation and Benefits Managers,detailed,400,24
+15258,11-3121,Human Resources Managers,detailed,2740,24
+15259,11-3131,Training and Development Managers,detailed,1340,24
+15260,11-9013,"Farmers, Ranchers, and Other Agricultural Managers",detailed,40,24
+15261,11-9021,Construction Managers,detailed,6610,24
+15262,11-9031,"Education and Childcare Administrators, Preschool and Daycare",detailed,970,24
+15263,11-9032,"Education Administrators, Kindergarten through Secondary",detailed,4680,24
+15264,11-9033,"Education Administrators, Postsecondary",detailed,**,24
+15265,11-9039,"Education Administrators, All Other",detailed,2550,24
+15266,11-9041,Architectural and Engineering Managers,detailed,5100,24
+15267,11-9051,Food Service Managers,detailed,2700,24
+15268,11-9071,Gambling Managers,detailed,90,24
+15269,11-9081,Lodging Managers,detailed,390,24
+15270,11-9111,Medical and Health Services Managers,detailed,10890,24
+15271,11-9121,Natural Sciences Managers,detailed,3620,24
+15272,11-9131,Postmasters and Mail Superintendents,detailed,230,24
+15273,11-9141,"Property, Real Estate, and Community Association Managers",detailed,5170,24
+15274,11-9151,Social and Community Service Managers,detailed,3290,24
+15275,11-9161,Emergency Management Directors,detailed,150,24
+15276,11-9171,Funeral Home Managers,detailed,170,24
+15277,11-9198,"Personal Service Managers, All Other; Entertainment and Recreation Managers, Except Gambling; and Managers, All Other",detailed,14510,24
+15278,13-1011,"Agents and Business Managers of Artists, Performers, and Athletes",detailed,180,24
+15279,13-1020,Buyers and Purchasing Agents,detailed,9080,24
+15280,13-1031,"Claims Adjusters, Examiners, and Investigators",detailed,5490,24
+15281,13-1032,"Insurance Appraisers, Auto Damage",detailed,260,24
+15282,13-1041,Compliance Officers,detailed,7850,24
+15283,13-1051,Cost Estimators,detailed,4290,24
+15284,13-1071,Human Resources Specialists,detailed,13270,24
+15285,13-1075,Labor Relations Specialists,detailed,1200,24
+15286,13-1081,Logisticians,detailed,5530,24
+15287,13-1111,Management Analysts,detailed,19600,24
+15288,13-1121,"Meeting, Convention, and Event Planners",detailed,2690,24
+15289,13-1131,Fundraisers,detailed,1610,24
+15290,13-1141,"Compensation, Benefits, and Job Analysis Specialists",detailed,2060,24
+15291,13-1151,Training and Development Specialists,detailed,7920,24
+15292,13-1161,Market Research Analysts and Marketing Specialists,detailed,11210,24
+15293,13-1198,"Project Management Specialists and Business Operations Specialists, All Other",detailed,29930,24
+15294,13-2011,Accountants and Auditors,detailed,24540,24
+15295,13-2020,Property Appraisers and Assessors,detailed,1060,24
+15296,13-2031,Budget Analysts,detailed,2200,24
+15297,13-2052,Personal Financial Advisors,detailed,4330,24
+15298,13-2053,Insurance Underwriters,detailed,1200,24
+15299,13-2061,Financial Examiners,detailed,920,24
+15300,13-2071,Credit Counselors,detailed,550,24
+15301,13-2072,Loan Officers,detailed,4830,24
+15302,13-2081,"Tax Examiners and Collectors, and Revenue Agents",detailed,560,24
+15303,13-2082,Tax Preparers,detailed,1760,24
+15304,13-2098,"Financial and Investment Analysts, Financial Risk Specialists, and Financial Specialists, All Other",detailed,11250,24
+15305,15-1211,Computer Systems Analysts,detailed,17760,24
+15306,15-1212,Information Security Analysts,detailed,5860,24
+15307,15-1221,Computer and Information Research Scientists,detailed,2790,24
+15308,15-1231,Computer Network Support Specialists,detailed,8530,24
+15309,15-1232,Computer User Support Specialists,detailed,11260,24
+15310,15-1241,Computer Network Architects,detailed,6360,24
+15311,15-1244,Network and Computer Systems Administrators,detailed,14850,24
+15312,15-1245,Database Administrators and Architects,detailed,3640,24
+15313,15-1251,Computer Programmers,detailed,5610,24
+15314,15-1256,Software Developers and Software Quality Assurance Analysts and Testers,detailed,29710,24
+15315,15-1257,Web Developers and Digital Interface Designers,detailed,3480,24
+15316,15-1299,"Computer Occupations, All Other",detailed,14940,24
+15317,15-2011,Actuaries,detailed,540,24
+15318,15-2021,Mathematicians,detailed,180,24
+15319,15-2031,Operations Research Analysts,detailed,3980,24
+15320,15-2041,Statisticians,detailed,3020,24
+15321,15-2098,"Data Scientists and Mathematical Science Occupations, All Other",detailed,1090,24
+15322,17-1011,"Architects, Except Landscape and Naval",detailed,2330,24
+15323,17-1012,Landscape Architects,detailed,500,24
+15324,17-1021,Cartographers and Photogrammetrists,detailed,360,24
+15325,17-1022,Surveyors,detailed,1000,24
+15326,17-2011,Aerospace Engineers,detailed,2810,24
+15327,17-2031,Bioengineers and Biomedical Engineers,detailed,740,24
+15328,17-2041,Chemical Engineers,detailed,850,24
+15329,17-2051,Civil Engineers,detailed,6770,24
+15330,17-2061,Computer Hardware Engineers,detailed,3940,24
+15331,17-2071,Electrical Engineers,detailed,4990,24
+15332,17-2072,"Electronics Engineers, Except Computer",detailed,3890,24
+15333,17-2081,Environmental Engineers,detailed,1280,24
+15334,17-2111,"Health and Safety Engineers, Except Mining Safety Engineers and Inspectors",detailed,660,24
+15335,17-2112,Industrial Engineers,detailed,3010,24
+15336,17-2121,Marine Engineers and Naval Architects,detailed,360,24
+15337,17-2131,Materials Engineers,detailed,810,24
+15338,17-2141,Mechanical Engineers,detailed,5800,24
+15339,17-2161,Nuclear Engineers,detailed,**,24
+15340,17-2199,"Engineers, All Other",detailed,4550,24
+15341,17-3011,Architectural and Civil Drafters,detailed,1310,24
+15342,17-3012,Electrical and Electronics Drafters,detailed,460,24
+15343,17-3013,Mechanical Drafters,detailed,1490,24
+15344,17-3019,"Drafters, All Other",detailed,300,24
+15345,17-3021,Aerospace Engineering and Operations Technologists and Technicians,detailed,230,24
+15346,17-3022,Civil Engineering Technologists and Technicians,detailed,1260,24
+15347,17-3023,Electrical and Electronic Engineering Technologists and Technicians,detailed,3430,24
+15348,17-3024,Electro-Mechanical and Mechatronics Technologists and Technicians,detailed,540,24
+15349,17-3025,Environmental Engineering Technologists and Technicians,detailed,520,24
+15350,17-3026,Industrial Engineering Technologists and Technicians,detailed,**,24
+15351,17-3027,Mechanical Engineering Technologists and Technicians,detailed,570,24
+15352,17-3031,Surveying and Mapping Technicians,detailed,790,24
+15353,17-3098,"Calibration Technologists and Technicians and Engineering Technologists and Technicians, Except Drafters, All Other",detailed,2450,24
+15354,19-1011,Animal Scientists,detailed,60,24
+15355,19-1012,Food Scientists and Technologists,detailed,420,24
+15356,19-1013,Soil and Plant Scientists,detailed,400,24
+15357,19-1021,Biochemists and Biophysicists,detailed,800,24
+15358,19-1022,Microbiologists,detailed,1910,24
+15359,19-1023,Zoologists and Wildlife Biologists,detailed,320,24
+15360,19-1029,"Biological Scientists, All Other",detailed,4080,24
+15361,19-1031,Conservation Scientists,detailed,360,24
+15362,19-1032,Foresters,detailed,**,24
+15363,19-1041,Epidemiologists,detailed,340,24
+15364,19-1042,"Medical Scientists, Except Epidemiologists",detailed,5170,24
+15365,19-1099,"Life Scientists, All Other",detailed,330,24
+15366,19-2012,Physicists,detailed,1880,24
+15367,19-2021,Atmospheric and Space Scientists,detailed,600,24
+15368,19-2031,Chemists,detailed,3240,24
+15369,19-2032,Materials Scientists,detailed,240,24
+15370,19-2041,"Environmental Scientists and Specialists, Including Health",detailed,2700,24
+15371,19-2042,"Geoscientists, Except Hydrologists and Geographers",detailed,600,24
+15372,19-2043,Hydrologists,detailed,100,24
+15373,19-2099,"Physical Scientists, All Other",detailed,1830,24
+15374,19-3011,Economists,detailed,730,24
+15375,19-3022,Survey Researchers,detailed,640,24
+15376,19-3031,"Clinical, Counseling, and School Psychologists",detailed,2090,24
+15377,19-3032,Industrial-Organizational Psychologists,detailed,30,24
+15378,19-3039,"Psychologists, All Other",detailed,610,24
+15379,19-3041,Sociologists,detailed,60,24
+15380,19-3051,Urban and Regional Planners,detailed,820,24
+15381,19-3091,Anthropologists and Archeologists,detailed,110,24
+15382,19-3092,Geographers,detailed,280,24
+15383,19-3093,Historians,detailed,70,24
+15384,19-3099,"Social Scientists and Related Workers, All Other",detailed,2310,24
+15385,19-4010,Agricultural and Food Science Technicians,detailed,290,24
+15386,19-4021,Biological Technicians,detailed,3380,24
+15387,19-4031,Chemical Technicians,detailed,360,24
+15388,19-4042,"Environmental Science and Protection Technicians, Including Health",detailed,500,24
+15389,19-4045,Geological and Hydrologic Technicians,detailed,70,24
+15390,19-4061,Social Science Research Assistants,detailed,910,24
+15391,19-4071,Forest and Conservation Technicians,detailed,170,24
+15392,19-4092,Forensic Science Technicians,detailed,440,24
+15393,19-4099,"Life, Physical, and Social Science Technicians, All Other",detailed,1600,24
+15394,19-5011,Occupational Health and Safety Specialists,detailed,1280,24
+15395,19-5012,Occupational Health and Safety Technicians,detailed,230,24
+15396,21-1012,"Educational, Guidance, and Career Counselors and Advisors",detailed,5810,24
+15397,21-1013,Marriage and Family Therapists,detailed,1590,24
+15398,21-1015,Rehabilitation Counselors,detailed,2040,24
+15399,21-1018,"Substance Abuse, Behavioral Disorder, and Mental Health Counselors",detailed,4890,24
+15400,21-1019,"Counselors, All Other",detailed,510,24
+15401,21-1021,"Child, Family, and School Social Workers",detailed,4610,24
+15402,21-1022,Healthcare Social Workers,detailed,4210,24
+15403,21-1023,Mental Health and Substance Abuse Social Workers,detailed,2410,24
+15404,21-1029,"Social Workers, All Other",detailed,1030,24
+15405,21-1091,Health Education Specialists,detailed,2340,24
+15406,21-1092,Probation Officers and Correctional Treatment Specialists,detailed,1620,24
+15407,21-1093,Social and Human Service Assistants,detailed,8590,24
+15408,21-1094,Community Health Workers,detailed,1680,24
+15409,21-1099,"Community and Social Service Specialists, All Other",detailed,1410,24
+15410,21-2011,Clergy,detailed,750,24
+15411,21-2021,"Directors, Religious Activities and Education",detailed,200,24
+15412,21-2099,"Religious Workers, All Other",detailed,210,24
+15413,23-1011,Lawyers,detailed,12840,24
+15414,23-1021,"Administrative Law Judges, Adjudicators, and Hearing Officers",detailed,190,24
+15415,23-1022,"Arbitrators, Mediators, and Conciliators",detailed,**,24
+15416,23-1023,"Judges, Magistrate Judges, and Magistrates",detailed,380,24
+15417,23-2011,Paralegals and Legal Assistants,detailed,7050,24
+15418,23-2093,"Title Examiners, Abstractors, and Searchers",detailed,980,24
+15419,23-2099,"Legal Support Workers, All Other",detailed,2050,24
+15420,25-1011,"Business Teachers, Postsecondary",detailed,1070,24
+15421,25-1021,"Computer Science Teachers, Postsecondary",detailed,840,24
+15422,25-1022,"Mathematical Science Teachers, Postsecondary",detailed,860,24
+15423,25-1031,"Architecture Teachers, Postsecondary",detailed,100,24
+15424,25-1032,"Engineering Teachers, Postsecondary",detailed,880,24
+15425,25-1041,"Agricultural Sciences Teachers, Postsecondary",detailed,160,24
+15426,25-1042,"Biological Science Teachers, Postsecondary",detailed,890,24
+15427,25-1051,"Atmospheric, Earth, Marine, and Space Sciences Teachers, Postsecondary",detailed,130,24
+15428,25-1052,"Chemistry Teachers, Postsecondary",detailed,310,24
+15429,25-1053,"Environmental Science Teachers, Postsecondary",detailed,190,24
+15430,25-1054,"Physics Teachers, Postsecondary",detailed,340,24
+15431,25-1061,"Anthropology and Archeology Teachers, Postsecondary",detailed,60,24
+15432,25-1062,"Area, Ethnic, and Cultural Studies Teachers, Postsecondary",detailed,160,24
+15433,25-1063,"Economics Teachers, Postsecondary",detailed,250,24
+15434,25-1064,"Geography Teachers, Postsecondary",detailed,150,24
+15435,25-1065,"Political Science Teachers, Postsecondary",detailed,290,24
+15436,25-1066,"Psychology Teachers, Postsecondary",detailed,480,24
+15437,25-1067,"Sociology Teachers, Postsecondary",detailed,240,24
+15438,25-1069,"Social Sciences Teachers, Postsecondary, All Other",detailed,280,24
+15439,25-1072,"Nursing Instructors and Teachers, Postsecondary",detailed,900,24
+15440,25-1081,"Education Teachers, Postsecondary",detailed,960,24
+15441,25-1082,"Library Science Teachers, Postsecondary",detailed,80,24
+15442,25-1111,"Criminal Justice and Law Enforcement Teachers, Postsecondary",detailed,170,24
+15443,25-1112,"Law Teachers, Postsecondary",detailed,150,24
+15444,25-1113,"Social Work Teachers, Postsecondary",detailed,260,24
+15445,25-1121,"Art, Drama, and Music Teachers, Postsecondary",detailed,1860,24
+15446,25-1122,"Communications Teachers, Postsecondary",detailed,440,24
+15447,25-1123,"English Language and Literature Teachers, Postsecondary",detailed,1190,24
+15448,25-1124,"Foreign Language and Literature Teachers, Postsecondary",detailed,260,24
+15449,25-1125,"History Teachers, Postsecondary",detailed,360,24
+15450,25-1126,"Philosophy and Religion Teachers, Postsecondary",detailed,380,24
+15451,25-1193,"Recreation and Fitness Studies Teachers, Postsecondary",detailed,190,24
+15452,25-1194,"Career/Technical Education Teachers, Postsecondary",detailed,600,24
+15453,25-1199,"Postsecondary Teachers, All Other",detailed,5620,24
+15454,25-2011,"Preschool Teachers, Except Special Education",detailed,9880,24
+15455,25-2012,"Kindergarten Teachers, Except Special Education",detailed,2490,24
+15456,25-2021,"Elementary School Teachers, Except Special Education",detailed,28610,24
+15457,25-2022,"Middle School Teachers, Except Special and Career/Technical Education",detailed,14890,24
+15458,25-2023,"Career/Technical Education Teachers, Middle School",detailed,**,24
+15459,25-2031,"Secondary School Teachers, Except Special and Career/Technical Education",detailed,17150,24
+15460,25-2032,"Career/Technical Education Teachers, Secondary School",detailed,660,24
+15461,25-2051,"Special Education Teachers, Preschool",detailed,280,24
+15462,25-2052,"Special Education Teachers, Kindergarten and Elementary School",detailed,3780,24
+15463,25-2057,"Special Education Teachers, Middle School",detailed,2860,24
+15464,25-2058,"Special Education Teachers, Secondary School",detailed,2320,24
+15465,25-2059,"Special Education Teachers, All Other",detailed,800,24
+15466,25-3011,"Adult Basic Education, Adult Secondary Education, and English as a Second Language Instructors",detailed,590,24
+15467,25-3021,Self-Enrichment Teachers,detailed,4820,24
+15468,25-3031,"Substitute Teachers, Short-Term",detailed,11440,24
+15469,25-3097,"Tutors and Teachers and Instructors, All Other",detailed,9720,24
+15470,25-4011,Archivists,detailed,390,24
+15471,25-4012,Curators,detailed,150,24
+15472,25-4013,Museum Technicians and Conservators,detailed,410,24
+15473,25-4022,Librarians and Media Collections Specialists,detailed,3330,24
+15474,25-4031,Library Technicians,detailed,1740,24
+15475,25-9021,Farm and Home Management Educators,detailed,250,24
+15476,25-9031,Instructional Coordinators,detailed,3600,24
+15477,25-9044,"Teaching Assistants, Postsecondary",detailed,6120,24
+15478,25-9045,"Teaching Assistants, Except Postsecondary",detailed,21660,24
+15479,25-9099,"Educational Instruction and Library Workers, All Other",detailed,1650,24
+15480,27-1011,Art Directors,detailed,480,24
+15481,27-1012,Craft Artists,detailed,30,24
+15482,27-1013,"Fine Artists, Including Painters, Sculptors, and Illustrators",detailed,220,24
+15483,27-1014,Special Effects Artists and Animators,detailed,370,24
+15484,27-1019,"Artists and Related Workers, All Other",detailed,530,24
+15485,27-1021,Commercial and Industrial Designers,detailed,210,24
+15486,27-1022,Fashion Designers,detailed,130,24
+15487,27-1023,Floral Designers,detailed,560,24
+15488,27-1024,Graphic Designers,detailed,3020,24
+15489,27-1025,Interior Designers,detailed,1160,24
+15490,27-1026,Merchandise Displayers and Window Trimmers,detailed,2310,24
+15491,27-1027,Set and Exhibit Designers,detailed,140,24
+15492,27-1029,"Designers, All Other",detailed,230,24
+15493,27-2011,Actors,detailed,1220,24
+15494,27-2012,Producers and Directors,detailed,1560,24
+15495,27-2021,Athletes and Sports Competitors,detailed,330,24
+15496,27-2022,Coaches and Scouts,detailed,3800,24
+15497,27-2023,"Umpires, Referees, and Other Sports Officials",detailed,340,24
+15498,27-2032,Choreographers,detailed,**,24
+15499,27-2041,Music Directors and Composers,detailed,50,24
+15500,27-2042,Musicians and Singers,detailed,480,24
+15501,27-2090,"Miscellaneous Entertainers and Performers, Sports and Related Workers",detailed,270,24
+15502,27-3011,Broadcast Announcers and Radio Disc Jockeys,detailed,440,24
+15503,27-3023,"News Analysts, Reporters, and Journalists",detailed,610,24
+15504,27-3031,Public Relations Specialists,detailed,3200,24
+15505,27-3041,Editors,detailed,2410,24
+15506,27-3042,Technical Writers,detailed,2270,24
+15507,27-3043,Writers and Authors,detailed,880,24
+15508,27-3091,Interpreters and Translators,detailed,1230,24
+15509,27-3092,Court Reporters and Simultaneous Captioners,detailed,120,24
+15510,27-3099,"Media and Communication Workers, All Other",detailed,460,24
+15511,27-4011,Audio and Video Technicians,detailed,1070,24
+15512,27-4012,Broadcast Technicians,detailed,420,24
+15513,27-4014,Sound Engineering Technicians,detailed,350,24
+15514,27-4021,Photographers,detailed,630,24
+15515,27-4031,"Camera Operators, Television, Video, and Film",detailed,270,24
+15516,27-4032,Film and Video Editors,detailed,100,24
+15517,27-4098,"Lighting Technicians and Media and Communication Equipment Workers, All Other",detailed,640,24
+15518,29-1011,Chiropractors,detailed,480,24
+15519,29-1021,"Dentists, General",detailed,2510,24
+15520,29-1022,Oral and Maxillofacial Surgeons,detailed,**,24
+15521,29-1023,Orthodontists,detailed,400,24
+15522,29-1029,"Dentists, All Other Specialists",detailed,70,24
+15523,29-1031,Dietitians and Nutritionists,detailed,1210,24
+15524,29-1041,Optometrists,detailed,530,24
+15525,29-1051,Pharmacists,detailed,5310,24
+15526,29-1071,Physician Assistants,detailed,2950,24
+15527,29-1081,Podiatrists,detailed,260,24
+15528,29-1122,Occupational Therapists,detailed,3320,24
+15529,29-1123,Physical Therapists,detailed,4540,24
+15530,29-1124,Radiation Therapists,detailed,370,24
+15531,29-1125,Recreational Therapists,detailed,430,24
+15532,29-1126,Respiratory Therapists,detailed,1450,24
+15533,29-1127,Speech-Language Pathologists,detailed,3020,24
+15534,29-1128,Exercise Physiologists,detailed,110,24
+15535,29-1129,"Therapists, All Other",detailed,990,24
+15536,29-1131,Veterinarians,detailed,1580,24
+15537,29-1141,Registered Nurses,detailed,53150,24
+15538,29-1151,Nurse Anesthetists,detailed,440,24
+15539,29-1161,Nurse Midwives,detailed,170,24
+15540,29-1171,Nurse Practitioners,detailed,3680,24
+15541,29-1181,Audiologists,detailed,300,24
+15542,29-1211,Anesthesiologists,detailed,**,24
+15543,29-1215,Family Medicine Physicians,detailed,1590,24
+15544,29-1216,General Internal Medicine Physicians,detailed,1140,24
+15545,29-1218,Obstetricians and Gynecologists,detailed,460,24
+15546,29-1221,"Pediatricians, General",detailed,720,24
+15547,29-1223,Psychiatrists,detailed,**,24
+15548,29-1228,"Physicians, All Other; and Ophthalmologists, Except Pediatric",detailed,10680,24
+15549,29-1248,"Surgeons, Except Ophthalmologists",detailed,590,24
+15550,29-1292,Dental Hygienists,detailed,4010,24
+15551,29-1298,"Acupuncturists and Healthcare Diagnosing or Treating Practitioners, All Other",detailed,5470,24
+15552,29-2010,Clinical Laboratory Technologists and Technicians,detailed,7390,24
+15553,29-2031,Cardiovascular Technologists and Technicians,detailed,1120,24
+15554,29-2032,Diagnostic Medical Sonographers,detailed,1530,24
+15555,29-2033,Nuclear Medicine Technologists,detailed,380,24
+15556,29-2034,Radiologic Technologists and Technicians,detailed,3950,24
+15557,29-2035,Magnetic Resonance Imaging Technologists,detailed,830,24
+15558,29-2040,Emergency Medical Technicians and Paramedics,detailed,5030,24
+15559,29-2051,Dietetic Technicians,detailed,340,24
+15560,29-2052,Pharmacy Technicians,detailed,7640,24
+15561,29-2053,Psychiatric Technicians,detailed,850,24
+15562,29-2055,Surgical Technologists,detailed,1810,24
+15563,29-2056,Veterinary Technologists and Technicians,detailed,2820,24
+15564,29-2057,Ophthalmic Medical Technicians,detailed,950,24
+15565,29-2061,Licensed Practical and Licensed Vocational Nurses,detailed,9690,24
+15566,29-2081,"Opticians, Dispensing",detailed,1240,24
+15567,29-2091,Orthotists and Prosthetists,detailed,50,24
+15568,29-2092,Hearing Aid Specialists,detailed,70,24
+15569,29-2098,"Medical Dosimetrists, Medical Records Specialists, and Health Technologists and Technicians, All Other",detailed,6670,24
+15570,29-9091,Athletic Trainers,detailed,400,24
+15571,29-9092,Genetic Counselors,detailed,40,24
+15572,29-9098,"Health Information Technologists, Medical Registrars, Surgical Assistants, and Healthcare Practitioners and Technical Workers, All Other",detailed,2560,24
+15573,31-1120,Home Health and Personal Care Aides,detailed,31780,24
+15574,31-1131,Nursing Assistants,detailed,28990,24
+15575,31-1132,Orderlies,detailed,1470,24
+15576,31-1133,Psychiatric Aides,detailed,200,24
+15577,31-2011,Occupational Therapy Assistants,detailed,700,24
+15578,31-2012,Occupational Therapy Aides,detailed,130,24
+15579,31-2021,Physical Therapist Assistants,detailed,1880,24
+15580,31-2022,Physical Therapist Aides,detailed,1540,24
+15581,31-9011,Massage Therapists,detailed,1460,24
+15582,31-9091,Dental Assistants,detailed,6040,24
+15583,31-9092,Medical Assistants,detailed,13110,24
+15584,31-9093,Medical Equipment Preparers,detailed,1010,24
+15585,31-9094,Medical Transcriptionists,detailed,1320,24
+15586,31-9095,Pharmacy Aides,detailed,440,24
+15587,31-9096,Veterinary Assistants and Laboratory Animal Caretakers,detailed,1540,24
+15588,31-9097,Phlebotomists,detailed,2550,24
+15589,31-9099,"Healthcare Support Workers, All Other",detailed,3590,24
+15590,33-1011,First-Line Supervisors of Correctional Officers,detailed,1970,24
+15591,33-1012,First-Line Supervisors of Police and Detectives,detailed,3860,24
+15592,33-1021,First-Line Supervisors of Firefighting and Prevention Workers,detailed,1610,24
+15593,33-1090,"Miscellaneous First-Line Supervisors, Protective Service Workers",detailed,2730,24
+15594,33-2011,Firefighters,detailed,4610,24
+15595,33-2021,Fire Inspectors and Investigators,detailed,150,24
+15596,33-3011,Bailiffs,detailed,540,24
+15597,33-3012,Correctional Officers and Jailers,detailed,6360,24
+15598,33-3021,Detectives and Criminal Investigators,detailed,940,24
+15599,33-3041,Parking Enforcement Workers,detailed,180,24
+15600,33-3051,Police and Sheriff's Patrol Officers,detailed,12960,24
+15601,33-3052,Transit and Railroad Police,detailed,150,24
+15602,33-9011,Animal Control Workers,detailed,120,24
+15603,33-9021,Private Detectives and Investigators,detailed,**,24
+15604,33-9031,Gambling Surveillance Officers and Gambling Investigators,detailed,100,24
+15605,33-9032,Security Guards,detailed,25300,24
+15606,33-9091,Crossing Guards and Flaggers,detailed,2790,24
+15607,33-9092,"Lifeguards, Ski Patrol, and Other Recreational Protective Service Workers",detailed,2590,24
+15608,33-9093,Transportation Security Screeners,detailed,720,24
+15609,33-9098,"School Bus Monitors and Protective Service Workers, All Other",detailed,3820,24
+15610,35-1011,Chefs and Head Cooks,detailed,2170,24
+15611,35-1012,First-Line Supervisors of Food Preparation and Serving Workers,detailed,18910,24
+15612,35-2011,"Cooks, Fast Food",detailed,7970,24
+15613,35-2012,"Cooks, Institution and Cafeteria",detailed,4520,24
+15614,35-2014,"Cooks, Restaurant",detailed,15660,24
+15615,35-2015,"Cooks, Short Order",detailed,4120,24
+15616,35-2019,"Cooks, All Other",detailed,580,24
+15617,35-2021,Food Preparation Workers,detailed,16650,24
+15618,35-3011,Bartenders,detailed,8910,24
+15619,35-3023,Fast Food and Counter Workers,detailed,62810,24
+15620,35-3031,Waiters and Waitresses,detailed,42350,24
+15621,35-3041,"Food Servers, Nonrestaurant",detailed,5150,24
+15622,35-9011,Dining Room and Cafeteria Attendants and Bartender Helpers,detailed,11910,24
+15623,35-9021,Dishwashers,detailed,9340,24
+15624,35-9031,"Hosts and Hostesses, Restaurant, Lounge, and Coffee Shop",detailed,7110,24
+15625,35-9099,"Food Preparation and Serving Related Workers, All Other",detailed,3590,24
+15626,37-1011,First-Line Supervisors of Housekeeping and Janitorial Workers,detailed,4230,24
+15627,37-1012,"First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers",detailed,3140,24
+15628,37-2011,"Janitors and Cleaners, Except Maids and Housekeeping Cleaners",detailed,42870,24
+15629,37-2012,Maids and Housekeeping Cleaners,detailed,14530,24
+15630,37-2019,"Building Cleaning Workers, All Other",detailed,1600,24
+15631,37-2021,Pest Control Workers,detailed,1660,24
+15632,37-3011,Landscaping and Groundskeeping Workers,detailed,17230,24
+15633,37-3012,"Pesticide Handlers, Sprayers, and Applicators, Vegetation",detailed,130,24
+15634,37-3013,Tree Trimmers and Pruners,detailed,**,24
+15635,37-3019,"Grounds Maintenance Workers, All Other",detailed,410,24
+15636,39-1013,First-Line Supervisors of Gambling Services Workers,detailed,660,24
+15637,39-1098,"First-Line Supervisors of Personal Service and Entertainment and Recreation Workers, Except Gambling Services",detailed,5360,24
+15638,39-2011,Animal Trainers,detailed,470,24
+15639,39-2021,Animal Caretakers,detailed,4290,24
+15640,39-3011,Gambling Dealers,detailed,2490,24
+15641,39-3012,Gambling and Sports Book Writers and Runners,detailed,30,24
+15642,39-3019,"Gambling Service Workers, All Other",detailed,70,24
+15643,39-3031,"Ushers, Lobby Attendants, and Ticket Takers",detailed,2920,24
+15644,39-3091,Amusement and Recreation Attendants,detailed,8220,24
+15645,39-3093,"Locker Room, Coatroom, and Dressing Room Attendants",detailed,430,24
+15646,39-3099,"Entertainment Attendants and Related Workers, All Other",detailed,**,24
+15647,39-4021,Funeral Attendants,detailed,**,24
+15648,39-4031,"Morticians, Undertakers, and Funeral Arrangers",detailed,400,24
+15649,39-5011,Barbers,detailed,290,24
+15650,39-5012,"Hairdressers, Hairstylists, and Cosmetologists",detailed,10020,24
+15651,39-5092,Manicurists and Pedicurists,detailed,1890,24
+15652,39-5093,Shampooers,detailed,1040,24
+15653,39-5094,Skincare Specialists,detailed,980,24
+15654,39-6011,Baggage Porters and Bellhops,detailed,620,24
+15655,39-6012,Concierges,detailed,720,24
+15656,39-7010,Tour and Travel Guides,detailed,630,24
+15657,39-9011,Childcare Workers,detailed,8720,24
+15658,39-9031,Exercise Trainers and Group Fitness Instructors,detailed,9360,24
+15659,39-9032,Recreation Workers,detailed,8310,24
+15660,39-9041,Residential Advisors,detailed,5990,24
+15661,39-9098,"Crematory Operators and Personal Care and Service Workers, All Other",detailed,2210,24
+15662,41-1011,First-Line Supervisors of Retail Sales Workers,detailed,26010,24
+15663,41-1012,First-Line Supervisors of Non-Retail Sales Workers,detailed,5000,24
+15664,41-2011,Cashiers,detailed,79280,24
+15665,41-2012,Gambling Change Persons and Booth Cashiers,detailed,570,24
+15666,41-2021,Counter and Rental Clerks,detailed,7800,24
+15667,41-2022,Parts Salespersons,detailed,3750,24
+15668,41-2031,Retail Salespersons,detailed,68970,24
+15669,41-3011,Advertising Sales Agents,detailed,1040,24
+15670,41-3021,Insurance Sales Agents,detailed,6520,24
+15671,41-3031,"Securities, Commodities, and Financial Services Sales Agents",detailed,5590,24
+15672,41-3041,Travel Agents,detailed,810,24
+15673,41-3091,"Sales Representatives of Services, Except Advertising, Insurance, Financial Services, and Travel",detailed,26490,24
+15674,41-4011,"Sales Representatives, Wholesale and Manufacturing, Technical and Scientific Products",detailed,6440,24
+15675,41-4012,"Sales Representatives, Wholesale and Manufacturing, Except Technical and Scientific Products",detailed,14120,24
+15676,41-9012,Models,detailed,100,24
+15677,41-9021,Real Estate Brokers,detailed,700,24
+15678,41-9022,Real Estate Sales Agents,detailed,3190,24
+15679,41-9031,Sales Engineers,detailed,1050,24
+15680,41-9041,Telemarketers,detailed,1240,24
+15681,41-9091,"Door-to-Door Sales Workers, News and Street Vendors, and Related Workers",detailed,**,24
+15682,41-9099,"Sales and Related Workers, All Other",detailed,2810,24
+15683,43-1011,First-Line Supervisors of Office and Administrative Support Workers,detailed,37010,24
+15684,43-2011,"Switchboard Operators, Including Answering Service",detailed,1120,24
+15685,43-2021,Telephone Operators,detailed,140,24
+15686,43-2099,"Communications Equipment Operators, All Other",detailed,50,24
+15687,43-3011,Bill and Account Collectors,detailed,3250,24
+15688,43-3021,Billing and Posting Clerks,detailed,6980,24
+15689,43-3031,"Bookkeeping, Accounting, and Auditing Clerks",detailed,21410,24
+15690,43-3041,Gambling Cage Workers,detailed,210,24
+15691,43-3051,Payroll and Timekeeping Clerks,detailed,2210,24
+15692,43-3061,Procurement Clerks,detailed,1560,24
+15693,43-3071,Tellers,detailed,5460,24
+15694,43-3099,"Financial Clerks, All Other",detailed,520,24
+15695,43-4011,Brokerage Clerks,detailed,1210,24
+15696,43-4021,Correspondence Clerks,detailed,340,24
+15697,43-4031,"Court, Municipal, and License Clerks",detailed,850,24
+15698,43-4041,"Credit Authorizers, Checkers, and Clerks",detailed,390,24
+15699,43-4051,Customer Service Representatives,detailed,45490,24
+15700,43-4061,"Eligibility Interviewers, Government Programs",detailed,1470,24
+15701,43-4071,File Clerks,detailed,1500,24
+15702,43-4081,"Hotel, Motel, and Resort Desk Clerks",detailed,3460,24
+15703,43-4111,"Interviewers, Except Eligibility and Loan",detailed,4520,24
+15704,43-4121,"Library Assistants, Clerical",detailed,1480,24
+15705,43-4131,Loan Interviewers and Clerks,detailed,3080,24
+15706,43-4141,New Accounts Clerks,detailed,690,24
+15707,43-4151,Order Clerks,detailed,1480,24
+15708,43-4161,"Human Resources Assistants, Except Payroll and Timekeeping",detailed,3700,24
+15709,43-4171,Receptionists and Information Clerks,detailed,20310,24
+15710,43-4181,Reservation and Transportation Ticket Agents and Travel Clerks,detailed,1560,24
+15711,43-4199,"Information and Record Clerks, All Other",detailed,3990,24
+15712,43-5011,Cargo and Freight Agents,detailed,740,24
+15713,43-5021,Couriers and Messengers,detailed,690,24
+15714,43-5031,Public Safety Telecommunicators,detailed,1440,24
+15715,43-5032,"Dispatchers, Except Police, Fire, and Ambulance",detailed,3680,24
+15716,43-5041,"Meter Readers, Utilities",detailed,280,24
+15717,43-5051,Postal Service Clerks,detailed,1390,24
+15718,43-5052,Postal Service Mail Carriers,detailed,7200,24
+15719,43-5053,"Postal Service Mail Sorters, Processors, and Processing Machine Operators",detailed,2380,24
+15720,43-5061,"Production, Planning, and Expediting Clerks",detailed,4280,24
+15721,43-5071,"Shipping, Receiving, and Inventory Clerks",detailed,9020,24
+15722,43-5111,"Weighers, Measurers, Checkers, and Samplers, Recordkeeping",detailed,780,24
+15723,43-6011,Executive Secretaries and Executive Administrative Assistants,detailed,9070,24
+15724,43-6012,Legal Secretaries and Administrative Assistants,detailed,2490,24
+15725,43-6013,Medical Secretaries and Administrative Assistants,detailed,10680,24
+15726,43-6014,"Secretaries and Administrative Assistants, Except Legal, Medical, and Executive",detailed,54130,24
+15727,43-9021,Data Entry Keyers,detailed,2850,24
+15728,43-9022,Word Processors and Typists,detailed,550,24
+15729,43-9031,Desktop Publishers,detailed,320,24
+15730,43-9041,Insurance Claims and Policy Processing Clerks,detailed,2480,24
+15731,43-9051,"Mail Clerks and Mail Machine Operators, Except Postal Service",detailed,1790,24
+15732,43-9061,"Office Clerks, General",detailed,38670,24
+15733,43-9071,"Office Machine Operators, Except Computer",detailed,970,24
+15734,43-9081,Proofreaders and Copy Markers,detailed,80,24
+15735,43-9111,Statistical Assistants,detailed,170,24
+15736,43-9199,"Office and Administrative Support Workers, All Other",detailed,4250,24
+15737,45-1011,"First-Line Supervisors of Farming, Fishing, and Forestry Workers",detailed,520,24
+15738,45-2011,Agricultural Inspectors,detailed,120,24
+15739,45-2021,Animal Breeders,detailed,**,24
+15740,45-2041,"Graders and Sorters, Agricultural Products",detailed,280,24
+15741,45-2091,Agricultural Equipment Operators,detailed,**,24
+15742,45-2092,"Farmworkers and Laborers, Crop, Nursery, and Greenhouse",detailed,1120,24
+15743,45-2093,"Farmworkers, Farm, Ranch, and Aquacultural Animals",detailed,480,24
+15744,45-2099,"Agricultural Workers, All Other",detailed,70,24
+15745,45-4021,Fallers,detailed,**,24
+15746,45-4022,Logging Equipment Operators,detailed,110,24
+15747,47-1011,First-Line Supervisors of Construction Trades and Extraction Workers,detailed,15100,24
+15748,47-2021,Brickmasons and Blockmasons,detailed,1830,24
+15749,47-2022,Stonemasons,detailed,430,24
+15750,47-2031,Carpenters,detailed,15350,24
+15751,47-2041,Carpet Installers,detailed,520,24
+15752,47-2042,"Floor Layers, Except Carpet, Wood, and Hard Tiles",detailed,140,24
+15753,47-2043,Floor Sanders and Finishers,detailed,**,24
+15754,47-2044,Tile and Stone Setters,detailed,390,24
+15755,47-2051,Cement Masons and Concrete Finishers,detailed,2690,24
+15756,47-2053,Terrazzo Workers and Finishers,detailed,270,24
+15757,47-2061,Construction Laborers,detailed,18770,24
+15758,47-2071,"Paving, Surfacing, and Tamping Equipment Operators",detailed,950,24
+15759,47-2072,Pile Driver Operators,detailed,50,24
+15760,47-2073,Operating Engineers and Other Construction Equipment Operators,detailed,5590,24
+15761,47-2081,Drywall and Ceiling Tile Installers,detailed,1640,24
+15762,47-2111,Electricians,detailed,15110,24
+15763,47-2121,Glaziers,detailed,1100,24
+15764,47-2131,"Insulation Workers, Floor, Ceiling, and Wall",detailed,850,24
+15765,47-2132,"Insulation Workers, Mechanical",detailed,720,24
+15766,47-2141,"Painters, Construction and Maintenance",detailed,5070,24
+15767,47-2142,Paperhangers,detailed,**,24
+15768,47-2151,Pipelayers,detailed,670,24
+15769,47-2152,"Plumbers, Pipefitters, and Steamfitters",detailed,8490,24
+15770,47-2161,Plasterers and Stucco Masons,detailed,**,24
+15771,47-2171,Reinforcing Iron and Rebar Workers,detailed,480,24
+15772,47-2181,Roofers,detailed,2010,24
+15773,47-2211,Sheet Metal Workers,detailed,3310,24
+15774,47-2221,Structural Iron and Steel Workers,detailed,1310,24
+15775,47-2231,Solar Photovoltaic Installers,detailed,150,24
+15776,47-3011,"Helpers--Brickmasons, Blockmasons, Stonemasons, and Tile and Marble Setters",detailed,790,24
+15777,47-3012,Helpers--Carpenters,detailed,1370,24
+15778,47-3013,Helpers--Electricians,detailed,1510,24
+15779,47-3014,"Helpers--Painters, Paperhangers, Plasterers, and Stucco Masons",detailed,150,24
+15780,47-3015,"Helpers--Pipelayers, Plumbers, Pipefitters, and Steamfitters",detailed,1340,24
+15781,47-3016,Helpers--Roofers,detailed,410,24
+15782,47-3019,"Helpers, Construction Trades, All Other",detailed,550,24
+15783,47-4011,Construction and Building Inspectors,detailed,2770,24
+15784,47-4021,Elevator and Escalator Installers and Repairers,detailed,1640,24
+15785,47-4031,Fence Erectors,detailed,650,24
+15786,47-4041,Hazardous Materials Removal Workers,detailed,1290,24
+15787,47-4051,Highway Maintenance Workers,detailed,1200,24
+15788,47-4061,Rail-Track Laying and Maintenance Equipment Operators,detailed,330,24
+15789,47-4071,Septic Tank Servicers and Sewer Pipe Cleaners,detailed,240,24
+15790,47-4090,Miscellaneous Construction and Related Workers,detailed,1130,24
+15791,47-5022,"Excavating and Loading Machine and Dragline Operators, Surface Mining",detailed,1040,24
+15792,47-5041,Continuous Mining Machine Operators,detailed,30,24
+15793,47-5071,"Roustabouts, Oil and Gas",detailed,30,24
+15794,47-5081,Helpers--Extraction Workers,detailed,120,24
+15795,47-5097,"Earth Drillers, Except Oil and Gas; and Explosives Workers, Ordnance Handling Experts, and Blasters",detailed,810,24
+15796,47-5098,"Underground Mining Machine Operators and Extraction Workers, All Other",detailed,110,24
+15797,49-1011,"First-Line Supervisors of Mechanics, Installers, and Repairers",detailed,11090,24
+15798,49-2011,"Computer, Automated Teller, and Office Machine Repairers",detailed,2070,24
+15799,49-2021,"Radio, Cellular, and Tower Equipment Installers and Repairers",detailed,150,24
+15800,49-2022,"Telecommunications Equipment Installers and Repairers, Except Line Installers",detailed,2820,24
+15801,49-2091,Avionics Technicians,detailed,610,24
+15802,49-2092,"Electric Motor, Power Tool, and Related Repairers",detailed,230,24
+15803,49-2093,"Electrical and Electronics Installers and Repairers, Transportation Equipment",detailed,410,24
+15804,49-2094,"Electrical and Electronics Repairers, Commercial and Industrial Equipment",detailed,660,24
+15805,49-2095,"Electrical and Electronics Repairers, Powerhouse, Substation, and Relay",detailed,360,24
+15806,49-2096,"Electronic Equipment Installers and Repairers, Motor Vehicles",detailed,80,24
+15807,49-2097,Audiovisual Equipment Installers and Repairers,detailed,240,24
+15808,49-2098,Security and Fire Alarm Systems Installers,detailed,1880,24
+15809,49-3011,Aircraft Mechanics and Service Technicians,detailed,2370,24
+15810,49-3021,Automotive Body and Related Repairers,detailed,2710,24
+15811,49-3022,Automotive Glass Installers and Repairers,detailed,480,24
+15812,49-3023,Automotive Service Technicians and Mechanics,detailed,12040,24
+15813,49-3031,Bus and Truck Mechanics and Diesel Engine Specialists,detailed,4450,24
+15814,49-3041,Farm Equipment Mechanics and Service Technicians,detailed,260,24
+15815,49-3042,"Mobile Heavy Equipment Mechanics, Except Engines",detailed,2700,24
+15816,49-3043,Rail Car Repairers,detailed,470,24
+15817,49-3051,Motorboat Mechanics and Service Technicians,detailed,1120,24
+15818,49-3052,Motorcycle Mechanics,detailed,250,24
+15819,49-3053,Outdoor Power Equipment and Other Small Engine Mechanics,detailed,530,24
+15820,49-3091,Bicycle Repairers,detailed,**,24
+15821,49-3092,Recreational Vehicle Service Technicians,detailed,**,24
+15822,49-3093,Tire Repairers and Changers,detailed,2050,24
+15823,49-9011,Mechanical Door Repairers,detailed,310,24
+15824,49-9012,"Control and Valve Installers and Repairers, Except Mechanical Door",detailed,850,24
+15825,49-9021,"Heating, Air Conditioning, and Refrigeration Mechanics and Installers",detailed,7320,24
+15826,49-9031,Home Appliance Repairers,detailed,350,24
+15827,49-9041,Industrial Machinery Mechanics,detailed,3230,24
+15828,49-9043,"Maintenance Workers, Machinery",detailed,1020,24
+15829,49-9044,Millwrights,detailed,300,24
+15830,49-9051,Electrical Power-Line Installers and Repairers,detailed,2230,24
+15831,49-9052,Telecommunications Line Installers and Repairers,detailed,4760,24
+15832,49-9061,Camera and Photographic Equipment Repairers,detailed,**,24
+15833,49-9062,Medical Equipment Repairers,detailed,1180,24
+15834,49-9063,Musical Instrument Repairers and Tuners,detailed,210,24
+15835,49-9069,"Precision Instrument and Equipment Repairers, All Other",detailed,220,24
+15836,49-9071,"Maintenance and Repair Workers, General",detailed,20690,24
+15837,49-9091,"Coin, Vending, and Amusement Machine Servicers and Repairers",detailed,310,24
+15838,49-9092,Commercial Divers,detailed,**,24
+15839,49-9094,Locksmiths and Safe Repairers,detailed,360,24
+15840,49-9096,Riggers,detailed,200,24
+15841,49-9097,Signal and Track Switch Repairers,detailed,40,24
+15842,49-9098,"Helpers--Installation, Maintenance, and Repair Workers",detailed,3770,24
+15843,49-9099,"Installation, Maintenance, and Repair Workers, All Other",detailed,5580,24
+15844,51-1011,First-Line Supervisors of Production and Operating Workers,detailed,6740,24
+15845,51-2011,"Aircraft Structure, Surfaces, Rigging, and Systems Assemblers",detailed,40,24
+15846,51-2021,"Coil Winders, Tapers, and Finishers",detailed,170,24
+15847,51-2028,"Electrical, Electronic, and Electromechanical Assemblers, Except Coil Winders, Tapers, and Finishers",detailed,2960,24
+15848,51-2041,Structural Metal Fabricators and Fitters,detailed,850,24
+15849,51-2051,Fiberglass Laminators and Fabricators,detailed,**,24
+15850,51-2090,Miscellaneous Assemblers and Fabricators,detailed,6780,24
+15851,51-3011,Bakers,detailed,3340,24
+15852,51-3021,Butchers and Meat Cutters,detailed,1110,24
+15853,51-3022,"Meat, Poultry, and Fish Cutters and Trimmers",detailed,700,24
+15854,51-3023,Slaughterers and Meat Packers,detailed,**,24
+15855,51-3091,"Food and Tobacco Roasting, Baking, and Drying Machine Operators and Tenders",detailed,310,24
+15856,51-3092,Food Batchmakers,detailed,1980,24
+15857,51-3093,Food Cooking Machine Operators and Tenders,detailed,1640,24
+15858,51-3099,"Food Processing Workers, All Other",detailed,1640,24
+15859,51-4021,"Extruding and Drawing Machine Setters, Operators, and Tenders, Metal and Plastic",detailed,250,24
+15860,51-4023,"Rolling Machine Setters, Operators, and Tenders, Metal and Plastic",detailed,**,24
+15861,51-4031,"Cutting, Punching, and Press Machine Setters, Operators, and Tenders, Metal and Plastic",detailed,370,24
+15862,51-4033,"Grinding, Lapping, Polishing, and Buffing Machine Tool Setters, Operators, and Tenders, Metal and Plastic",detailed,230,24
+15863,51-4034,"Lathe and Turning Machine Tool Setters, Operators, and Tenders, Metal and Plastic",detailed,160,24
+15864,51-4035,"Milling and Planing Machine Setters, Operators, and Tenders, Metal and Plastic",detailed,70,24
+15865,51-4041,Machinists,detailed,2020,24
+15866,51-4072,"Molding, Coremaking, and Casting Machine Setters, Operators, and Tenders, Metal and Plastic",detailed,820,24
+15867,51-4081,"Multiple Machine Tool Setters, Operators, and Tenders, Metal and Plastic",detailed,590,24
+15868,51-4111,Tool and Die Makers,detailed,120,24
+15869,51-4121,"Welders, Cutters, Solderers, and Brazers",detailed,2470,24
+15870,51-4122,"Welding, Soldering, and Brazing Machine Setters, Operators, and Tenders",detailed,270,24
+15871,51-4192,"Layout Workers, Metal and Plastic",detailed,110,24
+15872,51-4193,"Plating Machine Setters, Operators, and Tenders, Metal and Plastic",detailed,260,24
+15873,51-4194,"Tool Grinders, Filers, and Sharpeners",detailed,60,24
+15874,51-4199,"Metal Workers and Plastic Workers, All Other",detailed,410,24
+15875,51-5111,Prepress Technicians and Workers,detailed,800,24
+15876,51-5112,Printing Press Operators,detailed,2210,24
+15877,51-5113,Print Binding and Finishing Workers,detailed,790,24
+15878,51-6011,Laundry and Dry-Cleaning Workers,detailed,4430,24
+15879,51-6021,"Pressers, Textile, Garment, and Related Materials",detailed,740,24
+15880,51-6031,Sewing Machine Operators,detailed,1200,24
+15881,51-6052,"Tailors, Dressmakers, and Custom Sewers",detailed,590,24
+15882,51-6062,"Textile Cutting Machine Setters, Operators, and Tenders",detailed,110,24
+15883,51-6063,"Textile Knitting and Weaving Machine Setters, Operators, and Tenders",detailed,50,24
+15884,51-6091,"Extruding and Forming Machine Setters, Operators, and Tenders, Synthetic and Glass Fibers",detailed,40,24
+15885,51-6093,Upholsterers,detailed,400,24
+15886,51-6099,"Textile, Apparel, and Furnishings Workers, All Other",detailed,490,24
+15887,51-7011,Cabinetmakers and Bench Carpenters,detailed,560,24
+15888,51-7021,Furniture Finishers,detailed,70,24
+15889,51-7041,"Sawing Machine Setters, Operators, and Tenders, Wood",detailed,320,24
+15890,51-7042,"Woodworking Machine Setters, Operators, and Tenders, Except Sawing",detailed,510,24
+15891,51-7099,"Woodworkers, All Other",detailed,160,24
+15892,51-8012,Power Distributors and Dispatchers,detailed,130,24
+15893,51-8013,Power Plant Operators,detailed,410,24
+15894,51-8021,Stationary Engineers and Boiler Operators,detailed,1650,24
+15895,51-8031,Water and Wastewater Treatment Plant and System Operators,detailed,1520,24
+15896,51-8091,Chemical Plant and System Operators,detailed,910,24
+15897,51-8092,Gas Plant Operators,detailed,50,24
+15898,51-8093,"Petroleum Pump System Operators, Refinery Operators, and Gaugers",detailed,**,24
+15899,51-8099,"Plant and System Operators, All Other",detailed,380,24
+15900,51-9011,Chemical Equipment Operators and Tenders,detailed,730,24
+15901,51-9012,"Separating, Filtering, Clarifying, Precipitating, and Still Machine Setters, Operators, and Tenders",detailed,480,24
+15902,51-9021,"Crushing, Grinding, and Polishing Machine Setters, Operators, and Tenders",detailed,250,24
+15903,51-9022,"Grinding and Polishing Workers, Hand",detailed,140,24
+15904,51-9023,"Mixing and Blending Machine Setters, Operators, and Tenders",detailed,1250,24
+15905,51-9031,"Cutters and Trimmers, Hand",detailed,40,24
+15906,51-9032,"Cutting and Slicing Machine Setters, Operators, and Tenders",detailed,330,24
+15907,51-9041,"Extruding, Forming, Pressing, and Compacting Machine Setters, Operators, and Tenders",detailed,130,24
+15908,51-9051,"Furnace, Kiln, Oven, Drier, and Kettle Operators and Tenders",detailed,220,24
+15909,51-9061,"Inspectors, Testers, Sorters, Samplers, and Weighers",detailed,4750,24
+15910,51-9071,Jewelers and Precious Stone and Metal Workers,detailed,280,24
+15911,51-9081,Dental Laboratory Technicians,detailed,440,24
+15912,51-9082,Medical Appliance Technicians,detailed,**,24
+15913,51-9083,Ophthalmic Laboratory Technicians,detailed,750,24
+15914,51-9111,Packaging and Filling Machine Operators and Tenders,detailed,3450,24
+15915,51-9123,"Painting, Coating, and Decorating Workers",detailed,180,24
+15916,51-9124,"Coating, Painting, and Spraying Machine Setters, Operators, and Tenders",detailed,850,24
+15917,51-9151,Photographic Process Workers and Processing Machine Operators,detailed,150,24
+15918,51-9161,Computer Numerically Controlled Tool Operators,detailed,1530,24
+15919,51-9162,Computer Numerically Controlled Tool Programmers,detailed,240,24
+15920,51-9192,"Cleaning, Washing, and Metal Pickling Equipment Operators and Tenders",detailed,40,24
+15921,51-9193,Cooling and Freezing Equipment Operators and Tenders,detailed,100,24
+15922,51-9194,Etchers and Engravers,detailed,250,24
+15923,51-9195,"Molders, Shapers, and Casters, Except Metal and Plastic",detailed,390,24
+15924,51-9196,"Paper Goods Machine Setters, Operators, and Tenders",detailed,1740,24
+15925,51-9197,Tire Builders,detailed,**,24
+15926,51-9198,Helpers--Production Workers,detailed,1750,24
+15927,51-9199,"Production Workers, All Other",detailed,3490,24
+15928,53-1041,Aircraft Cargo Handling Supervisors,detailed,220,24
+15929,53-1047,"First-Line Supervisors of Transportation and Material Moving Workers, Except Aircraft Cargo Handling Supervisors",detailed,8790,24
+15930,53-2012,Commercial Pilots,detailed,390,24
+15931,53-2022,Airfield Operations Specialists,detailed,70,24
+15932,53-3011,"Ambulance Drivers and Attendants, Except Emergency Medical Technicians",detailed,160,24
+15933,53-3031,Driver/Sales Workers,detailed,6950,24
+15934,53-3032,Heavy and Tractor-Trailer Truck Drivers,detailed,23650,24
+15935,53-3033,Light Truck Drivers,detailed,20160,24
+15936,53-3052,"Bus Drivers, Transit and Intercity",detailed,5180,24
+15937,53-3058,"Passenger Vehicle Drivers, Except Bus Drivers, Transit and Intercity",detailed,17170,24
+15938,53-3099,"Motor Vehicle Operators, All Other",detailed,1710,24
+15939,53-4011,Locomotive Engineers,detailed,**,24
+15940,53-4022,"Railroad Brake, Signal, and Switch Operators and Locomotive Firers",detailed,60,24
+15941,53-4031,Railroad Conductors and Yardmasters,detailed,320,24
+15942,53-4041,Subway and Streetcar Operators,detailed,530,24
+15943,53-4099,"Rail Transportation Workers, All Other",detailed,130,24
+15944,53-5011,Sailors and Marine Oilers,detailed,580,24
+15945,53-5021,"Captains, Mates, and Pilots of Water Vessels",detailed,580,24
+15946,53-5031,Ship Engineers,detailed,120,24
+15947,53-6011,Bridge and Lock Tenders,detailed,**,24
+15948,53-6021,Parking Attendants,detailed,2250,24
+15949,53-6031,Automotive and Watercraft Service Attendants,detailed,2870,24
+15950,53-6041,Traffic Technicians,detailed,200,24
+15951,53-6051,Transportation Inspectors,detailed,360,24
+15952,53-6061,Passenger Attendants,detailed,160,24
+15953,53-6098,"Aircraft Service Attendants and Transportation Workers, All Other",detailed,770,24
+15954,53-7011,Conveyor Operators and Tenders,detailed,400,24
+15955,53-7021,Crane and Tower Operators,detailed,860,24
+15956,53-7041,Hoist and Winch Operators,detailed,160,24
+15957,53-7051,Industrial Truck and Tractor Operators,detailed,6840,24
+15958,53-7061,Cleaners of Vehicles and Equipment,detailed,6060,24
+15959,53-7062,"Laborers and Freight, Stock, and Material Movers, Hand",detailed,41890,24
+15960,53-7063,Machine Feeders and Offbearers,detailed,**,24
+15961,53-7064,"Packers and Packagers, Hand",detailed,5560,24
+15962,53-7065,Stockers and Order Fillers,detailed,44260,24
+15963,53-7071,Gas Compressor and Gas Pumping Station Operators,detailed,80,24
+15964,53-7081,Refuse and Recyclable Material Collectors,detailed,2070,24
+15965,53-7199,"Material Moving Workers, All Other",detailed,220,24
+394628,00-0000,All Occupations,total,2701010,24

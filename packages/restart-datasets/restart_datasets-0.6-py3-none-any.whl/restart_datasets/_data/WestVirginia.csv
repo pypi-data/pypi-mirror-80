@@ -1,0 +1,648 @@
+,occ_code,occ_title,o_group,tot_emp,area
+1867,11-0000,Management Occupations,major,32240,54
+1868,13-0000,Business and Financial Operations Occupations,major,24750,54
+1869,15-0000,Computer and Mathematical Occupations,major,11450,54
+1870,17-0000,Architecture and Engineering Occupations,major,9150,54
+1871,19-0000,"Life, Physical, and Social Science Occupations",major,6960,54
+1872,21-0000,Community and Social Service Occupations,major,11800,54
+1873,23-0000,Legal Occupations,major,4980,54
+1874,25-0000,Educational Instruction and Library Occupations,major,43900,54
+1875,27-0000,"Arts, Design, Entertainment, Sports, and Media Occupations",major,5050,54
+1876,29-0000,Healthcare Practitioners and Technical Occupations,major,58590,54
+1877,31-0000,Healthcare Support Occupations,major,33860,54
+1878,33-0000,Protective Service Occupations,major,16900,54
+1879,35-0000,Food Preparation and Serving Related Occupations,major,63970,54
+1880,37-0000,Building and Grounds Cleaning and Maintenance Occupations,major,21190,54
+1881,39-0000,Personal Care and Service Occupations,major,14480,54
+1882,41-0000,Sales and Related Occupations,major,64430,54
+1883,43-0000,Office and Administrative Support Occupations,major,93630,54
+1884,45-0000,"Farming, Fishing, and Forestry Occupations",major,1480,54
+1885,47-0000,Construction and Extraction Occupations,major,49250,54
+1886,49-0000,"Installation, Maintenance, and Repair Occupations",major,35430,54
+1887,51-0000,Production Occupations,major,39560,54
+1888,53-0000,Transportation and Material Moving Occupations,major,59050,54
+34330,11-1011,Chief Executives,detailed,990,54
+34331,11-1021,General and Operations Managers,detailed,11510,54
+34332,11-1031,Legislators,detailed,680,54
+34333,11-2011,Advertising and Promotions Managers,detailed,40,54
+34334,11-2021,Marketing Managers,detailed,390,54
+34335,11-2022,Sales Managers,detailed,920,54
+34336,11-2030,Public Relations and Fundraising Managers,detailed,140,54
+34337,11-3010,Administrative Services and Facilities Managers,detailed,1530,54
+34338,11-3021,Computer and Information Systems Managers,detailed,850,54
+34339,11-3031,Financial Managers,detailed,1780,54
+34340,11-3051,Industrial Production Managers,detailed,860,54
+34341,11-3061,Purchasing Managers,detailed,120,54
+34342,11-3071,"Transportation, Storage, and Distribution Managers",detailed,390,54
+34343,11-3111,Compensation and Benefits Managers,detailed,30,54
+34344,11-3121,Human Resources Managers,detailed,400,54
+34345,11-3131,Training and Development Managers,detailed,80,54
+34346,11-9021,Construction Managers,detailed,920,54
+34347,11-9031,"Education and Childcare Administrators, Preschool and Daycare",detailed,180,54
+34348,11-9032,"Education Administrators, Kindergarten through Secondary",detailed,1690,54
+34349,11-9033,"Education Administrators, Postsecondary",detailed,1080,54
+34350,11-9039,"Education Administrators, All Other",detailed,120,54
+34351,11-9041,Architectural and Engineering Managers,detailed,510,54
+34352,11-9051,Food Service Managers,detailed,1740,54
+34353,11-9081,Lodging Managers,detailed,180,54
+34354,11-9111,Medical and Health Services Managers,detailed,1710,54
+34355,11-9131,Postmasters and Mail Superintendents,detailed,170,54
+34356,11-9141,"Property, Real Estate, and Community Association Managers",detailed,800,54
+34357,11-9151,Social and Community Service Managers,detailed,400,54
+34358,11-9161,Emergency Management Directors,detailed,50,54
+34359,11-9171,Funeral Home Managers,detailed,150,54
+34360,11-9198,"Personal Service Managers, All Other; Entertainment and Recreation Managers, Except Gambling; and Managers, All Other",detailed,1560,54
+34361,13-1020,Buyers and Purchasing Agents,detailed,1030,54
+34362,13-1031,"Claims Adjusters, Examiners, and Investigators",detailed,1110,54
+34363,13-1041,Compliance Officers,detailed,**,54
+34364,13-1051,Cost Estimators,detailed,850,54
+34365,13-1071,Human Resources Specialists,detailed,2030,54
+34366,13-1075,Labor Relations Specialists,detailed,550,54
+34367,13-1081,Logisticians,detailed,360,54
+34368,13-1111,Management Analysts,detailed,1980,54
+34369,13-1121,"Meeting, Convention, and Event Planners",detailed,160,54
+34370,13-1131,Fundraisers,detailed,190,54
+34371,13-1141,"Compensation, Benefits, and Job Analysis Specialists",detailed,220,54
+34372,13-1151,Training and Development Specialists,detailed,1270,54
+34373,13-1161,Market Research Analysts and Marketing Specialists,detailed,1080,54
+34374,13-1198,"Project Management Specialists and Business Operations Specialists, All Other",detailed,3670,54
+34375,13-2011,Accountants and Auditors,detailed,4250,54
+34376,13-2020,Property Appraisers and Assessors,detailed,600,54
+34377,13-2031,Budget Analysts,detailed,200,54
+34378,13-2041,Credit Analysts,detailed,160,54
+34379,13-2052,Personal Financial Advisors,detailed,410,54
+34380,13-2053,Insurance Underwriters,detailed,130,54
+34381,13-2061,Financial Examiners,detailed,120,54
+34382,13-2071,Credit Counselors,detailed,100,54
+34383,13-2072,Loan Officers,detailed,780,54
+34384,13-2081,"Tax Examiners and Collectors, and Revenue Agents",detailed,280,54
+34385,13-2082,Tax Preparers,detailed,260,54
+34386,13-2098,"Financial and Investment Analysts, Financial Risk Specialists, and Financial Specialists, All Other",detailed,1320,54
+34387,15-1211,Computer Systems Analysts,detailed,890,54
+34388,15-1212,Information Security Analysts,detailed,250,54
+34389,15-1221,Computer and Information Research Scientists,detailed,150,54
+34390,15-1231,Computer Network Support Specialists,detailed,630,54
+34391,15-1232,Computer User Support Specialists,detailed,2200,54
+34392,15-1241,Computer Network Architects,detailed,260,54
+34393,15-1244,Network and Computer Systems Administrators,detailed,1210,54
+34394,15-1245,Database Administrators and Architects,detailed,440,54
+34395,15-1251,Computer Programmers,detailed,530,54
+34396,15-1256,Software Developers and Software Quality Assurance Analysts and Testers,detailed,1820,54
+34397,15-1257,Web Developers and Digital Interface Designers,detailed,290,54
+34398,15-1299,"Computer Occupations, All Other",detailed,2220,54
+34399,15-2031,Operations Research Analysts,detailed,400,54
+34400,15-2041,Statisticians,detailed,80,54
+34401,15-2098,"Data Scientists and Mathematical Science Occupations, All Other",detailed,60,54
+34402,17-1011,"Architects, Except Landscape and Naval",detailed,130,54
+34403,17-1012,Landscape Architects,detailed,30,54
+34404,17-1021,Cartographers and Photogrammetrists,detailed,40,54
+34405,17-1022,Surveyors,detailed,680,54
+34406,17-2011,Aerospace Engineers,detailed,60,54
+34407,17-2041,Chemical Engineers,detailed,310,54
+34408,17-2051,Civil Engineers,detailed,1440,54
+34409,17-2061,Computer Hardware Engineers,detailed,240,54
+34410,17-2071,Electrical Engineers,detailed,410,54
+34411,17-2072,"Electronics Engineers, Except Computer",detailed,100,54
+34412,17-2081,Environmental Engineers,detailed,320,54
+34413,17-2111,"Health and Safety Engineers, Except Mining Safety Engineers and Inspectors",detailed,210,54
+34414,17-2112,Industrial Engineers,detailed,660,54
+34415,17-2131,Materials Engineers,detailed,130,54
+34416,17-2141,Mechanical Engineers,detailed,580,54
+34417,17-2151,"Mining and Geological Engineers, Including Mining Safety Engineers",detailed,130,54
+34418,17-2171,Petroleum Engineers,detailed,350,54
+34419,17-2199,"Engineers, All Other",detailed,330,54
+34420,17-3011,Architectural and Civil Drafters,detailed,540,54
+34421,17-3012,Electrical and Electronics Drafters,detailed,30,54
+34422,17-3013,Mechanical Drafters,detailed,150,54
+34423,17-3019,"Drafters, All Other",detailed,40,54
+34424,17-3022,Civil Engineering Technologists and Technicians,detailed,690,54
+34425,17-3023,Electrical and Electronic Engineering Technologists and Technicians,detailed,480,54
+34426,17-3024,Electro-Mechanical and Mechatronics Technologists and Technicians,detailed,70,54
+34427,17-3025,Environmental Engineering Technologists and Technicians,detailed,100,54
+34428,17-3026,Industrial Engineering Technologists and Technicians,detailed,110,54
+34429,17-3027,Mechanical Engineering Technologists and Technicians,detailed,40,54
+34430,17-3031,Surveying and Mapping Technicians,detailed,460,54
+34431,17-3098,"Calibration Technologists and Technicians and Engineering Technologists and Technicians, Except Drafters, All Other",detailed,200,54
+34432,19-1013,Soil and Plant Scientists,detailed,40,54
+34433,19-1022,Microbiologists,detailed,50,54
+34434,19-1023,Zoologists and Wildlife Biologists,detailed,130,54
+34435,19-1029,"Biological Scientists, All Other",detailed,200,54
+34436,19-1031,Conservation Scientists,detailed,230,54
+34437,19-1032,Foresters,detailed,140,54
+34438,19-1041,Epidemiologists,detailed,100,54
+34439,19-1042,"Medical Scientists, Except Epidemiologists",detailed,270,54
+34440,19-2021,Atmospheric and Space Scientists,detailed,40,54
+34441,19-2031,Chemists,detailed,460,54
+34442,19-2032,Materials Scientists,detailed,60,54
+34443,19-2041,"Environmental Scientists and Specialists, Including Health",detailed,660,54
+34444,19-2042,"Geoscientists, Except Hydrologists and Geographers",detailed,110,54
+34445,19-2099,"Physical Scientists, All Other",detailed,80,54
+34446,19-3011,Economists,detailed,50,54
+34447,19-3022,Survey Researchers,detailed,**,54
+34448,19-3031,"Clinical, Counseling, and School Psychologists",detailed,890,54
+34449,19-3039,"Psychologists, All Other",detailed,130,54
+34450,19-3051,Urban and Regional Planners,detailed,30,54
+34451,19-3099,"Social Scientists and Related Workers, All Other",detailed,180,54
+34452,19-4021,Biological Technicians,detailed,140,54
+34453,19-4031,Chemical Technicians,detailed,770,54
+34454,19-4042,"Environmental Science and Protection Technicians, Including Health",detailed,360,54
+34455,19-4045,Geological and Hydrologic Technicians,detailed,290,54
+34456,19-4061,Social Science Research Assistants,detailed,110,54
+34457,19-4071,Forest and Conservation Technicians,detailed,60,54
+34458,19-4092,Forensic Science Technicians,detailed,110,54
+34459,19-4099,"Life, Physical, and Social Science Technicians, All Other",detailed,170,54
+34460,19-5011,Occupational Health and Safety Specialists,detailed,720,54
+34461,19-5012,Occupational Health and Safety Technicians,detailed,150,54
+34462,21-1012,"Educational, Guidance, and Career Counselors and Advisors",detailed,1470,54
+34463,21-1013,Marriage and Family Therapists,detailed,180,54
+34464,21-1015,Rehabilitation Counselors,detailed,790,54
+34465,21-1018,"Substance Abuse, Behavioral Disorder, and Mental Health Counselors",detailed,1400,54
+34466,21-1019,"Counselors, All Other",detailed,210,54
+34467,21-1021,"Child, Family, and School Social Workers",detailed,620,54
+34468,21-1022,Healthcare Social Workers,detailed,670,54
+34469,21-1023,Mental Health and Substance Abuse Social Workers,detailed,140,54
+34470,21-1029,"Social Workers, All Other",detailed,320,54
+34471,21-1091,Health Education Specialists,detailed,440,54
+34472,21-1092,Probation Officers and Correctional Treatment Specialists,detailed,650,54
+34473,21-1093,Social and Human Service Assistants,detailed,3860,54
+34474,21-1094,Community Health Workers,detailed,220,54
+34475,21-1099,"Community and Social Service Specialists, All Other",detailed,440,54
+34476,21-2011,Clergy,detailed,330,54
+34477,23-1011,Lawyers,detailed,2470,54
+34478,23-1021,"Administrative Law Judges, Adjudicators, and Hearing Officers",detailed,170,54
+34479,23-1023,"Judges, Magistrate Judges, and Magistrates",detailed,280,54
+34480,23-2011,Paralegals and Legal Assistants,detailed,1700,54
+34481,23-2093,"Title Examiners, Abstractors, and Searchers",detailed,170,54
+34482,23-2099,"Legal Support Workers, All Other",detailed,170,54
+34483,25-1011,"Business Teachers, Postsecondary",detailed,490,54
+34484,25-1021,"Computer Science Teachers, Postsecondary",detailed,350,54
+34485,25-1022,"Mathematical Science Teachers, Postsecondary",detailed,340,54
+34486,25-1032,"Engineering Teachers, Postsecondary",detailed,200,54
+34487,25-1042,"Biological Science Teachers, Postsecondary",detailed,330,54
+34488,25-1043,"Forestry and Conservation Science Teachers, Postsecondary",detailed,40,54
+34489,25-1051,"Atmospheric, Earth, Marine, and Space Sciences Teachers, Postsecondary",detailed,40,54
+34490,25-1052,"Chemistry Teachers, Postsecondary",detailed,180,54
+34491,25-1053,"Environmental Science Teachers, Postsecondary",detailed,50,54
+34492,25-1054,"Physics Teachers, Postsecondary",detailed,60,54
+34493,25-1062,"Area, Ethnic, and Cultural Studies Teachers, Postsecondary",detailed,60,54
+34494,25-1063,"Economics Teachers, Postsecondary",detailed,70,54
+34495,25-1064,"Geography Teachers, Postsecondary",detailed,80,54
+34496,25-1065,"Political Science Teachers, Postsecondary",detailed,100,54
+34497,25-1066,"Psychology Teachers, Postsecondary",detailed,230,54
+34498,25-1067,"Sociology Teachers, Postsecondary",detailed,100,54
+34499,25-1069,"Social Sciences Teachers, Postsecondary, All Other",detailed,100,54
+34500,25-1071,"Health Specialties Teachers, Postsecondary",detailed,1730,54
+34501,25-1072,"Nursing Instructors and Teachers, Postsecondary",detailed,640,54
+34502,25-1081,"Education Teachers, Postsecondary",detailed,360,54
+34503,25-1111,"Criminal Justice and Law Enforcement Teachers, Postsecondary",detailed,70,54
+34504,25-1112,"Law Teachers, Postsecondary",detailed,70,54
+34505,25-1113,"Social Work Teachers, Postsecondary",detailed,50,54
+34506,25-1121,"Art, Drama, and Music Teachers, Postsecondary",detailed,**,54
+34507,25-1122,"Communications Teachers, Postsecondary",detailed,210,54
+34508,25-1123,"English Language and Literature Teachers, Postsecondary",detailed,520,54
+34509,25-1124,"Foreign Language and Literature Teachers, Postsecondary",detailed,120,54
+34510,25-1126,"Philosophy and Religion Teachers, Postsecondary",detailed,30,54
+34511,25-1193,"Recreation and Fitness Studies Teachers, Postsecondary",detailed,140,54
+34512,25-1194,"Career/Technical Education Teachers, Postsecondary",detailed,1010,54
+34513,25-1199,"Postsecondary Teachers, All Other",detailed,820,54
+34514,25-2011,"Preschool Teachers, Except Special Education",detailed,1810,54
+34515,25-2012,"Kindergarten Teachers, Except Special Education",detailed,710,54
+34516,25-2021,"Elementary School Teachers, Except Special Education",detailed,5330,54
+34517,25-2022,"Middle School Teachers, Except Special and Career/Technical Education",detailed,5160,54
+34518,25-2031,"Secondary School Teachers, Except Special and Career/Technical Education",detailed,4460,54
+34519,25-2032,"Career/Technical Education Teachers, Secondary School",detailed,590,54
+34520,25-2052,"Special Education Teachers, Kindergarten and Elementary School",detailed,1280,54
+34521,25-2057,"Special Education Teachers, Middle School",detailed,1050,54
+34522,25-2058,"Special Education Teachers, Secondary School",detailed,760,54
+34523,25-2059,"Special Education Teachers, All Other",detailed,470,54
+34524,25-3011,"Adult Basic Education, Adult Secondary Education, and English as a Second Language Instructors",detailed,70,54
+34525,25-3021,Self-Enrichment Teachers,detailed,650,54
+34526,25-3031,"Substitute Teachers, Short-Term",detailed,5400,54
+34527,25-3097,"Tutors and Teachers and Instructors, All Other",detailed,370,54
+34528,25-4012,Curators,detailed,60,54
+34529,25-4022,Librarians and Media Collections Specialists,detailed,700,54
+34530,25-4031,Library Technicians,detailed,80,54
+34531,25-9021,Farm and Home Management Educators,detailed,140,54
+34532,25-9031,Instructional Coordinators,detailed,460,54
+34533,25-9044,"Teaching Assistants, Postsecondary",detailed,**,54
+34534,25-9045,"Teaching Assistants, Except Postsecondary",detailed,4070,54
+34535,25-9099,"Educational Instruction and Library Workers, All Other",detailed,350,54
+34536,27-1011,Art Directors,detailed,50,54
+34537,27-1019,"Artists and Related Workers, All Other",detailed,40,54
+34538,27-1021,Commercial and Industrial Designers,detailed,**,54
+34539,27-1023,Floral Designers,detailed,250,54
+34540,27-1024,Graphic Designers,detailed,550,54
+34541,27-1025,Interior Designers,detailed,80,54
+34542,27-1026,Merchandise Displayers and Window Trimmers,detailed,400,54
+34543,27-2012,Producers and Directors,detailed,280,54
+34544,27-2022,Coaches and Scouts,detailed,840,54
+34545,27-2023,"Umpires, Referees, and Other Sports Officials",detailed,60,54
+34546,27-3011,Broadcast Announcers and Radio Disc Jockeys,detailed,280,54
+34547,27-3023,"News Analysts, Reporters, and Journalists",detailed,340,54
+34548,27-3031,Public Relations Specialists,detailed,440,54
+34549,27-3041,Editors,detailed,200,54
+34550,27-3043,Writers and Authors,detailed,130,54
+34551,27-3091,Interpreters and Translators,detailed,150,54
+34552,27-3099,"Media and Communication Workers, All Other",detailed,80,54
+34553,27-4011,Audio and Video Technicians,detailed,160,54
+34554,27-4012,Broadcast Technicians,detailed,90,54
+34555,27-4021,Photographers,detailed,120,54
+34556,27-4031,"Camera Operators, Television, Video, and Film",detailed,50,54
+34557,29-1011,Chiropractors,detailed,60,54
+34558,29-1021,"Dentists, General",detailed,450,54
+34559,29-1029,"Dentists, All Other Specialists",detailed,30,54
+34560,29-1031,Dietitians and Nutritionists,detailed,500,54
+34561,29-1041,Optometrists,detailed,170,54
+34562,29-1051,Pharmacists,detailed,2100,54
+34563,29-1071,Physician Assistants,detailed,920,54
+34564,29-1122,Occupational Therapists,detailed,440,54
+34565,29-1123,Physical Therapists,detailed,1260,54
+34566,29-1124,Radiation Therapists,detailed,60,54
+34567,29-1126,Respiratory Therapists,detailed,1130,54
+34568,29-1127,Speech-Language Pathologists,detailed,800,54
+34569,29-1128,Exercise Physiologists,detailed,110,54
+34570,29-1131,Veterinarians,detailed,320,54
+34571,29-1141,Registered Nurses,detailed,19830,54
+34572,29-1151,Nurse Anesthetists,detailed,690,54
+34573,29-1171,Nurse Practitioners,detailed,1200,54
+34574,29-1181,Audiologists,detailed,130,54
+34575,29-1211,Anesthesiologists,detailed,170,54
+34576,29-1215,Family Medicine Physicians,detailed,280,54
+34577,29-1216,General Internal Medicine Physicians,detailed,**,54
+34578,29-1218,Obstetricians and Gynecologists,detailed,**,54
+34579,29-1223,Psychiatrists,detailed,110,54
+34580,29-1228,"Physicians, All Other; and Ophthalmologists, Except Pediatric",detailed,2230,54
+34581,29-1248,"Surgeons, Except Ophthalmologists",detailed,**,54
+34582,29-1292,Dental Hygienists,detailed,1050,54
+34583,29-1298,"Acupuncturists and Healthcare Diagnosing or Treating Practitioners, All Other",detailed,300,54
+34584,29-2010,Clinical Laboratory Technologists and Technicians,detailed,1760,54
+34585,29-2031,Cardiovascular Technologists and Technicians,detailed,550,54
+34586,29-2032,Diagnostic Medical Sonographers,detailed,500,54
+34587,29-2033,Nuclear Medicine Technologists,detailed,190,54
+34588,29-2034,Radiologic Technologists and Technicians,detailed,1710,54
+34589,29-2035,Magnetic Resonance Imaging Technologists,detailed,200,54
+34590,29-2040,Emergency Medical Technicians and Paramedics,detailed,2260,54
+34591,29-2051,Dietetic Technicians,detailed,310,54
+34592,29-2052,Pharmacy Technicians,detailed,3270,54
+34593,29-2053,Psychiatric Technicians,detailed,1230,54
+34594,29-2055,Surgical Technologists,detailed,1050,54
+34595,29-2056,Veterinary Technologists and Technicians,detailed,360,54
+34596,29-2057,Ophthalmic Medical Technicians,detailed,250,54
+34597,29-2061,Licensed Practical and Licensed Vocational Nurses,detailed,6020,54
+34598,29-2081,"Opticians, Dispensing",detailed,380,54
+34599,29-2091,Orthotists and Prosthetists,detailed,30,54
+34600,29-2098,"Medical Dosimetrists, Medical Records Specialists, and Health Technologists and Technicians, All Other",detailed,2400,54
+34601,29-9091,Athletic Trainers,detailed,140,54
+34602,31-1120,Home Health and Personal Care Aides,detailed,15080,54
+34603,31-1131,Nursing Assistants,detailed,7830,54
+34604,31-1132,Orderlies,detailed,220,54
+34605,31-1133,Psychiatric Aides,detailed,1700,54
+34606,31-2011,Occupational Therapy Assistants,detailed,290,54
+34607,31-2012,Occupational Therapy Aides,detailed,30,54
+34608,31-2021,Physical Therapist Assistants,detailed,760,54
+34609,31-2022,Physical Therapist Aides,detailed,230,54
+34610,31-9011,Massage Therapists,detailed,200,54
+34611,31-9091,Dental Assistants,detailed,1220,54
+34612,31-9092,Medical Assistants,detailed,3280,54
+34613,31-9093,Medical Equipment Preparers,detailed,430,54
+34614,31-9094,Medical Transcriptionists,detailed,390,54
+34615,31-9095,Pharmacy Aides,detailed,160,54
+34616,31-9096,Veterinary Assistants and Laboratory Animal Caretakers,detailed,590,54
+34617,31-9097,Phlebotomists,detailed,1080,54
+34618,31-9099,"Healthcare Support Workers, All Other",detailed,370,54
+34619,33-1011,First-Line Supervisors of Correctional Officers,detailed,230,54
+34620,33-1012,First-Line Supervisors of Police and Detectives,detailed,220,54
+34621,33-1021,First-Line Supervisors of Firefighting and Prevention Workers,detailed,40,54
+34622,33-1090,"Miscellaneous First-Line Supervisors, Protective Service Workers",detailed,410,54
+34623,33-2011,Firefighters,detailed,850,54
+34624,33-2021,Fire Inspectors and Investigators,detailed,30,54
+34625,33-3012,Correctional Officers and Jailers,detailed,3080,54
+34626,33-3021,Detectives and Criminal Investigators,detailed,180,54
+34627,33-3031,Fish and Game Wardens,detailed,120,54
+34628,33-3051,Police and Sheriff's Patrol Officers,detailed,3240,54
+34629,33-9011,Animal Control Workers,detailed,70,54
+34630,33-9021,Private Detectives and Investigators,detailed,130,54
+34631,33-9031,Gambling Surveillance Officers and Gambling Investigators,detailed,110,54
+34632,33-9032,Security Guards,detailed,6010,54
+34633,33-9091,Crossing Guards and Flaggers,detailed,860,54
+34634,33-9092,"Lifeguards, Ski Patrol, and Other Recreational Protective Service Workers",detailed,300,54
+34635,33-9093,Transportation Security Screeners,detailed,90,54
+34636,33-9098,"School Bus Monitors and Protective Service Workers, All Other",detailed,870,54
+34637,35-1011,Chefs and Head Cooks,detailed,310,54
+34638,35-1012,First-Line Supervisors of Food Preparation and Serving Workers,detailed,5490,54
+34639,35-2011,"Cooks, Fast Food",detailed,1190,54
+34640,35-2012,"Cooks, Institution and Cafeteria",detailed,4930,54
+34641,35-2014,"Cooks, Restaurant",detailed,7390,54
+34642,35-2015,"Cooks, Short Order",detailed,410,54
+34643,35-2021,Food Preparation Workers,detailed,2610,54
+34644,35-3011,Bartenders,detailed,2180,54
+34645,35-3023,Fast Food and Counter Workers,detailed,22970,54
+34646,35-3031,Waiters and Waitresses,detailed,11530,54
+34647,35-3041,"Food Servers, Nonrestaurant",detailed,210,54
+34648,35-9011,Dining Room and Cafeteria Attendants and Bartender Helpers,detailed,910,54
+34649,35-9021,Dishwashers,detailed,1670,54
+34650,35-9031,"Hosts and Hostesses, Restaurant, Lounge, and Coffee Shop",detailed,2090,54
+34651,35-9099,"Food Preparation and Serving Related Workers, All Other",detailed,80,54
+34652,37-1011,First-Line Supervisors of Housekeeping and Janitorial Workers,detailed,930,54
+34653,37-1012,"First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers",detailed,730,54
+34654,37-2011,"Janitors and Cleaners, Except Maids and Housekeeping Cleaners",detailed,8680,54
+34655,37-2012,Maids and Housekeeping Cleaners,detailed,5960,54
+34656,37-2021,Pest Control Workers,detailed,270,54
+34657,37-3011,Landscaping and Groundskeeping Workers,detailed,3500,54
+34658,37-3012,"Pesticide Handlers, Sprayers, and Applicators, Vegetation",detailed,100,54
+34659,37-3013,Tree Trimmers and Pruners,detailed,**,54
+34660,37-3019,"Grounds Maintenance Workers, All Other",detailed,60,54
+34661,39-1013,First-Line Supervisors of Gambling Services Workers,detailed,270,54
+34662,39-1098,"First-Line Supervisors of Personal Service and Entertainment and Recreation Workers, Except Gambling Services",detailed,900,54
+34663,39-2011,Animal Trainers,detailed,110,54
+34664,39-2021,Animal Caretakers,detailed,830,54
+34665,39-3011,Gambling Dealers,detailed,1480,54
+34666,39-3012,Gambling and Sports Book Writers and Runners,detailed,40,54
+34667,39-3019,"Gambling Service Workers, All Other",detailed,**,54
+34668,39-3031,"Ushers, Lobby Attendants, and Ticket Takers",detailed,350,54
+34669,39-3091,Amusement and Recreation Attendants,detailed,1950,54
+34670,39-3093,"Locker Room, Coatroom, and Dressing Room Attendants",detailed,40,54
+34671,39-4021,Funeral Attendants,detailed,590,54
+34672,39-4031,"Morticians, Undertakers, and Funeral Arrangers",detailed,240,54
+34673,39-5011,Barbers,detailed,110,54
+34674,39-5012,"Hairdressers, Hairstylists, and Cosmetologists",detailed,1250,54
+34675,39-5092,Manicurists and Pedicurists,detailed,**,54
+34676,39-5094,Skincare Specialists,detailed,160,54
+34677,39-6011,Baggage Porters and Bellhops,detailed,80,54
+34678,39-6012,Concierges,detailed,30,54
+34679,39-7010,Tour and Travel Guides,detailed,330,54
+34680,39-9011,Childcare Workers,detailed,2500,54
+34681,39-9031,Exercise Trainers and Group Fitness Instructors,detailed,580,54
+34682,39-9032,Recreation Workers,detailed,1330,54
+34683,39-9041,Residential Advisors,detailed,830,54
+34684,39-9098,"Crematory Operators and Personal Care and Service Workers, All Other",detailed,130,54
+34685,41-1011,First-Line Supervisors of Retail Sales Workers,detailed,6890,54
+34686,41-1012,First-Line Supervisors of Non-Retail Sales Workers,detailed,480,54
+34687,41-2011,Cashiers,detailed,20320,54
+34688,41-2012,Gambling Change Persons and Booth Cashiers,detailed,**,54
+34689,41-2021,Counter and Rental Clerks,detailed,1220,54
+34690,41-2022,Parts Salespersons,detailed,1910,54
+34691,41-2031,Retail Salespersons,detailed,21770,54
+34692,41-3011,Advertising Sales Agents,detailed,680,54
+34693,41-3021,Insurance Sales Agents,detailed,1750,54
+34694,41-3031,"Securities, Commodities, and Financial Services Sales Agents",detailed,590,54
+34695,41-3041,Travel Agents,detailed,80,54
+34696,41-3091,"Sales Representatives of Services, Except Advertising, Insurance, Financial Services, and Travel",detailed,2570,54
+34697,41-4011,"Sales Representatives, Wholesale and Manufacturing, Technical and Scientific Products",detailed,490,54
+34698,41-4012,"Sales Representatives, Wholesale and Manufacturing, Except Technical and Scientific Products",detailed,4010,54
+34699,41-9011,Demonstrators and Product Promoters,detailed,90,54
+34700,41-9022,Real Estate Sales Agents,detailed,420,54
+34701,41-9031,Sales Engineers,detailed,60,54
+34702,41-9041,Telemarketers,detailed,270,54
+34703,41-9099,"Sales and Related Workers, All Other",detailed,480,54
+34704,43-1011,First-Line Supervisors of Office and Administrative Support Workers,detailed,7910,54
+34705,43-2011,"Switchboard Operators, Including Answering Service",detailed,350,54
+34706,43-2099,"Communications Equipment Operators, All Other",detailed,30,54
+34707,43-3011,Bill and Account Collectors,detailed,740,54
+34708,43-3021,Billing and Posting Clerks,detailed,2190,54
+34709,43-3031,"Bookkeeping, Accounting, and Auditing Clerks",detailed,7990,54
+34710,43-3041,Gambling Cage Workers,detailed,80,54
+34711,43-3051,Payroll and Timekeeping Clerks,detailed,620,54
+34712,43-3061,Procurement Clerks,detailed,440,54
+34713,43-3071,Tellers,detailed,3390,54
+34714,43-3099,"Financial Clerks, All Other",detailed,610,54
+34715,43-4011,Brokerage Clerks,detailed,60,54
+34716,43-4031,"Court, Municipal, and License Clerks",detailed,790,54
+34717,43-4041,"Credit Authorizers, Checkers, and Clerks",detailed,50,54
+34718,43-4051,Customer Service Representatives,detailed,12660,54
+34719,43-4061,"Eligibility Interviewers, Government Programs",detailed,130,54
+34720,43-4071,File Clerks,detailed,440,54
+34721,43-4081,"Hotel, Motel, and Resort Desk Clerks",detailed,1610,54
+34722,43-4111,"Interviewers, Except Eligibility and Loan",detailed,1430,54
+34723,43-4121,"Library Assistants, Clerical",detailed,440,54
+34724,43-4131,Loan Interviewers and Clerks,detailed,480,54
+34725,43-4141,New Accounts Clerks,detailed,430,54
+34726,43-4151,Order Clerks,detailed,170,54
+34727,43-4161,"Human Resources Assistants, Except Payroll and Timekeeping",detailed,630,54
+34728,43-4171,Receptionists and Information Clerks,detailed,4920,54
+34729,43-4181,Reservation and Transportation Ticket Agents and Travel Clerks,detailed,370,54
+34730,43-4199,"Information and Record Clerks, All Other",detailed,620,54
+34731,43-5011,Cargo and Freight Agents,detailed,**,54
+34732,43-5021,Couriers and Messengers,detailed,320,54
+34733,43-5031,Public Safety Telecommunicators,detailed,680,54
+34734,43-5032,"Dispatchers, Except Police, Fire, and Ambulance",detailed,860,54
+34735,43-5041,"Meter Readers, Utilities",detailed,630,54
+34736,43-5051,Postal Service Clerks,detailed,950,54
+34737,43-5052,Postal Service Mail Carriers,detailed,1790,54
+34738,43-5053,"Postal Service Mail Sorters, Processors, and Processing Machine Operators",detailed,460,54
+34739,43-5061,"Production, Planning, and Expediting Clerks",detailed,1040,54
+34740,43-5071,"Shipping, Receiving, and Inventory Clerks",detailed,1900,54
+34741,43-5111,"Weighers, Measurers, Checkers, and Samplers, Recordkeeping",detailed,290,54
+34742,43-6011,Executive Secretaries and Executive Administrative Assistants,detailed,1200,54
+34743,43-6012,Legal Secretaries and Administrative Assistants,detailed,1480,54
+34744,43-6013,Medical Secretaries and Administrative Assistants,detailed,1600,54
+34745,43-6014,"Secretaries and Administrative Assistants, Except Legal, Medical, and Executive",detailed,8850,54
+34746,43-9021,Data Entry Keyers,detailed,680,54
+34747,43-9022,Word Processors and Typists,detailed,140,54
+34748,43-9041,Insurance Claims and Policy Processing Clerks,detailed,1140,54
+34749,43-9051,"Mail Clerks and Mail Machine Operators, Except Postal Service",detailed,260,54
+34750,43-9061,"Office Clerks, General",detailed,18620,54
+34751,43-9071,"Office Machine Operators, Except Computer",detailed,180,54
+34752,43-9111,Statistical Assistants,detailed,100,54
+34753,43-9199,"Office and Administrative Support Workers, All Other",detailed,690,54
+34754,45-1011,"First-Line Supervisors of Farming, Fishing, and Forestry Workers",detailed,110,54
+34755,45-2092,"Farmworkers and Laborers, Crop, Nursery, and Greenhouse",detailed,240,54
+34756,45-2093,"Farmworkers, Farm, Ranch, and Aquacultural Animals",detailed,160,54
+34757,45-4011,Forest and Conservation Workers,detailed,80,54
+34758,45-4021,Fallers,detailed,80,54
+34759,45-4022,Logging Equipment Operators,detailed,520,54
+34760,45-4023,Log Graders and Scalers,detailed,130,54
+34761,47-1011,First-Line Supervisors of Construction Trades and Extraction Workers,detailed,6220,54
+34762,47-2021,Brickmasons and Blockmasons,detailed,180,54
+34763,47-2031,Carpenters,detailed,2820,54
+34764,47-2041,Carpet Installers,detailed,60,54
+34765,47-2044,Tile and Stone Setters,detailed,50,54
+34766,47-2051,Cement Masons and Concrete Finishers,detailed,280,54
+34767,47-2061,Construction Laborers,detailed,9750,54
+34768,47-2071,"Paving, Surfacing, and Tamping Equipment Operators",detailed,220,54
+34769,47-2073,Operating Engineers and Other Construction Equipment Operators,detailed,8820,54
+34770,47-2081,Drywall and Ceiling Tile Installers,detailed,80,54
+34771,47-2111,Electricians,detailed,4300,54
+34772,47-2121,Glaziers,detailed,130,54
+34773,47-2131,"Insulation Workers, Floor, Ceiling, and Wall",detailed,60,54
+34774,47-2132,"Insulation Workers, Mechanical",detailed,110,54
+34775,47-2141,"Painters, Construction and Maintenance",detailed,750,54
+34776,47-2151,Pipelayers,detailed,680,54
+34777,47-2152,"Plumbers, Pipefitters, and Steamfitters",detailed,1220,54
+34778,47-2161,Plasterers and Stucco Masons,detailed,**,54
+34779,47-2171,Reinforcing Iron and Rebar Workers,detailed,50,54
+34780,47-2181,Roofers,detailed,540,54
+34781,47-2211,Sheet Metal Workers,detailed,760,54
+34782,47-2221,Structural Iron and Steel Workers,detailed,150,54
+34783,47-3011,"Helpers--Brickmasons, Blockmasons, Stonemasons, and Tile and Marble Setters",detailed,40,54
+34784,47-3012,Helpers--Carpenters,detailed,240,54
+34785,47-3013,Helpers--Electricians,detailed,230,54
+34786,47-3015,"Helpers--Pipelayers, Plumbers, Pipefitters, and Steamfitters",detailed,240,54
+34787,47-3016,Helpers--Roofers,detailed,60,54
+34788,47-4011,Construction and Building Inspectors,detailed,590,54
+34789,47-4021,Elevator and Escalator Installers and Repairers,detailed,**,54
+34790,47-4031,Fence Erectors,detailed,**,54
+34791,47-4041,Hazardous Materials Removal Workers,detailed,180,54
+34792,47-4051,Highway Maintenance Workers,detailed,1030,54
+34793,47-4061,Rail-Track Laying and Maintenance Equipment Operators,detailed,90,54
+34794,47-4071,Septic Tank Servicers and Sewer Pipe Cleaners,detailed,160,54
+34795,47-4090,Miscellaneous Construction and Related Workers,detailed,100,54
+34796,47-5012,"Rotary Drill Operators, Oil and Gas",detailed,400,54
+34797,47-5013,"Service Unit Operators, Oil and Gas",detailed,900,54
+34798,47-5022,"Excavating and Loading Machine and Dragline Operators, Surface Mining",detailed,1040,54
+34799,47-5041,Continuous Mining Machine Operators,detailed,1070,54
+34800,47-5043,"Roof Bolters, Mining",detailed,920,54
+34801,47-5044,"Loading and Moving Machine Operators, Underground Mining",detailed,1370,54
+34802,47-5071,"Roustabouts, Oil and Gas",detailed,640,54
+34803,47-5081,Helpers--Extraction Workers,detailed,**,54
+34804,47-5097,"Earth Drillers, Except Oil and Gas; and Explosives Workers, Ordnance Handling Experts, and Blasters",detailed,620,54
+34805,47-5098,"Underground Mining Machine Operators and Extraction Workers, All Other",detailed,720,54
+34806,49-1011,"First-Line Supervisors of Mechanics, Installers, and Repairers",detailed,3320,54
+34807,49-2011,"Computer, Automated Teller, and Office Machine Repairers",detailed,350,54
+34808,49-2021,"Radio, Cellular, and Tower Equipment Installers and Repairers",detailed,**,54
+34809,49-2022,"Telecommunications Equipment Installers and Repairers, Except Line Installers",detailed,500,54
+34810,49-2091,Avionics Technicians,detailed,90,54
+34811,49-2092,"Electric Motor, Power Tool, and Related Repairers",detailed,180,54
+34812,49-2094,"Electrical and Electronics Repairers, Commercial and Industrial Equipment",detailed,260,54
+34813,49-2095,"Electrical and Electronics Repairers, Powerhouse, Substation, and Relay",detailed,240,54
+34814,49-2096,"Electronic Equipment Installers and Repairers, Motor Vehicles",detailed,40,54
+34815,49-2098,Security and Fire Alarm Systems Installers,detailed,290,54
+34816,49-3011,Aircraft Mechanics and Service Technicians,detailed,410,54
+34817,49-3021,Automotive Body and Related Repairers,detailed,690,54
+34818,49-3022,Automotive Glass Installers and Repairers,detailed,80,54
+34819,49-3023,Automotive Service Technicians and Mechanics,detailed,4130,54
+34820,49-3031,Bus and Truck Mechanics and Diesel Engine Specialists,detailed,1950,54
+34821,49-3041,Farm Equipment Mechanics and Service Technicians,detailed,190,54
+34822,49-3042,"Mobile Heavy Equipment Mechanics, Except Engines",detailed,2030,54
+34823,49-3051,Motorboat Mechanics and Service Technicians,detailed,70,54
+34824,49-3052,Motorcycle Mechanics,detailed,150,54
+34825,49-3053,Outdoor Power Equipment and Other Small Engine Mechanics,detailed,390,54
+34826,49-3092,Recreational Vehicle Service Technicians,detailed,80,54
+34827,49-3093,Tire Repairers and Changers,detailed,510,54
+34828,49-9011,Mechanical Door Repairers,detailed,40,54
+34829,49-9012,"Control and Valve Installers and Repairers, Except Mechanical Door",detailed,430,54
+34830,49-9021,"Heating, Air Conditioning, and Refrigeration Mechanics and Installers",detailed,1360,54
+34831,49-9031,Home Appliance Repairers,detailed,50,54
+34832,49-9041,Industrial Machinery Mechanics,detailed,2870,54
+34833,49-9043,"Maintenance Workers, Machinery",detailed,520,54
+34834,49-9044,Millwrights,detailed,530,54
+34835,49-9051,Electrical Power-Line Installers and Repairers,detailed,590,54
+34836,49-9052,Telecommunications Line Installers and Repairers,detailed,970,54
+34837,49-9062,Medical Equipment Repairers,detailed,300,54
+34838,49-9063,Musical Instrument Repairers and Tuners,detailed,50,54
+34839,49-9069,"Precision Instrument and Equipment Repairers, All Other",detailed,**,54
+34840,49-9071,"Maintenance and Repair Workers, General",detailed,9750,54
+34841,49-9081,Wind Turbine Service Technicians,detailed,30,54
+34842,49-9091,"Coin, Vending, and Amusement Machine Servicers and Repairers",detailed,250,54
+34843,49-9094,Locksmiths and Safe Repairers,detailed,**,54
+34844,49-9096,Riggers,detailed,110,54
+34845,49-9098,"Helpers--Installation, Maintenance, and Repair Workers",detailed,560,54
+34846,49-9099,"Installation, Maintenance, and Repair Workers, All Other",detailed,540,54
+34847,51-1011,First-Line Supervisors of Production and Operating Workers,detailed,3410,54
+34848,51-2011,"Aircraft Structure, Surfaces, Rigging, and Systems Assemblers",detailed,280,54
+34849,51-2021,"Coil Winders, Tapers, and Finishers",detailed,90,54
+34850,51-2028,"Electrical, Electronic, and Electromechanical Assemblers, Except Coil Winders, Tapers, and Finishers",detailed,260,54
+34851,51-2041,Structural Metal Fabricators and Fitters,detailed,160,54
+34852,51-2090,Miscellaneous Assemblers and Fabricators,detailed,4500,54
+34853,51-3011,Bakers,detailed,800,54
+34854,51-3021,Butchers and Meat Cutters,detailed,630,54
+34855,51-3022,"Meat, Poultry, and Fish Cutters and Trimmers",detailed,970,54
+34856,51-3023,Slaughterers and Meat Packers,detailed,**,54
+34857,51-3092,Food Batchmakers,detailed,130,54
+34858,51-4021,"Extruding and Drawing Machine Setters, Operators, and Tenders, Metal and Plastic",detailed,290,54
+34859,51-4022,"Forging Machine Setters, Operators, and Tenders, Metal and Plastic",detailed,40,54
+34860,51-4023,"Rolling Machine Setters, Operators, and Tenders, Metal and Plastic",detailed,220,54
+34861,51-4031,"Cutting, Punching, and Press Machine Setters, Operators, and Tenders, Metal and Plastic",detailed,860,54
+34862,51-4033,"Grinding, Lapping, Polishing, and Buffing Machine Tool Setters, Operators, and Tenders, Metal and Plastic",detailed,310,54
+34863,51-4034,"Lathe and Turning Machine Tool Setters, Operators, and Tenders, Metal and Plastic",detailed,80,54
+34864,51-4035,"Milling and Planing Machine Setters, Operators, and Tenders, Metal and Plastic",detailed,140,54
+34865,51-4041,Machinists,detailed,1320,54
+34866,51-4051,Metal-Refining Furnace Operators and Tenders,detailed,210,54
+34867,51-4072,"Molding, Coremaking, and Casting Machine Setters, Operators, and Tenders, Metal and Plastic",detailed,770,54
+34868,51-4081,"Multiple Machine Tool Setters, Operators, and Tenders, Metal and Plastic",detailed,830,54
+34869,51-4111,Tool and Die Makers,detailed,80,54
+34870,51-4121,"Welders, Cutters, Solderers, and Brazers",detailed,2710,54
+34871,51-4122,"Welding, Soldering, and Brazing Machine Setters, Operators, and Tenders",detailed,50,54
+34872,51-4191,"Heat Treating Equipment Setters, Operators, and Tenders, Metal and Plastic",detailed,60,54
+34873,51-4193,"Plating Machine Setters, Operators, and Tenders, Metal and Plastic",detailed,140,54
+34874,51-5111,Prepress Technicians and Workers,detailed,110,54
+34875,51-5112,Printing Press Operators,detailed,660,54
+34876,51-5113,Print Binding and Finishing Workers,detailed,160,54
+34877,51-6011,Laundry and Dry-Cleaning Workers,detailed,1290,54
+34878,51-6021,"Pressers, Textile, Garment, and Related Materials",detailed,90,54
+34879,51-6031,Sewing Machine Operators,detailed,260,54
+34880,51-6052,"Tailors, Dressmakers, and Custom Sewers",detailed,50,54
+34881,51-6091,"Extruding and Forming Machine Setters, Operators, and Tenders, Synthetic and Glass Fibers",detailed,110,54
+34882,51-6099,"Textile, Apparel, and Furnishings Workers, All Other",detailed,**,54
+34883,51-7011,Cabinetmakers and Bench Carpenters,detailed,380,54
+34884,51-7021,Furniture Finishers,detailed,60,54
+34885,51-7041,"Sawing Machine Setters, Operators, and Tenders, Wood",detailed,870,54
+34886,51-7042,"Woodworking Machine Setters, Operators, and Tenders, Except Sawing",detailed,500,54
+34887,51-8012,Power Distributors and Dispatchers,detailed,250,54
+34888,51-8013,Power Plant Operators,detailed,330,54
+34889,51-8021,Stationary Engineers and Boiler Operators,detailed,80,54
+34890,51-8031,Water and Wastewater Treatment Plant and System Operators,detailed,1420,54
+34891,51-8091,Chemical Plant and System Operators,detailed,320,54
+34892,51-8092,Gas Plant Operators,detailed,280,54
+34893,51-8093,"Petroleum Pump System Operators, Refinery Operators, and Gaugers",detailed,220,54
+34894,51-8099,"Plant and System Operators, All Other",detailed,110,54
+34895,51-9011,Chemical Equipment Operators and Tenders,detailed,1610,54
+34896,51-9012,"Separating, Filtering, Clarifying, Precipitating, and Still Machine Setters, Operators, and Tenders",detailed,180,54
+34897,51-9021,"Crushing, Grinding, and Polishing Machine Setters, Operators, and Tenders",detailed,80,54
+34898,51-9022,"Grinding and Polishing Workers, Hand",detailed,30,54
+34899,51-9023,"Mixing and Blending Machine Setters, Operators, and Tenders",detailed,430,54
+34900,51-9032,"Cutting and Slicing Machine Setters, Operators, and Tenders",detailed,110,54
+34901,51-9041,"Extruding, Forming, Pressing, and Compacting Machine Setters, Operators, and Tenders",detailed,370,54
+34902,51-9051,"Furnace, Kiln, Oven, Drier, and Kettle Operators and Tenders",detailed,320,54
+34903,51-9061,"Inspectors, Testers, Sorters, Samplers, and Weighers",detailed,3650,54
+34904,51-9071,Jewelers and Precious Stone and Metal Workers,detailed,70,54
+34905,51-9081,Dental Laboratory Technicians,detailed,50,54
+34906,51-9082,Medical Appliance Technicians,detailed,150,54
+34907,51-9083,Ophthalmic Laboratory Technicians,detailed,100,54
+34908,51-9111,Packaging and Filling Machine Operators and Tenders,detailed,900,54
+34909,51-9123,"Painting, Coating, and Decorating Workers",detailed,180,54
+34910,51-9124,"Coating, Painting, and Spraying Machine Setters, Operators, and Tenders",detailed,700,54
+34911,51-9151,Photographic Process Workers and Processing Machine Operators,detailed,40,54
+34912,51-9161,Computer Numerically Controlled Tool Operators,detailed,80,54
+34913,51-9191,Adhesive Bonding Machine Operators and Tenders,detailed,**,54
+34914,51-9192,"Cleaning, Washing, and Metal Pickling Equipment Operators and Tenders",detailed,100,54
+34915,51-9194,Etchers and Engravers,detailed,40,54
+34916,51-9196,"Paper Goods Machine Setters, Operators, and Tenders",detailed,60,54
+34917,51-9198,Helpers--Production Workers,detailed,1510,54
+34918,51-9199,"Production Workers, All Other",detailed,920,54
+34919,53-1047,"First-Line Supervisors of Transportation and Material Moving Workers, Except Aircraft Cargo Handling Supervisors",detailed,2300,54
+34920,53-2011,"Airline Pilots, Copilots, and Flight Engineers",detailed,120,54
+34921,53-2012,Commercial Pilots,detailed,**,54
+34922,53-2021,Air Traffic Controllers,detailed,100,54
+34923,53-3011,"Ambulance Drivers and Attendants, Except Emergency Medical Technicians",detailed,250,54
+34924,53-3031,Driver/Sales Workers,detailed,2740,54
+34925,53-3032,Heavy and Tractor-Trailer Truck Drivers,detailed,11840,54
+34926,53-3033,Light Truck Drivers,detailed,5130,54
+34927,53-3052,"Bus Drivers, Transit and Intercity",detailed,510,54
+34928,53-3058,"Passenger Vehicle Drivers, Except Bus Drivers, Transit and Intercity",detailed,4740,54
+34929,53-3099,"Motor Vehicle Operators, All Other",detailed,**,54
+34930,53-4011,Locomotive Engineers,detailed,330,54
+34931,53-4013,"Rail Yard Engineers, Dinkey Operators, and Hostlers",detailed,40,54
+34932,53-4022,"Railroad Brake, Signal, and Switch Operators and Locomotive Firers",detailed,170,54
+34933,53-4031,Railroad Conductors and Yardmasters,detailed,360,54
+34934,53-4099,"Rail Transportation Workers, All Other",detailed,70,54
+34935,53-5021,"Captains, Mates, and Pilots of Water Vessels",detailed,80,54
+34936,53-6011,Bridge and Lock Tenders,detailed,60,54
+34937,53-6021,Parking Attendants,detailed,290,54
+34938,53-6031,Automotive and Watercraft Service Attendants,detailed,310,54
+34939,53-6051,Transportation Inspectors,detailed,40,54
+34940,53-6098,"Aircraft Service Attendants and Transportation Workers, All Other",detailed,150,54
+34941,53-7011,Conveyor Operators and Tenders,detailed,460,54
+34942,53-7021,Crane and Tower Operators,detailed,220,54
+34943,53-7041,Hoist and Winch Operators,detailed,60,54
+34944,53-7051,Industrial Truck and Tractor Operators,detailed,2050,54
+34945,53-7061,Cleaners of Vehicles and Equipment,detailed,1510,54
+34946,53-7062,"Laborers and Freight, Stock, and Material Movers, Hand",detailed,10510,54
+34947,53-7063,Machine Feeders and Offbearers,detailed,190,54
+34948,53-7064,"Packers and Packagers, Hand",detailed,1010,54
+34949,53-7065,Stockers and Order Fillers,detailed,10790,54
+34950,53-7071,Gas Compressor and Gas Pumping Station Operators,detailed,190,54
+34951,53-7072,"Pump Operators, Except Wellhead Pumpers",detailed,150,54
+34952,53-7073,Wellhead Pumpers,detailed,480,54
+34953,53-7081,Refuse and Recyclable Material Collectors,detailed,860,54
+394656,00-0000,All Occupations,total,702100,54
