@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: hstaxe
+Version: 0.6.0
+Summary: Spectral extraction tools for Hubble Space Telescope Grisms
+Home-page: https://github.com/spacetelescope/hstaxe
+Author: hstaxe and aXe developers
+License: 3-Clause BSD
+Platform: UNKNOWN
+Classifier: 
+Requires-Dist: numpy
+Requires-Dist: astropy
+Requires-Dist: cfitsio
+Requires-Dist: gsl
+Requires-Dist: stwcs
+Requires-Dist: stsci.imagestats
+Requires-Dist: drizzlepac
+Requires-Dist: drizzle
+Requires-Dist: wcstools
+Provides-Extra: docs
+Requires-Dist: sphinx ; extra == 'docs'
+Requires-Dist: sphinx-automodapi ; extra == 'docs'
+Requires-Dist: sphinx-rtd-theme ; extra == 'docs'
+Provides-Extra: tests
+Requires-Dist: pytest ; extra == 'tests'
+
+Spectral extraction tools for Hubble Space Telescope Grisms ala aXe
+
+
