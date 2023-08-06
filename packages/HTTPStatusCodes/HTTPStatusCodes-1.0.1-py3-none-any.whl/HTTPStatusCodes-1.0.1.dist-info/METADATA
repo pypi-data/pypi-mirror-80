@@ -1,0 +1,39 @@
+Metadata-Version: 2.1
+Name: HTTPStatusCodes
+Version: 1.0.1
+Summary: Returns a string detailing of what a given status code means.
+Home-page: https://github.com/CharlotteCross1998/HTTPStatusCodes
+Author: iAmCharlottey
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Internet
+Classifier: Topic :: Internet :: WWW/HTTP
+Description-Content-Type: text/markdown
+
+# HTTPStatusCodes
+HTTPStatusCodes returns a string detailing of what a given status code means.
+
+## Install
+`pip install HTTPStatusCodes`
+## How to use
+```py
+from HTTPStatusCodes import get_status_string
+status = get_status_string(200)
+print (status)
+>>> 'OK'
+```
+Alternatively 
+```py
+import HTTPStatusCodes
+status = HTTPStatusCodes.get_status_string(200)
+print(status)
+>>> 'OK'
+```
+
+
