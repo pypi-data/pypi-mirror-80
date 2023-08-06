@@ -1,0 +1,54 @@
+Metadata-Version: 2.1
+Name: nester3663
+Version: 0.0.1
+Summary: A very simple printer of nested lists
+Home-page: https://github.com/honeywhisperer
+Author: Nikola Trailovic
+Author-email: nikola.trailovic@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: License :: OSI Approved :: GNU General Public License v2 or later (GPLv2+)
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+Requires-Dist: blessings (~=1.7)
+Provides-Extra: dev
+Requires-Dist: pytest (>=3.7) ; extra == 'dev'
+
+# Print List of Lists
+
+This is example project demonstrating how to publish python module to PyPI.
+
+## Installation
+
+Run the following to install:
+
+'''python
+pip install nester3663
+'''
+
+## Usage
+
+'''python
+from nester3663 import print_lol
+
+# Generate
+ a
+print_lol(['a'])
+
+# Generate
+           a
+print_lol(['a'], 5)
+'''
+
+# Developing Print List of Lists
+
+To install nester3663, along with the tools you need to develop and run tests, run the following in your virtualenv:
+
+'''bash
+$ pip install -e .[dev]
+'''
+
+
+
