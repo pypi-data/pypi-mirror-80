@@ -1,0 +1,299 @@
+AUTHORS.rst
+LICENSE
+MANIFEST.in
+README.rst
+requirements.txt
+setup.cfg
+setup.py
+docs/Makefile
+docs/authors.rst
+docs/conf.py
+docs/index.rst
+docs/install.rst
+docs/make.bat
+docs/opics.lib.ebeam.rst
+docs/opics.rst
+docs/readme.rst
+docs/_build/doctrees/nbsphinx/notebooks_01-Mach-Zehnder_Interferometer_13_0.png
+docs/_build/doctrees/nbsphinx/notebooks_02-Micro_Ring_Resonator_13_0.png
+docs/_build/html/_images/notebooks_01-Mach-Zehnder_Interferometer_13_0.png
+docs/_build/html/_images/notebooks_02-Micro_Ring_Resonator_13_0.png
+docs/_build/html/_static/file.png
+docs/_build/html/_static/minus.png
+docs/_build/html/_static/opics_logo.png
+docs/_build/html/_static/plus.png
+docs/_static/opics_logo.png
+opics/__init__.py
+opics/cli.py
+opics/components.py
+opics/globals.py
+opics/network.py
+opics/opics.py
+opics/sparam_ops.py
+opics/utils.py
+opics.egg-info/PKG-INFO
+opics.egg-info/SOURCES.txt
+opics.egg-info/dependency_links.txt
+opics.egg-info/entry_points.txt
+opics.egg-info/not-zip-safe
+opics.egg-info/requires.txt
+opics.egg-info/top_level.txt
+opics/libs/__init__.py
+opics/libs/ebeam/__init__.py
+opics/libs/ebeam/data/bdc_TE_source/EBeam_1550_TE_BDC.sparam
+opics/libs/ebeam/data/bdc_TE_source/bdc_Thickness =210 width=480.sparam
+opics/libs/ebeam/data/bdc_TE_source/bdc_Thickness =210 width=500.sparam
+opics/libs/ebeam/data/bdc_TE_source/bdc_Thickness =210 width=520.sparam
+opics/libs/ebeam/data/bdc_TE_source/bdc_Thickness =220 width=480.sparam
+opics/libs/ebeam/data/bdc_TE_source/bdc_Thickness =220 width=500.sparam
+opics/libs/ebeam/data/bdc_TE_source/bdc_Thickness =220 width=520.sparam
+opics/libs/ebeam/data/bdc_TE_source/bdc_Thickness =230 width=480.sparam
+opics/libs/ebeam/data/bdc_TE_source/bdc_Thickness =230 width=500.sparam
+opics/libs/ebeam/data/bdc_TE_source/bdc_Thickness =230 width=520.sparam
+opics/libs/ebeam/data/bdc_TE_source/bdc_lookup_table.xml
+opics/libs/ebeam/data/bdc_TE_source/ebeam_bdc_te1550.npz
+opics/libs/ebeam/data/ebeam_dc_halfring_straight/ebeam_dc_halfring_te1550.npz
+opics/libs/ebeam/data/ebeam_dc_halfring_straight/te_ebeam_dc_halfring_straight.xml
+opics/libs/ebeam/data/ebeam_dc_halfring_straight/te_ebeam_dc_halfring_straight_gap=100nm_radius=10um_width=500nm_thickness=220nm_CoupleLength=0um_mc.xml
+opics/libs/ebeam/data/ebeam_dc_halfring_straight/te_ebeam_dc_halfring_straight_gap=100nm_radius=3um_width=500nm_thickness=220nm_CoupleLength=0um_mc.xml
+opics/libs/ebeam/data/ebeam_dc_halfring_straight/te_ebeam_dc_halfring_straight_gap=100nm_radius=5um_width=500nm_thickness=220nm_CoupleLength=0um.npz
+opics/libs/ebeam/data/ebeam_dc_halfring_straight/te_ebeam_dc_halfring_straight_gap=100nm_radius=5um_width=500nm_thickness=220nm_CoupleLength=0um_mc.xml
+opics/libs/ebeam/data/ebeam_dc_halfring_straight/te_ebeam_dc_halfring_straight_gap=150nm_radius=10um_width=500nm_thickness=220nm_CoupleLength=0um_mc.xml
+opics/libs/ebeam/data/ebeam_dc_halfring_straight/te_ebeam_dc_halfring_straight_gap=50nm_radius=3um_width=500nm_thickness=220nm_CoupleLength=0um_mc.xml
+opics/libs/ebeam/data/ebeam_dc_halfring_straight/te_ebeam_dc_halfring_straight_gap=50nm_radius=5um_width=500nm_thickness=220nm_CoupleLength=0um_mc.xml
+opics/libs/ebeam/data/ebeam_dc_halfring_straight/te_ebeam_dc_halfring_straight_gap=60nm_radius=3um_width=500nm_thickness=220nm_CoupleLength=0um_mc.xml
+opics/libs/ebeam/data/ebeam_dc_halfring_straight/te_ebeam_dc_halfring_straight_gap=60nm_radius=5um_width=500nm_thickness=220nm_CoupleLength=0um_mc.xml
+opics/libs/ebeam/data/ebeam_dc_halfring_straight/te_ebeam_dc_halfring_straight_gap=80nm_radius=3um_width=500nm_thickness=220nm_CoupleLength=0um_mc.xml
+opics/libs/ebeam/data/ebeam_dc_halfring_straight/tm_ebeam_dc_halfring_straight.xml
+opics/libs/ebeam/data/ebeam_dc_halfring_straight/tm_ebeam_dc_halfring_straight_gap=300nm_radius=5um_width=500nm_thickness=220nm_CoupleLength=0um_mc.xml
+opics/libs/ebeam/data/ebeam_dc_te1550/dc_gap=200nm_Lc=0um.sparam
+opics/libs/ebeam/data/ebeam_dc_te1550/dc_gap=200nm_Lc=10um.sparam
+opics/libs/ebeam/data/ebeam_dc_te1550/dc_gap=200nm_Lc=12.5um.sparam
+opics/libs/ebeam/data/ebeam_dc_te1550/dc_gap=200nm_Lc=15um.sparam
+opics/libs/ebeam/data/ebeam_dc_te1550/dc_gap=200nm_Lc=17.5um.sparam
+opics/libs/ebeam/data/ebeam_dc_te1550/dc_gap=200nm_Lc=2.5um.sparam
+opics/libs/ebeam/data/ebeam_dc_te1550/dc_gap=200nm_Lc=20um.sparam
+opics/libs/ebeam/data/ebeam_dc_te1550/dc_gap=200nm_Lc=22.5um.sparam
+opics/libs/ebeam/data/ebeam_dc_te1550/dc_gap=200nm_Lc=25um.sparam
+opics/libs/ebeam/data/ebeam_dc_te1550/dc_gap=200nm_Lc=27.5um.sparam
+opics/libs/ebeam/data/ebeam_dc_te1550/dc_gap=200nm_Lc=30um.sparam
+opics/libs/ebeam/data/ebeam_dc_te1550/dc_gap=200nm_Lc=32.5um.sparam
+opics/libs/ebeam/data/ebeam_dc_te1550/dc_gap=200nm_Lc=35um.sparam
+opics/libs/ebeam/data/ebeam_dc_te1550/dc_gap=200nm_Lc=37.5um.sparam
+opics/libs/ebeam/data/ebeam_dc_te1550/dc_gap=200nm_Lc=40um.sparam
+opics/libs/ebeam/data/ebeam_dc_te1550/dc_gap=200nm_Lc=42.5um.sparam
+opics/libs/ebeam/data/ebeam_dc_te1550/dc_gap=200nm_Lc=45um.sparam
+opics/libs/ebeam/data/ebeam_dc_te1550/dc_gap=200nm_Lc=47.5um.sparam
+opics/libs/ebeam/data/ebeam_dc_te1550/dc_gap=200nm_Lc=5um.sparam
+opics/libs/ebeam/data/ebeam_dc_te1550/dc_gap=200nm_Lc=7.5um.sparam
+opics/libs/ebeam/data/ebeam_dc_te1550/dc_map.xml
+opics/libs/ebeam/data/ebeam_terminator_te1550/ebeam_terminator_te1550.npz
+opics/libs/ebeam/data/ebeam_terminator_te1550/nanotaper_w1=500,w2=60,L=10_TE.sparam
+opics/libs/ebeam/data/gc_source/GC_TE1550_thickness=210 deltaw=-20.txt
+opics/libs/ebeam/data/gc_source/GC_TE1550_thickness=210 deltaw=0.txt
+opics/libs/ebeam/data/gc_source/GC_TE1550_thickness=210 deltaw=20.txt
+opics/libs/ebeam/data/gc_source/GC_TE1550_thickness=220 deltaw=-20.txt
+opics/libs/ebeam/data/gc_source/GC_TE1550_thickness=220 deltaw=0.npz
+opics/libs/ebeam/data/gc_source/GC_TE1550_thickness=220 deltaw=0.txt
+opics/libs/ebeam/data/gc_source/GC_TE1550_thickness=220 deltaw=20.txt
+opics/libs/ebeam/data/gc_source/GC_TE1550_thickness=230 deltaw=-20.txt
+opics/libs/ebeam/data/gc_source/GC_TE1550_thickness=230 deltaw=0.npz
+opics/libs/ebeam/data/gc_source/GC_TE1550_thickness=230 deltaw=0.txt
+opics/libs/ebeam/data/gc_source/GC_TE1550_thickness=230 deltaw=20.txt
+opics/libs/ebeam/data/gc_source/GC_TE_lookup_table.xml
+opics/libs/ebeam/data/gc_source/GC_TM1550_thickness=210 deltaw=-20.txt
+opics/libs/ebeam/data/gc_source/GC_TM1550_thickness=210 deltaw=0.txt
+opics/libs/ebeam/data/gc_source/GC_TM1550_thickness=210 deltaw=20.txt
+opics/libs/ebeam/data/gc_source/GC_TM1550_thickness=220 deltaw=-20.txt
+opics/libs/ebeam/data/gc_source/GC_TM1550_thickness=220 deltaw=0.txt
+opics/libs/ebeam/data/gc_source/GC_TM1550_thickness=220 deltaw=20.txt
+opics/libs/ebeam/data/gc_source/GC_TM1550_thickness=230 deltaw=-20.txt
+opics/libs/ebeam/data/gc_source/GC_TM1550_thickness=230 deltaw=0.txt
+opics/libs/ebeam/data/gc_source/GC_TM1550_thickness=230 deltaw=20.txt
+opics/libs/ebeam/data/gc_source/GC_TM_lookup_table.xml
+opics/libs/ebeam/data/gc_source/ebeam_gc_te1550.npz
+opics/libs/ebeam/data/tunable_wg/WaveGuideTETMStrip,w=500,h=220,p=0.003.txt
+opics/libs/ebeam/data/tunable_wg/WaveGuideTETMStrip,w=500,h=220,p=0.006.txt
+opics/libs/ebeam/data/tunable_wg/WaveGuideTETMStrip,w=500,h=220,p=0.009.txt
+opics/libs/ebeam/data/tunable_wg/WaveGuideTETMStrip,w=500,h=220,p=0.012.txt
+opics/libs/ebeam/data/tunable_wg/WaveGuideTETMStrip,w=500,h=220,p=0.015.txt
+opics/libs/ebeam/data/tunable_wg/WaveGuideTETMStrip,w=500,h=220,p=0.018.txt
+opics/libs/ebeam/data/tunable_wg/WaveGuideTETMStrip,w=500,h=220,p=0.021.txt
+opics/libs/ebeam/data/tunable_wg/WaveGuideTETMStrip,w=500,h=220,p=0.024.txt
+opics/libs/ebeam/data/tunable_wg/WaveGuideTETMStrip,w=500,h=220,p=0.027.txt
+opics/libs/ebeam/data/tunable_wg/WaveGuideTETMStrip,w=500,h=220,p=0.03.txt
+opics/libs/ebeam/data/tunable_wg/WaveGuideTETMStrip,w=500,h=220,p=0.txt
+opics/libs/ebeam/data/tunable_wg/wg_strip_tunable.xml
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=1000,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=1000,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=1000,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=1040,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=1040,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=1040,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=1080,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=1080,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=1080,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=1120,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=1120,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=1120,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=1160,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=1160,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=1160,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=1200,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=1200,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=1200,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=1240,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=1240,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=1240,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=1280,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=1280,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=1280,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=1320,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=1320,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=1320,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=1360,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=1360,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=1360,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=1400,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=1400,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=1400,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=1500,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=1500,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=1500,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=1600,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=1600,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=1600,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=1700,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=1700,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=1700,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=1800,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=1800,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=1800,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=1900,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=1900,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=1900,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=2000,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=2000,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=2000,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=2100,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=2100,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=2100,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=2200,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=2200,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=2200,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=2300,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=2300,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=2300,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=2400,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=2400,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=2400,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=2500,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=2500,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=2500,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=2600,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=2600,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=2600,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=2700,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=2700,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=2700,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=2800,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=2800,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=2800,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=2900,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=2900,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=2900,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=3000,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=3000,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=3000,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=3100,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=3100,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=3100,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=3200,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=3200,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=3200,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=3300,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=3300,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=3300,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=3400,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=3400,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=3400,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=3500,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=3500,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=3500,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=400,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=400,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=400,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=420,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=420,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=420,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=440,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=440,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=440,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=460,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=460,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=460,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=480,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=480,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=480,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=500,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=500,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=500,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=520,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=520,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=520,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=540,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=540,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=540,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=560,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=560,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=560,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=580,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=580,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=580,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=600,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=600,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=600,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=640,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=640,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=640,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=680,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=680,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=680,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=720,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=720,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=720,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=760,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=760,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=760,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=800,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=800,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=800,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=840,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=840,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=840,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=880,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=880,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=880,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=920,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=920,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=920,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=960,h=210.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=960,h=220.txt
+opics/libs/ebeam/data/wg_integral_source/WaveGuideTETMStrip,w=960,h=230.txt
+opics/libs/ebeam/data/wg_integral_source/wg_strip_lookup_table.xml
+opics/libs/ebeam/data/y_branch_source/Ybranch_Thickness =210 width=480.sparam
+opics/libs/ebeam/data/y_branch_source/Ybranch_Thickness =210 width=500.sparam
+opics/libs/ebeam/data/y_branch_source/Ybranch_Thickness =210 width=520.sparam
+opics/libs/ebeam/data/y_branch_source/Ybranch_Thickness =220 width=480.sparam
+opics/libs/ebeam/data/y_branch_source/Ybranch_Thickness =220 width=500.npz
+opics/libs/ebeam/data/y_branch_source/Ybranch_Thickness =220 width=500.sparam
+opics/libs/ebeam/data/y_branch_source/Ybranch_Thickness =220 width=520.sparam
+opics/libs/ebeam/data/y_branch_source/Ybranch_Thickness =230 width=480.sparam
+opics/libs/ebeam/data/y_branch_source/Ybranch_Thickness =230 width=500.npz
+opics/libs/ebeam/data/y_branch_source/Ybranch_Thickness =230 width=500.sparam
+opics/libs/ebeam/data/y_branch_source/Ybranch_Thickness =230 width=520.npz
+opics/libs/ebeam/data/y_branch_source/Ybranch_Thickness =230 width=520.sparam
+opics/libs/ebeam/data/y_branch_source/ebeam_y_1550.npz
+opics/libs/ebeam/data/y_branch_source/y_lookup_table.xml
+tests/__init__.py
+tests/test_opics.py
