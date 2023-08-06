@@ -1,0 +1,45 @@
+![machinePy_logo](https://machinepy.xyz/wp-content/uploads/2020/09/big_logo4.png)
+# machinePy 2.0
+
+Welcome to machinePy, the worlds most user-friendly machine learning neural network library!<br>
+To learn how to use it, visit **[machinePy](https://machinepy.xyz)**, where you'll find everything you need to start including detailed examples.<br><br>
+#### Quick rundown<br>
+```
+foo = initnet(network_structure)
+```
+Use this function to declare your neural network structure and assign random weights and biases. It takes an array of integers. The first element determines the amount of inputs and the last element determines the amount of outputs. Every element in between represents a hidden layer with the integer value as the amount of neurons in that particular hidden layer.  
+```
+foo = forward(inputs, weights)
+```
+This is the forward propagation function. It takes two arguments, an array of inputs, and an array of weights, which is the output of `initnet`.
+```
+foo = train(inputs, weights, targets, learning_rate)
+```
+This is the implementation of the infamous backpropagation. It takes four arguments, an array of inputs, an array of weights, again in the form of `initnet`, an array of target outputs, and an optional learning rate value, otherwise assigned 0.1.<br><br>
+#### Example
+![machinepy_example](https://machinepy.xyz/wp-content/uploads/2020/09/XNOR-Gate-2.png)
+```
+import machinepy as mp
+
+inputs = [[0,0],[0,1],[1,0],[1,1]]
+outputs = [[1],[0],[0],[1]]
+weights = mp.initnet([2,3,1])
+
+epochs = 10000
+
+i = 0
+j = 0 
+while(i < len(inputs)*epochs):
+	weights = mp.train(inputs[j],weights,outputs[j],0.1)
+		if(j==3):
+			j = 0
+		else:
+			j+=1
+		i+=1
+
+i = 0
+while i < len(inputs):
+	foo = mp.forward(inputs[i],weights)
+	print(foo)
+	i+=1
+```
