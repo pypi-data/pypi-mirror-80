@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: streamlit-quill
+Version: 0.0.1
+Summary: Quill component for Streamlit
+Home-page: https://github.com/Ghasel/streamlit-quill
+Author: Ghasel
+Author-email: 
+License: UNKNOWN
+Platform: UNKNOWN
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: streamlit (>=0.63)
+
+Quill component for Streamlit
+
+
