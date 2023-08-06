@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: cloud-queue-worker
+Version: 0.0.5
+Summary: Library to create workers for aws, azure and gcp queue services
+Home-page: https://gitlab.com/enlaps-public/web/cloud_queue_worker
+Author: Enlaps Open Source
+Author-email: contact@enlaps.fr
+License: UNKNOWN
+Platform: UNKNOWN
+Requires-Python: >=3.6
+Requires-Dist: boto3 (>=1.14.63)
+Requires-Dist: marshmallow (>=3.8.0)
+Provides-Extra: dev
+Requires-Dist: pytest ; extra == 'dev'
+Requires-Dist: mypy ; extra == 'dev'
+Requires-Dist: pylint ; extra == 'dev'
+
+UNKNOWN
+
+
