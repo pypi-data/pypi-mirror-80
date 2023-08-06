@@ -1,0 +1,3 @@
+[console_scripts]
+mkvimdb = mkvimdb.cli:main
+
