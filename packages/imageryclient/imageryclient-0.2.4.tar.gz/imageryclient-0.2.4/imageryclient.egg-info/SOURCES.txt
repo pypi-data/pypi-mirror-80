@@ -1,0 +1,14 @@
+MANIFEST.in
+README.md
+requirements.txt
+setup.py
+short_readme.md
+imageryclient/__init__.py
+imageryclient/composite.py
+imageryclient/imagery.py
+imageryclient/utils.py
+imageryclient.egg-info/PKG-INFO
+imageryclient.egg-info/SOURCES.txt
+imageryclient.egg-info/dependency_links.txt
+imageryclient.egg-info/requires.txt
+imageryclient.egg-info/top_level.txt
