@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: unitids
+Version: 0.0.3
+Summary: Python module to imputate IPEDS unitids from non-matching institution names
+Home-page: https://github.com/ahearn15/get_unitids
+Author: Adam Hearn
+Author-email: adam.hearn@collegetransitions.com
+License: MIT License
+Platform: UNKNOWN
+Description-Content-Type: text/markdown
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: nltk
+Requires-Dist: textblob
+
+# get_unitids
+Python module to retrieve IPEDS unitids.
+
+
