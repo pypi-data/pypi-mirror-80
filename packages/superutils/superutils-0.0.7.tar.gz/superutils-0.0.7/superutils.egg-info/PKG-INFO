@@ -1,0 +1,41 @@
+Metadata-Version: 2.1
+Name: superutils
+Version: 0.0.7
+Summary: The super superutils makes the code simpler!
+Home-page: https://github.com/YouAreOnlyOne
+Author: Frank YCJ
+Author-email: 1320259466@qq.com
+License: Apache 2.0 license
+Project-URL: Bug Tracker, https://github.com/YouAreOnlyOne/FastFrameJar/issues
+Project-URL: Documentation, https://github.com/YouAreOnlyOne/FastFrameJar
+Project-URL: Source Code, https://github.com/YouAreOnlyOne/FastFrameJar
+Description: 
+        Super Toolbox:
+        
+        1. Emails for Send mail easily;
+        
+        2. Files for file splitting tool;
+        
+        3. Compares for text and file comparison tools;
+        
+        4. Datas for data synchronization tools among multiple databases;
+        
+        5. More functions are waiting for you to use.
+        
+        How to use?
+        
+        Please click here.
+        
+        https://github.com/YouAreOnlyOne/FastFrameJar/blob/master/PythonForUtils/README.MD
+        
+        
+        More
+        
+        We are working hard to perfect...
+Keywords: tool util code simpler box email json security
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 2
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=2.6, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*
+Description-Content-Type: text/markdown
