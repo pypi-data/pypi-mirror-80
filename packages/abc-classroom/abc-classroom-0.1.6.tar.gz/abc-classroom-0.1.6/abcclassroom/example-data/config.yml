@@ -1,0 +1,39 @@
+
+# The GitHub organization to host your GitHub classroom
+# Create a new organization on GitHub and change this to the name you gave it
+organization: earth-analytics-edu
+
+# Absolute path to the course directory. If you ran abc-quickstart, this was
+# set up for you
+course_directory: /Users/karen/awesome-course
+
+# Path to the course roster (list of students downloaded from
+# github classroom). If the roster is in the course_directory, simply enter
+# the filename (otherwise, enter the path relative to the course_directory).
+roster: roster.csv
+
+# Path to the directory that holds your course materials. If you are using
+# nbgrader, this is the top-level nbgrader directory. Path assumed to be
+# relative to course_dir unless you enter an absolute path (i.e. starting
+# with '/' on Linux or OS X or with 'C:' on Windows).
+course_materials: nbgrader
+
+# Path to the directory where you want to clone the student repositories.
+# Assumed to be relative to course_dir unless you enter an absolute path
+# (i.e. starting with '/' on Linux or OS X or with 'C:' on Windows). None of
+# the parent directories of clone_dir should be git repositories.
+clone_dir: cloned_repos
+
+# Path to the assignment template repositories. Again, none of
+# the parent directories should be a git repo. Assumed to be relative to
+# course_dir unless you enter an absolute path (i.e. starting with '/' on
+# Linux or OS X or with 'C:' on Windows).
+template_dir: assignment_repos
+
+# A list of files that you do not want to be copied from your assignment
+# release directory to the github template repo. These may be system files
+# Checkpoints or other files that are created by various tools and operating
+# system functions. Add as many as you wish to the list below!
+files_to_ignore:
+- .DS_Store
+- .ipynb_checkpoints

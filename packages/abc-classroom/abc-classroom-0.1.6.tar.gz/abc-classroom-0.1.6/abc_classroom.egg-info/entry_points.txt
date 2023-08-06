@@ -1,0 +1,8 @@
+[console_scripts]
+abc-clone = abcclassroom.__main__:clone
+abc-feedback = abcclassroom.__main__:feedback
+abc-init = abcclassroom.__main__:init
+abc-new-template = abcclassroom.__main__:new_template
+abc-quickstart = abcclassroom.__main__:quickstart
+abc-update-template = abcclassroom.__main__:update_template
+
