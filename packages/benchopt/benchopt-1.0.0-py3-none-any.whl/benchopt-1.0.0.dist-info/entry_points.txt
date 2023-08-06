@@ -1,0 +1,3 @@
+[console_scripts]
+benchopt = benchopt.cli:main
+
