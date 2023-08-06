@@ -1,0 +1,24 @@
+Metadata-Version: 1.2
+Name: py5
+Version: 0.3a2
+Summary: Processing for CPython
+Home-page: UNKNOWN
+Author: Jim Schmitz
+Author-email: jim@ixora.io
+License: UNKNOWN
+Description: py5
+        ---
+        
+        A Python module that makes Processing_ available to the CPython interpreter using JPype_.
+        
+        All of this code is created by the py5generator project. Do not edit manually!
+        
+        .. _Processing: https: // github.com/processing/processing
+        .. _JPype: https: // github.com/jpype-project/jpype
+        
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Programming Language :: Python :: 3.8
+Requires-Python: >3.8

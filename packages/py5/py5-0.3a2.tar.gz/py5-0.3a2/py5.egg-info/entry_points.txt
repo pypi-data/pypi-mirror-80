@@ -1,0 +1,4 @@
+[console_scripts]
+py5cmd = py5_tools.tools.py5cmd:main
+run_sketch = py5_tools.tools.run_sketch:main
+
