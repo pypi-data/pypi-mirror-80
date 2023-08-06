@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "PurgeRaw"
+version = "1.0.5"
+description = "Utility to remove unprocessed RAW files from a folder keeping only RAW files that yielded results"
+readme = "README.md"
+authors = ["Andy Phelps <andrew.m.phelps@gmail.com>"]
+license = "MIT"
+homepage = "https://github.com/andyphelps/purgeraw"
+repository = "https://github.com/andyphelps/purgeraw"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+click = "^7.1.2"
+toolz = "^0.10.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+mypy = "^0.782"
+pylint = "^2.6.0"
+
+[tool.poetry.scripts]
+praw = "purgeraw.main:main"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"

@@ -1,0 +1,64 @@
+Metadata-Version: 2.1
+Name: purgeraw
+Version: 1.0.5
+Summary: Utility to remove unprocessed RAW files from a folder keeping only RAW files that yielded results
+Home-page: https://github.com/andyphelps/purgeraw
+License: MIT
+Author: Andy Phelps
+Author-email: andrew.m.phelps@gmail.com
+Requires-Python: >=3.8,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: click (>=7.1.2,<8.0.0)
+Requires-Dist: toolz (>=0.10.0,<0.11.0)
+Project-URL: Repository, https://github.com/andyphelps/purgeraw
+Description-Content-Type: text/markdown
+
+**Overview**
+
+For photographers keeping every raw file captured can use a lot of space.  
+This utility allows a photographer to purge any unused raw files leaving 
+only the processed files with their associated raws.
+
+The app trawls the input directory for raw and processed images.
+Where it finds a raw image with a numeric index that can't be
+found in the processed images it is marked for removal.
+
+Any sequence of 3 to 6 (inc) numbers in the image filename is deemed as its index which is used
+to associate processed and raw images.
+
+Processed images may also have a filename format with a range of indexes, e.g. IMG_01234-1236.jpg
+This processed file would be associated with IMG_01234.cr3, IMG_01235.cr3 and IMG_01236.cr3 raw images
+thus ensuring they are not deleted. This is useful for HDR or panoramic processed images.
+
+For example, given the folder1 below:
+
+<pre>
+folder1/
+  IMG_1000.cr3
+  IMG_1001.cr3
+  IMG_1002.cr3
+  IMG_1003.cr3
+  IMG_1004.cr3
+  Processed/
+    IMG_1000.jpg
+    IMG_1002-1003.jpg
+</pre>
+
+Running `praw folder1 -d` would remove the IMG_1001.cr3 and 
+IMG_1004.cr3 raw images as they don't have associated processed images.
+
+The resulting directory would be left as:
+<pre>
+folder1/
+  IMG_1000.cr3
+  IMG_1002.cr3
+  IMG_1003.cr3
+  Processed/
+    IMG_1000.jpg
+    IMG_1002-1003.jpg
+</pre>
+
+To install run `pip install purgeraw`
+
