@@ -1,0 +1,1438 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>renku.core.management.datasets &#8212; Renku 0.10.5.dev72+dirty documentation</title>
+    <link rel="stylesheet" href="../../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  
+   
+  <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900,300italic,400italic" rel="stylesheet" type="text/css">
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  </head><body>
+  <div class="git-ribbon">
+    <a href="http://github.com/SwissDataScienceCenter" rel="me">Join us on GitHub</a>
+  </div>
+  
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for renku.core.management.datasets</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1">#</span>
+<span class="c1"># Copyright 2018-2020 - Swiss Data Science Center (SDSC)</span>
+<span class="c1"># A partnership between École Polytechnique Fédérale de Lausanne (EPFL) and</span>
+<span class="c1"># Eidgenössische Technische Hochschule Zürich (ETHZ).</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="sd">&quot;&quot;&quot;Client for handling datasets.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">concurrent.futures</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">import</span> <span class="nn">tempfile</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">uuid</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
+<span class="kn">from</span> <span class="nn">configparser</span> <span class="kn">import</span> <span class="n">NoSectionError</span>
+<span class="kn">from</span> <span class="nn">contextlib</span> <span class="kn">import</span> <span class="n">contextmanager</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">subprocess</span> <span class="kn">import</span> <span class="n">PIPE</span><span class="p">,</span> <span class="n">SubprocessError</span><span class="p">,</span> <span class="n">run</span>
+<span class="kn">from</span> <span class="nn">urllib</span> <span class="kn">import</span> <span class="n">error</span><span class="p">,</span> <span class="n">parse</span>
+<span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">ParseResult</span>
+
+<span class="kn">import</span> <span class="nn">attr</span>
+<span class="kn">import</span> <span class="nn">patoolib</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">git</span> <span class="kn">import</span> <span class="n">GitCommandError</span><span class="p">,</span> <span class="n">GitError</span><span class="p">,</span> <span class="n">Repo</span>
+<span class="kn">from</span> <span class="nn">wcmatch</span> <span class="kn">import</span> <span class="n">glob</span>
+
+<span class="kn">from</span> <span class="nn">renku.core</span> <span class="kn">import</span> <span class="n">errors</span>
+<span class="kn">from</span> <span class="nn">renku.core.management.clone</span> <span class="kn">import</span> <span class="n">clone</span>
+<span class="kn">from</span> <span class="nn">renku.core.management.config</span> <span class="kn">import</span> <span class="n">RENKU_HOME</span>
+<span class="kn">from</span> <span class="nn">renku.core.management.migrate</span> <span class="kn">import</span> <span class="n">is_project_unsupported</span><span class="p">,</span> <span class="n">migrate</span>
+<span class="kn">from</span> <span class="nn">renku.core.models.datasets</span> <span class="kn">import</span> <span class="n">Dataset</span><span class="p">,</span> <span class="n">DatasetFile</span><span class="p">,</span> <span class="n">DatasetTag</span><span class="p">,</span> \
+    <span class="n">is_dataset_name_valid</span>
+<span class="kn">from</span> <span class="nn">renku.core.models.git</span> <span class="kn">import</span> <span class="n">GitURL</span>
+<span class="kn">from</span> <span class="nn">renku.core.models.locals</span> <span class="kn">import</span> <span class="n">with_reference</span>
+<span class="kn">from</span> <span class="nn">renku.core.models.provenance.agents</span> <span class="kn">import</span> <span class="n">Person</span>
+<span class="kn">from</span> <span class="nn">renku.core.models.refs</span> <span class="kn">import</span> <span class="n">LinkReference</span>
+<span class="kn">from</span> <span class="nn">renku.core.utils.urls</span> <span class="kn">import</span> <span class="n">remove_credentials</span>
+
+
+<div class="viewcode-block" id="DatasetsApiMixin"><a class="viewcode-back" href="../../../../management.html#renku.core.management.datasets.DatasetsApiMixin">[docs]</a><span class="nd">@attr</span><span class="o">.</span><span class="n">s</span>
+<span class="k">class</span> <span class="nc">DatasetsApiMixin</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Client for handling datasets.&quot;&quot;&quot;</span>
+
+    <span class="n">DATASETS</span> <span class="o">=</span> <span class="s1">&#39;datasets&#39;</span>
+    <span class="sd">&quot;&quot;&quot;Directory for storing dataset metadata in Renku.&quot;&quot;&quot;</span>
+
+    <span class="n">POINTERS</span> <span class="o">=</span> <span class="s1">&#39;pointers&#39;</span>
+    <span class="sd">&quot;&quot;&quot;Directory for storing external pointer files.&quot;&quot;&quot;</span>
+
+    <span class="n">CACHE</span> <span class="o">=</span> <span class="s1">&#39;cache&#39;</span>
+    <span class="sd">&quot;&quot;&quot;Directory to cache transient data.&quot;&quot;&quot;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">renku_datasets_path</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return a ``Path`` instance of Renku dataset metadata folder.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">renku_home</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">DATASETS</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">renku_pointers_path</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return a ``Path`` instance of Renku pointer files folder.&quot;&quot;&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">renku_home</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">POINTERS</span>
+        <span class="n">path</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">path</span>
+
+<div class="viewcode-block" id="DatasetsApiMixin.datasets_from_commit"><a class="viewcode-back" href="../../../../management.html#renku.core.management.datasets.DatasetsApiMixin.datasets_from_commit">[docs]</a>    <span class="k">def</span> <span class="nf">datasets_from_commit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">commit</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return datasets defined in a commit.&quot;&quot;&quot;</span>
+        <span class="n">commit</span> <span class="o">=</span> <span class="n">commit</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">head</span><span class="o">.</span><span class="n">commit</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">datasets</span> <span class="o">=</span> <span class="n">commit</span><span class="o">.</span><span class="n">tree</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">renku_home</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">DATASETS</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="k">for</span> <span class="n">tree</span> <span class="ow">in</span> <span class="n">datasets</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">blob</span> <span class="o">=</span> <span class="n">tree</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">METADATA</span>
+            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">from_yaml</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">/</span> <span class="n">Path</span><span class="p">(</span><span class="n">blob</span><span class="o">.</span><span class="n">path</span><span class="p">),</span> <span class="n">client</span><span class="o">=</span><span class="bp">self</span>
+            <span class="p">)</span>
+            <span class="n">dataset</span><span class="o">.</span><span class="n">commit</span> <span class="o">=</span> <span class="n">commit</span>
+            <span class="k">yield</span> <span class="n">dataset</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">datasets</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return mapping from path to dataset.&quot;&quot;&quot;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">paths</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">renku_datasets_path</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">METADATA</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">paths</span><span class="p">:</span>
+            <span class="n">result</span><span class="p">[</span><span class="n">path</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_dataset_from_path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span>
+
+<div class="viewcode-block" id="DatasetsApiMixin.load_dataset_from_path"><a class="viewcode-back" href="../../../../management.html#renku.core.management.datasets.DatasetsApiMixin.load_dataset_from_path">[docs]</a>    <span class="k">def</span> <span class="nf">load_dataset_from_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">commit</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return a dataset from a given path.&quot;&quot;&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="o">.</span><span class="n">is_absolute</span><span class="p">():</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">/</span> <span class="n">path</span>
+        <span class="k">return</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">from_yaml</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">client</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">commit</span><span class="o">=</span><span class="n">commit</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DatasetsApiMixin.get_dataset_path"><a class="viewcode-back" href="../../../../management.html#renku.core.management.datasets.DatasetsApiMixin.get_dataset_path">[docs]</a>    <span class="k">def</span> <span class="nf">get_dataset_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get dataset path from name.&quot;&quot;&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">renku_datasets_path</span> <span class="o">/</span> <span class="n">name</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">METADATA</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">path</span> <span class="o">=</span> <span class="n">LinkReference</span><span class="p">(</span>
+                    <span class="n">client</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;datasets/&#39;</span> <span class="o">+</span> <span class="n">name</span>
+                <span class="p">)</span><span class="o">.</span><span class="n">reference</span>
+            <span class="k">except</span> <span class="n">errors</span><span class="o">.</span><span class="n">ParameterError</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">None</span>
+
+        <span class="k">return</span> <span class="n">path</span></div>
+
+<div class="viewcode-block" id="DatasetsApiMixin.load_dataset"><a class="viewcode-back" href="../../../../management.html#renku.core.management.datasets.DatasetsApiMixin.load_dataset">[docs]</a>    <span class="k">def</span> <span class="nf">load_dataset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Load dataset reference file.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">name</span><span class="p">:</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_dataset_path</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">path</span> <span class="ow">and</span> <span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_dataset_from_path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DatasetsApiMixin.with_dataset"><a class="viewcode-back" href="../../../../management.html#renku.core.management.datasets.DatasetsApiMixin.with_dataset">[docs]</a>    <span class="nd">@contextmanager</span>
+    <span class="k">def</span> <span class="nf">with_dataset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">create</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Yield an editable metadata object for a dataset.&quot;&quot;&quot;</span>
+        <span class="n">dataset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">clean_up_required</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="k">if</span> <span class="n">dataset</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">create</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">DatasetNotFound</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+
+            <span class="n">clean_up_required</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">dataset</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">dataset_ref</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">create</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">DatasetExistsError</span><span class="p">(</span>
+                <span class="s1">&#39;Dataset exists: &quot;</span><span class="si">{}</span><span class="s1">&quot;.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="n">dataset_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_dir</span> <span class="o">/</span> <span class="n">dataset</span><span class="o">.</span><span class="n">name</span>
+        <span class="n">dataset_path</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">dataset</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="c1"># TODO use a general clean-up strategy</span>
+            <span class="c1"># https://github.com/SwissDataScienceCenter/renku-python/issues/736</span>
+            <span class="k">if</span> <span class="n">clean_up_required</span><span class="p">:</span>
+                <span class="n">dataset_ref</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+                <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">ignore_errors</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="k">raise</span>
+
+        <span class="n">dataset</span><span class="o">.</span><span class="n">to_yaml</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="DatasetsApiMixin.create_dataset"><a class="viewcode-back" href="../../../../management.html#renku.core.management.datasets.DatasetsApiMixin.create_dataset">[docs]</a>    <span class="k">def</span> <span class="nf">create_dataset</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">creators</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">keywords</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a dataset.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">name</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">ParameterError</span><span class="p">(</span><span class="s1">&#39;Dataset name must be provided.&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">is_dataset_name_valid</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">ParameterError</span><span class="p">(</span>
+                <span class="s1">&#39;Dataset name &quot;</span><span class="si">{}</span><span class="s1">&quot; is not valid.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">DatasetExistsError</span><span class="p">(</span>
+                <span class="s1">&#39;Dataset exists: &quot;</span><span class="si">{}</span><span class="s1">&quot;.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">title</span><span class="p">:</span>
+            <span class="n">title</span> <span class="o">=</span> <span class="n">name</span>
+
+        <span class="n">identifier</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">())</span>
+
+        <span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">renku_datasets_path</span> <span class="o">/</span> <span class="n">identifier</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">METADATA</span>
+
+        <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">DatasetExistsError</span><span class="p">(</span>
+                <span class="s1">&#39;Dataset with reference </span><span class="si">{}</span><span class="s1"> exists&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="n">path</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">creators</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">creators</span> <span class="o">=</span> <span class="p">[</span><span class="n">Person</span><span class="o">.</span><span class="n">from_git</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="p">)]</span>
+
+        <span class="n">keywords</span> <span class="o">=</span> <span class="n">keywords</span> <span class="ow">or</span> <span class="p">()</span>
+
+        <span class="k">with</span> <span class="n">with_reference</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+            <span class="n">dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span>
+                <span class="n">client</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>
+                <span class="n">identifier</span><span class="o">=</span><span class="n">identifier</span><span class="p">,</span>
+                <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+                <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span>
+                <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">,</span>
+                <span class="n">creators</span><span class="o">=</span><span class="n">creators</span><span class="p">,</span>
+                <span class="n">keywords</span><span class="o">=</span><span class="n">keywords</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="n">dataset_ref</span> <span class="o">=</span> <span class="n">LinkReference</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+            <span class="n">client</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;datasets/&#39;</span> <span class="o">+</span> <span class="n">name</span>
+        <span class="p">)</span>
+
+        <span class="n">dataset_ref</span><span class="o">.</span><span class="n">set_reference</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        <span class="n">dataset</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+        <span class="n">dataset</span><span class="o">.</span><span class="n">to_yaml</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">dataset_ref</span></div>
+
+<div class="viewcode-block" id="DatasetsApiMixin.add_data_to_dataset"><a class="viewcode-back" href="../../../../management.html#renku.core.management.datasets.DatasetsApiMixin.add_data_to_dataset">[docs]</a>    <span class="k">def</span> <span class="nf">add_data_to_dataset</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">dataset</span><span class="p">,</span>
+        <span class="n">urls</span><span class="p">,</span>
+        <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">overwrite</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">sources</span><span class="o">=</span><span class="p">(),</span>
+        <span class="n">destination</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+        <span class="n">ref</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">external</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">extract</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">all_at_once</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">destination_names</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">progress</span><span class="o">=</span><span class="kc">None</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Import the data into the data directory.&quot;&quot;&quot;</span>
+        <span class="n">messages</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">warning_messages</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">dataset_datadir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">/</span> <span class="n">dataset</span><span class="o">.</span><span class="n">data_dir</span>
+
+        <span class="n">destination</span> <span class="o">=</span> <span class="n">destination</span> <span class="ow">or</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+        <span class="n">destination</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_path</span><span class="p">(</span><span class="n">dataset_datadir</span><span class="p">,</span> <span class="n">destination</span><span class="p">)</span>
+        <span class="n">destination</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">/</span> <span class="n">dataset_datadir</span> <span class="o">/</span> <span class="n">destination</span>
+
+        <span class="k">if</span> <span class="n">destination</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">destination</span><span class="o">.</span><span class="n">is_dir</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">ParameterError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s1">&#39;Destination is not a directory: &quot;</span><span class="si">{</span><span class="n">destination</span><span class="si">}</span><span class="s1">&quot;&#39;</span>
+            <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">check_external_storage</span><span class="p">()</span>
+
+        <span class="n">files</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="n">all_at_once</span><span class="p">:</span>  <span class="c1"># Importing a dataset</span>
+            <span class="n">files</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_add_from_urls</span><span class="p">(</span>
+                <span class="n">dataset</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span>
+                <span class="n">urls</span><span class="o">=</span><span class="n">urls</span><span class="p">,</span>
+                <span class="n">destination_names</span><span class="o">=</span><span class="n">destination_names</span><span class="p">,</span>
+                <span class="n">destination</span><span class="o">=</span><span class="n">destination</span><span class="p">,</span>
+                <span class="n">extract</span><span class="o">=</span><span class="n">extract</span><span class="p">,</span>
+                <span class="n">progress</span><span class="o">=</span><span class="n">progress</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">urls</span><span class="p">:</span>
+                <span class="n">is_remote</span><span class="p">,</span> <span class="n">is_git</span> <span class="o">=</span> <span class="n">_check_url</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">is_git</span> <span class="ow">and</span> <span class="n">is_remote</span><span class="p">:</span>  <span class="c1"># Remote git repo</span>
+                    <span class="n">sources</span> <span class="o">=</span> <span class="n">sources</span> <span class="ow">or</span> <span class="p">()</span>
+                    <span class="n">new_files</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_add_from_git</span><span class="p">(</span>
+                        <span class="n">dataset</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span>
+                        <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
+                        <span class="n">sources</span><span class="o">=</span><span class="n">sources</span><span class="p">,</span>
+                        <span class="n">destination</span><span class="o">=</span><span class="n">destination</span><span class="p">,</span>
+                        <span class="n">ref</span><span class="o">=</span><span class="n">ref</span>
+                    <span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">sources</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">UsageError</span><span class="p">(</span>
+                            <span class="s1">&#39;Cannot use &quot;--source&quot; with URLs or local files.&#39;</span>
+                        <span class="p">)</span>
+
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_remote</span><span class="p">:</span>  <span class="c1"># Local path, might be git</span>
+                        <span class="k">if</span> <span class="n">is_git</span><span class="p">:</span>
+                            <span class="n">warning_messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                                <span class="s1">&#39;Adding data from local Git repository: &#39;</span> <span class="o">+</span>
+                                <span class="s1">&#39;Use remote</span><span class="se">\&#39;</span><span class="s1">s Git URL instead to enable &#39;</span> <span class="o">+</span>
+                                <span class="s1">&#39;lineage information and updates.&#39;</span>
+                            <span class="p">)</span>
+                        <span class="n">u</span> <span class="o">=</span> <span class="n">parse</span><span class="o">.</span><span class="n">urlparse</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+                        <span class="n">new_files</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_add_from_local</span><span class="p">(</span>
+                            <span class="n">dataset</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span>
+                            <span class="n">path</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">path</span><span class="p">,</span>
+                            <span class="n">external</span><span class="o">=</span><span class="n">external</span><span class="p">,</span>
+                            <span class="n">destination</span><span class="o">=</span><span class="n">destination</span>
+                        <span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>  <span class="c1"># Remote URL</span>
+                        <span class="n">new_files</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_add_from_url</span><span class="p">(</span>
+                            <span class="n">dataset</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span>
+                            <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
+                            <span class="n">destination</span><span class="o">=</span><span class="n">destination</span><span class="p">,</span>
+                            <span class="n">extract</span><span class="o">=</span><span class="n">extract</span><span class="p">,</span>
+                            <span class="n">progress</span><span class="o">=</span><span class="n">progress</span>
+                        <span class="p">)</span>
+
+                <span class="n">files</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">new_files</span><span class="p">)</span>
+
+        <span class="c1"># Remove all files that are under a .git directory</span>
+        <span class="n">paths_to_avoid</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">f</span><span class="p">[</span><span class="s1">&#39;path&#39;</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span> <span class="k">if</span> <span class="s1">&#39;.git&#39;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="s1">&#39;path&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">sep</span><span class="p">)</span>
+        <span class="p">]</span>
+        <span class="k">if</span> <span class="n">paths_to_avoid</span><span class="p">:</span>
+            <span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span> <span class="k">if</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;path&#39;</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">paths_to_avoid</span><span class="p">]</span>
+            <span class="n">warning_messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="s1">&#39;Ignored adding paths under a .git directory:</span><span class="se">\n</span><span class="s1">  &#39;</span> <span class="o">+</span>
+                <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">  &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">paths_to_avoid</span><span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="n">files_to_commit</span> <span class="o">=</span> <span class="p">{</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">/</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;path&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">}</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">force</span><span class="p">:</span>
+            <span class="n">ignored_files</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_ignored_paths</span><span class="p">(</span><span class="o">*</span><span class="n">files_to_commit</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">ignored_files</span><span class="p">:</span>
+                <span class="n">ignored_files</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">ignored_files</span><span class="p">)</span>
+                <span class="n">files_to_commit</span> <span class="o">=</span> <span class="n">files_to_commit</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">ignored_files</span><span class="p">)</span>
+                <span class="n">ignored_sources</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">for</span> <span class="n">file_</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">/</span> <span class="n">file_</span><span class="p">[</span><span class="s1">&#39;path&#39;</span><span class="p">])</span> <span class="ow">in</span> <span class="n">ignored_files</span><span class="p">:</span>
+                        <span class="n">operation</span> <span class="o">=</span> <span class="n">file_</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;operation&#39;</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">operation</span><span class="p">:</span>
+                            <span class="n">src</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">operation</span>
+                            <span class="n">ignored_sources</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">src</span><span class="p">)</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">ignored_sources</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">file_</span><span class="p">[</span><span class="s1">&#39;path&#39;</span><span class="p">])</span>
+
+                <span class="n">files</span> <span class="o">=</span> <span class="p">[</span>
+                    <span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span>
+                    <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">/</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;path&#39;</span><span class="p">])</span> <span class="ow">in</span> <span class="n">files_to_commit</span>
+                <span class="p">]</span>
+                <span class="n">warning_messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="s1">&#39;Theses paths are ignored by one of your .gitignore &#39;</span> <span class="o">+</span>
+                    <span class="s1">&#39;files (use &quot;--force&quot; flag if you really want to add &#39;</span> <span class="o">+</span>
+                    <span class="s1">&#39;them):</span><span class="se">\n</span><span class="s1">  &#39;</span> <span class="o">+</span>
+                    <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">  &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">ignored_sources</span><span class="p">])</span>
+                <span class="p">)</span>
+
+        <span class="c1"># all files at this point can be force-added</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">overwrite</span><span class="p">:</span>
+            <span class="n">existing_files</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">find_files</span><span class="p">(</span><span class="n">files_to_commit</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">existing_files</span><span class="p">:</span>
+                <span class="n">files_to_commit</span> <span class="o">=</span> <span class="n">files_to_commit</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">existing_files</span><span class="p">)</span>
+                <span class="n">files</span> <span class="o">=</span> <span class="p">[</span>
+                    <span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span>
+                    <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">/</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;path&#39;</span><span class="p">])</span> <span class="ow">in</span> <span class="n">files_to_commit</span>
+                <span class="p">]</span>
+                <span class="n">warning_messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="s1">&#39;These existing files were not overwritten &#39;</span> <span class="o">+</span>
+                    <span class="s1">&#39;(use &quot;--overwrite&quot; flag to overwrite them):</span><span class="se">\n</span><span class="s1">  &#39;</span> <span class="o">+</span>
+                    <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">  &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">existing_files</span><span class="p">])</span>
+                <span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+            <span class="n">operation</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;operation&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">operation</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">,</span> <span class="n">action</span> <span class="o">=</span> <span class="n">operation</span>
+
+            <span class="c1"># Remove existing file if any</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">remove_file</span><span class="p">(</span><span class="n">dst</span><span class="p">)</span>
+            <span class="n">dst</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">action</span> <span class="o">==</span> <span class="s1">&#39;copy&#39;</span><span class="p">:</span>
+                <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">action</span> <span class="o">==</span> <span class="s1">&#39;move&#39;</span><span class="p">:</span>
+                <span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">,</span> <span class="n">copy_function</span><span class="o">=</span><span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">action</span> <span class="o">==</span> <span class="s1">&#39;symlink&#39;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_create_external_file</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">)</span>
+                <span class="n">data</span><span class="p">[</span><span class="s1">&#39;external&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">OperationError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Invalid action </span><span class="si">{</span><span class="n">action</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Track non-symlinks in LFS</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_external_storage</span><span class="p">():</span>
+            <span class="n">lfs_paths</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">track_paths_in_storage</span><span class="p">(</span><span class="o">*</span><span class="n">files_to_commit</span><span class="p">)</span>
+            <span class="n">show_message</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="s1">&#39;renku&#39;</span><span class="p">,</span> <span class="s1">&#39;show_lfs_message&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span>
+                <span class="n">lfs_paths</span> <span class="ow">and</span> <span class="p">(</span><span class="n">show_message</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">show_message</span> <span class="o">==</span> <span class="s1">&#39;True&#39;</span><span class="p">)</span>
+            <span class="p">):</span>
+                <span class="n">messages</span><span class="o">.</span><span class="n">append</span><span class="p">((</span>
+                    <span class="s1">&#39;Adding these files to Git LFS:</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span>
+                    <span class="s1">&#39;</span><span class="se">\t</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n\t</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lfs_paths</span><span class="p">))</span> <span class="o">+</span>
+                    <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">To disable this message in the future, run:&#39;</span> <span class="o">+</span>
+                    <span class="s1">&#39;</span><span class="se">\n\t</span><span class="s1">renku config show_lfs_message False&#39;</span>
+                <span class="p">))</span>
+
+        <span class="c1"># Force-add to include possible ignored files</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">git</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="o">*</span><span class="n">files_to_commit</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">git</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">renku_pointers_path</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="n">staged_files</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="s1">&#39;HEAD&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">staged_files</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;renku dataset: committing </span><span class="si">{}</span><span class="s1"> newly added files&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="nb">len</span><span class="p">(</span><span class="n">files_to_commit</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="n">skip_hooks</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">external_storage_requested</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">commit</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">skip_hooks</span><span class="o">=</span><span class="n">skip_hooks</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">warning_messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;No file was added to project&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Generate the DatasetFiles</span>
+        <span class="n">dataset_files</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+            <span class="n">dataset_file</span> <span class="o">=</span> <span class="n">DatasetFile</span><span class="o">.</span><span class="n">from_revision</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">data</span><span class="p">)</span>
+
+            <span class="c1"># Set dataset file path relative to root for submodules.</span>
+            <span class="k">if</span> <span class="n">dataset_file</span><span class="o">.</span><span class="n">client</span> <span class="o">!=</span> <span class="bp">self</span><span class="p">:</span>
+                <span class="n">dataset_file</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;path&#39;</span><span class="p">])</span>
+            <span class="n">dataset_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dataset_file</span><span class="p">)</span>
+
+        <span class="n">dataset</span><span class="o">.</span><span class="n">update_files</span><span class="p">(</span><span class="n">dataset_files</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">warning_messages</span><span class="p">,</span> <span class="n">messages</span></div>
+
+    <span class="k">def</span> <span class="nf">_check_protected_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Checks if a path is a protected path.&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">path_in_repo</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="k">for</span> <span class="n">protected_path</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">RENKU_PROTECTED_PATHS</span><span class="p">:</span>
+            <span class="n">str_path</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">path_in_repo</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;^</span><span class="si">{}</span><span class="s1">$&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">protected_path</span><span class="p">),</span> <span class="n">str_path</span><span class="p">):</span>
+                <span class="k">return</span> <span class="kc">True</span>
+
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">def</span> <span class="nf">_add_from_local</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">external</span><span class="p">,</span> <span class="n">destination</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Add a file or directory from a local filesystem.&quot;&quot;&quot;</span>
+        <span class="n">src</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">src</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">ParameterError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Cannot find file/directory: </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="n">dst</span> <span class="o">=</span> <span class="n">destination</span> <span class="o">/</span> <span class="n">src</span><span class="o">.</span><span class="n">name</span>
+
+        <span class="c1"># if we have a directory, recurse</span>
+        <span class="k">if</span> <span class="n">src</span><span class="o">.</span><span class="n">is_dir</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">dst</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">dst</span><span class="o">.</span><span class="n">is_dir</span><span class="p">():</span>
+                <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">ParameterError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s1">&#39;Cannot copy directory to a file: &quot;</span><span class="si">{</span><span class="n">dst</span><span class="si">}</span><span class="s1">&quot;&#39;</span>
+                <span class="p">)</span>
+            <span class="k">if</span> <span class="n">src</span> <span class="o">==</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">/</span> <span class="n">dataset</span><span class="o">.</span><span class="n">data_dir</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">():</span>
+                <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">ParameterError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s1">&#39;Cannot add dataset</span><span class="se">\&#39;</span><span class="s1">s data directory recursively: </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s1">&#39;</span>
+                <span class="p">)</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_protected_path</span><span class="p">(</span><span class="n">src</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">ProtectedFiles</span><span class="p">([</span><span class="n">src</span><span class="p">])</span>
+
+            <span class="n">files</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">src</span><span class="o">.</span><span class="n">iterdir</span><span class="p">():</span>
+                <span class="n">files</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_add_from_local</span><span class="p">(</span>
+                        <span class="n">dataset</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span>
+                        <span class="n">path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">f</span><span class="p">),</span>
+                        <span class="n">external</span><span class="o">=</span><span class="n">external</span><span class="p">,</span>
+                        <span class="n">destination</span><span class="o">=</span><span class="n">dst</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+            <span class="k">return</span> <span class="n">files</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Check if file is in the project and return it</span>
+            <span class="n">path_in_repo</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_external_file</span><span class="p">(</span><span class="n">src</span><span class="p">):</span>
+                <span class="n">path_in_repo</span> <span class="o">=</span> <span class="n">path</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">path_in_repo</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                    <span class="k">pass</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_protected_path</span><span class="p">(</span><span class="n">src</span><span class="p">):</span>
+                        <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">ProtectedFiles</span><span class="p">([</span><span class="n">src</span><span class="p">])</span>
+
+            <span class="k">if</span> <span class="n">path_in_repo</span><span class="p">:</span>
+                <span class="k">return</span> <span class="p">[{</span>
+                    <span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="n">path_in_repo</span><span class="p">,</span>
+                    <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="n">path_in_repo</span><span class="p">,</span>
+                    <span class="s1">&#39;parent&#39;</span><span class="p">:</span> <span class="bp">self</span>
+                <span class="p">}]</span>
+
+        <span class="n">action</span> <span class="o">=</span> <span class="s1">&#39;symlink&#39;</span> <span class="k">if</span> <span class="n">external</span> <span class="k">else</span> <span class="s1">&#39;copy&#39;</span>
+
+        <span class="k">return</span> <span class="p">[{</span>
+            <span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="n">dst</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">),</span>
+            <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="s1">&#39;file://&#39;</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">src</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)),</span>
+            <span class="s1">&#39;parent&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="p">,</span>
+            <span class="s1">&#39;operation&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">,</span> <span class="n">action</span><span class="p">)</span>
+        <span class="p">}]</span>
+
+    <span class="k">def</span> <span class="nf">_add_from_urls</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">urls</span><span class="p">,</span> <span class="n">destination</span><span class="p">,</span> <span class="n">destination_names</span><span class="p">,</span> <span class="n">extract</span><span class="p">,</span> <span class="n">progress</span>
+    <span class="p">):</span>
+        <span class="n">files</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">max_workers</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="ow">or</span> <span class="mi">1</span>
+        <span class="k">with</span> <span class="n">concurrent</span><span class="o">.</span><span class="n">futures</span><span class="o">.</span><span class="n">ThreadPoolExecutor</span><span class="p">(</span><span class="n">max_workers</span><span class="p">)</span> <span class="k">as</span> <span class="n">executor</span><span class="p">:</span>
+            <span class="n">futures</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="n">executor</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_add_from_url</span><span class="p">,</span>
+                    <span class="n">dataset</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span>
+                    <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
+                    <span class="n">destination</span><span class="o">=</span><span class="n">destination</span><span class="p">,</span>
+                    <span class="n">extract</span><span class="o">=</span><span class="n">extract</span><span class="p">,</span>
+                    <span class="n">filename</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+                    <span class="n">progress</span><span class="o">=</span><span class="n">progress</span>
+                <span class="p">)</span>
+                <span class="k">for</span> <span class="n">url</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">urls</span><span class="p">,</span> <span class="n">destination_names</span><span class="p">)</span>
+            <span class="p">}</span>
+
+            <span class="k">for</span> <span class="n">future</span> <span class="ow">in</span> <span class="n">concurrent</span><span class="o">.</span><span class="n">futures</span><span class="o">.</span><span class="n">as_completed</span><span class="p">(</span><span class="n">futures</span><span class="p">):</span>
+                <span class="n">files</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">future</span><span class="o">.</span><span class="n">result</span><span class="p">())</span>
+
+        <span class="k">return</span> <span class="n">files</span>
+
+    <span class="k">def</span> <span class="nf">_add_from_url</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">destination</span><span class="p">,</span> <span class="n">extract</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">progress</span><span class="o">=</span><span class="kc">None</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Process adding from url and return the location on disk.&quot;&quot;&quot;</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_provider_check</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1e+3</span>
+            <span class="n">tmp_root</span><span class="p">,</span> <span class="n">paths</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_download</span><span class="p">(</span>
+                <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
+                <span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">,</span>
+                <span class="n">extract</span><span class="o">=</span><span class="n">extract</span><span class="p">,</span>
+                <span class="n">progress_class</span><span class="o">=</span><span class="n">progress</span>
+            <span class="p">)</span>
+
+            <span class="n">exec_time</span> <span class="o">=</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1e+3</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span> <span class="o">//</span> <span class="mf">1e+3</span>
+            <span class="c1"># If execution time was less or equal to zero seconds,</span>
+            <span class="c1"># block the thread a bit to avoid being rate limited.</span>
+            <span class="k">if</span> <span class="n">exec_time</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="ow">or</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="k">except</span> <span class="p">(</span>
+            <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">HTTPError</span><span class="p">,</span> <span class="n">error</span><span class="o">.</span><span class="n">HTTPError</span>
+        <span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>  <span class="c1"># pragma nocover</span>
+            <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">OperationError</span><span class="p">(</span>
+                <span class="s1">&#39;Cannot download from </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+            <span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+
+        <span class="n">paths</span> <span class="o">=</span> <span class="p">[(</span><span class="n">src</span><span class="p">,</span> <span class="n">destination</span> <span class="o">/</span> <span class="n">src</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="n">tmp_root</span><span class="p">))</span>
+                 <span class="k">for</span> <span class="n">src</span> <span class="ow">in</span> <span class="n">paths</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">src</span><span class="o">.</span><span class="n">is_dir</span><span class="p">()]</span>
+        <span class="k">return</span> <span class="p">[{</span>
+            <span class="s1">&#39;operation&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">,</span> <span class="s1">&#39;move&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="n">dst</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">),</span>
+            <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="n">remove_credentials</span><span class="p">(</span><span class="n">url</span><span class="p">),</span>
+            <span class="s1">&#39;parent&#39;</span><span class="p">:</span> <span class="bp">self</span>
+        <span class="p">}</span> <span class="k">for</span> <span class="n">src</span><span class="p">,</span> <span class="n">dst</span> <span class="ow">in</span> <span class="n">paths</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">_add_from_git</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">sources</span><span class="p">,</span> <span class="n">destination</span><span class="p">,</span> <span class="n">ref</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Process adding resources from another git repository.&quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">renku</span> <span class="kn">import</span> <span class="n">LocalClient</span>
+
+        <span class="n">u</span> <span class="o">=</span> <span class="n">parse</span><span class="o">.</span><span class="n">urlparse</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+        <span class="n">sources</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_paths</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="n">sources</span><span class="p">)</span>
+
+        <span class="c1"># Get all files from repo that match sources</span>
+        <span class="n">repo</span><span class="p">,</span> <span class="n">repo_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">prepare_git_repo</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">ref</span><span class="p">)</span>
+        <span class="n">files</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="n">used_sources</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">repo</span><span class="o">.</span><span class="n">head</span><span class="o">.</span><span class="n">commit</span><span class="o">.</span><span class="n">tree</span><span class="o">.</span><span class="n">traverse</span><span class="p">():</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">path</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_src_and_dst</span><span class="p">(</span>
+                <span class="n">path</span><span class="p">,</span> <span class="n">repo_path</span><span class="p">,</span> <span class="n">sources</span><span class="p">,</span> <span class="n">destination</span><span class="p">,</span> <span class="n">used_sources</span>
+            <span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">result</span><span class="p">:</span>
+                <span class="n">files</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+        <span class="n">unused_sources</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">sources</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">-</span> <span class="n">used_sources</span>
+        <span class="k">if</span> <span class="n">unused_sources</span><span class="p">:</span>
+            <span class="n">unused_sources</span> <span class="o">=</span> <span class="p">{</span><span class="nb">str</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">unused_sources</span><span class="p">}</span>
+            <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">ParameterError</span><span class="p">(</span>
+                <span class="s1">&#39;No such file or directory&#39;</span><span class="p">,</span> <span class="n">param_hint</span><span class="o">=</span><span class="n">unused_sources</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Create metadata and move files to dataset</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">remote_client</span> <span class="o">=</span> <span class="n">LocalClient</span><span class="p">(</span><span class="n">repo_path</span><span class="p">)</span>
+
+        <span class="c1"># Pull files from LFS</span>
+        <span class="n">paths</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">path</span><span class="p">,</span> <span class="n">src</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">src</span><span class="o">.</span><span class="n">is_dir</span><span class="p">():</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">src</span><span class="o">.</span><span class="n">is_symlink</span><span class="p">():</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">path</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">src</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="n">repo_path</span><span class="p">))</span>
+                <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>  <span class="c1"># External file</span>
+                    <span class="k">pass</span>
+            <span class="n">paths</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_fetch_lfs_files</span><span class="p">(</span><span class="n">repo_path</span><span class="p">,</span> <span class="n">paths</span><span class="p">)</span>
+
+        <span class="c1"># Fetch metadata from Renku if any</span>
+        <span class="n">paths</span> <span class="o">=</span> <span class="p">{</span><span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">}</span>
+        <span class="n">metadata</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fetch_files_metadata</span><span class="p">(</span><span class="n">remote_client</span><span class="p">,</span> <span class="n">paths</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">path</span><span class="p">,</span> <span class="n">src</span><span class="p">,</span> <span class="n">dst</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">src</span><span class="o">.</span><span class="n">is_dir</span><span class="p">():</span>
+                <span class="c1"># Use original metadata if it exists</span>
+                <span class="n">based_on</span> <span class="o">=</span> <span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">based_on</span><span class="p">:</span>
+                    <span class="n">based_on</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">url</span>
+                    <span class="n">based_on</span><span class="o">.</span><span class="n">based_on</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">based_on</span> <span class="o">=</span> <span class="n">DatasetFile</span><span class="o">.</span><span class="n">from_revision</span><span class="p">(</span>
+                        <span class="n">remote_client</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">src</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="n">url</span>
+                    <span class="p">)</span>
+
+                <span class="n">path_in_dst_repo</span> <span class="o">=</span> <span class="n">dst</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">remote_client</span><span class="o">.</span><span class="n">_is_external_file</span><span class="p">(</span><span class="n">src</span><span class="p">):</span>
+                    <span class="n">operation</span> <span class="o">=</span> <span class="p">(</span><span class="n">src</span><span class="o">.</span><span class="n">resolve</span><span class="p">(),</span> <span class="n">dst</span><span class="p">,</span> <span class="s1">&#39;symlink&#39;</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">operation</span> <span class="o">=</span> <span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">,</span> <span class="s1">&#39;copy&#39;</span><span class="p">)</span>
+
+                <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                    <span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="n">path_in_dst_repo</span><span class="p">,</span>
+                    <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="n">remove_credentials</span><span class="p">(</span><span class="n">url</span><span class="p">),</span>
+                    <span class="s1">&#39;parent&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="p">,</span>
+                    <span class="s1">&#39;based_on&#39;</span><span class="p">:</span> <span class="n">based_on</span><span class="p">,</span>
+                    <span class="s1">&#39;operation&#39;</span><span class="p">:</span> <span class="n">operation</span>
+                <span class="p">})</span>
+
+        <span class="k">return</span> <span class="n">results</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_ensure_dropbox</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Ensure dropbox url is set for file download.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">ParseResult</span><span class="p">):</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="n">parse</span><span class="o">.</span><span class="n">urlparse</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+        <span class="n">query</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="n">query</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span>
+        <span class="k">if</span> <span class="s1">&#39;dl=0&#39;</span> <span class="ow">in</span> <span class="n">url</span><span class="o">.</span><span class="n">query</span><span class="p">:</span>
+            <span class="n">query</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;dl=0&#39;</span><span class="p">,</span> <span class="s1">&#39;dl=1&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">query</span> <span class="o">+=</span> <span class="s1">&#39;dl=1&#39;</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="n">_replace</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">url</span>
+
+    <span class="k">def</span> <span class="nf">_provider_check</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Check additional provider related operations.&quot;&quot;&quot;</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">parse</span><span class="o">.</span><span class="n">urlparse</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="s1">&#39;dropbox.com&#39;</span> <span class="ow">in</span> <span class="n">url</span><span class="o">.</span><span class="n">netloc</span><span class="p">:</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ensure_dropbox</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">parse</span><span class="o">.</span><span class="n">urlunparse</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_resolve_paths</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_path</span><span class="p">,</span> <span class="n">paths</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Check if paths are within a root path and resolve them.&quot;&quot;&quot;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>  <span class="c1"># Used as an ordered-set</span>
+        <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">paths</span><span class="p">:</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_path</span><span class="p">(</span><span class="n">root_path</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+            <span class="n">result</span><span class="p">[</span><span class="n">r</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="n">result</span>
+
+    <span class="k">def</span> <span class="nf">_resolve_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_path</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Check if a path is within a root path and resolve it.&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">root_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">root_path</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">root_path</span> <span class="o">/</span> <span class="n">path</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="n">root_path</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">ParameterError</span><span class="p">(</span>
+                <span class="s1">&#39;File </span><span class="si">{}</span><span class="s1"> is not within path </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">root_path</span><span class="p">)</span>
+            <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_src_and_dst</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">repo_path</span><span class="p">,</span> <span class="n">sources</span><span class="p">,</span> <span class="n">dst_root</span><span class="p">,</span> <span class="n">used_sources</span>
+    <span class="p">):</span>
+        <span class="n">is_wildcard</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">sources</span><span class="p">:</span>
+            <span class="n">source</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">source</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sources</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">glob</span><span class="o">.</span><span class="n">globmatch</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">s</span><span class="p">),</span> <span class="n">flags</span><span class="o">=</span><span class="n">glob</span><span class="o">.</span><span class="n">GLOBSTAR</span><span class="p">):</span>
+                        <span class="n">is_wildcard</span> <span class="o">=</span> <span class="kc">True</span>
+                        <span class="n">source</span> <span class="o">=</span> <span class="n">path</span>
+                        <span class="n">used_sources</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+                        <span class="k">break</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">source</span> <span class="o">=</span> <span class="n">s</span>
+                    <span class="n">used_sources</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+                    <span class="k">break</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">source</span><span class="p">:</span>
+                <span class="k">return</span>
+
+        <span class="n">src</span> <span class="o">=</span> <span class="n">repo_path</span> <span class="o">/</span> <span class="n">path</span>
+        <span class="n">source_name</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">source</span><span class="p">)</span><span class="o">.</span><span class="n">name</span>
+        <span class="n">relative_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">src</span><span class="o">.</span><span class="n">is_dir</span><span class="p">()</span> <span class="ow">and</span> <span class="n">is_wildcard</span><span class="p">:</span>
+            <span class="n">sources</span><span class="p">[</span><span class="n">source</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">used_sources</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+
+        <span class="n">dst</span> <span class="o">=</span> <span class="n">dst_root</span> <span class="o">/</span> <span class="n">source_name</span> <span class="o">/</span> <span class="n">relative_path</span>
+
+        <span class="k">return</span> <span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_fetch_lfs_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">repo_path</span><span class="p">,</span> <span class="n">paths</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Fetch and checkout paths that are tracked by Git LFS.&quot;&quot;&quot;</span>
+        <span class="n">repo_path</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">repo_path</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="n">run</span><span class="p">((</span><span class="s1">&#39;git&#39;</span><span class="p">,</span> <span class="s1">&#39;lfs&#39;</span><span class="p">,</span> <span class="s1">&#39;ls-files&#39;</span><span class="p">,</span> <span class="s1">&#39;--name-only&#39;</span><span class="p">),</span>
+                         <span class="n">stdout</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span>
+                         <span class="n">cwd</span><span class="o">=</span><span class="n">repo_path</span><span class="p">,</span>
+                         <span class="n">universal_newlines</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">SubprocessError</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="n">lfs_files</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">))</span>
+        <span class="n">files</span> <span class="o">=</span> <span class="n">lfs_files</span> <span class="o">&amp;</span> <span class="n">paths</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">files</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+                <span class="n">run</span><span class="p">([</span><span class="s1">&#39;git&#39;</span><span class="p">,</span> <span class="s1">&#39;lfs&#39;</span><span class="p">,</span> <span class="s1">&#39;pull&#39;</span><span class="p">,</span> <span class="s1">&#39;--include&#39;</span><span class="p">,</span> <span class="n">path</span><span class="p">],</span> <span class="n">cwd</span><span class="o">=</span><span class="n">repo_path</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+            <span class="k">raise</span>
+        <span class="k">except</span> <span class="n">SubprocessError</span><span class="p">:</span>
+            <span class="k">pass</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_fetch_files_metadata</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">paths</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return metadata for files from paths.&quot;&quot;&quot;</span>
+        <span class="n">files</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">if</span> <span class="n">is_project_unsupported</span><span class="p">(</span><span class="n">client</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">files</span>
+
+        <span class="n">migrate</span><span class="p">(</span><span class="n">client</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">dataset</span> <span class="ow">in</span> <span class="n">client</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">file_</span> <span class="ow">in</span> <span class="n">dataset</span><span class="o">.</span><span class="n">files</span><span class="p">:</span>
+                <span class="n">path</span> <span class="o">=</span> <span class="n">file_</span><span class="o">.</span><span class="n">path</span>
+                <span class="k">if</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">paths</span><span class="p">:</span>
+                    <span class="n">files</span><span class="p">[</span><span class="n">path</span><span class="p">]</span> <span class="o">=</span> <span class="n">file_</span>
+        <span class="k">return</span> <span class="n">files</span>
+
+<div class="viewcode-block" id="DatasetsApiMixin.get_relative_url"><a class="viewcode-back" href="../../../../management.html#renku.core.management.datasets.DatasetsApiMixin.get_relative_url">[docs]</a>    <span class="k">def</span> <span class="nf">get_relative_url</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Determine if the repo url should be relative.&quot;&quot;&quot;</span>
+        <span class="c1"># Check if the default remote of the branch we are on is on</span>
+        <span class="c1"># the same server as the submodule. If so, use a relative path</span>
+        <span class="c1"># instead of an absolute URL.</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">branch_remote</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">config_reader</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+                <span class="s1">&#39;branch &quot;</span><span class="si">{}</span><span class="s1">&quot;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">active_branch</span><span class="o">.</span><span class="n">name</span><span class="p">),</span> <span class="s1">&#39;remote&#39;</span>
+            <span class="p">)</span>
+        <span class="k">except</span> <span class="n">NoSectionError</span><span class="p">:</span>
+            <span class="n">branch_remote</span> <span class="o">=</span> <span class="s1">&#39;origin&#39;</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">remote</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">remote</span><span class="p">(</span><span class="n">branch_remote</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                <span class="s1">&#39;Remote </span><span class="si">{}</span><span class="s1"> not found, cannot check for relative URL.&#39;</span><span class="o">.</span>
+                <span class="nb">format</span><span class="p">(</span><span class="n">branch_remote</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="k">return</span> <span class="n">url</span>
+
+        <span class="n">remote_url</span> <span class="o">=</span> <span class="n">GitURL</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">remote</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+        <span class="n">submodule_url</span> <span class="o">=</span> <span class="n">GitURL</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">remote_url</span><span class="o">.</span><span class="n">hostname</span> <span class="o">==</span> <span class="n">submodule_url</span><span class="o">.</span><span class="n">hostname</span><span class="p">:</span>
+            <span class="c1"># construct the relative path</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span>
+                <span class="s1">&#39;../../</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">submodule_url</span><span class="o">.</span><span class="n">owner</span><span class="p">)</span> <span class="k">if</span> <span class="n">remote_url</span><span class="o">.</span><span class="n">owner</span> <span class="o">==</span>
+                <span class="n">submodule_url</span><span class="o">.</span><span class="n">owner</span> <span class="k">else</span> <span class="s1">&#39;..&#39;</span>
+            <span class="p">)</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">url</span> <span class="o">/</span> <span class="n">submodule_url</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">url</span></div>
+
+<div class="viewcode-block" id="DatasetsApiMixin.dataset_commits"><a class="viewcode-back" href="../../../../management.html#renku.core.management.datasets.DatasetsApiMixin.dataset_commits">[docs]</a>    <span class="k">def</span> <span class="nf">dataset_commits</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">max_results</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Gets the newest commit for a dataset or its files.</span>
+
+<span class="sd">        Commits are returned sorted from newest to oldest.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">paths</span> <span class="o">=</span> <span class="p">[(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">/</span> <span class="n">dataset</span><span class="o">.</span><span class="n">path</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">METADATA</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()]</span>
+
+        <span class="n">paths</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">/</span> <span class="n">f</span><span class="o">.</span><span class="n">path</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">dataset</span><span class="o">.</span><span class="n">files</span><span class="p">)</span>
+
+        <span class="n">commits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">iter_commits</span><span class="p">(</span><span class="n">paths</span><span class="o">=</span><span class="n">paths</span><span class="p">,</span> <span class="n">max_count</span><span class="o">=</span><span class="n">max_results</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">commits</span></div>
+
+<div class="viewcode-block" id="DatasetsApiMixin.add_dataset_tag"><a class="viewcode-back" href="../../../../management.html#renku.core.management.datasets.DatasetsApiMixin.add_dataset_tag">[docs]</a>    <span class="k">def</span> <span class="nf">add_dataset_tag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">tag</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Adds a new tag to a dataset.</span>
+
+<span class="sd">        Validates if the tag already exists and that the tag follows</span>
+<span class="sd">        the same rules as docker tags.</span>
+<span class="sd">        See https://docs.docker.com/engine/reference/commandline/tag/</span>
+<span class="sd">        for a documentation of docker tag syntax.</span>
+
+<span class="sd">        :raises: errors.ParameterError</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">128</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">ParameterError</span><span class="p">(</span>
+                <span class="s1">&#39;Tags can be at most 128 characters long.&#39;</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;^(?![.-])[a-zA-Z0-9_.-]{1,128}$&#39;</span><span class="p">,</span> <span class="n">tag</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">ParameterError</span><span class="p">((</span>
+                <span class="s1">&#39;Tag </span><span class="si">{}</span><span class="s1"> is invalid. </span><span class="se">\n</span><span class="s1">&#39;</span>
+                <span class="s1">&#39;Only characters a-z, A-Z, 0-9, ., - and _ &#39;</span>
+                <span class="s1">&#39;are allowed. </span><span class="se">\n</span><span class="s1">Tag can</span><span class="se">\&#39;</span><span class="s1">t start with a . or -&#39;</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tag</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">dataset</span><span class="o">.</span><span class="n">tags</span> <span class="k">if</span> <span class="n">t</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">tag</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+                <span class="c1"># remove duplicate tag</span>
+                <span class="n">dataset</span><span class="o">.</span><span class="n">tags</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">dataset</span><span class="o">.</span><span class="n">tags</span> <span class="k">if</span> <span class="n">t</span><span class="o">.</span><span class="n">name</span> <span class="o">!=</span> <span class="n">tag</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">ParameterError</span><span class="p">(</span>
+                    <span class="s1">&#39;Tag </span><span class="si">{}</span><span class="s1"> already exists&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span>
+                <span class="p">)</span>
+
+        <span class="n">latest_commit</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dataset_commits</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">max_results</span><span class="o">=</span><span class="mi">1</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="n">tag</span> <span class="o">=</span> <span class="n">DatasetTag</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="n">tag</span><span class="p">,</span>
+            <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">,</span>
+            <span class="n">commit</span><span class="o">=</span><span class="n">latest_commit</span><span class="o">.</span><span class="n">hexsha</span><span class="p">,</span>
+            <span class="n">dataset</span><span class="o">=</span><span class="n">dataset</span><span class="o">.</span><span class="n">title</span>
+        <span class="p">)</span>
+
+        <span class="n">dataset</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">dataset</span></div>
+
+<div class="viewcode-block" id="DatasetsApiMixin.remove_dataset_tags"><a class="viewcode-back" href="../../../../management.html#renku.core.management.datasets.DatasetsApiMixin.remove_dataset_tags">[docs]</a>    <span class="k">def</span> <span class="nf">remove_dataset_tags</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">tags</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Removes tags from a dataset.&quot;&quot;&quot;</span>
+        <span class="n">tag_names</span> <span class="o">=</span> <span class="p">{</span><span class="n">t</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">dataset</span><span class="o">.</span><span class="n">tags</span><span class="p">}</span>
+        <span class="n">not_found</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">tags</span><span class="p">)</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">tag_names</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">not_found</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">ParameterError</span><span class="p">(</span>
+                <span class="s1">&#39;Tags </span><span class="si">{}</span><span class="s1"> not found&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">not_found</span><span class="p">))</span>
+            <span class="p">)</span>
+        <span class="n">dataset</span><span class="o">.</span><span class="n">tags</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">dataset</span><span class="o">.</span><span class="n">tags</span> <span class="k">if</span> <span class="n">t</span><span class="o">.</span><span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">tags</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">dataset</span></div>
+
+<div class="viewcode-block" id="DatasetsApiMixin.update_dataset_files"><a class="viewcode-back" href="../../../../management.html#renku.core.management.datasets.DatasetsApiMixin.update_dataset_files">[docs]</a>    <span class="k">def</span> <span class="nf">update_dataset_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="n">ref</span><span class="p">,</span> <span class="n">delete</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Update files and dataset metadata according to their remotes.</span>
+
+<span class="sd">        :param files: List of files to be updated</span>
+<span class="sd">        :param delete: Indicates whether to delete files or not</span>
+
+<span class="sd">        :return: List of files that should be deleted</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">renku</span> <span class="kn">import</span> <span class="n">LocalClient</span>
+
+        <span class="n">visited_repos</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">updated_files</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">deleted_files</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">file_</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">file_</span><span class="o">.</span><span class="n">based_on</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="n">file_</span><span class="o">.</span><span class="n">based_on</span> <span class="o">=</span> <span class="n">DatasetFile</span><span class="o">.</span><span class="n">from_jsonld</span><span class="p">(</span><span class="n">file_</span><span class="o">.</span><span class="n">based_on</span><span class="p">)</span>
+            <span class="n">based_on</span> <span class="o">=</span> <span class="n">file_</span><span class="o">.</span><span class="n">based_on</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="n">based_on</span><span class="o">.</span><span class="n">url</span>
+            <span class="k">if</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">visited_repos</span><span class="p">:</span>
+                <span class="n">repo</span><span class="p">,</span> <span class="n">repo_path</span><span class="p">,</span> <span class="n">remote_client</span> <span class="o">=</span> <span class="n">visited_repos</span><span class="p">[</span><span class="n">url</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">repo</span><span class="p">,</span> <span class="n">repo_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">prepare_git_repo</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">ref</span><span class="p">)</span>
+                <span class="n">remote_client</span> <span class="o">=</span> <span class="n">LocalClient</span><span class="p">(</span><span class="n">repo_path</span><span class="p">)</span>
+                <span class="n">visited_repos</span><span class="p">[</span><span class="n">url</span><span class="p">]</span> <span class="o">=</span> <span class="n">repo</span><span class="p">,</span> <span class="n">repo_path</span><span class="p">,</span> <span class="n">remote_client</span>
+
+            <span class="n">remote_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fetch_file_metadata</span><span class="p">(</span>
+                <span class="n">remote_client</span><span class="p">,</span> <span class="n">based_on</span><span class="o">.</span><span class="n">path</span>
+            <span class="p">)</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">remote_file</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">remote_file</span> <span class="o">=</span> <span class="n">DatasetFile</span><span class="o">.</span><span class="n">from_revision</span><span class="p">(</span>
+                        <span class="n">remote_client</span><span class="p">,</span>
+                        <span class="n">path</span><span class="o">=</span><span class="n">based_on</span><span class="o">.</span><span class="n">path</span><span class="p">,</span>
+                        <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
+                        <span class="n">added</span><span class="o">=</span><span class="n">based_on</span><span class="o">.</span><span class="n">added</span>
+                    <span class="p">)</span>
+                <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">ParameterError</span><span class="p">(</span>
+                        <span class="s1">&#39;Cannot find file </span><span class="si">{}</span><span class="s1"> in the repo </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                            <span class="n">based_on</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="n">url</span>
+                        <span class="p">)</span>
+                    <span class="p">)</span>
+
+            <span class="n">commit_sha</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_commit_sha_from_label</span><span class="p">(</span><span class="n">based_on</span><span class="p">)</span>
+            <span class="n">remote_commit_sha</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_commit_sha_from_label</span><span class="p">(</span><span class="n">remote_file</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">commit_sha</span> <span class="o">!=</span> <span class="n">remote_commit_sha</span><span class="p">:</span>
+                <span class="n">src</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">repo</span><span class="o">.</span><span class="n">working_dir</span><span class="p">)</span> <span class="o">/</span> <span class="n">based_on</span><span class="o">.</span><span class="n">path</span>
+                <span class="n">dst</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">renku_path</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="n">file_</span><span class="o">.</span><span class="n">path</span>
+
+                <span class="k">if</span> <span class="n">src</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+                    <span class="c1"># Fetch file is it is tracked by Git LFS</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_fetch_lfs_files</span><span class="p">(</span><span class="n">repo_path</span><span class="p">,</span> <span class="p">{</span><span class="n">based_on</span><span class="o">.</span><span class="n">path</span><span class="p">})</span>
+                    <span class="k">if</span> <span class="n">remote_client</span><span class="o">.</span><span class="n">_is_external_file</span><span class="p">(</span><span class="n">src</span><span class="p">):</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">remove_file</span><span class="p">(</span><span class="n">dst</span><span class="p">)</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_create_external_file</span><span class="p">(</span><span class="n">src</span><span class="o">.</span><span class="n">resolve</span><span class="p">(),</span> <span class="n">dst</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">)</span>
+                    <span class="n">file_</span><span class="o">.</span><span class="n">based_on</span><span class="o">.</span><span class="n">commit</span> <span class="o">=</span> <span class="n">remote_file</span><span class="o">.</span><span class="n">commit</span>
+                    <span class="n">file_</span><span class="o">.</span><span class="n">based_on</span><span class="o">.</span><span class="n">_label</span> <span class="o">=</span> <span class="n">remote_file</span><span class="o">.</span><span class="n">_label</span>
+                    <span class="n">updated_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">file_</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># File was removed or renamed</span>
+                    <span class="k">if</span> <span class="n">delete</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">remove_file</span><span class="p">(</span><span class="n">dst</span><span class="p">)</span>
+                    <span class="n">deleted_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">file_</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">updated_files</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span> <span class="n">delete</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">deleted_files</span><span class="p">):</span>
+            <span class="c1"># Nothing to commit or update</span>
+            <span class="k">return</span> <span class="n">deleted_files</span>
+
+        <span class="c1"># Commit changes in files</span>
+
+        <span class="n">file_paths</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">/</span> <span class="n">f</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">updated_files</span> <span class="o">+</span> <span class="n">deleted_files</span>
+        <span class="p">}</span>
+        <span class="c1"># Force-add to include possible ignored files that are in datasets</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">git</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">file_paths</span><span class="p">),</span> <span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">skip_hooks</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">external_storage_requested</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">commit</span><span class="p">(</span>
+            <span class="s1">&#39;renku dataset: updated </span><span class="si">{}</span><span class="s1"> files and deleted </span><span class="si">{}</span><span class="s1"> files&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="nb">len</span><span class="p">(</span><span class="n">updated_files</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">deleted_files</span><span class="p">),</span> <span class="n">skip_hooks</span><span class="o">=</span><span class="n">skip_hooks</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Update datasets&#39; metadata</span>
+
+        <span class="n">modified_datasets</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">for</span> <span class="n">file_</span> <span class="ow">in</span> <span class="n">updated_files</span><span class="p">:</span>
+            <span class="n">new_file</span> <span class="o">=</span> <span class="n">DatasetFile</span><span class="o">.</span><span class="n">from_revision</span><span class="p">(</span>
+                <span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">file_</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="n">based_on</span><span class="o">=</span><span class="n">file_</span><span class="o">.</span><span class="n">based_on</span>
+            <span class="p">)</span>
+            <span class="n">file_</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">update_files</span><span class="p">([</span><span class="n">new_file</span><span class="p">])</span>
+            <span class="n">modified_datasets</span><span class="p">[</span><span class="n">file_</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">file_</span><span class="o">.</span><span class="n">dataset</span>
+
+        <span class="k">if</span> <span class="n">delete</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">file_</span> <span class="ow">in</span> <span class="n">deleted_files</span><span class="p">:</span>
+                <span class="n">file_</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">unlink_file</span><span class="p">(</span><span class="n">file_</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+                <span class="n">modified_datasets</span><span class="p">[</span><span class="n">file_</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">file_</span><span class="o">.</span><span class="n">dataset</span>
+
+        <span class="k">for</span> <span class="n">dataset</span> <span class="ow">in</span> <span class="n">modified_datasets</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="n">dataset</span><span class="o">.</span><span class="n">to_yaml</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">deleted_files</span></div>
+
+    <span class="k">def</span> <span class="nf">_create_external_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a new external file.&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">pointer_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_pointer_file</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">src</span><span class="p">)</span>
+            <span class="n">relative</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="n">pointer_file</span><span class="p">,</span> <span class="n">dst</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">symlink</span><span class="p">(</span><span class="n">relative</span><span class="p">,</span> <span class="n">dst</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">OperationError</span><span class="p">(</span>
+                <span class="s1">&#39;Could not create symbolic link&#39;</span>
+            <span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+
+    <span class="k">def</span> <span class="nf">_create_pointer_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">checksum</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a new pointer file.&quot;&quot;&quot;</span>
+        <span class="n">target</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">target</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">checksum</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">checksum</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_checksum</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">-</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">(),</span> <span class="n">checksum</span><span class="p">)</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">renku_pointers_path</span> <span class="o">/</span> <span class="n">filename</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+                <span class="k">break</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">symlink</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">ParameterError</span><span class="p">(</span>
+                <span class="s1">&#39;Cannot find external file </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">path</span>
+
+    <span class="k">def</span> <span class="nf">_calculate_checksum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filepath</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">git</span><span class="o">.</span><span class="n">hash_object</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">filepath</span><span class="p">))</span>
+        <span class="k">except</span> <span class="n">GitCommandError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="DatasetsApiMixin.update_external_files"><a class="viewcode-back" href="../../../../management.html#renku.core.management.datasets.DatasetsApiMixin.update_external_files">[docs]</a>    <span class="k">def</span> <span class="nf">update_external_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">records</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Update files linked to external storage.&quot;&quot;&quot;</span>
+        <span class="n">updated_files_paths</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">updated_datasets</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">for</span> <span class="n">file_</span> <span class="ow">in</span> <span class="n">records</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">file_</span><span class="o">.</span><span class="n">external</span><span class="p">:</span>
+                <span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">/</span> <span class="n">file_</span><span class="o">.</span><span class="n">path</span>
+                <span class="n">link</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="n">os</span><span class="o">.</span><span class="n">readlink</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+                <span class="n">pointer_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">/</span> <span class="n">link</span>
+                <span class="n">pointer_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update_pointer_file</span><span class="p">(</span><span class="n">pointer_file</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">pointer_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">relative</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="n">pointer_file</span><span class="p">,</span> <span class="n">path</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+                    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+                    <span class="n">os</span><span class="o">.</span><span class="n">symlink</span><span class="p">(</span><span class="n">relative</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+                    <span class="n">updated_files_paths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
+                    <span class="n">updated_datasets</span><span class="p">[</span><span class="n">file_</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">file_</span><span class="o">.</span><span class="n">dataset</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">updated_files_paths</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">git</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="o">*</span><span class="n">updated_files_paths</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">git</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">renku_pointers_path</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">commit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">commit</span><span class="p">(</span>
+            <span class="s1">&#39;renku dataset: updated </span><span class="si">{}</span><span class="s1"> external files&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="nb">len</span><span class="p">(</span><span class="n">updated_files_paths</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">dataset</span> <span class="ow">in</span> <span class="n">updated_datasets</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">file_</span> <span class="ow">in</span> <span class="n">dataset</span><span class="o">.</span><span class="n">files</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">/</span> <span class="n">file_</span><span class="o">.</span><span class="n">path</span><span class="p">)</span> <span class="ow">in</span> <span class="n">updated_files_paths</span><span class="p">:</span>
+                    <span class="n">file_</span><span class="o">.</span><span class="n">commit</span> <span class="o">=</span> <span class="n">commit</span>
+                    <span class="n">file_</span><span class="o">.</span><span class="n">_label</span> <span class="o">=</span> <span class="n">file_</span><span class="o">.</span><span class="n">default_label</span><span class="p">()</span>
+            <span class="n">dataset</span><span class="o">.</span><span class="n">to_yaml</span><span class="p">()</span></div>
+
+    <span class="k">def</span> <span class="nf">_update_pointer_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pointer_file_path</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Update a pointer file.&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">target</span> <span class="o">=</span> <span class="n">pointer_file_path</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">strict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+            <span class="n">target</span> <span class="o">=</span> <span class="n">pointer_file_path</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+            <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">ParameterError</span><span class="p">(</span>
+                <span class="s1">&#39;External file not found: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="n">checksum</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_checksum</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+        <span class="n">current_checksum</span> <span class="o">=</span> <span class="n">pointer_file_path</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">checksum</span> <span class="o">==</span> <span class="n">current_checksum</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">pointer_file_path</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_pointer_file</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">checksum</span><span class="o">=</span><span class="n">checksum</span><span class="p">)</span>
+
+<div class="viewcode-block" id="DatasetsApiMixin.remove_file"><a class="viewcode-back" href="../../../../management.html#renku.core.management.datasets.DatasetsApiMixin.remove_file">[docs]</a>    <span class="k">def</span> <span class="nf">remove_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filepath</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Remove a file/symlink and its pointer file (for external files).&quot;&quot;&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">link</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="n">os</span><span class="o">.</span><span class="n">readlink</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>  <span class="c1"># not a symlink but a normal file</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">link</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+            <span class="k">pass</span></div>
+
+    <span class="k">def</span> <span class="nf">_is_external_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Checks if a path within repo is an external file.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">is_symlink</span><span class="p">()</span> <span class="ow">or</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_path_within_repo</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="n">pointer</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">readlink</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">renku_home</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">POINTERS</span><span class="si">}</span><span class="s1">&#39;</span> <span class="ow">in</span> <span class="n">pointer</span>
+
+<div class="viewcode-block" id="DatasetsApiMixin.has_external_files"><a class="viewcode-back" href="../../../../management.html#renku.core.management.datasets.DatasetsApiMixin.has_external_files">[docs]</a>    <span class="k">def</span> <span class="nf">has_external_files</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return True if project has external files.&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">dataset</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">file_</span> <span class="ow">in</span> <span class="n">dataset</span><span class="o">.</span><span class="n">files</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">file_</span><span class="o">.</span><span class="n">external</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="kc">True</span></div>
+
+    <span class="k">def</span> <span class="nf">_is_path_within_repo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isabs</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">path</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+
+<div class="viewcode-block" id="DatasetsApiMixin.prepare_git_repo"><a class="viewcode-back" href="../../../../management.html#renku.core.management.datasets.DatasetsApiMixin.prepare_git_repo">[docs]</a>    <span class="k">def</span> <span class="nf">prepare_git_repo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">ref</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Clone and cache a Git repo.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">url</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">GitError</span><span class="p">(</span><span class="s1">&#39;Invalid URL.&#39;</span><span class="p">)</span>
+
+        <span class="n">RENKU_BRANCH</span> <span class="o">=</span> <span class="s1">&#39;renku-default-branch&#39;</span>
+
+        <span class="k">def</span> <span class="nf">checkout</span><span class="p">(</span><span class="n">repo</span><span class="p">,</span> <span class="n">ref</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">repo</span><span class="o">.</span><span class="n">git</span><span class="o">.</span><span class="n">checkout</span><span class="p">(</span><span class="n">ref</span><span class="p">)</span>
+            <span class="k">except</span> <span class="n">GitCommandError</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">ParameterError</span><span class="p">(</span>
+                    <span class="s1">&#39;Cannot find reference &quot;</span><span class="si">{}</span><span class="s1">&quot; in Git repository: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                        <span class="n">ref</span><span class="p">,</span> <span class="n">url</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+
+        <span class="n">ref</span> <span class="o">=</span> <span class="n">ref</span> <span class="ow">or</span> <span class="n">RENKU_BRANCH</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="n">GitURL</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">pathname</span>
+        <span class="k">if</span> <span class="n">u</span><span class="o">.</span><span class="n">hostname</span> <span class="o">==</span> <span class="s1">&#39;localhost&#39;</span><span class="p">:</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">())</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="n">path</span>
+        <span class="n">repo_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">path</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+        <span class="n">repo_path</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">renku_path</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">CACHE</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">hostname</span> <span class="o">/</span> <span class="n">path</span> <span class="o">/</span> <span class="n">repo_name</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">repo_path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+            <span class="n">repo</span> <span class="o">=</span> <span class="n">Repo</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">repo_path</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">repo</span><span class="o">.</span><span class="n">remotes</span><span class="o">.</span><span class="n">origin</span><span class="o">.</span><span class="n">url</span> <span class="o">==</span> <span class="n">url</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">repo</span><span class="o">.</span><span class="n">git</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="nb">all</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                    <span class="n">repo</span><span class="o">.</span><span class="n">git</span><span class="o">.</span><span class="n">checkout</span><span class="p">(</span><span class="n">ref</span><span class="p">)</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">repo</span><span class="o">.</span><span class="n">git</span><span class="o">.</span><span class="n">pull</span><span class="p">()</span>
+                    <span class="k">except</span> <span class="n">GitError</span><span class="p">:</span>
+                        <span class="c1"># When ref is not a branch, an error is thrown</span>
+                        <span class="k">pass</span>
+                <span class="k">except</span> <span class="n">GitError</span><span class="p">:</span>
+                    <span class="c1"># ignore the error and try re-cloning</span>
+                    <span class="k">pass</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">repo</span><span class="p">,</span> <span class="n">repo_path</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">repo_path</span><span class="p">))</span>
+            <span class="k">except</span> <span class="ne">PermissionError</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">InvalidFileOperation</span><span class="p">(</span>
+                    <span class="s1">&#39;Cannot delete files in </span><span class="si">{}</span><span class="s1">: Permission denied&#39;</span><span class="o">.</span>
+                    <span class="nb">format</span><span class="p">(</span><span class="n">repo_path</span><span class="p">)</span>
+                <span class="p">)</span>
+
+        <span class="n">repo</span> <span class="o">=</span> <span class="n">clone</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">repo_path</span><span class="p">),</span> <span class="n">install_githooks</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="c1"># Because the name of the default branch is not always &#39;master&#39;, we</span>
+        <span class="c1"># create an alias of the default branch when cloning the repo. It</span>
+        <span class="c1"># is used to refer to the default branch later.</span>
+        <span class="n">renku_ref</span> <span class="o">=</span> <span class="s1">&#39;refs/heads/&#39;</span> <span class="o">+</span> <span class="n">RENKU_BRANCH</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">repo</span><span class="o">.</span><span class="n">git</span><span class="o">.</span><span class="n">execute</span><span class="p">([</span>
+                <span class="s1">&#39;git&#39;</span><span class="p">,</span> <span class="s1">&#39;symbolic-ref&#39;</span><span class="p">,</span> <span class="n">renku_ref</span><span class="p">,</span> <span class="n">repo</span><span class="o">.</span><span class="n">head</span><span class="o">.</span><span class="n">reference</span><span class="o">.</span><span class="n">path</span>
+            <span class="p">])</span>
+            <span class="n">checkout</span><span class="p">(</span><span class="n">repo</span><span class="p">,</span> <span class="n">ref</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">GitCommandError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">GitError</span><span class="p">(</span>
+                <span class="s1">&#39;Cannot clone remote Git repo: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+            <span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">repo</span><span class="p">,</span> <span class="n">repo_path</span></div>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_fetch_file_metadata</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return metadata for a single file.&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">dataset</span> <span class="ow">in</span> <span class="n">client</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">file_</span> <span class="ow">in</span> <span class="n">dataset</span><span class="o">.</span><span class="n">files</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">file_</span><span class="o">.</span><span class="n">path</span> <span class="o">==</span> <span class="n">path</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">file_</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_get_commit_sha_from_label</span><span class="p">(</span><span class="n">dataset_file</span><span class="p">):</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="n">dataset_file</span><span class="o">.</span><span class="n">_label</span>
+        <span class="k">if</span> <span class="s1">&#39;@&#39;</span> <span class="ow">in</span> <span class="n">label</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">label</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;@&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">label</span>
+
+    <span class="k">def</span> <span class="nf">_download</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">extract</span><span class="p">,</span> <span class="n">progress_class</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">chunk_size</span><span class="o">=</span><span class="mi">16384</span>
+    <span class="p">):</span>
+        <span class="k">def</span> <span class="nf">extract_dataset</span><span class="p">(</span><span class="n">filepath</span><span class="p">):</span>
+            <span class="sd">&quot;&quot;&quot;Extract downloaded file.&quot;&quot;&quot;</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">tmp</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">mkdtemp</span><span class="p">()</span>
+                <span class="n">patoolib</span><span class="o">.</span><span class="n">extract_archive</span><span class="p">(</span>
+                    <span class="nb">str</span><span class="p">(</span><span class="n">filepath</span><span class="p">),</span> <span class="n">outdir</span><span class="o">=</span><span class="n">tmp</span><span class="p">,</span> <span class="n">verbosity</span><span class="o">=-</span><span class="mi">1</span>
+                <span class="p">)</span>
+            <span class="k">except</span> <span class="n">patoolib</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">PatoolError</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">filepath</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="p">[</span><span class="n">filepath</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">filepath</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>
+                <span class="k">return</span> <span class="n">Path</span><span class="p">(</span><span class="n">tmp</span><span class="p">),</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">Path</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">)]</span>
+
+        <span class="n">tmp_root</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">renku_path</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">CACHE</span>
+        <span class="n">tmp_root</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">mkdtemp</span><span class="p">(</span><span class="nb">dir</span><span class="o">=</span><span class="n">tmp_root</span><span class="p">)</span>
+
+        <span class="k">with</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">request</span><span class="p">:</span>
+            <span class="n">request</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">filename</span><span class="p">:</span>
+                <span class="n">u</span> <span class="o">=</span> <span class="n">parse</span><span class="o">.</span><span class="n">urlparse</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+                <span class="n">filename</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">name</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">filename</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">ParameterError</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s1">&#39;URL Cannot find a file to download from </span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s1">&#39;</span>
+                    <span class="p">)</span>
+
+            <span class="n">download_to</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span> <span class="o">/</span> <span class="n">filename</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">download_to</span><span class="p">),</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_</span><span class="p">:</span>
+                <span class="n">total_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;content-length&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+                <span class="n">progress_class</span> <span class="o">=</span> <span class="n">progress_class</span> <span class="ow">or</span> <span class="n">DownloadProgressCallback</span>
+                <span class="n">progress</span> <span class="o">=</span> <span class="n">progress_class</span><span class="p">(</span>
+                    <span class="n">description</span><span class="o">=</span><span class="n">filename</span><span class="p">,</span> <span class="n">total_size</span><span class="o">=</span><span class="n">total_size</span>
+                <span class="p">)</span>
+
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">iter_content</span><span class="p">(</span><span class="n">chunk_size</span><span class="o">=</span><span class="n">chunk_size</span><span class="p">):</span>
+                        <span class="k">if</span> <span class="n">chunk</span><span class="p">:</span>  <span class="c1"># ignore keep-alive chunks</span>
+                            <span class="n">file_</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+                            <span class="n">progress</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">chunk</span><span class="p">))</span>
+                <span class="k">finally</span><span class="p">:</span>
+                    <span class="n">progress</span><span class="o">.</span><span class="n">finalize</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">extract</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">extract_dataset</span><span class="p">(</span><span class="n">download_to</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">download_to</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="p">[</span><span class="n">download_to</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="DownloadProgressCallback"><a class="viewcode-back" href="../../../../management.html#renku.core.management.datasets.DownloadProgressCallback">[docs]</a><span class="k">class</span> <span class="nc">DownloadProgressCallback</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Interface to report various stages of a download.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">total_size</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Default initializer.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="DownloadProgressCallback.update"><a class="viewcode-back" href="../../../../management.html#renku.core.management.datasets.DownloadProgressCallback.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Update the status.&quot;&quot;&quot;</span></div>
+
+<div class="viewcode-block" id="DownloadProgressCallback.finalize"><a class="viewcode-back" href="../../../../management.html#renku.core.management.datasets.DownloadProgressCallback.finalize">[docs]</a>    <span class="k">def</span> <span class="nf">finalize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Called once when the download is finished.&quot;&quot;&quot;</span></div></div>
+
+
+<span class="k">def</span> <span class="nf">_check_url</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Check if a url is local/remote and if it contains a git repository.&quot;&quot;&quot;</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">parse</span><span class="o">.</span><span class="n">urlparse</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">u</span><span class="o">.</span><span class="n">scheme</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">SUPPORTED_SCHEMES</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">UrlSchemeNotSupported</span><span class="p">(</span>
+            <span class="s1">&#39;Scheme &quot;</span><span class="si">{}</span><span class="s1">&quot; not supported&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">scheme</span><span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="n">is_remote</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">scheme</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;file&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">url</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;git@&#39;</span><span class="p">)</span>
+    <span class="n">is_git</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">if</span> <span class="n">is_remote</span><span class="p">:</span>
+        <span class="n">is_git</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.git&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">Repo</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="n">search_parent_directories</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">GitError</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">is_git</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="k">return</span> <span class="n">is_remote</span><span class="p">,</span> <span class="n">is_git</span>
+
+
+<span class="n">DATASET_METADATA_PATHS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">Path</span><span class="p">(</span><span class="n">RENKU_HOME</span><span class="p">)</span> <span class="o">/</span> <span class="n">Path</span><span class="p">(</span><span class="n">DatasetsApiMixin</span><span class="o">.</span><span class="n">DATASETS</span><span class="p">),</span>
+    <span class="n">Path</span><span class="p">(</span><span class="n">RENKU_HOME</span><span class="p">)</span> <span class="o">/</span> <span class="n">Path</span><span class="p">(</span><span class="n">DatasetsApiMixin</span><span class="o">.</span><span class="n">POINTERS</span><span class="p">),</span>
+    <span class="n">Path</span><span class="p">(</span><span class="n">RENKU_HOME</span><span class="p">)</span> <span class="o">/</span> <span class="n">Path</span><span class="p">(</span><span class="n">LinkReference</span><span class="o">.</span><span class="n">REFS</span><span class="p">),</span>
+    <span class="s1">&#39;.gitattributes&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../../../index.html">
+    <h1 class="logo logo-name">
+      Renku
+      <span class="renku">連句</span>
+    </h1>
+  </a>
+</p>
+
+
+<p class="blurb">Python API and CLI for the Renku platform.</p>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license.html#authors">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../changes.html">Changes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../glossary.html">Glossary</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../comparison.html">How does this compare …</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../commands.html">Renku Command Line</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/index.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../management.html">Low-level API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../plugins.html">Plugin Support</a></li>
+</ul>
+
+
+<hr />
+<ul>
+    
+    <li class="toctree-l1"><a href="https://github.com/SwissDataScienceCenter/renku-python">renku-python@GitHub</a></li>
+    
+    <li class="toctree-l1"><a href="https://pypi.python.org/pypi/renku/">renku-python@PyPI</a></li>
+    
+    <li class="toctree-l1"><a href="https://github.com/SwissDataScienceCenter/renku">renku@GitHub</a></li>
+    
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017-2020, Swiss Data Science Center.
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

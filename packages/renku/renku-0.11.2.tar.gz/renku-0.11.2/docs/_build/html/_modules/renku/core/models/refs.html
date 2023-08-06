@@ -1,0 +1,255 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>renku.core.models.refs &#8212; Renku 0.10.5.dev72+dirty documentation</title>
+    <link rel="stylesheet" href="../../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  
+   
+  <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900,300italic,400italic" rel="stylesheet" type="text/css">
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  </head><body>
+  <div class="git-ribbon">
+    <a href="http://github.com/SwissDataScienceCenter" rel="me">Join us on GitHub</a>
+  </div>
+  
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for renku.core.models.refs</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1">#</span>
+<span class="c1"># Copyright 2018-2020- Swiss Data Science Center (SDSC)</span>
+<span class="c1"># A partnership between École Polytechnique Fédérale de Lausanne (EPFL) and</span>
+<span class="c1"># Eidgenössische Technische Hochschule Zürich (ETHZ).</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="sd">&quot;&quot;&quot;Manage names of Renku objects.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">import</span> <span class="nn">attr</span>
+
+<span class="kn">from</span> <span class="nn">renku.core</span> <span class="kn">import</span> <span class="n">errors</span>
+
+
+<div class="viewcode-block" id="LinkReference"><a class="viewcode-back" href="../../../../models/refs.html#renku.core.models.refs.LinkReference">[docs]</a><span class="nd">@attr</span><span class="o">.</span><span class="n">s</span><span class="p">(</span><span class="n">slots</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">LinkReference</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Manage linked object names.&quot;&quot;&quot;</span>
+
+    <span class="n">client</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">()</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">()</span>
+
+    <span class="n">REFS</span> <span class="o">=</span> <span class="s1">&#39;refs&#39;</span>
+    <span class="sd">&quot;&quot;&quot;Define a name of the folder with references in the Renku folder.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="LinkReference.check_ref_format"><a class="viewcode-back" href="../../../../models/refs.html#renku.core.models.refs.LinkReference.check_ref_format">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">check_ref_format</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">no_slashes</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Ensures that a reference name is well formed.</span>
+
+<span class="sd">        It follows Git naming convention:</span>
+
+<span class="sd">        - any path component of it begins with &quot;.&quot;, or</span>
+<span class="sd">        - it has double dots &quot;..&quot;, or</span>
+<span class="sd">        - it has ASCII control characters, or</span>
+<span class="sd">        - it has &quot;:&quot;, &quot;?&quot;, &quot;\[&quot;, &quot;\\&quot;, &quot;^&quot;, &quot;~&quot;, SP, or TAB anywhere, or</span>
+<span class="sd">        - it has &quot;*&quot; anywhere, or</span>
+<span class="sd">        - it ends with a &quot;/&quot;, or</span>
+<span class="sd">        - it ends with &quot;.lock&quot;, or</span>
+<span class="sd">        - it contains a &quot;@{&quot; portion</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;--allow-onelevel&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span> <span class="k">if</span> <span class="n">no_slashes</span> <span class="k">else</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="p">)</span>
+        <span class="k">return</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">((</span><span class="s1">&#39;git&#39;</span><span class="p">,</span> <span class="s1">&#39;check-ref-format&#39;</span><span class="p">)</span> <span class="o">+</span>
+                              <span class="n">params</span><span class="p">)</span><span class="o">.</span><span class="n">returncode</span> <span class="o">==</span> <span class="mi">0</span></div>
+
+<div class="viewcode-block" id="LinkReference.name_validator"><a class="viewcode-back" href="../../../../models/refs.html#renku.core.models.refs.LinkReference.name_validator">[docs]</a>    <span class="nd">@name</span><span class="o">.</span><span class="n">validator</span>
+    <span class="k">def</span> <span class="nf">name_validator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attribute</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Validate reference name.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_ref_format</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">ParameterError</span><span class="p">(</span>
+                <span class="s1">&#39;The reference name &quot;</span><span class="si">{0}</span><span class="s1">&quot; is not valid.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">path</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return full reference path.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">renku_path</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">REFS</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">reference</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the path we point to relative to the client.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+
+<div class="viewcode-block" id="LinkReference.delete"><a class="viewcode-back" href="../../../../models/refs.html#renku.core.models.refs.LinkReference.delete">[docs]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Delete the reference at the given path.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="LinkReference.set_reference"><a class="viewcode-back" href="../../../../models/refs.html#renku.core.models.refs.LinkReference.set_reference">[docs]</a>    <span class="k">def</span> <span class="nf">set_reference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reference</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set ourselves to the given reference path.&quot;&quot;&quot;</span>
+        <span class="n">reference_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">reference</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">absolute</span><span class="p">()</span>
+        <span class="n">reference_path</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">symlink</span><span class="p">(</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">reference_path</span><span class="p">),</span> <span class="n">start</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">parent</span><span class="p">)),</span>
+            <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="LinkReference.iter_items"><a class="viewcode-back" href="../../../../models/refs.html#renku.core.models.refs.LinkReference.iter_items">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">iter_items</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">client</span><span class="p">,</span> <span class="n">common_path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Find all references in the repository.&quot;&quot;&quot;</span>
+        <span class="n">refs_path</span> <span class="o">=</span> <span class="n">path</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">renku_path</span> <span class="o">/</span> <span class="bp">cls</span><span class="o">.</span><span class="n">REFS</span>
+        <span class="k">if</span> <span class="n">common_path</span><span class="p">:</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">path</span> <span class="o">/</span> <span class="n">common_path</span>
+
+        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">path</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">is_dir</span><span class="p">():</span>
+                <span class="k">continue</span>
+            <span class="k">yield</span> <span class="bp">cls</span><span class="p">(</span><span class="n">client</span><span class="o">=</span><span class="n">client</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">name</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="n">refs_path</span><span class="p">)))</span></div>
+
+<div class="viewcode-block" id="LinkReference.create"><a class="viewcode-back" href="../../../../models/refs.html#renku.core.models.refs.LinkReference.create">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">client</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create symlink to object in reference path.&quot;&quot;&quot;</span>
+        <span class="n">ref</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">client</span><span class="o">=</span><span class="n">client</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">ref</span><span class="o">.</span><span class="n">path</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">lexists</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">force</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">OSError</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">ref</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">ref</span></div>
+
+<div class="viewcode-block" id="LinkReference.rename"><a class="viewcode-back" href="../../../../models/refs.html#renku.core.models.refs.LinkReference.rename">[docs]</a>    <span class="k">def</span> <span class="nf">rename</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_name</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Rename self to a new name.&quot;&quot;&quot;</span>
+        <span class="n">new_ref</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">client</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">new_name</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">)</span>
+        <span class="n">new_ref</span><span class="o">.</span><span class="n">set_reference</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">reference</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">new_ref</span></div></div>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../../../index.html">
+    <h1 class="logo logo-name">
+      Renku
+      <span class="renku">連句</span>
+    </h1>
+  </a>
+</p>
+
+
+<p class="blurb">Python API and CLI for the Renku platform.</p>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license.html#authors">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../changes.html">Changes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../glossary.html">Glossary</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../comparison.html">How does this compare …</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../commands.html">Renku Command Line</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/index.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../management.html">Low-level API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../plugins.html">Plugin Support</a></li>
+</ul>
+
+
+<hr />
+<ul>
+    
+    <li class="toctree-l1"><a href="https://github.com/SwissDataScienceCenter/renku-python">renku-python@GitHub</a></li>
+    
+    <li class="toctree-l1"><a href="https://pypi.python.org/pypi/renku/">renku-python@PyPI</a></li>
+    
+    <li class="toctree-l1"><a href="https://github.com/SwissDataScienceCenter/renku">renku@GitHub</a></li>
+    
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017-2020, Swiss Data Science Center.
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

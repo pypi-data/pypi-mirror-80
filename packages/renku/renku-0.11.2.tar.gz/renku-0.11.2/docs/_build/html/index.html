@@ -1,0 +1,310 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renku Python Library, CLI and Service &#8212; Renku 0.10.5.dev72+dirty documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="License" href="license.html" />
+  
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900,300italic,400italic" rel="stylesheet" type="text/css">
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  </head><body>
+  <div class="git-ribbon">
+    <a href="http://github.com/SwissDataScienceCenter" rel="me">Join us on GitHub</a>
+  </div>
+  
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="renku-python-library-cli-and-service">
+<h1>Renku Python Library, CLI and Service<a class="headerlink" href="#renku-python-library-cli-and-service" title="Permalink to this headline">¶</a></h1>
+<a class="reference external image-reference" href="https://github.com/SwissDataScienceCenter/renku-python/actions?query=workflow%3A%22Test%2C+Integration+Tests+and+Deploy%22+branch%3Amaster"><img alt="https://github.com/SwissDataScienceCenter/renku-python/workflows/Test,%20Integration%20Tests%20and%20Deploy/badge.svg" src="https://github.com/SwissDataScienceCenter/renku-python/workflows/Test,%20Integration%20Tests%20and%20Deploy/badge.svg" /></a>
+<a class="reference external image-reference" href="https://coveralls.io/r/SwissDataScienceCenter/renku-python"><img alt="https://img.shields.io/coveralls/SwissDataScienceCenter/renku-python.svg" src="https://img.shields.io/coveralls/SwissDataScienceCenter/renku-python.svg" /></a>
+<a class="reference external image-reference" href="https://github.com/SwissDataScienceCenter/renku-python/releases"><img alt="https://img.shields.io/github/tag/SwissDataScienceCenter/renku-python.svg" src="https://img.shields.io/github/tag/SwissDataScienceCenter/renku-python.svg" /></a>
+<a class="reference external image-reference" href="https://pypi.python.org/pypi/renku"><img alt="https://img.shields.io/pypi/dm/renku.svg" src="https://img.shields.io/pypi/dm/renku.svg" /></a>
+<a class="reference external image-reference" href="http://renku-python.readthedocs.io/en/latest/?badge=latest"><img alt="Documentation Status" src="http://readthedocs.org/projects/renku-python/badge/?version=latest" /></a>
+<a class="reference external image-reference" href="https://github.com/SwissDataScienceCenter/renku-python/blob/master/LICENSE"><img alt="https://img.shields.io/github/license/SwissDataScienceCenter/renku-python.svg" src="https://img.shields.io/github/license/SwissDataScienceCenter/renku-python.svg" /></a>
+<a class="reference external image-reference" href="https://pullreminders.com?ref=badge"><img alt="Pull reminders" src="https://pullreminders.com/badge.svg" /></a>
+<p>A Python library for the <a class="reference external" href="https://github.com/SwissDataScienceCenter/renku">Renku collaborative data science platform</a>. It includes a CLI and SDK
+for end-users as well as a service backend. It provides functionality for the
+creation and management of projects and datasets, and simple utilities to
+capture data provenance while performing analysis tasks.</p>
+<dl class="simple">
+<dt><strong>NOTE</strong>:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">renku-python</span></code> is the python library and core service for Renku - it <em>does
+not</em> start the Renku platform itself - for that, refer to the Renku docs on
+<a class="reference external" href="https://renku.readthedocs.io/en/latest/developer/setup.html">running the platform</a>.</p>
+</dd>
+</dl>
+<div class="section" id="renku-for-users">
+<h2>Renku for Users<a class="headerlink" href="#renku-for-users" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="installation">
+<h3>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h3>
+<p>Renku releases and development versions are available from <a class="reference external" href="https://pypi.org/project/renku/">PyPI</a>. You can install it using any tool that
+knows how to handle PyPI packages. Our recommendation is to use <a class="reference external" href="https://github.com/pipxproject/pipx">:code:pipx</a>.</p>
+<div class="section" id="pipx">
+<h4><code class="docutils literal notranslate"><span class="pre">pipx</span></code><a class="headerlink" href="#pipx" title="Permalink to this headline">¶</a></h4>
+<p>First, <a class="reference external" href="https://github.com/pipxproject/pipx#install-pipx">install pipx</a>
+and make sure that the <code class="docutils literal notranslate"><span class="pre">$PATH</span></code> is correctly configured.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python3 -m pip install --user pipx
+$ pipx ensurepath
+</pre></div>
+</div>
+<p>Once <code class="docutils literal notranslate"><span class="pre">pipx</span></code> is installed use following command to install <code class="docutils literal notranslate"><span class="pre">renku</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pipx install renku
+$ which renku
+~/.local/bin/renku
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">pipx</span></code> installs renku into its own virtual environment, making sure that it
+does not pollute any other packages or versions that you may have already
+installed.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you install renku as a dependency in a virtual environment and the
+environment is active, your shell will default to the version installed
+in the virtual environment, <em>not</em> the version installed by <code class="docutils literal notranslate"><span class="pre">pipx</span></code>.</p>
+</div>
+<p>To install a development release:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pipx install --pip-args pre renku
+</pre></div>
+</div>
+</div>
+<div class="section" id="pip">
+<h4><code class="docutils literal notranslate"><span class="pre">pip</span></code><a class="headerlink" href="#pip" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install renku
+</pre></div>
+</div>
+<p>The latest development versions are available on PyPI or from the Git
+repository:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install --pre renku
+# - OR -
+$ pip install -e git+https://github.com/SwissDataScienceCenter/renku-python.git#egg=renku
+</pre></div>
+</div>
+<p>Use following installation steps based on your operating system and preferences
+if you would like to work with the command line interface and you do not need
+the Python library to be importable.</p>
+</div>
+<div class="section" id="docker">
+<h4>Docker<a class="headerlink" href="#docker" title="Permalink to this headline">¶</a></h4>
+<p>The containerized version of the CLI can be launched using Docker command.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker run -it -v &quot;$PWD&quot;:&quot;$PWD&quot; -w=&quot;$PWD&quot; renku/renku-python renku
+</pre></div>
+</div>
+<p>It makes sure your current directory is mounted to the same place in the
+container.</p>
+</div>
+</div>
+</div>
+<div class="section" id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<p>Interaction with the platform can take place via the command-line
+interface (CLI).</p>
+<p>Start by creating for folder where you want to keep your Renku project:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> mkdir -p ~/temp/my-renku-project
+<span class="gp">$</span> <span class="nb">cd</span> ~/temp/my-renku-project
+<span class="gp">$</span> renku init
+</pre></div>
+</div>
+<p>Create a dataset and add data to it:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku dataset create my-dataset
+<span class="gp">$</span> renku dataset add my-dataset https://raw.githubusercontent.com/SwissDataScienceCenter/renku-python/master/README.rst
+</pre></div>
+</div>
+<p>Run an analysis:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku run wc &lt; data/my-dataset/README.rst &gt; wc_readme
+</pre></div>
+</div>
+<p>Trace the data provenance:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku log wc_readme
+</pre></div>
+</div>
+<p>These are the basics, but there is much more that Renku allows you to do with
+your data analysis workflows.</p>
+<p>For more information about using <cite>renku</cite>, refer to the <cite>renku –help</cite>.</p>
+</div>
+<div class="section" id="project-information">
+<h2>Project Information<a class="headerlink" href="#project-information" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html#authors">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html">Changes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="full-table-of-contents">
+<h2>Full Table of Contents<a class="headerlink" href="#full-table-of-contents" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="comparison.html">How does this compare …</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="comparison.html#to-makefile">… to <code class="docutils literal notranslate"><span class="pre">Makefile</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="commands.html">Renku Command Line</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="commands.html#renku-base-command"><code class="docutils literal notranslate"><span class="pre">renku</span></code> (base command)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commands.html#module-renku.cli.init"><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">init</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="commands.html#module-renku.cli.config"><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">config</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="commands.html#module-renku.cli.dataset"><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">dataset</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="commands.html#module-renku.cli.run"><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">run</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="commands.html#module-renku.cli.log"><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">log</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="commands.html#module-renku.cli.status"><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">status</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="commands.html#module-renku.cli.update"><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">update</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="commands.html#module-renku.cli.rerun"><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">rerun</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="commands.html#module-renku.cli.remove"><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">rm</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="commands.html#module-renku.cli.move"><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">mv</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="commands.html#module-renku.cli.workflow"><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">workflow</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="commands.html#module-renku.cli.save"><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">save</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="commands.html#module-renku.cli.show"><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">show</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="commands.html#module-renku.cli.storage"><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">storage</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="commands.html#module-renku.cli.doctor"><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">doctor</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="commands.html#module-renku.cli.migrate"><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">migrate</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="commands.html#module-renku.cli.githooks"><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">githooks</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="commands.html#module-renku.cli.exception_handler">Error Tracking</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="models/index.html">Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="models/projects.html">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models/datasets.html">Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models/provenance.html">Provenance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models/workflow.html">Renku Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models/workflow.html#module-renku.core.models.workflow.converters">Renku Workflow Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models/cwl.html">Tools and Workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models/refs.html">File References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="management.html">Low-level API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="management.html#module-renku.core.management.datasets">Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="management.html#module-renku.core.management.repository">Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="management.html#module-renku.core.management.git">Git Internals</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="plugins.html">Plugin Support</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html#module-renku.core.plugins.run"><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">run</span></code> hooks</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="#">
+    <h1 class="logo logo-name">
+      Renku
+      <span class="renku">連句</span>
+    </h1>
+  </a>
+</p>
+
+
+<p class="blurb">Python API and CLI for the Renku platform.</p>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html#authors">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html">Changes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="comparison.html">How does this compare …</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commands.html">Renku Command Line</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/index.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="management.html">Low-level API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plugins.html">Plugin Support</a></li>
+</ul>
+
+
+<hr />
+<ul>
+    
+    <li class="toctree-l1"><a href="https://github.com/SwissDataScienceCenter/renku-python">renku-python@GitHub</a></li>
+    
+    <li class="toctree-l1"><a href="https://pypi.python.org/pypi/renku/">renku-python@PyPI</a></li>
+    
+    <li class="toctree-l1"><a href="https://github.com/SwissDataScienceCenter/renku">renku@GitHub</a></li>
+    
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+      <li>Next: <a href="license.html" title="next chapter">License</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017-2020, Swiss Data Science Center.
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

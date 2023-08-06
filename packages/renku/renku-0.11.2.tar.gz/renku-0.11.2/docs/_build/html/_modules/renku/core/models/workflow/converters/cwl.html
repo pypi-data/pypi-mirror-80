@@ -1,0 +1,571 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>renku.core.models.workflow.converters.cwl &#8212; Renku 0.10.5.dev72+dirty documentation</title>
+    <link rel="stylesheet" href="../../../../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../../../../../" src="../../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../../_static/jquery.js"></script>
+    <script src="../../../../../../_static/underscore.js"></script>
+    <script src="../../../../../../_static/doctools.js"></script>
+    <script src="../../../../../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+  
+   
+  <link rel="stylesheet" href="../../../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900,300italic,400italic" rel="stylesheet" type="text/css">
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  </head><body>
+  <div class="git-ribbon">
+    <a href="http://github.com/SwissDataScienceCenter" rel="me">Join us on GitHub</a>
+  </div>
+  
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for renku.core.models.workflow.converters.cwl</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1">#</span>
+<span class="c1"># Copyright 2018-2020 - Swiss Data Science Center (SDSC)</span>
+<span class="c1"># A partnership between École Polytechnique Fédérale de Lausanne (EPFL) and</span>
+<span class="c1"># Eidgenössische Technische Hochschule Zürich (ETHZ).</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="sd">&quot;&quot;&quot;Converter for workflows to cwl.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">tempfile</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">uuid</span> <span class="kn">import</span> <span class="n">uuid4</span>
+
+<span class="kn">import</span> <span class="nn">cwlgen</span>
+
+<span class="kn">from</span> <span class="nn">renku.core.models.entities</span> <span class="kn">import</span> <span class="n">Collection</span>
+<span class="kn">from</span> <span class="nn">renku.core.models.workflow.parameters</span> <span class="kn">import</span> <span class="n">CommandOutput</span>
+
+
+<span class="k">class</span> <span class="nc">CommandLineTool</span><span class="p">(</span><span class="n">cwlgen</span><span class="o">.</span><span class="n">CommandLineTool</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;CommandLineTool that supports empty outputs.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">get_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set outputs to empty if not set.&quot;&quot;&quot;</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">CommandLineTool</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">get_dict</span><span class="p">()</span>
+        <span class="k">if</span> <span class="s1">&#39;outputs&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
+            <span class="n">d</span><span class="p">[</span><span class="s1">&#39;outputs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">return</span> <span class="n">d</span>
+
+
+<span class="k">class</span> <span class="nc">WorkflowStep</span><span class="p">(</span><span class="n">cwlgen</span><span class="o">.</span><span class="n">WorkflowStep</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;WorkflowStep that supports empty outputs.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">get_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set out to empty if not set.&quot;&quot;&quot;</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">WorkflowStep</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">get_dict</span><span class="p">()</span>
+        <span class="k">if</span> <span class="s1">&#39;out&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
+            <span class="n">d</span><span class="p">[</span><span class="s1">&#39;out&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">return</span> <span class="n">d</span>
+
+
+<span class="k">def</span> <span class="nf">_get_argument_type</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get the type of a command line argument.&quot;&quot;&quot;</span>
+    <span class="n">type_</span> <span class="o">=</span> <span class="s1">&#39;string&#39;</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="n">type_</span> <span class="o">=</span> <span class="s1">&#39;int&#39;</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="k">return</span> <span class="n">value</span><span class="p">,</span> <span class="n">type_</span>
+
+
+<span class="k">def</span> <span class="nf">_recurse_subprocesses</span><span class="p">(</span><span class="n">run</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Recursively get actual steps (not ``WorkflowRun``) for execution.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">run</span><span class="o">.</span><span class="n">subprocesses</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[(</span><span class="n">index</span><span class="p">,</span> <span class="n">run</span><span class="p">)],</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="n">processes</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">run</span><span class="o">.</span><span class="n">subprocesses</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">process_order</span><span class="p">):</span>
+        <span class="n">result</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">_recurse_subprocesses</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
+        <span class="n">processes</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">processes</span><span class="p">,</span> <span class="n">index</span>
+
+
+<div class="viewcode-block" id="CWLConverter"><a class="viewcode-back" href="../../../../../../models/workflow.html#renku.core.models.workflow.converters.cwl.CWLConverter">[docs]</a><span class="k">class</span> <span class="nc">CWLConverter</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Converts a ``Run`` to cwl file(s).&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="CWLConverter.convert"><a class="viewcode-back" href="../../../../../../models/workflow.html#renku.core.models.workflow.converters.cwl.CWLConverter.convert">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">convert</span><span class="p">(</span><span class="n">run</span><span class="p">,</span> <span class="n">client</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Convert the workflow to one ore more .cwl files.&quot;&quot;&quot;</span>
+        <span class="n">basedir</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">path</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">path</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+                <span class="n">tmpdir</span> <span class="o">=</span> <span class="n">path</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">tmpdir</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">parent</span>
+                <span class="n">filename</span> <span class="o">=</span> <span class="n">path</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">tmpdir</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">mkdtemp</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">run</span><span class="p">,</span> <span class="s1">&#39;subprocesses&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">run</span><span class="o">.</span><span class="n">subprocesses</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">CWLConverter</span><span class="o">.</span><span class="n">_convert_composite</span><span class="p">(</span>
+                <span class="n">run</span><span class="p">,</span> <span class="n">tmpdir</span><span class="p">,</span> <span class="n">basedir</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="n">filename</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">CWLConverter</span><span class="o">.</span><span class="n">_convert_step</span><span class="p">(</span>
+                <span class="n">run</span><span class="p">,</span> <span class="n">tmpdir</span><span class="p">,</span> <span class="n">basedir</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="n">filename</span>
+            <span class="p">)</span></div>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_convert_composite</span><span class="p">(</span><span class="n">run</span><span class="p">,</span> <span class="n">tmpdir</span><span class="p">,</span> <span class="n">basedir</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Converts a workflow made up of several steps.&quot;&quot;&quot;</span>
+        <span class="n">inputs</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">arguments</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">consumed_outputs</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="n">steps</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="n">input_index</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">argument_index</span> <span class="o">=</span> <span class="mi">1</span>
+
+        <span class="n">subprocesses</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">_recurse_subprocesses</span><span class="p">(</span><span class="n">run</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># preprocess to add dummy outputs in case of output directories</span>
+        <span class="n">previous_output_dirs</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">subprocess</span> <span class="ow">in</span> <span class="n">subprocesses</span><span class="p">:</span>
+            <span class="k">for</span> <span class="nb">input</span> <span class="ow">in</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">inputs</span><span class="p">:</span>
+                <span class="n">entity</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">consumes</span>
+                <span class="n">key</span> <span class="o">=</span> <span class="p">(</span><span class="n">entity</span><span class="o">.</span><span class="n">commit</span><span class="o">.</span><span class="n">hexsha</span><span class="p">,</span> <span class="n">entity</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">previous_output_dirs</span><span class="p">:</span>
+                    <span class="k">continue</span>
+
+                <span class="k">for</span> <span class="n">previous_process</span> <span class="ow">in</span> <span class="n">previous_output_dirs</span><span class="p">[</span><span class="n">key</span><span class="p">]:</span>
+                    <span class="n">previous_process</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                        <span class="n">CommandOutput</span><span class="p">(</span><span class="n">produces</span><span class="o">=</span><span class="n">entity</span><span class="p">,</span> <span class="n">create_folder</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                    <span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">output</span> <span class="ow">in</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">outputs</span><span class="p">:</span>
+                <span class="n">entity</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">produces</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">entity</span><span class="p">,</span> <span class="n">Collection</span><span class="p">):</span>
+                    <span class="k">continue</span>
+
+                <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">entity</span><span class="o">.</span><span class="n">entities</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">e</span><span class="o">.</span><span class="n">commit</span><span class="o">.</span><span class="n">hexsha</span> <span class="o">!=</span> <span class="n">entity</span><span class="o">.</span><span class="n">commit</span><span class="o">.</span><span class="n">hexsha</span><span class="p">:</span>
+                        <span class="k">continue</span>
+
+                    <span class="n">key</span> <span class="o">=</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">commit</span><span class="o">.</span><span class="n">hexsha</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+                    <span class="n">previous_output_dirs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">subprocess</span><span class="p">)</span>
+
+        <span class="c1"># Convert workflow steps</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">subprocess</span> <span class="ow">in</span> <span class="n">subprocesses</span><span class="p">:</span>
+            <span class="n">tool</span><span class="p">,</span> <span class="n">path</span> <span class="o">=</span> <span class="n">CWLConverter</span><span class="o">.</span><span class="n">_convert_step</span><span class="p">(</span>
+                <span class="n">subprocess</span><span class="p">,</span> <span class="n">tmpdir</span><span class="p">,</span> <span class="n">basedir</span>
+            <span class="p">)</span>
+            <span class="n">step</span> <span class="o">=</span> <span class="n">WorkflowStep</span><span class="p">(</span><span class="s1">&#39;step_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">path</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="nb">input</span> <span class="ow">in</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">inputs</span><span class="p">:</span>
+                <span class="n">input_path</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">consumes</span><span class="o">.</span><span class="n">path</span>
+
+                <span class="n">sanitized_id</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">sanitized_id</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">input_path</span> <span class="ow">in</span> <span class="n">inputs</span><span class="p">:</span>
+                    <span class="c1"># already used as top-level input elsewhere, reuse</span>
+                    <span class="n">step</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                        <span class="n">cwlgen</span><span class="o">.</span><span class="n">WorkflowStepInput</span><span class="p">(</span>
+                            <span class="n">sanitized_id</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">inputs</span><span class="p">[</span><span class="n">input_path</span><span class="p">]</span>
+                        <span class="p">)</span>
+                    <span class="p">)</span>
+                <span class="k">elif</span> <span class="n">input_path</span> <span class="ow">in</span> <span class="n">outputs</span><span class="p">:</span>
+                    <span class="c1"># output of a previous step, refer to it</span>
+                    <span class="n">consumed_outputs</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">outputs</span><span class="p">[</span><span class="n">input_path</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+                    <span class="n">step</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                        <span class="n">cwlgen</span><span class="o">.</span><span class="n">WorkflowStepInput</span><span class="p">(</span>
+                            <span class="n">sanitized_id</span><span class="p">,</span>
+                            <span class="n">source</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">/</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                                <span class="n">outputs</span><span class="p">[</span><span class="n">input_path</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">outputs</span><span class="p">[</span><span class="n">input_path</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+                            <span class="p">)</span>
+                        <span class="p">)</span>
+                    <span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># input isn&#39;t output and doesn&#39;t exist yet, add new</span>
+                    <span class="n">inputs</span><span class="p">[</span><span class="n">input_path</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;input_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">input_index</span><span class="p">)</span>
+                    <span class="n">step</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                        <span class="n">cwlgen</span><span class="o">.</span><span class="n">WorkflowStepInput</span><span class="p">(</span>
+                            <span class="n">sanitized_id</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">inputs</span><span class="p">[</span><span class="n">input_path</span><span class="p">]</span>
+                        <span class="p">)</span>
+                    <span class="p">)</span>
+                    <span class="n">input_index</span> <span class="o">+=</span> <span class="mi">1</span>
+
+            <span class="k">for</span> <span class="n">argument</span> <span class="ow">in</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">arguments</span><span class="p">:</span>
+                <span class="n">argument_id</span> <span class="o">=</span> <span class="s1">&#39;argument_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">argument_index</span><span class="p">)</span>
+                <span class="n">arguments</span><span class="p">[</span><span class="n">argument_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">argument</span><span class="o">.</span><span class="n">value</span>
+                <span class="n">step</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="n">cwlgen</span><span class="o">.</span><span class="n">WorkflowStepInput</span><span class="p">(</span>
+                        <span class="n">argument</span><span class="o">.</span><span class="n">sanitized_id</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">),</span>
+                        <span class="n">source</span><span class="o">=</span><span class="n">argument_id</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+                <span class="n">argument_index</span> <span class="o">+=</span> <span class="mi">1</span>
+
+            <span class="k">for</span> <span class="n">output</span> <span class="ow">in</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">outputs</span><span class="p">:</span>
+                <span class="n">sanitized_id</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">sanitized_id</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">output</span><span class="o">.</span><span class="n">mapped_to</span><span class="p">:</span>
+                    <span class="n">sanitized_id</span> <span class="o">=</span> <span class="s1">&#39;output_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                        <span class="n">output</span><span class="o">.</span><span class="n">mapped_to</span><span class="o">.</span><span class="n">stream_type</span>
+                    <span class="p">)</span>
+                <span class="n">outputs</span><span class="p">[</span><span class="n">output</span><span class="o">.</span><span class="n">produces</span><span class="o">.</span><span class="n">path</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">sanitized_id</span><span class="p">,</span> <span class="n">step</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+                <span class="n">step</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cwlgen</span><span class="o">.</span><span class="n">WorkflowStepOutput</span><span class="p">(</span><span class="n">sanitized_id</span><span class="p">))</span>
+
+            <span class="n">steps</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">step</span><span class="p">)</span>
+
+        <span class="n">workflow_object</span> <span class="o">=</span> <span class="n">cwlgen</span><span class="o">.</span><span class="n">Workflow</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">uuid4</span><span class="p">()),</span> <span class="n">cwl_version</span><span class="o">=</span><span class="s1">&#39;v1.0&#39;</span><span class="p">)</span>
+        <span class="n">workflow_object</span><span class="o">.</span><span class="n">hints</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">workflow_object</span><span class="o">.</span><span class="n">requirements</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># check types of paths and add as top level inputs/outputs</span>
+        <span class="k">for</span> <span class="n">path</span><span class="p">,</span> <span class="n">id_</span> <span class="ow">in</span> <span class="n">inputs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">type_</span> <span class="o">=</span> <span class="s1">&#39;Directory&#39;</span> <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">else</span> <span class="s1">&#39;File&#39;</span>
+            <span class="n">workflow_object</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">cwlgen</span><span class="o">.</span><span class="n">InputParameter</span><span class="p">(</span>
+                    <span class="n">id_</span><span class="p">,</span>
+                    <span class="n">param_type</span><span class="o">=</span><span class="n">type_</span><span class="p">,</span>
+                    <span class="n">default</span><span class="o">=</span><span class="p">{</span>
+                        <span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">basedir</span><span class="p">,</span> <span class="n">path</span><span class="p">)),</span>
+                        <span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="n">type_</span>
+                    <span class="p">}</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">id_</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">arguments</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">value</span><span class="p">,</span> <span class="n">type_</span> <span class="o">=</span> <span class="n">_get_argument_type</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="n">workflow_object</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">cwlgen</span><span class="o">.</span><span class="n">InputParameter</span><span class="p">(</span><span class="n">id_</span><span class="p">,</span> <span class="n">param_type</span><span class="o">=</span><span class="n">type_</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">value</span><span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="p">(</span><span class="n">id_</span><span class="p">,</span> <span class="n">step_id</span><span class="p">))</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">outputs</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">type_</span> <span class="o">=</span> <span class="s1">&#39;Directory&#39;</span> <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">else</span> <span class="s1">&#39;File&#39;</span>
+            <span class="n">workflow_object</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">cwlgen</span><span class="o">.</span><span class="n">WorkflowOutputParameter</span><span class="p">(</span>
+                    <span class="s1">&#39;output_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">index</span><span class="p">),</span>
+                    <span class="n">output_source</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">/</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">step_id</span><span class="p">,</span> <span class="n">id_</span><span class="p">),</span>
+                    <span class="n">param_type</span><span class="o">=</span><span class="n">type_</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+        <span class="n">workflow_object</span><span class="o">.</span><span class="n">steps</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">steps</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">filename</span><span class="p">:</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;parent_</span><span class="si">{}</span><span class="s1">.cwl&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">uuid4</span><span class="p">())</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tmpdir</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+        <span class="n">workflow_object</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">workflow_object</span><span class="p">,</span> <span class="n">path</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_convert_step</span><span class="p">(</span><span class="n">step</span><span class="p">,</span> <span class="n">tmpdir</span><span class="p">,</span> <span class="n">basedir</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Converts a single workflow step to a cwl file.&quot;&quot;&quot;</span>
+        <span class="n">stdin</span><span class="p">,</span> <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+
+        <span class="n">inputs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">step</span><span class="o">.</span><span class="n">inputs</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">output</span> <span class="ow">in</span> <span class="n">step</span><span class="o">.</span><span class="n">outputs</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">output</span><span class="o">.</span><span class="n">mapped_to</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">output</span><span class="o">.</span><span class="n">mapped_to</span><span class="o">.</span><span class="n">stream_type</span> <span class="o">==</span> <span class="s1">&#39;stderr&#39;</span><span class="p">:</span>
+                <span class="n">stderr</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">produces</span><span class="o">.</span><span class="n">path</span>
+            <span class="k">if</span> <span class="n">output</span><span class="o">.</span><span class="n">mapped_to</span><span class="o">.</span><span class="n">stream_type</span> <span class="o">==</span> <span class="s1">&#39;stdout&#39;</span><span class="p">:</span>
+                <span class="n">stdout</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">produces</span><span class="o">.</span><span class="n">path</span>
+
+        <span class="n">tool_object</span> <span class="o">=</span> <span class="n">CommandLineTool</span><span class="p">(</span>
+            <span class="n">tool_id</span><span class="o">=</span><span class="n">step</span><span class="o">.</span><span class="n">_id</span><span class="p">,</span>
+            <span class="n">base_command</span><span class="o">=</span><span class="n">step</span><span class="o">.</span><span class="n">command</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">),</span>
+            <span class="n">stdin</span><span class="o">=</span><span class="n">stdin</span><span class="p">,</span>
+            <span class="n">stderr</span><span class="o">=</span><span class="n">stderr</span><span class="p">,</span>
+            <span class="n">stdout</span><span class="o">=</span><span class="n">stdout</span><span class="p">,</span>
+            <span class="n">cwl_version</span><span class="o">=</span><span class="s1">&#39;v1.0&#39;</span>
+        <span class="p">)</span>
+
+        <span class="n">workdir_req</span> <span class="o">=</span> <span class="n">cwlgen</span><span class="o">.</span><span class="n">InitialWorkDirRequirement</span><span class="p">([])</span>
+        <span class="n">jsrequirement</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="n">dirents</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">output</span> <span class="ow">in</span> <span class="n">step</span><span class="o">.</span><span class="n">outputs</span><span class="p">:</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">produces</span><span class="o">.</span><span class="n">path</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+                <span class="n">path</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">path</span> <span class="o">!=</span> <span class="s1">&#39;.&#39;</span> <span class="ow">and</span> <span class="n">path</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dirents</span> <span class="ow">and</span> <span class="n">output</span><span class="o">.</span><span class="n">create_folder</span><span class="p">):</span>
+                <span class="c1"># workflow needs to create subdirectory for output file,</span>
+                <span class="c1"># if the directory was not already present</span>
+                <span class="n">workdir_req</span><span class="o">.</span><span class="n">listing</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="n">cwlgen</span><span class="o">.</span><span class="n">InitialWorkDirRequirement</span><span class="o">.</span><span class="n">Dirent</span><span class="p">(</span>
+                        <span class="n">entry</span><span class="o">=</span><span class="s1">&#39;$({&quot;listing&quot;: [], &quot;class&quot;: &quot;Directory&quot;})&#39;</span><span class="p">,</span>
+                        <span class="n">entryname</span><span class="o">=</span><span class="n">path</span><span class="p">,</span>
+                        <span class="n">writable</span><span class="o">=</span><span class="kc">True</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+                <span class="n">dirents</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+                <span class="n">jsrequirement</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">outp</span><span class="p">,</span> <span class="n">arg</span> <span class="o">=</span> <span class="n">CWLConverter</span><span class="o">.</span><span class="n">_convert_output</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+            <span class="n">tool_object</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">outp</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">arg</span><span class="p">:</span>
+                <span class="n">tool_object</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">input_</span> <span class="ow">in</span> <span class="n">inputs</span><span class="p">:</span>
+            <span class="n">tool_input</span> <span class="o">=</span> <span class="n">CWLConverter</span><span class="o">.</span><span class="n">_convert_input</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="n">basedir</span><span class="p">)</span>
+
+            <span class="n">workdir_req</span><span class="o">.</span><span class="n">listing</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">cwlgen</span><span class="o">.</span><span class="n">InitialWorkDirRequirement</span><span class="o">.</span><span class="n">Dirent</span><span class="p">(</span>
+                    <span class="n">entry</span><span class="o">=</span><span class="s1">&#39;$(inputs.</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tool_input</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
+                    <span class="n">entryname</span><span class="o">=</span><span class="n">input_</span><span class="o">.</span><span class="n">consumes</span><span class="o">.</span><span class="n">path</span><span class="p">,</span>
+                    <span class="n">writable</span><span class="o">=</span><span class="kc">False</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+
+            <span class="n">tool_object</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tool_input</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">input_</span><span class="o">.</span><span class="n">mapped_to</span><span class="p">:</span>
+                <span class="n">tool_object</span><span class="o">.</span><span class="n">stdin</span> <span class="o">=</span> <span class="s1">&#39;$(inputs.</span><span class="si">{}</span><span class="s1">.path)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tool_input</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+                <span class="n">jsrequirement</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">for</span> <span class="n">argument</span> <span class="ow">in</span> <span class="n">step</span><span class="o">.</span><span class="n">arguments</span><span class="p">:</span>
+            <span class="n">tool_object</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">CWLConverter</span><span class="o">.</span><span class="n">_convert_argument</span><span class="p">(</span><span class="n">argument</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">workdir_req</span><span class="o">.</span><span class="n">listing</span><span class="p">:</span>
+            <span class="n">tool_object</span><span class="o">.</span><span class="n">requirements</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">workdir_req</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">jsrequirement</span><span class="p">:</span>
+            <span class="n">tool_object</span><span class="o">.</span><span class="n">requirements</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">cwlgen</span><span class="o">.</span><span class="n">InlineJavascriptRequirement</span><span class="p">()</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">filename</span><span class="p">:</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">.cwl&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">uuid4</span><span class="p">())</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tmpdir</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+        <span class="n">tool_object</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">tool_object</span><span class="p">,</span> <span class="n">path</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_convert_input</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">basedir</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Converts an input to a CWL input.&quot;&quot;&quot;</span>
+        <span class="n">entity</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">consumes</span>
+        <span class="n">type_</span> <span class="o">=</span> <span class="s1">&#39;Directory&#39;</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">entity</span><span class="p">,</span> <span class="n">Collection</span><span class="p">)</span> <span class="k">else</span> <span class="s1">&#39;File&#39;</span>
+
+        <span class="n">sanitized_id</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">sanitized_id</span>
+        <span class="n">sanitized_id</span> <span class="o">=</span> <span class="n">sanitized_id</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">input</span><span class="o">.</span><span class="n">mapped_to</span><span class="p">:</span>
+            <span class="n">sanitized_id</span> <span class="o">=</span> <span class="s1">&#39;input_stdin&#39;</span>
+
+        <span class="n">separate</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">prefix</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="nb">input</span><span class="o">.</span><span class="n">prefix</span><span class="p">:</span>
+            <span class="n">prefix</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">prefix</span>
+            <span class="n">separate</span> <span class="o">=</span> <span class="kc">False</span>
+
+            <span class="k">if</span> <span class="n">prefix</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">):</span>
+                <span class="n">prefix</span> <span class="o">=</span> <span class="n">prefix</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">separate</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="k">return</span> <span class="n">cwlgen</span><span class="o">.</span><span class="n">CommandInputParameter</span><span class="p">(</span>
+            <span class="n">sanitized_id</span><span class="p">,</span>
+            <span class="n">param_type</span><span class="o">=</span><span class="n">type_</span><span class="p">,</span>
+            <span class="n">input_binding</span><span class="o">=</span><span class="n">cwlgen</span><span class="o">.</span><span class="n">CommandLineBinding</span><span class="p">(</span>
+                <span class="n">position</span><span class="o">=</span><span class="nb">input</span><span class="o">.</span><span class="n">position</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="n">prefix</span><span class="p">,</span> <span class="n">separate</span><span class="o">=</span><span class="n">separate</span>
+            <span class="p">),</span>
+            <span class="n">default</span><span class="o">=</span><span class="p">{</span>
+                <span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">basedir</span><span class="p">,</span> <span class="n">entity</span><span class="o">.</span><span class="n">path</span><span class="p">)),</span>
+                <span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="n">type_</span>
+            <span class="p">}</span>
+        <span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_convert_output</span><span class="p">(</span><span class="n">output</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Converts an output to a CWL output.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">output</span><span class="o">.</span><span class="n">mapped_to</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">cwlgen</span><span class="o">.</span><span class="n">CommandOutputParameter</span><span class="p">(</span>
+                <span class="s1">&#39;output_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">mapped_to</span><span class="o">.</span><span class="n">stream_type</span><span class="p">),</span>
+                <span class="n">param_type</span><span class="o">=</span><span class="n">output</span><span class="o">.</span><span class="n">mapped_to</span><span class="o">.</span><span class="n">stream_type</span><span class="p">,</span>
+                <span class="n">streamable</span><span class="o">=</span><span class="kc">False</span>
+            <span class="p">),</span> <span class="kc">None</span>
+
+        <span class="n">entity</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">produces</span>
+        <span class="n">type_</span> <span class="o">=</span> <span class="s1">&#39;Directory&#39;</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">entity</span><span class="p">,</span> <span class="n">Collection</span><span class="p">)</span> <span class="k">else</span> <span class="s1">&#39;File&#39;</span>
+
+        <span class="n">sanitized_id</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">sanitized_id</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">output</span><span class="o">.</span><span class="n">position</span><span class="p">:</span>
+            <span class="c1"># output is specified as a parameter, create an input as well</span>
+            <span class="n">separate</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">prefix</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">if</span> <span class="n">output</span><span class="o">.</span><span class="n">prefix</span><span class="p">:</span>
+                <span class="n">prefix</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">prefix</span>
+                <span class="n">separate</span> <span class="o">=</span> <span class="kc">False</span>
+
+                <span class="k">if</span> <span class="n">prefix</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">):</span>
+                    <span class="n">prefix</span> <span class="o">=</span> <span class="n">prefix</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                    <span class="n">separate</span> <span class="o">=</span> <span class="kc">True</span>
+
+            <span class="n">arg</span> <span class="o">=</span> <span class="n">cwlgen</span><span class="o">.</span><span class="n">CommandInputParameter</span><span class="p">(</span>
+                <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">_arg&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sanitized_id</span><span class="p">),</span>
+                <span class="n">param_type</span><span class="o">=</span><span class="s1">&#39;string&#39;</span><span class="p">,</span>
+                <span class="n">input_binding</span><span class="o">=</span><span class="n">cwlgen</span><span class="o">.</span><span class="n">CommandLineBinding</span><span class="p">(</span>
+                    <span class="n">position</span><span class="o">=</span><span class="n">output</span><span class="o">.</span><span class="n">position</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="n">prefix</span><span class="p">,</span> <span class="n">separate</span><span class="o">=</span><span class="n">separate</span>
+                <span class="p">),</span>
+                <span class="n">default</span><span class="o">=</span><span class="n">entity</span><span class="o">.</span><span class="n">path</span>
+            <span class="p">)</span>
+            <span class="n">outp</span> <span class="o">=</span> <span class="n">cwlgen</span><span class="o">.</span><span class="n">CommandOutputParameter</span><span class="p">(</span>
+                <span class="n">sanitized_id</span><span class="p">,</span>
+                <span class="n">param_type</span><span class="o">=</span><span class="n">type_</span><span class="p">,</span>
+                <span class="n">output_binding</span><span class="o">=</span><span class="n">cwlgen</span><span class="o">.</span><span class="n">CommandOutputBinding</span><span class="p">(</span>
+                    <span class="n">glob</span><span class="o">=</span><span class="s1">&#39;$(inputs.</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arg</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+            <span class="k">return</span> <span class="n">outp</span><span class="p">,</span> <span class="n">arg</span>
+
+        <span class="k">return</span> <span class="n">cwlgen</span><span class="o">.</span><span class="n">CommandOutputParameter</span><span class="p">(</span>
+            <span class="n">sanitized_id</span><span class="p">,</span>
+            <span class="n">param_type</span><span class="o">=</span><span class="n">type_</span><span class="p">,</span>
+            <span class="n">output_binding</span><span class="o">=</span><span class="n">cwlgen</span><span class="o">.</span><span class="n">CommandOutputBinding</span><span class="p">(</span><span class="n">glob</span><span class="o">=</span><span class="n">entity</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+        <span class="p">),</span> <span class="kc">None</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_convert_argument</span><span class="p">(</span><span class="n">argument</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Converts an argument to a CWL input.&quot;&quot;&quot;</span>
+        <span class="n">value</span><span class="p">,</span> <span class="n">type_</span> <span class="o">=</span> <span class="n">_get_argument_type</span><span class="p">(</span><span class="n">argument</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
+        <span class="n">separate</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">prefix</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">argument</span><span class="o">.</span><span class="n">prefix</span><span class="p">:</span>
+            <span class="n">prefix</span> <span class="o">=</span> <span class="n">argument</span><span class="o">.</span><span class="n">prefix</span>
+            <span class="n">separate</span> <span class="o">=</span> <span class="kc">False</span>
+
+            <span class="k">if</span> <span class="n">prefix</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">):</span>
+                <span class="n">prefix</span> <span class="o">=</span> <span class="n">prefix</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">separate</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="k">return</span> <span class="n">cwlgen</span><span class="o">.</span><span class="n">CommandInputParameter</span><span class="p">(</span>
+            <span class="n">argument</span><span class="o">.</span><span class="n">sanitized_id</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">),</span>
+            <span class="n">param_type</span><span class="o">=</span><span class="n">type_</span><span class="p">,</span>
+            <span class="n">input_binding</span><span class="o">=</span><span class="n">cwlgen</span><span class="o">.</span><span class="n">CommandLineBinding</span><span class="p">(</span>
+                <span class="n">position</span><span class="o">=</span><span class="n">argument</span><span class="o">.</span><span class="n">position</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="n">prefix</span><span class="p">,</span> <span class="n">separate</span><span class="o">=</span><span class="n">separate</span>
+            <span class="p">),</span>
+            <span class="n">default</span><span class="o">=</span><span class="n">value</span>
+        <span class="p">)</span></div>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../../../../../index.html">
+    <h1 class="logo logo-name">
+      Renku
+      <span class="renku">連句</span>
+    </h1>
+  </a>
+</p>
+
+
+<p class="blurb">Python API and CLI for the Renku platform.</p>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../license.html#authors">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../changes.html">Changes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../glossary.html">Glossary</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../comparison.html">How does this compare …</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../commands.html">Renku Command Line</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../models/index.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../management.html">Low-level API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../plugins.html">Plugin Support</a></li>
+</ul>
+
+
+<hr />
+<ul>
+    
+    <li class="toctree-l1"><a href="https://github.com/SwissDataScienceCenter/renku-python">renku-python@GitHub</a></li>
+    
+    <li class="toctree-l1"><a href="https://pypi.python.org/pypi/renku/">renku-python@PyPI</a></li>
+    
+    <li class="toctree-l1"><a href="https://github.com/SwissDataScienceCenter/renku">renku@GitHub</a></li>
+    
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../../../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017-2020, Swiss Data Science Center.
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

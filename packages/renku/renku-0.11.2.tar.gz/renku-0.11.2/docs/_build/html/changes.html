@@ -1,0 +1,909 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Changes &#8212; Renku 0.10.5.dev72+dirty documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Glossary" href="glossary.html" />
+    <link rel="prev" title="Contributing" href="contributing.html" />
+  
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900,300italic,400italic" rel="stylesheet" type="text/css">
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  </head><body>
+  <div class="git-ribbon">
+    <a href="http://github.com/SwissDataScienceCenter" rel="me">Join us on GitHub</a>
+  </div>
+  
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="changes">
+<h1>Changes<a class="headerlink" href="#changes" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2><a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/compare/v0.10.3...v0.10.4">0.10.4</a> (2020-05-18)<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="bug-fixes">
+<h3>Bug Fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>dataset:</strong> update default behaviour and messaging on dataset unlink
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1275">#1275</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/98d67284668f3f1c0d37aba52dc6a5557e8fc806">98d6728</a>)</p></li>
+<li><p><strong>dataset:</strong> correct url in different domain
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1211">#1211</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/49e8b8bf21c1bacae3eb580f8e3043b79e823ff5">49e8b8b</a>)</p></li>
+</ul>
+</div>
+<div class="section" id="features">
+<h3>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>cli:</strong> Adds warning messages for LFS, fix output redirection
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1199">#1199</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/31969f54f36b5fbbf827f81411929b991580e1fa">31969f5</a>)</p></li>
+<li><p><strong>core:</strong> Adds lfs file size limit and lfs ignore file
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1210">#1210</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/1f3c81c9a4faed3e520a01e8881c08f437d871cf">1f3c81c</a>)</p></li>
+<li><p><strong>core:</strong> Adds renku storage clean command
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1235">#1235</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/7029400ef2750c0ff6d5ab55387c21353baee4c2">7029400</a>)</p></li>
+<li><p><strong>core:</strong> git hook to avoid committing large files
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1238">#1238</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/e8f1a8b811222f80dbc765e177d73ca8db7db290">e8f1a8b</a>)</p></li>
+<li><p><strong>core:</strong> renku doctor check for lfs migrate info
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1234">#1234</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/480da06e453b3a5770467accec070a5d84ed5951">480da06</a>)</p></li>
+<li><p><strong>dataset:</strong> fail early when external storage not installed
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1239">#1239</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/e6ea6dade55f928681795395c316cd9de9116845">e6ea6da</a>)</p></li>
+<li><p><strong>core:</strong> project clone API support for revision checkout
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1208">#1208</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/74116e9ae0c37dbb1e5f772695288aaefaac66ec">74116e9</a>)</p></li>
+<li><p><strong>service:</strong> protected branches support
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1222">#1222</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/8405ce5ad1d3aa3f10c583aff2e7ca283db5033e">8405ce5</a>)</p></li>
+<li><p><strong>dataset:</strong> doi variations for import
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1216">#1216</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/0f329dd1796d61838bef89f66ff1bb88af243059">0f329dd</a>)</p></li>
+<li><p><strong>dataset:</strong> keywords in metadata
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1209">#1209</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/f98a800c07d901d7461be9250fe6957325b2adcb">f98a800</a>)</p></li>
+<li><p><strong>dataset:</strong> no failure when adding ignored files
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1213">#1213</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/b1e275fc59999fe6b146e556b073a65dc1726bb5">b1e275f</a>)</p></li>
+<li><p><strong>service:</strong> read template manifest
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1254">#1254</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/7eac85b766c9deeaba44e1adbc89900b952bef0d">7eac85b</a>)</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id2">
+<h2><a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/compare/v0.10.2...v0.10.3">0.10.3</a> (2020-04-22)<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>Bug Fixes<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>dataset:</strong> avoid recursive addition of data directory
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1163">#1163</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/79e3b0346df89dbb445df769dfa9dca0f878a242">79e3b03</a>)</p></li>
+<li><p><strong>dataset:</strong> commit after unlinking files
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1120">#1120</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/97e8754729078a54f20876ddaaf9ca191f4cb59a">97e8754</a>)</p></li>
+<li><p><strong>dataset:</strong> Dataverse export
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1028">#1028</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/737cecfebb298daa5704bda0ead73ebff1312539">737cecf</a>)</p></li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h3>Features<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>core:</strong> CLI warning when in non-root directory
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1162">#1162</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/115e46227decd7a4597a0918f3bae279fc73e366">115e462</a>)</p></li>
+<li><p><strong>dataset:</strong> migrate submodule-based datasets
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1092">#1092</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/dba20c467ecf60361785bf515cd80633765db518">dba20c4</a>)</p></li>
+<li><p><strong>dataset:</strong> no failure when adding existing files
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1177">#1177</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/a68dcb789d9e9103a64fd678686256566a92d25c">a68dcb7</a>)</p></li>
+<li><p><strong>dataset:</strong> remove –link flag
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1164">#1164</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/969d4f88a082437e7f55a123347c2f63f32d5593">969d4f8</a>)</p></li>
+<li><p><strong>dataset:</strong> show file size in ls-files
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1123">#1123</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/095193038d41c60e503d0dd52d8de2fca7ce29f8">0951930</a>)</p></li>
+<li><p><strong>datasets:</strong> specify title on dataset creation
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1204">#1204</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/fb70ac50533bfdb1b1cfb8d1e163c40531ea35fe">fb70ac5</a>)</p></li>
+<li><p><strong>init:</strong> read and display template variables
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1134">#1134</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/0f86dc5fde89274a59f11345a5cc106fcbd8b206">0f86dc5</a>),
+closes
+<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1126">#1126</a></p></li>
+<li><p><strong>service:</strong> add remote files to dataset
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1139">#1139</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/f6bebfea203c63bcf0843b48377b786a97aaa535">f6bebfe</a>)</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id5">
+<h2><a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/compare/v0.10.0...v0.10.1">0.10.1</a> (2020-03-31)<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h3>Bug Fixes<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>core:</strong> directory input regression
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1155">#1155</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/b17c84382c68eee78f6fbaddc2b18794e72f30a3">b17c843</a>)</p></li>
+<li><p><strong>dataset:</strong> correct url when importing with DOI
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1156">#1156</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/025b735dfbe34e2bd58e85c2cbd6722b328fccef">025b735</a>)</p></li>
+</ul>
+</div>
+<div class="section" id="id7">
+<h3>Features<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>renku init options refactor
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1127">#1127</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/78b208bf9800a0c4caf85b4eed20bf5656561e37">78b208b</a>)</p></li>
+<li><p><strong>datasets:</strong> add files from dropbox
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1135">#1135</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/bf5f2db34479ed574af9fd57a893884abddb6f41">bf5f2db</a>)</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id8">
+<h2><a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/compare/v0.9.1...v0.10.0">0.10.0</a> (2020-03-25)<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<p>This release brings about several important Dataset features:</p>
+<ul class="simple">
+<li><p>importing renku datasets (<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/838">#838</a>)</p></li>
+<li><p>working with data external to the repository (<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/974">#974</a>)</p></li>
+<li><p>editing dataset metadata (<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1111">#1111</a>)</p></li>
+</ul>
+<p>Please see the <a class="reference external" href="https://renku-python.readthedocs.io/en/latest/commands.html#module-renku.cli.dataset">Dataset documentation</a> for details.</p>
+<p>Additional features were implemented for the backend service to facilitate a smoother user
+experience for dataset file manipulation.</p>
+<p><strong>IMPORTANT</strong>: starting with this version, a new metadata migration mechanism is in place
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1003">#1003</a>). Renku commands
+will insist on migrating a project immediately if the metadata is found to be outdated.</p>
+<div class="section" id="id9">
+<h3>Bug Fixes<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>cli:</strong> consistenly show correct contexts
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1096">#1096</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/b333f0f27fdaeec1ce3ba7a145739055429419d9">b333f0f</a>)</p></li>
+<li><p><strong>dataset:</strong> –no-external-storage flag not working
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1130">#1130</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/c183e97940914cca1b7415722b4af2f47ad082c0">c183e97</a>)</p></li>
+<li><p><strong>dataset:</strong> commit only updated dataset files
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1116">#1116</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/d9739dfee081181a4801373a85a057267945da1f">d9739df</a>)</p></li>
+<li><p><strong>datasets:</strong> fixed importing large amount of small files
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1119">#1119</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/8d61473bb6630d4b75c0d95a3d001ea2a5bcfbb7">8d61473</a>)</p></li>
+<li><p><strong>datasets:</strong> raises correct error message on import of protected
+dataset
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1112">#1112</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/e579904acd4aa944476b4990e881ad6416efffb4">e579904</a>)</p></li>
+</ul>
+</div>
+<div class="section" id="id10">
+<h3>Features<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>core:</strong> new migration mechanism
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1003">#1003</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/1cc33d46918468ec82fa5829d4e7bd03e7e25b77">1cc33d4</a>)</p></li>
+<li><p><strong>dataset:</strong> adding external data without copying
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/974">#974</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/6a17512e416737419b370c730172117b338dd528">6a17512</a>)</p></li>
+<li><p><strong>dataset:</strong> bypass import confirmation
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1124">#1124</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/947210ae4432ef6eb6d3a902d239871d405abbbf">947210a</a>)</p></li>
+<li><p><strong>dataset:</strong> import renku datasets
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/838">#838</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/6aa3651398432a938d29a2c355541170d496e2df">6aa3651</a>)</p></li>
+<li><p><strong>dataset:</strong> metadata edit
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1111">#1111</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/66cfbbc81c274822ed339b1919e6ac10646ab5fe">66cfbbc</a>)</p></li>
+<li><p><strong>dataset:</strong> wildcard support when adding data from git
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1128">#1128</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/baa1c9f840eec9c2c0ae12723c28db1728c104eb">baa1c9f</a>)</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id11">
+<h2><a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/compare/v0.9.0...v0.9.1">0.9.1</a> (2020-02-24)<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id12">
+<h3>Bug Fixes<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>added test utility functions and cleanup
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1014">#1014</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/f41100de7c6a30e1cf6d0cd49faedba82200c5df">f41100d</a>)</p></li>
+<li><p>cache instance cleanup
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1051">#1051</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/12f5446ca00ca9bbb9466f4d41f52a0e4d06466d">12f5446</a>)</p></li>
+<li><p>enable dataset cmd in sub directories
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1012">#1012</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/e3191e154b7e5c830ab915884c2dae17e9450cc6">e3191e1</a>)</p></li>
+<li><p>fields with default need to come last
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1046">#1046</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/649b15928a6c8791989e953933f676a75b7a29c7">649b159</a>)</p></li>
+<li><p>fixes renku show sibling handling with no paths
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1026">#1026</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/8df678f887d33ea75ab118c3204fc105bcd188ed">8df678f</a>)</p></li>
+<li><p>flush old keys for user projects and files
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1002">#1002</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/7438c7353433d60269d4adef0bd2fc49db02c029">7438c73</a>)</p></li>
+<li><p>generate https IDs for entities instead of <a class="reference external" href="file://">file://</a>
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1009">#1009</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/87f7750e3841d6b2784656bfb6f56106ccdbf305">87f7750</a>)</p></li>
+<li><p>handle errors correctly
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1040">#1040</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/950eeac1eea619fa07bccd27e4fad54c42691e58">950eeac</a>)</p></li>
+<li><p>improved list datasets and files
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1034">#1034</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/fd96d685fa44777d98c4e7d6d59368c93e130a29">fd96d68</a>)</p></li>
+<li><p>pin idna to 2.8
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1020">#1020</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/19ea7af66414f8df605d328d7f10fadac828ccf5">19ea7af</a>)</p></li>
+<li><p>resync repo after import action
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1052">#1052</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/b38341be4b13df493daf285be8ef2cc985fabc8b">b38341b</a>)</p></li>
+<li><p>standardize test assertions
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1016">#1016</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/16e8e636e2e0dd79c35e2f88c20a18c9022022f5">16e8e63</a>)</p></li>
+<li><p>temporarily disable integration tests
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1036">#1036</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/8c8fd7afc228b188f739e3963536f4b58bfbb22d">8c8fd7a</a>)</p></li>
+<li><p>updated readme to include local testing
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1000">#1000</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/351a6500984ca248c8a2af7470eea343dcc7e4bf">351a650</a>)</p></li>
+<li><p>run tests via pipenv run commands
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/999">#999</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/d8095e3a9aebd859999acfae49f4433448480937">d8095e3</a>)</p></li>
+</ul>
+</div>
+<div class="section" id="id13">
+<h3>Features<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>svc:</strong> adds job details endpoint
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1050">#1050</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/9c58a086c74ff3113901891b1a7be0290157714a">9c58a08</a>)</p></li>
+<li><p><strong>svc:</strong> added list user jobs endpoint
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1001">#1001</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/f3c200cae55716e5644a705efed74b6a3e9fcf40">f3c200c</a>)</p></li>
+<li><p><strong>svc:</strong> dataset import via service
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/1023">#1023</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/d6c670a01bef863611b114896207e15045e8ac9a">d6c670a</a>)</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="section-1">
+<span id="id14"></span><h2><a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/compare/v0.8.2...v0.9.0">0.9.0</a> (2020-02-07)<a class="headerlink" href="#section-1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id15">
+<h3>Bug Fixes<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>adds git user check before running renku init
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/892">#892</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/2e52dff9dd627c93764aadb9fd1e91bd190a5de7">2e52dff</a>)</p></li>
+<li><p>adds sorting to file listing
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/960">#960</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/bcf6bcdeb55e6c6213319678696b1b5cb9646052">bcf6bcd</a>)</p></li>
+<li><p>avoid empty commits when adding files
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/842">#842</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/8533a7aa2e28e3937e194bef6a1d456e5dd5203e">8533a7a</a>)</p></li>
+<li><p>Fixes dataset naming
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/898">#898</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/418deb3d755d8b35ebf6d11184a2e8e2b9528aae">418deb3</a>)</p></li>
+<li><p>Deletes temporary branch after renku init –force
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/887">#887</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/eac0463e31db29b7294e555bb17c47f24b02dd26">eac0463</a>)</p></li>
+<li><p>enforces label on SoftwareAgent
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/869">#869</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/71badda7f70d847b0f938bba8d76f53b9f5c915e">71badda</a>)</p></li>
+<li><p>Fixes JSON-LD translation and related issues
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/846">#846</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/65e546915737bcf7ff1dd6648aad1e2dd963ca97">65e5469</a>)</p></li>
+<li><p>Fixes renku run error message handling
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/961">#961</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/81d31ffca1fcb34fea009df0d55cf7d9b2ad60b5">81d31ff</a>)</p></li>
+<li><p>Fixes renku update workflow failure handling and renku status error handling
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/888">#888</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/3879124a40fb17acc2cb46069598a63ae32b0075">3879124</a>)</p></li>
+<li><p>Fixes sameAs property to follow schema.org spec
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/944">#944</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/291380e16046484d789fbf6485cebe04ed6a61e2">291380e</a>)</p></li>
+<li><p>handle missing renku directory
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/989">#989</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/f938be9040049b17cb0f7d01f7c3681dc3221f13">f938be9</a>)</p></li>
+<li><p>resolves symlinks when pulling LFS
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/981">#981</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/68bd8f5f5a60413529f9a5eeccfb7734b1cf8d32">68bd8f5</a>)</p></li>
+<li><p>serializes all zenodo metadata
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/941">#941</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/787978ad787dc5682392545df0ac0024cf17837d">787978a</a>)</p></li>
+<li><p>Fixes various bugs in dataset import
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/882">#882</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/be28bf5de72fac16e951b93fd95d3fe9b815f2d5">be28bf5</a>)</p></li>
+</ul>
+</div>
+<div class="section" id="id16">
+<h3>Features<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>add project initialization from template
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/809">#809</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/440574404248518a34992ed2f3607e861983177d">4405744</a>)</p></li>
+<li><p>added renku service with cache and datasets
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/788">#788</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/7a7068d9912ad4112d85d32153ca06fc8386a8ce">7a7068d</a>),
+closes
+<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/767">#767</a>
+<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/846">#846</a></p></li>
+<li><p>Adds protection for renku relevant paths in dataset add
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/939">#939</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/a3c02e897aa7cb891e16f530c76709114b97b105">a3c02e8</a>)</p></li>
+<li><p>Adds prov:Invalidated output to renku log
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/008ab20fbd5e925231a92c58b628e821d0b43add">008ab20</a>)</p></li>
+<li><p>better UX when adding to a dataset
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/911">#911</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/c6ac9676c38caf96a70afbc1fddd08f9ec709238">c6ac967</a>)</p></li>
+<li><p>check for required git hooks
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/854">#854</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/54ba91d84f03668cb6f3dd29b2d1ca2b27b4346a">54ba91d</a>)</p></li>
+<li><p>Dataverse export
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/909">#909</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/7e9e64798f1c7777a27e28c5600003407188a988">7e9e647</a>)</p></li>
+<li><p>improve dataset command output
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/927">#927</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/c7639d3a359ab3b750ce5b8fb6d5e7f6dbd4374a">c7639d3</a>)</p></li>
+<li><p>metadata on dataset creation
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/850">#850</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/b357ee71b081f0770d80a15e1704da634d7582c9">b357ee7</a>)</p></li>
+<li><p>Plugin support for renku-run
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/883">#883</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/7dbda8383a1de260ff27d5863a38af792030adfd">7dbda83</a>)</p></li>
+<li><p>python 3.8 compatibility
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/861">#861</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/4aaac8dfeecd648ccb946d339d9208bf13b18e1a">4aaac8d</a>)</p></li>
+<li><p>SHACL Validation
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/767">#767</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/255a01deff124266a5a89f756cb8f93c65153358">255a01d</a>)</p></li>
+<li><p>update bug_report template to be more renku-relevant
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/988">#988</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/e00ded783c05364f04a574b29284593860319bc1">e00ded7</a>)</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id17">
+<h2><a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/compare/v0.7.0...v0.8.0">0.8.0</a> (2019-11-21)<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id18">
+<h3>Bug Fixes<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>addressed CI problems with git submodules
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/783">#783</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/0d3eeb7">0d3eeb7</a>)</p></li>
+<li><p>adds simple check on empty filename
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/786">#786</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/8cd061b">8cd061b</a>)</p></li>
+<li><p>ensure all Person instances have valid ids
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/4f80efc">4f80efc</a>),
+closes
+<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/812">#812</a></p></li>
+<li><p>Fixes jsonld issue when importing from dataverse
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/759">#759</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/ffe36c6">ffe36c6</a>)</p></li>
+<li><p>fixes nested type scoped handling if a class only has a single class
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/804">#804</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/16d03b6">16d03b6</a>)</p></li>
+<li><p>ignore deleted paths in generated entities
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/86fedaf">86fedaf</a>),
+closes
+<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/806">#806</a></p></li>
+<li><p>integration tests
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/831">#831</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/a4ad7f9">a4ad7f9</a>)</p></li>
+<li><p>make Creator a subclass of Person
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/ac9bac3">ac9bac3</a>),
+closes
+<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/793">#793</a></p></li>
+<li><p>Redesign scoped context in jsonld
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/750">#750</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/2b1948d">2b1948d</a>)</p></li>
+</ul>
+</div>
+<div class="section" id="id19">
+<h3>Features<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>avoid creation of nested datasets
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/796">#796</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/6084c87">6084c87</a>)</p></li>
+<li><p>do not create dataset implicitly
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/779">#779</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/84e59d0">84e59d0</a>)</p></li>
+<li><p>local git repo not treated as remote
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/8cc2834">8cc2834</a>)</p></li>
+<li><p>renku clone command
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/828">#828</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/4b3b615">4b3b615</a>)</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id20">
+<h2><a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/compare/v0.6.0...v0.6.1">0.7.0</a> (2019-10-15)<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id21">
+<h3>Bug Fixes<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>use UI-resolved project path as project ID (<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/701">#701</a>) (<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/dfcc9e6aa1899cf89d90223f2adc2b0dd8676ef4">dfcc9e6</a>)</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id22">
+<h2><a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/compare/v0.6.0...v0.6.1">0.6.1</a> (2019-10-10)<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id23">
+<h3>Bug Fixes<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>add .renku/tmp to default .gitignore (<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/728">#728</a>) (<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/62121485119ed02a28a5b2e2990395bee284e348">6212148</a>)</p></li>
+<li><p>dataset import causes renku exception due to duplicate LocalClient
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/724">#724</a>) (<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/89411b010a2671790aafccaa42216e5ccdf5a660">89411b0</a>)</p></li>
+<li><p>delete new dataset ref if file add fails (<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/729">#729</a>) (<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/2dea711939a11c8c8c358bfd76499ae8865958ee">2dea711</a>)</p></li>
+<li><p>fixes bug with deleted files not getting committed (<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/741">#741</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/5de4b6feaa17d4db3fbec8e65523c28cfd80ca3e">5de4b6f</a>)</p></li>
+<li><p>force current project for entities (<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/707">#707</a>) (<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/538ef078b95c78d43907294147ca4fd359779b9e">538ef07</a>)</p></li>
+<li><p>integration tests for <a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/681">#681</a> (<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/747">#747</a>) (<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/b08435d26a19e69bff9a9b376526aee9ab3ecd70">b08435d</a>)</p></li>
+<li><p>use commit author for project creator (<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/715">#715</a>) (<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/1a40ebe75ea7c49cf52a9fce5c757d7352f159b0">1a40ebe</a>), closes
+<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/713">#713</a></p></li>
+<li><p>zenodo dataset import error (<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/f1d623abf16287d62a3a0fecaf40e16d4ed5fc8b">f1d623a</a>)</p></li>
+</ul>
+</div>
+<div class="section" id="id24">
+<h3>Features<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>adds basic QA checklist (<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/698">#698</a>) (<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/c97e9bdc0c65fb6b06c7467624a988bf533f0b80">c97e9bd</a>)</p></li>
+<li><p>dataset tagging (<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/693">#693</a>) (<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/797161fe48746137ae4c2761dfcbc7819124f154">797161f</a>)</p></li>
+<li><p>include creator in project metadata (<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/687">#687</a>) ([9c7753e](<a class="reference external" href="https://git">https://git</a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id41">
+<h2><a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/compare/v0.5.2...v0.6.0">0.6.0</a> (2019-09-18)<a class="headerlink" href="#id41" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id42">
+<h3>Bug Fixes<a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>adds _label and commit data to imported dataset files, single commit
+for imports
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/651">#651</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/75ce369">75ce369</a>)</p></li>
+<li><p>always add commit to dataset if possible
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/648">#648</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/7659bc8">7659bc8</a>),
+closes
+<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/646">#646</a></p></li>
+<li><p>cleanup needed for integration tests on py35
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/653">#653</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/fdd7215">fdd7215</a>)</p></li>
+<li><p>fixed serialization of datetime to iso format
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/629">#629</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/693d59d">693d59d</a>)</p></li>
+<li><p>fixes broken integration test
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/649">#649</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/04eba66">04eba66</a>)</p></li>
+<li><p>hide image, pull, runner, show, workon and deactivate commands
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/672">#672</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/a3e9998">a3e9998</a>)</p></li>
+<li><p>integration tests fixed
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/685">#685</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/f0ea8f0">f0ea8f0</a>)</p></li>
+<li><p>migration of old datasets
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/639">#639</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/4d4d7d2">4d4d7d2</a>)</p></li>
+<li><p>migration timezones
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/683">#683</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/58c2de4">58c2de4</a>)</p></li>
+<li><p>Removes unneccesary call to git lfs with no paths
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/658">#658</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/e32d48b">e32d48b</a>)</p></li>
+<li><p>renku home directory overwrite in tests
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/657">#657</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/90e1c48">90e1c48</a>)</p></li>
+<li><p>upload metadata before actual files
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/652">#652</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/95ed468">95ed468</a>)</p></li>
+<li><p>use latest_html for version check
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/647">#647</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/c6b0309">c6b0309</a>),
+closes
+<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/641">#641</a></p></li>
+<li><p>user-related metadata
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/655">#655</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/44183e6">44183e6</a>)</p></li>
+<li><p>zenodo export failing with relative paths
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/d40967c">d40967c</a>)</p></li>
+</ul>
+</div>
+<div class="section" id="id43">
+<h3>Features<a class="headerlink" href="#id43" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>dataverse import
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/626">#626</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/9f0f9a1">9f0f9a1</a>)</p></li>
+<li><p>enable all datasets command to operate on dirty repository
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/607">#607</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/74e328b">74e328b</a>)</p></li>
+<li><p>explicit input output specification
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/598">#598</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/ce8ba67">ce8ba67</a>)</p></li>
+<li><p>export filename as schema:name
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/643">#643</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/aed54bf">aed54bf</a>),
+closes
+<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/640">#640</a></p></li>
+<li><p>support for indirect inputs and outputs
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/650">#650</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/e960a98">e960a98</a>)</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id44">
+<h2><a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/compare/v0.5.1...v0.5.2">0.5.2</a> (2019-07-26)<a class="headerlink" href="#id44" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id45">
+<h3>Bug Fixes<a class="headerlink" href="#id45" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>safe_path check always operates on str
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/603">#603</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/7c1c34e">7c1c34e</a>)</p></li>
+</ul>
+</div>
+<div class="section" id="id46">
+<h3>Features<a class="headerlink" href="#id46" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>add SoftwareAgent to Activity
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/590">#590</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/a60c20c">a60c20c</a>),
+closes
+<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/508">#508</a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id47">
+<h2><a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/compare/v0.5.0...v0.5.1">0.5.1</a> (2019-07-12)<a class="headerlink" href="#id47" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id48">
+<h3>Bug Fixes<a class="headerlink" href="#id48" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>ensure external storage is handled correctly
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/592">#592</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/7938ac4">7938ac4</a>)</p></li>
+<li><p>only check local repo for lfs filter
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/575">#575</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/a64dc79">a64dc79</a>)</p></li>
+<li><p><strong>cli:</strong> allow renku run with many inputs
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/f60783e">f60783e</a>),
+closes
+<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/552">#552</a></p></li>
+<li><p>added check for overwriting datasets
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/541">#541</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/8c697fb">8c697fb</a>)</p></li>
+<li><p>escape whitespaces in notebook name
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/584">#584</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/0542fcc">0542fcc</a>)</p></li>
+<li><p>modify json-ld for datasets
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/534">#534</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/ab6a719">ab6a719</a>),
+closes
+<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/525">#525</a>
+<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/526">#526</a></p></li>
+<li><p>refactored tests and docs to align with updated pydoctstyle
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/586">#586</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/6f981c8">6f981c8</a>)</p></li>
+<li><p><strong>cli:</strong> add check of missing references
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/9a373da">9a373da</a>)</p></li>
+<li><p><strong>cli:</strong> fail when removing non existing dataset
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/dd728db">dd728db</a>)</p></li>
+<li><p><strong>status:</strong> fix renku status output when not in root folder
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/564">#564</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/873270d">873270d</a>),
+closes
+<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/551">#551</a></p></li>
+<li><p>added dependencies for SSL support
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/565">#565</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/4fa0fed">4fa0fed</a>)</p></li>
+<li><p><strong>datasets:</strong> strip query string from data filenames
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/450898b">450898b</a>)</p></li>
+<li><p>fixed serialization of creators
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/550">#550</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/6a9173c">6a9173c</a>)</p></li>
+<li><p>updated docs
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/539">#539</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/ff9a67c">ff9a67c</a>)</p></li>
+<li><p><strong>cli:</strong> remove dataset aliases
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/6206e62">6206e62</a>)</p></li>
+<li><p><strong>cwl:</strong> detect script as input parameter
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/e23b75a">e23b75a</a>),
+closes
+<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/495">#495</a></p></li>
+<li><p><strong>deps:</strong> updated dependencies
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/691644d">691644d</a>)</p></li>
+</ul>
+</div>
+<div class="section" id="id49">
+<h3>Features<a class="headerlink" href="#id49" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>add dataset metadata to the KG
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/558">#558</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/fb443d7">fb443d7</a>)</p></li>
+<li><p><strong>datasets:</strong> export dataset to zenodo
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/529">#529</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/fc6fd4f">fc6fd4f</a>)</p></li>
+<li><p>added support for working on dirty repo
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/ae67be7">ae67be7</a>)</p></li>
+<li><p><strong>datasets:</strong> edit dataset metadata
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/549">#549</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/db39083">db39083</a>)</p></li>
+<li><p>integrate metadata from zenodo
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/545">#545</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/4273d2a">4273d2a</a>)</p></li>
+<li><p><strong>config:</strong> added global config manager
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/533">#533</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/938f820">938f820</a>)</p></li>
+<li><p><strong>datasets:</strong> import data from zenodo
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/509">#509</a>)
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/52b2769">52b2769</a>)</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id50">
+<h2><a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/compare/v0.4.0...v0.5.0">0.5.0</a> (2019-03-28)<a class="headerlink" href="#id50" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id51">
+<h3>Bug Fixes<a class="headerlink" href="#id51" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>api:</strong> make methods lock free
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/1f63964">1f63964</a>),
+closes
+<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/486">#486</a></p></li>
+<li><p>use safe_load for parsing yaml
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/5383d1e">5383d1e</a>),
+closes
+<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/464">#464</a></p></li>
+<li><p><strong>datasets:</strong> link flag on dataset add
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/eae30f4">eae30f4</a>)</p></li>
+</ul>
+</div>
+<div class="section" id="id52">
+<h3>Features<a class="headerlink" href="#id52" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>api:</strong> list datasets from a commit
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/04a9fe9">04a9fe9</a>)</p></li>
+<li><p><strong>cli:</strong> add dataset rm command
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/a70c7ce">a70c7ce</a>)</p></li>
+<li><p><strong>cli:</strong> add rm command
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/cf0f502">cf0f502</a>)</p></li>
+<li><p><strong>cli:</strong> configurable format of dataset output
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/d37abf3">d37abf3</a>)</p></li>
+<li><p><strong>dataset:</strong> add existing file from current repo
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/575686b">575686b</a>),
+closes
+<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/99">#99</a></p></li>
+<li><p><strong>datasets:</strong> added ls-files command
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/ccc4f59">ccc4f59</a>)</p></li>
+<li><p><strong>models:</strong> reference context for relative paths
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/5d1e8e7">5d1e8e7</a>),
+closes
+<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/452">#452</a></p></li>
+<li><p>add JSON-LD output format for datasets
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/c755d7b">c755d7b</a>),
+closes
+<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/issues/426">#426</a></p></li>
+<li><p>generate Makefile with log –format Makefile
+(<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-python/commit/1e440ce">1e440ce</a>)</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="v0-4-0">
+<h2><code class="docutils literal notranslate"><span class="pre">v0.4.0</span></code><a class="headerlink" href="#v0-4-0" title="Permalink to this headline">¶</a></h2>
+<p><em>(released 2019-03-05)</em></p>
+<ul class="simple">
+<li><p>Adds <code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">mv</span></code> command which updates dataset metadata, <code class="docutils literal notranslate"><span class="pre">.gitattributes</span></code>
+and symlinks.</p></li>
+<li><p>Pulls LFS objects from submodules correctly.</p></li>
+<li><p>Adds listing of datasets.</p></li>
+<li><p>Adds reduced dot format for <code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">log</span></code>.</p></li>
+<li><p>Adds <code class="docutils literal notranslate"><span class="pre">doctor</span></code> command to check missing files in datasets.</p></li>
+<li><p>Moves dataset metadata to <code class="docutils literal notranslate"><span class="pre">.renku/datasets</span></code> and adds <code class="docutils literal notranslate"><span class="pre">migrate</span> <span class="pre">datasets</span></code>
+command and uses UUID for metadata path.</p></li>
+<li><p>Gets git attrs for files to prevent duplicates in <code class="docutils literal notranslate"><span class="pre">.gitattributes</span></code>.</p></li>
+<li><p>Fixes <code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">show</span> <span class="pre">outputs</span></code> for directories.</p></li>
+<li><p>Runs Git LFS checkout in a worktrees and lazily pulls necessary LFS files
+before running commands.</p></li>
+<li><p>Asks user before overriding an existing file using <code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">init</span></code>
+or <code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">runner</span> <span class="pre">template</span></code>.</p></li>
+<li><p>Fixes <code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">init</span> <span class="pre">--force</span></code> in an empty dir.</p></li>
+<li><p>Renames <code class="docutils literal notranslate"><span class="pre">CommitMixin._location</span></code> to <code class="docutils literal notranslate"><span class="pre">_project</span></code>.</p></li>
+<li><p>Addresses issue with commits editing multiple CWL files.</p></li>
+<li><p>Exports merge commits for full lineage.</p></li>
+<li><p>Exports path and parent directories.</p></li>
+<li><p>Adds an automatic check for the latest version.</p></li>
+<li><p>Simplifies issue submission from traceback to GitHub or Sentry.
+Requires <code class="docutils literal notranslate"><span class="pre">SENTRY_DSN</span></code> variable to be set and <cite>sentry-sdk</cite> package to be
+installed before sending any data.</p></li>
+<li><p>Removes outputs before run.</p></li>
+<li><p>Allows update of directories.</p></li>
+<li><p>Improves readability of the status message.</p></li>
+<li><p>Checks ignored path when added to a dataset.</p></li>
+<li><p>Adds API method for finding ignored paths.</p></li>
+<li><p>Uses branches for <code class="docutils literal notranslate"><span class="pre">init</span> <span class="pre">--force</span></code>.</p></li>
+<li><p>Fixes CVE-2017-18342.</p></li>
+<li><p>Fixes regex for parsing Git remote URLs.</p></li>
+<li><p>Handles <code class="docutils literal notranslate"><span class="pre">--isolation</span></code> option using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">worktree</span></code>.</p></li>
+<li><p>Renames <code class="docutils literal notranslate"><span class="pre">client.git</span></code> to <code class="docutils literal notranslate"><span class="pre">client.repo</span></code>.</p></li>
+<li><p>Supports <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">renku</span></code>.</p></li>
+<li><p>Allows ‘.’ and ‘-‘ in repo path.</p></li>
+</ul>
+</div>
+<div class="section" id="v0-3-3">
+<h2><code class="docutils literal notranslate"><span class="pre">v0.3.3</span></code><a class="headerlink" href="#v0-3-3" title="Permalink to this headline">¶</a></h2>
+<p><em>(released 2018-12-07)</em></p>
+<ul class="simple">
+<li><p>Fixes generated Homebrew formula.</p></li>
+<li><p>Renames <code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">pull</span> <span class="pre">path</span></code> to <code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">storage</span> <span class="pre">pull</span></code> with deprecation
+warning.</p></li>
+</ul>
+</div>
+<div class="section" id="v0-3-2">
+<h2><code class="docutils literal notranslate"><span class="pre">v0.3.2</span></code><a class="headerlink" href="#v0-3-2" title="Permalink to this headline">¶</a></h2>
+<p><em>(released 2018-11-29)</em></p>
+<ul class="simple">
+<li><p>Fixes display of workflows in <code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">log</span></code>.</p></li>
+</ul>
+</div>
+<div class="section" id="v0-3-1">
+<h2><code class="docutils literal notranslate"><span class="pre">v0.3.1</span></code><a class="headerlink" href="#v0-3-1" title="Permalink to this headline">¶</a></h2>
+<p><em>(released 2018-11-29)</em></p>
+<ul class="simple">
+<li><p>Fixes issues with parsing remote Git URLs.</p></li>
+</ul>
+</div>
+<div class="section" id="v0-3-0">
+<h2><code class="docutils literal notranslate"><span class="pre">v0.3.0</span></code><a class="headerlink" href="#v0-3-0" title="Permalink to this headline">¶</a></h2>
+<p><em>(released 2018-11-26)</em></p>
+<ul class="simple">
+<li><p>Adds JSON-LD context to objects extracted from the Git repository
+(see <code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">show</span> <span class="pre">context</span> <span class="pre">--list</span></code>).</p></li>
+<li><p>Uses PROV-O and WFPROV as provenance vocabularies and generates “stable”
+object identifiers (<code class="docutils literal notranslate"><span class="pre">&#64;id</span></code>) for RDF and JSON-LD output formats.</p></li>
+<li><p>Refactors the log output to allow linking files and directories.</p></li>
+<li><p>Adds support for aliasing tools and workflows.</p></li>
+<li><p>Adds option to install shell completion (<code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">--install-completion</span></code>).</p></li>
+<li><p>Fixes initialization of Git submodules.</p></li>
+<li><p>Uses relative submodule paths when appropriate.</p></li>
+<li><p>Simplifies external storage configuration.</p></li>
+</ul>
+</div>
+<div class="section" id="v0-2-0">
+<h2><code class="docutils literal notranslate"><span class="pre">v0.2.0</span></code><a class="headerlink" href="#v0-2-0" title="Permalink to this headline">¶</a></h2>
+<p><em>(released 2018-09-25)</em></p>
+<ul class="simple">
+<li><p>Refactored version using Git and Common Workflow Language.</p></li>
+</ul>
+</div>
+<div class="section" id="v0-1-0">
+<h2><code class="docutils literal notranslate"><span class="pre">v0.1.0</span></code><a class="headerlink" href="#v0-1-0" title="Permalink to this headline">¶</a></h2>
+<p><em>(released 2017-09-06)</em></p>
+<ul class="simple">
+<li><p>Initial public release as Renga.</p></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="index.html">
+    <h1 class="logo logo-name">
+      Renku
+      <span class="renku">連句</span>
+    </h1>
+  </a>
+</p>
+
+
+<p class="blurb">Python API and CLI for the Renku platform.</p>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html#authors">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Changes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="comparison.html">How does this compare …</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commands.html">Renku Command Line</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/index.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="management.html">Low-level API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plugins.html">Plugin Support</a></li>
+</ul>
+
+
+<hr />
+<ul>
+    
+    <li class="toctree-l1"><a href="https://github.com/SwissDataScienceCenter/renku-python">renku-python@GitHub</a></li>
+    
+    <li class="toctree-l1"><a href="https://pypi.python.org/pypi/renku/">renku-python@PyPI</a></li>
+    
+    <li class="toctree-l1"><a href="https://github.com/SwissDataScienceCenter/renku">renku@GitHub</a></li>
+    
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="contributing.html" title="previous chapter">Contributing</a></li>
+      <li>Next: <a href="glossary.html" title="next chapter">Glossary</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017-2020, Swiss Data Science Center.
+      
+      |
+      <a href="_sources/changes.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

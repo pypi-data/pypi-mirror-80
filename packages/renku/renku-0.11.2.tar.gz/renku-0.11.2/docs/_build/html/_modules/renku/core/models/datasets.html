@@ -1,0 +1,990 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>renku.core.models.datasets &#8212; Renku 0.10.5.dev72+dirty documentation</title>
+    <link rel="stylesheet" href="../../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  
+   
+  <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900,300italic,400italic" rel="stylesheet" type="text/css">
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  </head><body>
+  <div class="git-ribbon">
+    <a href="http://github.com/SwissDataScienceCenter" rel="me">Join us on GitHub</a>
+  </div>
+  
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for renku.core.models.datasets</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1">#</span>
+<span class="c1"># Copyright 2017-2020 - Swiss Data Science Center (SDSC)</span>
+<span class="c1"># A partnership between École Polytechnique Fédérale de Lausanne (EPFL) and</span>
+<span class="c1"># Eidgenössische Technische Hochschule Zürich (ETHZ).</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="sd">&quot;&quot;&quot;Model objects representing datasets.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pathlib</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">urllib</span>
+<span class="kn">import</span> <span class="nn">uuid</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">quote</span>
+
+<span class="kn">import</span> <span class="nn">attr</span>
+<span class="kn">from</span> <span class="nn">attr.validators</span> <span class="kn">import</span> <span class="n">instance_of</span>
+<span class="kn">from</span> <span class="nn">marshmallow</span> <span class="kn">import</span> <span class="n">EXCLUDE</span><span class="p">,</span> <span class="n">pre_dump</span><span class="p">,</span> <span class="n">pre_load</span>
+
+<span class="kn">from</span> <span class="nn">renku.core</span> <span class="kn">import</span> <span class="n">errors</span>
+<span class="kn">from</span> <span class="nn">renku.core.models</span> <span class="kn">import</span> <span class="n">jsonld</span> <span class="k">as</span> <span class="n">jsonld</span>
+<span class="kn">from</span> <span class="nn">renku.core.models.calamus</span> <span class="kn">import</span> <span class="n">JsonLDSchema</span><span class="p">,</span> <span class="n">Nested</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">rdfs</span><span class="p">,</span> \
+    <span class="n">renku</span><span class="p">,</span> <span class="n">schema</span>
+<span class="kn">from</span> <span class="nn">renku.core.models.entities</span> <span class="kn">import</span> <span class="n">Entity</span><span class="p">,</span> <span class="n">EntitySchema</span>
+<span class="kn">from</span> <span class="nn">renku.core.models.locals</span> <span class="kn">import</span> <span class="n">ReferenceMixin</span>
+<span class="kn">from</span> <span class="nn">renku.core.models.provenance.agents</span> <span class="kn">import</span> <span class="n">Person</span><span class="p">,</span> <span class="n">PersonSchema</span>
+<span class="kn">from</span> <span class="nn">renku.core.models.refs</span> <span class="kn">import</span> <span class="n">LinkReference</span>
+<span class="kn">from</span> <span class="nn">renku.core.utils.datetime8601</span> <span class="kn">import</span> <span class="n">parse_date</span>
+<span class="kn">from</span> <span class="nn">renku.core.utils.doi</span> <span class="kn">import</span> <span class="n">extract_doi</span><span class="p">,</span> <span class="n">is_doi</span>
+
+<span class="n">NoneType</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+
+
+<span class="nd">@attr</span><span class="o">.</span><span class="n">s</span>
+<span class="k">class</span> <span class="nc">Url</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Represents a schema URL reference.&quot;&quot;&quot;</span>
+
+    <span class="n">client</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">url_str</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">url_id</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">_id</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">default_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Define default value for id field.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">url_str</span><span class="p">:</span>
+            <span class="n">parsed_result</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">urlparse</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url_str</span><span class="p">)</span>
+            <span class="n">id_</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">ParseResult</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="o">*</span><span class="n">parsed_result</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span><span class="o">.</span><span class="n">geturl</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">url_id</span><span class="p">:</span>
+            <span class="n">parsed_result</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">urlparse</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url_id</span><span class="p">)</span>
+            <span class="n">id_</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">ParseResult</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="o">*</span><span class="n">parsed_result</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span><span class="o">.</span><span class="n">geturl</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">id_</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">())</span>
+
+        <span class="n">host</span> <span class="o">=</span> <span class="s1">&#39;localhost&#39;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="p">:</span>
+            <span class="n">host</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">remote</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;host&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">host</span>
+        <span class="n">host</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;RENKU_DOMAIN&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">host</span>
+
+        <span class="k">return</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">urljoin</span><span class="p">(</span>
+            <span class="s1">&#39;https://</span><span class="si">{host}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="n">host</span><span class="p">),</span>
+            <span class="n">pathlib</span><span class="o">.</span><span class="n">posixpath</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;/urls&#39;</span><span class="p">,</span> <span class="n">quote</span><span class="p">(</span><span class="n">id_</span><span class="p">,</span> <span class="n">safe</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">))</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">default_url</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Define default value for url field.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">url_str</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">url_str</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">url_id</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;@id&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">url_id</span><span class="p">}</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;Either url_id or url_str has to be set&#39;</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns the url value as string.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">url_str</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">url_str</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">url_id</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">url_id</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;Either url_id or url_str has to be set&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__attrs_post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Post-initialize attributes.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_url</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_id</span><span class="p">()</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_jsonld</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create an instance from JSON-LD data.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="bp">cls</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">data</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">UrlSchema</span><span class="p">()</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">as_jsonld</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create JSON-LD.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">UrlSchema</span><span class="p">()</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_convert_creators</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Convert creators.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>  <span class="c1"># compatibility with previous versions</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">Person</span><span class="o">.</span><span class="n">from_jsonld</span><span class="p">(</span><span class="n">value</span><span class="p">)]</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">Person</span><span class="o">.</span><span class="n">from_jsonld</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">value</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">value</span>
+
+
+<span class="nd">@attr</span><span class="o">.</span><span class="n">s</span>
+<span class="k">class</span> <span class="nc">CreatorMixin</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Mixin for handling creators container.&quot;&quot;&quot;</span>
+
+    <span class="n">creators</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="n">_convert_creators</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">creators_csv</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Comma-separated list of creators associated with dataset.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">creator</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">creator</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">creators</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">creators_full_csv</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Comma-separated list of creators with full identity.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">creator</span><span class="o">.</span><span class="n">full_identity</span> <span class="k">for</span> <span class="n">creator</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">creators</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_extract_doi</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return either a string or the doi part of a URL.&quot;&quot;&quot;</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">is_doi</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">extract_doi</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">value</span>
+
+
+<span class="nd">@attr</span><span class="o">.</span><span class="n">s</span><span class="p">(</span>
+    <span class="n">slots</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="k">class</span> <span class="nc">DatasetTag</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Represents a Tag of an instance of a dataset.&quot;&quot;&quot;</span>
+
+    <span class="n">client</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span>
+        <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">validator</span><span class="o">=</span><span class="n">instance_of</span><span class="p">(</span><span class="nb">str</span><span class="p">),</span>
+    <span class="p">)</span>
+
+    <span class="n">description</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span>
+        <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">validator</span><span class="o">=</span><span class="n">instance_of</span><span class="p">(</span><span class="nb">str</span><span class="p">),</span>
+    <span class="p">)</span>
+
+    <span class="n">commit</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span>
+        <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">validator</span><span class="o">=</span><span class="n">instance_of</span><span class="p">(</span><span class="nb">str</span><span class="p">),</span>
+    <span class="p">)</span>
+
+    <span class="n">created</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">converter</span><span class="o">=</span><span class="n">parse_date</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">dataset</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">_id</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="nd">@created</span><span class="o">.</span><span class="n">default</span>
+    <span class="k">def</span> <span class="nf">_now</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Define default value for datetime fields.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">default_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Define default value for id field.&quot;&quot;&quot;</span>
+
+        <span class="n">host</span> <span class="o">=</span> <span class="s1">&#39;localhost&#39;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="p">:</span>
+            <span class="n">host</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">remote</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;host&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">host</span>
+        <span class="n">host</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;RENKU_DOMAIN&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">host</span>
+
+        <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">@</span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">commit</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">urljoin</span><span class="p">(</span>
+            <span class="s1">&#39;https://</span><span class="si">{host}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="n">host</span><span class="p">),</span>
+            <span class="n">pathlib</span><span class="o">.</span><span class="n">posixpath</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;/datasettags&#39;</span><span class="p">,</span> <span class="n">quote</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">safe</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">))</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__attrs_post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Post-Init hook.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_id</span><span class="p">()</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_jsonld</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create an instance from JSON-LD data.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="bp">cls</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">data</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">DatasetTagSchema</span><span class="p">()</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">as_jsonld</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create JSON-LD.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">DatasetTagSchema</span><span class="p">()</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+
+<span class="nd">@attr</span><span class="o">.</span><span class="n">s</span><span class="p">(</span>
+    <span class="n">slots</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="k">class</span> <span class="nc">Language</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Represent a language of an object.&quot;&quot;&quot;</span>
+
+    <span class="n">alternate_name</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_jsonld</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create an instance from JSON-LD data.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="bp">cls</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">data</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">LanguageSchema</span><span class="p">()</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">convert_filename_path</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return name of the file.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">p</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">Path</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="o">.</span><span class="n">name</span>
+
+
+<span class="k">def</span> <span class="nf">convert_based_on</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Convert based_on to DatasetFile.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">v</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">DatasetFile</span><span class="o">.</span><span class="n">from_jsonld</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="DatasetFile"><a class="viewcode-back" href="../../../../models/datasets.html#renku.core.models.datasets.DatasetFile">[docs]</a><span class="nd">@attr</span><span class="o">.</span><span class="n">s</span><span class="p">(</span><span class="n">slots</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">DatasetFile</span><span class="p">(</span><span class="n">Entity</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Represent a file in a dataset.&quot;&quot;&quot;</span>
+
+    <span class="n">added</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">converter</span><span class="o">=</span><span class="n">parse_date</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">checksum</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="n">convert_filename_path</span><span class="p">)</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+    <span class="n">filesize</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">filetype</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">based_on</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="n">convert_based_on</span><span class="p">)</span>
+
+    <span class="n">external</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="nd">@added</span><span class="o">.</span><span class="n">default</span>
+    <span class="k">def</span> <span class="nf">_now</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Define default value for datetime fields.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
+
+<div class="viewcode-block" id="DatasetFile.default_filename"><a class="viewcode-back" href="../../../../models/datasets.html#renku.core.models.datasets.DatasetFile.default_filename">[docs]</a>    <span class="nd">@filename</span><span class="o">.</span><span class="n">default</span>
+    <span class="k">def</span> <span class="nf">default_filename</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Generate default filename based on path.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">name</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">full_path</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return full path in the current reference frame.&quot;&quot;&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">path</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span>
+        <span class="k">return</span> <span class="n">Path</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">size_in_mb</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return file size in megabytes.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="kc">None</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">filesize</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">filesize</span> <span class="o">*</span> <span class="mf">1e-6</span>
+
+    <span class="k">def</span> <span class="nf">__attrs_post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set the property &quot;name&quot; after initialization.&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__attrs_post_init__</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filename</span>
+
+        <span class="n">parsed_id</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">urlparse</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">parsed_id</span><span class="o">.</span><span class="n">scheme</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="o">=</span> <span class="s1">&#39;file://</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="p">)</span>
+
+<div class="viewcode-block" id="DatasetFile.from_jsonld"><a class="viewcode-back" href="../../../../models/datasets.html#renku.core.models.datasets.DatasetFile.from_jsonld">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_jsonld</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create an instance from JSON-LD data.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="bp">cls</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">data</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">DatasetFileSchema</span><span class="p">()</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DatasetFile.as_jsonld"><a class="viewcode-back" href="../../../../models/datasets.html#renku.core.models.datasets.DatasetFile.as_jsonld">[docs]</a>    <span class="k">def</span> <span class="nf">as_jsonld</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create JSON-LD.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">DatasetFileSchema</span><span class="p">()</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div></div>
+
+
+<span class="k">def</span> <span class="nf">_convert_dataset_files</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Convert dataset files.&quot;&quot;&quot;</span>
+    <span class="n">coll</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">coll</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>  <span class="c1"># compatibility with previous versions</span>
+        <span class="k">if</span> <span class="nb">any</span><span class="p">([</span><span class="n">key</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;@&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">coll</span><span class="o">.</span><span class="n">keys</span><span class="p">()]):</span>
+            <span class="k">return</span> <span class="p">[</span><span class="n">DatasetFile</span><span class="o">.</span><span class="n">from_jsonld</span><span class="p">(</span><span class="n">coll</span><span class="p">)]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">coll</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="p">[</span><span class="n">DatasetFile</span><span class="o">.</span><span class="n">from_jsonld</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">coll</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">_convert_dataset_tags</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Convert dataset tags.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>  <span class="c1"># compatibility with previous versions</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="p">[</span><span class="n">value</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="p">[</span><span class="n">DatasetTag</span><span class="o">.</span><span class="n">from_jsonld</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">value</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">_convert_language</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Convert language object.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">Language</span><span class="o">.</span><span class="n">from_jsonld</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="k">else</span> <span class="n">obj</span>
+
+
+<span class="k">def</span> <span class="nf">_convert_keyword</span><span class="p">(</span><span class="n">keywords</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Convert keywords collection.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">keywords</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+        <span class="k">return</span> <span class="n">keywords</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">keywords</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">keywords</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="Dataset"><a class="viewcode-back" href="../../../../models/datasets.html#renku.core.models.datasets.Dataset">[docs]</a><span class="nd">@attr</span><span class="o">.</span><span class="n">s</span>
+<span class="k">class</span> <span class="nc">Dataset</span><span class="p">(</span><span class="n">Entity</span><span class="p">,</span> <span class="n">CreatorMixin</span><span class="p">,</span> <span class="n">ReferenceMixin</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Represent a dataset.&quot;&quot;&quot;</span>
+
+    <span class="n">SUPPORTED_SCHEMES</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;file&#39;</span><span class="p">,</span> <span class="s1">&#39;http&#39;</span><span class="p">,</span> <span class="s1">&#39;https&#39;</span><span class="p">,</span> <span class="s1">&#39;git+https&#39;</span><span class="p">,</span> <span class="s1">&#39;git+ssh&#39;</span><span class="p">)</span>
+
+    <span class="n">EDITABLE_FIELDS</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">&#39;creators&#39;</span><span class="p">,</span> <span class="s1">&#39;date_published&#39;</span><span class="p">,</span> <span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="s1">&#39;in_language&#39;</span><span class="p">,</span> <span class="s1">&#39;keywords&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;license&#39;</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;url&#39;</span><span class="p">,</span> <span class="s1">&#39;version&#39;</span><span class="p">,</span> <span class="s1">&#39;date_created&#39;</span><span class="p">,</span> <span class="s1">&#39;files&#39;</span>
+    <span class="p">]</span>
+
+    <span class="n">_id</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">_label</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">date_published</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">description</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">identifier</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span>
+        <span class="n">default</span><span class="o">=</span><span class="n">attr</span><span class="o">.</span><span class="n">Factory</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">),</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="n">_extract_doi</span>
+    <span class="p">)</span>
+
+    <span class="n">in_language</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span>
+        <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="n">_convert_language</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>
+
+    <span class="n">keywords</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">converter</span><span class="o">=</span><span class="n">_convert_keyword</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+    <span class="n">license</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">title</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">version</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">date_created</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">converter</span><span class="o">=</span><span class="n">parse_date</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">files</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span>
+        <span class="n">factory</span><span class="o">=</span><span class="nb">list</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="n">_convert_dataset_files</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>
+
+    <span class="n">tags</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">factory</span><span class="o">=</span><span class="nb">list</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="n">_convert_dataset_tags</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">same_as</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="nd">@date_created</span><span class="o">.</span><span class="n">default</span>
+    <span class="k">def</span> <span class="nf">_now</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Define default value for datetime fields.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Dataset.name_validator"><a class="viewcode-back" href="../../../../models/datasets.html#renku.core.models.datasets.Dataset.name_validator">[docs]</a>    <span class="nd">@name</span><span class="o">.</span><span class="n">validator</span>
+    <span class="k">def</span> <span class="nf">name_validator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attribute</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Validate name.&quot;&quot;&quot;</span>
+        <span class="c1"># name might have been scaped and have &#39;%&#39; in it</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">is_dataset_name_valid</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">ParameterError</span><span class="p">(</span><span class="s1">&#39;Invalid &quot;name&quot;: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">value</span><span class="p">))</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">uid</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;UUID part of identifier.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">is_doi</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">identifier</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">identifier</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">identifier</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">short_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Shorter version of identifier.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">is_doi</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">identifier</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">identifier</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">uid</span><span class="p">)[:</span><span class="mi">8</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">creators_csv</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Comma-separated list of creators associated with dataset.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">creator</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">creator</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">creators</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">keywords_csv</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Comma-separated list of keywords associated with dataset.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">keywords</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">tags_csv</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Comma-separated list of tags associated with dataset.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tag</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">editable</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Subset of attributes which user can edit.&quot;&quot;&quot;</span>
+        <span class="n">obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">as_jsonld</span><span class="p">()</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="n">field_</span><span class="p">:</span> <span class="n">obj</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">field_</span><span class="p">)</span> <span class="k">for</span> <span class="n">field_</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">EDITABLE_FIELDS</span><span class="p">}</span>
+        <span class="k">return</span> <span class="n">data</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">data_dir</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Directory where dataset files are stored.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">data_dir</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+        <span class="k">return</span> <span class="s1">&#39;&#39;</span>
+
+<div class="viewcode-block" id="Dataset.contains_any"><a class="viewcode-back" href="../../../../models/datasets.html#renku.core.models.datasets.Dataset.contains_any">[docs]</a>    <span class="k">def</span> <span class="nf">contains_any</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Check if files are already within a dataset.&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">file_</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_file</span><span class="p">(</span><span class="n">file_</span><span class="p">[</span><span class="s1">&#39;path&#39;</span><span class="p">]):</span>
+                <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
+
+<div class="viewcode-block" id="Dataset.find_files"><a class="viewcode-back" href="../../../../models/datasets.html#renku.core.models.datasets.Dataset.find_files">[docs]</a>    <span class="k">def</span> <span class="nf">find_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">paths</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return all paths that are in files container.&quot;&quot;&quot;</span>
+        <span class="n">files_paths</span> <span class="o">=</span> <span class="p">{</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">path</span> <span class="o">/</span> <span class="n">f</span><span class="o">.</span><span class="n">path</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">files</span><span class="p">}</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">paths</span> <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="ow">in</span> <span class="n">files_paths</span><span class="p">}</span></div>
+
+<div class="viewcode-block" id="Dataset.find_file"><a class="viewcode-back" href="../../../../models/datasets.html#renku.core.models.datasets.Dataset.find_file">[docs]</a>    <span class="k">def</span> <span class="nf">find_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">return_index</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Find a file in files container.&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">file_</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">files</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">file_</span><span class="o">.</span><span class="n">path</span><span class="p">)</span> <span class="o">==</span> <span class="nb">str</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">return_index</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">index</span>
+                <span class="n">file_</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span>
+                <span class="k">return</span> <span class="n">file_</span></div>
+
+<div class="viewcode-block" id="Dataset.update_metadata"><a class="viewcode-back" href="../../../../models/datasets.html#renku.core.models.datasets.Dataset.update_metadata">[docs]</a>    <span class="k">def</span> <span class="nf">update_metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other_dataset</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Updates instance attributes with other dataset attributes.</span>
+
+<span class="sd">        :param other_dataset: `Dataset`</span>
+<span class="sd">        :return: self</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">field_</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">EDITABLE_FIELDS</span><span class="p">:</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">other_dataset</span><span class="p">,</span> <span class="n">field_</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">val</span><span class="p">:</span>
+                <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field_</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="Dataset.update_files"><a class="viewcode-back" href="../../../../models/datasets.html#renku.core.models.datasets.Dataset.update_files">[docs]</a>    <span class="k">def</span> <span class="nf">update_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Update files with collection of DatasetFile objects.&quot;&quot;&quot;</span>
+        <span class="n">to_insert</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">new_file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+            <span class="n">existing_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_file</span><span class="p">(</span><span class="n">new_file</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">existing_file</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">to_insert</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_file</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">existing_file</span><span class="o">.</span><span class="n">commit</span> <span class="o">=</span> <span class="n">new_file</span><span class="o">.</span><span class="n">commit</span>
+                <span class="n">existing_file</span><span class="o">.</span><span class="n">_label</span> <span class="o">=</span> <span class="n">new_file</span><span class="o">.</span><span class="n">_label</span>
+                <span class="n">existing_file</span><span class="o">.</span><span class="n">based_on</span> <span class="o">=</span> <span class="n">new_file</span><span class="o">.</span><span class="n">based_on</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">files</span> <span class="o">+=</span> <span class="n">to_insert</span></div>
+
+<div class="viewcode-block" id="Dataset.rename_files"><a class="viewcode-back" href="../../../../models/datasets.html#renku.core.models.datasets.Dataset.rename_files">[docs]</a>    <span class="k">def</span> <span class="nf">rename_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rename</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Rename files using the path mapping function.&quot;&quot;&quot;</span>
+        <span class="n">files</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">file_</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">files</span><span class="p">:</span>
+            <span class="n">new_path</span> <span class="o">=</span> <span class="n">rename</span><span class="p">(</span><span class="n">file_</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+            <span class="n">new_file</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="n">file_</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">new_path</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_file</span><span class="p">(</span><span class="n">new_file</span><span class="o">.</span><span class="n">path</span><span class="p">):</span>
+                <span class="n">files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_file</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">FileExistsError</span>
+
+        <span class="n">renamed</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">)</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="n">renamed</span><span class="p">,</span> <span class="s1">&#39;__reference__&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__reference__</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__source__</span><span class="p">:</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="n">renamed</span><span class="p">,</span> <span class="s1">&#39;__source__&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__source__</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+
+        <span class="k">return</span> <span class="n">renamed</span></div>
+
+<div class="viewcode-block" id="Dataset.unlink_file"><a class="viewcode-back" href="../../../../models/datasets.html#renku.core.models.datasets.Dataset.unlink_file">[docs]</a>    <span class="k">def</span> <span class="nf">unlink_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Unlink a file from dataset.</span>
+
+<span class="sd">        :param file_path: Relative path used as key inside files container.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_file</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">return_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">index</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">__attrs_post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Post-Init hook.&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__attrs_post_init__</span><span class="p">()</span>
+
+        <span class="c1"># Determine the hostname for the resource URIs.</span>
+        <span class="c1"># If RENKU_DOMAIN is set, it overrides the host from remote.</span>
+        <span class="c1"># Default is localhost.</span>
+        <span class="n">host</span> <span class="o">=</span> <span class="s1">&#39;localhost&#39;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="p">:</span>
+            <span class="n">host</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">remote</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;host&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">host</span>
+        <span class="n">host</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;RENKU_DOMAIN&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">host</span>
+
+        <span class="c1"># always set the id by the identifier</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">urljoin</span><span class="p">(</span>
+            <span class="s1">&#39;https://</span><span class="si">{host}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="n">host</span><span class="p">),</span>
+            <span class="n">pathlib</span><span class="o">.</span><span class="n">posixpath</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                <span class="s1">&#39;/datasets&#39;</span><span class="p">,</span> <span class="n">quote</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">identifier</span><span class="p">,</span> <span class="n">safe</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span>
+
+        <span class="c1"># if `date_published` is set, we are probably dealing with</span>
+        <span class="c1"># an imported dataset so `date_created` is not needed</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">date_published</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">date_created</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">identifier</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">renku_datasets_path</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">uid</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">files</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">dataset_file</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">files</span><span class="p">:</span>
+                <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">dataset_file</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+                <span class="n">file_exists</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span> <span class="ow">or</span>
+                    <span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">is_symlink</span><span class="p">()</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">lexists</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
+                <span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">dataset_file</span><span class="o">.</span><span class="n">client</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">file_exists</span><span class="p">:</span>
+                    <span class="n">client</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">resolve_in_submodules</span><span class="p">(</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">find_previous_commit</span><span class="p">(</span>
+                            <span class="n">dataset_file</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="n">revision</span><span class="o">=</span><span class="s1">&#39;HEAD&#39;</span>
+                        <span class="p">),</span>
+                        <span class="n">dataset_file</span><span class="o">.</span><span class="n">path</span><span class="p">,</span>
+                    <span class="p">)</span>
+
+                    <span class="n">dataset_file</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="n">client</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">commit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">find_previous_commit</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="n">revision</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">commit</span> <span class="ow">or</span> <span class="s1">&#39;HEAD&#39;</span>
+                <span class="p">)</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="c1"># if with_dataset is used, the dataset is not committed yet</span>
+            <span class="k">pass</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">generate_default_name</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Dataset.from_yaml"><a class="viewcode-back" href="../../../../models/datasets.html#renku.core.models.datasets.Dataset.from_yaml">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_yaml</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">client</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">commit</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return an instance from a YAML file.&quot;&quot;&quot;</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">jsonld</span><span class="o">.</span><span class="n">read_yaml</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+        <span class="bp">self</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">from_jsonld</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">client</span><span class="o">=</span><span class="n">client</span><span class="p">,</span> <span class="n">commit</span><span class="o">=</span><span class="n">commit</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__reference__</span> <span class="o">=</span> <span class="n">path</span>
+
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="Dataset.from_jsonld"><a class="viewcode-back" href="../../../../models/datasets.html#renku.core.models.datasets.Dataset.from_jsonld">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_jsonld</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">client</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">commit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">schema_class</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create an instance from JSON-LD data.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="bp">cls</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">data</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="n">schema_class</span> <span class="o">=</span> <span class="n">schema_class</span> <span class="ow">or</span> <span class="n">DatasetSchema</span>
+        <span class="k">return</span> <span class="n">schema_class</span><span class="p">(</span><span class="n">client</span><span class="o">=</span><span class="n">client</span><span class="p">,</span> <span class="n">commit</span><span class="o">=</span><span class="n">commit</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Dataset.to_yaml"><a class="viewcode-back" href="../../../../models/datasets.html#renku.core.models.datasets.Dataset.to_yaml">[docs]</a>    <span class="k">def</span> <span class="nf">to_yaml</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Write an instance to the referenced YAML file.&quot;&quot;&quot;</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">DatasetSchema</span><span class="p">()</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">jsonld</span><span class="o">.</span><span class="n">write_yaml</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">__reference__</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Dataset.as_jsonld"><a class="viewcode-back" href="../../../../models/datasets.html#renku.core.models.datasets.Dataset.as_jsonld">[docs]</a>    <span class="k">def</span> <span class="nf">as_jsonld</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create JSON-LD.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">DatasetSchema</span><span class="p">()</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div></div>
+
+
+<span class="k">class</span> <span class="nc">CreatorMixinSchema</span><span class="p">(</span><span class="n">JsonLDSchema</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;CreatorMixin schema.&quot;&quot;&quot;</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Meta class.&quot;&quot;&quot;</span>
+
+        <span class="n">unknown</span> <span class="o">=</span> <span class="n">EXCLUDE</span>
+
+    <span class="n">creators</span> <span class="o">=</span> <span class="n">Nested</span><span class="p">(</span><span class="n">schema</span><span class="o">.</span><span class="n">creator</span><span class="p">,</span> <span class="n">PersonSchema</span><span class="p">,</span> <span class="n">many</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">UrlSchema</span><span class="p">(</span><span class="n">JsonLDSchema</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Url schema.&quot;&quot;&quot;</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Meta class.&quot;&quot;&quot;</span>
+
+        <span class="n">rdf_type</span> <span class="o">=</span> <span class="n">schema</span><span class="o">.</span><span class="n">URL</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Url</span>
+        <span class="n">unknown</span> <span class="o">=</span> <span class="n">EXCLUDE</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Uri</span><span class="p">(</span><span class="n">schema</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="n">missing</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">_id</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Id</span><span class="p">(</span><span class="n">init_name</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="n">missing</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">DatasetTagSchema</span><span class="p">(</span><span class="n">JsonLDSchema</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;DatasetTag schema.&quot;&quot;&quot;</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Meta class.&quot;&quot;&quot;</span>
+
+        <span class="n">rdf_type</span> <span class="o">=</span> <span class="n">schema</span><span class="o">.</span><span class="n">PublicationEvent</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">DatasetTag</span>
+        <span class="n">unknown</span> <span class="o">=</span> <span class="n">EXCLUDE</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">schema</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">schema</span><span class="o">.</span><span class="n">description</span><span class="p">)</span>
+    <span class="n">commit</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">schema</span><span class="o">.</span><span class="n">location</span><span class="p">)</span>
+    <span class="n">created</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">DateTime</span><span class="p">(</span>
+        <span class="n">schema</span><span class="o">.</span><span class="n">startDate</span><span class="p">,</span>
+        <span class="n">missing</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;iso&#39;</span><span class="p">,</span>
+        <span class="n">extra_formats</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">,</span> <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">dataset</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">schema</span><span class="o">.</span><span class="n">about</span><span class="p">)</span>
+    <span class="n">_id</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Id</span><span class="p">(</span><span class="n">init_name</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">)</span>
+
+    <span class="nd">@pre_dump</span>
+    <span class="k">def</span> <span class="nf">fix_datetimes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">many</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Pre dump hook.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">many</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">fix_datetimes</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">many</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">]</span>
+        <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="s1">&#39;created&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fix_timezone</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">created</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">obj</span>
+
+
+<span class="k">class</span> <span class="nc">LanguageSchema</span><span class="p">(</span><span class="n">JsonLDSchema</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Language schema.&quot;&quot;&quot;</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Meta class.&quot;&quot;&quot;</span>
+
+        <span class="n">rdf_type</span> <span class="o">=</span> <span class="n">schema</span><span class="o">.</span><span class="n">Language</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Language</span>
+        <span class="n">unknown</span> <span class="o">=</span> <span class="n">EXCLUDE</span>
+
+    <span class="n">alternate_name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">schema</span><span class="o">.</span><span class="n">alternateName</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">schema</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">DatasetFileSchema</span><span class="p">(</span><span class="n">EntitySchema</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;DatasetFile schema.&quot;&quot;&quot;</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Meta class.&quot;&quot;&quot;</span>
+
+        <span class="n">rdf_type</span> <span class="o">=</span> <span class="n">schema</span><span class="o">.</span><span class="n">DigitalDocument</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">DatasetFile</span>
+        <span class="n">unknown</span> <span class="o">=</span> <span class="n">EXCLUDE</span>
+
+    <span class="n">added</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">DateTime</span><span class="p">(</span>
+        <span class="n">schema</span><span class="o">.</span><span class="n">dateCreated</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;iso&#39;</span><span class="p">,</span> <span class="n">extra_formats</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">,</span> <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">schema</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">missing</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">schema</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="n">missing</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">based_on</span> <span class="o">=</span> <span class="n">Nested</span><span class="p">(</span><span class="n">schema</span><span class="o">.</span><span class="n">isBasedOn</span><span class="p">,</span> <span class="s1">&#39;DatasetFileSchema&#39;</span><span class="p">,</span> <span class="n">missing</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">external</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Boolean</span><span class="p">(</span><span class="n">renku</span><span class="o">.</span><span class="n">external</span><span class="p">,</span> <span class="n">missing</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="nd">@pre_dump</span>
+    <span class="k">def</span> <span class="nf">fix_datetimes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">many</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Pre dump hook.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">many</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">fix_datetimes</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">many</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">]</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">added</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fix_timezone</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">added</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">obj</span>
+
+
+<span class="k">class</span> <span class="nc">DatasetSchema</span><span class="p">(</span><span class="n">EntitySchema</span><span class="p">,</span> <span class="n">CreatorMixinSchema</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Dataset schema.&quot;&quot;&quot;</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Meta class.&quot;&quot;&quot;</span>
+
+        <span class="n">rdf_type</span> <span class="o">=</span> <span class="n">schema</span><span class="o">.</span><span class="n">Dataset</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Dataset</span>
+        <span class="n">unknown</span> <span class="o">=</span> <span class="n">EXCLUDE</span>
+
+    <span class="n">_id</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Id</span><span class="p">(</span><span class="n">init_name</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="n">missing</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">_label</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">rdfs</span><span class="o">.</span><span class="n">label</span><span class="p">,</span> <span class="n">init_name</span><span class="o">=</span><span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="n">missing</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">date_published</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">DateTime</span><span class="p">(</span>
+        <span class="n">schema</span><span class="o">.</span><span class="n">datePublished</span><span class="p">,</span>
+        <span class="n">missing</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">allow_none</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">,</span>
+        <span class="n">extra_formats</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;iso&#39;</span><span class="p">,</span> <span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">T%H:%M:%S&#39;</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">schema</span><span class="o">.</span><span class="n">description</span><span class="p">,</span> <span class="n">missing</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">identifier</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">schema</span><span class="o">.</span><span class="n">identifier</span><span class="p">)</span>
+    <span class="n">in_language</span> <span class="o">=</span> <span class="n">Nested</span><span class="p">(</span><span class="n">schema</span><span class="o">.</span><span class="n">inLanguage</span><span class="p">,</span> <span class="n">LanguageSchema</span><span class="p">,</span> <span class="n">missing</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">keywords</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">List</span><span class="p">(</span>
+        <span class="n">schema</span><span class="o">.</span><span class="n">keywords</span><span class="p">,</span> <span class="n">fields</span><span class="o">.</span><span class="n">String</span><span class="p">(),</span> <span class="n">missing</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">allow_none</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>
+    <span class="n">license</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Uri</span><span class="p">(</span><span class="n">schema</span><span class="o">.</span><span class="n">license</span><span class="p">,</span> <span class="n">missing</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">allow_none</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">schema</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">schema</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">version</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">schema</span><span class="o">.</span><span class="n">version</span><span class="p">,</span> <span class="n">missing</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">date_created</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">DateTime</span><span class="p">(</span>
+        <span class="n">schema</span><span class="o">.</span><span class="n">dateCreated</span><span class="p">,</span>
+        <span class="n">missing</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">allow_none</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;iso&#39;</span><span class="p">,</span>
+        <span class="n">extra_formats</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">,</span> <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">files</span> <span class="o">=</span> <span class="n">Nested</span><span class="p">(</span><span class="n">schema</span><span class="o">.</span><span class="n">hasPart</span><span class="p">,</span> <span class="n">DatasetFileSchema</span><span class="p">,</span> <span class="n">many</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">tags</span> <span class="o">=</span> <span class="n">Nested</span><span class="p">(</span><span class="n">schema</span><span class="o">.</span><span class="n">subjectOf</span><span class="p">,</span> <span class="n">DatasetTagSchema</span><span class="p">,</span> <span class="n">many</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">same_as</span> <span class="o">=</span> <span class="n">Nested</span><span class="p">(</span><span class="n">schema</span><span class="o">.</span><span class="n">sameAs</span><span class="p">,</span> <span class="n">UrlSchema</span><span class="p">,</span> <span class="n">missing</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">schema</span><span class="o">.</span><span class="n">alternateName</span><span class="p">)</span>
+
+    <span class="nd">@pre_load</span>
+    <span class="k">def</span> <span class="nf">fix_files_context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Fix DatasetFile context for _label and external fields.&quot;&quot;&quot;</span>
+        <span class="n">context</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="s1">&#39;@context&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">data</span>
+
+        <span class="n">context</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;@context&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="ow">or</span> <span class="s1">&#39;files&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">context</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">data</span>
+
+        <span class="n">context</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;rdfs&#39;</span><span class="p">,</span> <span class="s1">&#39;http://www.w3.org/2000/01/rdf-schema#&#39;</span><span class="p">)</span>
+
+        <span class="n">files</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;@context&#39;</span><span class="p">][</span><span class="s1">&#39;files&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="ow">or</span> <span class="s1">&#39;@context&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">data</span>
+
+        <span class="n">context</span> <span class="o">=</span> <span class="n">files</span><span class="p">[</span><span class="s1">&#39;@context&#39;</span><span class="p">]</span>
+        <span class="n">context</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;rdfs&#39;</span><span class="p">,</span> <span class="s1">&#39;http://www.w3.org/2000/01/rdf-schema#&#39;</span><span class="p">)</span>
+        <span class="n">context</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;_label&#39;</span><span class="p">,</span> <span class="s1">&#39;rdfs:label&#39;</span><span class="p">)</span>
+        <span class="n">context</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;external&#39;</span><span class="p">,</span> <span class="s1">&#39;renku:external&#39;</span><span class="p">)</span>
+        <span class="n">context</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span>
+            <span class="s1">&#39;renku&#39;</span><span class="p">,</span> <span class="s1">&#39;https://swissdatasciencecenter.github.io/renku-ontology#&#39;</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">data</span>
+
+    <span class="nd">@pre_load</span>
+    <span class="k">def</span> <span class="nf">migrate_types</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Fix types.&quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">renku.core.utils.migrate</span> <span class="kn">import</span> <span class="n">migrate_types</span>
+        <span class="k">return</span> <span class="n">migrate_types</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="nd">@pre_dump</span>
+    <span class="k">def</span> <span class="nf">fix_datetimes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">many</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Pre dump hook.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">many</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">fix_datetimes</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">many</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">]</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">date_published</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fix_timezone</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">date_published</span><span class="p">)</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">date_created</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fix_timezone</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">date_created</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">obj</span>
+
+
+<span class="k">def</span> <span class="nf">is_dataset_name_valid</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A valid name is a valid Git reference name with no /.&quot;&quot;&quot;</span>
+    <span class="c1"># TODO make name an RFC 3986 compatible and migrate old projects</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">name</span> <span class="ow">and</span> <span class="n">LinkReference</span><span class="o">.</span><span class="n">check_ref_format</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">no_slashes</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="ow">and</span>
+        <span class="s1">&#39;/&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">name</span>
+    <span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">generate_default_name</span><span class="p">(</span><span class="n">dataset_title</span><span class="p">,</span> <span class="n">dataset_version</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get dataset name.&quot;&quot;&quot;</span>
+    <span class="c1"># For compatibility with older versions use name as name</span>
+    <span class="c1"># if it is valid; otherwise, use encoded name</span>
+    <span class="k">if</span> <span class="n">is_dataset_name_valid</span><span class="p">(</span><span class="n">dataset_title</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">dataset_title</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\s+&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">dataset_title</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()[:</span><span class="mi">24</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">to_unix</span><span class="p">(</span><span class="n">el</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Parse string to unix friendly name.&quot;&quot;&quot;</span>
+        <span class="n">parsed_</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;[^a-zA-Z0-9]&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\s+&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">el</span><span class="p">))</span>
+        <span class="n">parsed_</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39; .+&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">parsed_</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">parsed_</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="p">[</span><span class="n">to_unix</span><span class="p">(</span><span class="n">el</span><span class="p">)</span> <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">()]</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="p">[</span><span class="n">el</span> <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">name</span> <span class="k">if</span> <span class="n">el</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">dataset_version</span><span class="p">:</span>
+        <span class="n">version</span> <span class="o">=</span> <span class="n">to_unix</span><span class="p">(</span><span class="n">dataset_version</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">_</span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">name</span><span class="p">),</span> <span class="n">version</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="s1">&#39;_&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../../../index.html">
+    <h1 class="logo logo-name">
+      Renku
+      <span class="renku">連句</span>
+    </h1>
+  </a>
+</p>
+
+
+<p class="blurb">Python API and CLI for the Renku platform.</p>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license.html#authors">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../changes.html">Changes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../glossary.html">Glossary</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../comparison.html">How does this compare …</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../commands.html">Renku Command Line</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/index.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../management.html">Low-level API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../plugins.html">Plugin Support</a></li>
+</ul>
+
+
+<hr />
+<ul>
+    
+    <li class="toctree-l1"><a href="https://github.com/SwissDataScienceCenter/renku-python">renku-python@GitHub</a></li>
+    
+    <li class="toctree-l1"><a href="https://pypi.python.org/pypi/renku/">renku-python@PyPI</a></li>
+    
+    <li class="toctree-l1"><a href="https://github.com/SwissDataScienceCenter/renku">renku@GitHub</a></li>
+    
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017-2020, Swiss Data Science Center.
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

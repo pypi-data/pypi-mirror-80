@@ -1,0 +1,1250 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renku Command Line &#8212; Renku 0.10.5.dev72+dirty documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Models" href="models/index.html" />
+    <link rel="prev" title="How does this compare …" href="comparison.html" />
+  
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900,300italic,400italic" rel="stylesheet" type="text/css">
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  </head><body>
+  <div class="git-ribbon">
+    <a href="http://github.com/SwissDataScienceCenter" rel="me">Join us on GitHub</a>
+  </div>
+  
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-renku.cli">
+<span id="renku-command-line"></span><h1>Renku Command Line<a class="headerlink" href="#module-renku.cli" title="Permalink to this headline">¶</a></h1>
+<p>The base command for interacting with the Renku platform.</p>
+<div class="section" id="renku-base-command">
+<h2><code class="docutils literal notranslate"><span class="pre">renku</span></code> (base command)<a class="headerlink" href="#renku-base-command" title="Permalink to this headline">¶</a></h2>
+<p>To list the available commands, either run <code class="docutils literal notranslate"><span class="pre">renku</span></code> with no parameters or
+execute <code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">help</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku <span class="nb">help</span>
+<span class="go">Usage: renku [OPTIONS] COMMAND [ARGS]...</span>
+
+<span class="go">Check common Renku commands used in various situations.</span>
+
+
+<span class="go">Options:</span>
+<span class="go">  --version                       Print version number.</span>
+<span class="go">  --global-config-path            Print global application&#39;s config path.</span>
+<span class="go">  --install-completion            Install completion for the current shell.</span>
+<span class="go">  --path &lt;path&gt;                   Location of a Renku repository.</span>
+<span class="go">                                  [default: (dynamic)]</span>
+<span class="go">  --external-storage / -S, --no-external-storage</span>
+<span class="go">                                  Use an external file storage service.</span>
+<span class="go">  -h, --help                      Show this message and exit.</span>
+
+<span class="go">Commands:</span>
+<span class="gp">  #</span> <span class="o">[</span>...<span class="o">]</span>
+</pre></div>
+</div>
+<div class="section" id="configuration-files">
+<h3>Configuration files<a class="headerlink" href="#configuration-files" title="Permalink to this headline">¶</a></h3>
+<p>Depending on your system, you may find the configuration files used by Renku
+command line in a different folder. By default, the following rules are used:</p>
+<dl class="simple">
+<dt>MacOS:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">~/Library/Application</span> <span class="pre">Support/Renku</span></code></p>
+</dd>
+<dt>Unix:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">~/.config/renku</span></code></p>
+</dd>
+<dt>Windows:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">C:\Users\&lt;user&gt;\AppData\Roaming\Renku</span></code></p>
+</dd>
+</dl>
+<p>If in doubt where to look for the configuration file, you can display its path
+by running <code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">--global-config-path</span></code>.</p>
+</div>
+</div>
+<div class="section" id="module-renku.cli.init">
+<span id="renku-init"></span><span id="cli-init"></span><h2><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">init</span></code><a class="headerlink" href="#module-renku.cli.init" title="Permalink to this headline">¶</a></h2>
+<p>Create an empty Renku project or reinitialize an existing one.</p>
+<div class="section" id="start-a-renku-project">
+<h3>Start a Renku project<a class="headerlink" href="#start-a-renku-project" title="Permalink to this headline">¶</a></h3>
+<p>If you have an existing directory which you want to turn into a Renku project,
+you can type:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> ~/my_project
+<span class="gp">$</span> renku init
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku init ~/my_project
+</pre></div>
+</div>
+<p>This creates a new subdirectory named <code class="docutils literal notranslate"><span class="pre">.renku</span></code> that contains all the
+necessary files for managing the project configuration.</p>
+<p>If provided directory does not exist, it will be created.</p>
+</div>
+<div class="section" id="use-a-different-template">
+<h3>Use a different template<a class="headerlink" href="#use-a-different-template" title="Permalink to this headline">¶</a></h3>
+<p>Renku is installed together with a specific set of templates you can select
+when you initialize a project. You can check them by typing:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku init --list-templates
+
+<span class="go">INDEX ID     DESCRIPTION                     PARAMETERS</span>
+<span class="go">----- ------ ------------------------------- -----------------------------</span>
+<span class="go">1     python The simplest Python-based [...] description: project des[...]</span>
+<span class="go">2     R      R-based renku project with[...] description: project des[...]</span>
+</pre></div>
+</div>
+<p>If you know which template you are going to use, you can provide either the id
+<code class="docutils literal notranslate"><span class="pre">--template-id</span></code> or the template index number <code class="docutils literal notranslate"><span class="pre">--template-index</span></code>.</p>
+<p>You can use a newer version of the templates or even create your own one and
+provide it to the <code class="docutils literal notranslate"><span class="pre">init</span></code> command by specifying the target template repository
+source <code class="docutils literal notranslate"><span class="pre">--template-source</span></code> (both local path and remote url are supported) and
+the reference <code class="docutils literal notranslate"><span class="pre">--template-ref</span></code> (branch, tag or commit).</p>
+<p>You can take inspiration from the
+<a class="reference external" href="https://github.com/SwissDataScienceCenter/renku-project-template">official Renku template repository</a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku init --template-ref master --template-source <span class="se">\</span>
+https://github.com/SwissDataScienceCenter/renku-project-template
+
+<span class="go">Fetching template from</span>
+<span class="go">https://github.com/SwissDataScienceCenter/renku-project-template@master</span>
+<span class="go">... OK</span>
+
+<span class="go">INDEX ID             DESCRIPTION                PARAMETERS</span>
+<span class="go">----- -------------- -------------------------- ----------------------</span>
+<span class="go">1     python-minimal Basic Python Project:[...] description: proj[...]</span>
+<span class="go">2     R-minimal      Basic R Project: The [...] description: proj[...]</span>
+
+<span class="go">Please choose a template by typing the index:</span>
+</pre></div>
+</div>
+<p>Provide parameters
+~~~~~~~~~~~~~~~~~-</p>
+<p>Some templates require parameters to properly initialize a new project. You
+can check them by listing the templates <code class="docutils literal notranslate"><span class="pre">--list-templates</span></code>.</p>
+<p>To provide parameters, use the <code class="docutils literal notranslate"><span class="pre">--parameter</span></code> option and provide each
+parameter using <code class="docutils literal notranslate"><span class="pre">--parameter</span> <span class="pre">&quot;param1&quot;=&quot;value1&quot;</span></code>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku init --template-id python-minimal --parameter <span class="se">\</span>
+<span class="s2">&quot;description&quot;</span><span class="o">=</span><span class="s2">&quot;my new shiny project&quot;</span>
+
+<span class="go">Initializing new Renku repository... OK</span>
+</pre></div>
+</div>
+<p>If you don’t provide the required parameters through the option
+<code class="docutils literal notranslate"><span class="pre">-parameter</span></code>, you will be asked to provide them. Empty values are allowed
+and passed to the template initialization function.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Every project requires a <code class="docutils literal notranslate"><span class="pre">name</span></code> that can either be provided using
+<code class="docutils literal notranslate"><span class="pre">--name</span></code> or automatically taken from the target folder. This is
+also considered as a special parameter, therefore it’s automatically added
+to the list of parameters forwarded to the <code class="docutils literal notranslate"><span class="pre">init</span></code> command.</p>
+</div>
+</div>
+<div class="section" id="update-an-existing-project">
+<h3>Update an existing project<a class="headerlink" href="#update-an-existing-project" title="Permalink to this headline">¶</a></h3>
+<p>There are situations when the required structure of a Renku project needs
+to be recreated or you have an <strong>existing</strong> Git repository. You can solve
+these situation by simply adding the <code class="docutils literal notranslate"><span class="pre">--force</span></code> option.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> git init .
+<span class="gp">$</span> <span class="nb">echo</span> <span class="s2">&quot;# Example\nThis is a README.&quot;</span> &gt; README.md
+<span class="gp">$</span> git add README.md
+<span class="gp">$</span> git commit -m <span class="s1">&#39;Example readme file&#39;</span>
+<span class="gp">#</span> renku init would fail because there is a git repository
+<span class="gp">$</span> renku init --force
+</pre></div>
+</div>
+<p>You can also enable the external storage system for output files, if it
+was not installed previously.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku init --force --external-storage
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="module-renku.cli.config">
+<span id="renku-config"></span><span id="cli-config"></span><h2><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">config</span></code><a class="headerlink" href="#module-renku.cli.config" title="Permalink to this headline">¶</a></h2>
+<p>Get and set Renku repository or global options.</p>
+<div class="section" id="set-values">
+<h3>Set values<a class="headerlink" href="#set-values" title="Permalink to this headline">¶</a></h3>
+<p>You can set various Renku configuration options, for example the image registry
+URL, with a command like:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku config registry https://registry.gitlab.com/demo/demo
+</pre></div>
+</div>
+<p>By default, configuration is stored locally in the project’s directory. Use
+<code class="docutils literal notranslate"><span class="pre">--global</span></code> option to store configuration for all projects in your home
+directory.</p>
+</div>
+<div class="section" id="remove-values">
+<h3>Remove values<a class="headerlink" href="#remove-values" title="Permalink to this headline">¶</a></h3>
+<p>To remove a specific key from configuration use:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku config --remove registry
+</pre></div>
+</div>
+<p>By default, only local configuration is searched for removal. Use <code class="docutils literal notranslate"><span class="pre">--global</span></code>
+option to remove a global configuration value.</p>
+</div>
+<div class="section" id="query-values">
+<h3>Query values<a class="headerlink" href="#query-values" title="Permalink to this headline">¶</a></h3>
+<p>You can display all configuration values with:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku config
+</pre></div>
+</div>
+<p>Both local and global configuration files are read. Values in local
+configuration take precedence over global values. Use <code class="docutils literal notranslate"><span class="pre">--local</span></code> or
+<code class="docutils literal notranslate"><span class="pre">--global</span></code> flag to read corresponding configuration only.</p>
+<p>You can provide a KEY to display only its value:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku config registry
+<span class="go">https://registry.gitlab.com/demo/demo</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="available-configuration-values">
+<h3>Available configuration values<a class="headerlink" href="#available-configuration-values" title="Permalink to this headline">¶</a></h3>
+<p>The following values are available for the <code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">config</span></code> command:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 51%" />
+<col style="width: 15%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>registry</p></td>
+<td><p>The image registry to store Docker
+images in</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>zenodo.access_token</p></td>
+<td><p>Access token for Zenodo API</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>dataverse.access_token</p></td>
+<td><p>Access token for Dataverse API</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>dataverse.server_url</p></td>
+<td><p>URL for the Dataverse API server
+to use</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>show_lfs_message</p></td>
+<td><p>Whether to show messages about
+files being added to git LFS or not</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>lfs_threshold</p></td>
+<td><p>Threshold file size below which
+files are not added to git LFS</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">100kb</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="module-renku.cli.dataset">
+<span id="renku-dataset"></span><span id="cli-datasets"></span><h2><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">dataset</span></code><a class="headerlink" href="#module-renku.cli.dataset" title="Permalink to this headline">¶</a></h2>
+<p>Renku CLI commands for handling of datasets.</p>
+<div class="section" id="manipulating-datasets">
+<h3>Manipulating datasets<a class="headerlink" href="#manipulating-datasets" title="Permalink to this headline">¶</a></h3>
+<p>Creating an empty dataset inside a Renku project:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku dataset create my-dataset
+<span class="go">Creating a dataset ... OK</span>
+</pre></div>
+</div>
+<p>You can pass the following options to this command to set various metadata for
+the dataset.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 74%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-t, –title</p></td>
+<td><p>A human-readable title for the dataset.</p></td>
+</tr>
+<tr class="row-odd"><td><p>-d, –description</p></td>
+<td><p>Dataset’s description.</p></td>
+</tr>
+<tr class="row-even"><td><p>-c, –creator</p></td>
+<td><p>Creator’s name, email, and an optional affiliation.
+Accepted format is
+‘Forename Surname &lt;email&gt; [affiliation]’. Pass
+multiple times for a list of creators.</p></td>
+</tr>
+<tr class="row-odd"><td><p>-k, –keyword</p></td>
+<td><p>Dataset’s keywords. Pass multiple times for a list
+of keywords.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Editing a dataset’s metadata</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">edit</span></code> subcommand to change metadata of a dataset. You can edit the same
+set of metadata as the create command by passing the options described in the
+table above.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku dataset edit my-dataset --title <span class="s1">&#39;New title&#39;</span>
+<span class="go">Successfully updated: title.</span>
+</pre></div>
+</div>
+<p>Listing all datasets:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku dataset
+<span class="go">ID        NAME           TITLE          VERSION</span>
+<span class="go">--------  -------------  -------------  ---------</span>
+<span class="go">0ad1cb9a  some-dataset   Some Dataset</span>
+<span class="go">9436e36c  my-dataset     My Dataset</span>
+</pre></div>
+</div>
+<p>You can select which columns to display by using <code class="docutils literal notranslate"><span class="pre">--columns</span></code> to pass a
+comma-separated list of column names:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku dataset --columns id,name,date_created,creators
+<span class="go">ID        NAME           CREATED              CREATORS</span>
+<span class="go">--------  -------------  -------------------  ---------</span>
+<span class="go">0ad1cb9a  some-dataset   2020-03-19 16:39:46  sam</span>
+<span class="go">9436e36c  my-dataset     2020-02-28 16:48:09  sam</span>
+</pre></div>
+</div>
+<p>Displayed results are sorted based on the value of the first column.</p>
+<p>To inspect the state of the dataset on a given commit we can use <code class="docutils literal notranslate"><span class="pre">--revision</span></code>
+flag for it:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku dataset --revision<span class="o">=</span>1103a42bd3006c94efcaf5d6a5e03a335f071215
+<span class="go">ID        NAME                 TITLE               VERSION</span>
+<span class="go">a1fd8ce2  201901_us_flights_1  2019-01 US Flights  1</span>
+<span class="go">c2d80abe  ds1                  ds1</span>
+</pre></div>
+</div>
+<p>Deleting a dataset:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku dataset rm some-dataset
+<span class="go">OK</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="working-with-data">
+<h3>Working with data<a class="headerlink" href="#working-with-data" title="Permalink to this headline">¶</a></h3>
+<p>Adding data to the dataset:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku dataset add my-dataset http://data-url
+</pre></div>
+</div>
+<p>This will copy the contents of <code class="docutils literal notranslate"><span class="pre">data-url</span></code> to the dataset and add it
+to the dataset metadata.</p>
+<p>You can create a dataset when you add data to it for the first time by passing
+<code class="docutils literal notranslate"><span class="pre">--create</span></code> flag to add command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku dataset add --create new-dataset http://data-url
+</pre></div>
+</div>
+<p>To add data from a git repository, you can specify it via https or git+ssh
+URL schemes. For example,</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku dataset add my-dataset git+ssh://host.io/namespace/project.git
+</pre></div>
+</div>
+<p>Sometimes you want to add just specific paths within the parent project.
+In this case, use the <code class="docutils literal notranslate"><span class="pre">--source</span></code> or <code class="docutils literal notranslate"><span class="pre">-s</span></code> flag:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku dataset add my-dataset --source path/within/repo/to/datafile <span class="se">\</span>
+    git+ssh://host.io/namespace/project.git
+</pre></div>
+</div>
+<p>The command above will result in a structure like</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">data/</span>
+<span class="go">  my-dataset/</span>
+<span class="go">    datafile</span>
+</pre></div>
+</div>
+<p>You can use shell-like wildcards (e.g. <em>, *</em>, ?) when specifying paths to be
+added. Put wildcard patterns in quotes to prevent your shell from expanding
+them.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku dataset add my-dataset --source <span class="s1">&#39;path/**/datafile&#39;</span> <span class="se">\</span>
+    git+ssh://host.io/namespace/project.git
+</pre></div>
+</div>
+<p>You can use <code class="docutils literal notranslate"><span class="pre">--destination</span></code> or <code class="docutils literal notranslate"><span class="pre">-d</span></code> flag to set the location where the new
+data is copied to. This location be will under the dataset’s data directory and
+will be created if does not exists. You will get an error message if the
+destination exists and is a file.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku dataset add my-dataset <span class="se">\</span>
+    --source path/within/repo/to/datafile <span class="se">\</span>
+    --destination new-dir/new-subdir <span class="se">\</span>
+    git+ssh://host.io/namespace/project.git
+</pre></div>
+</div>
+<p>will yield:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">data/</span>
+<span class="go">  my-dataset/</span>
+<span class="go">    new-dir/</span>
+<span class="go">      new-subdir/</span>
+<span class="go">        datafile</span>
+</pre></div>
+</div>
+<p>To add a specific version of files, use <code class="docutils literal notranslate"><span class="pre">--ref</span></code> option for selecting a
+branch, commit, or tag. The value passed to this option must be a valid
+reference in the remote Git repository.</p>
+<p>Adding external data to the dataset:</p>
+<p>Sometimes you might want to add data to your dataset without copying the
+actual files to your repository. This is useful for example when external data
+is too large to store locally. The external data must exist (i.e. be mounted)
+on your filesystem. Renku creates a symbolic to your data and you can use this
+symbolic link in renku commands as a normal file. To add an external file pass
+<code class="docutils literal notranslate"><span class="pre">--external</span></code> or <code class="docutils literal notranslate"><span class="pre">-e</span></code> when adding local data to a dataset:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku dataset add my-dataset -e /path/to/external/file
+</pre></div>
+</div>
+<p>Updating a dataset:</p>
+<p>After adding files from a remote Git repository, you can check for updates in
+those files by using <code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">dataset</span> <span class="pre">update</span></code> command. This command checks all
+remote files and copies over new content if there is any. It does not delete
+files from the local dataset if they are deleted from the remote Git
+repository; to force the delete use <code class="docutils literal notranslate"><span class="pre">--delete</span></code> argument. You can update to a
+specific branch, commit, or tag by passing <code class="docutils literal notranslate"><span class="pre">--ref</span></code> option.</p>
+<p>You can limit the scope of updated files by specifying dataset names, using
+<code class="docutils literal notranslate"><span class="pre">--include</span></code> and <code class="docutils literal notranslate"><span class="pre">--exclude</span></code> to filter based on file names, or using
+<code class="docutils literal notranslate"><span class="pre">--creators</span></code> to filter based on creators. For example, the following command
+updates only CSV files from <code class="docutils literal notranslate"><span class="pre">my-dataset</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku dataset update -I <span class="s1">&#39;*.csv&#39;</span> my-dataset
+</pre></div>
+</div>
+<p>Note that putting glob patterns in quotes is needed to tell Unix shell not
+to expand them.</p>
+<p>External data are not updated automatically because they require a checksum
+calculation which can take a long time when data is large. To update external
+files pass <code class="docutils literal notranslate"><span class="pre">--external</span></code> or <code class="docutils literal notranslate"><span class="pre">-e</span></code> to the update command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku dataset update -e
+</pre></div>
+</div>
+<p>Tagging a dataset:</p>
+<p>A dataset can be tagged with an arbitrary tag to refer to the dataset at that
+point in time. A tag can be added like this:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku dataset tag my-dataset <span class="m">1</span>.0 -d <span class="s2">&quot;Version 1.0 tag&quot;</span>
+</pre></div>
+</div>
+<p>A list of all tags can be seen by running:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku dataset ls-tags my-dataset
+<span class="go">CREATED              NAME    DESCRIPTION      DATASET     COMMIT</span>
+<span class="go">-------------------  ------  ---------------  ----------  ----------------</span>
+<span class="go">2020-09-19 17:29:13  1.0     Version 1.0 tag  my-dataset  6c19a8d31545b...</span>
+</pre></div>
+</div>
+<p>A tag can be removed with:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku dataset rm-tags my-dataset <span class="m">1</span>.0
+</pre></div>
+</div>
+<p>Importing data from other Renku projects:</p>
+<p>To import all data files and their metadata from another Renku dataset use:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku dataset import <span class="se">\</span>
+    https://renkulab.io/projects/&lt;username&gt;/&lt;project&gt;/datasets/&lt;dataset-id&gt;
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku dataset import <span class="se">\</span>
+    https://renkulab.io/datasets/&lt;dataset-id&gt;
+</pre></div>
+</div>
+<p>You can get the link to a dataset form the UI or you can construct it by
+knowing the dataset’s ID.</p>
+<p>Importing data from an external provider:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku dataset import <span class="m">10</span>.5281/zenodo.3352150
+</pre></div>
+</div>
+<p>This will import the dataset with the DOI (Digital Object Identifier)
+<code class="docutils literal notranslate"><span class="pre">10.5281/zenodo.3352150</span></code> and make it locally available.
+Dataverse and Zenodo are supported, with DOIs (e.g. <code class="docutils literal notranslate"><span class="pre">10.5281/zenodo.3352150</span></code>
+or <code class="docutils literal notranslate"><span class="pre">doi:10.5281/zenodo.3352150</span></code>) and full URLs (e.g.
+<code class="docutils literal notranslate"><span class="pre">http://zenodo.org/record/3352150</span></code>). A tag with the remote version of the
+dataset is automatically created.</p>
+<p>Exporting data to an external provider:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku dataset <span class="nb">export</span> my-dataset zenodo
+</pre></div>
+</div>
+<p>This will export the dataset <code class="docutils literal notranslate"><span class="pre">my-dataset</span></code> to <code class="docutils literal notranslate"><span class="pre">zenodo.org</span></code> as a draft,
+allowing for publication later on. If the dataset has any tags set, you
+can chose if the repository <cite>HEAD</cite> version or one of the tags should be
+exported. The remote version will be set to the local tag that is being
+exported.</p>
+<p>To export to a Dataverse provider you must pass Dataverse server’s URL and
+the name of the parent dataverse where the dataset will be exported to.
+Server’s URL is stored in your Renku setting and you don’t need to pass it
+every time.</p>
+<p>Listing all files in the project associated with a dataset.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku dataset ls-files
+<span class="go">DATASET NAME         ADDED                PATH</span>
+<span class="go">-------------------  -------------------  -----------------------------</span>
+<span class="go">my-dataset           2020-02-28 16:48:09  data/my-dataset/addme</span>
+<span class="go">my-dataset           2020-02-28 16:49:02  data/my-dataset/weather/file1</span>
+<span class="go">my-dataset           2020-02-28 16:49:02  data/my-dataset/weather/file2</span>
+<span class="go">my-dataset           2020-02-28 16:49:02  data/my-dataset/weather/file3</span>
+</pre></div>
+</div>
+<p>You can select which columns to display by using <code class="docutils literal notranslate"><span class="pre">--columns</span></code> to pass a
+comma-separated list of column names:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku dataset ls-files --columns name,creators, path
+<span class="go">DATASET NAME         CREATORS   PATH</span>
+<span class="go">-------------------  ---------  -----------------------------</span>
+<span class="go">my-dataset           sam        data/my-dataset/addme</span>
+<span class="go">my-dataset           sam        data/my-dataset/weather/file1</span>
+<span class="go">my-dataset           sam        data/my-dataset/weather/file2</span>
+<span class="go">my-dataset           sam        data/my-dataset/weather/file3</span>
+</pre></div>
+</div>
+<p>Displayed results are sorted based on the value of the first column.</p>
+<p>Sometimes you want to filter the files. For this we use <code class="docutils literal notranslate"><span class="pre">--dataset</span></code>,
+<code class="docutils literal notranslate"><span class="pre">--include</span></code> and <code class="docutils literal notranslate"><span class="pre">--exclude</span></code> flags:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku dataset ls-files --include <span class="s2">&quot;file*&quot;</span> --exclude <span class="s2">&quot;file3&quot;</span>
+<span class="go">DATASET NAME        ADDED                PATH</span>
+<span class="go">------------------- -------------------  -----------------------------</span>
+<span class="go">my-dataset          2020-02-28 16:49:02  data/my-dataset/weather/file1</span>
+<span class="go">my-dataset          2020-02-28 16:49:02  data/my-dataset/weather/file2</span>
+</pre></div>
+</div>
+<p>Unlink a file from a dataset:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku dataset unlink my-dataset --include file1
+<span class="go">OK</span>
+</pre></div>
+</div>
+<p>Unlink all files within a directory from a dataset:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku dataset unlink my-dataset --include <span class="s2">&quot;weather/*&quot;</span>
+<span class="go">OK</span>
+</pre></div>
+</div>
+<p>Unlink all files from a dataset:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku dataset unlink my-dataset
+<span class="go">Warning: You are about to remove following from &quot;my-dataset&quot; dataset.</span>
+<span class="go">.../my-dataset/weather/file1</span>
+<span class="go">.../my-dataset/weather/file2</span>
+<span class="go">.../my-dataset/weather/file3</span>
+<span class="go">Do you wish to continue? [y/N]:</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">unlink</span></code> command does not delete files,
+only the dataset record.</p>
+</div>
+</div>
+</div>
+<div class="section" id="module-renku.cli.run">
+<span id="renku-run"></span><span id="cli-run"></span><h2><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">run</span></code><a class="headerlink" href="#module-renku.cli.run" title="Permalink to this headline">¶</a></h2>
+<p>Track provenance of data created by executing programs.</p>
+<div class="section" id="capture-command-line-execution">
+<h3>Capture command line execution<a class="headerlink" href="#capture-command-line-execution" title="Permalink to this headline">¶</a></h3>
+<p>Tracking execution of your command line script is done by simply adding the
+<code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">run</span></code> command before the actual command. This will enable detection of:</p>
+<ul class="simple">
+<li><p>arguments (flags),</p></li>
+<li><p>string and integer options,</p></li>
+<li><p>input files or directories if linked to existing paths in the repository,</p></li>
+<li><p>output files or directories if modified or created while running the command.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If there were uncommitted changes in the repository, then the
+<code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">run</span></code> command fails. See <strong class="program">git status</strong> for details.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Input and output paths can only be detected if they are passed as
+arguments to <code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">run</span></code>.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Circular dependencies are not supported for <code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">run</span></code>. See
+<a class="reference internal" href="#circular-dependencies"><span class="std std-ref">Circular Dependencies</span></a> for more details.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>When using output redirection in <code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">run</span></code> on Windows (with
+`` &gt; file`` or `` 2&gt; file``), all Renku errors and messages are redirected
+as well and <code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">run</span></code> produces no output on the terminal. On Linux,
+this is detected by renku and only the output of the command to be run is
+actually redirected. Renku specific messages such as errors get printed to
+the terminal as usual and don’t get redirected.</p>
+</div>
+</div>
+<div class="section" id="detecting-input-paths">
+<h3>Detecting input paths<a class="headerlink" href="#detecting-input-paths" title="Permalink to this headline">¶</a></h3>
+<p>Any path passed as an argument to <code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">run</span></code>, which was not changed during
+the execution, is identified as an input path. The identification only works if
+the path associated with the argument matches an existing file or directory
+in the repository.</p>
+<p>The detection might not work as expected
+if:</p>
+<ul class="simple">
+<li><p>a file is <strong>modified</strong> during the execution. In this case it will be stored
+as an <strong>output</strong>;</p></li>
+<li><p>a path is not passed as an argument to <code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">run</span></code>.</p></li>
+</ul>
+<div class="topic">
+<p class="topic-title">Specifying auxiliary inputs (<code class="docutils literal notranslate"><span class="pre">--input</span></code>)</p>
+<p>You can specify extra inputs to your program explicitly by using the
+<code class="docutils literal notranslate"><span class="pre">--input</span></code> option. This is useful for specifying hidden dependencies
+that don’t appear on the command line. These input file must exist before
+execution of <code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">run</span></code> command. This option is not a replacement for
+the arguments that are passed on the command line. Files or directories
+specified with this option will not be passed as input arguments to the
+script.</p>
+</div>
+</div>
+<div class="section" id="detecting-output-paths">
+<h3>Detecting output paths<a class="headerlink" href="#detecting-output-paths" title="Permalink to this headline">¶</a></h3>
+<p>Any path <strong>modified</strong> or <strong>created</strong> during the execution will be added as an
+output.</p>
+<p>Because the output path detection is based on the Git repository state after
+the execution of <code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">run</span></code> command, it is good to have a basic
+understanding of the underlying principles and limitations of tracking
+files in Git.</p>
+<p>Git tracks not only the paths in a repository, but also the content stored in
+those paths. Therefore:</p>
+<ul class="simple">
+<li><p>a recreated file with the same content is not considered an output file,
+but instead is kept as an input;</p></li>
+<li><p>file moves are detected based on their content and can cause problems;</p></li>
+<li><p>directories cannot be empty.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When in doubt whether the outputs will be detected, remove all
+outputs using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">rm</span> <span class="pre">&lt;path&gt;</span></code> followed by <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code> before running
+the <code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">run</span></code> command.</p>
+</div>
+<div class="topic">
+<p class="topic-title">Command does not produce any files (<code class="docutils literal notranslate"><span class="pre">--no-output</span></code>)</p>
+<p>If the program does not produce any outputs, the execution ends with an
+error:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Error: There are not any detected outputs in the repository.
+</pre></div>
+</div>
+<p>You can specify the <code class="docutils literal notranslate"><span class="pre">--no-output</span></code> option to force tracking of such
+an execution.</p>
+</div>
+<div class="topic">
+<p class="topic-title">Specifying outputs explicitly (<code class="docutils literal notranslate"><span class="pre">--output</span></code>)</p>
+<p>You can specify expected outputs of your program explicitly by using the
+<code class="docutils literal notranslate"><span class="pre">--output</span></code> option. These output must exist after the execution of the
+<code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">run</span></code> command. However, they do not need to be modified by
+the command.</p>
+</div>
+</div>
+<div class="section" id="detecting-standard-streams">
+<h3>Detecting standard streams<a class="headerlink" href="#detecting-standard-streams" title="Permalink to this headline">¶</a></h3>
+<p>Often the program expect inputs as a standard input stream. This is detected
+and recorded in the tool specification when invoked by <code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">run</span> <span class="pre">cat</span> <span class="pre">&lt;</span> <span class="pre">A</span></code>.</p>
+<p>Similarly, both redirects to standard output and standard error output can be
+done when invoking a command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku run grep <span class="s2">&quot;test&quot;</span> B &gt; C <span class="m">2</span>&gt; D
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Detecting inputs and outputs from pipes <code class="docutils literal notranslate"><span class="pre">|</span></code> is not supported.</p>
+</div>
+</div>
+<div class="section" id="specifying-inputs-and-outputs-programmatically">
+<h3>Specifying inputs and outputs programmatically<a class="headerlink" href="#specifying-inputs-and-outputs-programmatically" title="Permalink to this headline">¶</a></h3>
+<p>Sometimes the list of inputs and outputs are not known before execution of the
+program. For example, a program might accept a date range as input and access
+all files within that range during its execution.</p>
+<p>To address this issue, the program can dump a list of input and output files
+that it is accessing in <code class="docutils literal notranslate"><span class="pre">inputs.txt</span></code> and <code class="docutils literal notranslate"><span class="pre">outputs.txt</span></code>. Each line in these
+files is expected to be the path to an input or output file within the
+project’s directory. When the program is finished, Renku will look for
+existence of these two files and adds their content to the list of explicit
+inputs and outputs. Renku will then delete these two files.</p>
+<p>By default, Renku looks for these two files in <code class="docutils literal notranslate"><span class="pre">.renku/tmp</span></code> directory. One
+can change this default location by setting <code class="docutils literal notranslate"><span class="pre">RENKU_FILELIST_PATH</span></code>
+environment variable. When set, it points to the directory within the
+project’s directory where <code class="docutils literal notranslate"><span class="pre">inputs.txt</span></code> and <code class="docutils literal notranslate"><span class="pre">outputs.txt</span></code> reside.</p>
+</div>
+<div class="section" id="exit-codes">
+<h3>Exit codes<a class="headerlink" href="#exit-codes" title="Permalink to this headline">¶</a></h3>
+<p>All Unix commands return a number between 0 and 255 which is called
+“exit code”. In case other numbers are returned, they are treaded module 256
+(-10 is equivalent to 246, 257 is equivalent to 1). The exit-code 0 represents
+a <em>success</em> and non-zero exit-code indicates a <em>failure</em>.</p>
+<p>Therefore the command specified after <code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">run</span></code> is expected to return
+exit-code 0. If the command returns different exit code, you can specify them
+with <code class="docutils literal notranslate"><span class="pre">--success-code=&lt;INT&gt;</span></code> parameter.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku run --success-code<span class="o">=</span><span class="m">1</span> --no-output fail
+</pre></div>
+</div>
+</div>
+<div class="section" id="circular-dependencies">
+<span id="id1"></span><h3>Circular Dependencies<a class="headerlink" href="#circular-dependencies" title="Permalink to this headline">¶</a></h3>
+<p>Circular dependencies are not supported in <code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">run</span></code>. This means you cannot
+use the same file or directory as both an input and an output in the same step,
+for instance reading from a file as input and then appending to it is not
+allowed. Since renku records all steps of an analysis workflow in a dependency
+graph and it allows you to update outputs when an input changes, this would
+lead to problems with circular dependencies. An update command would change the
+input again, leading to renku seeing it as a changed input, which would run
+update again, and so on, without ever stopping.</p>
+<p>Due to this, the renku depedency graph has to be <em>acyclic</em>. So instead of
+appending to an input file or writing an output file to the same directory
+that was used as an input directory, create new files or write to other
+directories, respectively.</p>
+</div>
+</div>
+<div class="section" id="module-renku.cli.log">
+<span id="renku-log"></span><span id="cli-log"></span><h2><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">log</span></code><a class="headerlink" href="#module-renku.cli.log" title="Permalink to this headline">¶</a></h2>
+<p>Show provenance of data created by executing programs.</p>
+<div class="section" id="file-provenance">
+<h3>File provenance<a class="headerlink" href="#file-provenance" title="Permalink to this headline">¶</a></h3>
+<p>Unlike the traditional file history format, which shows previous revisions
+of the file, this format presents tool inputs together with their revision
+identifiers.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">*</span></code> character shows to which lineage the specific file belongs to.
+A <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> character in the graph lineage means that the corresponding file does
+not have any inputs and the history starts there.</p>
+<p>When called without file names, <code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">log</span></code> shows the history of most
+recently created files. With the <code class="docutils literal notranslate"><span class="pre">--revision</span> <span class="pre">&lt;refname&gt;</span></code> option the output is
+shown as it was in the specified revision.</p>
+<div class="section" id="provenance-examples">
+<h4>Provenance examples<a class="headerlink" href="#provenance-examples" title="Permalink to this headline">¶</a></h4>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">log</span> <span class="pre">B</span></code></dt><dd><p>Show the history of file <code class="docutils literal notranslate"><span class="pre">B</span></code> since its last creation or modification.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">log</span> <span class="pre">--revision</span> <span class="pre">HEAD~5</span></code></dt><dd><p>Show the history of files that have been created or modified 5 commits ago.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">log</span> <span class="pre">--revision</span> <span class="pre">e3f0bd5a</span> <span class="pre">D</span> <span class="pre">E</span></code></dt><dd><p>Show the history of files <code class="docutils literal notranslate"><span class="pre">D</span></code> and <code class="docutils literal notranslate"><span class="pre">E</span></code> as it looked in the commit
+<code class="docutils literal notranslate"><span class="pre">e3f0bd5a</span></code>.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="output-formats">
+<h3>Output formats<a class="headerlink" href="#output-formats" title="Permalink to this headline">¶</a></h3>
+<p>Following formats supported when specified with <code class="docutils literal notranslate"><span class="pre">--format</span></code> option:</p>
+<ul class="simple">
+<li><p><cite>ascii</cite></p></li>
+<li><p><cite>dot</cite></p></li>
+<li><p><cite>dot-full</cite></p></li>
+<li><p><cite>dot-landscape</cite></p></li>
+<li><p><cite>dot-full-landscape</cite></p></li>
+<li><p><cite>dot-debug</cite></p></li>
+<li><p><cite>json-ld</cite></p></li>
+<li><p><cite>json-ld-graph</cite></p></li>
+<li><p><cite>Makefile</cite></p></li>
+<li><p><cite>nt</cite></p></li>
+<li><p><cite>rdf</cite></p></li>
+</ul>
+<p>You can generate a PNG of the full history of all files in the repository
+using the <strong class="program">dot</strong> program.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nv">FILES</span><span class="o">=</span><span class="k">$(</span>git ls-files --no-empty-directory --recurse-submodules<span class="k">)</span>
+<span class="gp">$</span> renku log --format dot <span class="nv">$FILES</span> <span class="p">|</span> dot -Tpng &gt; /tmp/graph.png
+<span class="gp">$</span> open /tmp/graph.png
+</pre></div>
+</div>
+</div>
+<div class="section" id="output-validation">
+<h3>Output validation<a class="headerlink" href="#output-validation" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">--strict</span></code> option forces the output to be validated against the Renku
+SHACL schema, causing the command to fail if the generated output is not
+valid, as well as printing detailed information on all the issues found.
+The <code class="docutils literal notranslate"><span class="pre">--strict</span></code> option is only supported for the <code class="docutils literal notranslate"><span class="pre">jsonld</span></code>, <code class="docutils literal notranslate"><span class="pre">rdf</span></code> and
+<code class="docutils literal notranslate"><span class="pre">nt</span></code> output formats.</p>
+</div>
+</div>
+<div class="section" id="module-renku.cli.status">
+<span id="renku-status"></span><span id="cli-status"></span><h2><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">status</span></code><a class="headerlink" href="#module-renku.cli.status" title="Permalink to this headline">¶</a></h2>
+<p>Show status of data files created in the repository.</p>
+<div class="section" id="inspecting-a-repository">
+<h3>Inspecting a repository<a class="headerlink" href="#inspecting-a-repository" title="Permalink to this headline">¶</a></h3>
+<p>Displays paths of outputs which were generated from newer inputs files
+and paths of files that have been used in diverent versions.</p>
+<p>The first paths are what need to be recreated by running <code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">update</span></code>.
+See more in section about <a class="reference internal" href="#cli-update"><span class="std std-ref">renku update</span></a>.</p>
+<p>The paths mentioned in the output are made relative to the current directory
+if you are working in a subdirectory (this is on purpose, to help
+cutting and pasting to other commands). They also contain first 8 characters
+of the corresponding commit identifier after the <code class="docutils literal notranslate"><span class="pre">#</span></code> (hash). If the file was
+imported from another repository, the short name of is shown together with the
+filename before <code class="docutils literal notranslate"><span class="pre">&#64;</span></code>.</p>
+</div>
+</div>
+<div class="section" id="module-renku.cli.update">
+<span id="renku-update"></span><span id="cli-update"></span><h2><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">update</span></code><a class="headerlink" href="#module-renku.cli.update" title="Permalink to this headline">¶</a></h2>
+<p>Update outdated files created by the “run” command.</p>
+<div class="section" id="recreating-outdated-files">
+<h3>Recreating outdated files<a class="headerlink" href="#recreating-outdated-files" title="Permalink to this headline">¶</a></h3>
+<p>The information about dependencies for each file in the repository is generated
+from information stored in the underlying Git repository.</p>
+<p>A minimal dependency graph is generated for each outdated file stored in the
+repository. It means that only the necessary steps will be executed and the
+workflow used to orchestrate these steps is stored in the repository.</p>
+<p>Assume that the following history for the file <code class="docutils literal notranslate"><span class="pre">H</span></code> exists.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>      C---D---E
+     /         \
+A---B---F---G---H
+</pre></div>
+</div>
+<p>The first example shows situation when <code class="docutils literal notranslate"><span class="pre">D</span></code> is modified and files <code class="docutils literal notranslate"><span class="pre">E</span></code> and
+<code class="docutils literal notranslate"><span class="pre">H</span></code> become outdated.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>      C--*D*--(E)
+     /          \
+A---B---F---G---(H)
+
+** - modified
+() - needs update
+</pre></div>
+</div>
+<p>In this situation, you can do efectively two things:</p>
+<ul>
+<li><p>Recreate a single file by running</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku update E
+</pre></div>
+</div>
+</li>
+<li><p>Update all files by simply running</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku update
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If there were uncommitted changes then the command fails.
+Check <strong class="program">git status</strong> to see details.</p>
+</div>
+</div>
+<div class="section" id="pre-update-checks">
+<h3>Pre-update checks<a class="headerlink" href="#pre-update-checks" title="Permalink to this headline">¶</a></h3>
+<p>In the next example, files <code class="docutils literal notranslate"><span class="pre">A</span></code> or <code class="docutils literal notranslate"><span class="pre">B</span></code> are modified, hence the majority
+of dependent files must be recreated.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>        (C)--(D)--(E)
+       /            \
+*A*--*B*--(F)--(G)--(H)
+</pre></div>
+</div>
+<p>To avoid excesive recreation of the large portion of files which could have
+been affected by a simple change of an input file, consider speficing a single
+file (e.g. <code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">update</span> <span class="pre">G</span></code>). See also <a class="reference internal" href="#cli-status"><span class="std std-ref">renku status</span></a>.</p>
+</div>
+<div class="section" id="update-siblings">
+<span id="cli-update-with-siblings"></span><h3>Update siblings<a class="headerlink" href="#update-siblings" title="Permalink to this headline">¶</a></h3>
+<p>If a tool produces multiple output files, these outputs need to be always
+updated together.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>               (B)
+              /
+*A*--[step 1]--(C)
+              \
+               (D)
+</pre></div>
+</div>
+<p>An attempt to update a single file would fail with the following error.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku update C
+<span class="go">Error: There are missing output siblings:</span>
+
+<span class="go">     B</span>
+<span class="go">     D</span>
+
+<span class="go">Include the files above in the command or use --with-siblings option.</span>
+</pre></div>
+</div>
+<p>The following commands will produce the same result.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku update --with-siblings C
+<span class="gp">$</span> renku update B C D
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="module-renku.cli.rerun">
+<span id="renku-rerun"></span><span id="cli-rerun"></span><h2><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">rerun</span></code><a class="headerlink" href="#module-renku.cli.rerun" title="Permalink to this headline">¶</a></h2>
+<p>Recreate files created by the “run” command.</p>
+<div class="section" id="recreating-files">
+<h3>Recreating files<a class="headerlink" href="#recreating-files" title="Permalink to this headline">¶</a></h3>
+<p>Assume you have run a step 2 that uses a stochastic algorithm, so each run
+will be slightly different. The goal is to regenerate output <code class="docutils literal notranslate"><span class="pre">C</span></code> several
+times to compare the output. In this situation it is not possible to simply
+call <a class="reference internal" href="#cli-update"><span class="std std-ref">renku update</span></a> since the input file <code class="docutils literal notranslate"><span class="pre">A</span></code> has not been modified
+after the execution of step 2.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>A-[step 1]-B-[step 2*]-C
+</pre></div>
+</div>
+<p>Recreate a specific output file by running:</p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku rerun C
+</pre></div>
+</div>
+</div></blockquote>
+<p>If you would like to recreate a file which was one of several produced by
+a tool, then these files must be recreated as well. See the explanation in
+<a class="reference internal" href="#cli-update-with-siblings"><span class="std std-ref">updating siblings</span></a>.</p>
+</div>
+</div>
+<div class="section" id="module-renku.cli.remove">
+<span id="renku-rm"></span><span id="cli-rm"></span><h2><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">rm</span></code><a class="headerlink" href="#module-renku.cli.remove" title="Permalink to this headline">¶</a></h2>
+<p>Remove a file, a directory, or a symlink.</p>
+<p>Removing a file that belongs to a dataset will update its metadata. It also
+will attempt to update tracking information for files stored in an external
+storage (using Git LFS).</p>
+</div>
+<div class="section" id="module-renku.cli.move">
+<span id="renku-mv"></span><span id="cli-mv"></span><h2><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">mv</span></code><a class="headerlink" href="#module-renku.cli.move" title="Permalink to this headline">¶</a></h2>
+<p>Move or rename a file, a directory, or a symlink.</p>
+<p>Moving a file that belongs to a dataset will update its metadata. It also
+will attempt to update tracking information for files stored in an external
+storage (using Git LFS). Finally it makes sure that all relative symlinks work
+after the move.</p>
+</div>
+<div class="section" id="module-renku.cli.workflow">
+<span id="renku-workflow"></span><span id="cli-workflow"></span><h2><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">workflow</span></code><a class="headerlink" href="#module-renku.cli.workflow" title="Permalink to this headline">¶</a></h2>
+<p>Manage the set of CWL files created by <code class="docutils literal notranslate"><span class="pre">renku</span></code> commands.</p>
+<p>With no arguments, shows a list of captured CWL files. Several subcommands
+are available to perform operations on CWL files.</p>
+<div class="section" id="reference-tools-and-workflows">
+<h3>Reference tools and workflows<a class="headerlink" href="#reference-tools-and-workflows" title="Permalink to this headline">¶</a></h3>
+<p>Managing large number of tools and workflows with automatically generated
+names may be cumbersome. The names can be added to the last executed
+<code class="docutils literal notranslate"><span class="pre">run</span></code>, <code class="docutils literal notranslate"><span class="pre">rerun</span></code> or <code class="docutils literal notranslate"><span class="pre">update</span></code> command by running
+<code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">workflow</span> <span class="pre">set-name</span> <span class="pre">&lt;name&gt;</span></code>. The name can be added to an arbitrary
+file in <code class="docutils literal notranslate"><span class="pre">.renku/workflow/*.cwl</span></code> anytime later.</p>
+</div>
+</div>
+<div class="section" id="module-renku.cli.save">
+<span id="renku-save"></span><span id="cli-save"></span><h2><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">save</span></code><a class="headerlink" href="#module-renku.cli.save" title="Permalink to this headline">¶</a></h2>
+<p>Convenience method to save local changes and push them to a remote server.</p>
+<p>If you have local modification to files, you can save them using</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku save
+<span class="go">Username for &#39;https://renkulab.io&#39;: my.user</span>
+<span class="go">Password for &#39;https://my.user@renkulab.io&#39;:</span>
+<span class="go">Successfully saved:</span>
+<span class="go">    file1</span>
+<span class="go">    file2</span>
+<span class="go">OK</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The username and password for renku save are your gitlab
+user/password, not your renkulab login!</p>
+</div>
+<p>You can additionally supply a message that describes the changes that you
+made by using the <code class="docutils literal notranslate"><span class="pre">-m</span></code> or <code class="docutils literal notranslate"><span class="pre">--message</span></code> parameter followed by your
+message.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku save -m <span class="s2">&quot;Updated file1 and 2.&quot;</span>
+<span class="go">Successfully saved:</span>
+<span class="go">    file1</span>
+<span class="go">    file2</span>
+<span class="go">OK</span>
+</pre></div>
+</div>
+<p>If no remote server has been configured, you can specify one by using the
+<code class="docutils literal notranslate"><span class="pre">-d</span></code> or <code class="docutils literal notranslate"><span class="pre">--destination</span></code> parameter. Otherwise you will get an error.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku save
+<span class="go">Error: No remote has been set up for the current branch</span>
+
+<span class="gp">$</span> renku save -d https://renkulab.io/gitlab/my.user/my-project.git
+<span class="go">Successfully saved:</span>
+<span class="go">    file1</span>
+<span class="go">    file2</span>
+<span class="go">OK</span>
+</pre></div>
+</div>
+<p>You can also specify which paths to save:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku save file1
+<span class="go">Successfully saved:</span>
+<span class="go">    file1</span>
+<span class="go">OK</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="module-renku.cli.show">
+<span id="renku-show"></span><span id="cli-show"></span><h2><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">show</span></code><a class="headerlink" href="#module-renku.cli.show" title="Permalink to this headline">¶</a></h2>
+<p>Show information about objects in current repository.</p>
+<div class="section" id="siblings">
+<h3>Siblings<a class="headerlink" href="#siblings" title="Permalink to this headline">¶</a></h3>
+<p>In situations when multiple outputs have been generated by a single
+<code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">run</span></code> command, the siblings can be discovered by running
+<code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">show</span> <span class="pre">siblings</span> <span class="pre">PATH</span></code> command.</p>
+<p>Assume that the following graph represents relations in the repository.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>      D---E---G
+     /     \
+A---B---C   F
+</pre></div>
+</div>
+<p>Then the following outputs would be shown.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku show siblings C
+<span class="go">C</span>
+<span class="go">D</span>
+<span class="gp">$</span> renku show siblings G
+<span class="go">F</span>
+<span class="go">G</span>
+<span class="gp">$</span> renku show siblings A
+<span class="go">A</span>
+<span class="gp">$</span> renku show siblings C G
+<span class="go">C</span>
+<span class="go">D</span>
+<span class="go">---</span>
+<span class="go">F</span>
+<span class="go">G</span>
+<span class="gp">$</span> renku show siblings
+<span class="go">A</span>
+<span class="go">---</span>
+<span class="go">B</span>
+<span class="go">---</span>
+<span class="go">C</span>
+<span class="go">D</span>
+<span class="go">---</span>
+<span class="go">E</span>
+<span class="go">---</span>
+<span class="go">F</span>
+<span class="go">G</span>
+</pre></div>
+</div>
+<p>You can use the <code class="docutils literal notranslate"><span class="pre">-f</span></code> or <code class="docutils literal notranslate"><span class="pre">--flat</span></code> flag to output a flat list, as well as
+the <code class="docutils literal notranslate"><span class="pre">-v</span></code> or <code class="docutils literal notranslate"><span class="pre">--verbose</span></code> flag to also output commit information.</p>
+</div>
+<div class="section" id="input-and-output-files">
+<h3>Input and output files<a class="headerlink" href="#input-and-output-files" title="Permalink to this headline">¶</a></h3>
+<p>You can list input and output files generated in the repository by running
+<code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">show</span> <span class="pre">inputs</span></code> and <code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">show</span> <span class="pre">outputs</span></code> commands. Alternatively,
+you can check if all paths specified as arguments are input or output files
+respectively.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku run wc &lt; source.txt &gt; result.wc
+<span class="gp">$</span> renku show inputs
+<span class="go">source.txt</span>
+<span class="gp">$</span> renku show outputs
+<span class="go">result.wc</span>
+<span class="gp">$</span> renku show outputs source.txt
+<span class="gp">$</span> <span class="nb">echo</span> <span class="nv">$?</span>  <span class="c1"># last command finished with an error code</span>
+<span class="go">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="module-renku.cli.storage">
+<span id="renku-storage"></span><span id="cli-storage"></span><h2><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">storage</span></code><a class="headerlink" href="#module-renku.cli.storage" title="Permalink to this headline">¶</a></h2>
+<p>Manage an external storage.</p>
+<div class="section" id="pulling-files-from-git-lfs">
+<h3>Pulling files from git LFS<a class="headerlink" href="#pulling-files-from-git-lfs" title="Permalink to this headline">¶</a></h3>
+<p>LFS works by checking small pointer files into git and saving the actual
+contents of a file in LFS. If instead of your file content, you see
+something like this, it means the file is stored in git LFS and its
+contents are not currently available locally (they are not pulled):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">version https://git-lfs.github.com/spec/v1</span>
+<span class="go">oid sha256:42b5c7fb2acd54f6d3cd930f18fee3bdcb20598764ca93bdfb38d7989c054bcf</span>
+<span class="go">size 12</span>
+</pre></div>
+</div>
+<p>You can manually pull contents of file(s) you want with:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku storage pull file1 file2
+</pre></div>
+</div>
+</div>
+<div class="section" id="removing-local-content-of-files-stored-in-git-lfs">
+<h3>Removing local content of files stored in git LFS<a class="headerlink" href="#removing-local-content-of-files-stored-in-git-lfs" title="Permalink to this headline">¶</a></h3>
+<p>If you want to restore a file back to its pointer file state, for instance
+to free up space locally, you can run:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku storage clean file1 file2
+</pre></div>
+</div>
+<p>This removes any data cached locally for files tracked in in git LFS.</p>
+</div>
+</div>
+<div class="section" id="module-renku.cli.doctor">
+<span id="renku-doctor"></span><span id="cli-image"></span><h2><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">doctor</span></code><a class="headerlink" href="#module-renku.cli.doctor" title="Permalink to this headline">¶</a></h2>
+<p>Check your system and repository for potential problems.</p>
+</div>
+<div class="section" id="module-renku.cli.migrate">
+<span id="renku-migrate"></span><span id="cli-migrate"></span><h2><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">migrate</span></code><a class="headerlink" href="#module-renku.cli.migrate" title="Permalink to this headline">¶</a></h2>
+<p>Migrate project to the latest Renku version.</p>
+</div>
+<div class="section" id="module-renku.cli.githooks">
+<span id="renku-githooks"></span><span id="cli-githooks"></span><h2><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">githooks</span></code><a class="headerlink" href="#module-renku.cli.githooks" title="Permalink to this headline">¶</a></h2>
+<p>Install and uninstall Git hooks.</p>
+<div class="section" id="prevent-modifications-of-output-files">
+<h3>Prevent modifications of output files<a class="headerlink" href="#prevent-modifications-of-output-files" title="Permalink to this headline">¶</a></h3>
+<p>The commit hooks are enabled by default to prevent situation when
+some output file is manually modified.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku init
+<span class="gp">$</span> renku run <span class="nb">echo</span> hello &gt; greeting.txt
+<span class="gp">$</span> edit greeting.txt
+<span class="gp">$</span> git commit greeting.txt
+<span class="go">You are trying to update some output files.</span>
+
+<span class="go">Modified outputs:</span>
+<span class="go">  greeting.txt</span>
+
+<span class="go">If you are sure, use &quot;git commit --no-verify&quot;.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="module-renku.cli.exception_handler">
+<span id="error-tracking"></span><h2>Error Tracking<a class="headerlink" href="#module-renku.cli.exception_handler" title="Permalink to this headline">¶</a></h2>
+<p>Renku is not bug-free and you can help us to find them.</p>
+<div class="section" id="github">
+<h3>GitHub<a class="headerlink" href="#github" title="Permalink to this headline">¶</a></h3>
+<p>You can quickly open an issue on GitHub with a traceback and minimal system
+information when you hit an unhandled exception in the CLI.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Ahhhhhhhh! You have found a bug. 🐞
+
+1. Open an issue by typing &quot;open&quot;;
+2. Print human-readable information by typing &quot;print&quot;;
+3. See the full traceback without submitting details (default: &quot;ignore&quot;).
+
+Please select an action by typing its name (open, print, ignore) [ignore]:
+</pre></div>
+</div>
+</div>
+<div class="section" id="sentry">
+<h3>Sentry<a class="headerlink" href="#sentry" title="Permalink to this headline">¶</a></h3>
+<p>When using <code class="docutils literal notranslate"><span class="pre">renku</span></code> as a hosted service the Sentry integration can be enabled
+to help developers iterate faster by showing them where bugs happen, how often,
+and who is affected.</p>
+<ol class="arabic simple">
+<li><p>Install Sentry-SDK with <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">sentry-sdk</span></code>;</p></li>
+<li><p>Set environment variable
+<code class="docutils literal notranslate"><span class="pre">SENTRY_DSN=https://&lt;key&gt;&#64;sentry.&lt;domain&gt;/&lt;project&gt;</span></code>.</p></li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>User information might be sent to help resolving the problem.
+If you are not using your own Sentry instance you should inform users
+that you are sending possibly sensitive information to a 3rd-party service.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="index.html">
+    <h1 class="logo logo-name">
+      Renku
+      <span class="renku">連句</span>
+    </h1>
+  </a>
+</p>
+
+
+<p class="blurb">Python API and CLI for the Renku platform.</p>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html#authors">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html">Changes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="comparison.html">How does this compare …</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Renku Command Line</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#renku-base-command"><code class="docutils literal notranslate"><span class="pre">renku</span></code> (base command)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-renku.cli.init"><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">init</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-renku.cli.config"><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">config</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-renku.cli.dataset"><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">dataset</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-renku.cli.run"><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">run</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-renku.cli.log"><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">log</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-renku.cli.status"><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">status</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-renku.cli.update"><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">update</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-renku.cli.rerun"><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">rerun</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-renku.cli.remove"><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">rm</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-renku.cli.move"><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">mv</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-renku.cli.workflow"><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">workflow</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-renku.cli.save"><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">save</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-renku.cli.show"><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">show</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-renku.cli.storage"><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">storage</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-renku.cli.doctor"><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">doctor</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-renku.cli.migrate"><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">migrate</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-renku.cli.githooks"><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">githooks</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-renku.cli.exception_handler">Error Tracking</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="models/index.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="management.html">Low-level API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plugins.html">Plugin Support</a></li>
+</ul>
+
+
+<hr />
+<ul>
+    
+    <li class="toctree-l1"><a href="https://github.com/SwissDataScienceCenter/renku-python">renku-python@GitHub</a></li>
+    
+    <li class="toctree-l1"><a href="https://pypi.python.org/pypi/renku/">renku-python@PyPI</a></li>
+    
+    <li class="toctree-l1"><a href="https://github.com/SwissDataScienceCenter/renku">renku@GitHub</a></li>
+    
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="comparison.html" title="previous chapter">How does this compare …</a></li>
+      <li>Next: <a href="models/index.html" title="next chapter">Models</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017-2020, Swiss Data Science Center.
+      
+      |
+      <a href="_sources/commands.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

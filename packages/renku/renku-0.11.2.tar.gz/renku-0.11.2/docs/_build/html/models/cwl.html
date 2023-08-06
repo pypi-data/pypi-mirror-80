@@ -1,0 +1,433 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tools and Workflows &#8212; Renku 0.10.5.dev72+dirty documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File References" href="refs.html" />
+    <link rel="prev" title="Renku Workflow" href="workflow.html" />
+  
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900,300italic,400italic" rel="stylesheet" type="text/css">
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  </head><body>
+  <div class="git-ribbon">
+    <a href="http://github.com/SwissDataScienceCenter" rel="me">Join us on GitHub</a>
+  </div>
+  
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-renku.core.models.cwl">
+<span id="tools-and-workflows"></span><h1>Tools and Workflows<a class="headerlink" href="#module-renku.core.models.cwl" title="Permalink to this headline">¶</a></h1>
+<p>Manage creation of tools and workflows for workflow tracking.</p>
+<div class="section" id="module-renku.core.models.cwl.command_line_tool">
+<span id="command-line-tool"></span><h2>Command-line tool<a class="headerlink" href="#module-renku.core.models.cwl.command_line_tool" title="Permalink to this headline">¶</a></h2>
+<p>Represent a <code class="docutils literal notranslate"><span class="pre">CommandLineToolFactory</span></code> for tracking workflows.</p>
+<dl class="py class">
+<dt id="renku.core.models.cwl.command_line_tool.CommandLineToolFactory">
+<em class="property">class </em><code class="sig-prename descclassname">renku.core.models.cwl.command_line_tool.</code><code class="sig-name descname">CommandLineToolFactory</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">command_line</span></em>, <em class="sig-param"><span class="n">explicit_inputs</span><span class="o">=</span><span class="default_value">NOTHING</span></em>, <em class="sig-param"><span class="n">explicit_outputs</span><span class="o">=</span><span class="default_value">NOTHING</span></em>, <em class="sig-param"><span class="n">directory</span><span class="o">=</span><span class="default_value">'.'</span></em>, <em class="sig-param"><span class="n">working_dir</span><span class="o">=</span><span class="default_value">'.'</span></em>, <em class="sig-param"><span class="n">stdin</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">stderr</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">stdout</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">successCodes</span><span class="o">=</span><span class="default_value">NOTHING</span></em>, <em class="sig-param"><span class="n">annotations</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">messages</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">warnings</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/renku/core/models/cwl/command_line_tool.html#CommandLineToolFactory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renku.core.models.cwl.command_line_tool.CommandLineToolFactory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Command Line Tool Factory.</p>
+<dl class="py method">
+<dt id="renku.core.models.cwl.command_line_tool.CommandLineToolFactory.add_indirect_inputs">
+<code class="sig-name descname">add_indirect_inputs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/renku/core/models/cwl/command_line_tool.html#CommandLineToolFactory.add_indirect_inputs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renku.core.models.cwl.command_line_tool.CommandLineToolFactory.add_indirect_inputs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read indirect inputs list and add them to explicit inputs.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="renku.core.models.cwl.command_line_tool.CommandLineToolFactory.add_indirect_outputs">
+<code class="sig-name descname">add_indirect_outputs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/renku/core/models/cwl/command_line_tool.html#CommandLineToolFactory.add_indirect_outputs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renku.core.models.cwl.command_line_tool.CommandLineToolFactory.add_indirect_outputs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read indirect outputs list and add them to explicit outputs.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="renku.core.models.cwl.command_line_tool.CommandLineToolFactory.delete_indirect_files_list">
+<code class="sig-name descname">delete_indirect_files_list</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/renku/core/models/cwl/command_line_tool.html#CommandLineToolFactory.delete_indirect_files_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renku.core.models.cwl.command_line_tool.CommandLineToolFactory.delete_indirect_files_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove indirect inputs and outputs list.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="renku.core.models.cwl.command_line_tool.CommandLineToolFactory.file_candidate">
+<code class="sig-name descname">file_candidate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">candidate</span></em>, <em class="sig-param"><span class="n">ignore</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/renku/core/models/cwl/command_line_tool.html#CommandLineToolFactory.file_candidate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renku.core.models.cwl.command_line_tool.CommandLineToolFactory.file_candidate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a path instance if it exists in current directory.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="renku.core.models.cwl.command_line_tool.CommandLineToolFactory.find_explicit_inputs">
+<code class="sig-name descname">find_explicit_inputs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/renku/core/models/cwl/command_line_tool.html#CommandLineToolFactory.find_explicit_inputs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renku.core.models.cwl.command_line_tool.CommandLineToolFactory.find_explicit_inputs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Yield explicit inputs and command line input bindings if any.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="renku.core.models.cwl.command_line_tool.CommandLineToolFactory.find_explicit_outputs">
+<code class="sig-name descname">find_explicit_outputs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">starting_output_id</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/renku/core/models/cwl/command_line_tool.html#CommandLineToolFactory.find_explicit_outputs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renku.core.models.cwl.command_line_tool.CommandLineToolFactory.find_explicit_outputs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Yield explicit output and changed command input parameter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="renku.core.models.cwl.command_line_tool.CommandLineToolFactory.generate_process_run">
+<code class="sig-name descname">generate_process_run</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">client</span></em>, <em class="sig-param"><span class="n">commit</span></em>, <em class="sig-param"><span class="n">path</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/renku/core/models/cwl/command_line_tool.html#CommandLineToolFactory.generate_process_run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renku.core.models.cwl.command_line_tool.CommandLineToolFactory.generate_process_run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an instance of <code class="docutils literal notranslate"><span class="pre">ProcessRun</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="renku.core.models.cwl.command_line_tool.CommandLineToolFactory.guess_inputs">
+<code class="sig-name descname">guess_inputs</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">arguments</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/renku/core/models/cwl/command_line_tool.html#CommandLineToolFactory.guess_inputs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renku.core.models.cwl.command_line_tool.CommandLineToolFactory.guess_inputs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Yield command input parameters and command line bindings.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="renku.core.models.cwl.command_line_tool.CommandLineToolFactory.guess_outputs">
+<code class="sig-name descname">guess_outputs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">paths</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/renku/core/models/cwl/command_line_tool.html#CommandLineToolFactory.guess_outputs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renku.core.models.cwl.command_line_tool.CommandLineToolFactory.guess_outputs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Yield detected output and changed command input parameter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="renku.core.models.cwl.command_line_tool.CommandLineToolFactory.guess_type">
+<code class="sig-name descname">guess_type</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em>, <em class="sig-param"><span class="n">ignore_filenames</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/renku/core/models/cwl/command_line_tool.html#CommandLineToolFactory.guess_type"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renku.core.models.cwl.command_line_tool.CommandLineToolFactory.guess_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return new value and CWL parameter type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="renku.core.models.cwl.command_line_tool.CommandLineToolFactory.iter_input_files">
+<code class="sig-name descname">iter_input_files</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">basedir</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/renku/core/models/cwl/command_line_tool.html#CommandLineToolFactory.iter_input_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renku.core.models.cwl.command_line_tool.CommandLineToolFactory.iter_input_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Yield tuples with input id and path.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="renku.core.models.cwl.command_line_tool.CommandLineToolFactory.read_files_list">
+<code class="sig-name descname">read_files_list</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">files_list</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/renku/core/models/cwl/command_line_tool.html#CommandLineToolFactory.read_files_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renku.core.models.cwl.command_line_tool.CommandLineToolFactory.read_files_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read files list where each line is a filepath.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="renku.core.models.cwl.command_line_tool.CommandLineToolFactory.split_command_and_args">
+<code class="sig-name descname">split_command_and_args</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/renku/core/models/cwl/command_line_tool.html#CommandLineToolFactory.split_command_and_args"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renku.core.models.cwl.command_line_tool.CommandLineToolFactory.split_command_and_args" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return tuple with command and args from command line arguments.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="renku.core.models.cwl.command_line_tool.CommandLineToolFactory.validate_command_line">
+<code class="sig-name descname">validate_command_line</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">attribute</span></em>, <em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/renku/core/models/cwl/command_line_tool.html#CommandLineToolFactory.validate_command_line"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renku.core.models.cwl.command_line_tool.CommandLineToolFactory.validate_command_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check the command line structure.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="renku.core.models.cwl.command_line_tool.CommandLineToolFactory.validate_path">
+<code class="sig-name descname">validate_path</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">attribute</span></em>, <em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/renku/core/models/cwl/command_line_tool.html#CommandLineToolFactory.validate_path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renku.core.models.cwl.command_line_tool.CommandLineToolFactory.validate_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Path must exists.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="renku.core.models.cwl.command_line_tool.CommandLineToolFactory.watch">
+<code class="sig-name descname">watch</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">client</span></em>, <em class="sig-param"><span class="n">no_output</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/renku/core/models/cwl/command_line_tool.html#CommandLineToolFactory.watch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renku.core.models.cwl.command_line_tool.CommandLineToolFactory.watch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Watch a Renku repository for changes to detect outputs.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-renku.core.models.cwl.annotation">
+<span id="annotation"></span><h2>Annotation<a class="headerlink" href="#module-renku.core.models.cwl.annotation" title="Permalink to this headline">¶</a></h2>
+<p>Represent an annotation for a workflow.</p>
+<dl class="py class">
+<dt id="renku.core.models.cwl.annotation.Annotation">
+<em class="property">class </em><code class="sig-prename descclassname">renku.core.models.cwl.annotation.</code><code class="sig-name descname">Annotation</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">body</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">source</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/renku/core/models/cwl/annotation.html#Annotation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renku.core.models.cwl.annotation.Annotation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represents a custom annotation for a research object.</p>
+<dl class="py method">
+<dt id="renku.core.models.cwl.annotation.Annotation.as_jsonld">
+<code class="sig-name descname">as_jsonld</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/renku/core/models/cwl/annotation.html#Annotation.as_jsonld"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renku.core.models.cwl.annotation.Annotation.as_jsonld" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create JSON-LD.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="renku.core.models.cwl.annotation.Annotation.from_jsonld">
+<em class="property">classmethod </em><code class="sig-name descname">from_jsonld</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/renku/core/models/cwl/annotation.html#Annotation.from_jsonld"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renku.core.models.cwl.annotation.Annotation.from_jsonld" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an instance from JSON-LD data.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="renku.core.models.cwl.annotation.AnnotationSchema">
+<em class="property">class </em><code class="sig-prename descclassname">renku.core.models.cwl.annotation.</code><code class="sig-name descname">AnnotationSchema</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="n">commit</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">client</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/renku/core/models/cwl/annotation.html#AnnotationSchema"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renku.core.models.cwl.annotation.AnnotationSchema" title="Permalink to this definition">¶</a></dt>
+<dd><p>Annotation schema.</p>
+<p>Create an instance.</p>
+<dl class="py class">
+<dt id="renku.core.models.cwl.annotation.AnnotationSchema.Meta">
+<em class="property">class </em><code class="sig-name descname">Meta</code><a class="reference internal" href="../_modules/renku/core/models/cwl/annotation.html#AnnotationSchema.Meta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renku.core.models.cwl.annotation.AnnotationSchema.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Meta class.</p>
+<dl class="py attribute">
+<dt id="renku.core.models.cwl.annotation.AnnotationSchema.Meta.model">
+<code class="sig-name descname">model</code><a class="headerlink" href="#renku.core.models.cwl.annotation.AnnotationSchema.Meta.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#renku.core.models.cwl.annotation.Annotation" title="renku.core.models.cwl.annotation.Annotation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Annotation</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-renku.core.models.cwl.parameter">
+<span id="parameter"></span><h2>Parameter<a class="headerlink" href="#module-renku.core.models.cwl.parameter" title="Permalink to this headline">¶</a></h2>
+<p>Represent parameters from the Common Workflow Language.</p>
+<dl class="py class">
+<dt id="renku.core.models.cwl.parameter.CommandInputParameter">
+<em class="property">class </em><code class="sig-prename descclassname">renku.core.models.cwl.parameter.</code><code class="sig-name descname">CommandInputParameter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">id</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">streamable</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">type</span><span class="o">=</span><span class="default_value">'string'</span></em>, <em class="sig-param"><span class="n">description</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">default</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">inputBinding</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/renku/core/models/cwl/parameter.html#CommandInputParameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renku.core.models.cwl.parameter.CommandInputParameter" title="Permalink to this definition">¶</a></dt>
+<dd><p>An input parameter for a CommandLineTool.</p>
+<dl class="py method">
+<dt id="renku.core.models.cwl.parameter.CommandInputParameter.from_cwl">
+<em class="property">classmethod </em><code class="sig-name descname">from_cwl</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/renku/core/models/cwl/parameter.html#CommandInputParameter.from_cwl"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renku.core.models.cwl.parameter.CommandInputParameter.from_cwl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create instance from type definition.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="renku.core.models.cwl.parameter.CommandInputParameter.to_argv">
+<code class="sig-name descname">to_argv</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/renku/core/models/cwl/parameter.html#CommandInputParameter.to_argv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renku.core.models.cwl.parameter.CommandInputParameter.to_argv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Format command input parameter as shell argument.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="renku.core.models.cwl.parameter.CommandLineBinding">
+<em class="property">class </em><code class="sig-prename descclassname">renku.core.models.cwl.parameter.</code><code class="sig-name descname">CommandLineBinding</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">position</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">prefix</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">separate</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)">bool</a></span> <span class="o">=</span> <span class="default_value">True</span></em>, <em class="sig-param"><span class="n">itemSeparator</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">valueFrom</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">shellQuote</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)">bool</a></span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/renku/core/models/cwl/parameter.html#CommandLineBinding"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renku.core.models.cwl.parameter.CommandLineBinding" title="Permalink to this definition">¶</a></dt>
+<dd><p>Define the binding behavior when building the command line.</p>
+<dl class="py method">
+<dt id="renku.core.models.cwl.parameter.CommandLineBinding.to_argv">
+<code class="sig-name descname">to_argv</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">default</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/renku/core/models/cwl/parameter.html#CommandLineBinding.to_argv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renku.core.models.cwl.parameter.CommandLineBinding.to_argv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Format command line binding as shell argument.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="renku.core.models.cwl.parameter.CommandOutputBinding">
+<em class="property">class </em><code class="sig-prename descclassname">renku.core.models.cwl.parameter.</code><code class="sig-name descname">CommandOutputBinding</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">glob</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/renku/core/models/cwl/parameter.html#CommandOutputBinding"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renku.core.models.cwl.parameter.CommandOutputBinding" title="Permalink to this definition">¶</a></dt>
+<dd><p>Define the binding behavior for outputs.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="renku.core.models.cwl.parameter.CommandOutputParameter">
+<em class="property">class </em><code class="sig-prename descclassname">renku.core.models.cwl.parameter.</code><code class="sig-name descname">CommandOutputParameter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">id</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">streamable</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">type</span><span class="o">=</span><span class="default_value">'string'</span></em>, <em class="sig-param"><span class="n">description</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">format</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">outputBinding</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/renku/core/models/cwl/parameter.html#CommandOutputParameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renku.core.models.cwl.parameter.CommandOutputParameter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Define an output parameter for a CommandLineTool.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="renku.core.models.cwl.parameter.InputParameter">
+<em class="property">class </em><code class="sig-prename descclassname">renku.core.models.cwl.parameter.</code><code class="sig-name descname">InputParameter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">id</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">streamable</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">type</span><span class="o">=</span><span class="default_value">'string'</span></em>, <em class="sig-param"><span class="n">description</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">default</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">inputBinding</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/renku/core/models/cwl/parameter.html#InputParameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renku.core.models.cwl.parameter.InputParameter" title="Permalink to this definition">¶</a></dt>
+<dd><p>An input parameter.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="renku.core.models.cwl.parameter.OutputParameter">
+<em class="property">class </em><code class="sig-prename descclassname">renku.core.models.cwl.parameter.</code><code class="sig-name descname">OutputParameter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">id</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">streamable</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">type</span><span class="o">=</span><span class="default_value">'string'</span></em>, <em class="sig-param"><span class="n">description</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">format</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">outputBinding</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/renku/core/models/cwl/parameter.html#OutputParameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renku.core.models.cwl.parameter.OutputParameter" title="Permalink to this definition">¶</a></dt>
+<dd><p>An output parameter.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="renku.core.models.cwl.parameter.Parameter">
+<em class="property">class </em><code class="sig-prename descclassname">renku.core.models.cwl.parameter.</code><code class="sig-name descname">Parameter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">streamable</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/renku/core/models/cwl/parameter.html#Parameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renku.core.models.cwl.parameter.Parameter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Define an input or output parameter to a process.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="renku.core.models.cwl.parameter.WorkflowOutputParameter">
+<em class="property">class </em><code class="sig-prename descclassname">renku.core.models.cwl.parameter.</code><code class="sig-name descname">WorkflowOutputParameter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">id</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">streamable</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">type</span><span class="o">=</span><span class="default_value">'string'</span></em>, <em class="sig-param"><span class="n">description</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">format</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">outputBinding</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">outputSource</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/renku/core/models/cwl/parameter.html#WorkflowOutputParameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renku.core.models.cwl.parameter.WorkflowOutputParameter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Define an output parameter for a Workflow.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="renku.core.models.cwl.parameter.convert_default">
+<code class="sig-prename descclassname">renku.core.models.cwl.parameter.</code><code class="sig-name descname">convert_default</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/renku/core/models/cwl/parameter.html#convert_default"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renku.core.models.cwl.parameter.convert_default" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a default value.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-renku.core.models.cwl.types">
+<span id="types"></span><h2>Types<a class="headerlink" href="#module-renku.core.models.cwl.types" title="Permalink to this headline">¶</a></h2>
+<p>Represent the Common Workflow Language types.</p>
+<dl class="py class">
+<dt id="renku.core.models.cwl.types.Directory">
+<em class="property">class </em><code class="sig-prename descclassname">renku.core.models.cwl.types.</code><code class="sig-name descname">Directory</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">listing</span><span class="o">=</span><span class="default_value">NOTHING</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/renku/core/models/cwl/types.html#Directory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renku.core.models.cwl.types.Directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represent a directory.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="renku.core.models.cwl.types.Dirent">
+<em class="property">class </em><code class="sig-prename descclassname">renku.core.models.cwl.types.</code><code class="sig-name descname">Dirent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">entryname</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">entry</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">writable</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/renku/core/models/cwl/types.html#Dirent"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renku.core.models.cwl.types.Dirent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Define a file or subdirectory.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="renku.core.models.cwl.types.File">
+<em class="property">class </em><code class="sig-prename descclassname">renku.core.models.cwl.types.</code><code class="sig-name descname">File</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/renku/core/models/cwl/types.html#File"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renku.core.models.cwl.types.File" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represent a file.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="renku.core.models.cwl.types.PathFormatterMixin">
+<em class="property">class </em><code class="sig-prename descclassname">renku.core.models.cwl.types.</code><code class="sig-name descname">PathFormatterMixin</code><a class="reference internal" href="../_modules/renku/core/models/cwl/types.html#PathFormatterMixin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renku.core.models.cwl.types.PathFormatterMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Format path property.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-renku.core.models.cwl.workflow">
+<span id="workflow"></span><h2>Workflow<a class="headerlink" href="#module-renku.core.models.cwl.workflow" title="Permalink to this headline">¶</a></h2>
+<p>Represent workflows from the Common Workflow Language.</p>
+<dl class="py class">
+<dt id="renku.core.models.cwl.workflow.Workflow">
+<em class="property">class </em><code class="sig-prename descclassname">renku.core.models.cwl.workflow.</code><code class="sig-name descname">Workflow</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">steps</span><span class="o">=</span><span class="default_value">NOTHING</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/renku/core/models/cwl/workflow.html#Workflow"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renku.core.models.cwl.workflow.Workflow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Define a workflow representation.</p>
+<dl class="py method">
+<dt id="renku.core.models.cwl.workflow.Workflow.add_step">
+<code class="sig-name descname">add_step</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/renku/core/models/cwl/workflow.html#Workflow.add_step"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renku.core.models.cwl.workflow.Workflow.add_step" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a workflow step.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="renku.core.models.cwl.workflow.WorkflowStep">
+<em class="property">class </em><code class="sig-prename descclassname">renku.core.models.cwl.workflow.</code><code class="sig-name descname">WorkflowStep</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">run</span></em>, <em class="sig-param"><span class="n">id</span><span class="o">=</span><span class="default_value">NOTHING</span></em>, <em class="sig-param"><span class="n">in_</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">out</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/renku/core/models/cwl/workflow.html#WorkflowStep"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renku.core.models.cwl.workflow.WorkflowStep" title="Permalink to this definition">¶</a></dt>
+<dd><p>Define an executable element of a workflow.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="renku.core.models.cwl.workflow.convert_run">
+<code class="sig-prename descclassname">renku.core.models.cwl.workflow.</code><code class="sig-name descname">convert_run</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/renku/core/models/cwl/workflow.html#convert_run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renku.core.models.cwl.workflow.convert_run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert value to CWLClass if dict is given.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../index.html">
+    <h1 class="logo logo-name">
+      Renku
+      <span class="renku">連句</span>
+    </h1>
+  </a>
+</p>
+
+
+<p class="blurb">Python API and CLI for the Renku platform.</p>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html#authors">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changes.html">Changes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../comparison.html">How does this compare …</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commands.html">Renku Command Line</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Models</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datasets.html">Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="provenance.html">Provenance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="workflow.html">Renku Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="workflow.html#module-renku.core.models.workflow.converters">Renku Workflow Conversion</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Tools and Workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="refs.html">File References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../management.html">Low-level API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plugins.html">Plugin Support</a></li>
+</ul>
+
+
+<hr />
+<ul>
+    
+    <li class="toctree-l1"><a href="https://github.com/SwissDataScienceCenter/renku-python">renku-python@GitHub</a></li>
+    
+    <li class="toctree-l1"><a href="https://pypi.python.org/pypi/renku/">renku-python@PyPI</a></li>
+    
+    <li class="toctree-l1"><a href="https://github.com/SwissDataScienceCenter/renku">renku@GitHub</a></li>
+    
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">Models</a><ul>
+      <li>Previous: <a href="workflow.html" title="previous chapter">Renku Workflow</a></li>
+      <li>Next: <a href="refs.html" title="next chapter">File References</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017-2020, Swiss Data Science Center.
+      
+      |
+      <a href="../_sources/models/cwl.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

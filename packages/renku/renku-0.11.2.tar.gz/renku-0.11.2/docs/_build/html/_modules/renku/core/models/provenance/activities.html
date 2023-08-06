@@ -1,0 +1,963 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>renku.core.models.provenance.activities &#8212; Renku 0.10.5.dev72+dirty documentation</title>
+    <link rel="stylesheet" href="../../../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+  
+   
+  <link rel="stylesheet" href="../../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900,300italic,400italic" rel="stylesheet" type="text/css">
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  </head><body>
+  <div class="git-ribbon">
+    <a href="http://github.com/SwissDataScienceCenter" rel="me">Join us on GitHub</a>
+  </div>
+  
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for renku.core.models.provenance.activities</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1">#</span>
+<span class="c1"># Copyright 2018-2020 - Swiss Data Science Center (SDSC)</span>
+<span class="c1"># A partnership between École Polytechnique Fédérale de Lausanne (EPFL) and</span>
+<span class="c1"># Eidgenössische Technische Hochschule Zürich (ETHZ).</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="sd">&quot;&quot;&quot;Represent a Git commit.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">urllib</span>
+<span class="kn">import</span> <span class="nn">uuid</span>
+<span class="kn">import</span> <span class="nn">weakref</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span><span class="p">,</span> <span class="n">posixpath</span>
+
+<span class="kn">import</span> <span class="nn">attr</span>
+<span class="kn">from</span> <span class="nn">git</span> <span class="kn">import</span> <span class="n">NULL_TREE</span>
+<span class="kn">from</span> <span class="nn">marshmallow</span> <span class="kn">import</span> <span class="n">EXCLUDE</span>
+
+<span class="kn">from</span> <span class="nn">renku.core.models</span> <span class="kn">import</span> <span class="n">jsonld</span>
+<span class="kn">from</span> <span class="nn">renku.core.models.calamus</span> <span class="kn">import</span> <span class="n">Nested</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">oa</span><span class="p">,</span> <span class="n">prov</span><span class="p">,</span> <span class="n">rdfs</span><span class="p">,</span> <span class="n">wfprov</span>
+<span class="kn">from</span> <span class="nn">renku.core.models.cwl.annotation</span> <span class="kn">import</span> <span class="n">AnnotationSchema</span>
+<span class="kn">from</span> <span class="nn">renku.core.models.entities</span> <span class="kn">import</span> <span class="n">Collection</span><span class="p">,</span> <span class="n">CollectionSchema</span><span class="p">,</span> \
+    <span class="n">CommitMixin</span><span class="p">,</span> <span class="n">CommitMixinSchema</span><span class="p">,</span> <span class="n">Entity</span><span class="p">,</span> <span class="n">EntitySchema</span>
+<span class="kn">from</span> <span class="nn">renku.core.models.locals</span> <span class="kn">import</span> <span class="n">ReferenceMixin</span>
+<span class="kn">from</span> <span class="nn">renku.core.models.refs</span> <span class="kn">import</span> <span class="n">LinkReference</span>
+<span class="kn">from</span> <span class="nn">renku.core.models.workflow.run</span> <span class="kn">import</span> <span class="n">Run</span>
+
+<span class="kn">from</span> <span class="nn">.agents</span> <span class="kn">import</span> <span class="n">Person</span><span class="p">,</span> <span class="n">PersonSchema</span><span class="p">,</span> <span class="n">SoftwareAgentSchema</span><span class="p">,</span> <span class="n">renku_agent</span>
+<span class="kn">from</span> <span class="nn">.qualified</span> <span class="kn">import</span> <span class="n">Association</span><span class="p">,</span> <span class="n">AssociationSchema</span><span class="p">,</span> <span class="n">Generation</span><span class="p">,</span> \
+    <span class="n">GenerationSchema</span><span class="p">,</span> <span class="n">Usage</span><span class="p">,</span> <span class="n">UsageSchema</span>
+
+
+<span class="k">def</span> <span class="nf">_nodes</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Yield nodes from entities.&quot;&quot;&quot;</span>
+    <span class="c1"># NOTE refactor so all outputs behave the same</span>
+    <span class="n">entity</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="s1">&#39;entity&#39;</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">entity</span><span class="p">,</span> <span class="n">Collection</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">member</span> <span class="ow">in</span> <span class="n">entity</span><span class="o">.</span><span class="n">members</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">parent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">member</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="n">member</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">parent</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">entity</span><span class="o">.</span><span class="n">client</span><span class="p">:</span>
+                <span class="n">_set_entity_client_commit</span><span class="p">(</span><span class="n">member</span><span class="p">,</span> <span class="n">entity</span><span class="o">.</span><span class="n">client</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">Generation</span><span class="p">):</span>
+                <span class="n">child</span> <span class="o">=</span> <span class="n">Generation</span><span class="p">(</span>
+                    <span class="n">activity</span><span class="o">=</span><span class="n">output</span><span class="o">.</span><span class="n">activity</span><span class="p">,</span>
+                    <span class="n">entity</span><span class="o">=</span><span class="n">member</span><span class="p">,</span>
+                    <span class="n">role</span><span class="o">=</span><span class="n">entity</span><span class="o">.</span><span class="n">role</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">entity</span><span class="p">,</span> <span class="s1">&#39;role&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span>
+                <span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">Usage</span><span class="p">):</span>
+                <span class="n">child</span> <span class="o">=</span> <span class="n">Usage</span><span class="p">(</span>
+                    <span class="n">activity</span><span class="o">=</span><span class="n">output</span><span class="o">.</span><span class="n">activity</span><span class="p">,</span>
+                    <span class="n">entity</span><span class="o">=</span><span class="n">member</span><span class="p">,</span>
+                    <span class="n">role</span><span class="o">=</span><span class="n">entity</span><span class="o">.</span><span class="n">role</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">entity</span><span class="p">,</span> <span class="s1">&#39;role&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">child</span> <span class="o">=</span> <span class="n">member</span>
+            <span class="k">yield from</span> <span class="n">_nodes</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>
+
+    <span class="k">yield</span> <span class="n">output</span>
+
+
+<span class="k">def</span> <span class="nf">_set_entity_client_commit</span><span class="p">(</span><span class="n">entity</span><span class="p">,</span> <span class="n">client</span><span class="p">,</span> <span class="n">commit</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Set the client and commit of an entity.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">client</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">entity</span><span class="o">.</span><span class="n">client</span><span class="p">:</span>
+        <span class="n">entity</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="n">client</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">entity</span><span class="o">.</span><span class="n">commit</span><span class="p">:</span>
+        <span class="n">revision</span> <span class="o">=</span> <span class="s1">&#39;UNCOMMITTED&#39;</span>
+        <span class="k">if</span> <span class="n">entity</span><span class="o">.</span><span class="n">_label</span><span class="p">:</span>
+            <span class="n">revision</span> <span class="o">=</span> <span class="n">entity</span><span class="o">.</span><span class="n">_label</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s1">&#39;@&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">revision</span> <span class="o">==</span> <span class="s1">&#39;UNCOMMITTED&#39;</span><span class="p">:</span>
+            <span class="n">commit</span> <span class="o">=</span> <span class="n">commit</span>
+        <span class="k">elif</span> <span class="n">client</span><span class="p">:</span>
+            <span class="n">commit</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">commit</span><span class="p">(</span><span class="n">revision</span><span class="p">)</span>
+        <span class="n">entity</span><span class="o">.</span><span class="n">commit</span> <span class="o">=</span> <span class="n">commit</span>
+
+
+<div class="viewcode-block" id="Activity"><a class="viewcode-back" href="../../../../../models/provenance.html#renku.core.models.provenance.activities.Activity">[docs]</a><span class="nd">@attr</span><span class="o">.</span><span class="n">s</span><span class="p">(</span>
+    <span class="nb">cmp</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="k">class</span> <span class="nc">Activity</span><span class="p">(</span><span class="n">CommitMixin</span><span class="p">,</span> <span class="n">ReferenceMixin</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Represent an activity in the repository.&quot;&quot;&quot;</span>
+
+    <span class="n">_id</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">_message</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">_was_informed_by</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="p">)</span>
+
+    <span class="n">part_of</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">_collections</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span>
+        <span class="n">default</span><span class="o">=</span><span class="n">attr</span><span class="o">.</span><span class="n">Factory</span><span class="p">(</span><span class="n">OrderedDict</span><span class="p">),</span> <span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>
+    <span class="n">generated</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+    <span class="n">invalidated</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+    <span class="n">influenced</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">started_at_time</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">ended_at_time</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">agents</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Activity.default_generated"><a class="viewcode-back" href="../../../../../models/provenance.html#renku.core.models.provenance.activities.Activity.default_generated">[docs]</a>    <span class="k">def</span> <span class="nf">default_generated</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create default ``generated``.&quot;&quot;&quot;</span>
+        <span class="n">generated</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_output_paths</span><span class="p">():</span>
+            <span class="n">entity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_activity_entity</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+            <span class="n">generated</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">Generation</span><span class="p">(</span><span class="n">activity</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">entity</span><span class="o">=</span><span class="n">entity</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="n">generated</span></div>
+
+<div class="viewcode-block" id="Activity.get_output_paths"><a class="viewcode-back" href="../../../../../models/provenance.html#renku.core.models.provenance.activities.Activity.get_output_paths">[docs]</a>    <span class="k">def</span> <span class="nf">get_output_paths</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Gets all output paths generated by this run.&quot;&quot;&quot;</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+        <span class="n">commit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">commit</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">commit</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">index</span>
+            <span class="n">commit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">head</span><span class="o">.</span><span class="n">commit</span>
+
+        <span class="k">for</span> <span class="n">file_</span> <span class="ow">in</span> <span class="n">commit</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">commit</span><span class="o">.</span><span class="n">parents</span> <span class="ow">or</span> <span class="n">NULL_TREE</span><span class="p">):</span>
+            <span class="c1"># ignore deleted files (note they appear as ADDED)</span>
+            <span class="c1"># in this backwards diff</span>
+            <span class="k">if</span> <span class="n">file_</span><span class="o">.</span><span class="n">change_type</span> <span class="o">==</span> <span class="s1">&#39;A&#39;</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">path_</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">file_</span><span class="o">.</span><span class="n">a_path</span><span class="p">)</span>
+
+            <span class="n">is_dataset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">DATASETS</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">path_</span><span class="p">)</span>
+            <span class="n">not_refs</span> <span class="o">=</span> <span class="n">LinkReference</span><span class="o">.</span><span class="n">REFS</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">path_</span><span class="p">)</span>
+            <span class="n">does_not_exists</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">path_</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
+
+            <span class="k">if</span> <span class="nb">all</span><span class="p">([</span><span class="n">is_dataset</span><span class="p">,</span> <span class="n">not_refs</span><span class="p">,</span> <span class="n">does_not_exists</span><span class="p">]):</span>
+                <span class="n">uid</span> <span class="o">=</span> <span class="n">uuid</span><span class="o">.</span><span class="n">UUID</span><span class="p">(</span><span class="n">path_</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+                <span class="n">path_</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">renku_home</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">DATASETS</span> <span class="o">/</span>
+                    <span class="nb">str</span><span class="p">(</span><span class="n">uid</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">METADATA</span>
+                <span class="p">)</span>
+
+            <span class="n">index</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">path_</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">index</span></div>
+
+    <span class="k">def</span> <span class="nf">_get_activity_entity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">deleted</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Gets the entity associated with this Activity and path.&quot;&quot;&quot;</span>
+        <span class="n">client</span><span class="p">,</span> <span class="n">commit</span><span class="p">,</span> <span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">resolve_in_submodules</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">commit</span><span class="p">,</span>
+            <span class="n">path</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">output_path</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">path</span> <span class="o">/</span> <span class="n">path</span>
+        <span class="n">parents</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">output_path</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="n">client</span><span class="o">.</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">parents</span><span class="p">)</span>
+
+        <span class="n">collection</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">members</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">parent</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">parents</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+            <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_collections</span><span class="p">:</span>
+                <span class="n">collection</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_collections</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">parent</span><span class="p">)]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">collection</span> <span class="o">=</span> <span class="n">Collection</span><span class="p">(</span>
+                    <span class="n">client</span><span class="o">=</span><span class="n">client</span><span class="p">,</span>
+                    <span class="n">commit</span><span class="o">=</span><span class="n">commit</span><span class="p">,</span>
+                    <span class="n">path</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">parent</span><span class="p">),</span>
+                    <span class="n">members</span><span class="o">=</span><span class="p">[],</span>
+                    <span class="n">parent</span><span class="o">=</span><span class="n">collection</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="n">members</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">collection</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_collections</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">parent</span><span class="p">)]</span> <span class="o">=</span> <span class="n">collection</span>
+
+            <span class="n">members</span> <span class="o">=</span> <span class="n">collection</span><span class="o">.</span><span class="n">members</span>
+
+        <span class="n">entity_cls</span> <span class="o">=</span> <span class="n">Entity</span>
+        <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">path</span> <span class="o">/</span> <span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">is_dir</span><span class="p">():</span>
+            <span class="n">entity_cls</span> <span class="o">=</span> <span class="n">Collection</span>
+
+        <span class="c1"># TODO: use a factory method to generate the entity</span>
+        <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">client</span><span class="o">.</span><span class="n">renku_home</span><span class="p">,</span> <span class="n">client</span><span class="o">.</span><span class="n">DATASETS</span><span class="p">)</span>
+        <span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">deleted</span><span class="p">:</span>
+            <span class="n">entity</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">load_dataset_from_path</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">commit</span><span class="o">=</span><span class="n">commit</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">entity</span> <span class="o">=</span> <span class="n">entity_cls</span><span class="p">(</span>
+                <span class="n">commit</span><span class="o">=</span><span class="n">commit</span><span class="p">,</span>
+                <span class="n">client</span><span class="o">=</span><span class="n">client</span><span class="p">,</span>
+                <span class="n">path</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">),</span>
+                <span class="n">parent</span><span class="o">=</span><span class="n">collection</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">collection</span><span class="p">:</span>
+            <span class="n">collection</span><span class="o">.</span><span class="n">members</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">entity</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">entity</span>
+
+<div class="viewcode-block" id="Activity.default_invalidated"><a class="viewcode-back" href="../../../../../models/provenance.html#renku.core.models.provenance.activities.Activity.default_invalidated">[docs]</a>    <span class="k">def</span> <span class="nf">default_invalidated</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Entities invalidated by this Action.&quot;&quot;&quot;</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">removed_paths</span><span class="p">:</span>
+            <span class="n">entity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_activity_entity</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">deleted</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">entity</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">results</span></div>
+
+<div class="viewcode-block" id="Activity.default_influenced"><a class="viewcode-back" href="../../../../../models/provenance.html#renku.core.models.provenance.activities.Activity.default_influenced">[docs]</a>    <span class="nd">@influenced</span><span class="o">.</span><span class="n">default</span>
+    <span class="k">def</span> <span class="nf">default_influenced</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Calculate default values.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_collections</span><span class="o">.</span><span class="n">values</span><span class="p">())</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">parents</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return parent commits.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">commit</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">commit</span><span class="o">.</span><span class="n">parents</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">removed_paths</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return all paths removed in the commit.&quot;&quot;&quot;</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">commit</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">index</span>
+
+        <span class="k">for</span> <span class="n">file_</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">commit</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">commit</span><span class="o">.</span><span class="n">parents</span> <span class="ow">or</span> <span class="n">NULL_TREE</span><span class="p">):</span>
+            <span class="c1"># only process deleted files (note they appear as ADDED)</span>
+            <span class="c1"># in this backwards diff</span>
+            <span class="k">if</span> <span class="n">file_</span><span class="o">.</span><span class="n">change_type</span> <span class="o">!=</span> <span class="s1">&#39;A&#39;</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">path_</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">file_</span><span class="o">.</span><span class="n">a_path</span><span class="p">)</span>
+
+            <span class="n">index</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">path_</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">index</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">paths</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return all paths in the commit.&quot;&quot;&quot;</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+        <span class="k">for</span> <span class="n">file_</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">commit</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">commit</span><span class="o">.</span><span class="n">parents</span> <span class="ow">or</span> <span class="n">NULL_TREE</span><span class="p">):</span>
+            <span class="c1"># ignore deleted files (note they appear as ADDED)</span>
+            <span class="c1"># in this backwards diff</span>
+            <span class="k">if</span> <span class="n">file_</span><span class="o">.</span><span class="n">change_type</span> <span class="o">==</span> <span class="s1">&#39;A&#39;</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">path_</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">file_</span><span class="o">.</span><span class="n">a_path</span><span class="p">)</span>
+
+            <span class="n">is_dataset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">DATASETS</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">path_</span><span class="p">)</span>
+            <span class="n">not_refs</span> <span class="o">=</span> <span class="n">LinkReference</span><span class="o">.</span><span class="n">REFS</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">path_</span><span class="p">)</span>
+            <span class="n">does_not_exists</span> <span class="o">=</span> <span class="ow">not</span> <span class="p">(</span>
+                <span class="n">path_</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span> <span class="ow">or</span>
+                <span class="p">(</span><span class="n">path_</span><span class="o">.</span><span class="n">is_symlink</span><span class="p">()</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">lexists</span><span class="p">(</span><span class="n">path_</span><span class="p">))</span>
+            <span class="p">)</span>
+
+            <span class="k">if</span> <span class="nb">all</span><span class="p">([</span><span class="n">is_dataset</span><span class="p">,</span> <span class="n">not_refs</span><span class="p">,</span> <span class="n">does_not_exists</span><span class="p">]):</span>
+                <span class="n">uid</span> <span class="o">=</span> <span class="n">uuid</span><span class="o">.</span><span class="n">UUID</span><span class="p">(</span><span class="n">path_</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+                <span class="n">path_</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">renku_home</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">DATASETS</span> <span class="o">/</span>
+                    <span class="nb">str</span><span class="p">(</span><span class="n">uid</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">METADATA</span>
+                <span class="p">)</span>
+
+            <span class="n">index</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">path_</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">index</span>
+
+<div class="viewcode-block" id="Activity.generate_id"><a class="viewcode-back" href="../../../../../models/provenance.html#renku.core.models.provenance.activities.Activity.generate_id">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">generate_id</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">commitsha</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Calculate action ID.&quot;&quot;&quot;</span>
+        <span class="n">host</span> <span class="o">=</span> <span class="s1">&#39;localhost&#39;</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="s1">&#39;client&#39;</span><span class="p">):</span>
+            <span class="n">host</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">remote</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;host&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">host</span>
+        <span class="n">host</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;RENKU_DOMAIN&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="s1">&#39;localhost&#39;</span>
+
+        <span class="k">return</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">urljoin</span><span class="p">(</span>
+            <span class="s1">&#39;https://</span><span class="si">{host}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="n">host</span><span class="p">),</span>
+            <span class="n">posixpath</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                <span class="s1">&#39;/activities&#39;</span><span class="p">,</span> <span class="s1">&#39;commit/</span><span class="si">{commit}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">commit</span><span class="o">=</span><span class="n">commitsha</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="Activity.default_id"><a class="viewcode-back" href="../../../../../models/provenance.html#renku.core.models.provenance.activities.Activity.default_id">[docs]</a>    <span class="k">def</span> <span class="nf">default_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Configure calculated ID.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">commit</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_id</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">commit</span><span class="o">.</span><span class="n">hexsha</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_id</span><span class="p">(</span><span class="s1">&#39;UNCOMMITED&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Activity.default_message"><a class="viewcode-back" href="../../../../../models/provenance.html#renku.core.models.provenance.activities.Activity.default_message">[docs]</a>    <span class="nd">@_message</span><span class="o">.</span><span class="n">default</span>
+    <span class="k">def</span> <span class="nf">default_message</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Generate a default message.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">commit</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">commit</span><span class="o">.</span><span class="n">message</span></div>
+
+<div class="viewcode-block" id="Activity.default_was_informed_by"><a class="viewcode-back" href="../../../../../models/provenance.html#renku.core.models.provenance.activities.Activity.default_was_informed_by">[docs]</a>    <span class="nd">@_was_informed_by</span><span class="o">.</span><span class="n">default</span>
+    <span class="k">def</span> <span class="nf">default_was_informed_by</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;List parent actions.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">commit</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">generate_id</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span> <span class="k">for</span> <span class="n">parent</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">commit</span><span class="o">.</span><span class="n">parents</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="Activity.default_started_at_time"><a class="viewcode-back" href="../../../../../models/provenance.html#renku.core.models.provenance.activities.Activity.default_started_at_time">[docs]</a>    <span class="nd">@started_at_time</span><span class="o">.</span><span class="n">default</span>
+    <span class="k">def</span> <span class="nf">default_started_at_time</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Configure calculated properties.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">commit</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">commit</span><span class="o">.</span><span class="n">authored_datetime</span></div>
+
+<div class="viewcode-block" id="Activity.default_ended_at_time"><a class="viewcode-back" href="../../../../../models/provenance.html#renku.core.models.provenance.activities.Activity.default_ended_at_time">[docs]</a>    <span class="nd">@ended_at_time</span><span class="o">.</span><span class="n">default</span>
+    <span class="k">def</span> <span class="nf">default_ended_at_time</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Configure calculated properties.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">commit</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">commit</span><span class="o">.</span><span class="n">committed_datetime</span></div>
+
+<div class="viewcode-block" id="Activity.default_agents"><a class="viewcode-back" href="../../../../../models/provenance.html#renku.core.models.provenance.activities.Activity.default_agents">[docs]</a>    <span class="nd">@agents</span><span class="o">.</span><span class="n">default</span>
+    <span class="k">def</span> <span class="nf">default_agents</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set person agent to be the author of the commit.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">commit</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span><span class="n">Person</span><span class="o">.</span><span class="n">from_commit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">commit</span><span class="p">),</span> <span class="n">renku_agent</span><span class="p">]</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">renku_agent</span><span class="p">]</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return topologically sorted nodes.&quot;&quot;&quot;</span>
+        <span class="n">collections</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+
+        <span class="k">def</span> <span class="nf">_parents</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="p">:</span>
+                <span class="k">yield from</span> <span class="n">_parents</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+                <span class="k">yield</span> <span class="n">node</span><span class="o">.</span><span class="n">parent</span>
+
+        <span class="k">for</span> <span class="n">output</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">generated</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">parent</span> <span class="ow">in</span> <span class="n">_parents</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">entity</span><span class="p">):</span>
+                <span class="n">collections</span><span class="p">[</span><span class="n">parent</span><span class="o">.</span><span class="n">path</span><span class="p">]</span> <span class="o">=</span> <span class="n">parent</span>
+
+            <span class="k">yield from</span> <span class="n">_nodes</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">removed</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">invalidated</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">parent</span> <span class="ow">in</span> <span class="n">_parents</span><span class="p">(</span><span class="n">removed</span><span class="p">):</span>
+                <span class="n">collections</span><span class="p">[</span><span class="n">parent</span><span class="o">.</span><span class="n">path</span><span class="p">]</span> <span class="o">=</span> <span class="n">parent</span>
+
+            <span class="k">yield from</span> <span class="n">_nodes</span><span class="p">(</span><span class="n">removed</span><span class="p">)</span>
+
+        <span class="k">yield from</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">collections</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+
+    <span class="k">def</span> <span class="nf">__attrs_post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Sets ``generated`` and ``invalidated`` default values if needed.&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__attrs_post_init__</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_id</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">generated</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">generated</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_generated</span><span class="p">()</span>
+
+        <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">generated</span><span class="p">:</span>
+            <span class="n">_set_entity_client_commit</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">entity</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">commit</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">invalidated</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">invalidated</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_invalidated</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">generated</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">generated</span><span class="p">:</span>
+                <span class="n">g</span><span class="o">.</span><span class="n">_activity</span> <span class="o">=</span> <span class="n">weakref</span><span class="o">.</span><span class="n">ref</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Activity.from_yaml"><a class="viewcode-back" href="../../../../../models/provenance.html#renku.core.models.provenance.activities.Activity.from_yaml">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_yaml</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">client</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">commit</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return an instance from a YAML file.&quot;&quot;&quot;</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">jsonld</span><span class="o">.</span><span class="n">read_yaml</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+        <span class="bp">self</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">from_jsonld</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">client</span><span class="o">=</span><span class="n">client</span><span class="p">,</span> <span class="n">commit</span><span class="o">=</span><span class="n">commit</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__reference__</span> <span class="o">=</span> <span class="n">path</span>
+
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="Activity.to_yaml"><a class="viewcode-back" href="../../../../../models/provenance.html#renku.core.models.provenance.activities.Activity.to_yaml">[docs]</a>    <span class="k">def</span> <span class="nf">to_yaml</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Write an instance to the referenced YAML file.&quot;&quot;&quot;</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">ActivitySchema</span><span class="p">(</span><span class="n">flattened</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">jsonld</span><span class="o">.</span><span class="n">write_yaml</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">__reference__</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Activity.from_jsonld"><a class="viewcode-back" href="../../../../../models/provenance.html#renku.core.models.provenance.activities.Activity.from_jsonld">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_jsonld</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">client</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">commit</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create an instance from JSON-LD data.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="bp">cls</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">data</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="n">schema</span> <span class="o">=</span> <span class="n">ActivitySchema</span>
+
+        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">wfprov</span><span class="o">.</span><span class="n">WorkflowRun</span><span class="p">)</span> <span class="ow">in</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;@type&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span><span class="p">):</span>
+            <span class="n">schema</span> <span class="o">=</span> <span class="n">WorkflowRunSchema</span>
+        <span class="k">elif</span> <span class="nb">any</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">wfprov</span><span class="o">.</span><span class="n">ProcessRun</span><span class="p">)</span> <span class="ow">in</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;@type&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span><span class="p">):</span>
+            <span class="n">schema</span> <span class="o">=</span> <span class="n">ProcessRunSchema</span>
+
+        <span class="k">return</span> <span class="n">schema</span><span class="p">(</span><span class="n">client</span><span class="o">=</span><span class="n">client</span><span class="p">,</span> <span class="n">commit</span><span class="o">=</span><span class="n">commit</span><span class="p">,</span> <span class="n">flattened</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Activity.as_jsonld"><a class="viewcode-back" href="../../../../../models/provenance.html#renku.core.models.provenance.activities.Activity.as_jsonld">[docs]</a>    <span class="k">def</span> <span class="nf">as_jsonld</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create JSON-LD.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">ActivitySchema</span><span class="p">(</span><span class="n">flattened</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="ProcessRun"><a class="viewcode-back" href="../../../../../models/provenance.html#renku.core.models.provenance.activities.ProcessRun">[docs]</a><span class="nd">@attr</span><span class="o">.</span><span class="n">s</span><span class="p">(</span>
+    <span class="nb">cmp</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="k">class</span> <span class="nc">ProcessRun</span><span class="p">(</span><span class="n">Activity</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A process run is a particular execution of a Process description.&quot;&quot;&quot;</span>
+
+    <span class="n">__association_cls__</span> <span class="o">=</span> <span class="n">Run</span>
+
+    <span class="n">generated</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+    <span class="n">association</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">annotations</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+    <span class="n">qualified_usage</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__attrs_post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Calculate properties.&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__attrs_post_init__</span><span class="p">()</span>
+        <span class="n">commit_not_set</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">commit</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">commit</span><span class="o">.</span><span class="n">hexsha</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span>
+        <span class="k">if</span> <span class="n">commit_not_set</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="ow">and</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">commit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">find_previous_commit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">annotations</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">annotations</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">plugin_annotations</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">association</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">association</span><span class="o">.</span><span class="n">plan</span><span class="o">.</span><span class="n">_activity</span> <span class="o">=</span> <span class="n">weakref</span><span class="o">.</span><span class="n">ref</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+            <span class="n">plan</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">association</span><span class="o">.</span><span class="n">plan</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">plan</span><span class="o">.</span><span class="n">commit</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="p">:</span>
+                    <span class="n">plan</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">commit</span><span class="p">:</span>
+                    <span class="n">plan</span><span class="o">.</span><span class="n">commit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">commit</span>
+
+                <span class="k">if</span> <span class="n">plan</span><span class="o">.</span><span class="n">inputs</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">plan</span><span class="o">.</span><span class="n">inputs</span><span class="p">:</span>
+                        <span class="n">_set_entity_client_commit</span><span class="p">(</span>
+                            <span class="n">i</span><span class="o">.</span><span class="n">consumes</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">commit</span>
+                        <span class="p">)</span>
+                <span class="k">if</span> <span class="n">plan</span><span class="o">.</span><span class="n">outputs</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">plan</span><span class="o">.</span><span class="n">outputs</span><span class="p">:</span>
+                        <span class="n">_set_entity_client_commit</span><span class="p">(</span>
+                            <span class="n">o</span><span class="o">.</span><span class="n">produces</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">commit</span>
+                        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">qualified_usage</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">commit</span><span class="p">:</span>
+            <span class="n">usages</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">revision</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">commit</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">usage</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">qualified_usage</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">usage</span><span class="o">.</span><span class="n">commit</span> <span class="ow">and</span> <span class="s1">&#39;@UNCOMMITTED&#39;</span> <span class="ow">in</span> <span class="n">usage</span><span class="o">.</span><span class="n">_label</span><span class="p">:</span>
+                    <span class="n">usages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                        <span class="n">Usage</span><span class="o">.</span><span class="n">from_revision</span><span class="p">(</span>
+                            <span class="n">client</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="p">,</span>
+                            <span class="n">path</span><span class="o">=</span><span class="n">usage</span><span class="o">.</span><span class="n">path</span><span class="p">,</span>
+                            <span class="n">role</span><span class="o">=</span><span class="n">usage</span><span class="o">.</span><span class="n">role</span><span class="p">,</span>
+                            <span class="n">revision</span><span class="o">=</span><span class="n">revision</span><span class="p">,</span>
+                            <span class="nb">id</span><span class="o">=</span><span class="n">usage</span><span class="o">.</span><span class="n">_id</span><span class="p">,</span>
+                        <span class="p">)</span>
+                    <span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">usage</span><span class="o">.</span><span class="n">client</span><span class="p">:</span>
+                        <span class="n">usage</span><span class="o">.</span><span class="n">entity</span><span class="o">.</span><span class="n">set_client</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">usage</span><span class="o">.</span><span class="n">commit</span><span class="p">:</span>
+                        <span class="n">revision</span> <span class="o">=</span> <span class="n">usage</span><span class="o">.</span><span class="n">_label</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s1">&#39;@&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+                        <span class="n">usage</span><span class="o">.</span><span class="n">entity</span><span class="o">.</span><span class="n">commit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">commit</span><span class="p">(</span><span class="n">revision</span><span class="p">)</span>
+
+                    <span class="n">usages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">usage</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">qualified_usage</span> <span class="o">=</span> <span class="n">usages</span>
+
+<div class="viewcode-block" id="ProcessRun.default_generated"><a class="viewcode-back" href="../../../../../models/provenance.html#renku.core.models.provenance.activities.ProcessRun.default_generated">[docs]</a>    <span class="k">def</span> <span class="nf">default_generated</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create default ``generated``.&quot;&quot;&quot;</span>
+        <span class="n">generated</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">association</span> <span class="ow">or</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">association</span><span class="o">.</span><span class="n">plan</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">generated</span>
+
+        <span class="k">for</span> <span class="n">output</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">association</span><span class="o">.</span><span class="n">plan</span><span class="o">.</span><span class="n">outputs</span><span class="p">:</span>
+            <span class="n">entity</span> <span class="o">=</span> <span class="n">Entity</span><span class="o">.</span><span class="n">from_revision</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="p">,</span>
+                <span class="n">output</span><span class="o">.</span><span class="n">produces</span><span class="o">.</span><span class="n">path</span><span class="p">,</span>
+                <span class="n">revision</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">commit</span><span class="p">,</span>
+                <span class="n">parent</span><span class="o">=</span><span class="n">output</span><span class="o">.</span><span class="n">produces</span><span class="o">.</span><span class="n">parent</span>
+            <span class="p">)</span>
+
+            <span class="n">generation</span> <span class="o">=</span> <span class="n">Generation</span><span class="p">(</span>
+                <span class="n">activity</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="n">output</span><span class="o">.</span><span class="n">sanitized_id</span><span class="p">,</span> <span class="n">entity</span><span class="o">=</span><span class="n">entity</span>
+            <span class="p">)</span>
+            <span class="n">generated</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">generation</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">generated</span></div>
+
+<div class="viewcode-block" id="ProcessRun.add_annotations"><a class="viewcode-back" href="../../../../../models/provenance.html#renku.core.models.provenance.activities.ProcessRun.add_annotations">[docs]</a>    <span class="k">def</span> <span class="nf">add_annotations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">annotations</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Adds annotations from an external tool.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">annotations</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">annotations</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ProcessRun.plugin_annotations"><a class="viewcode-back" href="../../../../../models/provenance.html#renku.core.models.provenance.activities.ProcessRun.plugin_annotations">[docs]</a>    <span class="k">def</span> <span class="nf">plugin_annotations</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Adds ``Annotation``s from plugins to a ``ProcessRun``.&quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">renku.core.plugins.pluginmanager</span> <span class="kn">import</span> <span class="n">get_plugin_manager</span>
+        <span class="n">pm</span> <span class="o">=</span> <span class="n">get_plugin_manager</span><span class="p">()</span>
+
+        <span class="n">results</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">hook</span><span class="o">.</span><span class="n">process_run_annotations</span><span class="p">(</span><span class="n">run</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">r</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="ProcessRun.from_run"><a class="viewcode-back" href="../../../../../models/provenance.html#renku.core.models.provenance.activities.ProcessRun.from_run">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_run</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span>
+        <span class="n">run</span><span class="p">,</span>
+        <span class="n">client</span><span class="p">,</span>
+        <span class="n">path</span><span class="p">,</span>
+        <span class="n">commit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">is_subprocess</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">update_commits</span><span class="o">=</span><span class="kc">False</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Convert a ``Run`` to a ``ProcessRun``.&quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">.agents</span> <span class="kn">import</span> <span class="n">SoftwareAgent</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">commit</span><span class="p">:</span>
+            <span class="n">commit</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">head</span><span class="o">.</span><span class="n">commit</span>
+
+        <span class="n">usages</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="n">id_</span> <span class="o">=</span> <span class="n">ProcessRun</span><span class="o">.</span><span class="n">generate_id</span><span class="p">(</span><span class="n">commit</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">is_subprocess</span><span class="p">:</span>
+            <span class="n">id_</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">/steps/step_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">id_</span><span class="p">,</span> <span class="n">run</span><span class="o">.</span><span class="n">process_order</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">input_</span> <span class="ow">in</span> <span class="n">run</span><span class="o">.</span><span class="n">inputs</span><span class="p">:</span>
+            <span class="n">usage_id</span> <span class="o">=</span> <span class="n">id_</span> <span class="o">+</span> <span class="s1">&#39;/inputs/&#39;</span> <span class="o">+</span> <span class="n">input_</span><span class="o">.</span><span class="n">sanitized_id</span>
+            <span class="n">revision</span> <span class="o">=</span> <span class="n">commit</span>
+            <span class="n">input_path</span> <span class="o">=</span> <span class="n">input_</span><span class="o">.</span><span class="n">consumes</span><span class="o">.</span><span class="n">path</span>
+            <span class="n">entity</span> <span class="o">=</span> <span class="n">input_</span><span class="o">.</span><span class="n">consumes</span>
+            <span class="k">if</span> <span class="n">update_commits</span><span class="p">:</span>
+                <span class="n">revision</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">find_previous_commit</span><span class="p">(</span>
+                    <span class="n">input_path</span><span class="p">,</span> <span class="n">revision</span><span class="o">=</span><span class="n">commit</span><span class="o">.</span><span class="n">hexsha</span>
+                <span class="p">)</span>
+                <span class="n">entity</span> <span class="o">=</span> <span class="n">Entity</span><span class="o">.</span><span class="n">from_revision</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">input_path</span><span class="p">,</span> <span class="n">revision</span><span class="p">)</span>
+
+            <span class="n">dependency</span> <span class="o">=</span> <span class="n">Usage</span><span class="p">(</span>
+                <span class="n">entity</span><span class="o">=</span><span class="n">entity</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="n">input_</span><span class="o">.</span><span class="n">sanitized_id</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">usage_id</span>
+            <span class="p">)</span>
+
+            <span class="n">usages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dependency</span><span class="p">)</span>
+
+        <span class="n">agent</span> <span class="o">=</span> <span class="n">SoftwareAgent</span><span class="o">.</span><span class="n">from_commit</span><span class="p">(</span><span class="n">commit</span><span class="p">)</span>
+        <span class="n">association</span> <span class="o">=</span> <span class="n">Association</span><span class="p">(</span>
+            <span class="n">agent</span><span class="o">=</span><span class="n">agent</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">id_</span> <span class="o">+</span> <span class="s1">&#39;/association&#39;</span><span class="p">,</span> <span class="n">plan</span><span class="o">=</span><span class="n">run</span>
+        <span class="p">)</span>
+
+        <span class="n">process_run</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span>
+            <span class="nb">id</span><span class="o">=</span><span class="n">id_</span><span class="p">,</span>
+            <span class="n">qualified_usage</span><span class="o">=</span><span class="n">usages</span><span class="p">,</span>
+            <span class="n">association</span><span class="o">=</span><span class="n">association</span><span class="p">,</span>
+            <span class="n">client</span><span class="o">=</span><span class="n">client</span><span class="p">,</span>
+            <span class="n">commit</span><span class="o">=</span><span class="n">commit</span><span class="p">,</span>
+            <span class="n">path</span><span class="o">=</span><span class="n">path</span>
+        <span class="p">)</span>
+
+        <span class="n">generated</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">output</span> <span class="ow">in</span> <span class="n">run</span><span class="o">.</span><span class="n">outputs</span><span class="p">:</span>
+            <span class="n">entity</span> <span class="o">=</span> <span class="n">Entity</span><span class="o">.</span><span class="n">from_revision</span><span class="p">(</span>
+                <span class="n">client</span><span class="p">,</span>
+                <span class="n">output</span><span class="o">.</span><span class="n">produces</span><span class="o">.</span><span class="n">path</span><span class="p">,</span>
+                <span class="n">revision</span><span class="o">=</span><span class="n">commit</span><span class="p">,</span>
+                <span class="n">parent</span><span class="o">=</span><span class="n">output</span><span class="o">.</span><span class="n">produces</span><span class="o">.</span><span class="n">parent</span>
+            <span class="p">)</span>
+
+            <span class="n">generation</span> <span class="o">=</span> <span class="n">Generation</span><span class="p">(</span>
+                <span class="n">activity</span><span class="o">=</span><span class="n">process_run</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="n">output</span><span class="o">.</span><span class="n">sanitized_id</span><span class="p">,</span> <span class="n">entity</span><span class="o">=</span><span class="n">entity</span>
+            <span class="p">)</span>
+            <span class="n">generated</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">generation</span><span class="p">)</span>
+
+        <span class="n">process_run</span><span class="o">.</span><span class="n">generated</span> <span class="o">=</span> <span class="n">generated</span>
+
+        <span class="n">process_run</span><span class="o">.</span><span class="n">plugin_annotations</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">process_run</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">parents</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return parent commits.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="n">member</span><span class="o">.</span><span class="n">commit</span> <span class="k">for</span> <span class="n">usage</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">qualified_usage</span>
+            <span class="k">for</span> <span class="n">member</span> <span class="ow">in</span> <span class="n">usage</span><span class="o">.</span><span class="n">entity</span><span class="o">.</span><span class="n">entities</span>
+        <span class="p">]</span> <span class="o">+</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">parents</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return topologically sorted nodes.&quot;&quot;&quot;</span>
+        <span class="c1"># Outputs go first</span>
+        <span class="k">yield from</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">nodes</span>
+
+        <span class="c1"># Activity itself</span>
+        <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">association</span><span class="o">.</span><span class="n">plan</span>
+
+<div class="viewcode-block" id="ProcessRun.to_yaml"><a class="viewcode-back" href="../../../../../models/provenance.html#renku.core.models.provenance.activities.ProcessRun.to_yaml">[docs]</a>    <span class="k">def</span> <span class="nf">to_yaml</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Write an instance to the referenced YAML file.&quot;&quot;&quot;</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">ProcessRunSchema</span><span class="p">(</span><span class="n">flattened</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">jsonld</span><span class="o">.</span><span class="n">write_yaml</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">__reference__</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ProcessRun.from_jsonld"><a class="viewcode-back" href="../../../../../models/provenance.html#renku.core.models.provenance.activities.ProcessRun.from_jsonld">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_jsonld</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">client</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">commit</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create an instance from JSON-LD data.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="bp">cls</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">data</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">ProcessRunSchema</span><span class="p">(</span><span class="n">client</span><span class="o">=</span><span class="n">client</span><span class="p">,</span> <span class="n">commit</span><span class="o">=</span><span class="n">commit</span><span class="p">,</span>
+                                <span class="n">flattened</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ProcessRun.as_jsonld"><a class="viewcode-back" href="../../../../../models/provenance.html#renku.core.models.provenance.activities.ProcessRun.as_jsonld">[docs]</a>    <span class="k">def</span> <span class="nf">as_jsonld</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create JSON-LD.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">ProcessRunSchema</span><span class="p">(</span><span class="n">flattened</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="WorkflowRun"><a class="viewcode-back" href="../../../../../models/provenance.html#renku.core.models.provenance.activities.WorkflowRun">[docs]</a><span class="nd">@attr</span><span class="o">.</span><span class="n">s</span><span class="p">(</span>
+    <span class="nb">cmp</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="k">class</span> <span class="nc">WorkflowRun</span><span class="p">(</span><span class="n">ProcessRun</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A workflow run typically contains several subprocesses.&quot;&quot;&quot;</span>
+
+    <span class="n">__association_cls__</span> <span class="o">=</span> <span class="n">Run</span>
+
+    <span class="n">_processes</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">attr</span><span class="o">.</span><span class="n">Factory</span><span class="p">(</span><span class="nb">list</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">subprocesses</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Subprocesses of this ``WorkflowRun``.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">p</span><span class="o">.</span><span class="n">association</span><span class="o">.</span><span class="n">plan</span><span class="o">.</span><span class="n">process_order</span><span class="p">:</span> <span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_processes</span><span class="p">}</span>
+
+<div class="viewcode-block" id="WorkflowRun.from_run"><a class="viewcode-back" href="../../../../../models/provenance.html#renku.core.models.provenance.activities.WorkflowRun.from_run">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_run</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">run</span><span class="p">,</span> <span class="n">client</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">commit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">update_commits</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Convert a ``Run`` to a ``WorkflowRun``.&quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">.agents</span> <span class="kn">import</span> <span class="n">SoftwareAgent</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">commit</span><span class="p">:</span>
+            <span class="n">commit</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">head</span><span class="o">.</span><span class="n">commit</span>
+
+        <span class="n">processes</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">generated</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">run</span><span class="o">.</span><span class="n">subprocesses</span><span class="p">:</span>
+            <span class="n">proc_run</span> <span class="o">=</span> <span class="n">ProcessRun</span><span class="o">.</span><span class="n">from_run</span><span class="p">(</span>
+                <span class="n">s</span><span class="p">,</span> <span class="n">client</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">commit</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="n">update_commits</span>
+            <span class="p">)</span>
+            <span class="n">processes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">proc_run</span><span class="p">)</span>
+            <span class="n">generated</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">proc_run</span><span class="o">.</span><span class="n">generated</span><span class="p">)</span>
+
+        <span class="n">usages</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="n">id_</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">generate_id</span><span class="p">(</span><span class="n">commit</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="nb">input</span> <span class="ow">in</span> <span class="n">run</span><span class="o">.</span><span class="n">inputs</span><span class="p">:</span>
+            <span class="n">usage_id</span> <span class="o">=</span> <span class="n">id_</span> <span class="o">+</span> <span class="s1">&#39;/inputs/&#39;</span> <span class="o">+</span> <span class="nb">input</span><span class="o">.</span><span class="n">sanitized_id</span>
+            <span class="n">dependency</span> <span class="o">=</span> <span class="n">Usage</span><span class="o">.</span><span class="n">from_revision</span><span class="p">(</span>
+                <span class="n">client</span><span class="o">=</span><span class="n">client</span><span class="p">,</span>
+                <span class="n">path</span><span class="o">=</span><span class="nb">input</span><span class="o">.</span><span class="n">consumes</span><span class="o">.</span><span class="n">path</span><span class="p">,</span>
+                <span class="n">role</span><span class="o">=</span><span class="nb">input</span><span class="o">.</span><span class="n">sanitized_id</span><span class="p">,</span>
+                <span class="n">revision</span><span class="o">=</span><span class="n">commit</span><span class="p">,</span>
+                <span class="nb">id</span><span class="o">=</span><span class="n">usage_id</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="n">usages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dependency</span><span class="p">)</span>
+
+        <span class="n">agent</span> <span class="o">=</span> <span class="n">SoftwareAgent</span><span class="o">.</span><span class="n">from_commit</span><span class="p">(</span><span class="n">commit</span><span class="p">)</span>
+        <span class="n">association</span> <span class="o">=</span> <span class="n">Association</span><span class="p">(</span>
+            <span class="n">agent</span><span class="o">=</span><span class="n">agent</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">id_</span> <span class="o">+</span> <span class="s1">&#39;/association&#39;</span><span class="p">,</span> <span class="n">plan</span><span class="o">=</span><span class="n">run</span>
+        <span class="p">)</span>
+
+        <span class="n">all_generated</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># fix generations in folders</span>
+        <span class="k">for</span> <span class="n">generation</span> <span class="ow">in</span> <span class="n">generated</span><span class="p">:</span>
+            <span class="n">all_generated</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">generation</span><span class="p">)</span>
+            <span class="n">entity</span> <span class="o">=</span> <span class="n">generation</span><span class="o">.</span><span class="n">entity</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">entity</span><span class="p">,</span> <span class="n">Collection</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">entity</span><span class="o">.</span><span class="n">commit</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">entity</span><span class="o">.</span><span class="n">entities</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">e</span><span class="o">.</span><span class="n">commit</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">entity</span><span class="o">.</span><span class="n">commit</span><span class="p">:</span>
+                    <span class="k">continue</span>
+
+                <span class="n">all_generated</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="n">Generation</span><span class="p">(</span>
+                        <span class="n">activity</span><span class="o">=</span><span class="n">generation</span><span class="o">.</span><span class="n">activity</span><span class="p">,</span> <span class="n">entity</span><span class="o">=</span><span class="n">e</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="kc">None</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+
+        <span class="n">wf_run</span> <span class="o">=</span> <span class="n">WorkflowRun</span><span class="p">(</span>
+            <span class="nb">id</span><span class="o">=</span><span class="n">id_</span><span class="p">,</span>
+            <span class="n">processes</span><span class="o">=</span><span class="n">processes</span><span class="p">,</span>
+            <span class="n">generated</span><span class="o">=</span><span class="n">all_generated</span><span class="p">,</span>
+            <span class="n">qualified_usage</span><span class="o">=</span><span class="n">usages</span><span class="p">,</span>
+            <span class="n">association</span><span class="o">=</span><span class="n">association</span><span class="p">,</span>
+            <span class="n">client</span><span class="o">=</span><span class="n">client</span><span class="p">,</span>
+            <span class="n">commit</span><span class="o">=</span><span class="n">commit</span><span class="p">,</span>
+            <span class="n">path</span><span class="o">=</span><span class="n">path</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">wf_run</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Yield all graph nodes.&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">subprocess</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_processes</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">path</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="c1"># skip nodes connecting directory to file</span>
+                <span class="k">continue</span>
+
+            <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">nodes</span><span class="p">:</span>
+                <span class="c1"># if self.client and not n.commit and isinstance(n, Entity):</span>
+                <span class="c1">#     _set_entity_client_commit(n, self.client, self.commit)</span>
+                <span class="c1"># n._activity = weakref.ref(subprocess)</span>
+                <span class="k">yield</span> <span class="n">n</span>
+            <span class="k">yield</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">association</span><span class="o">.</span><span class="n">plan</span>
+
+    <span class="k">def</span> <span class="nf">__attrs_post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Attrs post initializations.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_id</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_processes</span><span class="p">:</span>
+                <span class="n">s</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span>
+                <span class="n">s</span><span class="o">.</span><span class="n">commit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">commit</span>
+                <span class="n">s</span><span class="o">.</span><span class="n">__attrs_post_init__</span><span class="p">()</span>
+                <span class="n">s</span><span class="o">.</span><span class="n">part_of</span> <span class="o">=</span> <span class="bp">self</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__attrs_post_init__</span><span class="p">()</span>
+
+<div class="viewcode-block" id="WorkflowRun.to_yaml"><a class="viewcode-back" href="../../../../../models/provenance.html#renku.core.models.provenance.activities.WorkflowRun.to_yaml">[docs]</a>    <span class="k">def</span> <span class="nf">to_yaml</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Write an instance to the referenced YAML file.&quot;&quot;&quot;</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">WorkflowRunSchema</span><span class="p">(</span><span class="n">flattened</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">jsonld</span><span class="o">.</span><span class="n">write_yaml</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">__reference__</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="WorkflowRun.from_jsonld"><a class="viewcode-back" href="../../../../../models/provenance.html#renku.core.models.provenance.activities.WorkflowRun.from_jsonld">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_jsonld</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">client</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">commit</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create an instance from JSON-LD data.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="bp">cls</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">data</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">WorkflowRunSchema</span><span class="p">(</span><span class="n">client</span><span class="o">=</span><span class="n">client</span><span class="p">,</span> <span class="n">commit</span><span class="o">=</span><span class="n">commit</span><span class="p">,</span>
+                                 <span class="n">flattened</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="WorkflowRun.as_jsonld"><a class="viewcode-back" href="../../../../../models/provenance.html#renku.core.models.provenance.activities.WorkflowRun.as_jsonld">[docs]</a>    <span class="k">def</span> <span class="nf">as_jsonld</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create JSON-LD.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">WorkflowRunSchema</span><span class="p">(</span><span class="n">flattened</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div></div>
+
+
+<span class="k">class</span> <span class="nc">ActivitySchema</span><span class="p">(</span><span class="n">CommitMixinSchema</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Activity schema.&quot;&quot;&quot;</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Meta class.&quot;&quot;&quot;</span>
+
+        <span class="n">rdf_type</span> <span class="o">=</span> <span class="n">prov</span><span class="o">.</span><span class="n">Activity</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Activity</span>
+        <span class="n">unknown</span> <span class="o">=</span> <span class="n">EXCLUDE</span>
+
+    <span class="n">_message</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">rdfs</span><span class="o">.</span><span class="n">comment</span><span class="p">,</span> <span class="n">init_name</span><span class="o">=</span><span class="s1">&#39;message&#39;</span><span class="p">,</span> <span class="n">missing</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">_was_informed_by</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">List</span><span class="p">(</span>
+        <span class="n">prov</span><span class="o">.</span><span class="n">wasInformedBy</span><span class="p">,</span> <span class="n">fields</span><span class="o">.</span><span class="n">IRI</span><span class="p">(),</span> <span class="n">init_name</span><span class="o">=</span><span class="s1">&#39;was_informed_by&#39;</span>
+    <span class="p">)</span>
+    <span class="n">generated</span> <span class="o">=</span> <span class="n">Nested</span><span class="p">(</span>
+        <span class="n">prov</span><span class="o">.</span><span class="n">activity</span><span class="p">,</span> <span class="n">GenerationSchema</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">many</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">missing</span><span class="o">=</span><span class="kc">None</span>
+    <span class="p">)</span>
+    <span class="n">invalidated</span> <span class="o">=</span> <span class="n">Nested</span><span class="p">(</span>
+        <span class="n">prov</span><span class="o">.</span><span class="n">wasInvalidatedBy</span><span class="p">,</span>
+        <span class="n">EntitySchema</span><span class="p">,</span>
+        <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">many</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">missing</span><span class="o">=</span><span class="kc">None</span>
+    <span class="p">)</span>
+    <span class="n">influenced</span> <span class="o">=</span> <span class="n">Nested</span><span class="p">(</span><span class="n">prov</span><span class="o">.</span><span class="n">influenced</span><span class="p">,</span> <span class="n">CollectionSchema</span><span class="p">,</span> <span class="n">many</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">started_at_time</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">DateTime</span><span class="p">(</span><span class="n">prov</span><span class="o">.</span><span class="n">startedAtTime</span><span class="p">,</span> <span class="n">add_value_types</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">ended_at_time</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">DateTime</span><span class="p">(</span><span class="n">prov</span><span class="o">.</span><span class="n">endedAtTime</span><span class="p">,</span> <span class="n">add_value_types</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">agents</span> <span class="o">=</span> <span class="n">Nested</span><span class="p">(</span>
+        <span class="n">prov</span><span class="o">.</span><span class="n">wasAssociatedWith</span><span class="p">,</span> <span class="p">[</span><span class="n">PersonSchema</span><span class="p">,</span> <span class="n">SoftwareAgentSchema</span><span class="p">],</span> <span class="n">many</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">ProcessRunSchema</span><span class="p">(</span><span class="n">ActivitySchema</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;ProcessRun schema.&quot;&quot;&quot;</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Meta class.&quot;&quot;&quot;</span>
+
+        <span class="n">rdf_type</span> <span class="o">=</span> <span class="n">wfprov</span><span class="o">.</span><span class="n">ProcessRun</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">ProcessRun</span>
+        <span class="n">unknown</span> <span class="o">=</span> <span class="n">EXCLUDE</span>
+
+    <span class="n">association</span> <span class="o">=</span> <span class="n">Nested</span><span class="p">(</span><span class="n">prov</span><span class="o">.</span><span class="n">qualifiedAssociation</span><span class="p">,</span> <span class="n">AssociationSchema</span><span class="p">)</span>
+    <span class="n">annotations</span> <span class="o">=</span> <span class="n">Nested</span><span class="p">(</span>
+        <span class="n">oa</span><span class="o">.</span><span class="n">hasTarget</span><span class="p">,</span> <span class="n">AnnotationSchema</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">many</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>
+    <span class="n">qualified_usage</span> <span class="o">=</span> <span class="n">Nested</span><span class="p">(</span><span class="n">prov</span><span class="o">.</span><span class="n">qualifiedUsage</span><span class="p">,</span> <span class="n">UsageSchema</span><span class="p">,</span> <span class="n">many</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">WorkflowRunSchema</span><span class="p">(</span><span class="n">ProcessRunSchema</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;WorkflowRun schema.&quot;&quot;&quot;</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Meta class.&quot;&quot;&quot;</span>
+
+        <span class="n">rdf_type</span> <span class="o">=</span> <span class="n">wfprov</span><span class="o">.</span><span class="n">WorkflowRun</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">WorkflowRun</span>
+        <span class="n">unknown</span> <span class="o">=</span> <span class="n">EXCLUDE</span>
+
+    <span class="n">_processes</span> <span class="o">=</span> <span class="n">Nested</span><span class="p">(</span>
+        <span class="n">wfprov</span><span class="o">.</span><span class="n">wasPartOfWorkflowRun</span><span class="p">,</span>
+        <span class="n">ProcessRunSchema</span><span class="p">,</span>
+        <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">many</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">init_name</span><span class="o">=</span><span class="s1">&#39;processes&#39;</span>
+    <span class="p">)</span>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../../../../index.html">
+    <h1 class="logo logo-name">
+      Renku
+      <span class="renku">連句</span>
+    </h1>
+  </a>
+</p>
+
+
+<p class="blurb">Python API and CLI for the Renku platform.</p>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../license.html#authors">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../changes.html">Changes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../glossary.html">Glossary</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../comparison.html">How does this compare …</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../commands.html">Renku Command Line</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../models/index.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../management.html">Low-level API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../plugins.html">Plugin Support</a></li>
+</ul>
+
+
+<hr />
+<ul>
+    
+    <li class="toctree-l1"><a href="https://github.com/SwissDataScienceCenter/renku-python">renku-python@GitHub</a></li>
+    
+    <li class="toctree-l1"><a href="https://pypi.python.org/pypi/renku/">renku-python@PyPI</a></li>
+    
+    <li class="toctree-l1"><a href="https://github.com/SwissDataScienceCenter/renku">renku@GitHub</a></li>
+    
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017-2020, Swiss Data Science Center.
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,398 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>renku.core.models.provenance.agents &#8212; Renku 0.10.5.dev72+dirty documentation</title>
+    <link rel="stylesheet" href="../../../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+  
+   
+  <link rel="stylesheet" href="../../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900,300italic,400italic" rel="stylesheet" type="text/css">
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  </head><body>
+  <div class="git-ribbon">
+    <a href="http://github.com/SwissDataScienceCenter" rel="me">Join us on GitHub</a>
+  </div>
+  
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for renku.core.models.provenance.agents</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1">#</span>
+<span class="c1"># Copyright 2018-2020- Swiss Data Science Center (SDSC)</span>
+<span class="c1"># A partnership between École Polytechnique Fédérale de Lausanne (EPFL) and</span>
+<span class="c1"># Eidgenössische Technische Hochschule Zürich (ETHZ).</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="sd">&quot;&quot;&quot;Represent provenance agents.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">configparser</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pathlib</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">urllib</span>
+<span class="kn">import</span> <span class="nn">uuid</span>
+<span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">quote</span>
+
+<span class="kn">import</span> <span class="nn">attr</span>
+<span class="kn">from</span> <span class="nn">attr.validators</span> <span class="kn">import</span> <span class="n">instance_of</span>
+<span class="kn">from</span> <span class="nn">calamus.schema</span> <span class="kn">import</span> <span class="n">JsonLDSchema</span>
+<span class="kn">from</span> <span class="nn">marshmallow</span> <span class="kn">import</span> <span class="n">EXCLUDE</span>
+
+<span class="kn">from</span> <span class="nn">renku.core</span> <span class="kn">import</span> <span class="n">errors</span>
+<span class="kn">from</span> <span class="nn">renku.core.models.calamus</span> <span class="kn">import</span> <span class="n">Nested</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">prov</span><span class="p">,</span> <span class="n">rdfs</span><span class="p">,</span> <span class="n">schema</span><span class="p">,</span> \
+    <span class="n">wfprov</span>
+<span class="kn">from</span> <span class="nn">renku.version</span> <span class="kn">import</span> <span class="n">__version__</span><span class="p">,</span> <span class="n">version_url</span>
+
+
+<div class="viewcode-block" id="Person"><a class="viewcode-back" href="../../../../../models/provenance.html#renku.core.models.provenance.agents.Person">[docs]</a><span class="nd">@attr</span><span class="o">.</span><span class="n">s</span><span class="p">(</span>
+    <span class="n">slots</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="k">class</span> <span class="nc">Person</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Represent a person.&quot;&quot;&quot;</span>
+
+    <span class="n">client</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">validator</span><span class="o">=</span><span class="n">instance_of</span><span class="p">(</span><span class="nb">str</span><span class="p">))</span>
+    <span class="n">email</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">affiliation</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span>
+        <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">alternate_name</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span>
+        <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">_id</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Person.default_id"><a class="viewcode-back" href="../../../../../models/provenance.html#renku.core.models.provenance.agents.Person.default_id">[docs]</a>    <span class="k">def</span> <span class="nf">default_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set the default id.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">email</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;mailto:</span><span class="si">{email}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">email</span><span class="p">)</span>
+
+        <span class="n">host</span> <span class="o">=</span> <span class="s1">&#39;localhost&#39;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="p">:</span>
+            <span class="n">host</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">remote</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;host&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">host</span>
+        <span class="n">host</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;RENKU_DOMAIN&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">host</span>
+
+        <span class="n">id_</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">())</span>
+
+        <span class="k">return</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">urljoin</span><span class="p">(</span>
+            <span class="s1">&#39;https://</span><span class="si">{host}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="n">host</span><span class="p">),</span>
+            <span class="n">pathlib</span><span class="o">.</span><span class="n">posixpath</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;/persons&#39;</span><span class="p">,</span> <span class="n">quote</span><span class="p">(</span><span class="n">id_</span><span class="p">,</span> <span class="n">safe</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">))</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="Person.check_email"><a class="viewcode-back" href="../../../../../models/provenance.html#renku.core.models.provenance.agents.Person.check_email">[docs]</a>    <span class="nd">@email</span><span class="o">.</span><span class="n">validator</span>
+    <span class="k">def</span> <span class="nf">check_email</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attribute</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Check that the email is valid.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">email</span> <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span>
+            <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[^@]+@[^@]+\.[^@]+&#39;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Email address is invalid.&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Person.default_label"><a class="viewcode-back" href="../../../../../models/provenance.html#renku.core.models.provenance.agents.Person.default_label">[docs]</a>    <span class="nd">@label</span><span class="o">.</span><span class="n">default</span>
+    <span class="k">def</span> <span class="nf">default_label</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set the default label.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span></div>
+
+<div class="viewcode-block" id="Person.from_commit"><a class="viewcode-back" href="../../../../../models/provenance.html#renku.core.models.provenance.agents.Person.from_commit">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_commit</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">commit</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create an instance from a Git commit.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="n">commit</span><span class="o">.</span><span class="n">author</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="n">email</span><span class="o">=</span><span class="n">commit</span><span class="o">.</span><span class="n">author</span><span class="o">.</span><span class="n">email</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">short_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Gives full name in short form.&quot;&quot;&quot;</span>
+        <span class="n">names</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+        <span class="n">last_name</span> <span class="o">=</span> <span class="n">names</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">initials</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">]</span>
+        <span class="n">initials</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">.</span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">initials</span><span class="p">),</span> <span class="n">last_name</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">full_identity</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return name, email, and affiliation.&quot;&quot;&quot;</span>
+        <span class="n">email</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39; &lt;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">email</span><span class="si">}</span><span class="s1">&gt;&#39;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">email</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+        <span class="n">affiliation</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39; [</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">affiliation</span><span class="si">}</span><span class="s1">]&#39;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">affiliation</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}{</span><span class="n">email</span><span class="si">}{</span><span class="n">affiliation</span><span class="si">}</span><span class="s1">&#39;</span>
+
+<div class="viewcode-block" id="Person.from_git"><a class="viewcode-back" href="../../../../../models/provenance.html#renku.core.models.provenance.agents.Person.from_git">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_git</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">git</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create an instance from a Git repo.&quot;&quot;&quot;</span>
+        <span class="n">git_config</span> <span class="o">=</span> <span class="n">git</span><span class="o">.</span><span class="n">config_reader</span><span class="p">()</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">git_config</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="n">email</span> <span class="o">=</span> <span class="n">git_config</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">except</span> <span class="p">(</span>
+            <span class="n">configparser</span><span class="o">.</span><span class="n">NoOptionError</span><span class="p">,</span> <span class="n">configparser</span><span class="o">.</span><span class="n">NoSectionError</span>
+        <span class="p">):</span>  <span class="c1"># pragma: no cover</span>
+            <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">ConfigurationError</span><span class="p">(</span>
+                <span class="s1">&#39;The user name and email are not configured. &#39;</span>
+                <span class="s1">&#39;Please use the &quot;git config&quot; command to configure them.</span><span class="se">\n\n</span><span class="s1">&#39;</span>
+                <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">git config --global --add user.name &quot;John Doe&quot;</span><span class="se">\n</span><span class="s1">&#39;</span>
+                <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">git config --global --add user.email &#39;</span>
+                <span class="s1">&#39;&quot;john.doe@example.com&quot;</span><span class="se">\n</span><span class="s1">&#39;</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Check the git configuration.</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">name</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+            <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">MissingUsername</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">email</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+            <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">MissingEmail</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="n">email</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Person.from_string"><a class="viewcode-back" href="../../../../../models/provenance.html#renku.core.models.provenance.agents.Person.from_string">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_string</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create an instance from a &#39;Name &lt;email&gt;&#39; string.&quot;&quot;&quot;</span>
+        <span class="n">regex_pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;([^&lt;&gt;\[\]]*)&#39;</span> \
+            <span class="sa">r</span><span class="s1">&#39;(?:&lt;</span><span class="si">{1}</span><span class="s1">\s*(\S+@\S+\.\S+){0,1}\s*&gt;</span><span class="si">{1}</span><span class="s1">){0,1}\s*&#39;</span> \
+            <span class="sa">r</span><span class="s1">&#39;(?:\[</span><span class="si">{1}</span><span class="s1">(.*)\]</span><span class="si">{1}</span><span class="s1">){0,1}&#39;</span>
+        <span class="n">name</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">affiliation</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">regex_pattern</span><span class="p">,</span> <span class="n">string</span><span class="p">)</span><span class="o">.</span><span class="n">groups</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">name</span><span class="p">:</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">affiliation</span><span class="p">:</span>
+            <span class="n">affiliation</span> <span class="o">=</span> <span class="n">affiliation</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="n">affiliation</span> <span class="o">=</span> <span class="n">affiliation</span> <span class="ow">or</span> <span class="kc">None</span>
+
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="n">email</span><span class="p">,</span> <span class="n">affiliation</span><span class="o">=</span><span class="n">affiliation</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Person.from_dict"><a class="viewcode-back" href="../../../../../models/provenance.html#renku.core.models.provenance.agents.Person.from_dict">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create and instance from a dictionary.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="o">**</span><span class="n">obj</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Person.from_jsonld"><a class="viewcode-back" href="../../../../../models/provenance.html#renku.core.models.provenance.agents.Person.from_jsonld">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_jsonld</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create an instance from JSON-LD data.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="bp">cls</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">data</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">PersonSchema</span><span class="p">()</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">__attrs_post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Finish object initialization.&quot;&quot;&quot;</span>
+        <span class="c1"># handle the case where ids were improperly set</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="o">==</span> <span class="s1">&#39;mailto:None&#39;</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_id</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_label</span><span class="p">()</span></div>
+
+
+<span class="k">class</span> <span class="nc">PersonSchema</span><span class="p">(</span><span class="n">JsonLDSchema</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Person schema.&quot;&quot;&quot;</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Meta class.&quot;&quot;&quot;</span>
+
+        <span class="n">rdf_type</span> <span class="o">=</span> <span class="p">[</span><span class="n">prov</span><span class="o">.</span><span class="n">Person</span><span class="p">,</span> <span class="n">schema</span><span class="o">.</span><span class="n">Person</span><span class="p">]</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Person</span>
+        <span class="n">unknown</span> <span class="o">=</span> <span class="n">EXCLUDE</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">schema</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">email</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">schema</span><span class="o">.</span><span class="n">email</span><span class="p">,</span> <span class="n">missing</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">rdfs</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+    <span class="n">affiliation</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">schema</span><span class="o">.</span><span class="n">affiliation</span><span class="p">,</span> <span class="n">missing</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">alternate_name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">schema</span><span class="o">.</span><span class="n">alternateName</span><span class="p">,</span> <span class="n">missing</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">_id</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Id</span><span class="p">(</span><span class="n">init_name</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="SoftwareAgent"><a class="viewcode-back" href="../../../../../models/provenance.html#renku.core.models.provenance.agents.SoftwareAgent">[docs]</a><span class="nd">@attr</span><span class="o">.</span><span class="n">s</span><span class="p">(</span>
+    <span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">slots</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="k">class</span> <span class="nc">SoftwareAgent</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Represent executed software.&quot;&quot;&quot;</span>
+
+    <span class="n">label</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">was_started_by</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span>
+        <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">_id</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<div class="viewcode-block" id="SoftwareAgent.from_commit"><a class="viewcode-back" href="../../../../../models/provenance.html#renku.core.models.provenance.agents.SoftwareAgent.from_commit">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_commit</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">commit</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create an instance from a Git commit.&quot;&quot;&quot;</span>
+        <span class="n">author</span> <span class="o">=</span> <span class="n">Person</span><span class="o">.</span><span class="n">from_commit</span><span class="p">(</span><span class="n">commit</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">commit</span><span class="o">.</span><span class="n">author</span> <span class="o">!=</span> <span class="n">commit</span><span class="o">.</span><span class="n">committer</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
+                <span class="n">label</span><span class="o">=</span><span class="n">commit</span><span class="o">.</span><span class="n">committer</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                <span class="nb">id</span><span class="o">=</span><span class="n">commit</span><span class="o">.</span><span class="n">committer</span><span class="o">.</span><span class="n">email</span><span class="p">,</span>
+                <span class="n">was_started_by</span><span class="o">=</span><span class="n">author</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="n">author</span></div>
+
+<div class="viewcode-block" id="SoftwareAgent.from_jsonld"><a class="viewcode-back" href="../../../../../models/provenance.html#renku.core.models.provenance.agents.SoftwareAgent.from_jsonld">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_jsonld</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create an instance from JSON-LD data.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="bp">cls</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">data</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">SoftwareAgentSchema</span><span class="p">()</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SoftwareAgent.as_jsonld"><a class="viewcode-back" href="../../../../../models/provenance.html#renku.core.models.provenance.agents.SoftwareAgent.as_jsonld">[docs]</a>    <span class="k">def</span> <span class="nf">as_jsonld</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create JSON-LD.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SoftwareAgentSchema</span><span class="p">()</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div></div>
+
+
+<span class="c1"># set up the default agent</span>
+
+<span class="n">renku_agent</span> <span class="o">=</span> <span class="n">SoftwareAgent</span><span class="p">(</span>
+    <span class="n">label</span><span class="o">=</span><span class="s1">&#39;renku </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">__version__</span><span class="p">),</span> <span class="nb">id</span><span class="o">=</span><span class="n">version_url</span>
+<span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">SoftwareAgentSchema</span><span class="p">(</span><span class="n">JsonLDSchema</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;SoftwareAgent schema.&quot;&quot;&quot;</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Meta class.&quot;&quot;&quot;</span>
+
+        <span class="n">rdf_type</span> <span class="o">=</span> <span class="p">[</span><span class="n">prov</span><span class="o">.</span><span class="n">SoftwareAgent</span><span class="p">,</span> <span class="n">wfprov</span><span class="o">.</span><span class="n">WorkflowEngine</span><span class="p">]</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">SoftwareAgent</span>
+        <span class="n">unknown</span> <span class="o">=</span> <span class="n">EXCLUDE</span>
+
+    <span class="n">label</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">rdfs</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+    <span class="n">_id</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Id</span><span class="p">(</span><span class="n">init_name</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">)</span>
+    <span class="n">was_started_by</span> <span class="o">=</span> <span class="n">Nested</span><span class="p">(</span><span class="n">prov</span><span class="o">.</span><span class="n">wasStartedBy</span><span class="p">,</span> <span class="n">PersonSchema</span><span class="p">,</span> <span class="n">missing</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../../../../index.html">
+    <h1 class="logo logo-name">
+      Renku
+      <span class="renku">連句</span>
+    </h1>
+  </a>
+</p>
+
+
+<p class="blurb">Python API and CLI for the Renku platform.</p>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../license.html#authors">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../changes.html">Changes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../glossary.html">Glossary</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../comparison.html">How does this compare …</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../commands.html">Renku Command Line</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../models/index.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../management.html">Low-level API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../plugins.html">Plugin Support</a></li>
+</ul>
+
+
+<hr />
+<ul>
+    
+    <li class="toctree-l1"><a href="https://github.com/SwissDataScienceCenter/renku-python">renku-python@GitHub</a></li>
+    
+    <li class="toctree-l1"><a href="https://pypi.python.org/pypi/renku/">renku-python@PyPI</a></li>
+    
+    <li class="toctree-l1"><a href="https://github.com/SwissDataScienceCenter/renku">renku@GitHub</a></li>
+    
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017-2020, Swiss Data Science Center.
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

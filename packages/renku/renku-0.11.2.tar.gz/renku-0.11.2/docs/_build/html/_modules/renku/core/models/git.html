@@ -1,0 +1,314 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>renku.core.models.git &#8212; Renku 0.10.5.dev72+dirty documentation</title>
+    <link rel="stylesheet" href="../../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  
+   
+  <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900,300italic,400italic" rel="stylesheet" type="text/css">
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  </head><body>
+  <div class="git-ribbon">
+    <a href="http://github.com/SwissDataScienceCenter" rel="me">Join us on GitHub</a>
+  </div>
+  
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for renku.core.models.git</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1">#</span>
+<span class="c1"># Copyright 2018-2020- Swiss Data Science Center (SDSC)</span>
+<span class="c1"># A partnership between École Polytechnique Fédérale de Lausanne (EPFL) and</span>
+<span class="c1"># Eidgenössische Technische Hochschule Zürich (ETHZ).</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="sd">&quot;&quot;&quot;Git utilities.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="kn">import</span> <span class="nn">attr</span>
+
+<span class="kn">from</span> <span class="nn">renku.core</span> <span class="kn">import</span> <span class="n">errors</span>
+
+<span class="n">_RE_PROTOCOL</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;(?P&lt;protocol&gt;(git\+)?(https?|git|ssh|rsync))\://&#39;</span>
+
+<span class="n">_RE_USERNAME</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;(?:(?P&lt;username&gt;.+)@)*&#39;</span>
+
+<span class="n">_RE_USERNAME_PASSWORD</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;(?:(?P&lt;username&gt;[^:]+)(:(?P&lt;password&gt;[^@]+))?@)?&#39;</span>
+
+<span class="c1"># RFC 1123 compliant hostname regex</span>
+<span class="n">_RE_HOSTNAME</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="sa">r</span><span class="s1">&#39;(?P&lt;hostname&gt;&#39;</span>
+    <span class="sa">r</span><span class="s1">&#39;([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]{0,61}&#39;</span>
+    <span class="sa">r</span><span class="s1">&#39;[a-zA-Z0-9])(\.([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]{0,61}&#39;</span>
+    <span class="sa">r</span><span class="s1">&#39;[a-zA-Z0-9]))*)&#39;</span>
+<span class="p">)</span>
+
+<span class="n">_RE_PORT</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;:(?P&lt;port&gt;\d+)&#39;</span>
+
+<span class="n">_RE_PATHNAME</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="sa">r</span><span class="s1">&#39;(?P&lt;pathname&gt;&#39;</span>
+    <span class="sa">r</span><span class="s1">&#39;(((?P&lt;owner&gt;[\w\-\.]+)/)?(?P&lt;name&gt;[\w\-\.]+)(\.git)?)?)&#39;</span>
+<span class="p">)</span>
+
+<span class="n">_RE_PREFIXED_PATHNAME</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="sa">r</span><span class="s1">&#39;(?P&lt;pathname&gt;(([\w\-\~\.]+)/)+&#39;</span>
+    <span class="sa">r</span><span class="s1">&#39;(?P&lt;owner&gt;[\w\-\.]+)/(?P&lt;name&gt;[\w\-\.]+)(\.git)?)&#39;</span>
+<span class="p">)</span>
+
+<span class="n">_RE_UNIXPATH</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="sa">r</span><span class="s1">&#39;(file\://)?(?P&lt;pathname&gt;\/$|((?=\/)|\.|\.\.)&#39;</span>
+    <span class="sa">r</span><span class="s1">&#39;(\/(?=[^/\0])[^/\0]+)*\/?)&#39;</span>
+<span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_build</span><span class="p">(</span><span class="o">*</span><span class="n">parts</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Assemble the regex.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^&#39;</span> <span class="o">+</span> <span class="sa">r</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span> <span class="o">+</span> <span class="sa">r</span><span class="s1">&#39;$&#39;</span><span class="p">)</span>
+
+
+<span class="c1">#: Define possible repository URLs.</span>
+<span class="n">_REPOSITORY_URLS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="c1"># https://user:pass@example.com/owner/repo.git</span>
+    <span class="n">_build</span><span class="p">(</span>
+        <span class="n">_RE_PROTOCOL</span><span class="p">,</span> <span class="n">_RE_USERNAME_PASSWORD</span><span class="p">,</span> <span class="n">_RE_HOSTNAME</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="n">_RE_PATHNAME</span>
+    <span class="p">),</span>
+
+    <span class="c1"># https://user:pass@example.com/prefix/owner/repo.git</span>
+    <span class="n">_build</span><span class="p">(</span>
+        <span class="n">_RE_PROTOCOL</span><span class="p">,</span> <span class="n">_RE_USERNAME_PASSWORD</span><span class="p">,</span> <span class="n">_RE_HOSTNAME</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;/&#39;</span><span class="p">,</span>
+        <span class="n">_RE_PREFIXED_PATHNAME</span>
+    <span class="p">),</span>
+
+    <span class="c1"># https://user:pass@example.com:1234/owner/repo.git</span>
+    <span class="n">_build</span><span class="p">(</span>
+        <span class="n">_RE_PROTOCOL</span><span class="p">,</span> <span class="n">_RE_USERNAME_PASSWORD</span><span class="p">,</span> <span class="n">_RE_HOSTNAME</span><span class="p">,</span> <span class="n">_RE_PORT</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;/&#39;</span><span class="p">,</span>
+        <span class="n">_RE_PATHNAME</span>
+    <span class="p">),</span>
+
+    <span class="c1"># https://user:pass@example.com:1234/prefix/owner/repo.git</span>
+    <span class="n">_build</span><span class="p">(</span>
+        <span class="n">_RE_PROTOCOL</span><span class="p">,</span> <span class="n">_RE_USERNAME_PASSWORD</span><span class="p">,</span> <span class="n">_RE_HOSTNAME</span><span class="p">,</span> <span class="n">_RE_PORT</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;/&#39;</span><span class="p">,</span>
+        <span class="n">_RE_PREFIXED_PATHNAME</span>
+    <span class="p">),</span>
+
+    <span class="c1"># git@example.com:owner/repo.git</span>
+    <span class="n">_build</span><span class="p">(</span><span class="n">_RE_USERNAME</span><span class="p">,</span> <span class="n">_RE_HOSTNAME</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">_RE_PATHNAME</span><span class="p">),</span>
+
+    <span class="c1"># git@example.com:prefix/owner/repo.git</span>
+    <span class="n">_build</span><span class="p">(</span><span class="n">_RE_USERNAME</span><span class="p">,</span> <span class="n">_RE_HOSTNAME</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">_RE_PREFIXED_PATHNAME</span><span class="p">),</span>
+
+    <span class="c1"># /path/to/repo</span>
+    <span class="n">_build</span><span class="p">(</span><span class="n">_RE_UNIXPATH</span><span class="p">)</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="filter_repo_name"><a class="viewcode-back" href="../../../../management.html#renku.core.models.git.filter_repo_name">[docs]</a><span class="k">def</span> <span class="nf">filter_repo_name</span><span class="p">(</span><span class="n">repo_name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Remove the .git extension from the repo name.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">repo_name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">repo_name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.git&#39;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">repo_name</span><span class="p">[:</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="s1">&#39;.git&#39;</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="n">repo_name</span></div>
+
+
+<div class="viewcode-block" id="GitURL"><a class="viewcode-back" href="../../../../management.html#renku.core.models.git.GitURL">[docs]</a><span class="nd">@attr</span><span class="o">.</span><span class="n">s</span><span class="p">()</span>
+<span class="k">class</span> <span class="nc">GitURL</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Parser for common Git URLs.&quot;&quot;&quot;</span>
+
+    <span class="c1"># Initial value</span>
+    <span class="n">href</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">()</span>
+    <span class="c1"># Parsed protocols</span>
+    <span class="n">pathname</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">protocols</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="n">attr</span><span class="o">.</span><span class="n">Factory</span><span class="p">(</span><span class="nb">list</span><span class="p">),</span> <span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">protocol</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s1">&#39;ssh&#39;</span><span class="p">)</span>
+    <span class="n">hostname</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s1">&#39;localhost&#39;</span><span class="p">)</span>
+    <span class="n">username</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">password</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">port</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">owner</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="n">filter_repo_name</span><span class="p">)</span>
+    <span class="n">_regex</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="nb">cmp</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__attrs_post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Derive basic informations.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">protocol</span><span class="p">:</span>
+            <span class="n">protocols</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">protocol</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;+&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">protocols</span> <span class="o">=</span> <span class="n">protocols</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">protocol</span> <span class="o">=</span> <span class="n">protocols</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<div class="viewcode-block" id="GitURL.parse"><a class="viewcode-back" href="../../../../management.html#renku.core.models.git.GitURL.parse">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">href</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Derive basic informations.&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">regex</span> <span class="ow">in</span> <span class="n">_REPOSITORY_URLS</span><span class="p">:</span>
+            <span class="n">matches</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">regex</span><span class="p">,</span> <span class="n">href</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">matches</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">href</span><span class="o">=</span><span class="n">href</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="n">regex</span><span class="p">,</span> <span class="o">**</span><span class="n">matches</span><span class="o">.</span><span class="n">groupdict</span><span class="p">())</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">ConfigurationError</span><span class="p">(</span>
+                <span class="s1">&#39;&quot;</span><span class="si">{href}</span><span class="s1"> is not a valid Git remote.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">href</span><span class="o">=</span><span class="n">href</span><span class="p">)</span>
+            <span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">image</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return image name.&quot;&quot;&quot;</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hostname</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">owner</span><span class="p">:</span>
+            <span class="n">img</span> <span class="o">+=</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">owner</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">:</span>
+            <span class="n">img</span> <span class="o">+=</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+        <span class="k">return</span> <span class="n">img</span></div>
+
+
+<div class="viewcode-block" id="Range"><a class="viewcode-back" href="../../../../management.html#renku.core.models.git.Range">[docs]</a><span class="nd">@attr</span><span class="o">.</span><span class="n">s</span>
+<span class="k">class</span> <span class="nc">Range</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Represent parsed Git revision as an interval.&quot;&quot;&quot;</span>
+
+    <span class="n">start</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">()</span>
+    <span class="n">stop</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Range.rev_parse"><a class="viewcode-back" href="../../../../management.html#renku.core.models.git.Range.rev_parse">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">rev_parse</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">git</span><span class="p">,</span> <span class="n">revision</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Parse revision string.&quot;&quot;&quot;</span>
+        <span class="n">start</span><span class="p">,</span> <span class="n">is_range</span><span class="p">,</span> <span class="n">stop</span> <span class="o">=</span> <span class="n">revision</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">is_range</span><span class="p">:</span>
+            <span class="n">start</span><span class="p">,</span> <span class="n">stop</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">start</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="n">stop</span><span class="p">:</span>
+            <span class="n">stop</span> <span class="o">=</span> <span class="s1">&#39;HEAD&#39;</span>
+
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
+            <span class="n">start</span><span class="o">=</span><span class="n">git</span><span class="o">.</span><span class="n">rev_parse</span><span class="p">(</span><span class="n">start</span><span class="p">)</span> <span class="k">if</span> <span class="n">start</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="n">stop</span><span class="o">=</span><span class="n">git</span><span class="o">.</span><span class="n">rev_parse</span><span class="p">(</span><span class="n">stop</span><span class="p">),</span>
+        <span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Format range.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{self.start}</span><span class="s1">..</span><span class="si">{self.stop}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="p">)</span></div>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../../../index.html">
+    <h1 class="logo logo-name">
+      Renku
+      <span class="renku">連句</span>
+    </h1>
+  </a>
+</p>
+
+
+<p class="blurb">Python API and CLI for the Renku platform.</p>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license.html#authors">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../changes.html">Changes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../glossary.html">Glossary</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../comparison.html">How does this compare …</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../commands.html">Renku Command Line</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/index.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../management.html">Low-level API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../plugins.html">Plugin Support</a></li>
+</ul>
+
+
+<hr />
+<ul>
+    
+    <li class="toctree-l1"><a href="https://github.com/SwissDataScienceCenter/renku-python">renku-python@GitHub</a></li>
+    
+    <li class="toctree-l1"><a href="https://pypi.python.org/pypi/renku/">renku-python@PyPI</a></li>
+    
+    <li class="toctree-l1"><a href="https://github.com/SwissDataScienceCenter/renku">renku@GitHub</a></li>
+    
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017-2020, Swiss Data Science Center.
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

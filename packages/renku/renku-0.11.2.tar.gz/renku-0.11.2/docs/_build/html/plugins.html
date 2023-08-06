@@ -1,0 +1,209 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plugin Support &#8212; Renku 0.10.5.dev72+dirty documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Low-level API" href="management.html" />
+  
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900,300italic,400italic" rel="stylesheet" type="text/css">
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  </head><body>
+  <div class="git-ribbon">
+    <a href="http://github.com/SwissDataScienceCenter" rel="me">Join us on GitHub</a>
+  </div>
+  
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="plugin-support">
+<h1>Plugin Support<a class="headerlink" href="#plugin-support" title="Permalink to this headline">¶</a></h1>
+<p>Plugins are supported using the <a class="reference external" href="https://pluggy.readthedocs.io/en/latest/">pluggy</a> library.</p>
+<p>Plugins can be created as python packages that contain the respective entrypoint definition in their <cite>setup.py</cite> file, like so:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span>
+
+<span class="n">setup</span><span class="p">(</span>
+    <span class="o">...</span>
+    <span class="n">entry_points</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;renku&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;name_of_plugin = myproject.pluginmodule&quot;</span><span class="p">]},</span>
+    <span class="o">...</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>where <cite>myproject.pluginmodule</cite> points to a Renku <cite>hookimpl</cite> e.g.:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">renku.core.plugins</span> <span class="kn">import</span> <span class="n">hookimpl</span>
+
+<span class="nd">@hookimpl</span>
+<span class="k">def</span> <span class="nf">plugin_hook_implementation</span><span class="p">(</span><span class="n">param1</span><span class="p">,</span> <span class="n">param2</span><span class="p">):</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<div class="section" id="module-renku.core.plugins.run">
+<span id="renku-run-hooks"></span><h2><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">run</span></code> hooks<a class="headerlink" href="#module-renku.core.plugins.run" title="Permalink to this headline">¶</a></h2>
+<p>Plugin hooks for renku run customization.</p>
+<dl class="py function">
+<dt id="renku.core.plugins.run.cmdline_tool_annotations">
+<code class="sig-prename descclassname">renku.core.plugins.run.</code><code class="sig-name descname">cmdline_tool_annotations</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tool</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/renku/core/plugins/run.html#cmdline_tool_annotations"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renku.core.plugins.run.cmdline_tool_annotations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plugin Hook to add <code class="docutils literal notranslate"><span class="pre">Annotation</span></code> entry list to a <code class="docutils literal notranslate"><span class="pre">WorkflowTool</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>run</strong> – A <code class="docutils literal notranslate"><span class="pre">WorkflowTool</span></code> object to get annotations for.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of <code class="docutils literal notranslate"><span class="pre">renku.core.models.cwl.annotation.Annotation</span></code>
+objects.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="renku.core.plugins.run.pre_run">
+<code class="sig-prename descclassname">renku.core.plugins.run.</code><code class="sig-name descname">pre_run</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tool</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/renku/core/plugins/run.html#pre_run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renku.core.plugins.run.pre_run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plugin Hook that gets called at the start of a <code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">run</span></code> call.</p>
+<p>Can be used to setup plugins that get executed during the run.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>run</strong> – A <code class="docutils literal notranslate"><span class="pre">WorkflowTool</span></code> object that will get executed by
+<code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">run</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="renku.core.plugins.run.process_run_annotations">
+<code class="sig-prename descclassname">renku.core.plugins.run.</code><code class="sig-name descname">process_run_annotations</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">run</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/renku/core/plugins/run.html#process_run_annotations"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renku.core.plugins.run.process_run_annotations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plugin Hook to add <code class="docutils literal notranslate"><span class="pre">Annotation</span></code> entry list to a <code class="docutils literal notranslate"><span class="pre">ProcessRun</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>run</strong> – A <code class="docutils literal notranslate"><span class="pre">ProcessRun</span></code> object to get annotations for.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of <code class="docutils literal notranslate"><span class="pre">renku.core.models.cwl.annotation.Annotation</span></code>
+objects.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="index.html">
+    <h1 class="logo logo-name">
+      Renku
+      <span class="renku">連句</span>
+    </h1>
+  </a>
+</p>
+
+
+<p class="blurb">Python API and CLI for the Renku platform.</p>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html#authors">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html">Changes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="comparison.html">How does this compare …</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commands.html">Renku Command Line</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/index.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="management.html">Low-level API</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Plugin Support</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-renku.core.plugins.run"><code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">run</span></code> hooks</a></li>
+</ul>
+</li>
+</ul>
+
+
+<hr />
+<ul>
+    
+    <li class="toctree-l1"><a href="https://github.com/SwissDataScienceCenter/renku-python">renku-python@GitHub</a></li>
+    
+    <li class="toctree-l1"><a href="https://pypi.python.org/pypi/renku/">renku-python@PyPI</a></li>
+    
+    <li class="toctree-l1"><a href="https://github.com/SwissDataScienceCenter/renku">renku@GitHub</a></li>
+    
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="management.html" title="previous chapter">Low-level API</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017-2020, Swiss Data Science Center.
+      
+      |
+      <a href="_sources/plugins.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

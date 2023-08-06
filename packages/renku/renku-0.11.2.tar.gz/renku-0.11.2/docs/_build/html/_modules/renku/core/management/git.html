@@ -1,0 +1,583 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>renku.core.management.git &#8212; Renku 0.10.5.dev72+dirty documentation</title>
+    <link rel="stylesheet" href="../../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  
+   
+  <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900,300italic,400italic" rel="stylesheet" type="text/css">
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  </head><body>
+  <div class="git-ribbon">
+    <a href="http://github.com/SwissDataScienceCenter" rel="me">Join us on GitHub</a>
+  </div>
+  
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for renku.core.management.git</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1">#</span>
+<span class="c1"># Copyright 2018-2020 - Swiss Data Science Center (SDSC)</span>
+<span class="c1"># A partnership between École Polytechnique Fédérale de Lausanne (EPFL) and</span>
+<span class="c1"># Eidgenössische Technische Hochschule Zürich (ETHZ).</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="sd">&quot;&quot;&quot;Wrap Git client.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">itertools</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">tempfile</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">uuid</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="kn">from</span> <span class="nn">contextlib</span> <span class="kn">import</span> <span class="n">contextmanager</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">zip_longest</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">import</span> <span class="nn">attr</span>
+<span class="kn">import</span> <span class="nn">gitdb</span>
+
+<span class="kn">from</span> <span class="nn">renku.core</span> <span class="kn">import</span> <span class="n">errors</span>
+<span class="kn">from</span> <span class="nn">renku.core.utils.urls</span> <span class="kn">import</span> <span class="n">remove_credentials</span>
+
+<span class="n">COMMIT_DIFF_STRATEGY</span> <span class="o">=</span> <span class="s1">&#39;DIFF&#39;</span>
+<span class="n">STARTED_AT</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1e3</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_mapped_std_streams</span><span class="p">(</span><span class="n">lookup_paths</span><span class="p">,</span> <span class="n">streams</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;stdin&#39;</span><span class="p">,</span> <span class="s1">&#39;stdout&#39;</span><span class="p">,</span> <span class="s1">&#39;stderr&#39;</span><span class="p">)):</span>
+    <span class="sd">&quot;&quot;&quot;Get a mapping of standard streams to given paths.&quot;&quot;&quot;</span>
+    <span class="c1"># FIXME add device number too</span>
+    <span class="n">standard_inos</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">stream</span> <span class="ow">in</span> <span class="n">streams</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">stream_stat</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">fstat</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">sys</span><span class="p">,</span> <span class="n">stream</span><span class="p">)</span><span class="o">.</span><span class="n">fileno</span><span class="p">())</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="n">stream_stat</span><span class="o">.</span><span class="n">st_dev</span><span class="p">,</span> <span class="n">stream_stat</span><span class="o">.</span><span class="n">st_ino</span>
+            <span class="n">standard_inos</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">stream</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>  <span class="c1"># FIXME UnsupportedOperation</span>
+            <span class="k">pass</span>
+        <span class="c1"># FIXME if not getattr(sys, stream).istty()</span>
+
+    <span class="k">def</span> <span class="nf">stream_inos</span><span class="p">(</span><span class="n">paths</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Yield tuples with stats and path.&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">paths</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">stat</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">stat</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+                <span class="n">key</span> <span class="o">=</span> <span class="p">(</span><span class="n">stat</span><span class="o">.</span><span class="n">st_dev</span><span class="p">,</span> <span class="n">stat</span><span class="o">.</span><span class="n">st_ino</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">standard_inos</span><span class="p">:</span>
+                    <span class="k">yield</span> <span class="n">standard_inos</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="n">path</span>
+            <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+                <span class="k">pass</span>
+
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">stream_inos</span><span class="p">(</span><span class="n">lookup_paths</span><span class="p">))</span> <span class="k">if</span> <span class="n">standard_inos</span> <span class="k">else</span> <span class="p">{}</span>
+
+
+<span class="k">def</span> <span class="nf">_clean_streams</span><span class="p">(</span><span class="n">repo</span><span class="p">,</span> <span class="n">mapped_streams</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Clean mapped standard streams.&quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">stream_name</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;stdout&#39;</span><span class="p">,</span> <span class="s1">&#39;stderr&#39;</span><span class="p">):</span>
+        <span class="n">stream</span> <span class="o">=</span> <span class="n">mapped_streams</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">stream_name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">stream</span><span class="p">:</span>
+            <span class="k">continue</span>
+
+        <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">repo</span><span class="o">.</span><span class="n">working_dir</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">repo</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">entries</span><span class="p">:</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">blob</span> <span class="o">=</span> <span class="n">repo</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">entries</span><span class="p">[(</span><span class="n">path</span><span class="p">,</span> <span class="mi">0</span><span class="p">)]</span><span class="o">.</span><span class="n">to_blob</span><span class="p">(</span><span class="n">repo</span><span class="p">)</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+                <span class="n">fp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">blob</span><span class="o">.</span><span class="n">data_stream</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+
+
+<span class="k">def</span> <span class="nf">_expand_directories</span><span class="p">(</span><span class="n">paths</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Expand directory with all files it contains.&quot;&quot;&quot;</span>
+    <span class="n">processed_paths</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">paths</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">matched_path</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">matched_path</span> <span class="ow">in</span> <span class="n">processed_paths</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">path_</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">matched_path</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">path_</span><span class="o">.</span><span class="n">is_dir</span><span class="p">():</span>
+                <span class="k">for</span> <span class="n">expanded</span> <span class="ow">in</span> <span class="n">path_</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">):</span>
+                    <span class="n">processed_paths</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">expanded</span><span class="p">))</span>
+                    <span class="k">yield</span> <span class="nb">str</span><span class="p">(</span><span class="n">expanded</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">processed_paths</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">matched_path</span><span class="p">)</span>
+                <span class="k">yield</span> <span class="n">matched_path</span>
+
+
+<div class="viewcode-block" id="GitCore"><a class="viewcode-back" href="../../../../management.html#renku.core.management.git.GitCore">[docs]</a><span class="nd">@attr</span><span class="o">.</span><span class="n">s</span>
+<span class="k">class</span> <span class="nc">GitCore</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Wrap Git client.&quot;&quot;&quot;</span>
+
+    <span class="n">repo</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;Store an instance of the Git repository.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__attrs_post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize computed attributes.&quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">git</span> <span class="kn">import</span> <span class="n">InvalidGitRepositoryError</span><span class="p">,</span> <span class="n">Repo</span>
+
+        <span class="c1">#: Create an instance of a Git repository for the given path.</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">repo</span> <span class="o">=</span> <span class="n">Repo</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">))</span>
+        <span class="k">except</span> <span class="n">InvalidGitRepositoryError</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">repo</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">modified_paths</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return paths of modified files.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="n">item</span><span class="o">.</span><span class="n">b_path</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span> <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">b_path</span>
+        <span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">dirty_paths</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get paths of dirty files in the repository.&quot;&quot;&quot;</span>
+        <span class="n">repo_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">working_dir</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">repo_path</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">untracked_files</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">modified_paths</span>
+        <span class="p">}</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">candidate_paths</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return all paths in the index and untracked files.&quot;&quot;&quot;</span>
+        <span class="n">repo_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">working_dir</span>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">repo_path</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span> <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="p">(</span>
+                <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">entries</span><span class="p">),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">untracked_files</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">]</span>
+
+<div class="viewcode-block" id="GitCore.find_ignored_paths"><a class="viewcode-back" href="../../../../management.html#renku.core.management.git.GitCore.find_ignored_paths">[docs]</a>    <span class="k">def</span> <span class="nf">find_ignored_paths</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">paths</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return ignored paths matching ``.gitignore`` file.&quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">git.exc</span> <span class="kn">import</span> <span class="n">GitCommandError</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">git</span><span class="o">.</span><span class="n">check_ignore</span><span class="p">(</span><span class="o">*</span><span class="n">paths</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+        <span class="k">except</span> <span class="n">GitCommandError</span><span class="p">:</span>
+            <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="GitCore.find_attr"><a class="viewcode-back" href="../../../../management.html#renku.core.management.git.GitCore.find_attr">[docs]</a>    <span class="k">def</span> <span class="nf">find_attr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">paths</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return map with path and its attributes.&quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">git.exc</span> <span class="kn">import</span> <span class="n">GitCommandError</span>
+
+        <span class="n">attrs</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">dict</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">git</span><span class="o">.</span><span class="n">check_attr</span><span class="p">(</span><span class="s1">&#39;-z&#39;</span><span class="p">,</span> <span class="s1">&#39;-a&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="o">*</span><span class="n">paths</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">file</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">zip_longest</span><span class="p">(</span>
+                <span class="o">*</span><span class="p">[</span><span class="nb">iter</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\0</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\0</span><span class="s1">&#39;</span><span class="p">))]</span> <span class="o">*</span> <span class="mi">3</span>
+            <span class="p">):</span>
+                <span class="k">if</span> <span class="n">file</span><span class="p">:</span>
+                    <span class="n">attrs</span><span class="p">[</span><span class="n">file</span><span class="p">][</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="k">except</span> <span class="n">GitCommandError</span><span class="p">:</span>
+            <span class="k">pass</span>
+
+        <span class="k">return</span> <span class="n">attrs</span></div>
+
+<div class="viewcode-block" id="GitCore.remove_unmodified"><a class="viewcode-back" href="../../../../management.html#renku.core.management.git.GitCore.remove_unmodified">[docs]</a>    <span class="k">def</span> <span class="nf">remove_unmodified</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">paths</span><span class="p">,</span> <span class="n">autocommit</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Remove unmodified paths and return their names.&quot;&quot;&quot;</span>
+        <span class="n">tested_paths</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">_expand_directories</span><span class="p">(</span><span class="n">paths</span><span class="p">))</span>
+
+        <span class="c1"># Keep only unchanged files in the output paths.</span>
+        <span class="n">tracked_paths</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">diff</span><span class="o">.</span><span class="n">b_path</span>
+            <span class="k">for</span> <span class="n">diff</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">diff</span><span class="o">.</span><span class="n">change_type</span> <span class="ow">in</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;R&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">}</span> <span class="ow">and</span>
+            <span class="n">diff</span><span class="o">.</span><span class="n">b_path</span> <span class="ow">in</span> <span class="n">tested_paths</span>
+        <span class="p">}</span>
+        <span class="n">unchanged_paths</span> <span class="o">=</span> <span class="n">tested_paths</span> <span class="o">-</span> <span class="n">tracked_paths</span>
+
+        <span class="c1"># Fix tracking of unchanged files by removing them first.</span>
+        <span class="k">if</span> <span class="n">autocommit</span> <span class="ow">and</span> <span class="n">unchanged_paths</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span>
+                <span class="n">unchanged_paths</span><span class="p">,</span> <span class="n">cached</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ignore_unmatch</span><span class="o">=</span><span class="kc">True</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">commit</span><span class="p">(</span>
+                <span class="s1">&#39;renku: automatic removal of unchanged files&#39;</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">unchanged_paths</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">unchanged_paths</span></div>
+
+<div class="viewcode-block" id="GitCore.ensure_clean"><a class="viewcode-back" href="../../../../management.html#renku.core.management.git.GitCore.ensure_clean">[docs]</a>    <span class="k">def</span> <span class="nf">ensure_clean</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ignore_std_streams</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Make sure the repository is clean.&quot;&quot;&quot;</span>
+        <span class="n">dirty_paths</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dirty_paths</span>
+        <span class="n">mapped_streams</span> <span class="o">=</span> <span class="n">_mapped_std_streams</span><span class="p">(</span><span class="n">dirty_paths</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">ignore_std_streams</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">dirty_paths</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">mapped_streams</span><span class="o">.</span><span class="n">values</span><span class="p">()):</span>
+                <span class="n">_clean_streams</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="p">,</span> <span class="n">mapped_streams</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">DirtyRepository</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">is_dirty</span><span class="p">(</span><span class="n">untracked_files</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+            <span class="n">_clean_streams</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="p">,</span> <span class="n">mapped_streams</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">DirtyRepository</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GitCore.ensure_untracked"><a class="viewcode-back" href="../../../../management.html#renku.core.management.git.GitCore.ensure_untracked">[docs]</a>    <span class="k">def</span> <span class="nf">ensure_untracked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Ensure that path is not part of git untracked files.&quot;&quot;&quot;</span>
+        <span class="n">untracked</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">untracked_files</span>
+
+        <span class="k">for</span> <span class="n">file_path</span> <span class="ow">in</span> <span class="n">untracked</span><span class="p">:</span>
+            <span class="n">is_parent</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+            <span class="n">is_equal</span> <span class="o">=</span> <span class="n">path</span> <span class="o">==</span> <span class="n">file_path</span>
+
+            <span class="k">if</span> <span class="n">is_parent</span> <span class="ow">or</span> <span class="n">is_equal</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">DirtyRenkuDirectory</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GitCore.ensure_unstaged"><a class="viewcode-back" href="../../../../management.html#renku.core.management.git.GitCore.ensure_unstaged">[docs]</a>    <span class="k">def</span> <span class="nf">ensure_unstaged</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Ensure that path is not part of git staged files.&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">staged</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="s1">&#39;HEAD&#39;</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">file_path</span> <span class="ow">in</span> <span class="n">staged</span><span class="p">:</span>
+                <span class="n">is_parent</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">file_path</span><span class="o">.</span><span class="n">a_path</span><span class="p">)</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+                <span class="n">is_equal</span> <span class="o">=</span> <span class="n">path</span> <span class="o">==</span> <span class="n">file_path</span><span class="o">.</span><span class="n">a_path</span>
+
+                <span class="k">if</span> <span class="n">is_parent</span> <span class="ow">or</span> <span class="n">is_equal</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">DirtyRenkuDirectory</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="p">)</span>
+
+        <span class="k">except</span> <span class="n">gitdb</span><span class="o">.</span><span class="n">exc</span><span class="o">.</span><span class="n">BadName</span><span class="p">:</span>
+            <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="GitCore.setup_credential_helper"><a class="viewcode-back" href="../../../../management.html#renku.core.management.git.GitCore.setup_credential_helper">[docs]</a>    <span class="k">def</span> <span class="nf">setup_credential_helper</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Setup git credential helper to ``cache`` if not set already.&quot;&quot;&quot;</span>
+        <span class="n">credential_helper</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">config_reader</span><span class="p">()</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span>
+            <span class="s1">&#39;credential&#39;</span><span class="p">,</span> <span class="s1">&#39;helper&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">credential_helper</span><span class="p">:</span>
+            <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">config_writer</span><span class="p">()</span> <span class="k">as</span> <span class="n">w</span><span class="p">:</span>
+                <span class="n">w</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="s1">&#39;credential&#39;</span><span class="p">,</span> <span class="s1">&#39;helper&#39;</span><span class="p">,</span> <span class="s1">&#39;cache&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GitCore.commit"><a class="viewcode-back" href="../../../../management.html#renku.core.management.git.GitCore.commit">[docs]</a>    <span class="nd">@contextmanager</span>
+    <span class="k">def</span> <span class="nf">commit</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">commit_only</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">commit_empty</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">raise_if_empty</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">commit_message</span><span class="o">=</span><span class="kc">None</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Automatic commit.&quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">git</span> <span class="kn">import</span> <span class="n">Actor</span>
+
+        <span class="kn">from</span> <span class="nn">renku.version</span> <span class="kn">import</span> <span class="n">__version__</span><span class="p">,</span> <span class="n">version_url</span>
+
+        <span class="n">diff_before</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">commit_only</span> <span class="o">==</span> <span class="n">COMMIT_DIFF_STRATEGY</span><span class="p">:</span>
+            <span class="n">staged</span> <span class="o">=</span> <span class="p">{</span><span class="n">item</span><span class="o">.</span><span class="n">a_path</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="kc">None</span><span class="p">)}</span>
+
+            <span class="n">modified</span> <span class="o">=</span> <span class="p">{</span><span class="n">item</span><span class="o">.</span><span class="n">a_path</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="s1">&#39;HEAD&#39;</span><span class="p">)}</span>
+
+            <span class="k">if</span> <span class="n">staged</span> <span class="ow">or</span> <span class="n">modified</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">git</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+
+            <span class="c1"># Exclude files created by pipes.</span>
+            <span class="n">diff_before</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="n">file_</span>
+                <span class="k">for</span> <span class="n">file_</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">untracked_files</span>
+                <span class="k">if</span> <span class="n">STARTED_AT</span> <span class="o">-</span> <span class="nb">int</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">file_</span><span class="p">)</span><span class="o">.</span><span class="n">stat</span><span class="p">()</span><span class="o">.</span><span class="n">st_ctime</span> <span class="o">*</span> <span class="mf">1e3</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mf">1e3</span>
+            <span class="p">}</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">commit_only</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">path_</span> <span class="ow">in</span> <span class="n">commit_only</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ensure_untracked</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">path_</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ensure_unstaged</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">path_</span><span class="p">))</span>
+
+        <span class="k">yield</span>
+
+        <span class="n">committer</span> <span class="o">=</span> <span class="n">Actor</span><span class="p">(</span><span class="s1">&#39;renku </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">__version__</span><span class="p">),</span> <span class="n">version_url</span><span class="p">)</span>
+
+        <span class="n">change_types</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">if</span> <span class="n">commit_only</span> <span class="o">==</span> <span class="n">COMMIT_DIFF_STRATEGY</span><span class="p">:</span>
+            <span class="c1"># Get diff generated in command.</span>
+            <span class="n">change_types</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="n">item</span><span class="o">.</span><span class="n">a_path</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">change_type</span>
+                <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+            <span class="p">}</span>
+            <span class="n">staged_after</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">change_types</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+            <span class="n">modified_after_change_types</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="n">item</span><span class="o">.</span><span class="n">a_path</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">change_type</span>
+                <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="s1">&#39;HEAD&#39;</span><span class="p">)</span>
+            <span class="p">}</span>
+
+            <span class="n">modified_after</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">modified_after_change_types</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+            <span class="n">change_types</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">modified_after_change_types</span><span class="p">)</span>
+
+            <span class="n">diff_after</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">untracked_files</span><span class="p">)</span>\
+                <span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">staged_after</span><span class="p">)</span>\
+                <span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">modified_after</span><span class="p">)</span>
+
+            <span class="c1"># Remove files not touched in command.</span>
+            <span class="n">commit_only</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">diff_after</span> <span class="o">-</span> <span class="n">diff_before</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">commit_only</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">path_</span> <span class="ow">in</span> <span class="n">commit_only</span><span class="p">:</span>
+                <span class="n">p</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">/</span> <span class="n">path_</span>
+                <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span> <span class="ow">or</span> <span class="n">change_types</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path_</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;D&#39;</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">git</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">path_</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">commit_only</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">git</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;--all&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">commit_empty</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="s1">&#39;HEAD&#39;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">raise_if_empty</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">NothingToCommit</span><span class="p">()</span>
+            <span class="k">return</span>
+
+        <span class="k">if</span> <span class="n">commit_message</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">commit_message</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">CommitMessageEmpty</span><span class="p">()</span>
+
+        <span class="k">elif</span> <span class="ow">not</span> <span class="n">commit_message</span><span class="p">:</span>
+            <span class="n">argv</span> <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                    <span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">remove_credentials</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span>
+
+            <span class="n">commit_message</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">argv</span><span class="p">)</span>
+
+        <span class="c1"># Ignore pre-commit hooks since we have already done everything.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">commit</span><span class="p">(</span>
+            <span class="n">commit_message</span><span class="p">,</span>
+            <span class="n">committer</span><span class="o">=</span><span class="n">committer</span><span class="p">,</span>
+            <span class="n">skip_hooks</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="GitCore.transaction"><a class="viewcode-back" href="../../../../management.html#renku.core.management.git.GitCore.transaction">[docs]</a>    <span class="nd">@contextmanager</span>
+    <span class="k">def</span> <span class="nf">transaction</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">clean</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">commit</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">commit_empty</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">commit_message</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">commit_only</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">ignore_std_streams</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">raise_if_empty</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">up_to_date</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Perform Git checks and operations.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">clean</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ensure_clean</span><span class="p">(</span><span class="n">ignore_std_streams</span><span class="o">=</span><span class="n">ignore_std_streams</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">up_to_date</span><span class="p">:</span>
+            <span class="c1"># TODO</span>
+            <span class="c1"># Fetch origin/master</span>
+            <span class="c1"># is_ancestor(&#39;origin/master&#39;, &#39;HEAD&#39;)</span>
+            <span class="k">pass</span>
+
+        <span class="k">if</span> <span class="n">commit</span><span class="p">:</span>
+            <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">commit</span><span class="p">(</span>
+                <span class="n">commit_empty</span><span class="o">=</span><span class="n">commit_empty</span><span class="p">,</span>
+                <span class="n">commit_message</span><span class="o">=</span><span class="n">commit_message</span><span class="p">,</span>
+                <span class="n">commit_only</span><span class="o">=</span><span class="n">commit_only</span><span class="p">,</span>
+                <span class="n">raise_if_empty</span><span class="o">=</span><span class="n">raise_if_empty</span>
+            <span class="p">):</span>
+                <span class="k">yield</span> <span class="bp">self</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="GitCore.worktree"><a class="viewcode-back" href="../../../../management.html#renku.core.management.git.GitCore.worktree">[docs]</a>    <span class="nd">@contextmanager</span>
+    <span class="k">def</span> <span class="nf">worktree</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">branch_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">commit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">merge_args</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;--ff-only&#39;</span><span class="p">,</span> <span class="p">),</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create new worktree.&quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">git</span> <span class="kn">import</span> <span class="n">NULL_TREE</span><span class="p">,</span> <span class="n">GitCommandError</span>
+
+        <span class="kn">from</span> <span class="nn">renku.core.utils.contexts</span> <span class="kn">import</span> <span class="n">Isolation</span>
+
+        <span class="n">delete</span> <span class="o">=</span> <span class="n">path</span> <span class="ow">is</span> <span class="kc">None</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">path</span> <span class="ow">or</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">mkdtemp</span><span class="p">()</span>
+        <span class="n">branch_name</span> <span class="o">=</span> <span class="n">branch_name</span> <span class="ow">or</span> <span class="s1">&#39;renku/run/isolation/&#39;</span> <span class="o">+</span> <span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()</span><span class="o">.</span><span class="n">hex</span>
+
+        <span class="c1"># TODO sys.argv</span>
+
+        <span class="n">new_branch</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="k">if</span> <span class="n">commit</span> <span class="ow">is</span> <span class="n">NULL_TREE</span><span class="p">:</span>
+            <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="s1">&#39;--detach&#39;</span><span class="p">,</span> <span class="n">path</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">git</span><span class="o">.</span><span class="n">worktree</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+            <span class="n">client</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">)</span>
+            <span class="n">client</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">git</span><span class="o">.</span><span class="n">checkout</span><span class="p">(</span><span class="s1">&#39;--orphan&#39;</span><span class="p">,</span> <span class="n">branch_name</span><span class="p">)</span>
+            <span class="n">client</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">git</span><span class="o">.</span><span class="n">rm</span><span class="p">(</span><span class="s1">&#39;-rf&#39;</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="s1">&#39;-b&#39;</span><span class="p">,</span> <span class="n">branch_name</span><span class="p">,</span> <span class="n">path</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">commit</span><span class="p">:</span>
+                <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">commit</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">git</span><span class="o">.</span><span class="n">worktree</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+            <span class="n">client</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">)</span>
+            <span class="n">new_branch</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="n">client</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">config_reader</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">config_reader</span>
+
+        <span class="c1"># Keep current directory relative to repository root.</span>
+        <span class="n">relative</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+
+        <span class="c1"># Reroute standard streams</span>
+        <span class="n">original_mapped_std</span> <span class="o">=</span> <span class="n">_mapped_std_streams</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">candidate_paths</span><span class="p">)</span>
+        <span class="n">mapped_std</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">stream</span> <span class="ow">in</span> <span class="n">original_mapped_std</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">stream_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">))</span>
+            <span class="n">stream_path</span> <span class="o">=</span> <span class="n">stream_path</span><span class="o">.</span><span class="n">absolute</span><span class="p">()</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">stream_path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+                <span class="n">stream_path</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="n">stream_path</span><span class="o">.</span><span class="n">touch</span><span class="p">()</span>
+
+            <span class="n">mapped_std</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">stream_path</span>
+
+        <span class="n">_clean_streams</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="p">,</span> <span class="n">original_mapped_std</span><span class="p">)</span>
+
+        <span class="n">new_cwd</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="o">/</span> <span class="n">relative</span>
+        <span class="n">new_cwd</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="k">with</span> <span class="n">Isolation</span><span class="p">(</span><span class="n">cwd</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">new_cwd</span><span class="p">),</span> <span class="o">**</span><span class="n">mapped_std</span><span class="p">):</span>
+            <span class="k">yield</span> <span class="n">client</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">git</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">branch_name</span><span class="p">,</span> <span class="o">*</span><span class="n">merge_args</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">GitCommandError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">FailedMerge</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="p">,</span> <span class="n">branch_name</span><span class="p">,</span> <span class="n">merge_args</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">delete</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">git</span><span class="o">.</span><span class="n">worktree</span><span class="p">(</span><span class="s1">&#39;remove&#39;</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">new_branch</span><span class="p">:</span>
+                <span class="c1"># delete the created temporary branch</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">git</span><span class="o">.</span><span class="n">branch</span><span class="p">(</span><span class="s1">&#39;-d&#39;</span><span class="p">,</span> <span class="n">branch_name</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">checkout_paths_from_storage</span><span class="p">()</span></div></div>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../../../index.html">
+    <h1 class="logo logo-name">
+      Renku
+      <span class="renku">連句</span>
+    </h1>
+  </a>
+</p>
+
+
+<p class="blurb">Python API and CLI for the Renku platform.</p>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license.html#authors">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../changes.html">Changes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../glossary.html">Glossary</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../comparison.html">How does this compare …</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../commands.html">Renku Command Line</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/index.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../management.html">Low-level API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../plugins.html">Plugin Support</a></li>
+</ul>
+
+
+<hr />
+<ul>
+    
+    <li class="toctree-l1"><a href="https://github.com/SwissDataScienceCenter/renku-python">renku-python@GitHub</a></li>
+    
+    <li class="toctree-l1"><a href="https://pypi.python.org/pypi/renku/">renku-python@PyPI</a></li>
+    
+    <li class="toctree-l1"><a href="https://github.com/SwissDataScienceCenter/renku">renku@GitHub</a></li>
+    
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017-2020, Swiss Data Science Center.
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

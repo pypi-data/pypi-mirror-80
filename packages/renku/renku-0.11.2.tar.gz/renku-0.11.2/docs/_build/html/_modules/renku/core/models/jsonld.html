@@ -1,0 +1,754 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>renku.core.models.jsonld &#8212; Renku 0.10.5.dev72 documentation</title>
+    <link rel="stylesheet" href="../../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  
+   
+  <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900,300italic,400italic" rel="stylesheet" type="text/css">
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  </head><body>
+  <div class="git-ribbon">
+    <a href="http://github.com/SwissDataScienceCenter" rel="me">Join us on GitHub</a>
+  </div>
+  
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for renku.core.models.jsonld</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1">#</span>
+<span class="c1"># Copyright 2017-2020 - Swiss Data Science Center (SDSC)</span>
+<span class="c1"># A partnership between École Polytechnique Fédérale de Lausanne (EPFL) and</span>
+<span class="c1"># Eidgenössische Technische Hochschule Zürich (ETHZ).</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="sd">&quot;&quot;&quot;Support JSON-LD context in models.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">weakref</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timezone</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+<span class="kn">from</span> <span class="nn">importlib</span> <span class="kn">import</span> <span class="n">import_module</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">import</span> <span class="nn">attr</span>
+<span class="kn">import</span> <span class="nn">yaml</span>
+<span class="kn">from</span> <span class="nn">attr._compat</span> <span class="kn">import</span> <span class="n">iteritems</span>
+<span class="kn">from</span> <span class="nn">attr._funcs</span> <span class="kn">import</span> <span class="n">has</span>
+<span class="kn">from</span> <span class="nn">attr._make</span> <span class="kn">import</span> <span class="n">Factory</span><span class="p">,</span> <span class="n">fields</span>
+
+<span class="kn">from</span> <span class="nn">renku.core.compat</span> <span class="kn">import</span> <span class="n">pyld</span>
+<span class="kn">from</span> <span class="nn">renku.core.models.locals</span> <span class="kn">import</span> <span class="n">ReferenceMixin</span><span class="p">,</span> <span class="n">with_reference</span>
+
+<span class="n">KEY</span> <span class="o">=</span> <span class="s1">&#39;__json_ld&#39;</span>
+<span class="n">KEY_CLS</span> <span class="o">=</span> <span class="s1">&#39;__json_ld_cls&#39;</span>
+
+<span class="n">DOC_TPL</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s1">&#39;</span><span class="si">{cls.__doc__}</span><span class="se">\n\n</span><span class="s1">&#39;</span>
+    <span class="s1">&#39;**Type:**</span><span class="se">\n\n</span><span class="s1">&#39;</span>
+    <span class="s1">&#39;.. code-block:: json</span><span class="se">\n\n</span><span class="s1">&#39;</span>
+    <span class="s1">&#39;    </span><span class="si">{type}</span><span class="se">\n\n</span><span class="s1">&#39;</span>
+    <span class="s1">&#39;**Context:**</span><span class="se">\n\n</span><span class="s1">&#39;</span>
+    <span class="s1">&#39;.. code-block:: json</span><span class="se">\n\n</span><span class="s1">&#39;</span>
+    <span class="s1">&#39;</span><span class="si">{context}</span><span class="se">\n</span><span class="s1">&#39;</span>
+<span class="p">)</span>
+
+<span class="n">make_type</span> <span class="o">=</span> <span class="nb">type</span>
+
+
+<span class="c1"># Shamelessly copy/pasting from SO:</span>
+<span class="c1"># https://stackoverflow.com/questions/34667108/ignore-dates-and-times-while-parsing-yaml</span>
+<span class="c1"># This is needed to allow us to load from yaml and use json down the line.</span>
+<span class="k">class</span> <span class="nc">NoDatesSafeLoader</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">SafeLoader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Used to safely load basic python objects but ignore datetime strings.&quot;&quot;&quot;</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">remove_implicit_resolver</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">tag_to_remove</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Remove implicit resolvers for a particular tag.</span>
+
+<span class="sd">        Takes care not to modify resolvers in super classes.</span>
+
+<span class="sd">        We want to load datetimes as strings, not dates, because we</span>
+<span class="sd">        go on to serialise as json which doesn&#39;t have the advanced types</span>
+<span class="sd">        of yaml, and leads to incompatibilities down the track.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="s1">&#39;yaml_implicit_resolvers&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">:</span>
+            <span class="bp">cls</span><span class="o">.</span><span class="n">yaml_implicit_resolvers</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">yaml_implicit_resolvers</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+        <span class="k">for</span> <span class="n">first_letter</span><span class="p">,</span> <span class="n">mappings</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">yaml_implicit_resolvers</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="bp">cls</span><span class="o">.</span><span class="n">yaml_implicit_resolvers</span><span class="p">[</span><span class="n">first_letter</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">regexp</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">tag</span><span class="p">,</span> <span class="n">regexp</span> <span class="ow">in</span> <span class="n">mappings</span> <span class="k">if</span> <span class="n">tag</span> <span class="o">!=</span> <span class="n">tag_to_remove</span>
+            <span class="p">]</span>
+
+
+<span class="n">NoDatesSafeLoader</span><span class="o">.</span><span class="n">remove_implicit_resolver</span><span class="p">(</span><span class="s1">&#39;tag:yaml.org,2002:timestamp&#39;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">attrs</span><span class="p">(</span>
+    <span class="n">maybe_cls</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">translate</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">attrs_kwargs</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Wrap an attr enabled class.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="nb">type</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">,</span> <span class="nb">set</span><span class="p">)):</span>
+        <span class="n">types</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">type</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">types</span> <span class="o">=</span> <span class="p">[</span><span class="nb">type</span><span class="p">]</span> <span class="k">if</span> <span class="nb">type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">[]</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="n">context</span> <span class="ow">or</span> <span class="p">{}</span>
+    <span class="n">translate</span> <span class="o">=</span> <span class="n">translate</span> <span class="ow">or</span> <span class="p">{}</span>
+
+    <span class="k">if</span> <span class="s1">&#39;@version&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">context</span><span class="p">:</span>
+        <span class="n">context</span><span class="p">[</span><span class="s1">&#39;@version&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.1</span>
+
+    <span class="k">def</span> <span class="nf">wrap</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Decorate an attr enabled class.&quot;&quot;&quot;</span>
+        <span class="n">jsonld_cls</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">s</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">**</span><span class="n">attrs_kwargs</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">jsonld_cls</span><span class="p">,</span> <span class="n">JSONLDMixin</span><span class="p">):</span>
+            <span class="n">jsonld_cls</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">s</span><span class="p">(</span>
+                <span class="n">make_type</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="p">(</span><span class="n">jsonld_cls</span><span class="p">,</span> <span class="n">JSONLDMixin</span><span class="p">),</span> <span class="p">{}),</span>
+                <span class="o">**</span><span class="n">attrs_kwargs</span>
+            <span class="p">)</span>
+        <span class="c1"># Merge types</span>
+        <span class="k">for</span> <span class="n">subcls</span> <span class="ow">in</span> <span class="n">jsonld_cls</span><span class="o">.</span><span class="n">mro</span><span class="p">():</span>
+            <span class="n">subtype</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">subcls</span><span class="p">,</span> <span class="s1">&#39;_jsonld_type&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">subtype</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">subtype</span><span class="p">,</span> <span class="p">(</span><span class="nb">tuple</span><span class="p">,</span> <span class="nb">list</span><span class="p">)):</span>
+                    <span class="n">types</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">subtype</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">types</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">subtype</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">subcls</span><span class="p">,</span> <span class="s1">&#39;_jsonld_context&#39;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">context</span> <span class="ow">and</span> <span class="n">context</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">!=</span> <span class="n">value</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">()</span>
+                <span class="n">context</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+        <span class="n">property_context</span><span class="p">,</span> <span class="n">scoped_properties</span> <span class="o">=</span> <span class="n">_add_class_property_contexts</span><span class="p">(</span>
+            <span class="n">jsonld_cls</span><span class="p">,</span> <span class="n">context</span>
+        <span class="p">)</span>
+
+        <span class="n">context</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">property_context</span><span class="p">)</span>
+
+        <span class="n">jsonld_cls</span><span class="o">.</span><span class="vm">__module__</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="vm">__module__</span>
+        <span class="n">jsonld_cls</span><span class="o">.</span><span class="n">_jsonld_type</span> <span class="o">=</span> <span class="n">types</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">types</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="nb">list</span><span class="p">(</span>
+            <span class="nb">sorted</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">types</span><span class="p">))</span>
+        <span class="p">)</span>
+        <span class="n">jsonld_cls</span><span class="o">.</span><span class="n">_scoped_properties</span> <span class="o">=</span> <span class="n">scoped_properties</span>
+        <span class="n">jsonld_cls</span><span class="o">.</span><span class="n">_renku_type</span> <span class="o">=</span> <span class="n">fullname</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
+
+        <span class="n">jsonld_cls</span><span class="o">.</span><span class="n">_jsonld_context</span> <span class="o">=</span> <span class="n">context</span>
+        <span class="n">jsonld_cls</span><span class="o">.</span><span class="n">_jsonld_translate</span> <span class="o">=</span> <span class="n">translate</span>
+        <span class="n">jsonld_cls</span><span class="o">.</span><span class="n">_jsonld_fields</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">a</span><span class="o">.</span><span class="n">name</span>
+            <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">attr</span><span class="o">.</span><span class="n">fields</span><span class="p">(</span><span class="n">jsonld_cls</span><span class="p">)</span> <span class="k">if</span> <span class="n">KEY</span> <span class="ow">in</span> <span class="n">a</span><span class="o">.</span><span class="n">metadata</span>
+        <span class="p">}</span>
+
+        <span class="n">context_doc</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="s1">&#39;   &#39;</span> <span class="o">+</span> <span class="n">line</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">jsonld_cls</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="n">DOC_TPL</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="bp">cls</span><span class="o">=</span><span class="bp">cls</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">jsonld_cls</span><span class="o">.</span><span class="n">_jsonld_type</span><span class="p">),</span>
+            <span class="n">context</span><span class="o">=</span><span class="n">context_doc</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Register class for given JSON-LD @type</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">type_</span> <span class="o">=</span> <span class="n">pyld</span><span class="o">.</span><span class="n">jsonld</span><span class="o">.</span><span class="n">expand</span><span class="p">({</span>
+                <span class="s1">&#39;@type&#39;</span><span class="p">:</span> <span class="n">jsonld_cls</span><span class="o">.</span><span class="n">_jsonld_type</span><span class="p">,</span>
+                <span class="s1">&#39;@context&#39;</span><span class="p">:</span> <span class="n">context</span>
+            <span class="p">})[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;@type&#39;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">type_</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                <span class="n">type_</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">type_</span><span class="p">))</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="c1"># FIXME make sure all classes have @id defined</span>
+            <span class="k">return</span> <span class="n">jsonld_cls</span>
+
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="n">type_</span> <span class="ow">in</span> <span class="n">jsonld_cls</span><span class="o">.</span><span class="n">__type_registry__</span> <span class="ow">and</span>
+            <span class="n">jsonld_cls</span><span class="o">.</span><span class="n">__type_registry__</span><span class="p">[</span><span class="n">type_</span><span class="p">]</span> <span class="o">!=</span> <span class="n">jsonld_cls</span>
+        <span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+                <span class="s1">&#39;Type </span><span class="si">{0!r}</span><span class="s1"> in </span><span class="si">{1!r}</span><span class="s1"> is already registered for </span><span class="si">{2!r}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">jsonld_cls</span><span class="o">.</span><span class="n">_jsonld_type</span><span class="p">,</span>
+                    <span class="n">jsonld_cls</span><span class="p">,</span>
+                    <span class="n">jsonld_cls</span><span class="o">.</span><span class="n">__type_registry__</span><span class="p">[</span><span class="n">type_</span><span class="p">],</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="n">jsonld_cls</span><span class="o">.</span><span class="n">__type_registry__</span><span class="p">[</span><span class="n">type_</span><span class="p">]</span> <span class="o">=</span> <span class="n">jsonld_cls</span>
+        <span class="k">return</span> <span class="n">jsonld_cls</span>
+
+    <span class="k">if</span> <span class="n">maybe_cls</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">wrap</span>
+    <span class="k">return</span> <span class="n">wrap</span><span class="p">(</span><span class="n">maybe_cls</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_add_class_property_contexts</span><span class="p">(</span><span class="n">jsonld_cls</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Adds ``@context`` of a class&#39; properties to the class&#39; ``@context``.&quot;&quot;&quot;</span>
+    <span class="n">scoped_properties</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">property_context</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">attr</span><span class="o">.</span><span class="n">fields</span><span class="p">(</span><span class="n">jsonld_cls</span><span class="p">):</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">name</span>
+        <span class="n">ctx</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">KEY</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">ctx</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">continue</span>
+
+        <span class="n">current_context</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="s1">&#39;:&#39;</span> <span class="ow">in</span> <span class="n">ctx</span><span class="p">:</span>
+            <span class="n">prefix</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">prefix</span> <span class="ow">in</span> <span class="n">context</span><span class="p">:</span>
+                <span class="n">current_context</span> <span class="o">=</span> <span class="n">ctx</span>
+
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="ow">or</span> <span class="n">ctx</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">context</span><span class="p">:</span>
+            <span class="n">current_context</span> <span class="o">=</span> <span class="n">ctx</span>
+
+        <span class="k">if</span> <span class="n">KEY_CLS</span> <span class="ow">in</span> <span class="n">a</span><span class="o">.</span><span class="n">metadata</span><span class="p">:</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="n">KEY_CLS</span><span class="p">]</span>
+            <span class="n">current_context</span><span class="p">,</span> <span class="n">is_scoped</span> <span class="o">=</span> <span class="n">_propagate_reference_contexts</span><span class="p">(</span>
+                <span class="n">t</span><span class="p">,</span> <span class="n">current_context</span><span class="p">,</span> <span class="n">ctx</span>
+            <span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">is_scoped</span><span class="p">:</span>
+                <span class="n">scoped_properties</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">current_context</span><span class="p">:</span>
+            <span class="n">property_context</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">current_context</span>
+
+    <span class="k">return</span> <span class="n">property_context</span><span class="p">,</span> <span class="n">scoped_properties</span>
+
+
+<span class="k">def</span> <span class="nf">_propagate_reference_contexts</span><span class="p">(</span>
+    <span class="n">type_references</span><span class="p">,</span> <span class="n">current_context</span><span class="p">,</span> <span class="n">parent_context</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get JSON-LD contexts for all types of a reference and propagate them.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">type_references</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">set</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+        <span class="n">type_references</span> <span class="o">=</span> <span class="p">[</span><span class="n">type_references</span><span class="p">]</span>
+    <span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="n">import_class_from_string</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">type_references</span><span class="p">]</span>
+    <span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">classes</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="s1">&#39;_jsonld_context&#39;</span><span class="p">)]</span>
+    <span class="n">scoped_properties</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">classes</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">merge_ctx</span> <span class="o">=</span> <span class="n">classes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">_jsonld_context</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">current_context</span><span class="p">:</span>
+            <span class="n">current_context</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;@id&#39;</span><span class="p">:</span> <span class="n">parent_context</span><span class="p">}</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">current_context</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="n">current_context</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;@id&#39;</span><span class="p">:</span> <span class="n">current_context</span><span class="p">}</span>
+
+        <span class="n">current_context</span><span class="p">[</span><span class="s1">&#39;@context&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">merge_ctx</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">scoped_properties</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="k">for</span> <span class="bp">cls</span> <span class="ow">in</span> <span class="n">classes</span><span class="p">:</span>
+            <span class="n">merge_ctx</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_jsonld_context</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">current_context</span><span class="p">:</span>
+                <span class="n">current_context</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;@id&#39;</span><span class="p">:</span> <span class="n">parent_context</span><span class="p">}</span>
+            <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">current_context</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+                <span class="n">current_context</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;@id&#39;</span><span class="p">:</span> <span class="n">current_context</span><span class="p">}</span>
+
+            <span class="k">if</span> <span class="s1">&#39;@context&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">current_context</span><span class="p">:</span>
+                <span class="n">current_context</span><span class="p">[</span><span class="s1">&#39;@context&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+            <span class="n">subtypes</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_jsonld_type</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">subtypes</span><span class="p">,</span> <span class="p">(</span><span class="nb">tuple</span><span class="p">,</span> <span class="nb">list</span><span class="p">)):</span>
+                <span class="n">subtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">subtypes</span><span class="p">]</span>
+
+            <span class="k">for</span> <span class="n">subtype</span> <span class="ow">in</span> <span class="n">subtypes</span><span class="p">:</span>
+                <span class="c1"># Use nested, type scoped contexts for each semantic type</span>
+                <span class="c1"># of a reference, to uniquely bind a context to a type.</span>
+                <span class="c1"># We need to expand the subtype, as type scoped contexts</span>
+                <span class="c1"># behave weirdly</span>
+
+                <span class="n">expanded_subtype</span> <span class="o">=</span> <span class="n">subtype</span>
+
+                <span class="n">prefix</span><span class="p">,</span> <span class="n">suffix</span> <span class="o">=</span> <span class="n">subtype</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">prefix</span> <span class="ow">in</span> <span class="n">merge_ctx</span><span class="p">:</span>
+                    <span class="n">expanded_subtype</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">merge_ctx</span><span class="p">[</span><span class="n">prefix</span><span class="p">],</span> <span class="n">suffix</span><span class="p">)</span>
+
+                <span class="n">current_context</span><span class="p">[</span><span class="s1">&#39;@context&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                    <span class="n">fullname</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="n">subtype</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s1">&#39;@id&#39;</span><span class="p">:</span> <span class="n">expanded_subtype</span><span class="p">,</span>
+                        <span class="s1">&#39;@context&#39;</span><span class="p">:</span> <span class="n">merge_ctx</span>
+                    <span class="p">}</span>
+                <span class="p">})</span>
+
+    <span class="k">return</span> <span class="n">current_context</span><span class="p">,</span> <span class="n">scoped_properties</span>
+
+
+<span class="k">def</span> <span class="nf">_default_converter</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A default converter method that tries to deserialize objects.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">from_jsonld</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">value</span>
+
+
+<span class="k">def</span> <span class="nf">attrib</span><span class="p">(</span><span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Create a new attribute with context.&quot;&quot;&quot;</span>
+    <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;metadata&#39;</span><span class="p">,</span> <span class="p">{})</span>
+    <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;metadata&#39;</span><span class="p">][</span><span class="n">KEY</span><span class="p">]</span> <span class="o">=</span> <span class="n">context</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">:</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;metadata&#39;</span><span class="p">][</span><span class="n">KEY_CLS</span><span class="p">]</span> <span class="o">=</span> <span class="nb">type</span>
+
+        <span class="k">if</span> <span class="s1">&#39;converter&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="nb">type</span><span class="p">,</span> <span class="s1">&#39;from_jsonld&#39;</span><span class="p">):</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;converter&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">_default_converter</span><span class="p">,</span> <span class="nb">type</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+
+<span class="n">_container_types</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="s1">&#39;list&#39;</span><span class="p">,</span> <span class="nb">list</span><span class="p">,</span> <span class="k">lambda</span> <span class="nb">type</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="p">[</span><span class="nb">type</span><span class="o">.</span><span class="n">from_jsonld</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">value</span><span class="p">]),</span>
+    <span class="p">(</span><span class="s1">&#39;set&#39;</span><span class="p">,</span> <span class="nb">set</span><span class="p">,</span> <span class="k">lambda</span> <span class="nb">type</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="p">{</span><span class="nb">type</span><span class="o">.</span><span class="n">from_jsonld</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+                                      <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">value</span><span class="p">}),</span>
+    <span class="p">(</span>
+        <span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="nb">dict</span><span class="p">,</span>
+        <span class="k">lambda</span> <span class="nb">type</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="nb">type</span><span class="o">.</span><span class="n">from_jsonld</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+                             <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">value</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+    <span class="p">),</span>
+<span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_container_attrib_builder</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">container</span><span class="p">,</span> <span class="n">mapper</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Builder for container attributes.&quot;&quot;&quot;</span>
+    <span class="n">factory</span> <span class="o">=</span> <span class="n">Factory</span><span class="p">(</span><span class="n">container</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_attrib</span><span class="p">(</span><span class="nb">type</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Define a container attribute.&quot;&quot;&quot;</span>
+        <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;metadata&#39;</span><span class="p">,</span> <span class="p">{})</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;metadata&#39;</span><span class="p">][</span><span class="n">KEY_CLS</span><span class="p">]</span> <span class="o">=</span> <span class="nb">type</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;default&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">factory</span>
+
+        <span class="k">def</span> <span class="nf">_converter</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+            <span class="sd">&quot;&quot;&quot;Convert value to the given type.&quot;&quot;&quot;</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">container</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">mapper</span><span class="p">(</span><span class="nb">type</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">value</span>
+
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+        <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;converter&#39;</span><span class="p">,</span> <span class="n">_converter</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">attrib</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">_attrib</span>
+
+
+<span class="n">container</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span>
+    <span class="s1">&#39;Container&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="p">),</span> <span class="p">{</span>
+        <span class="n">name</span><span class="p">:</span> <span class="nb">staticmethod</span><span class="p">(</span><span class="n">_container_attrib_builder</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">container</span><span class="p">,</span> <span class="n">mapper</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">container</span><span class="p">,</span> <span class="n">mapper</span> <span class="ow">in</span> <span class="n">_container_types</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">asjsonld</span><span class="p">(</span>
+    <span class="n">inst</span><span class="p">,</span>
+    <span class="n">recurse</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="nb">filter</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">dict_factory</span><span class="o">=</span><span class="nb">dict</span><span class="p">,</span>
+    <span class="n">retain_collection_types</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">add_context</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">use_scoped_type_form</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">basedir</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Dump a JSON-LD class to the JSON with generated ``@context`` field.&quot;&quot;&quot;</span>
+    <span class="n">jsonld_fields</span> <span class="o">=</span> <span class="n">inst</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">_jsonld_fields</span>
+    <span class="n">attrs</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span>
+        <span class="n">field</span>
+        <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">(</span><span class="n">inst</span><span class="o">.</span><span class="vm">__class__</span><span class="p">)</span> <span class="k">if</span> <span class="n">field</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="n">jsonld_fields</span>
+    <span class="p">)</span>
+    <span class="n">rv</span> <span class="o">=</span> <span class="n">dict_factory</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">convert_value</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Convert non-serializable types.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">Path</span><span class="p">):</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">basedir</span><span class="p">:</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">basedir</span><span class="p">))</span>
+            <span class="k">return</span> <span class="n">result</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">datetime</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">value</span><span class="o">.</span><span class="n">tzinfo</span><span class="p">:</span>
+                <span class="c1"># set timezone to local timezone</span>
+                <span class="n">tz</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span><span class="o">.</span><span class="n">astimezone</span><span class="p">()</span><span class="o">.</span><span class="n">tzinfo</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">tzinfo</span><span class="o">=</span><span class="n">tz</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">value</span>
+
+    <span class="n">inst_cls</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">inst</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">attrs</span><span class="p">:</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">inst</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">scoped</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="n">inst_cls</span><span class="o">.</span><span class="n">_scoped_properties</span>
+
+        <span class="c1"># skip proxies</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">weakref</span><span class="o">.</span><span class="n">ReferenceType</span><span class="p">):</span>
+            <span class="k">continue</span>
+
+        <span class="k">if</span> <span class="nb">filter</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">filter</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+            <span class="k">continue</span>
+        <span class="k">if</span> <span class="n">recurse</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">has</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="vm">__class__</span><span class="p">):</span>
+                <span class="n">rv</span><span class="p">[</span><span class="n">a</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">asjsonld</span><span class="p">(</span>
+                    <span class="n">v</span><span class="p">,</span>
+                    <span class="n">recurse</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                    <span class="nb">filter</span><span class="o">=</span><span class="nb">filter</span><span class="p">,</span>
+                    <span class="n">dict_factory</span><span class="o">=</span><span class="n">dict_factory</span><span class="p">,</span>
+                    <span class="n">add_context</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                    <span class="n">use_scoped_type_form</span><span class="o">=</span><span class="n">scoped</span><span class="p">,</span>
+                    <span class="n">basedir</span><span class="o">=</span><span class="n">basedir</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="p">(</span><span class="nb">tuple</span><span class="p">,</span> <span class="nb">list</span><span class="p">,</span> <span class="nb">set</span><span class="p">)):</span>
+                <span class="n">cf</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="vm">__class__</span> <span class="k">if</span> <span class="n">retain_collection_types</span> <span class="ow">is</span> <span class="kc">True</span> <span class="k">else</span> <span class="nb">list</span>
+                <span class="n">rv</span><span class="p">[</span><span class="n">a</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">cf</span><span class="p">([</span>
+                    <span class="n">asjsonld</span><span class="p">(</span>
+                        <span class="n">i</span><span class="p">,</span>
+                        <span class="n">recurse</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="nb">filter</span><span class="o">=</span><span class="nb">filter</span><span class="p">,</span>
+                        <span class="n">dict_factory</span><span class="o">=</span><span class="n">dict_factory</span><span class="p">,</span>
+                        <span class="n">add_context</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">use_scoped_type_form</span><span class="o">=</span><span class="n">scoped</span><span class="p">,</span>
+                        <span class="n">basedir</span><span class="o">=</span><span class="n">basedir</span><span class="p">,</span>
+                    <span class="p">)</span> <span class="k">if</span> <span class="n">has</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="vm">__class__</span><span class="p">)</span> <span class="k">else</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">v</span>
+                <span class="p">])</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+                <span class="n">df</span> <span class="o">=</span> <span class="n">dict_factory</span>
+                <span class="n">rv</span><span class="p">[</span><span class="n">a</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">((</span>
+                    <span class="n">asjsonld</span><span class="p">(</span>
+                        <span class="n">kk</span><span class="p">,</span>
+                        <span class="n">dict_factory</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
+                        <span class="n">add_context</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">basedir</span><span class="o">=</span><span class="n">basedir</span><span class="p">,</span>
+                    <span class="p">)</span> <span class="k">if</span> <span class="n">has</span><span class="p">(</span><span class="n">kk</span><span class="o">.</span><span class="vm">__class__</span><span class="p">)</span> <span class="k">else</span> <span class="n">convert_value</span><span class="p">(</span><span class="n">kk</span><span class="p">),</span>
+                    <span class="n">asjsonld</span><span class="p">(</span>
+                        <span class="n">vv</span><span class="p">,</span>
+                        <span class="n">dict_factory</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
+                        <span class="n">add_context</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">basedir</span><span class="o">=</span><span class="n">basedir</span><span class="p">,</span>
+                    <span class="p">)</span> <span class="k">if</span> <span class="n">has</span><span class="p">(</span><span class="n">vv</span><span class="o">.</span><span class="vm">__class__</span><span class="p">)</span> <span class="k">else</span> <span class="n">vv</span>
+                <span class="p">)</span> <span class="k">for</span> <span class="n">kk</span><span class="p">,</span> <span class="n">vv</span> <span class="ow">in</span> <span class="n">iteritems</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">rv</span><span class="p">[</span><span class="n">a</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">convert_value</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">rv</span><span class="p">[</span><span class="n">a</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">convert_value</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">add_context</span><span class="p">:</span>
+        <span class="n">rv</span><span class="p">[</span><span class="s1">&#39;@context&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">inst_cls</span><span class="o">.</span><span class="n">_jsonld_context</span><span class="p">)</span>
+
+    <span class="n">rv_type</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">if</span> <span class="n">inst_cls</span><span class="o">.</span><span class="n">_jsonld_type</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">inst_cls</span><span class="o">.</span><span class="n">_jsonld_type</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">,</span> <span class="nb">set</span><span class="p">)):</span>
+            <span class="n">rv_type</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">inst_cls</span><span class="o">.</span><span class="n">_jsonld_type</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">rv_type</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">inst_cls</span><span class="o">.</span><span class="n">_jsonld_type</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">use_scoped_type_form</span><span class="p">:</span>
+            <span class="n">rv_type</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">inst_cls</span><span class="o">.</span><span class="n">_renku_type</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">rv_type</span>
+            <span class="p">]</span>
+
+        <span class="n">rv</span><span class="p">[</span><span class="s1">&#39;@type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rv_type</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">rv_type</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">rv_type</span>
+
+    <span class="k">return</span> <span class="n">rv</span>
+
+
+<span class="k">class</span> <span class="nc">JSONLDMixin</span><span class="p">(</span><span class="n">ReferenceMixin</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Mixin for loading a JSON-LD data.&quot;&quot;&quot;</span>
+
+    <span class="n">__type_registry__</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_jsonld</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span>
+        <span class="n">data</span><span class="p">,</span>
+        <span class="n">client</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">commit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">__reference__</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">__source__</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Instantiate a JSON-LD class from data.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="bp">cls</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">data</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="s1">&#39;@type&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+            <span class="c1"># @type could be a string or a list - make sure it is a list</span>
+            <span class="n">type_</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;@type&#39;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">type_</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                <span class="n">type_</span> <span class="o">=</span> <span class="p">[</span><span class="n">type_</span><span class="p">]</span>
+            <span class="c1"># If a json-ld class has multiple types, they are in a</span>
+            <span class="c1"># sorted tuple. This is used as the key for the class</span>
+            <span class="c1"># registry, so we have to match it here.</span>
+            <span class="n">type_</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">type_</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">type_</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">__type_registry__</span> <span class="ow">and</span> <span class="nb">getattr</span><span class="p">(</span>
+                <span class="bp">cls</span><span class="p">,</span> <span class="s1">&#39;_jsonld_type&#39;</span><span class="p">,</span> <span class="kc">None</span>
+            <span class="p">)</span> <span class="o">!=</span> <span class="n">type_</span><span class="p">:</span>
+                <span class="n">new_cls</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">__type_registry__</span><span class="p">[</span><span class="n">type_</span><span class="p">]</span>
+                <span class="k">if</span> <span class="bp">cls</span> <span class="o">!=</span> <span class="n">new_cls</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">new_cls</span><span class="o">.</span><span class="n">from_jsonld</span><span class="p">(</span>
+                        <span class="n">data</span><span class="p">,</span> <span class="n">client</span><span class="o">=</span><span class="n">client</span><span class="p">,</span> <span class="n">commit</span><span class="o">=</span><span class="n">commit</span>
+                    <span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_jsonld_translate</span><span class="p">:</span>
+            <span class="c1"># perform the translation</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">pyld</span><span class="o">.</span><span class="n">jsonld</span><span class="o">.</span><span class="n">compact</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_jsonld_translate</span><span class="p">)</span>
+            <span class="c1"># compact using the class json-ld context</span>
+            <span class="n">data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;@context&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">pyld</span><span class="o">.</span><span class="n">jsonld</span><span class="o">.</span><span class="n">compact</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_jsonld_context</span><span class="p">)</span>
+
+        <span class="n">data</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;@context&#39;</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_jsonld_context</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;@context&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_jsonld_context</span><span class="p">:</span>
+            <span class="c1"># merge new context into old context to prevent properties</span>
+            <span class="c1"># getting lost in jsonld expansion</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;@context&#39;</span><span class="p">],</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="n">data</span><span class="p">[</span><span class="s1">&#39;@context&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;@base&#39;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;@context&#39;</span><span class="p">]}</span>
+            <span class="n">data</span><span class="p">[</span><span class="s1">&#39;@context&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_jsonld_context</span><span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">compacted</span> <span class="o">=</span> <span class="n">pyld</span><span class="o">.</span><span class="n">jsonld</span><span class="o">.</span><span class="n">compact</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_jsonld_context</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                <span class="n">compacted</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">compacted</span> <span class="o">=</span> <span class="n">data</span>
+
+        <span class="n">fields</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_jsonld_fields</span>
+
+        <span class="n">data_</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="c1"># `client` and `commit` are passed in optionally for some classes</span>
+        <span class="c1"># They might be unset if the metadata is used to instantiate</span>
+        <span class="c1"># an object outside of a repo/client context.</span>
+        <span class="k">if</span> <span class="n">client</span><span class="p">:</span>
+            <span class="n">data_</span><span class="p">[</span><span class="s1">&#39;client&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">client</span>
+        <span class="k">if</span> <span class="n">commit</span><span class="p">:</span>
+            <span class="n">data_</span><span class="p">[</span><span class="s1">&#39;commit&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">commit</span>
+
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">compacted</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">:</span>
+                <span class="n">no_value_context</span> <span class="o">=</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="ow">and</span> <span class="s1">&#39;@context&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">v</span>
+                <span class="n">has_nested_context</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="n">k</span> <span class="ow">in</span> <span class="n">compacted</span><span class="p">[</span><span class="s1">&#39;@context&#39;</span><span class="p">]</span> <span class="ow">and</span>
+                    <span class="s1">&#39;@context&#39;</span> <span class="ow">in</span> <span class="n">compacted</span><span class="p">[</span><span class="s1">&#39;@context&#39;</span><span class="p">][</span><span class="n">k</span><span class="p">]</span>
+                <span class="p">)</span>
+                <span class="k">if</span> <span class="n">no_value_context</span> <span class="ow">and</span> <span class="n">has_nested_context</span><span class="p">:</span>
+                    <span class="c1"># Propagate down context</span>
+                    <span class="n">v</span><span class="p">[</span><span class="s1">&#39;@context&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">compacted</span><span class="p">[</span><span class="s1">&#39;@context&#39;</span><span class="p">][</span><span class="n">k</span><span class="p">][</span><span class="s1">&#39;@context&#39;</span><span class="p">]</span>
+
+                <span class="n">data_</span><span class="p">[</span><span class="n">k</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">v</span>
+
+        <span class="k">if</span> <span class="n">__reference__</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">with_reference</span><span class="p">(</span><span class="n">__reference__</span><span class="p">):</span>
+                <span class="bp">self</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="o">**</span><span class="n">data_</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="o">**</span><span class="n">data_</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">__source__</span><span class="p">:</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;__source__&#39;</span><span class="p">,</span> <span class="n">__source__</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_yaml</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">client</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">commit</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return an instance from a YAML file.&quot;&quot;&quot;</span>
+        <span class="n">source</span> <span class="o">=</span> <span class="n">read_yaml</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+        <span class="bp">self</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">from_jsonld</span><span class="p">(</span>
+            <span class="n">source</span><span class="p">,</span>
+            <span class="n">client</span><span class="o">=</span><span class="n">client</span><span class="p">,</span>
+            <span class="n">commit</span><span class="o">=</span><span class="n">commit</span><span class="p">,</span>
+            <span class="n">__reference__</span><span class="o">=</span><span class="n">path</span><span class="p">,</span>
+            <span class="n">__source__</span><span class="o">=</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">asjsonld</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create JSON-LD with the original source data.&quot;&quot;&quot;</span>
+        <span class="n">source</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__source__</span><span class="p">:</span>
+            <span class="n">source</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__source__</span><span class="p">)</span>
+        <span class="n">source</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">asjsonld</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">source</span>
+
+    <span class="k">def</span> <span class="nf">to_yaml</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Store an instance to the referenced YAML file.&quot;&quot;&quot;</span>
+        <span class="n">jsonld_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">asjsonld</span><span class="p">()</span>
+        <span class="n">write_yaml</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">__reference__</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">jsonld_</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">read_yaml</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Load YAML file and return its content as a dict.&quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">yaml</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">Loader</span><span class="o">=</span><span class="n">NoDatesSafeLoader</span><span class="p">)</span> <span class="ow">or</span> <span class="p">{}</span>
+
+
+<span class="k">def</span> <span class="nf">write_yaml</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Store data to a YAML file.&quot;&quot;&quot;</span>
+    <span class="n">dumper</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">dumper</span><span class="o">.</span><span class="n">Dumper</span>
+    <span class="n">dumper</span><span class="o">.</span><span class="n">ignore_aliases</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">_</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="kc">True</span>
+
+    <span class="k">with</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+        <span class="n">yaml</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">default_flow_style</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">Dumper</span><span class="o">=</span><span class="n">dumper</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">fullname</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Gets the fully qualified type name of this class.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">type</span><span class="p">:</span>
+        <span class="bp">cls</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
+    <span class="n">module</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="vm">__module__</span>
+    <span class="k">if</span> <span class="n">module</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">module</span> <span class="o">==</span> <span class="nb">str</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__module__</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span>  <span class="c1"># Avoid reporting __builtin__</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;.&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">module</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span><span class="p">])</span>
+
+
+<span class="k">def</span> <span class="nf">import_class_from_string</span><span class="p">(</span><span class="n">dotted_path</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Imports a fully qualified class string.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dotted_path</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">dotted_path</span>
+    <span class="n">module_path</span><span class="p">,</span> <span class="n">class_name</span> <span class="o">=</span> <span class="n">dotted_path</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">module</span> <span class="o">=</span> <span class="n">import_module</span><span class="p">(</span><span class="n">module_path</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">class_name</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+
+<span class="n">s</span> <span class="o">=</span> <span class="n">attrs</span>
+<span class="n">ib</span> <span class="o">=</span> <span class="n">attrib</span>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../../../index.html">
+    <h1 class="logo logo-name">
+      Renku
+      <span class="renku">連句</span>
+    </h1>
+  </a>
+</p>
+
+
+<p class="blurb">Python API and CLI for the Renku platform.</p>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license.html#authors">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../changes.html">Changes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../glossary.html">Glossary</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../comparison.html">How does this compare …</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../commands.html">Renku Command Line</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/index.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../management.html">Low-level API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../plugins.html">Plugin Support</a></li>
+</ul>
+
+
+<hr />
+<ul>
+    
+    <li class="toctree-l1"><a href="https://github.com/SwissDataScienceCenter/renku-python">renku-python@GitHub</a></li>
+    
+    <li class="toctree-l1"><a href="https://pypi.python.org/pypi/renku/">renku-python@PyPI</a></li>
+    
+    <li class="toctree-l1"><a href="https://github.com/SwissDataScienceCenter/renku">renku@GitHub</a></li>
+    
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017-2020, Swiss Data Science Center.
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

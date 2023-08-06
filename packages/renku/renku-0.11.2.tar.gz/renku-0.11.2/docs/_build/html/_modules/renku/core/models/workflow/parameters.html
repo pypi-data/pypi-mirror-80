@@ -1,0 +1,487 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>renku.core.models.workflow.parameters &#8212; Renku 0.10.5.dev72+dirty documentation</title>
+    <link rel="stylesheet" href="../../../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+  
+   
+  <link rel="stylesheet" href="../../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900,300italic,400italic" rel="stylesheet" type="text/css">
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  </head><body>
+  <div class="git-ribbon">
+    <a href="http://github.com/SwissDataScienceCenter" rel="me">Join us on GitHub</a>
+  </div>
+  
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for renku.core.models.workflow.parameters</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1">#</span>
+<span class="c1"># Copyright 2018-2020 - Swiss Data Science Center (SDSC)</span>
+<span class="c1"># A partnership between École Polytechnique Fédérale de Lausanne (EPFL) and</span>
+<span class="c1"># Eidgenössische Technische Hochschule Zürich (ETHZ).</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="sd">&quot;&quot;&quot;Represents a workflow template.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">uuid</span>
+
+<span class="kn">import</span> <span class="nn">attr</span>
+<span class="kn">from</span> <span class="nn">marshmallow</span> <span class="kn">import</span> <span class="n">EXCLUDE</span>
+
+<span class="kn">from</span> <span class="nn">renku.core.models.calamus</span> <span class="kn">import</span> <span class="n">JsonLDSchema</span><span class="p">,</span> <span class="n">Nested</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">rdfs</span><span class="p">,</span> <span class="n">renku</span>
+<span class="kn">from</span> <span class="nn">renku.core.models.entities</span> <span class="kn">import</span> <span class="n">CollectionSchema</span><span class="p">,</span> <span class="n">EntitySchema</span>
+
+
+<div class="viewcode-block" id="MappedIOStream"><a class="viewcode-back" href="../../../../../models/workflow.html#renku.core.models.workflow.parameters.MappedIOStream">[docs]</a><span class="nd">@attr</span><span class="o">.</span><span class="n">s</span><span class="p">(</span>
+    <span class="nb">cmp</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="k">class</span> <span class="nc">MappedIOStream</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Represents an IO stream (stdin, stdout, stderr).&quot;&quot;&quot;</span>
+
+    <span class="n">client</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">_id</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">_label</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">STREAMS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;stdin&#39;</span><span class="p">,</span> <span class="s1">&#39;stdout&#39;</span><span class="p">,</span> <span class="s1">&#39;stderr&#39;</span><span class="p">]</span>
+
+    <span class="n">stream_type</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span>
+        <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
+        <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+
+<div class="viewcode-block" id="MappedIOStream.generate_id"><a class="viewcode-back" href="../../../../../models/workflow.html#renku.core.models.workflow.parameters.MappedIOStream.generate_id">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">generate_id</span><span class="p">(</span><span class="n">run_id</span><span class="p">,</span> <span class="n">stream_type</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Generate an id for a mapped stream.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">/mappedstreams/</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">run_id</span><span class="p">,</span> <span class="n">stream_type</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MappedIOStream.default_label"><a class="viewcode-back" href="../../../../../models/workflow.html#renku.core.models.workflow.parameters.MappedIOStream.default_label">[docs]</a>    <span class="k">def</span> <span class="nf">default_label</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set default label.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s1">&#39;Stream mapping for stream &quot;</span><span class="si">{}</span><span class="s1">&quot;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stream_type</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">__attrs_post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Post-init hook.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_label</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_label</span><span class="p">()</span>
+
+<div class="viewcode-block" id="MappedIOStream.from_jsonld"><a class="viewcode-back" href="../../../../../models/workflow.html#renku.core.models.workflow.parameters.MappedIOStream.from_jsonld">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_jsonld</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create an instance from JSON-LD data.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="bp">cls</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">data</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">MappedIOStreamSchema</span><span class="p">()</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MappedIOStream.as_jsonld"><a class="viewcode-back" href="../../../../../models/workflow.html#renku.core.models.workflow.parameters.MappedIOStream.as_jsonld">[docs]</a>    <span class="k">def</span> <span class="nf">as_jsonld</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create JSON-LD.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">MappedIOStreamSchema</span><span class="p">()</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="CommandParameter"><a class="viewcode-back" href="../../../../../models/workflow.html#renku.core.models.workflow.parameters.CommandParameter">[docs]</a><span class="nd">@attr</span><span class="o">.</span><span class="n">s</span><span class="p">(</span>
+    <span class="nb">cmp</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="k">class</span> <span class="nc">CommandParameter</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Represents a parameter for an execution template.&quot;&quot;&quot;</span>
+
+    <span class="n">_id</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">_label</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">position</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span>
+        <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
+        <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">prefix</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span>
+        <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
+        <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">sanitized_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return ``_id`` sanitized for use in non-jsonld contexts.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="s1">&#39;step&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;/&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">4</span><span class="p">:])</span>
+        <span class="k">return</span> <span class="s1">&#39;/&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">:])</span></div>
+
+
+<div class="viewcode-block" id="CommandArgument"><a class="viewcode-back" href="../../../../../models/workflow.html#renku.core.models.workflow.parameters.CommandArgument">[docs]</a><span class="nd">@attr</span><span class="o">.</span><span class="n">s</span><span class="p">(</span>
+    <span class="nb">cmp</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="k">class</span> <span class="nc">CommandArgument</span><span class="p">(</span><span class="n">CommandParameter</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;An argument to a command that is neither input nor output.&quot;&quot;&quot;</span>
+
+    <span class="n">value</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span>
+        <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
+        <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+
+<div class="viewcode-block" id="CommandArgument.generate_id"><a class="viewcode-back" href="../../../../../models/workflow.html#renku.core.models.workflow.parameters.CommandArgument.generate_id">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">generate_id</span><span class="p">(</span><span class="n">run_id</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Generate an id for an argument.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">position</span><span class="p">:</span>
+            <span class="n">id_</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">position</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">id_</span> <span class="o">=</span> <span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()</span><span class="o">.</span><span class="n">hex</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">/arguments/</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">run_id</span><span class="p">,</span> <span class="n">id_</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CommandArgument.default_label"><a class="viewcode-back" href="../../../../../models/workflow.html#renku.core.models.workflow.parameters.CommandArgument.default_label">[docs]</a>    <span class="k">def</span> <span class="nf">default_label</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set default label.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s1">&#39;Command Argument &quot;</span><span class="si">{}</span><span class="s1">&quot;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CommandArgument.to_argv"><a class="viewcode-back" href="../../../../../models/workflow.html#renku.core.models.workflow.parameters.CommandArgument.to_argv">[docs]</a>    <span class="k">def</span> <span class="nf">to_argv</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;String representation (sames as cmd argument).&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">prefix</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">prefix</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">):</span>
+                <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">prefix</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">]</span>
+            <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">{}{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">prefix</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)]</span>
+
+        <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">]</span></div>
+
+    <span class="k">def</span> <span class="nf">__attrs_post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Post-init hook.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_label</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_label</span><span class="p">()</span>
+
+<div class="viewcode-block" id="CommandArgument.from_jsonld"><a class="viewcode-back" href="../../../../../models/workflow.html#renku.core.models.workflow.parameters.CommandArgument.from_jsonld">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_jsonld</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create an instance from JSON-LD data.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="bp">cls</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">data</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">CommandArgumentSchema</span><span class="p">()</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CommandArgument.as_jsonld"><a class="viewcode-back" href="../../../../../models/workflow.html#renku.core.models.workflow.parameters.CommandArgument.as_jsonld">[docs]</a>    <span class="k">def</span> <span class="nf">as_jsonld</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create JSON-LD.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CommandArgumentSchema</span><span class="p">()</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="CommandInput"><a class="viewcode-back" href="../../../../../models/workflow.html#renku.core.models.workflow.parameters.CommandInput">[docs]</a><span class="nd">@attr</span><span class="o">.</span><span class="n">s</span><span class="p">(</span>
+    <span class="nb">cmp</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="k">class</span> <span class="nc">CommandInput</span><span class="p">(</span><span class="n">CommandParameter</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;An input to a command.&quot;&quot;&quot;</span>
+
+    <span class="n">consumes</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="p">)</span>
+
+    <span class="n">mapped_to</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<div class="viewcode-block" id="CommandInput.generate_id"><a class="viewcode-back" href="../../../../../models/workflow.html#renku.core.models.workflow.parameters.CommandInput.generate_id">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">generate_id</span><span class="p">(</span><span class="n">run_id</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Generate an id for an argument.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">position</span><span class="p">:</span>
+            <span class="n">id_</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">position</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">id_</span> <span class="o">=</span> <span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()</span><span class="o">.</span><span class="n">hex</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">/inputs/</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">run_id</span><span class="p">,</span> <span class="n">id_</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CommandInput.default_label"><a class="viewcode-back" href="../../../../../models/workflow.html#renku.core.models.workflow.parameters.CommandInput.default_label">[docs]</a>    <span class="k">def</span> <span class="nf">default_label</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set default label.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s1">&#39;Command Input &quot;</span><span class="si">{}</span><span class="s1">&quot;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">consumes</span><span class="o">.</span><span class="n">path</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CommandInput.to_argv"><a class="viewcode-back" href="../../../../../models/workflow.html#renku.core.models.workflow.parameters.CommandInput.to_argv">[docs]</a>    <span class="k">def</span> <span class="nf">to_argv</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;String representation (sames as cmd argument).&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">prefix</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">prefix</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">):</span>
+                <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">prefix</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">consumes</span><span class="o">.</span><span class="n">path</span><span class="p">]</span>
+            <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">{}{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">prefix</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">consumes</span><span class="o">.</span><span class="n">path</span><span class="p">)]</span>
+
+        <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">consumes</span><span class="o">.</span><span class="n">path</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="CommandInput.to_stream_repr"><a class="viewcode-back" href="../../../../../models/workflow.html#renku.core.models.workflow.parameters.CommandInput.to_stream_repr">[docs]</a>    <span class="k">def</span> <span class="nf">to_stream_repr</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Input stream representation.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">mapped_to</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;&#39;</span>
+
+        <span class="k">return</span> <span class="s1">&#39; &lt; </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">consumes</span><span class="o">.</span><span class="n">path</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">__attrs_post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Post-init hook.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_label</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_label</span><span class="p">()</span>
+
+<div class="viewcode-block" id="CommandInput.from_jsonld"><a class="viewcode-back" href="../../../../../models/workflow.html#renku.core.models.workflow.parameters.CommandInput.from_jsonld">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_jsonld</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create an instance from JSON-LD data.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="bp">cls</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">data</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">CommandInputSchema</span><span class="p">()</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CommandInput.as_jsonld"><a class="viewcode-back" href="../../../../../models/workflow.html#renku.core.models.workflow.parameters.CommandInput.as_jsonld">[docs]</a>    <span class="k">def</span> <span class="nf">as_jsonld</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create JSON-LD.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CommandInputSchema</span><span class="p">()</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="CommandOutput"><a class="viewcode-back" href="../../../../../models/workflow.html#renku.core.models.workflow.parameters.CommandOutput">[docs]</a><span class="nd">@attr</span><span class="o">.</span><span class="n">s</span><span class="p">(</span>
+    <span class="nb">cmp</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="k">class</span> <span class="nc">CommandOutput</span><span class="p">(</span><span class="n">CommandParameter</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;An output of a command.&quot;&quot;&quot;</span>
+
+    <span class="n">create_folder</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+
+    <span class="n">produces</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">mapped_to</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<div class="viewcode-block" id="CommandOutput.generate_id"><a class="viewcode-back" href="../../../../../models/workflow.html#renku.core.models.workflow.parameters.CommandOutput.generate_id">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">generate_id</span><span class="p">(</span><span class="n">run_id</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Generate an id for an argument.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">position</span><span class="p">:</span>
+            <span class="n">id_</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">position</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">id_</span> <span class="o">=</span> <span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()</span><span class="o">.</span><span class="n">hex</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">/outputs/</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">run_id</span><span class="p">,</span> <span class="n">id_</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CommandOutput.default_label"><a class="viewcode-back" href="../../../../../models/workflow.html#renku.core.models.workflow.parameters.CommandOutput.default_label">[docs]</a>    <span class="k">def</span> <span class="nf">default_label</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set default label.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s1">&#39;Command Output &quot;</span><span class="si">{}</span><span class="s1">&quot;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">produces</span><span class="o">.</span><span class="n">path</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CommandOutput.to_argv"><a class="viewcode-back" href="../../../../../models/workflow.html#renku.core.models.workflow.parameters.CommandOutput.to_argv">[docs]</a>    <span class="k">def</span> <span class="nf">to_argv</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;String representation (sames as cmd argument).&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">prefix</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">prefix</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">):</span>
+                <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">prefix</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">produces</span><span class="o">.</span><span class="n">path</span><span class="p">]</span>
+            <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">{}{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">prefix</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">produces</span><span class="o">.</span><span class="n">path</span><span class="p">)]</span>
+
+        <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">produces</span><span class="o">.</span><span class="n">path</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="CommandOutput.to_stream_repr"><a class="viewcode-back" href="../../../../../models/workflow.html#renku.core.models.workflow.parameters.CommandOutput.to_stream_repr">[docs]</a>    <span class="k">def</span> <span class="nf">to_stream_repr</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Input stream representation.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">mapped_to</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;&#39;</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mapped_to</span><span class="o">.</span><span class="n">stream_type</span> <span class="o">==</span> <span class="s1">&#39;stdout&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39; &gt; </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">produces</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="s1">&#39; 2&gt; </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">produces</span><span class="o">.</span><span class="n">path</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">__attrs_post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Post-init hook.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_label</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_label</span><span class="p">()</span>
+
+<div class="viewcode-block" id="CommandOutput.from_jsonld"><a class="viewcode-back" href="../../../../../models/workflow.html#renku.core.models.workflow.parameters.CommandOutput.from_jsonld">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_jsonld</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create an instance from JSON-LD data.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="bp">cls</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">data</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">CommandOutputSchema</span><span class="p">()</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CommandOutput.as_jsonld"><a class="viewcode-back" href="../../../../../models/workflow.html#renku.core.models.workflow.parameters.CommandOutput.as_jsonld">[docs]</a>    <span class="k">def</span> <span class="nf">as_jsonld</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create JSON-LD.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">CommandOutputSchema</span><span class="p">()</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="MappedIOStreamSchema"><a class="viewcode-back" href="../../../../../models/workflow.html#renku.core.models.workflow.parameters.MappedIOStreamSchema">[docs]</a><span class="k">class</span> <span class="nc">MappedIOStreamSchema</span><span class="p">(</span><span class="n">JsonLDSchema</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;MappedIOStream schema.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="MappedIOStreamSchema.Meta"><a class="viewcode-back" href="../../../../../models/workflow.html#renku.core.models.workflow.parameters.MappedIOStreamSchema.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Meta class.&quot;&quot;&quot;</span>
+
+        <span class="n">rdf_type</span> <span class="o">=</span> <span class="p">[</span><span class="n">renku</span><span class="o">.</span><span class="n">IOStream</span><span class="p">]</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">MappedIOStream</span>
+        <span class="n">unknown</span> <span class="o">=</span> <span class="n">EXCLUDE</span></div>
+
+    <span class="n">_id</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Id</span><span class="p">(</span><span class="n">init_name</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">)</span>
+    <span class="n">_label</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">rdfs</span><span class="o">.</span><span class="n">label</span><span class="p">,</span> <span class="n">init_name</span><span class="o">=</span><span class="s1">&#39;label&#39;</span><span class="p">)</span>
+    <span class="n">stream_type</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">renku</span><span class="o">.</span><span class="n">streamType</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="CommandParameterSchema"><a class="viewcode-back" href="../../../../../models/workflow.html#renku.core.models.workflow.parameters.CommandParameterSchema">[docs]</a><span class="k">class</span> <span class="nc">CommandParameterSchema</span><span class="p">(</span><span class="n">JsonLDSchema</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;CommandParameter schema.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="CommandParameterSchema.Meta"><a class="viewcode-back" href="../../../../../models/workflow.html#renku.core.models.workflow.parameters.CommandParameterSchema.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Meta class.&quot;&quot;&quot;</span>
+
+        <span class="n">rdf_type</span> <span class="o">=</span> <span class="p">[</span><span class="n">renku</span><span class="o">.</span><span class="n">CommandParameter</span><span class="p">]</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">CommandParameter</span>
+        <span class="n">unknown</span> <span class="o">=</span> <span class="n">EXCLUDE</span></div>
+
+    <span class="n">_id</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Id</span><span class="p">(</span><span class="n">init_name</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">)</span>
+    <span class="n">_label</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">rdfs</span><span class="o">.</span><span class="n">label</span><span class="p">,</span> <span class="n">init_name</span><span class="o">=</span><span class="s1">&#39;label&#39;</span><span class="p">)</span>
+    <span class="n">position</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="n">renku</span><span class="o">.</span><span class="n">position</span><span class="p">,</span> <span class="n">missing</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">prefix</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">renku</span><span class="o">.</span><span class="n">prefix</span><span class="p">,</span> <span class="n">missing</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="CommandArgumentSchema"><a class="viewcode-back" href="../../../../../models/workflow.html#renku.core.models.workflow.parameters.CommandArgumentSchema">[docs]</a><span class="k">class</span> <span class="nc">CommandArgumentSchema</span><span class="p">(</span><span class="n">CommandParameterSchema</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;CommandArgument schema.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="CommandArgumentSchema.Meta"><a class="viewcode-back" href="../../../../../models/workflow.html#renku.core.models.workflow.parameters.CommandArgumentSchema.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Meta class.&quot;&quot;&quot;</span>
+
+        <span class="n">rdf_type</span> <span class="o">=</span> <span class="p">[</span><span class="n">renku</span><span class="o">.</span><span class="n">CommandArgument</span><span class="p">]</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">CommandArgument</span>
+        <span class="n">unknown</span> <span class="o">=</span> <span class="n">EXCLUDE</span></div>
+
+    <span class="n">value</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">renku</span><span class="o">.</span><span class="n">value</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="CommandInputSchema"><a class="viewcode-back" href="../../../../../models/workflow.html#renku.core.models.workflow.parameters.CommandInputSchema">[docs]</a><span class="k">class</span> <span class="nc">CommandInputSchema</span><span class="p">(</span><span class="n">CommandParameterSchema</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;CommandArgument schema.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="CommandInputSchema.Meta"><a class="viewcode-back" href="../../../../../models/workflow.html#renku.core.models.workflow.parameters.CommandInputSchema.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Meta class.&quot;&quot;&quot;</span>
+
+        <span class="n">rdf_type</span> <span class="o">=</span> <span class="p">[</span><span class="n">renku</span><span class="o">.</span><span class="n">CommandInput</span><span class="p">]</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">CommandInput</span>
+        <span class="n">unknown</span> <span class="o">=</span> <span class="n">EXCLUDE</span></div>
+
+    <span class="n">consumes</span> <span class="o">=</span> <span class="n">Nested</span><span class="p">(</span><span class="n">renku</span><span class="o">.</span><span class="n">consumes</span><span class="p">,</span> <span class="p">[</span><span class="n">EntitySchema</span><span class="p">,</span> <span class="n">CollectionSchema</span><span class="p">])</span>
+    <span class="n">mapped_to</span> <span class="o">=</span> <span class="n">Nested</span><span class="p">(</span><span class="n">renku</span><span class="o">.</span><span class="n">mappedTo</span><span class="p">,</span> <span class="n">MappedIOStreamSchema</span><span class="p">,</span> <span class="n">missing</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="CommandOutputSchema"><a class="viewcode-back" href="../../../../../models/workflow.html#renku.core.models.workflow.parameters.CommandOutputSchema">[docs]</a><span class="k">class</span> <span class="nc">CommandOutputSchema</span><span class="p">(</span><span class="n">CommandParameterSchema</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;CommandArgument schema.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="CommandOutputSchema.Meta"><a class="viewcode-back" href="../../../../../models/workflow.html#renku.core.models.workflow.parameters.CommandOutputSchema.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Meta class.&quot;&quot;&quot;</span>
+
+        <span class="n">rdf_type</span> <span class="o">=</span> <span class="p">[</span><span class="n">renku</span><span class="o">.</span><span class="n">CommandOutput</span><span class="p">]</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">CommandOutput</span>
+        <span class="n">unknown</span> <span class="o">=</span> <span class="n">EXCLUDE</span></div>
+
+    <span class="n">create_folder</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Boolean</span><span class="p">(</span><span class="n">renku</span><span class="o">.</span><span class="n">createFolder</span><span class="p">)</span>
+    <span class="n">produces</span> <span class="o">=</span> <span class="n">Nested</span><span class="p">(</span><span class="n">renku</span><span class="o">.</span><span class="n">produces</span><span class="p">,</span> <span class="p">[</span><span class="n">EntitySchema</span><span class="p">,</span> <span class="n">CollectionSchema</span><span class="p">])</span>
+    <span class="n">mapped_to</span> <span class="o">=</span> <span class="n">Nested</span><span class="p">(</span><span class="n">renku</span><span class="o">.</span><span class="n">mappedTo</span><span class="p">,</span> <span class="n">MappedIOStreamSchema</span><span class="p">,</span> <span class="n">missing</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></div>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../../../../index.html">
+    <h1 class="logo logo-name">
+      Renku
+      <span class="renku">連句</span>
+    </h1>
+  </a>
+</p>
+
+
+<p class="blurb">Python API and CLI for the Renku platform.</p>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../license.html#authors">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../changes.html">Changes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../glossary.html">Glossary</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../comparison.html">How does this compare …</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../commands.html">Renku Command Line</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../models/index.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../management.html">Low-level API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../plugins.html">Plugin Support</a></li>
+</ul>
+
+
+<hr />
+<ul>
+    
+    <li class="toctree-l1"><a href="https://github.com/SwissDataScienceCenter/renku-python">renku-python@GitHub</a></li>
+    
+    <li class="toctree-l1"><a href="https://pypi.python.org/pypi/renku/">renku-python@PyPI</a></li>
+    
+    <li class="toctree-l1"><a href="https://github.com/SwissDataScienceCenter/renku">renku@GitHub</a></li>
+    
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017-2020, Swiss Data Science Center.
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

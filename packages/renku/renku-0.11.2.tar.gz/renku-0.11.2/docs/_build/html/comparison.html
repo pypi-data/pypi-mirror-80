@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How does this compare … &#8212; Renku 0.10.5.dev72+dirty documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Renku Command Line" href="commands.html" />
+    <link rel="prev" title="Glossary" href="glossary.html" />
+  
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900,300italic,400italic" rel="stylesheet" type="text/css">
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  </head><body>
+  <div class="git-ribbon">
+    <a href="http://github.com/SwissDataScienceCenter" rel="me">Join us on GitHub</a>
+  </div>
+  
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="how-does-this-compare">
+<span id="comparison"></span><h1>How does this compare …<a class="headerlink" href="#how-does-this-compare" title="Permalink to this headline">¶</a></h1>
+<p>There are many tools that can be used for doing your day-to-day work. Renku
+is not <strong>a silver bullet</strong> or <strong>a magic wand</strong> for making your results
+reproducible.</p>
+<div class="section" id="to-makefile">
+<h2>… to <code class="docutils literal notranslate"><span class="pre">Makefile</span></code><a class="headerlink" href="#to-makefile" title="Permalink to this headline">¶</a></h2>
+<p>If you are using <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> to generate your <a class="reference internal" href="glossary.html#term-outputs"><span class="xref std std-term">outputs</span></a> you are on a
+good path. However you might be missing versioning of your past executions.</p>
+<p>Renku internally builds rules similar to those defined in a <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> and
+makes sure that all files are saved before running a <a class="reference internal" href="glossary.html#term-tool"><span class="xref std std-term">tool</span></a>.</p>
+<p>Running the following <code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">run</span></code> commands</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku run <span class="nb">echo</span> <span class="nb">test</span> &gt; foo
+<span class="gp">$</span> renku run wc -c &lt; foo &gt; foo.wc
+</pre></div>
+</div>
+<p>is equivalent to this simple <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>.</p>
+<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="nf">foo</span><span class="o">:</span>
+  @echo <span class="nb">test</span> &gt; foo
+
+<span class="nf">foo.wc</span><span class="o">:</span> <span class="n">foo</span>
+  @wc -c &lt; foo &gt; foo.wc
+</pre></div>
+</div>
+<p>Renku also makes sure that if any of the <a class="reference internal" href="glossary.html#term-inputs"><span class="xref std std-term">inputs</span></a> are modified only
+the necessary “rules” are invoked. In addition, <cite>make</cite> does not run the rule if all
+dependencies are older then the targets.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> renku run <span class="nb">echo</span> second &gt; foo
+<span class="gp">$</span> renku status
+<span class="go">On branch master</span>
+<span class="go">Files generated from newer inputs:</span>
+<span class="go">  (use &quot;renku log [&lt;file&gt;...]&quot; to see the full lineage)</span>
+<span class="go">  (use &quot;renku update [&lt;file&gt;...]&quot; to generate the file from its latest inputs)</span>
+
+<span class="go">       foo.wc: foo#deadbeef</span>
+
+<span class="gp">$</span> renku update foo.wc
+<span class="gp">$</span> renku status
+<span class="go">On branch master</span>
+<span class="go">All files were generated from the latest inputs.</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As a <strong>bonus</strong> the <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> can be generated by running
+<code class="docutils literal notranslate"><span class="pre">renku</span> <span class="pre">log</span> <span class="pre">--format</span> <span class="pre">Makefile</span> <span class="pre">foo.wc</span></code> command.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="index.html">
+    <h1 class="logo logo-name">
+      Renku
+      <span class="renku">連句</span>
+    </h1>
+  </a>
+</p>
+
+
+<p class="blurb">Python API and CLI for the Renku platform.</p>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html#authors">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html">Changes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">How does this compare …</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#to-makefile">… to <code class="docutils literal notranslate"><span class="pre">Makefile</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="commands.html">Renku Command Line</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/index.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="management.html">Low-level API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plugins.html">Plugin Support</a></li>
+</ul>
+
+
+<hr />
+<ul>
+    
+    <li class="toctree-l1"><a href="https://github.com/SwissDataScienceCenter/renku-python">renku-python@GitHub</a></li>
+    
+    <li class="toctree-l1"><a href="https://pypi.python.org/pypi/renku/">renku-python@PyPI</a></li>
+    
+    <li class="toctree-l1"><a href="https://github.com/SwissDataScienceCenter/renku">renku@GitHub</a></li>
+    
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="glossary.html" title="previous chapter">Glossary</a></li>
+      <li>Next: <a href="commands.html" title="next chapter">Renku Command Line</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017-2020, Swiss Data Science Center.
+      
+      |
+      <a href="_sources/comparison.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
