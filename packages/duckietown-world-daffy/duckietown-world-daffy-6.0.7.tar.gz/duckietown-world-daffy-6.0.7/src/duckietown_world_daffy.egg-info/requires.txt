@@ -1,0 +1,15 @@
+numpy
+PyYAML
+networkx<3,>=2.2
+duckietown-serialization-ds1<2
+svgwrite
+PyGeometry-z6>=2.0.2
+beautifulsoup4>=4.6.3
+lxml
+pillow
+future
+scipy
+plotly
+oyaml
+markdown
+zuper-typing-z6>=6.0.66
