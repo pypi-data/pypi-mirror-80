@@ -1,0 +1,14 @@
+MANIFEST.in
+README.md
+setup.py
+apoor/__init__.py
+apoor.egg-info/PKG-INFO
+apoor.egg-info/SOURCES.txt
+apoor.egg-info/dependency_links.txt
+apoor.egg-info/not-zip-safe
+apoor.egg-info/requires.txt
+apoor.egg-info/top_level.txt
+apoor/data/__init__.py
+apoor/data/_data/boston.csv.gz
+apoor/data/_data/iris.csv.gz
+docs/requirements.txt
