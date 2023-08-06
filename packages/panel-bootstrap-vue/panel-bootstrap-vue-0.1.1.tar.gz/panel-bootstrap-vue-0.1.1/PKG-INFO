@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: panel-bootstrap-vue
+Version: 0.1.1
+Summary: Use bootstrap-vue VueJs components supporting Bootstrap 4 in Panel templates.
+License: Apache-2.0
+Author: Paulo Lopes
+Author-email: paulopes00@gmail.com
+Requires-Python: >=3.6,<4.0
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: panel (>=0.9.7,<0.10.0)
+Requires-Dist: panel-components (>=0.1.0,<0.2.0)
