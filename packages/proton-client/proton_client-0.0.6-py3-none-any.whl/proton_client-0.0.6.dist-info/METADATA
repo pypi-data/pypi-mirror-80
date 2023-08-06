@@ -1,0 +1,27 @@
+Metadata-Version: 2.1
+Name: proton-client
+Version: 0.0.6
+Summary: Proton Technologies API wrapper
+Home-page: https://github.com/ProtonMail/proton-python-client
+Author: Proton Technologies
+Author-email: contact@protonmail.com
+License: MIT
+Platform: OS Independent
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python
+Classifier: Topic :: Security
+Requires-Dist: bcrypt
+Requires-Dist: gnupg
+Requires-Dist: pyopenssl
+Requires-Dist: requests
+
+
+
+This package, originally forked from python-srp module implements a simple
+wrapper to the Proton Technologies API, abstracting from the SRP authentication.
+
+
