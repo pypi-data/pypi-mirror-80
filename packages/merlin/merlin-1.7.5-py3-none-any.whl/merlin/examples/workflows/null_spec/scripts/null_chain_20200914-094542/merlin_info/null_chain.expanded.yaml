@@ -1,0 +1,90 @@
+description: 
+   name: null_chain
+   description: |
+      Run N_SAMPLES steps of TIME seconds each at CONC concurrency.
+      May be used to measure overhead in merlin.
+      Iterates thru a chain of workflows.
+
+batch: 
+   type: slurm
+   dry_run: false
+   shell: /bin/bash
+
+env: 
+   variables: 
+      OUTPUT_PATH: ./
+      TIME: 1000
+      N_SAMPLES: 100000
+      MAX_SAMPLES: 100000
+      CONC: 4
+      RUN_ID: 999
+      N_WORK: 1
+      QUEUE: queue
+      WORKER: worker_s100000_c1_r999
+
+   sources: 
+
+   labels: 
+
+   dependencies: 
+
+study: 
+   - name: null_step
+     description: exit immediately
+     run: 
+        cmd: |
+            #echo $(SAMPLE)
+            sleep 1000
+            exit 0
+        task_queue: queue
+        shell: /bin/bash
+        max_retries: 30
+
+   - name: verify
+     description: echo done
+     run: 
+        cmd: echo "Done"
+        depends: [null_step_*]
+        task_queue: queue
+        shell: /bin/bash
+        max_retries: 30
+
+   - name: launch_next
+     description: launch this workflow with different args
+     run: 
+        cmd: |
+            NEXT_SAMPLES=$((100000*10))
+            if ((NEXT_SAMPLES <= 100000)) ; then
+                echo "Starting next iteration"
+                cd /g/g13/bay1/merlin/merlin/examples/workflows/null_spec/scripts/null_chain_20200914-094542/../
+                time merlin run /g/g13/bay1/merlin/merlin/examples/workflows/null_spec/null_chain.yaml --vars N_SAMPLES=$NEXT_SAMPLES CONC=4 RUN_ID=999 N_WORK=1 QUEUE=queue TIME=1000 MAX_SAMPLES=100000
+            else
+                echo "Chain complete"
+            fi
+        depends: [verify]
+        task_queue: queue
+        shell: /bin/bash
+        max_retries: 30
+
+global.parameters: 
+
+merlin: 
+   resources: 
+      workers: 
+         worker_s100000_c1_r999: 
+            args: -O fair --prefetch-multiplier 1 -E -l info --concurrency 4 --logfile=%%p.log
+            steps: [all]
+            nodes: 
+            batch: 
+
+      task_server: celery
+      overlap: false
+
+   samples: 
+      generate: 
+         cmd: python3 /g/g13/bay1/merlin/merlin/examples/workflows/null_spec/scripts/make_samples.py --number 100000 --filepath /g/g13/bay1/merlin/merlin/examples/workflows/null_spec/scripts/null_chain_20200914-094542/merlin_info/samples_file.npy
+
+      file: /g/g13/bay1/merlin/merlin/examples/workflows/null_spec/scripts/null_chain_20200914-094542/merlin_info/samples_file.npy
+      column_labels: [SAMPLE]
+      level_max_dirs: 25
+
