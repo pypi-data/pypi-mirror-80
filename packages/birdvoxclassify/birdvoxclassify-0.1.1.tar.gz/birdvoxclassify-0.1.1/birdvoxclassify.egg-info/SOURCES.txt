@@ -1,0 +1,17 @@
+README.md
+setup.cfg
+setup.py
+birdvoxclassify/__init__.py
+birdvoxclassify/__main__.py
+birdvoxclassify/birdvoxclassify_exceptions.py
+birdvoxclassify/cli.py
+birdvoxclassify/core.py
+birdvoxclassify/version.py
+birdvoxclassify.egg-info/PKG-INFO
+birdvoxclassify.egg-info/SOURCES.txt
+birdvoxclassify.egg-info/dependency_links.txt
+birdvoxclassify.egg-info/entry_points.txt
+birdvoxclassify.egg-info/requires.txt
+birdvoxclassify.egg-info/top_level.txt
+birdvoxclassify/resources/taxonomy/tv1fine.json
+birdvoxclassify/resources/taxonomy/tv1hierarchical.json
