@@ -1,0 +1,57 @@
+Metadata-Version: 2.1
+Name: aiodagpi
+Version: 0.1.1
+Summary: An asynchronous python API wrapper for Dagpi : https://dagpi.tk
+Home-page: https://github.com/DevilJamJar/aiodagpi
+Author: Raj Sharma
+Author-email: yrsharma@icloud.com
+License: MIT
+Platform: UNKNOWN
+Classifier: Development Status :: 1 - Planning
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Framework :: AsyncIO
+Classifier: Intended Audience :: Developers
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Dist: asyncio
+Requires-Dist: aiohttp
+
+aiodagpi
+========
+
+.. image:: https://img.shields.io/pypi/v/aiodagpi.svg
+    :target: https://pypi.python.org/pypi/aiodagpi
+    :alt: Latest PyPI version
+
+An asynchronous python API wrapper for Dagpi : https://dagpi.tk
+
+Usage
+-----
+
+CURRENTLY IN PLANNING, PAGE USED FOR RESERVATION.
+
+Installation
+------------
+
+Requirements
+^^^^^^^^^^^^
+
+Compatibility
+-------------
+
+Licence
+-------
+
+Authors
+-------
+
+`aiodagpi` was written by `Raj Sharma <yrsharma@icloud.com>`_.
+
+
