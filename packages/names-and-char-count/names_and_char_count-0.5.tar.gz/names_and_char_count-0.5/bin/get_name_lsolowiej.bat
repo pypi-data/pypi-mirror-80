@@ -1,0 +1,1 @@
+python get_name_lsolowiej.py

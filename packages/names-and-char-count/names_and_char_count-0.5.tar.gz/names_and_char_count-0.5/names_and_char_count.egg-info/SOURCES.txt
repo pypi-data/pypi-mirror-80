@@ -1,0 +1,10 @@
+MANIFEST.in
+setup.py
+bin/get_name_lsolowiej.bat
+bin/get_name_lsolowiej.py
+namelsolowiej/__init__.py
+namelsolowiej/lsolowiej.py
+names_and_char_count.egg-info/PKG-INFO
+names_and_char_count.egg-info/SOURCES.txt
+names_and_char_count.egg-info/dependency_links.txt
+names_and_char_count.egg-info/top_level.txt
