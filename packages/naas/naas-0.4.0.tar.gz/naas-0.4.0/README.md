@@ -1,0 +1,46 @@
+# Naas (Notebooks As Automated Services)
+
+Schedule notebooks, to automate all your tasks.
+
+Use the power of scripting in the cloud.
+Whenever you need it (even when you sleep).
+
+* Schedule your scripts
+* Use Notebooks as API
+* Share assets securely
+
+## Install
+
+`pip3 install naas`
+
+
+# DEVELOPMENT
+
+## Install
+
+`pip3 install -r requirements.txt`
+
+## Run test 
+
+`pytest -x`  
+
+## Test local server
+
+`./test_runner.sh`
+
+open manager :
+
+`localhost:5000/`
+
+## Check lint
+
+`python3 -m black naas` format better
+`python3 -m flake8 naas` check if any left error
+
+## Publish
+
+Allow easy deploy by setting password in keyring
+`python3 -m keyring set https://upload.pypi.org/legacy/ bobapp`
+
+Then publish
+`publish.sh`
