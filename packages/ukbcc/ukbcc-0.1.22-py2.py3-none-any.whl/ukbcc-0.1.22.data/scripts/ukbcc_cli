@@ -1,0 +1,6 @@
+#!python
+
+
+from ukbcc.main import main
+
+main()
