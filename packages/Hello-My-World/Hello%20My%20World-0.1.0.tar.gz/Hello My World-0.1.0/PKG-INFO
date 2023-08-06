@@ -1,0 +1,76 @@
+Metadata-Version: 2.1
+Name: Hello My World
+Version: 0.1.0
+Summary: A simple package for python
+Home-page: UNKNOWN
+Author: eocode
+Author-email: hola@eliasojedamedina.com
+License: UNKNOWN
+Project-URL: Homepage, https://github.com/eocode/hello_my_world
+Project-URL: Issue tracker, https://github.com/eocode/hello_my_world/issues
+Project-URL: Code, https://github.com/eocode/hello_my_world
+Project-URL: Documentation, https://github.com/eocode/hello_my_world/wiki
+Description: <div align="center">
+          <img width="64" src="https://avatars1.githubusercontent.com/u/66532658?s=400&u=f2457dec96897c5dbc843372ec8b325589ab84d5&v=4" alt="cookiecutter-django-rest">
+          <h3 align="center">Hello My World</h3>
+          <p align="center">
+            A simple package make with a cookiecutter
+          </p>
+          <p align="center">
+            <a href="https://www.python.org/">
+                <img src="https://img.shields.io/pypi/pyversions/Django.svg?style=flat-square"  alt="python badge">
+            </a>
+          </p>
+        </div>
+        
+        ## Demo
+        
+        Your demo project
+        
+        ## How to Install
+        
+        With pip
+        
+            pip install hello_my_world
+        
+        ## Basic Usage
+        
+        > Your docs
+        
+        ## How to contribute
+        
+        * Review our code of conduct
+        
+        # License
+        
+        View in https://github.com/eocode/Hello-my-world/blob/master/LICENSE
+        
+        # Changelog of Hello My World
+        
+        ## 0.1.0 (2020-09-24)
+        
+        * First version
+        
+        ---
+        
+        First release of Hello My World.---
+        
+        # Credits
+        
+        ---
+        
+        # Development Lead
+        
+        * Elias Ojeda Medina | @eocode - <hola@eliasojedamedina.com>
+        
+        # Contributors
+        
+        ---
+        
+        None yet. Why not be the first?
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
