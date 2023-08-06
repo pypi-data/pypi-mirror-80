@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: pyap
+Version: 0.3.0
+Summary: Pyap is an MIT Licensed text processing library, written in Python, for detecting and parsing addresses. Currently it supports USA, Canadian and British addresses.
+Home-page: UNKNOWN
+License: MIT
+Author: Vladimir Goncharov
+Author-email: vladimarius@gmail.com
+Requires-Python: >=2.7
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
