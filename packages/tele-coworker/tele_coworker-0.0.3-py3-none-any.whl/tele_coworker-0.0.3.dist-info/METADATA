@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: tele-coworker
+Version: 0.0.3
+Summary: test it
+Home-page: https://www.ctyun.cn/h5/home/
+Author: Zhennan Hu
+Author-email: huzn@chinatelecom.cn
+License: GNU General Public License v3.0
+Platform: UNKNOWN
+Requires-Dist: kazoo (==2.8.0)
+Requires-Dist: six (==1.15.0)
+Requires-Dist: Flask (==1.1.2)
+
+UNKNOWN
+
+
