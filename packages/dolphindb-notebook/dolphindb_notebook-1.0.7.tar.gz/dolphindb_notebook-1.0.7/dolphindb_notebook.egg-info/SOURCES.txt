@@ -1,0 +1,17 @@
+README.md
+setup.py
+dolphindb_notebook/__init__.py
+dolphindb_notebook/__main__.py
+dolphindb_notebook/creds.py
+dolphindb_notebook/kernel.json
+dolphindb_notebook/kernel.py
+dolphindb_notebook.egg-info/PKG-INFO
+dolphindb_notebook.egg-info/SOURCES.txt
+dolphindb_notebook.egg-info/dependency_links.txt
+dolphindb_notebook.egg-info/not-zip-safe
+dolphindb_notebook.egg-info/requires.txt
+dolphindb_notebook.egg-info/top_level.txt
+dolphindb_notebook/dolphindb_extension/description.yaml
+dolphindb_notebook/dolphindb_extension/main.js
+dolphindb_notebook/images/logo-32x32.png
+dolphindb_notebook/images/logo-64x64.png
