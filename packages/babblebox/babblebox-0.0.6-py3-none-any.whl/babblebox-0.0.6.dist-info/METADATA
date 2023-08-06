@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: babblebox
+Version: 0.0.6
+Summary: An Ai Driven ChatBot
+Home-page: https://github.com/MrSMechatronics/ChatBox
+Author: Mr.S Mechatronics
+Author-email: mr.smechatronics@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: <3.8
+Description-Content-Type: text/markdown
+Requires-Dist: pickle
+Requires-Dist: nltk
+Requires-Dist: numpy
+Requires-Dist: tflearn
+Requires-Dist: tensorflow
+
+UNKNOWN
+
+
