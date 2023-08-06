@@ -1,0 +1,294 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>microspeclib.internal.docstrings module &mdash; microspec  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="microspeclib.internal.emulator module" href="microspeclib.internal.emulator.html" />
+    <link rel="prev" title="microspeclib.internal package" href="microspeclib.internal.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> microspec
+          
+
+          
+            
+            <img src="_static/CHROMATION.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-read-this-documentation.html">How To Read This Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="writing-applications.html">Writing Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="microspeclib.simple.html">Dev-kit API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev-kit-API-guide.html">Dev-kit API Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-handle-timeouts.html">How to handle timeouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="under-the-hood.html">Under The Hood (How microspeclib works)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="microspec-dev.html">Contributing to MicroSpec</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">microspeclib</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="microspeclib.html">microspeclib package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="microspeclib.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="microspeclib.datatypes.html">microspeclib.datatypes package</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="microspeclib.internal.html">microspeclib.internal package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="microspeclib.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="bin.html">bin package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cfg.html">cfg package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tests.html">tests package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bin.html">bin package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cfg.html">cfg package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tests.html">tests package</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">microspec</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="modules.html">microspeclib</a> &raquo;</li>
+        
+          <li><a href="microspeclib.html">microspeclib package</a> &raquo;</li>
+        
+          <li><a href="microspeclib.internal.html">microspeclib.internal package</a> &raquo;</li>
+        
+      <li>microspeclib.internal.docstrings module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/microspeclib.internal.docstrings.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-microspeclib.internal.docstrings">
+<span id="microspeclib-internal-docstrings-module"></span><h1>microspeclib.internal.docstrings module<a class="headerlink" href="#module-microspeclib.internal.docstrings" title="Permalink to this headline">¶</a></h1>
+<p>Automated and static docstrings for json-generated classes, functions, and globals</p>
+<p>Most of the API objects in MicroSpecLib are dynamically generated from cfg/microspec.json.
+For example CommandSetBridgeLED, MicroSpecSimpleInterface.setBridgeLED, and LEDGreen are not
+defined in code, they are created by meta-class factories, so that if the configuration changes
+to permit new protocol commands and replies, the functions and classes will automatically update
+as well. However, this causes a problem for documentation.</p>
+<p>Great pains were taken to auto-generate the proper function and class signatures such as
+CommandSetBridgeLED(led_num=None, led_setting=None) rather than just CommandSetBridgeLED(*args,
+**kwargs), so that pydoc and sphinx could introspect and document them properly. However,
+the ONE thing that cannot be auto-generated is the per-function and per-class human-read
+documentation. It could go into yet another json file and be auto-generated, but that would
+be no more compact than making a file elsewhere for it. It could be written directly in
+sphinx doc/source/*.rst files, but then pydoc wouldn’t find them. So the only choice left
+is to make a separate internals docstrings library with the data in one place there, and
+that is what this module is. Luckily, it at least saves some repetition, since both
+CommandSetBridgeLED and MicroSpecSimpleInterface.setBridgeLED need the same documentation,
+for example.</p>
+<p>Thus, this module contains dictionaries for the different data and class types, and the datatype
+module imports and implements them when it instantiates the metaclasses and generates the
+globals. Since the json protocol and the documentation are separate, we must assume that one might
+get out of sync with the other, thus it is assumed that this documentation may be missing
+something. As such, implementers of these dictionaries should use DOC.get(value, None) and
+handle lack of documentation in a responsible way.</p>
+<p>The CHROMASPEC_DYNAMIC_DOC[“command”][“CommandGetBridgeLED”] contains that docstring, for example.</p>
+<p>And the _common global is used to hold common replacement patterns, to eliminate having to type
+the same things over and over below - they are replaced at the end of the module.</p>
+<div class="section" id="what-is-the-for-in-dt-blah">
+<h2>What is the ~ for in ~{dt}.blah?<a class="headerlink" href="#what-is-the-for-in-dt-blah" title="Permalink to this headline">¶</a></h2>
+<p>The “~” is short-hand to use the class name as the link text in the
+Sphinx HTML documentation.</p>
+<p>Without the ~, the link text is the fully qualified class name:
+microspeclib.blah.blah.classname.</p>
+<p>~ is shorthand compared with the usual syntax to specify link text:
+<code class="xref py py-class docutils literal notranslate"><span class="pre">classname</span></code></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>the link text is “classname”</p></li>
+<li><p>the actual link (the matching identifier) is in the “&lt;&gt;”</p></li>
+<li><p>the link text and &lt;&gt; must be separated by a space</p></li>
+</ul>
+</div></blockquote>
+<p>“:class:” is a cross-reference to a Python class. A hyperlink to that
+class’s documentation is created if the documentation exists.</p>
+<p>“:py:class:” and “:class:” are identical because Sphinx assumes the
+language is Python.</p>
+<p>Same goes for “:func:”, “:mod:”, etc.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="microspeclib.internal.emulator.html" class="btn btn-neutral float-right" title="microspeclib.internal.emulator module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="microspeclib.internal.html" class="btn btn-neutral float-left" title="microspeclib.internal package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Chromation Inc
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

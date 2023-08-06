@@ -1,0 +1,299 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>microspeclib &mdash; microspec  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="microspeclib package" href="microspeclib.html" />
+    <link rel="prev" title="Contributing to MicroSpec" href="microspec-dev.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> microspec
+          
+
+          
+            
+            <img src="_static/CHROMATION.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-read-this-documentation.html">How To Read This Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="writing-applications.html">Writing Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="microspeclib.simple.html">Dev-kit API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev-kit-API-guide.html">Dev-kit API Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-handle-timeouts.html">How to handle timeouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="under-the-hood.html">Under The Hood (How microspeclib works)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="microspec-dev.html">Contributing to MicroSpec</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">microspeclib</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="microspeclib.html">microspeclib package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bin.html">bin package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cfg.html">cfg package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tests.html">tests package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bin.html">bin package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cfg.html">cfg package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tests.html">tests package</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">microspec</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>microspeclib</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/modules.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="microspeclib">
+<h1>microspeclib<a class="headerlink" href="#microspeclib" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="microspeclib.html">microspeclib package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="microspeclib.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="microspeclib.datatypes.html">microspeclib.datatypes package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="microspeclib.datatypes.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="microspeclib.internal.html">microspeclib.internal package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="microspeclib.internal.html#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="microspeclib.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="microspeclib.cmdline.html">microspeclib.cmdline module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="microspeclib.exceptions.html">microspeclib.exceptions module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="microspeclib.expert.html">microspeclib.expert module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="microspeclib.logger.html">microspeclib.logger module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="microspeclib.simple.html">microspeclib.simple module (dev-kit API commands)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bin.html">bin package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bin.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="bin.microspec_cmdline.html">bin/microspec_cmdline.py</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="bin.microspec_cmdline.html#example-usage">Example Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="bin.microspec_emulator.html">bin/microspec_emulator.py</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="bin.microspec_emulator.html#example-usage">Example Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="bin.microspec_expert_example.html">bin/microspec_expert_example.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bin.microspec_simple_example.html">bin/microspec_simple_example.py</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cfg.html">cfg package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cfg.microspec.html">microspec.cfg (dev-kit API protocol)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tests.html">tests package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tests.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tests.conftest.html">tests.conftest module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tests.test_bytesio_stream.html">tests.test_bytesio_stream module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tests.test_emulated_stream.html">tests.test_emulated_stream module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tests.test_emulator.html">tests.test_emulator module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tests.test_expert_interface.html">tests.test_expert_interface module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tests.test_expert_interface_emulator.html">tests.test_expert_interface_emulator module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tests.test_expert_interface_hardware.html">tests.test_expert_interface_hardware module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tests.test_json.html">tests.test_json module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tests.test_payload.html">tests.test_payload module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tests.test_simple_interface.html">tests.test_simple_interface module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tests.test_simple_interface_emulator.html">tests.test_simple_interface_emulator module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tests.test_simple_interface_hardware.html">tests.test_simple_interface_hardware module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tests.test_util.html">tests.test_util module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tests.test.json.html">tests/test.cfg</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="microspeclib.html" class="btn btn-neutral float-right" title="microspeclib package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="microspec-dev.html" class="btn btn-neutral float-left" title="Contributing to MicroSpec" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Chromation Inc
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,466 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>bin/microspec_cmdline.py &mdash; microspec  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="bin/microspec_emulator.py" href="bin.microspec_emulator.html" />
+    <link rel="prev" title="bin package" href="bin.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> microspec
+          
+
+          
+            
+            <img src="_static/CHROMATION.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-read-this-documentation.html">How To Read This Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="writing-applications.html">Writing Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="microspeclib.simple.html">Dev-kit API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev-kit-API-guide.html">Dev-kit API Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-handle-timeouts.html">How to handle timeouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="under-the-hood.html">Under The Hood (How microspeclib works)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="microspec-dev.html">Contributing to MicroSpec</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">microspeclib</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="microspeclib.html">microspeclib package</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="bin.html">bin package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="bin.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">bin/microspec_cmdline.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bin.microspec_emulator.html">bin/microspec_emulator.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bin.microspec_expert_example.html">bin/microspec_expert_example.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bin.microspec_simple_example.html">bin/microspec_simple_example.py</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cfg.html">cfg package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tests.html">tests package</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="bin.html">bin package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="bin.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">bin/microspec_cmdline.py</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#example-usage">Example Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="bin.microspec_emulator.html">bin/microspec_emulator.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bin.microspec_expert_example.html">bin/microspec_expert_example.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bin.microspec_simple_example.html">bin/microspec_simple_example.py</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cfg.html">cfg package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tests.html">tests package</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">microspec</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="modules.html">microspeclib</a> &raquo;</li>
+        
+          <li><a href="bin.html">bin package</a> &raquo;</li>
+        
+      <li>bin/microspec_cmdline.py</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/bin.microspec_cmdline.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-bin.microspec_cmdline">
+<span id="bin-microspec-cmdline-py"></span><h1>bin/microspec_cmdline.py<a class="headerlink" href="#module-bin.microspec_cmdline" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="example-usage">
+<h2>Example Usage<a class="headerlink" href="#example-usage" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="get-help">
+<h3>Get help<a class="headerlink" href="#get-help" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ microspec-cmdline -h
+usage: cmdline.py [-h] [-d] [-v] [-t TIMEOUT] [-r REPEAT] [-w WAIT] [-e]
+                  [-f FILE] [-c]
+                  command [arguments [arguments ...]]
+
+Command line interface for MicroSpecLib
+
+positional arguments:
+  command               Command to send
+  arguments             Key=value pairs for command
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -d, --debug           Internal debugging trace
+  -v, --verbose         Verbose trace
+  -t TIMEOUT, --timeout TIMEOUT
+                        Timeout (seconds)
+  -r REPEAT, --repeat REPEAT
+                        Repeat N times, 1=once, 0=forever
+  -w WAIT, --wait WAIT  Wait inbetween repeats (seconds)
+  -e, --emulator        Spawn emulator and connect to that
+  -f FILE, --file FILE  File/socket/device to connect to, default=auto-detect
+                        hardware
+  -c, --csv             Print-format: &#39;default&#39; or &#39;csv&#39;
+
+List of commands and arguments:
+  Null
+  GetBridgeLED      led_num=xxx
+  SetBridgeLED      led_num=xxx led_setting=xxx
+  GetSensorLED      led_num=xxx
+  SetSensorLED      led_num=xxx led_setting=xxx
+  Reset
+  Verify
+  GetSensorConfig
+  SetSensorConfig   binning=xxx gain=xxx row_bitmap=xxx
+  GetExposure
+  SetExposure       cycles=xxx
+  CaptureFrame
+  AutoExposure
+  GetAutoExposeConfig
+  SetAutoExposeConfig max_tries=xxx start_pixel=xxx stop_pixel=xxx
+                      target=xxx target_tolerance=xxx max_exposure=xxx
+</pre></div>
+</div>
+</div>
+<div class="section" id="blink-the-debug-leds">
+<h3>Blink the debug LEDs<a class="headerlink" href="#blink-the-debug-leds" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="turn-bridge-led-red">
+<h4>Turn Bridge LED red<a class="headerlink" href="#turn-bridge-led-red" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ microspec-cmdline setbridgeled led_num=0 led_setting=2
+2020-08-20T22:08:46.530318,BridgeSetBridgeLED(status=0)
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Bridge <code class="docutils literal notranslate"><span class="pre">led0</span></code> is meant for the application to signal events
+during a measurement.</p>
+<p>For example, an application might turn <code class="docutils literal notranslate"><span class="pre">led0</span></code> red while the
+measurement suite is in progress and green when the suite is
+finished.</p>
+<p>Bridge <code class="docutils literal notranslate"><span class="pre">led0</span></code> defaults to <strong>on</strong> and <strong>green</strong> when the
+dev-kit powers on.</p>
+<p>If Bridge <code class="docutils literal notranslate"><span class="pre">led0</span></code> seems to change state on its own, please
+contact Chromation for a dev-kit firmware update.</p>
+</div>
+</div>
+<div class="section" id="turn-sensor-led0-and-led1-red">
+<h4>Turn Sensor LED0 and LED1 red<a class="headerlink" href="#turn-sensor-led0-and-led1-red" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ microspec-cmdline setsensorled led_num=0 led_setting=2
+2020-08-20T22:11:42.458425,SensorSetSensorLED(status=0)
+
+$ microspec-cmdline setsensorled led_num=1 led_setting=2
+2020-08-20T22:11:44.279106,SensorSetSensorLED(status=0)
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Sensor <code class="docutils literal notranslate"><span class="pre">led0</span></code> and <code class="docutils literal notranslate"><span class="pre">led1</span></code> are used by the dev-kit
+firmware. The API provides control over these LEDs, but
+controlling them in a <em>real</em> application is confusing because
+the dev-kit firmware is also using them to indicate status.
+Chromation recommends applications do not control these LEDs.</p>
+<p>Sensor <code class="docutils literal notranslate"><span class="pre">led1</span></code> indicates auto-expose status:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">led1</span></code> is <strong>red</strong> while auto-expose is <strong>busy</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">led1</span></code> stays <strong>red</strong> if auto-expose <strong>fails</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">led1</span></code> turns <strong>green</strong> if auto-expose <strong>succeeds</strong></p></li>
+</ul>
+<p>Sensor <code class="docutils literal notranslate"><span class="pre">led0</span></code> indicates when the microcontroller is busy:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">led0</span></code> is <strong>off</strong> while <strong>busy</strong> executing a command</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">led0</span></code> is <strong>on</strong> when execution is <strong>done</strong></p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><em>new as of dev-kit firmware v0.1.2</em></p>
+<p>Sensor <code class="docutils literal notranslate"><span class="pre">led0</span></code> should always be <strong>green</strong> when it is on.</p>
+<p><code class="docutils literal notranslate"><span class="pre">led0</span></code> is <strong>red</strong> if the SPI Rx buffer is full.
+This is a serial communication error. Please contact
+Chromation if you encounter this condition.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="measurements">
+<h3>Measurements<a class="headerlink" href="#measurements" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="capture-one-frame-once">
+<h4>Capture one frame once<a class="headerlink" href="#capture-one-frame-once" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ microspec-cmdline captureframe
+2020-08-20T22:29:37.850778,SensorCaptureFrame(status=0,
+num_pixels=392, pixels=[7912, 7306, 7303, 7282, ..., 0])
+</pre></div>
+</div>
+</div>
+<div class="section" id="capture-a-frame-50-times-with-2-seconds-inbetween">
+<h4>Capture a frame 50 times with 2 seconds inbetween<a class="headerlink" href="#capture-a-frame-50-times-with-2-seconds-inbetween" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ microspec-cmdline captureframe -r 50 -w 2
+2020-08-20T22:37:26.765253,SensorCaptureFrame(status=0,
+num_pixels=392, pixels=[7888, 7461, 7376, 7388, ..., 0])
+...
+2020-08-20T22:39:06.809406,SensorCaptureFrame(status=0,
+num_pixels=392, pixels=[7848, 7657, 7526, 7238, ..., 0])
+</pre></div>
+</div>
+</div>
+<div class="section" id="capture-a-frame-and-print-results-in-csv">
+<h4>Capture a frame and print results in csv<a class="headerlink" href="#capture-a-frame-and-print-results-in-csv" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ microspec-cmdline captureframe -c
+2020-08-20T22:35:21.376177,SensorCaptureFrame,status,0,
+num_pixels,392,pixels,7898,7518,7172,7435,7847,7768,...,0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="specify-timeout-for-commands-that-take-a-long-time">
+<h3>Specify timeout for commands that take a long time<a class="headerlink" href="#specify-timeout-for-commands-that-take-a-long-time" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="send-a-command-that-takes-longer-than-the-default-timeout">
+<h4>Send a command that takes longer than the default timeout<a class="headerlink" href="#send-a-command-that-takes-longer-than-the-default-timeout" title="Permalink to this headline">¶</a></h4>
+<p>Use a 200ms exposure time. This will make <code class="docutils literal notranslate"><span class="pre">captureFrame</span></code> take
+longer than the default timeout.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ microspec-cmdline setexposure cycles=10000
+2020-08-20T22:37:18.051165,SensorSetExposure(status=0)
+
+$ microspec-cmdline captureframe
+2020-08-20T22:40:44.181047,None
+</pre></div>
+</div>
+<p>The reply is None because the timeout triggered before the
+dev-kit hardware finished executing the command.</p>
+</div>
+<div class="section" id="set-a-timeout-so-the-command-has-time-to-execute">
+<h4>Set a timeout so the command has time to execute<a class="headerlink" href="#set-a-timeout-so-the-command-has-time-to-execute" title="Permalink to this headline">¶</a></h4>
+<p>Try again with a 5-second timeout.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ microspec-cmdline captureframe -t 5
+2020-08-20T22:45:10.383067,SensorCaptureFrame(status=0,
+num_pixels=392, pixels=[7856, 3890, 6240, 5478, 4966, ..., 0])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="configure-spectrometer-pixels">
+<h3>Configure spectrometer pixels<a class="headerlink" href="#configure-spectrometer-pixels" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="pixel-binning-on-pixel-gain-1x-all-rows-on-full-pixel-height">
+<h4>pixel binning ON, pixel gain 1x, all rows on (full pixel height)<a class="headerlink" href="#pixel-binning-on-pixel-gain-1x-all-rows-on-full-pixel-height" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ microspec-cmdline setsensorconfig binning=1 gain=1 row_bitmap=0x1F
+2020-08-20T22:45:38.043012,SensorSetSensorConfig(status=0)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="specify-usb-port">
+<h3>Specify USB port<a class="headerlink" href="#specify-usb-port" title="Permalink to this headline">¶</a></h3>
+<p>This is handy if more than one dev-kit is connected.</p>
+<div class="section" id="connect-to-a-specific-port-on-linux-mac">
+<h4>Connect to a specific port on Linux/Mac<a class="headerlink" href="#connect-to-a-specific-port-on-linux-mac" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ microspec-cmdline -f /dev/ttyUSB0 setbridgeled led_num=0 led_setting=1
+2020-08-20T22:50:49.633144,BridgeSetBridgeLED(status=0)
+</pre></div>
+</div>
+</div>
+<div class="section" id="connect-to-a-specific-com-port-on-windows">
+<h4>Connect to a specific COM port on Windows<a class="headerlink" href="#connect-to-a-specific-com-port-on-windows" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ microspec-cmdline -f COM4 setbridgeled led_num=0 led_setting=1
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When communicating with multiple connected dev-kits <em>in a
+Python script</em>, specify the kit by serial number when
+instantiating <code class="docutils literal notranslate"><span class="pre">MicroSpecSimpleInterface</span></code>. It is unnecessary
+for the Python script to determine which port the kit is
+connected to.</p>
+</div>
+</div>
+</div>
+<div class="section" id="connect-to-emulator-instead-of-hardware">
+<h3>Connect to emulator instead of hardware<a class="headerlink" href="#connect-to-emulator-instead-of-hardware" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ microspec-cmdline -e captureframe
+2020-08-21T01:20:12.985962,SensorCaptureFrame(status=0,
+num_pixels=4, pixels=[111, 222, 333, 444])
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="bin.microspec_emulator.html" class="btn btn-neutral float-right" title="bin/microspec_emulator.py" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="bin.html" class="btn btn-neutral float-left" title="bin package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Chromation Inc
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

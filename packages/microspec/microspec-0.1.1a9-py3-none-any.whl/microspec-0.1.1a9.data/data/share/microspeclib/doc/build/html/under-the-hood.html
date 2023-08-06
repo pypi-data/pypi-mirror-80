@@ -1,0 +1,283 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Under The Hood (How microspeclib works) &mdash; microspec  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Contributing to MicroSpec" href="microspec-dev.html" />
+    <link rel="prev" title="How to handle timeouts" href="how-to-handle-timeouts.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> microspec
+          
+
+          
+            
+            <img src="_static/CHROMATION.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-read-this-documentation.html">How To Read This Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="writing-applications.html">Writing Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="microspeclib.simple.html">Dev-kit API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev-kit-API-guide.html">Dev-kit API Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-handle-timeouts.html">How to handle timeouts</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Under The Hood (How microspeclib works)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#hardware-under-the-hood">Hardware under the hood</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#two-apis-simple-and-expert">Two APIs: simple and expert</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#where-is-the-code">Where is the code?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="microspec-dev.html">Contributing to MicroSpec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">microspeclib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bin.html">bin package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cfg.html">cfg package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tests.html">tests package</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">microspec</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Under The Hood (How microspeclib works)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/under-the-hood.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="under-the-hood-how-microspeclib-works">
+<h1>Under The Hood (How microspeclib works)<a class="headerlink" href="#under-the-hood-how-microspeclib-works" title="Permalink to this headline">¶</a></h1>
+<p>Every API function call <strong>sends a command</strong> to the dev-kit and <strong>receives a
+reply</strong> from the dev-kit.</p>
+<p>All commands are sent (and replies received) via a single method,
+<code class="docutils literal notranslate"><span class="pre">sendAndReceive()</span></code>. This method takes care of all low-level communication
+concerns like waiting for a reply and packages the reply as an object with each
+field in its own attribute.</p>
+<p>For example, the reply to <code class="docutils literal notranslate"><span class="pre">captureFrame()</span></code> has attribute <code class="docutils literal notranslate"><span class="pre">num_pixels</span></code> (the
+number of pixels in the frame) and attribute <code class="docutils literal notranslate"><span class="pre">pixels</span></code> (the actual pixel data).</p>
+<div class="section" id="hardware-under-the-hood">
+<h2>Hardware under the hood<a class="headerlink" href="#hardware-under-the-hood" title="Permalink to this headline">¶</a></h2>
+<p>The dev-kit has a <code class="docutils literal notranslate"><span class="pre">Sensor</span></code> board that talks directly to the spectrometer chip
+and a <code class="docutils literal notranslate"><span class="pre">Bridge</span></code> board that provides the USB interface to <code class="docutils literal notranslate"><span class="pre">Sensor</span></code>. Most API
+calls are commands for <code class="docutils literal notranslate"><span class="pre">Sensor</span></code>. There are a few <code class="docutils literal notranslate"><span class="pre">Bridge</span></code> commands, but
+applications do not need to use them.</p>
+</div>
+<div class="section" id="two-apis-simple-and-expert">
+<h2>Two APIs: simple and expert<a class="headerlink" href="#two-apis-simple-and-expert" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">microspec</span></code> actually has two APIs:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">microspeclib.simple</span></code></p>
+<ul>
+<li><p><em>high-level</em> API for writing applications</p></li>
+<li><p>hides the call to <code class="docutils literal notranslate"><span class="pre">sendAndReceive()</span></code></p></li>
+<li><p>represents each command as its own API function calls, e.g.,
+<code class="docutils literal notranslate"><span class="pre">setExposure(500)</span></code> and <code class="docutils literal notranslate"><span class="pre">reply=captureFrame()</span></code></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">microspeclib.expert</span></code></p>
+<ul>
+<li><p><em>low-level</em> API for developers</p></li>
+<li><p>applications <em>never</em> need to use this API</p></li>
+<li><p>this API is helpful when troubleshooting USB communication</p></li>
+<li><p>all commands are explicitly passed to <code class="docutils literal notranslate"><span class="pre">sendAndReceive()</span></code>, e.g.,
+<code class="docutils literal notranslate"><span class="pre">sendAndReceive(CommandSetExposure(cycles=500))</span></code> and
+<code class="docutils literal notranslate"><span class="pre">reply=sendAndReceive(CommandCaptureFrame())</span></code></p></li>
+<li><p>commands may also be <em>sent</em> and <em>received</em> separately, e.g.,
+<code class="docutils literal notranslate"><span class="pre">sendCommand(CommandCaptureFrame())</span></code> followed by <code class="docutils literal notranslate"><span class="pre">reply=receiveReply()</span></code></p></li>
+</ul>
+</li>
+</ul>
+<p>For an example of this lower-level interface, clone the <code class="docutils literal notranslate"><span class="pre">microspec</span></code>
+respository and see <code class="docutils literal notranslate"><span class="pre">src/microspeclib/examples/microspec_lowlevel_api.py</span></code></p>
+</div>
+<div class="section" id="where-is-the-code">
+<h2>Where is the code?<a class="headerlink" href="#where-is-the-code" title="Permalink to this headline">¶</a></h2>
+<p>Do not look for the API function definitions in the source code. The
+<code class="docutils literal notranslate"><span class="pre">microspeclib</span></code> package <em>does not manually define dev-kit interface functions</em>.</p>
+<p>The API function definitions are auto-generated by
+<code class="docutils literal notranslate"><span class="pre">microspeclib.simple._generateFuction()</span></code> using the protocol defined in JSON in
+<code class="docutils literal notranslate"><span class="pre">microspec.cfg</span></code>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="microspec-dev.html" class="btn btn-neutral float-right" title="Contributing to MicroSpec" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="how-to-handle-timeouts.html" class="btn btn-neutral float-left" title="How to handle timeouts" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Chromation Inc
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

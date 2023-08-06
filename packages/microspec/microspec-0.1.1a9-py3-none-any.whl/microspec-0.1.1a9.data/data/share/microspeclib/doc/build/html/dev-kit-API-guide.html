@@ -1,0 +1,422 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Dev-kit API Guide &mdash; microspec  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="How to handle timeouts" href="how-to-handle-timeouts.html" />
+    <link rel="prev" title="microspeclib.simple module (dev-kit API commands)" href="microspeclib.simple.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> microspec
+          
+
+          
+            
+            <img src="_static/CHROMATION.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-read-this-documentation.html">How To Read This Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="writing-applications.html">Writing Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="microspeclib.simple.html">Dev-kit API</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Dev-kit API Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#two-most-important-docs">Two Most Important Docs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#api-commands">API Commands</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#command-names">Command names</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#command-arguments">Command arguments</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#api-replies">API Replies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#return-values">Return values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#typical-return-values">Typical return values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#value-returned-when-communication-fails">Value returned when communication fails</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bridge-return-values-are-hidden-for-sensor-commands">Bridge return values are hidden for Sensor commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#view-api-replies-at-the-repl">View API replies at the REPL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#other-useful-docs">Other Useful Docs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-handle-timeouts.html">How to handle timeouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="under-the-hood.html">Under The Hood (How microspeclib works)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="microspec-dev.html">Contributing to MicroSpec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">microspeclib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bin.html">bin package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cfg.html">cfg package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tests.html">tests package</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">microspec</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Dev-kit API Guide</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/dev-kit-API-guide.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="dev-kit-api-guide">
+<span id="id1"></span><h1>Dev-kit API Guide<a class="headerlink" href="#dev-kit-api-guide" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="two-most-important-docs">
+<h2>Two Most Important Docs<a class="headerlink" href="#two-most-important-docs" title="Permalink to this headline">¶</a></h2>
+<p>These are the two most important pages in the documentation. Keep
+them handy when developing applications.</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="microspeclib.simple.html#dev-kit-api-cmd"><span class="std std-ref">microspeclib.simple module (dev-kit API commands)</span></a></p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>documents the input arguments for each API command</p></li>
+<li><p>example: the command <a class="reference internal" href="microspeclib.simple.html#microspeclib.simple.MicroSpecSimpleInterface.setExposure" title="microspeclib.simple.MicroSpecSimpleInterface.setExposure"><code class="xref py py-func docutils literal notranslate"><span class="pre">setExposure</span></code></a>
+takes input argument <code class="docutils literal notranslate"><span class="pre">cycles</span></code></p></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p><a class="reference internal" href="microspeclib.datatypes.sensor.html#dev-kit-api-reply"><span class="std std-ref">microspeclib.datatypes.sensor module (dev-kit API responses)</span></a></p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>documents the <em>reply attributes</em> for each API
+command</p></li>
+<li><p>example: the reply to
+<a class="reference internal" href="microspeclib.simple.html#microspeclib.simple.MicroSpecSimpleInterface.autoExposure" title="microspeclib.simple.MicroSpecSimpleInterface.autoExposure"><code class="xref py py-func docutils literal notranslate"><span class="pre">autoExposure</span></code></a>
+has three attributes:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">status</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">success</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iterations</span></code></p></li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="api-commands">
+<h2>API Commands<a class="headerlink" href="#api-commands" title="Permalink to this headline">¶</a></h2>
+<p>The API commands are documented here: <a class="reference internal" href="microspeclib.simple.html#dev-kit-api-cmd"><span class="std std-ref">microspeclib.simple module (dev-kit API commands)</span></a></p>
+<div class="section" id="command-names">
+<h3>Command names<a class="headerlink" href="#command-names" title="Permalink to this headline">¶</a></h3>
+<p><em>API</em> command names and <em>automated documentation</em> command names
+look a little different but they refer to the same function
+definitions.</p>
+<p>For example, API command
+<a class="reference internal" href="microspeclib.simple.html#microspeclib.simple.MicroSpecSimpleInterface.autoExposure" title="microspeclib.simple.MicroSpecSimpleInterface.autoExposure"><code class="xref py py-func docutils literal notranslate"><span class="pre">autoExposure</span></code></a>
+shows up in the automated documentation as
+<a class="reference internal" href="microspeclib.datatypes.command.html#microspeclib.datatypes.command.CommandAutoExposure" title="microspeclib.datatypes.command.CommandAutoExposure"><code class="xref py py-data docutils literal notranslate"><span class="pre">CommandAutoExposure</span></code></a>.</p>
+<p>The <em>automated documentation</em> uses the <em>low-level</em> command names.
+These are defined in the dict
+<code class="docutils literal notranslate"><span class="pre">microspeclib.datatypes.command.CHROMASPEC_COMMAND_NAME</span></code>. The
+command names all start with <code class="docutils literal notranslate"><span class="pre">Command</span></code>, and the next letter is
+capitalized.</p>
+<p><em>For the curious:</em> the rename to the familiar API name happens in
+<code class="docutils literal notranslate"><span class="pre">microspeclib.simple._generateFunction()</span></code>.</p>
+</div>
+<div class="section" id="command-arguments">
+<h3>Command arguments<a class="headerlink" href="#command-arguments" title="Permalink to this headline">¶</a></h3>
+<p>The automated documentation of the arguments is not great.</p>
+<p>Please ignore <code class="docutils literal notranslate"><span class="pre">=None</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">setAutoExposeConfig</span><span class="p">(</span><span class="n">max_tries</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">start_pixel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stop_pixel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">target_tolerance</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_exposure</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>When keyword arguments are listed they need values and it is
+<em>never OK</em> to set an argument to <code class="docutils literal notranslate"><span class="pre">None</span></code>. Showing <code class="docutils literal notranslate"><span class="pre">=None</span></code> is
+the best we could automate to convey the idea that the dev-kit
+expects values for these arguments.</p>
+<p>The expected <em>type</em> and <em>valid range</em> are described in the
+<strong>Parameters</strong> section for each commmand.</p>
+<p>Please ignore <code class="docutils literal notranslate"><span class="pre">**kwargs</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">autoExposure</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">**kwargs</span></code> shows up in every signature in the
+documentation. If an API command only shows <code class="docutils literal notranslate"><span class="pre">**kwargs</span></code> (like
+this one) it <em>take no arguments</em>.</p>
+</div>
+</div>
+<div class="section" id="api-replies">
+<h2>API Replies<a class="headerlink" href="#api-replies" title="Permalink to this headline">¶</a></h2>
+<p>The replies to API commands are documented here:
+<a class="reference internal" href="microspeclib.datatypes.sensor.html#dev-kit-api-reply"><span class="std std-ref">microspeclib.datatypes.sensor module (dev-kit API responses)</span></a>.</p>
+<div class="section" id="return-values">
+<h3>Return values<a class="headerlink" href="#return-values" title="Permalink to this headline">¶</a></h3>
+<p>Every API command gets a reply. This is documented in the
+<code class="docutils literal notranslate"><span class="pre">Returns</span></code> section for each command in <a class="reference internal" href="microspeclib.simple.html#dev-kit-api-cmd"><span class="std std-ref">dev-kit API
+commands</span></a>; click the <code class="docutils literal notranslate"><span class="pre">Sensor...</span></code> datatype
+link.</p>
+<p>Every reply has a <code class="docutils literal notranslate"><span class="pre">status</span></code> attribute, indicating the status of
+the serial communication. Applications do not need to check
+<code class="docutils literal notranslate"><span class="pre">status</span></code> in an attempt to handle communication errors. This
+low-level work is handled automatically by <code class="docutils literal notranslate"><span class="pre">microspeclib</span></code>.</p>
+</div>
+<div class="section" id="typical-return-values">
+<h3>Typical return values<a class="headerlink" href="#typical-return-values" title="Permalink to this headline">¶</a></h3>
+<p>If serial communication is successful, the reply is a
+<code class="docutils literal notranslate"><span class="pre">Sensor...</span></code> datatype.</p>
+<p>When sending <code class="docutils literal notranslate"><span class="pre">Bridge</span></code> commands, the reply is a <code class="docutils literal notranslate"><span class="pre">Bridge...</span></code>
+datatype. There are only three <code class="docutils literal notranslate"><span class="pre">Bridge</span></code> commands:
+<a class="reference internal" href="microspeclib.simple.html#microspeclib.simple.MicroSpecSimpleInterface.getBridgeLED" title="microspeclib.simple.MicroSpecSimpleInterface.getBridgeLED"><code class="xref py py-func docutils literal notranslate"><span class="pre">getBridgeLED</span></code></a>,
+<a class="reference internal" href="microspeclib.simple.html#microspeclib.simple.MicroSpecSimpleInterface.setBridgeLED" title="microspeclib.simple.MicroSpecSimpleInterface.setBridgeLED"><code class="xref py py-func docutils literal notranslate"><span class="pre">setBridgeLED</span></code></a>, and
+<a class="reference internal" href="microspeclib.simple.html#microspeclib.simple.MicroSpecSimpleInterface.null" title="microspeclib.simple.MicroSpecSimpleInterface.null"><code class="xref py py-func docutils literal notranslate"><span class="pre">null</span></code></a>.</p>
+</div>
+<div class="section" id="value-returned-when-communication-fails">
+<h3>Value returned when communication fails<a class="headerlink" href="#value-returned-when-communication-fails" title="Permalink to this headline">¶</a></h3>
+<p>If the serial communication <strong>fails</strong>, the reply is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<p>In practice, a serial communication failure always results from a
+timeout. See <a class="reference internal" href="how-to-handle-timeouts.html#how-to-handle-timeouts"><span class="std std-ref">How to handle timeouts</span></a>.</p>
+</div>
+<div class="section" id="bridge-return-values-are-hidden-for-sensor-commands">
+<h3>Bridge return values are hidden for Sensor commands<a class="headerlink" href="#bridge-return-values-are-hidden-for-sensor-commands" title="Permalink to this headline">¶</a></h3>
+<p>Every command with a <code class="docutils literal notranslate"><span class="pre">Sensor</span></code> reply also has a <code class="docutils literal notranslate"><span class="pre">Bridge</span></code>
+reply, but this is only accessible with the
+<code class="docutils literal notranslate"><span class="pre">microspeclib.expert</span></code> interface. These hidden <code class="docutils literal notranslate"><span class="pre">Bridge</span></code>
+replies are not helpful for writing applications. The <code class="docutils literal notranslate"><span class="pre">Bridge</span></code>
+replies are documented in
+<a class="reference internal" href="microspeclib.datatypes.bridge.html#module-microspeclib.datatypes.bridge" title="microspeclib.datatypes.bridge"><code class="xref py py-mod docutils literal notranslate"><span class="pre">microspeclib.datatypes.bridge</span></code></a>.</p>
+</div>
+</div>
+<div class="section" id="view-api-replies-at-the-repl">
+<h2>View API replies at the REPL<a class="headerlink" href="#view-api-replies-at-the-repl" title="Permalink to this headline">¶</a></h2>
+<p>Another way to find out what a command returns is by printing its
+reply:</p>
+<ul class="simple">
+<li><p>open a Python REPL</p></li>
+<li><p>send the command</p></li>
+<li><p>print its reply</p></li>
+</ul>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">microspeclib.simple</span> <span class="kn">import</span> <span class="n">MicroSpecSimpleInterface</span>
+<span class="n">kit</span> <span class="o">=</span> <span class="n">MicroSpecSimpleInterface</span><span class="p">()</span>
+<span class="n">reply</span> <span class="o">=</span> <span class="n">kit</span><span class="o">.</span><span class="n">autoExposure</span><span class="p">()</span>
+<span class="hll"><span class="nb">print</span><span class="p">(</span><span class="n">reply</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>Reply:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SensorAutoExposure</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">success</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The values are accessed as <code class="docutils literal notranslate"><span class="pre">reply.success</span></code>, <code class="docutils literal notranslate"><span class="pre">reply.iterations</span></code>, etc.</p>
+<p><em>Every</em> command reply includes <code class="docutils literal notranslate"><span class="pre">status</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">status</span></code> is part of the <em>low-level</em> serial communication data and is safe to
+ignore as an API user. For example, Chromation’s <code class="docutils literal notranslate"><span class="pre">microspecgui</span></code> application
+never checks the reply status.</p>
+</div>
+<div class="section" id="other-useful-docs">
+<h2>Other Useful Docs<a class="headerlink" href="#other-useful-docs" title="Permalink to this headline">¶</a></h2>
+<p>Two more useful API references:</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="microspeclib.datatypes.types.html#dev-kit-api-const"><span class="std std-ref">microspeclib.datatypes.types module (dev-kit API constants)</span></a></p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>constants defined by the API</p></li>
+<li><p>example: <a class="reference internal" href="microspeclib.datatypes.types.html#microspeclib.datatypes.types.StatusOK" title="microspeclib.datatypes.types.StatusOK"><code class="xref py py-class docutils literal notranslate"><span class="pre">StatusOK</span></code></a></p></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p><a class="reference internal" href="cfg.microspec.html#dev-kit-api-json"><span class="std std-ref">microspec.cfg (dev-kit API protocol)</span></a></p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>this is <code class="docutils literal notranslate"><span class="pre">microspec.cfg</span></code>, the JSON file that defines the
+protocol agreed upon by the Python API and the dev-kit C
+firmware</p></li>
+<li><p>it is the file that creates it all:</p>
+<ul>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">microspeclib.simple</span></code> API functions are
+auto-generated from <code class="docutils literal notranslate"><span class="pre">microspec.cfg</span></code> and the function
+factory <code class="xref py py-func docutils literal notranslate"><span class="pre">microspeclib.simple._generateFunction()</span></code></p></li>
+<li><p>the API function docstrings are auto-generated
+by <code class="xref py py-func docutils literal notranslate"><span class="pre">microspeclib.simple._generateFunction()</span></code> and
+human-written documentation added via module
+<code class="xref py py-mod docutils literal notranslate"><span class="pre">microspeclib.interal.docstrings</span></code></p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">microspec</span></code> unit tests are similarly auto-generated
+from unit test factories</p></li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="how-to-handle-timeouts.html" class="btn btn-neutral float-right" title="How to handle timeouts" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="microspeclib.simple.html" class="btn btn-neutral float-left" title="microspeclib.simple module (dev-kit API commands)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Chromation Inc
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
