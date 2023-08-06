@@ -1,0 +1,5 @@
+[console_scripts]
+dashboard-agent = dashboard_agent:main
+dashboard-agent-cli = dashboard_agent:cli
+dashboard-keygen = dashboard_agent:keygen
+
