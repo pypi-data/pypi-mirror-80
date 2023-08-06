@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: factom-py
+Version: 0.1.1
+Summary: A python library for working with the primitives of the Factom blockchain
+Home-page: https://github.com/FactomProject/factom-py
+Author: Justin Hanneman (originally Sam Barnes)
+Author-email: justin@factom.com
+License: MIT
+Keywords: factom,core,blockchain
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Utilities
+Requires-Dist: factom-keys
+Requires-Dist: plyvel
+
+UNKNOWN
+
+
