@@ -1,0 +1,61 @@
+Metadata-Version: 2.1
+Name: weyland
+Version: 0.0.8
+Summary: An alternative way to write regular expression and a lexer using them.
+Home-page: https://xitog.github.io/dgx
+Author: Damien Gouteux
+Author-email: damien.gouteux@gmail.com
+Maintainer: Damien Gouteux
+Maintainer-email: damien.gouteux@gmail.com
+License: MIT
+Description: # Weyland
+        
+        Weyland provides an alternative way to write regular expression (regex) and a lexer using them.
+        
+        ## Syntax of regular expression
+        
+        In Weyland, we call regular expression **rex** instead of regex to differenciate them.
+        
+        ### Sequence
+        
+        ``ab`` means a then b
+        
+        ### Choice
+        
+        ``[ab]`` means a or b
+        
+        ### Option and repetition
+        
+        * ``a?b`` means b or ab (a is optionnal, it can appear between 0 and 1 time),
+        * ``a+b`` means ab, aab, aaab, aaaab, etc. (a is mandatory, it must appear betweean 1 and X times),
+        * ``a*b`` means b, ab, aab, aaab, aaaab, etc. (a is optionnal, it can appear between 0 and X times).
+        
+        ### Special chararacters
+        
+        * ``#`` means any digits
+        * ``@`` means any letters
+        * ``$`` means any digits, letters and the underscore character (_)
+        * ``.`` means any characters which is not a new line
+        
+        ### Limitations
+        
+        * In a choice, **you can only choose between one element** not between sequences,
+        * In a choice, no repeated element nor optionnal element.
+        
+        ### Languages available
+        
+        * A set of tokens is available for the languages: bnf, json, lua python and hamill.
+Keywords: weyland,lexer,regular expression,regex,text,languages
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Software Development :: Documentation
+Classifier: Topic :: Text Processing
+Classifier: Programming Language :: Other
+Requires-Python: >=3.5
+Description-Content-Type: text/markdown
