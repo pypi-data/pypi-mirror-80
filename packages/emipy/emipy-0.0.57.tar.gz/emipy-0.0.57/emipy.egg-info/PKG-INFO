@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: emipy
+Version: 0.0.57
+Summary: A small package for emission data analysis
+Home-page: https://github.com/pypa/sampleproject
+Author: Flow2theryan; s.morgenthaler
+Author-email: f.overberg@web.de
+License: UNKNOWN
+Description: # About
+        emipy is a package for processing data of pollutant releases and pollutant transfers.
+        It's main target is to enable a fast output of individual data set requests and to provide visualisation options.
+        
+        The data are provided by the [European Environment Agency](https://www.eea.europa.eu/data-and-maps/data/member-states-reporting-art-7-under-the-european-pollutant-release-and-transfer-register-e-prtr-regulation-23).
+        
+        # Documentation
+        For the documentation take a look over [here](https://emipy.readthedocs.io/en/latest/).
+        
+        
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
