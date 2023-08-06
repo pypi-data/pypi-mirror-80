@@ -1,0 +1,148 @@
+#!python
+import os
+import sys
+from subprocess import TimeoutExpired
+from subprocess import Popen, PIPE
+
+import psutil
+import wx.adv
+
+from utils import config
+
+TRAY_TOOLTIP = 'SNX System Tray'
+
+
+
+def create_menu_item(menu, label, func):
+    item = wx.MenuItem(menu, -1, label)
+    menu.Bind(wx.EVT_MENU, func, id=item.GetId())
+    menu.Append(item)
+    return item
+
+
+class TaskBarIcon(wx.adv.TaskBarIcon):
+    def __init__(self, frame):
+        self.frame = frame
+        super(TaskBarIcon, self).__init__()
+        self.set_icon(config.TRAY_ICON)
+        self.Bind(wx.adv.EVT_TASKBAR_LEFT_DOWN, self.on_connect)
+        if self.check_if_snx_is_running():
+            self.set_icon(config.TRAY_ICON_OK)
+        self.password = None
+
+    def CreatePopupMenu(self):
+        menu = wx.Menu()
+        create_menu_item(menu, 'Connect', self.on_connect)
+        create_menu_item(menu, 'Reconnect', self.on_reconnect)
+        create_menu_item(menu, 'Disconnect', self.on_disconnect)
+        menu.AppendSeparator()
+        create_menu_item(menu, 'Exit', self.on_exit)
+        return menu
+
+    def on_reconnect(self, event):
+        self.snx_disconnect()
+        self.on_connect(event)
+
+    def on_connect(self, event):
+        if not self.password:
+            window = wx.PasswordEntryDialog(self.frame, "Password")
+            window.ShowModal()
+            self.password = window.GetValue()
+        if self.snx_connect(passwd=self.password):
+            self.set_icon(config.TRAY_ICON_OK)
+        else:
+            self.set_icon(config.TRAY_ICON_ERROR)
+        if not config.keep_passwd:
+            self.password = None
+
+    def on_disconnect(self, event):
+        if self.snx_disconnect():
+            self.set_icon(config.TRAY_ICON)
+        else:
+            self.set_icon(config.TRAY_ICON_ERROR)
+
+    def snx_connect(self, passwd):
+        passwd = passwd + "\n"
+        try:
+            command = ['snx', '-s', config.server, '-c', config.cert]
+            if config.elevate:
+                command.insert(0, config.elevate)
+            snx = Popen(command, stdin=PIPE, stdout=PIPE, stderr=PIPE)
+            out, _ = snx.communicate(input=bytes(passwd, "utf-8"), timeout=25)
+            if b"SNX - connected." in out:
+                return True
+        except TimeoutExpired:
+            return False
+        except FileNotFoundError:
+            error = wx.MessageDialog(self.frame, "snx not in PATH")
+            error.ShowModal()
+            return False
+        return False
+
+    def snx_disconnect(self):
+        no_snx = b"no snx process running."
+        ok = b"dnoe."
+        try:
+            command = ['snx', '-d']
+            if not config.elevate:
+                command.insert(0, config.elevate)
+            snx = Popen(command, stdin=PIPE, stdout=PIPE, stderr=PIPE)
+            out, _ = snx.communicate(timeout=25)
+            if no_snx in out or ok in out:
+                return True
+        except TimeoutExpired:
+            error = wx.MessageDialog(self.frame, "snx did not terminate after 25s")
+            error.ShowModal()
+            return False
+        except FileNotFoundError:
+            error = wx.MessageDialog(self.frame, "snx not in PATH")
+            error.ShowModal()
+            return False
+        return False
+
+    def check_if_snx_is_running(self, name="snx"):
+        for proc in psutil.process_iter():
+            try:
+                if name.lower() == proc.name().lower():
+                    return True
+            except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
+                pass
+        return False
+
+    def set_icon(self, path):
+        icon = wx.Icon(wx.Bitmap(path))
+        self.SetIcon(icon, TRAY_TOOLTIP)
+
+    def on_left_down(self, event):
+        self.on_connect(event)
+
+    def on_exit(self, event):
+        wx.CallAfter(self.Destroy)
+        self.frame.Close()
+
+
+class App(wx.App):
+    Init = True
+
+    def OnInit(self):
+        frame = wx.Frame(None)
+        self.SetTopWindow(frame)
+        TaskBarIcon(frame)
+        return True
+
+
+def main():
+
+    config.init()
+
+    app = App(False)
+
+    app.MainLoop()
+
+
+if __name__ == '__main__':
+    if len(sys.argv) == 2:
+        if sys.argv[1] == "-d":
+            if os.fork():
+                sys.exit()
+    main()

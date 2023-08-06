@@ -1,0 +1,37 @@
+Metadata-Version: 2.1
+Name: snxtray
+Version: 0.0.2
+Summary: Systray for snx
+Home-page: https://gitlab.com/linalinn/snxtray
+Author: LinaLinn
+Author-email: lina.cloud@outlook.de
+License: Mozilla Public License Version 2.0
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)
+Classifier: Operating System :: POSIX :: Linux
+Requires-Python: >=3
+Description-Content-Type: text/markdown
+Requires-Dist: psutil (==5.7.0)
+Requires-Dist: wxPython
+
+# SNX Tray
+Tray Icon for snx
+
+## Install 
+``pip install snxtray``
+
+## Configuration 
+#### Example config
+`cat $HOME/.config/snxtray.json`
+```json
+{
+  "server": "IP/URL",
+  "cert": "path to cert",
+  "keep_passwd": false,
+  "elevate": "pkexec" 
+}
+```
+
+
+
