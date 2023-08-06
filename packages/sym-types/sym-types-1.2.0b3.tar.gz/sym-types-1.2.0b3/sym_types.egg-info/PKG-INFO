@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: sym-types
+Version: 1.2.0b3
+Summary: Generated protobufs for Sym types
+Home-page: https://github.com/symopsio/types
+Author: Sym Inc
+Author-email: info@symops.io
+License: UNKNOWN
+Description: # sym-types
+        
+        Generated code for Sym protobufs
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: Apache Software License
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
