@@ -1,0 +1,6 @@
+
+  <link rel="stylesheet" tal:attributes="href string:${view/site_url}/++resource++brasil.gov.agenda/brasilgovagenda-720c34e.css" />
+
+
+  <script defer tal:attributes="src string:${view/site_url}/++resource++brasil.gov.agenda/brasilgovagenda-720c34e.js"></script>
+
