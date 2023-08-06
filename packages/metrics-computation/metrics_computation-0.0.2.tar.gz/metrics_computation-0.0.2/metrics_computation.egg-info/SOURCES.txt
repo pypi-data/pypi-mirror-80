@@ -1,0 +1,12 @@
+README.md
+setup.cfg
+setup.py
+metrics_computation/__init__.py
+metrics_computation/metrics_computation.py
+metrics_computation.egg-info/PKG-INFO
+metrics_computation.egg-info/SOURCES.txt
+metrics_computation.egg-info/dependency_links.txt
+metrics_computation.egg-info/not-zip-safe
+metrics_computation.egg-info/requires.txt
+metrics_computation.egg-info/top_level.txt
+test/test_metric_computation.py
