@@ -1,0 +1,17 @@
+README.md
+setup.py
+annotation/__init__.py
+annotation/data_driven_annotation/__init__.py
+annotation/data_driven_annotation/cpt.py
+annotation/stimulus_driven_annotation/__init__.py
+annotation/stimulus_driven_annotation/movies/__init__.py
+annotation/stimulus_driven_annotation/movies/annotation_utils.py
+annotation/stimulus_driven_annotation/movies/pause_handling.py
+annotation/stimulus_driven_annotation/movies/processing_labels.py
+annotation/stimulus_driven_annotation/movies/watch_log.py
+epiphyte.egg-info/PKG-INFO
+epiphyte.egg-info/SOURCES.txt
+epiphyte.egg-info/dependency_links.txt
+epiphyte.egg-info/top_level.txt
+mock_data/__init__.py
+mock_data/mock_data_utils.py
