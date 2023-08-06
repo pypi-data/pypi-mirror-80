@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: jobs_scraper
+Version: 0.0.1
+Summary: A simple job postings scraper for Indeed.
+Home-page: https://github.com/vittoriotriassi/jobs_scraper
+Author: Vittorio Triassi
+Author-email: vi.triassi@gmail.com
+License: MIT
+Description: # jobs_scraper (WIP)
+        
+        [![Build Status](https://travis-ci.com/vittoriotriassi/jobs_scraper.svg?branch=master)](https://travis-ci.com/vittoriotriassi/jobs_scraper)
+        
+        jobs_scraper is a simple job postings scraper for Indeed.
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Education
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Provides-Extra: test
