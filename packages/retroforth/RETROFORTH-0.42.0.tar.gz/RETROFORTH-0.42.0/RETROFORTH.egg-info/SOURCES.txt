@@ -1,0 +1,12 @@
+README.rst
+pyproject.toml
+setup.py
+setup_pypi.py
+RETROFORTH.egg-info/PKG-INFO
+RETROFORTH.egg-info/SOURCES.txt
+RETROFORTH.egg-info/dependency_links.txt
+RETROFORTH.egg-info/top_level.txt
+retroforth/__init__.py
+retroforth/retro.py
+tests/__init__.py
+tests/test_retroforth.py
