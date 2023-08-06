@@ -1,0 +1,67 @@
+Metadata-Version: 2.1
+Name: executiontime
+Version: 0.2.1
+Summary: Utilities to show execution time during development of a module
+Home-page: https://github.com/Timokasse/executiontime
+Author: Timokasse
+Author-email: Timokasse@users.noreply.github.com
+License: MIT
+Download-URL: https://github.com/Timokasse/executiontime/tarball/0.1
+Keywords: testing,logging,time,performance,execution
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: French
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Software Development :: Testing
+Description-Content-Type: text/markdown
+
+# executiontime
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/Timokasse/executiontim/blob/master/LICENSE)
+
+This module provides a simple function decorator to display its execution time on the console or in the logs.
+
+## Installation
+
+Simply install the package with `pip`:
+
+```bash
+pip install executiontime
+```
+
+## Usage
+
+You simply need to decorate the function and specify a message template.
+
+```python
+from executiontime import printexecutiontime
+
+@printexecutiontime("My function's execution took {0}")
+def my_function():
+    pass
+
+if __name__ == '__main__':
+    my_function()
+```
+
+By default, the message will be displayed on the console. But it is also possible to specify a log function, for example.
+
+```python
+from logging import info, INFO, basicConfig
+from executiontime import printexecutiontime
+
+@printexecutiontime("My function's execution took {0}", display=info)
+def my_function():
+    pass
+
+if __name__ == '__main__':
+    basicConfig(level=INFO)
+    my_function()
+
+```
+
+
