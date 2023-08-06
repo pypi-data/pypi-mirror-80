@@ -1,0 +1,20 @@
+Metadata-Version: 1.1
+Name: gym-nats
+Version: 0.1.2
+Summary: OpenAI Gym environment interfacing with NATS.io
+Home-page: https://github.com/austrian-code-wizard/gym-nats
+Author: Moritz Pascal Stephan
+Author-email: moritz.stephan@gmx.at
+License: MIT
+Download-URL: https://github.com/austrian-code-wizard/gym-nats/archive/v_01.tar.gz
+Description: Implements an OpenAI gym environment using NATS.io. Using this environment, a reinforcement learning agent can use the environment to learn from any source         of data since NATS.io can feed arbitrary data into the environment. For further information on the interface check out the README file.
+Keywords: nats,reinforcement learning,openai
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
