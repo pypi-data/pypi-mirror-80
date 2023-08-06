@@ -1,0 +1,15 @@
+DESCRIPTION.rst
+MANIFEST.in
+README.org
+RELEASE-VERSION
+setup.cfg
+setup.py
+version.py
+firmware_uploader/__init__.py
+firmware_uploader/firmware_uploader.py
+firmware_uploader.egg-info/PKG-INFO
+firmware_uploader.egg-info/SOURCES.txt
+firmware_uploader.egg-info/dependency_links.txt
+firmware_uploader.egg-info/entry_points.txt
+firmware_uploader.egg-info/requires.txt
+firmware_uploader.egg-info/top_level.txt

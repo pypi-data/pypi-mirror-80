@@ -1,0 +1,30 @@
+#+TITLE: firmware_uploader_python
+#+AUTHOR: Peter Polidoro
+#+EMAIL: peterpolidoro@gmail.com
+
+* Package Information
+  - Name :: firmware_uploader_python
+  - Version :: 0.2.0
+  - License :: BSD
+  - URL :: https://github.com/janelia-pypi/firmware_uploader_python
+  - Author :: Peter Polidoro
+  - Email :: peterpolidoro@gmail.com
+
+  Uploads firmware to multiple embedded devices.
+
+* Example Usage
+
+  #+BEGIN_SRC sh
+    pio update
+    fu -e teensy40 https://github.com/janelia-arduino/YArenaValveController "(/dev/ttyACM)[0-2]"
+    # Firmware URL: https://github.com/janelia-arduino/YArenaValveController
+    # Upload ports: ['/dev/ttyACM0', '/dev/ttyACM1', '/dev/ttyACM2']
+  #+END_SRC
+
+  #+BEGIN_SRC python
+    from firmware_uploader import FirmwareUploader
+  #+END_SRC
+
+* Installation
+
+  [[https://github.com/janelia-pypi/python_setup]]
