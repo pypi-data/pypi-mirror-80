@@ -1,0 +1,823 @@
+.\" Man page generated from reStructuredText.
+.
+.TH "UOW" "1" "Aug 13, 2020" "1.2" "uow"
+.SH NAME
+uow \- uow Documentation
+.
+.nr rst2man-indent-level 0
+.
+.de1 rstReportMargin
+\\$1 \\n[an-margin]
+level \\n[rst2man-indent-level]
+level margin: \\n[rst2man-indent\\n[rst2man-indent-level]]
+-
+\\n[rst2man-indent0]
+\\n[rst2man-indent1]
+\\n[rst2man-indent2]
+..
+.de1 INDENT
+.\" .rstReportMargin pre:
+. RS \\$1
+. nr rst2man-indent\\n[rst2man-indent-level] \\n[an-margin]
+. nr rst2man-indent-level +1
+.\" .rstReportMargin post:
+..
+.de UNINDENT
+. RE
+.\" indent \\n[an-margin]
+.\" old: \\n[rst2man-indent\\n[rst2man-indent-level]]
+.nr rst2man-indent-level -1
+.\" new: \\n[rst2man-indent\\n[rst2man-indent-level]]
+.in \\n[rst2man-indent\\n[rst2man-indent-level]]u
+..
+.SH INTRODUCTION
+.sp
+The launch of the new API based CCHDO website required both a rewrite and a rethink of how a unit of work and fetch/commits should function.
+.sp
+The cchdo website API is rather low level compared to what may are used to.
+It has no concept of what a commit is, it barely has a concept of what a cruise is, and has a slightly stronger concept of what a file is.
+.sp
+Here are some important differences:
+.INDENT 0.0
+.IP \(bu 2
+UOW directories are \fBcruise contexts\fP
+.INDENT 2.0
+.IP \(bu 2
+Everything done inside them is done in the context of the cruise for which is was initialized with.
+.IP \(bu 2
+This means all files commited as part of a uow are attached to the cruise
+.UNINDENT
+.IP \(bu 2
+Multiple files of any particular data type and format may be in a cruises dataset
+.INDENT 2.0
+.IP \(bu 2
+Files being replaced must be explicitly marked as "merged"
+.UNINDENT
+.IP \(bu 2
+Commits \fBdo not occur within a transaction\fP
+.INDENT 2.0
+.IP \(bu 2
+If an API call fails, the commit aborts, however any number of API calls may have already been made, and any number of API calls may have yet to be made
+.IP \(bu 2
+Failing in the middle of a commit requries manual fixing.
+.UNINDENT
+.UNINDENT
+.SS Getting Started
+.sp
+The uow command is a packaged collection of python scripts which may be executed like a normal program.
+It has no external dependancies.
+.sp
+TODO: Put the packaged program somewhere
+.sp
+Simply grab the program, ensure the executable bit is set and run it.
+For convienence, you should put the program somewhere in your \fB$PATH\fP\&.
+.SS Building From Source
+.sp
+Get the srouce from (TODO some location), and run \fBmake\fP where the Makefile is.
+.SH THE UOW COMMAND
+.sp
+The uow "binary" is a packaged python program.
+When examinied with \fBless\fP or \fBstrings\fP you should notice the first line is a stadard script decliaration.
+It is then followed by zip data, python is able to execute the scripts contained within the zip archive.
+.sp
+The usage of the uow program is divided into several subcommands.
+.SS The \fBbootstrap\fP subcommand
+.sp
+Before any uow directories can be created, the program needs to be configured with two basic peices of information:
+.INDENT 0.0
+.IP \(bu 2
+The api end point.
+.IP \(bu 2
+Your api key (find this on \fI\%https://cchdo.ucsd.edu/staff/me\fP)
+.UNINDENT
+.sp
+It then creates and writes the uow config file to a sub directory of \fB~/.config\fP\&.
+The config file itself is simple YAML.
+.sp
+\fBWARNING:\fP
+.INDENT 0.0
+.INDENT 3.5
+The bootstrap process does not check to see if the api end point exists, or if your api key is valid.
+It only creates the config file.
+.UNINDENT
+.UNINDENT
+.SS The \fBinit\fP subcommand
+.sp
+The init subcommand is what actually creates a uow directory.
+It has two options:
+.INDENT 0.0
+.IP \(bu 2
+\fB\-e\fP, \fB\-\-expocode\fP is the expocode of the cruise you want to create a uow directory for.
+.IP \(bu 2
+\fB\-d\fP, \fB\-\-dir_name\fP is the name of the directory which will be created.
+.UNINDENT
+.sp
+If any option is not specified, it will be prompted for.
+.sp
+The uow directory name will be exactly as specified, there is no more implicit naming.
+.sp
+When run, the init subcommand will create the requestd uow direcory and all the default subdirectories.
+It will also GET the the cruise object refered by the given \fBexpocode\fP and a list of files attached to this cruise.
+.sp
+\fBNOTE:\fP
+.INDENT 0.0
+.INDENT 3.5
+Unlike previous versions of the "fetch/commit" programs, files cannot be specified at uow directory creation time.
+No files are downloaded as part of the init process.
+.UNINDENT
+.UNINDENT
+.SS The \fBlist\fP subcommand
+.sp
+The list subcommand shows information on the files attached to the cruise the uow directory is for.
+The one positional argument specifies how to filter the list for display.
+Allowed values are:
+.INDENT 0.0
+.TP
+.B \fBall\fP
+Lists all the files attached to the cruise
+.TP
+.B \fBdataset\fP
+Lists only the files which have the role \fBdataset\fP
+.TP
+.B \fBunprocessed\fP
+Lists only the files which have the role \fBunprocessed\fP\&.
+This is equivalent to the "queue files" of the older systems.
+.TP
+.B \fBmerged\fP
+Lists only files which have the role of \fBmerged\fP\&.
+.TP
+.B \fBother\fP
+Lists files which have a role other than \fBdataset\fP, \fBunprocessed\fP, or \fBmerged\fP\&.
+This would be non public files for argo, archive files, or hidden files.
+.UNINDENT
+.sp
+The \fBid\fP listed by the list subcommand is what should be given to the \fBfetch\fP subcommand to download a file.
+.SS The \fBinfo\fP subcommand
+.sp
+The list subcommand shows the entire json object for the cruise or requested file id.
+The one optional positional argument specifies the file json object to display.
+.sp
+If the file id is omitted, the cruise object for the current uow context is printed to stdout.
+These can be very long so it is recommended that this output be piped to your pager of choice.
+.sp
+The \fBid\fP listed by the list subcommand is what should be given to the \fBinfo\fP subcommand to view a file json object.
+.SS The \fBfetch\fP subcommand
+.sp
+The fetch subcommand is used to actually download files to the 0.existing_files subdirectory in the uow directory.
+.sp
+It takes one or more file ids as positional arguments.
+.sp
+It has two optional arguments:
+.INDENT 0.0
+.TP
+.B \fB\-\-external\fP
+By default, the fetch subcommand will not allow fetching files not already attached to the cruise the uow is for.
+To override this limitation, simply include the \fB\-\-external\fP flag.
+Before doing so, consider if the file should be attached to the cruise and perhaps do that first.
+.sp
+\fBNOTE:\fP
+.INDENT 7.0
+.INDENT 3.5
+The fetch subcommand only knows which files were attached to the cruise at the time of the \fBinit\fP command.
+It will consider all files attached to the cruise after the uow was created to be external files.
+.UNINDENT
+.UNINDENT
+.TP
+.B \fB\-\-panic\fP
+Sometimes the data is so strange, you just need to grab all the files and sort through them manually.
+Of particular interest will be the \fBarchive.tar\fP file, as this is the pre pycchdo data directory.
+.UNINDENT
+.SS The \fBstatus\fP subcommand
+.sp
+The status subcommnad shows several useful bits of information:
+.INDENT 0.0
+.IP \(bu 2
+a list of files which have been fetched and if they are still present and unmodified
+.IP \(bu 2
+if a uow.json is present, it will be validated
+.IP \(bu 2
+if a valid uow.json is present, the anticipated results of a commit based on it will be listed
+.UNINDENT
+.sp
+The status subcommand has no positional or optional arguments (other than help).
+.SS The \fBcommit\fP subcommand
+.sp
+The commit subcommand actually performs the commit.
+It will do all the checks done by the status command.
+Additionally, it will query the API to see if files which should already exist do, and files shich should not exist do not.
+.sp
+It has no positional or optional arguments (except for help).
+.sp
+After displaying the anticipated results of the commit, it will ask for confirmation to continue, any non "yes" response will abort the commit.
+.sp
+\fBDANGER:\fP
+.INDENT 0.0
+.INDENT 3.5
+Do not abort the commit after saying "yes" to continue.
+Depending on how large the files to commit are, and what the bandwidth is, it may take a very lone time to complete.
+.sp
+Aborting a commit will cause any files which have already made it to the website to be orphaned.
+.UNINDENT
+.UNINDENT
+.sp
+\fBDANGER:\fP
+.INDENT 0.0
+.INDENT 3.5
+If anything goes wrong, a dump of the last api call will be printed to stdout, include it with any bug reports.
+.UNINDENT
+.UNINDENT
+.sp
+\fBDANGER:\fP
+.INDENT 0.0
+.INDENT 3.5
+Any interuption of the commit after saying "yes" to conintue will require manual fixing.
+.UNINDENT
+.UNINDENT
+.SH A UOW DIRECTOY
+.sp
+When a uow directory is initialized, several empty directories and a file is created.
+.SS Subdirectories of a uow
+.INDENT 0.0
+.TP
+.B 0.existing_files
+Any files fetched wtit the \fBuow fetch\fP command will be downloaded here.
+Generally, it should not be modified, copy the files out of here when needed.
+.TP
+.B 1.new_files
+A convienence directory to place new files to go online, files placed in this are not automatically put online when a commit is done
+.TP
+.B 2.processing
+A convienvece directory to do work in.
+.TP
+.B 4.archive
+Place any files in here should just be attached as part of the commit (custom scripts for example).
+.sp
+\fBDANGER:\fP
+.INDENT 7.0
+.INDENT 3.5
+This archive feature is not yet implimented.
+Nothing happens with this directory.
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SS Dotfiles of a uow
+.sp
+Several "dot files" will also be created in a uow directories lifetime:
+.INDENT 0.0
+.TP
+.B \&.uow_info
+This is a JSON file which contains information about the uow context.
+It has the cruise json object, and all the file json objects which are attached to that cruise.
+This files existance is used to display the available files with the \fBuow list\fP command.
+It is also used to determine if the current working directory is a uow or a subdirectory of one.
+.TP
+.B \&.fetch_log
+When any file is fetched, its entire (and current) json metadata object is logged to this file.
+.TP
+.B \&.api_call_log
+When an actual commit is done, all the API calls are logged to this file, to be used for debugging if anything goes wrong.
+.TP
+.B \&.committed
+When a commit occurs, this file is touched and will contain the text "DONE".
+Its presnce will stop any commit from occuring
+.UNINDENT
+.sp
+\fBDANGER:\fP
+.INDENT 0.0
+.INDENT 3.5
+Do not delete or modify any of these files.
+.UNINDENT
+.UNINDENT
+.SH THE UOW.JSON FILE
+.SS Introduction
+.sp
+A \fBuow.json\fP file must be created in the root of your uow directory.
+The file provides the instructions needed to make the correct API calls to accomplish the commit.
+It is more explicit than having files "in the right place" or having a program guess the data type by reading the file extention.
+.sp
+As of writing this document, the \fBuow.json\fP file is not generated automatically.
+This chapter describes the \fBuow.json\fP file and the reasoning behind what is present in it.
+.sp
+This is a blank \fBuow.json\fP:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+{
+"files": [
+],
+"processing_note":{
+    "date": "",
+    "data_type": "",
+    "action":"",
+    "summary": "",
+    "name": "",
+    "notes": ""
+  }
+}
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+It has two basic requried elements: an array for files (line 2\-3), and a processing note object (line 4\-11).
+These are both under a \fBfiles\fP and \fBprocessing_note\fP key, respectivly.
+No other elements are allowed at the root level.
+.sp
+Since the \fBfiles\fP array is more complicated, lets discuss the \fBprocessing_note\fP first.
+.SS The Processing Note
+.sp
+With the commit is a processing note which gets attached to the cruise.
+This note is described by an object contained within the \fBprocessing_note\fP root level key.
+The processing note object has the following required keys: \fBdate\fP, \fBdata_type\fP, \fBaction\fP, \fBsummary\fP, \fBname\fP, and \fBnotes\fP\&.
+No other keys are allowed.
+.sp
+They are as follows:
+.INDENT 0.0
+.TP
+.B \fBdate\fP
+The \fBdate\fP key contains a string with an ISO\-8601 date in it.
+This format is \fBYYYY\-MM\-DD\fP, with zero padded month and days.
+It can be set to any valid date.
+The reccomended value is the commit date.
+.TP
+.B \fBdata_type\fP
+The \fBdata_type\fP key contains a string which may contain any valid unicode charicters.
+It is displayed under the "Data Type" field on the website.
+Reccomended values are the paramters that were merged in, or "CrsRpt" in the case of documentation updates.
+.TP
+.B \fBaction\fP
+The \fBaction\fP key contains a string which may contain any valid unicode charicters.
+It is displayed under the "Action" field on the website.
+Almost always it is set to "Website Update".
+.TP
+.B \fBsummary\fP
+The \fBsummary\fP key contains a string which may contain any valid unicode charicters.
+It is displayed under the "Summary" field on the website.
+It should be a short description of what was done.
+For example, "Updated DOC, TDN, NUTS, bottle data online in all formats".
+.TP
+.B \fBname\fP
+The \fBname\fP key contains a string which may contain any valid unicode charicters.
+It is displayed under the "Name" field of the website.
+It should be set to the name of the person doing the commit (or however they want to be represented on the website).
+.TP
+.B \fBnotes\fP
+The \fBnotes\fP key contains a string which may contain any valid unicode charicters.
+It is displayed under the "Note" field on the website in a \fB<pre>\fP tag (this means it will appear exactly is).
+The \fBnotes\fP field has some special bahavior if it starts with an \fB@\fP charicter.
+.sp
+When the \fBnotes\fP field starts with an \fB@\fP charicter, the \fBuow\fP command will interpert the rest of the string as a path to a file.
+The file path is relitave to the root of your uow directory.
+For example, if your processing notes are in a file called \fBnotes.txt\fP, the \fBnotes\fP key would contain \fB"@notes.txt"\fP\&.
+The uow would then look for the \fBnotes.txt\fP file and include it as the note.
+It is reccomended that the any notes be less than 80 characters wide.
+This behavior was inspired by how the \fBcurl\fP command works.
+.sp
+\fBWARNING:\fP
+.INDENT 7.0
+.INDENT 3.5
+If not using a seperate file for the notes, do not start the \fBnotes\fP string with an \fB@\fP\&.
+Additionally, when not using a seperate file for notes, do not manually write new lines charicters (\fB\en\fP).
+.UNINDENT
+.UNINDENT
+.sp
+\fBNOTE:\fP
+.INDENT 7.0
+.INDENT 3.5
+When designing the cruise JSON object we were faced with the following limitations and tradeoffs when it came to actually storing notes.
+.sp
+JSON does not support multi\-line strings, so how should multi\-line history notes actualy be stored?
+There were two options, store the notes as single lines with escaped new lines (\fB\en\fP) in them, or store the notes as an array of strings where each line of the note is a seperate string in the array.
+.sp
+There were downsides to both, but the array representation was chosen for human readabiltiy.
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SS The Files Array
+.sp
+The archetectural changes of the cchdo website allows for new functionality.
+One major new feature is the ability to have multiple files of the same "kind" in a cruises dataset.
+For example, there can now be two exchange bottle files online.
+This new ability means certain actions which were previously implicit can no longer be.
+The files array contains objects with information to construct the actions (API calls) of the commit.
+.SS File Array Objects
+.sp
+Each object in the \fBfiles\fP array represent a single file to which an action will be done to.
+All file objects must contain \fBfile\fP and \fBaction\fP as keys with strings as values.
+The \fBfile\fP is the path to the file, relative to the uow directory root.
+The \fBaction\fP must a string of either \fBnew\fP or \fBmerge\fP\&.
+Let\(aqs start with file the \fBmerge\fP action.
+.SS The \fBmerge\fP action
+.sp
+Here is a complete file object with the \fBmerge\fP action:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+  {
+    "file":"0.existing_files/4126_BerPolarforsch2002433do.pdf",
+    "action":"merge"
+  }
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+The file path is specified under the \fBfile\fP key on line 2.
+The action, "merge", is specified on line 3.
+No other keys are needed or allowed.
+.sp
+\fBNOTE:\fP
+.INDENT 0.0
+.INDENT 3.5
+What will happen at commit time?
+.sp
+When the uow is comitted several actions occur.
+.INDENT 0.0
+.IP \(bu 2
+The path listed in \fBfile\fP will be checked for existance.
+.IP \(bu 2
+If the file exists, it will be hashed with sha256.
+.IP \(bu 2
+This hash will be searched for in the fetch log.
+.IP \(bu 2
+If a fetch event for this file is found, the id and other needed information is extracted to construct the PATCH request that will be emitted.
+.IP \(bu 2
+Finally the API itself is asked to ensure that the file already exists on the server.
+.UNINDENT
+.sp
+If any of the above actions fail, the commit is aborted before any state changing API calls are made.
+.sp
+Finally, for all the files with the merge action, an HTTP PATCH request is made which changes the files "role" to merged.
+.UNINDENT
+.UNINDENT
+.SS The \fBnew\fP action
+.sp
+Comitting files which do not currently exist in the system requires the action of \fBnew\fP to be specified.
+There are two types of new files, one which replace one currently in the dataset, and one that is not replaceing anything (a completly new file).
+.sp
+To understand what the \fBreplaces\fP key does, let\(aqs first look at completly new file.
+.sp
+Here is complete file object with the \fBnew\fP action:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+  {
+    "file":"1.new_files/ARK\-XVII\-1_06AQ20010619.txt",
+    "action":"new",
+    "data_format":"text",
+    "data_type":"documentation",
+    "role": "dataset"
+  }
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+As with a "merged" files, the path is specified by the \fBfile\fP key on line 2.
+The action, "new", is specified on line 3.
+A file object which does not have the \fBreplaces\fP key in it, must have these keys present: \fBdata_format\fP, \fBdata_type\fP, and \fBrole\fP\&.
+.SS The \fBdata_format\fP key
+.sp
+The \fBdata_format\fP key is a string describing the format the data is actually in, allowed values are:
+.INDENT 0.0
+.TP
+.B \fBexchange\fP
+This is data in exchange format, both plain csv and zip archives containing exchange formatted data should have this as the data format.
+.TP
+.B \fBwhp_netcdf\fP
+This is data in the default netCDF format CCHDO uses, the \fBwhp_\fP prefix is to distinguish these files from netCDF files which may conform to some other standard such as OceanSites or CF.
+These files will almost always be zip archives.
+.TP
+.B \fBwoce\fP
+This is data in the legacy woce formats for bottle, ctd, and summary.
+This could be both zip archives and plain (ASCII) text.
+.TP
+.B \fBtext\fP
+This is data which is simply plain (UTF\-8) text.
+Typically only used for the cruise report or other documentation.
+.TP
+.B \fBpdf\fP
+Used exclusivly for any PDF documentation.
+.UNINDENT
+.SS The \fBdata_type\fP key
+.sp
+The \fBdata_type\fP key is a string which describes the kind of data this file is, allowed values are:
+.INDENT 0.0
+.TP
+.B \fBbottle\fP
+This file represents discrete bottle data.
+.TP
+.B \fBctd\fP
+This file represents the in situ continious ctd data.
+.TP
+.B \fBdocumentation\fP
+This file contains human readable documentation.
+.TP
+.B \fBsummary\fP
+This file is a legacy woce sum file.
+.TP
+.B \fBlarge_volume\fP
+This is a "large volume sample" file.
+Usually it is in the the \fBwoce\fP data format.
+.TP
+.B \fBtrace_metals\fP
+This is a file containing (only) trace metal data.
+Usually it is in the \fBexchange\fP data format.
+Trace metals typically occur on seperate casts and tend to be kept seperate from the bottle data.
+.UNINDENT
+.SS The \fBrole\fP key
+.sp
+The \fBrole\fP key is a string which describes how the site should display the file a cruise page, allowed values are:
+.INDENT 0.0
+.TP
+.B \fBdataset\fP
+This file should be part of the main dataset.
+A file with the dataset role will appear in the "Dataset" section of the website AND be included in any bulk download actions.
+.TP
+.B \fBunprocessed\fP
+An unprocessed file appear in the "Data as Received" section of the website, it will only be publicly available by going to the cruise page.
+This is the role given to user submitted files to make the available as received.
+.TP
+.B \fBmerged\fP
+This file should be marked as merged, it will appear in the "Data as Received" section of the wesbite.
+It can only be downloaded by going to the cruise page.
+This is the role given to user submitted files which have been merged into the main dataset.
+It should also be given to files which were in the main dataset but were merged with another file.
+.TP
+.B \fBhidden\fP
+Hidden is just that, the file will be hidden from all but the staff, it will only be accessable through the API.
+.TP
+.B \fBarchive\fP
+Archive is the role that was given to the tar files which contain the legacy "data directory".
+It will also be given to the archive containing extra files associated with a commit.
+Generally, this should not be user set.
+.UNINDENT
+.sp
+Let\(aqs then look at a file object which has the \fBreplaces\fP key in it, here is a complete file object:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+{
+  "file":"1.new_files/06AQ20010619_do.pdf",
+  "action":"new",
+  "replaces":"0.existing_files/4126_BerPolarforsch2002433do.pdf"
+}
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+This object still has \fBnew\fP as the action, but is lacking the \fBdata_format\fP, \fBdata_type\fP, and \fBrole\fP keys.
+The \fBreplaces\fP key contains a string with a file path to a file.
+This path must also appear as a seperate file object in the files array containing the \fBmerge\fP action.
+When the \fBreplaces\fP key is specified, the uow copies the \fBdata_format\fP, \fBdata_type\fP, and \fBrole\fP values from the existing file to use for this new one.
+.sp
+\fBNOTE:\fP
+.INDENT 0.0
+.INDENT 3.5
+What will happen at commit time?
+.INDENT 0.0
+.IP \(bu 2
+All the file objects with the \fBnew\fP action specified are verified to exist at the path specified by \fBfile\fP\&.
+.IP \(bu 2
+These files are then hashed with sha256.
+.IP \(bu 2
+The \fBreplaces\fP key is looked for, if present, the uow looks for a file object with the same path as the one in \fBreplaces\fP
+.INDENT 2.0
+.IP \(bu 2
+If found, the \fBdata_format\fP, \fBdata_type\fP, and \fBrole\fP values are coppied from the file being replaced.
+.UNINDENT
+.IP \(bu 2
+If the \fBreplaces\fP key is not present, the \fBdata_format\fP, \fBdata_type\fP, and \fBrole\fP keys are searched for.
+.INDENT 2.0
+.IP \(bu 2
+Their values are verfied to be one of the allowed values.
+.UNINDENT
+.IP \(bu 2
+A new file json is constructed containing the needed metadata and the file itself base64 encoded.
+.IP \(bu 2
+The API is asked to ensure the file DOES NOT already exist in the system.
+.UNINDENT
+.sp
+If any of the above fail, the commit is aborted before any state modifying API calls are made.
+.sp
+As the new files are being POSTed to the api, new file IDs are being returned, these are then used to attach the file to the cruise.
+.UNINDENT
+.UNINDENT
+.SS The optional \fBfrom\fP key
+.sp
+Any file object which has the \fBnew\fP action may also have an array of file path strings under the \fBfrom\fP key.
+This key is intented to allow for a record of what files were involved in the creation of this new file.
+Some examples would be two or more files merged to create a new one, or even a zip archive which was simply split apart.
+.sp
+Here is an example of a file object containing a \fBfrom\fP key:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+{
+  "file":"1.new_files/33RR20050106_hy1.csv",
+  "action":"new",
+  "from":[
+    "0.existing_files/2099_33RR20050106.exc.csv",
+    "0.existing_files/271_33RR20050106_hy1.csv"
+  ],
+  "replaces":"0.existing_files/271_33RR20050106_hy1.csv"
+}
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+The paths listed in the \fBfrom\fP key must also exist as seperate file objects in the files array.
+At commit time, those files sha256 hashes are simply added to the file json to be committed under the \fBfile_sources\fP key.
+.sp
+The paths in the \fBfrom\fP array can be both \fBmerged\fP files or \fBnew\fP files.
+For example, a netCDF file created from a newly merged exchnage file would have that exchange file as the \fBfrom\fP source.
+.sp
+Here is a complete uow.json example:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+{
+"files": [
+  {"file":"0.existing_files/2099_33RR20050106.exc.csv",
+    "action":"merge"
+  },
+  {"file":"0.existing_files/2671_33RR20050106_nc_hyd.zip",
+    "action":"merge"
+  },
+  {"file":"0.existing_files/271_33RR20050106_hy1.csv",
+    "action":"merge"
+  },
+  {"file":"0.existing_files/528_LDEO_NGL_CliVarTritium4CCHDO_P16S.xlsx",
+    "action":"merge"
+  },
+  {"file":"0.existing_files/8297_33RR20050106hy.txt",
+    "action":"merge"
+  },
+  {"file":"1.new_files/33RR20050106_hy1.csv",
+    "action":"new",
+    "from":[
+      "0.existing_files/2099_33RR20050106.exc.csv",
+      "0.existing_files/271_33RR20050106_hy1.csv"
+    ],
+    "replaces":"0.existing_files/271_33RR20050106_hy1.csv"
+  },
+  {"file":"1.new_files/33RR20050106_nc_hyd.zip",
+    "action":"new",
+    "from":[
+      "1.new_files/33RR20050106_hy1.csv"
+    ],
+    "replaces": "0.existing_files/2671_33RR20050106_nc_hyd.zip"
+  },
+  {"file":"1.new_files/33RR20050106hy.txt",
+    "action":"new",
+    "from":[
+      "1.new_files/33RR20050106_hy1.csv"
+    ],
+    "replaces":"0.existing_files/8297_33RR20050106hy.txt"
+  }
+],
+"processing_note":{
+    "date": "2015\-05\-14",
+    "data_type": "Bottle",
+    "action":"Merge",
+    "summary": "Tr Merged",
+    "name": "Andrew Barna",
+    "notes": "@00README.txt"
+  }
+}
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+In the above example the following has occured:
+.INDENT 0.0
+.IP \(bu 2
+Two submitted files were marked as merged (lines 3\-4, 12\-13).
+.IP \(bu 2
+Three files already in the dataset were replaced, so they were also marked as merged (lines 6\-11, 15\-16).
+.IP \(bu 2
+A new exchange bottle file is to be placed on line, it was merged from the existing dataset file and a submitted file (lines 21, 22).
+It is replacing a file so grab the metadata from the old file (line 24).
+.IP \(bu 2
+A new netCDF bottle file (lines 26\-32) was created from the new exchange file (line 28\-30).
+It is replacing a file online to grab the metadata from the old file (line 31).
+.IP \(bu 2
+A new woce bottle file (lines 33\-39) was created from the new exchange file (lines 35\-37).
+It is replacing a file online so grab the metadta from the old file (line 38)
+.IP \(bu 2
+The processing note (lines 41\-48) contents are in a seperate file, so use the @path syntax (line 47)
+.UNINDENT
+.SS Blank File Object Snippets
+.sp
+Here are some useful blank file objects to construct a uow.json \fBfiles\fP array.
+.SS Blank Merge File
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+{
+  "file":"",
+  "action":"merge"
+}
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SS Blank New File Replacing
+.sp
+Without "from" array:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+{
+  "file":"",
+  "action":"new",
+  "replaces":""
+}
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+With "from" array:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+{
+  "file":"",
+  "action":"new",
+  "from":[
+    ""
+  ],
+  "replaces":""
+}
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SS Blank New File
+.sp
+Without "from" array:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+{
+  "file":"",
+  "action":"new",
+  "role":"",
+  "data_format":"",
+  "data_type":""
+}
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+With "from" array:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+{
+  "file":"",
+  "action":"new",
+  "from":[
+    ""
+  ],
+  "role":"",
+  "data_format":"",
+  "data_type":""
+}
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SH AUTHOR
+Andrew Barna
+.SH COPYRIGHT
+2015-2020, Regents of the University of California
+.\" Generated by docutils manpage writer.
+.
