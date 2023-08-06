@@ -1,0 +1,74 @@
+Metadata-Version: 2.1
+Name: naas
+Version: 0.0.17
+Summary: scheduler system for notebooks
+Home-page: https://github.com/cashstory/naas
+Author: Martin Donadieu
+Author-email: martindonadieu@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3.6
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+Requires-Dist: papermill (<3,>=2)
+Requires-Dist: pretty-cron (<2,>=1)
+Requires-Dist: APScheduler (<4,>=3)
+Requires-Dist: pycron (<4,>=3)
+Requires-Dist: pandas (<2,>=1)
+Requires-Dist: daemonize (<3,>=2)
+Requires-Dist: escapism (<2,>=1)
+Requires-Dist: notebook (<7,>=6)
+Requires-Dist: ipython (<8,>=7)
+Requires-Dist: ipykernel (<6,>=5)
+Requires-Dist: requests (<3,>=2)
+Requires-Dist: sentry-sdk (<1,>=0)
+Requires-Dist: sanic (<21,>=20)
+Requires-Dist: sanic-openapi (<1,>=0)
+Requires-Dist: argparse (<2,>=1)
+Requires-Dist: nbconvert (<7,>=6)
+Requires-Dist: nbclient (<1,>=0)
+Requires-Dist: beautifulsoup4 (<5,>=4)
+
+# Naas (Notebooks As Automated Services)
+
+Schedule notebooks, to automate all your tasks.
+
+Use the power of scripting in the cloud.
+Whenever you need it (even when you sleep).
+
+* Schedule your scripts
+* Use Notebooks as API
+* Share assets securely
+
+## Install
+
+`pip3 install naas`
+
+
+# DEVELOPMENT
+
+## Install
+
+`pip3 install -r requirements.txt`
+
+## Run test 
+
+`pytest -x`  
+
+## test local server
+
+`./test_runner.sh`
+
+open manager :
+
+`localhost:5000/`
+
+## deploy
+
+`python3 setup.py sdist`
+
+## publish
+
+`python3 -m twine upload dist/* -u YOUR_USERNAME`
+
