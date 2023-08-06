@@ -1,0 +1,11 @@
+setuptools>=45.1
+wheel>=0.34
+colorama
+confuse
+pre-commit>=1.16
+requests
+
+[test]
+pytest-cov
+pytest-vcr
+python-coveralls
