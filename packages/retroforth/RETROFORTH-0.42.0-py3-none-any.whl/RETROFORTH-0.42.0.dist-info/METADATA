@@ -1,0 +1,34 @@
+Metadata-Version: 2.1
+Name: RETROFORTH
+Version: 0.42.0
+Summary: RETROFORTH is a Win64/Win32/Linux/MacOS/UNIX, Python, and C++ distribution of https://sr.ht/~crc_/retroforth / http://www.retroforth.org / http://forth.works/book.html is compatible with Charles Childers's https://github.com/crcx / retroforth. Its big brother is RAINBOW4TH.
+Home-page: http://www.github.com/scott91e1/RETROFORTH
+Author: Scott McCallum (https github.com scott91e1)
+Author-email: Scott.McCallum@intermine.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+
+
+
+Welcome to RETRO, my personal take on the Forth language. This is a modern system primarily targetting desktop, mobile, and servers, though it can also be used on some larger (ARM, MIPS32)
+embedded systems.
+
+The language is Forth. It is untyped, uses a stack to pass data between functions called words, and a dictionary which tracks the word names and data structures.
+
+But it's not a traditional Forth. RETRO draws influences from many sources and takes a unique approach to the language.
+
+RETRO has a large vocabulary of words. Keeping a copy of the Glossary on hand is highly recommended as you learn to use RETRO.
+
+http://forth.works/book.html
+
+https://rainbow4th.readme.io
+
+https://github.com/scott91e1/RETROFORTH
+
+
+
