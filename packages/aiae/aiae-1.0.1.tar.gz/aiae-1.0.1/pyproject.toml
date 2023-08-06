@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "aiae"
+version = "1.0.1"
+description = ""
+authors = ["mjaquier <mjaquier@me.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+pandas = "^1.0.4"
+aithermal = "^0.2.8"
+simplelogging = "^0.10.0"
+xlsxwriter = "^1.2.9"
+oyaml = "^0.9"
+scipy = "^1.4.1"
+PySimpleGUI = "^4.20.0"
+aihelper = "^0.1.23"
+black = "^19.10b0"
+matplotlib = "^3.2.2"
+netz = "^0.1.0"
+aitkhelp = "^0.1.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+matplotlib = "^3.2.1"
+isort = "^4.3.21"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"

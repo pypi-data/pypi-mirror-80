@@ -1,0 +1,35 @@
+#EXPORTTYPE:DATA COMPARE
+#FILE:Glycerin 16k.ngb-ds3
+#FORMAT:NETZSCH5
+#FTYPE:ANSI
+#IDENTITY:Glycerin 15k
+#DECIMAL:POINT
+#SEPARATOR:SEMICOLON
+#MTYPE:DSC
+#INSTRUMENT:NETZSCH STA 449F3
+#PROJECT:Activation Energy
+#DATE/TIME:08.09.2020 12:24
+#CORR. FILE:Correction 45-600 85ul 15c.ngb-bs3
+#TEMPCAL:07-09-2020 08:51
+#SENSITIVITY:SENSZERO.EXX
+#LABORATORY:
+#OPERATOR:JAM
+#REMARK:AE Glycerin 15k
+#SAMPLE:Glycerin
+#SAMPLE MASS /mg:11.38
+#MATERIAL:Liquid
+#REFERENCE:
+#REFERENCE MASS /mg:0
+#TYPE OF CRUCIBLE:Al2O3 85 µl, open
+#SAMPLE CRUCIBLE MASS /mg:0
+#REFERENCE CRUCIBLE MASS /mg:0
+#DSC RANGE /µV:5000
+#TG RANGE /mg:35000
+#TAU-R:---
+#CORR. CODE:020
+#EXO:-1
+#RANGE:45°C/15,0(K/min)/400°C
+#SEGMENT:S1/1
+#SEG. 1:45°C/15,0(K/min)/400°C
+
+##Temp./°C;Time/min;DSC/(uV/mg);Mass/%;Gas Flow(purge2)/(ml/min);Gas Flow(protective)/(ml/min);TIC(scan:1)/A;QMID(s:1|m:10)/A;QMID(s:1|m:11)/A;QMID(s:1|m:12)/A;QMID(s:1|m:13)/A;QMID(s:1|m:14)/A;QMID(s:1|m:15)/A;QMID(s:1|m:16)/A;QMID(s:1|m:17)/A;QMID(s:1|m:18)/A;QMID(s:1|m:19)/A;QMID(s:1|m:20)/A;QMID(s:1|m:21)/A;QMID(s:1|m:22)/A;QMID(s:1|m:23)/A;QMID(s:1|m:24)/A;QMID(s:1|m:25)/A;QMID(s:1|m:26)/A;QMID(s:1|m:27)/A;QMID(s:1|m:28)/A;QMID(s:1|m:29)/A;QMID(s:1|m:30)/A;QMID(s:1|m:31)/A;QMID(s:1|m:32)/A;QMID(s:1|m:33)/A;QMID(s:1|m:34)/A;QMID(s:1|m:35)/A;QMID(s:1|m:36)/A;QMID(s:1|m:37)/A;QMID(s:1|m:38)/A;QMID(s:1|m:39)/A;QMID(s:1|m:40)/A;QMID(s:1|m:41)/A;QMID(s:1|m:42)/A;QMID(s:1|m:43)/A;QMID(s:1|m:44)/A;QMID(s:1|m:45)/A;QMID(s:1|m:46)/A;QMID(s:1|m:47)/A;QMID(s:1|m:48)/A;QMID(s:1|m:49)/A;QMID(s:1|m:50)/A;QMID(s:1|m:51)/A;QMID(s:1|m:52)/A;QMID(s:1|m:53)/A;QMID(s:1|m:54)/A;QMID(s:1|m:55)/A;QMID(s:1|m:56)/A;QMID(s:1|m:57)/A;QMID(s:1|m:58)/A;QMID(s:1|m:59)/A;QMID(s:1|m:60)/A;QMID(s:1|m:61)/A;QMID(s:1|m:62)/A;QMID(s:1|m:63)/A;QMID(s:1|m:64)/A;QMID(s:1|m:65)/A;QMID(s:1|m:66)/A;QMID(s:1|m:67)/A;QMID(s:1|m:68)/A;QMID(s:1|m:69)/A;QMID(s:1|m:70)/A;QMID(s:1|m:71)/A;QMID(s:1|m:72)/A;QMID(s:1|m:73)/A;QMID(s:1|m:74)/A;QMID(s:1|m:75)/A;QMID(s:1|m:76)/A;QMID(s:1|m:77)/A;QMID(s:1|m:78)/A;QMID(s:1|m:79)/A;QMID(s:1|m:80)/A;QMID(s:1|m:81)/A;QMID(s:1|m:82)/A;QMID(s:1|m:83)/A;QMID(s:1|m:84)/A;QMID(s:1|m:85)/A;QMID(s:1|m:86)/A;QMID(s:1|m:87)/A;QMID(s:1|m:88)/A;QMID(s:1|m:89)/A;QMID(s:1|m:90)/A;QMID(s:1|m:91)/A;QMID(s:1|m:92)/A;QMID(s:1|m:93)/A;QMID(s:1|m:94)/A;QMID(s:1|m:95)/A;QMID(s:1|m:96)/A;QMID(s:1|m:97)/A;QMID(s:1|m:98)/A;QMID(s:1|m:99)/A;QMID(s:1|m:100)/A;QMID(s:1|m:101)/A;QMID(s:1|m:102)/A;QMID(s:1|m:103)/A;QMID(s:1|m:104)/A;QMID(s:1|m:105)/A;QMID(s:1|m:106)/A;QMID(s:1|m:107)/A;QMID(s:1|m:108)/A;QMID(s:1|m:109)/A;QMID(s:1|m:110)/A;QMID(s:1|m:111)/A;QMID(s:1|m:112)/A;QMID(s:1|m:113)/A;QMID(s:1|m:114)/A;QMID(s:1|m:115)/A;QMID(s:1|m:116)/A;QMID(s:1|m:117)/A;QMID(s:1|m:118)/A;QMID(s:1|m:119)/A;QMID(s:1|m:120)/A;QMID(s:1|m:121)/A;QMID(s:1|m:122)/A;QMID(s:1|m:123)/A;QMID(s:1|m:124)/A;QMID(s:1|m:125)/A;QMID(s:1|m:126)/A;QMID(s:1|m:127)/A;QMID(s:1|m:128)/A;QMID(s:1|m:129)/A;QMID(s:1|m:130)/A;QMID(s:1|m:131)/A;QMID(s:1|m:132)/A;QMID(s:1|m:133)/A;QMID(s:1|m:134)/A;QMID(s:1|m:135)/A;QMID(s:1|m:136)/A;QMID(s:1|m:137)/A;QMID(s:1|m:138)/A;QMID(s:1|m:139)/A;QMID(s:1|m:140)/A;QMID(s:1|m:141)/A;QMID(s:1|m:142)/A;QMID(s:1|m:143)/A;QMID(s:1|m:144)/A;QMID(s:1|m:145)/A;QMID(s:1|m:146)/A;QMID(s:1|m:147)/A;QMID(s:1|m:148)/A;QMID(s:1|m:149)/A;QMID(s:1|m:150)/A;QMID(s:1|m:151)/A;QMID(s:1|m:152)/A;QMID(s:1|m:153)/A;QMID(s:1|m:154)/A;QMID(s:1|m:155)/A;QMID(s:1|m:156)/A;QMID(s:1|m:157)/A;QMID(s:1|m:158)/A;QMID(s:1|m:159)/A;QMID(s:1|m:160)/A;QMID(s:1|m:161)/A;QMID(s:1|m:162)/A;QMID(s:1|m:163)/A;QMID(s:1|m:164)/A;QMID(s:1|m:165)/A;QMID(s:1|m:166)/A;QMID(s:1|m:167)/A;QMID(s:1|m:168)/A;QMID(s:1|m:169)/A;QMID(s:1|m:170)/A;QMID(s:1|m:171)/A;QMID(s:1|m:172)/A;QMID(s:1|m:173)/A;QMID(s:1|m:174)/A;QMID(s:1|m:175)/A;QMID(s:1|m:176)/A;QMID(s:1|m:177)/A;QMID(s:1|m:178)/A;QMID(s:1|m:179)/A;QMID(s:1|m:180)/A;QMID(s:1|m:181)/A;QMID(s:1|m:182)/A;
