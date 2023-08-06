@@ -1,0 +1,17 @@
+LICENSE
+MANIFEST.in
+README.md
+package.json
+setup.py
+dash_tour_component/DashTour.py
+dash_tour_component/Tour.py
+dash_tour_component/__init__.py
+dash_tour_component/_imports_.py
+dash_tour_component/dash_tour_component.min.js
+dash_tour_component/dash_tour_component.min.js.map
+dash_tour_component/metadata.json
+dash_tour_component/package-info.json
+dash_tour_component.egg-info/PKG-INFO
+dash_tour_component.egg-info/SOURCES.txt
+dash_tour_component.egg-info/dependency_links.txt
+dash_tour_component.egg-info/top_level.txt

@@ -1,0 +1,314 @@
+{
+  "src/lib/components/DashTour.react.js": {
+    "description": "",
+    "displayName": "DashTour",
+    "methods": [
+      {
+        "name": "closeTour",
+        "docblock": null,
+        "modifiers": [],
+        "params": [],
+        "returns": null
+      },
+      {
+        "name": "handleCurrentStepChange",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "e",
+            "type": null
+          }
+        ],
+        "returns": null
+      }
+    ],
+    "props": {
+      "id": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "The ID used to identify this component in Dash callbacks."
+      },
+      "accentColor": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Change --reactour-accent (defaults to accentColor on IE) css custom prop to apply color in Helper, number, dots, etc\nType: string\nDefault: string"
+      },
+      "isOpen": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "Whether the Tour component is currently open"
+      },
+      "steps": {
+        "type": {
+          "name": "arrayOf",
+          "value": {
+            "name": "shape",
+            "value": {
+              "selector": {
+                "name": "string",
+                "required": false
+              },
+              "content": {
+                "name": "union",
+                "value": [
+                  {
+                    "name": "string"
+                  }
+                ],
+                "required": true
+              },
+              "position": {
+                "name": "union",
+                "value": [
+                  {
+                    "name": "arrayOf",
+                    "value": {
+                      "name": "number"
+                    }
+                  },
+                  {
+                    "name": "enum",
+                    "value": [
+                      {
+                        "value": "'top'",
+                        "computed": false
+                      },
+                      {
+                        "value": "'right'",
+                        "computed": false
+                      },
+                      {
+                        "value": "'bottom'",
+                        "computed": false
+                      },
+                      {
+                        "value": "'left'",
+                        "computed": false
+                      },
+                      {
+                        "value": "'center'",
+                        "computed": false
+                      }
+                    ]
+                  }
+                ],
+                "required": false
+              },
+              "action": {
+                "name": "func",
+                "required": false
+              },
+              "style": {
+                "name": "object",
+                "required": false
+              },
+              "stepInteraction": {
+                "name": "bool",
+                "required": false
+              },
+              "navDotAriaLabel": {
+                "name": "string",
+                "required": false
+              }
+            }
+          }
+        },
+        "required": false,
+        "description": "The steps in the tour component"
+      },
+      "setProps": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "Dash-assigned callback that should be called to report property changes\nto Dash, to make them available for callbacks."
+      },
+      "children": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "node"
+            },
+            {
+              "name": "string"
+            }
+          ]
+        },
+        "required": false,
+        "description": "Content to be rendered\nType: node | elem"
+      },
+      "className": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Custom class name to add to the Helper\nType: string"
+      },
+      "closeWithMask": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "Close the Tour by clicking the Mask\nType: bool"
+      },
+      "disableDotsNavigation": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "Disable interactivity with Dots navigation in Helper\nType: bool"
+      },
+      "disableInteraction": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "Disable the ability to click or intercat in any way with the Highlighted element\nType: bool"
+      },
+      "disableKeyboardNavigation": {
+        "type": {
+          "name": "enum",
+          "value": [
+            {
+              "value": "PropTypes.bool",
+              "computed": true
+            },
+            {
+              "value": "PropTypes.array",
+              "computed": true
+            }
+          ]
+        },
+        "required": false,
+        "description": "Disable all keyboard navigation (next and prev step) when true, disable only selected keys when array\nType: bool | array(['esc', 'right', 'left'])"
+      },
+      "CurrentStep": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "The Current step"
+      },
+      "goTopStep": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "Programmatically change current step after the first render, when the value changes"
+      },
+      "highlightedMaskClassName": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Custom class name to add to the element which is the overlay for the target element when disableInteraction"
+      },
+      "inViewThreshold": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "Tolerance in pixels to add when calculating if an element is outside viewport to scroll into view"
+      },
+      "maskClassName": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Custom class name to add to the Mask"
+      },
+      "maskSpace": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "Extra Space between in pixels between Highlighted element and Mask"
+      },
+      "rounded": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "Beautify Helper and Mask with border-radius (in px)"
+      },
+      "scrollDuration": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "Smooth scroll duration when positioning the target element (in ms)"
+      },
+      "scrollOffset": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "Offset when positioning the target element after scroll to it"
+      },
+      "showButtons": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "Show/Hide Helper Navigation buttons"
+      },
+      "showCloseButton": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "Show/Hide Helper Close button"
+      },
+      "showNavigation": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "Show/Hide Helper Navigation Dots"
+      },
+      "showNavigationNumber": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "Show/Hide number when hovers on each Navigation Dot"
+      },
+      "showNumber": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "Show/Hide Helper Number Badge"
+      },
+      "startAt": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "Starting step when Tour is open the first time"
+      },
+      "update": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Value to listen if forced update is needed"
+      },
+      "updateDelay": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "Delay time when forcing update. Useful when there are known animation/transitions"
+      }
+    }
+  }
+}
