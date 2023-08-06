@@ -1,0 +1,31 @@
+include AUTHORS.rst
+include CONTRIBUTING.rst
+include HISTORY.rst
+include LICENSE
+include README.rst
+include Makefile
+include requirements_dev.txt
+include tox.ini
+
+include pyswot/swot/VERSION
+include pyswot/swot/README.md
+include pyswot/swot/CONTRIBUTING.md
+exclude pyswot/swot/.document
+exclude pyswot/swot/src
+exclude pyswot/swot/src/swot
+exclude pyswot/swot/swot.iml
+exclude pyswot/swot/test
+exclude pyswot/swot/test/swot
+
+recursive-include tests *
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
+recursive-exclude * *.jar
+recursive-exclude * *.kt
+recursive-exclude * .idea .idea/*
+recursive-exclude * .github .github/*
+
+exclude .editorconfig .gitmodules *.yaml
+
+recursive-include docs *.rst conf.py Makefile make.bat *.jpg *.png *.gif
+recursive-include pyswot *.txt
