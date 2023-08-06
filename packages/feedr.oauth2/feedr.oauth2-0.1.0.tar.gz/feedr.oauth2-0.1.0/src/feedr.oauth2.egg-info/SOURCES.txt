@@ -1,0 +1,11 @@
+MANIFEST.in
+README.md
+package.yml
+setup.py
+src/feedr.oauth2.egg-info/PKG-INFO
+src/feedr.oauth2.egg-info/SOURCES.txt
+src/feedr.oauth2.egg-info/dependency_links.txt
+src/feedr.oauth2.egg-info/not-zip-safe
+src/feedr.oauth2.egg-info/requires.txt
+src/feedr.oauth2.egg-info/top_level.txt
+src/feedr/oauth2/py.typed
