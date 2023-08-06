@@ -1,0 +1,4 @@
+[console_scripts]
+pybash = pybashrc.post_setup:post_setup
+pybash-configure = pybashrc.post_setup:post_setup
+
