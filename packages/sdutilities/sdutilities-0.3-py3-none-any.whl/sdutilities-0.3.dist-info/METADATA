@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: sdutilities
+Version: 0.3
+Summary: This package is intended to implement uniformity across SD Data Science projects.
+Home-page: https://github.com/orgs/SociallyDetermined/
+Author: Stephen Olsen
+Author-email: stephenolsen@sociallydetermined.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+
+# sdutilities
+
+This package is intended to implement uniformity across SD Data Science projects.
+
+Functions and Classes that are included in this package are those frequently used across a variety of projects.  We aim to make our code simplified and uniform by continuously updating both this package and the projects where the functions are applicable.
+
