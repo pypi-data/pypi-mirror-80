@@ -1,0 +1,18 @@
+Metadata-Version: 1.1
+Name: nbjuniper
+Version: 0.1.2
+Summary: Convert Jupyter Notebooks into runnable HTML files with Juniper
+Home-page: https://github.com/ashtonmv/nbjuniper
+Author: Michael Ashton
+Author-email: ashtonmv@gmail.com
+License: MIT
+Download-URL: https://github.com/ashtonmv/nbjuniper/archive/v_012.tar.gz
+Description: UNKNOWN
+Keywords: jupyter,website,html,notebook,interactive,juniper
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
