@@ -1,0 +1,3 @@
+[console_scripts]
+qube = qube.qube_cli:main
+
