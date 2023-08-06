@@ -1,0 +1,14 @@
+MANIFEST.in
+README.md
+setup.py
+hipe4ml/__init__.py
+hipe4ml/analysis_utils.py
+hipe4ml/model_handler.py
+hipe4ml/plot_utils.py
+hipe4ml/tree_handler.py
+hipe4ml.egg-info/PKG-INFO
+hipe4ml.egg-info/SOURCES.txt
+hipe4ml.egg-info/dependency_links.txt
+hipe4ml.egg-info/entry_points.txt
+hipe4ml.egg-info/requires.txt
+hipe4ml.egg-info/top_level.txt

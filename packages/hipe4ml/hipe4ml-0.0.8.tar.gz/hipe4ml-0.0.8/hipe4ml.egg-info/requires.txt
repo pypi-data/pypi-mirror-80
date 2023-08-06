@@ -1,0 +1,16 @@
+uproot>=3.11.1
+matplotlib>=3.2
+pandas>=1.0
+scikit-learn>=0.23
+xgboost>=1.2
+shap>=0.36
+bayesian-optimization>=1.2
+pyarrow>=0.17
+
+[dev]
+pylint>=2.4.4
+flake8>=3.7.9
+pytest>=5.3.4
+twine>=1.11.0
+setuptools>=38.6.0
+wheel>=0.31.0
