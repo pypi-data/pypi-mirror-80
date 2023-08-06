@@ -1,0 +1,3 @@
+[console_scripts]
+ginit = ginit.__main__:main
+
