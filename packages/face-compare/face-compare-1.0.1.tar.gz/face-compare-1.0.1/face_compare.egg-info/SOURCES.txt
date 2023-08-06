@@ -1,0 +1,15 @@
+MANIFEST.in
+README.md
+setup.py
+bin/compare_faces.py
+face_compare/__init__.py
+face_compare/images.py
+face_compare/model.py
+face_compare.egg-info/PKG-INFO
+face_compare.egg-info/SOURCES.txt
+face_compare.egg-info/dependency_links.txt
+face_compare.egg-info/requires.txt
+face_compare.egg-info/top_level.txt
+face_compare/weights/__init__.py
+face_compare/weights/facenet_weights.h5
+face_compare/weights/weights.py
