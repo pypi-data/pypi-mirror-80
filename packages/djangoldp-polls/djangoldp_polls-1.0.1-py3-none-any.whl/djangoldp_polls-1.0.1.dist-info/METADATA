@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: djangoldp-polls
+Version: 1.0.1
+Summary: Djangoldp Polls package
+Home-page: http://git.startinblox.com/applications/etuc/djangoldp-polls
+Author: Startin'blox
+Author-email: maxime@startinblox.com
+License: MIT
+Platform: UNKNOWN
+Requires-Dist: djangoldp (~=0.0)
+Requires-Dist: djangoldp-conversation
+Requires-Dist: djangoldp-circle
+Provides-Extra: dev
+Requires-Dist: factory-boy (>=2.11.0) ; extra == 'dev'
+
+UNKNOWN
+
+
