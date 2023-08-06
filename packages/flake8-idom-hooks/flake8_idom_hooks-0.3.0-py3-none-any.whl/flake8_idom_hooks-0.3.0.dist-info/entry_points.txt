@@ -1,0 +1,3 @@
+[flake8.extension]
+ROH = flake8_idom_hooks:Plugin
+
