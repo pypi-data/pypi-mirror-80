@@ -1,0 +1,7 @@
+type = "Object"
+available = [ "approved", "rejected", "waiting review",]
+
+[parameters]
+date = "String"
+author = "String"
+value = "String"

@@ -1,0 +1,8 @@
+type = "Image"
+
+[parameters]
+frame = "Integer"
+duration = "Integer"
+
+[parameters.optional]
+reference_image = [ "Image", "None",]

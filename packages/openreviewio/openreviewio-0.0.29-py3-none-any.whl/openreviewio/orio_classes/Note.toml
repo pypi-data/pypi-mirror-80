@@ -1,0 +1,10 @@
+type = "Object"
+
+[parameters]
+date = "String"
+author = "String"
+value = "String"
+
+[parameters.optional]
+parent = [ "String", "",]
+metadata = [ "Dict", "None",]
