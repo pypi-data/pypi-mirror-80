@@ -1,0 +1,25 @@
+Metadata-Version: 1.1
+Name: asyncrequester
+Version: 0.0.3
+Summary: Basic async requester
+Home-page: UNKNOWN
+Author: Abdulhamit Akaslan
+Author-email: hamtaksln@gmail.com
+License: MIT
+Description: This library for making async requests!
+        
+        
+        Change Log
+        ==========
+        
+        0.0.1 (19/04/2020)
+        -------------------
+        - First Release
+        
+Keywords: async
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Education
+Classifier: Operating System :: Microsoft :: Windows :: Windows 10
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
