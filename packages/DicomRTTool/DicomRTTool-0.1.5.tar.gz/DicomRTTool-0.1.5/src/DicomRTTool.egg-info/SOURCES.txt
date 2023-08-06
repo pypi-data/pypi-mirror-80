@@ -1,0 +1,17 @@
+LICENSE.txt
+MANIFEST.in
+README.md
+requirements.txt
+setup.py
+Images/multiple_rings.png
+src/Data_Curation_and_Predictions_to_RT.ipynb
+src/DicomRTTool.py
+src/Distribute_Train_Test_Validation.py
+src/Main.py
+src/key_list.txt
+src/template_RS.dcm
+src/DicomRTTool.egg-info/PKG-INFO
+src/DicomRTTool.egg-info/SOURCES.txt
+src/DicomRTTool.egg-info/dependency_links.txt
+src/DicomRTTool.egg-info/requires.txt
+src/DicomRTTool.egg-info/top_level.txt
