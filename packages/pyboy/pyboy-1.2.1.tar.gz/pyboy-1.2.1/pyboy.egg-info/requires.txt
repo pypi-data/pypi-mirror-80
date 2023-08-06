@@ -1,0 +1,10 @@
+cython>=0.29.16
+numpy
+pillow
+pysdl2
+
+[all]
+pyopengl
+markdown
+pdoc3
+gym
