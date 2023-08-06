@@ -1,0 +1,53 @@
+#!/usr/bin/python3
+# BOTLIB - framework to program bots
+#
+#
+
+import ol
+import os
+import sys
+
+from bot.irc import IRC
+
+def daemon():
+    pid = os.fork()
+    if pid != 0:
+        ol.trm.termreset()
+        os._exit(0)
+    os.setsid()
+    os.umask(0)
+    si = open("/dev/null", 'r')
+    so = open("/dev/null", 'a+')
+    se = open("/dev/null", 'a+')
+    os.dup2(si.fileno(), sys.stdin.fileno())
+    os.dup2(so.fileno(), sys.stdout.fileno())
+    os.dup2(se.fileno(), sys.stderr.fileno())
+
+def privileges(name):
+    pwnam = pwd.getpwnam(name)
+    os.setgroups([])
+    os.setgid(pwnam.pw_gid)
+    os.setuid(pwnam.pw_uid)
+    old_umask = os.umask(0o22)
+
+def root():
+    if os.geteuid() != 0:
+        return False
+    return True
+
+def main():
+    k = ol.krn.boot("botd", "/var/lib/botd/")
+    if "d" in k.cfg.opts:
+        daemon()
+        privileges()
+    k.scandir(k.cfg.md)
+    k.walk("bmod")
+    k.load_mod("bot.irc")
+    k.start()
+    k.init(k.cfg.mods)
+    i = IRC()
+    i.start()
+    k.wait()
+
+ol.trm.execute(main)
+os._exit(0)

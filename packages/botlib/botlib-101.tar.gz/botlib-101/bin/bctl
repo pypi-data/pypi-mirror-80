@@ -1,0 +1,16 @@
+#!/usr/bin/python3
+# BOTLIB = framework to program bots
+#
+#
+
+import ol
+import os
+
+def main():
+    k = ol.krn.boot("bctl", "/var/lib/botd/")
+    k.scandir(k.cfg.md)
+    k.walk("bmod")
+    k.cmd(k.cfg.otxt)
+
+ol.trm.execute(main)
+os._exit(0)
