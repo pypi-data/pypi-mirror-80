@@ -1,0 +1,3 @@
+[console_scripts]
+ethsent = ethsential.__main__:main
+
