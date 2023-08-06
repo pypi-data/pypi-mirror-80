@@ -1,0 +1,16 @@
+LICENSE
+MANIFEST.in
+README.md
+pyproject.toml
+setup.cfg
+setup.py
+pygitguardian/__init__.py
+pygitguardian/client.py
+pygitguardian/config.py
+pygitguardian/models.py
+pygitguardian.egg-info/PKG-INFO
+pygitguardian.egg-info/SOURCES.txt
+pygitguardian.egg-info/dependency_links.txt
+pygitguardian.egg-info/requires.txt
+pygitguardian.egg-info/top_level.txt
+pygitguardian.egg-info/zip-safe
