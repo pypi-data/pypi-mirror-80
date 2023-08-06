@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "cloudflare-dyndns"
+version = "2.1"
+description = "CloudFlare Dynamic DNS client"
+authors = ["Kiss György <kissgyorgy@me.com>"]
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/kissgyorgy/cloudflare-dyndns"
+
+
+[tool.poetry.dependencies]
+python = "^3.6"
+click = "^7.0"
+cloudflare = "^2.3"
+requests = "^2.22"
+
+[tool.poetry.scripts]
+cloudflare-dyndns = 'cloudflare_dyndns:main'
+
+[tool.poetry.dev-dependencies]
+nuitka = "^0.6.3"
+pytest = "^5.1"
+black = {version = "^19.10b0", allow-prereleases = true}
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
