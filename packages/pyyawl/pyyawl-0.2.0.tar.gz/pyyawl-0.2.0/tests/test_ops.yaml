@@ -1,0 +1,17 @@
+name: test
+description: test description
+
+tasks:
+  - operator: echo
+    arguments:
+      value: ciao
+  - operator: echo
+    arguments:
+      value: mondo
+  - operator: papermill
+    arguments:
+      input_path: tests/notebooks/sum_test.ipynb
+      output_path: tests/notebooks/sum_test_out.ipynb
+      parameters:
+        a: 8
+        b: 4

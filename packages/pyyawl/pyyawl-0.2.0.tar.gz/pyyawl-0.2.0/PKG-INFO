@@ -1,0 +1,74 @@
+Metadata-Version: 1.2
+Name: pyyawl
+Version: 0.2.0
+Summary: Yet another simple workflow language for python
+Home-page: https://github.com/fabiofumarola/pyyawl
+Author: Fabio Fumarola
+Author-email: fabiofumarola@gmail.com
+License: Apache Software License 2.0
+Description: ========================================
+        Yet Another Workflow Language for Python
+        ========================================
+        
+        
+        .. image:: https://img.shields.io/pypi/v/pyyawl.svg
+                :target: https://pypi.python.org/pypi/pyyawl
+        
+        .. image:: https://img.shields.io/travis/fabiofumarola/pyyawl.svg
+                :target: https://travis-ci.org/fabiofumarola/pyyawl
+        
+        .. image:: https://readthedocs.org/projects/pyyawl/badge/?version=latest
+                :target: https://pyyawl.readthedocs.io/en/latest/?badge=latest
+                :alt: Documentation Status
+        
+        
+        .. image:: https://pyup.io/repos/github/fabiofumarola/pyyawl/shield.svg
+             :target: https://pyup.io/repos/github/fabiofumarola/pyyawl/
+             :alt: Updates
+        
+        
+        
+        Yet another simple workflow language for python
+        
+        
+        * Free software: Apache Software License 2.0
+        * Documentation: https://pyyawl.readthedocs.io.
+        
+        
+        Features
+        --------
+        
+        * execute worfkflow defined in yaml
+        * simple and extensible
+        
+        
+        Credits
+        -------
+        
+        This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
+        
+        .. _Cookiecutter: https://github.com/audreyr/cookiecutter
+        .. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
+        
+        
+        =======
+        History
+        =======
+        
+        0.1.0 (2020-09-28)
+        ------------------
+        
+        * First release on PyPI.
+        
+Keywords: pyyawl
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Python: >=3.5
