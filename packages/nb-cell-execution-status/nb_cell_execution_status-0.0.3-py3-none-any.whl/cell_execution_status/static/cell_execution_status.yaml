@@ -1,0 +1,48 @@
+Type: Jupyter Notebook Extension
+Name: Cell Execution Status
+Section: notebook
+Description: "Cell execution status"
+Link: README.md
+Main: index.js
+Icon: cell_status.png
+Compatibility: 4.x, 5.x
+Parameters:
+- name: CellExecutionStatus.cell_executed_success_alert
+  description: |
+    Audible alert of successful cell execution completion status
+  input_type: checkbox
+  default: false
+- name: CellExecutionStatus.cell_executed_error_alert
+  description: |
+    Audible alert of unsuccessful cell execution completion status
+  input_type: checkbox
+  default: false
+- name: CellExecutionStatus.heartbeat
+  description: |
+    Heartbeat on long running execution
+  input_type: checkbox
+  default: false
+- name: CellExecutionStatus.heartbeat_delay_in_s
+  description: |
+    Heartbeat period (s)
+  input_type: number
+  default: 5
+  step: 1
+  min: 1
+- name: CellExecutionStatus.inform_error_cell_index
+  description: |
+    Spoken alert of errored run cell index
+  input_type: checkbox
+  default: false
+- name: CellExecutionStatus.all_run_alert
+  description: |
+    Spoken announcement that all cells completed
+  input_type: checkbox
+  default: false
+- name: CellExecutionStatus.all_run_alert_min
+  description: |
+    Minimum number of concurrent cells for all cells completed announcement
+  input_type: number
+  default: 5
+  step: 1
+  min: 1
