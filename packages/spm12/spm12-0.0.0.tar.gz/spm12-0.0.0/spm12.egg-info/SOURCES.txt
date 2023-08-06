@@ -1,0 +1,16 @@
+README.rst
+setup.cfg
+setup.py
+spm12/__init__.py
+spm12/nii.py
+spm12/regseg.py
+spm12/utils.py
+spm12.egg-info/PKG-INFO
+spm12.egg-info/SOURCES.txt
+spm12.egg-info/dependency_links.txt
+spm12.egg-info/not-zip-safe
+spm12.egg-info/requires.txt
+spm12.egg-info/top_level.txt
+tests/__init__.py
+tests/__main__.py
+tests/test_utils.py
