@@ -1,0 +1,6 @@
+requests
+typing_extensions
+dataclasses
+
+[with_progress_bars]
+tqdm
