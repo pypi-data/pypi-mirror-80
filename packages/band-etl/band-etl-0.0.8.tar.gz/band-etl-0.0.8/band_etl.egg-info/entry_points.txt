@@ -1,0 +1,3 @@
+[console_scripts]
+bandetl = bandetl.cli:cli
+
