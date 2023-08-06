@@ -1,0 +1,13 @@
+README.rst
+setup.cfg
+setup.py
+oaas_registry_api/__init__.py
+oaas_registry_api/py.typed
+oaas_registry_api.egg-info/PKG-INFO
+oaas_registry_api.egg-info/SOURCES.txt
+oaas_registry_api.egg-info/dependency_links.txt
+oaas_registry_api.egg-info/requires.txt
+oaas_registry_api.egg-info/top_level.txt
+oaas_registry_api/rpc/__init__.py
+oaas_registry_api/rpc/registry_pb2.py
+oaas_registry_api/rpc/registry_pb2_grpc.py

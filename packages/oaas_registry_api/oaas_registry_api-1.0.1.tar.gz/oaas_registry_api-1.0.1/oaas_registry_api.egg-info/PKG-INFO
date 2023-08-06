@@ -1,0 +1,12 @@
+Metadata-Version: 1.0
+Name: oaas-registry-api
+Version: 1.0.1
+Summary: oaas_registry_api
+Home-page: UNKNOWN
+Author: Bogdan Mustiata
+Author-email: bogdan.mustiata@gmail.com
+License: BSD
+Description: Shared API between the ``oaas-registry``, and the ``oaas-grpc``
+        transport.
+        
+Platform: UNKNOWN
