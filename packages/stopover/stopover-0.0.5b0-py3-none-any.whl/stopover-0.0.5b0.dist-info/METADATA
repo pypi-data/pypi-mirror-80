@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: stopover
+Version: 0.0.5b0
+Summary: Stopover's Python SDK
+Home-page: UNKNOWN
+Author: Rodrigo Martínez Castaño
+Author-email: rodrigo@martinez.gal
+License: GNU General Public License v3 (GPLv3)
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=3.6
+Requires-Dist: pymongo (==3.10.1)
+Requires-Dist: python-snappy (==0.5.4)
+Requires-Dist: requests (==2.24.0)
+
+UNKNOWN
+
+
