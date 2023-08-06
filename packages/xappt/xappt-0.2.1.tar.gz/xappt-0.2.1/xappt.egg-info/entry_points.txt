@@ -1,0 +1,3 @@
+[console_scripts]
+xappt = xappt.command_line:entry_point
+
