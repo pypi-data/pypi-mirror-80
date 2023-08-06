@@ -1,0 +1,5 @@
+pyarrow~=1.0
+
+[tests]
+pytest~=5.4.0
+pytz
