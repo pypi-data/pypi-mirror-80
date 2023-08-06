@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: yunit
+Version: 0.1
+Summary: 📐 Physical units for NumPy arrays ⏱ Fast • Simple • High voltage
+Home-page: https://github.com/tfiers/yunit
+Author: Tomas Fiers
+Author-email: tomas.fiers@gmail.com
+License: UNKNOWN
+Project-URL: Source Code, https://github.com/tfiers/yunit
+Description: # yunit 📐
+        
+        Physical units for NumPy arrays.\
+        Fast • Simple • High voltage
+        
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
