@@ -1,0 +1,12 @@
+README.md
+setup.py
+sparqly/__init__.py
+sparqly/item.py
+sparqly/query.py
+sparqly/sanitizer.py
+sparqly.egg-info/PKG-INFO
+sparqly.egg-info/SOURCES.txt
+sparqly.egg-info/dependency_links.txt
+sparqly.egg-info/not-zip-safe
+sparqly.egg-info/top_level.txt
+test/test_end_to_end.py
