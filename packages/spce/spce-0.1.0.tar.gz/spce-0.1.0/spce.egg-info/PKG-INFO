@@ -1,0 +1,18 @@
+Metadata-Version: 1.1
+Name: spce
+Version: 0.1.0
+Summary: ScalePlan's CloudEvents implementation
+Home-page: https://scaleplan.io
+Author: ScalePlan Engineering
+Author-email: dev@scaleplan.io
+License: Apache 2.0
+Description: UNKNOWN
+Keywords: cloudevents,scaleplan,event
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Operating System :: OS Independent
