@@ -1,0 +1,13 @@
+seedoku/__init__.py,sha256=S-cX8nxxrifQJSH5WF0fY7nCbbnXuUyEAik4CMggp6k,20
+seedoku/__main__.py,sha256=UWBv7G4p-E_OnQXLaQ0Oa9mva6IdYY_jPeh3YaiWB6A,8370
+seedoku/sudoku.py,sha256=CTD00lizxy5uVyya85Kz4v7edCJPoAXN3tA6W-d8wz0,6336
+seedoku/trackers/anchors.csv,sha256=japyDNvE7a6ldv_2YkQN8ZabWDb8u-9WnZQtjw1sGOk,62208
+seedoku/trackers/hand_tracker.py,sha256=_GBdJnThntJowKbCuxmy1Q1BI1LKrGieFNtpvU40P9c,8350
+seedoku/trackers/non_maximum_suppression.py,sha256=irVLoNVTJ4pvMcEqh780dvYA1hiUgyIc39VVQAY_I8w,2732
+seedoku/trackers/palm_detection_without_custom_op.tflite,sha256=sDuFnWcT07Z3trvQOJ-e8l3FDPNGcgQ0EIhgxjEwyNA,7069988
+seedoku-1.1.dist-info/LICENSE,sha256=ixuiBLtpoK3iv89l7ylKkg9rs2GzF9ukPH7ynZYzK5s,35148
+seedoku-1.1.dist-info/METADATA,sha256=Lg5vFJkh3phtB56ufNlISg7KTnUDhJytZiT7PAhI5EI,1197
+seedoku-1.1.dist-info/WHEEL,sha256=EVRjI69F5qVjm_YgqcTXPnTAv3BfSUr0WVAHuSP3Xoo,92
+seedoku-1.1.dist-info/entry_points.txt,sha256=yKF9lEhIn8genQPALM4aLXMjqZbLWlrxMpQcGzDMaNs,51
+seedoku-1.1.dist-info/top_level.txt,sha256=9-x6DSg2rOjPxDVKuwVJSi309PH0LfQ6scYLtv4CSks,8
+seedoku-1.1.dist-info/RECORD,,
