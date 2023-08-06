@@ -1,0 +1,39 @@
+Metadata-Version: 2.1
+Name: vault-talenttech-oss
+Version: 1.1.0
+Summary: TopMind Vault Client Helper
+Home-page: https://github.com/severgroup-tt/topmind-commons
+Author: Pavel Popov
+Author-email: p.popov@talenttech.ru
+License: MIT
+Description: Vault client
+        
+        Pre-install
+        
+        ```sh
+        export VAULT_URL=[Vault URL]
+        export VAULT_AUTH_TOKEN=[auth token]
+        export VAULT_NAMESPACE=[namespace]
+        export VAULT_RESTRICTION=[restriction]
+        export VAULT_SECRET_NAME=[secret name]
+        
+        cubbyhole/etl/[VAULT_NAMESPACE]/[VAULT_RESTRICTION]/[VAULT_SECRET_NAME]
+        ```
+        
+        Usage
+        ```sh
+        pip3 install vault-talenttech-oss
+        ```
+        
+        ```python
+        import vault.client as osv
+        
+        #Вернёт DB_PASSWORD из переменных окружения, если не найдёт в Vault
+        osv.getenv("DB_PASSWORD")
+        ```
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
