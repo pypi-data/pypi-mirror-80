@@ -1,0 +1,3 @@
+[console_scripts]
+check_gh_limits = stscraper.github:print_limits
+
