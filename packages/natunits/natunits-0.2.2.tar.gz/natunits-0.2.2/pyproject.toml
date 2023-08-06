@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "natunits"
+version = "0.2.2"
+description = ""
+authors = ["Hajime Fukuda <hajime.fukuda@me.com>"]
+
+[tool.poetry.dependencies]
+python = "^2.7 || ^3.4"
+
+[tool.poetry.dev-dependencies]
+pytest = "^3.0"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
