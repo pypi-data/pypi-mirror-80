@@ -1,0 +1,19 @@
+include *.txt
+include README.md
+
+graft gsw
+recursive-include src *.c
+recursive-include src *.h
+include src/c_gsw/LICENSE
+
+prune docs
+prune tools
+prune notebooks
+prune *.egg-info
+
+global-exclude *.so
+
+exclude *.yml
+exclude *.enc
+exclude .gitignore
+exclude .isort.cfg
