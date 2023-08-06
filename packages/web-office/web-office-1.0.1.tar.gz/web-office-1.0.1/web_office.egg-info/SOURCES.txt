@@ -1,0 +1,14 @@
+MANIFEST.in
+setup.py
+desktop/gdocs.desktop
+desktop/msoo.desktop
+icons/gdocs.svg
+icons/msoo.svg
+web_office.egg-info/PKG-INFO
+web_office.egg-info/SOURCES.txt
+web_office.egg-info/dependency_links.txt
+web_office.egg-info/entry_points.txt
+web_office.egg-info/requires.txt
+web_office.egg-info/top_level.txt
+weboffice/__init__.py
+weboffice/githosting.py
