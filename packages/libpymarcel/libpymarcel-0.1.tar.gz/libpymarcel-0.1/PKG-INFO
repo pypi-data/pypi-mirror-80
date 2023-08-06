@@ -1,0 +1,42 @@
+Metadata-Version: 2.1
+Name: libpymarcel
+Version: 0.1
+Summary: Módulo para exemplo de criação do zero do curso PyTools
+Home-page: https://github.com/marcellatorraca/libpymarcel
+Author: Marcel Latorraca
+Author-email: marcellatorraca@gmail.com
+License: GNU AFFERO GENERAL PUBLIC LICENSE
+Description: # libpymarcel
+        
+        MÃ³dulo para Recriar LibPythonPro do Zero
+        
+        [![Build Status](https://travis-ci.org/marcellatorraca/libpymarcel.svg?branch=master)](https://travis-ci.org/marcellatorraca/libpymarcel)
+        [![Updates](https://pyup.io/repos/github/marcellatorraca/libpymarcel/shield.svg)](https://pyup.io/repos/github/marcellatorraca/libpymarcel/)
+        [![Python 3](https://pyup.io/repos/github/marcellatorraca/libpymarcel/python-3-shield.svg)](https://pyup.io/repos/github/marcellatorraca/libpymarcel/)
+        
+        Suportada versÃ£o 3 de Python
+        
+        Para instalar:
+        
+        ```console
+        python3 -m venv .venv
+        cd .venv/script/activate
+        pip install -r requirements-dev.txt
+        ```
+        
+        Para conferir qualidade do cÃ³digo:
+        
+        ```console
+        flake8
+         ```
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Framework :: Pytest
+Description-Content-Type: text/markdown

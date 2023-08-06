@@ -1,0 +1,12 @@
+LICENSE
+MANIFEST.in
+README.md
+setup.py
+libpymarcel/__init__.py
+libpymarcel/github_api.py
+libpymarcel.egg-info/PKG-INFO
+libpymarcel.egg-info/SOURCES.txt
+libpymarcel.egg-info/dependency_links.txt
+libpymarcel.egg-info/not-zip-safe
+libpymarcel.egg-info/requires.txt
+libpymarcel.egg-info/top_level.txt
