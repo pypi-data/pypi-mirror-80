@@ -1,0 +1,15 @@
+MANIFEST.in
+README.md
+setup.py
+pyvoc/__init__.py
+pyvoc/check_config.py
+pyvoc/dmanager.py
+pyvoc/pyvoc.py
+pyvoc/settings.py
+pyvoc/termoutput.py
+pyvoc.egg-info/PKG-INFO
+pyvoc.egg-info/SOURCES.txt
+pyvoc.egg-info/dependency_links.txt
+pyvoc.egg-info/entry_points.txt
+pyvoc.egg-info/requires.txt
+pyvoc.egg-info/top_level.txt
