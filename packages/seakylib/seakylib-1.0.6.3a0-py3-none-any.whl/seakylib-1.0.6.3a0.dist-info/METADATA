@@ -1,0 +1,70 @@
+Metadata-Version: 2.1
+Name: seakylib
+Version: 1.0.6.3a0
+Summary: Seaky's private lib
+Home-page: https://github.com/sseaky
+Author: Seaky
+Author-email: seaky.cn@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+Requires-Dist: beautifulsoup4
+Requires-Dist: IPy
+Requires-Dist: netmiko
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: paramiko
+Requires-Dist: psutil (==5.6.4)
+Requires-Dist: puresnmp
+Requires-Dist: PyMySQL
+Requires-Dist: requests
+Requires-Dist: SocksiPy-branch
+Requires-Dist: sqlacodegen
+Requires-Dist: SQLAlchemy
+Requires-Dist: sshtunnel
+Requires-Dist: urllib3
+Requires-Dist: concurrent-log-handler
+Requires-Dist: xlrd
+Requires-Dist: redis
+
+## About
+
+This is Seaky's private lib.
+
+
+
+## Update
+
+### 1.0.6.3a
+
+data.redis_fun.pipe_ex
+
+
+
+### 1.0.6.3
+
+data.pd.to_excel
+
+data.redis_func
+
+func.string.obj2list
+
+func.string.qround
+
+os.cmd.OSSQL
+
+
+
+### 1.0.6.2
+
+For Seer
+
+mysql.py    鍙傛暟 timed -> time_update, time_insert, time_check
+log.py  娣诲姞SimpleLog
+mrun.py 娣诲姞show_miss, show_results, stat_results
+http.py 娣诲姞code!=200鏃讹紝閲嶈瘯
+
+
