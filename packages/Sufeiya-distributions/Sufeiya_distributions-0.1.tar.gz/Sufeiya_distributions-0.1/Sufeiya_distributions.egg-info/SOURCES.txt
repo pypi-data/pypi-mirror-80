@@ -1,0 +1,10 @@
+setup.py
+Sufeiya_distributions.egg-info/PKG-INFO
+Sufeiya_distributions.egg-info/SOURCES.txt
+Sufeiya_distributions.egg-info/dependency_links.txt
+Sufeiya_distributions.egg-info/not-zip-safe
+Sufeiya_distributions.egg-info/top_level.txt
+distributions/Binomialdistribution.py
+distributions/Gaussiandistribution.py
+distributions/Generaldistribution.py
+distributions/__init__.py
