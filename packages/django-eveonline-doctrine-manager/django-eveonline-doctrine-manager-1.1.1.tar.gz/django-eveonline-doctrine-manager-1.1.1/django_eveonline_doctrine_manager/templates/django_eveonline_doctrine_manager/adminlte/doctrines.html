@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block header %}
+Doctrines
+{% endblock %}
+
+{% block description %}
+List Doctrines
+
+{% endblock %}
+
+{% block content %}
+
+<div class="box">
+    <div class="box-body">
+        <table class="table table-bordered table-hover text-center">
+            <thead>
+                <th scope="col">Name</th>
+                <th scope="col">Category</th>
+                <th scope="col">Ships</th>
+                <th scope="col">Actions</th>
+            </thead>
+            <tbody>
+                {% for doctrine in doctrines %}
+                <tr>
+                <td><h4>{{doctrine.name}}</h4></td>
+                <td><h4>{{doctrine.category}}</h4></td>
+                <td>
+                {% for fitting in doctrine.fittings.all %}
+                <img class="img-circle" src="https://images.evetech.net/types/{{fitting.ship_id}}/icon?size=32" title="{{fitting.get_ship_name}}" width="32px"> 
+                {% endfor %}
+                </td>
+                <td><a href="{% url 'django-eveonline-doctrine-manager-doctrines-view' doctrine.pk %}" class="btn btn-block btn-primary">View Doctrine</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script>
+    $(function () {
+        $('table').DataTable({
+            'paging': false,
+            'lengthChange': false,
+            'searching': false,
+            'ordering': true,
+            'info': false,
+            'autoWidth': false,
+            'order': [[1, 'asc']],
+            'columnDefs': [
+                { 'orderable': false, 'targets': 0 }
+            ]
+        })
+    })
+</script>
+{% endblock %}

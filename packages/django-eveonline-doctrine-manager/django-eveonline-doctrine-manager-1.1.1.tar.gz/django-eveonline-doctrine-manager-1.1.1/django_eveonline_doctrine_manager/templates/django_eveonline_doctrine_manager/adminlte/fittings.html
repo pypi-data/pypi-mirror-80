@@ -1,0 +1,220 @@
+{% extends "base.html" %}
+
+{% block header %}
+Fittings 
+{% endblock %}
+
+{% block description %}
+List Fittings
+
+{% endblock %}
+
+{% block content %}
+
+<div class="box">
+    <div class="box-body">
+        <table class="table table-bordered table-hover text-center">
+            <thead>
+                <th></th>
+                <th scope="col" class="hidden-xs">Fitting Name</th>
+                <th scope="col" class="hidden-xs">Category</th>
+                <th scope="col" class="hidden-xs">Minimum Skills</th>
+                <th scope="col" class="hidden-xs">Effective Skills</th>
+                <th scope="col">Actions</th>
+            </thead>
+            <tbody>
+                {% for fitting in fittings %}
+                <tr>
+                <td><img class="img-circle" src="https://images.evetech.net/types/{{fitting.ship_id}}/icon?size=32" title="{{fitting.get_ship_name}}" width="32px"></td>
+                <td class="hidden-xs"><p>{{fitting.name}}</p></td>
+                <td class="hidden-xs"><p>{{fitting.category}}</p></td>
+                <td class="hidden-xs">
+                {% if fitting.skillplan %}
+                    <div id="minimum_skills_{{fitting.pk}}">
+                        <button class="btn btn-info btn-block check-skills" id="minimum_skills_{{fitting.pk}}">Check Skills</button>
+                    </div>
+                {% else %}
+                Missing Skill Plan
+                {% endif %}
+                </td>
+                <td class="hidden-xs">
+                {% if fitting.skillplan %}
+                    <button class="btn btn-info btn-block check-skills" id="effective_skills_{{fitting.pk}}">Check Skills</button>
+                {% else %}
+                Missing Skill Plan
+                {% endif %}
+                <td>
+                    <button 
+                        data-toggle="modal" 
+                        data-target="#selectModal_fit_{{fitting.pk}}" 
+                        class="btn btn-info btn-fill btn-block">
+                    View Fitting
+                    </button>
+                    <textarea style="opacity: .01; height:0; position:absolute; z-index: -1;" id="fit_{{fitting.pk}}_copy">{{fitting.fitting}}</textarea>
+                    <textarea style="opacity: .01; height:0; position:absolute; z-index: -1;" id="fit_{{fitting.pk}}_copy_minimum_skills">{{fitting.skill_plan.minimum_skills}}</textarea>
+                    <textarea style="opacity: .01; height:0; position:absolute; z-index: -1;" id="fit_{{fitting.pk}}_copy_effective_skills">{{fitting.skill_plan.effective_skills}}</textarea>
+                </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% for fitting in fittings %}
+    <div class="modal fade col-md-12" id="selectModal_fit_{{fitting.pk}}" data-backdrop="false">
+        <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>Copy Fitting </h4>
+                    </div>
+                    <div class="modal-body">
+                        <textarea style="width:100%" onclick="this.select()" class="col-md-12" rows="15" readonly="readonly">
+                            &#13;&#10;{{fitting.fitting}}
+                        </textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <div class="modal fade col-md-12" id="selectModal_minimum_skills_{{fitting.pk}}" data-backdrop="false">
+        <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>Missing Minimum Skills</h4>
+                    </div>
+                    <div class="modal-body">
+                        <textarea id="minimum_skills_{{fitting.pk}}_textarea" style="width:100%" onclick="this.select()" class="col-md-12" rows="15" readonly="readonly">
+                            &#13;&#10;
+                        </textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <div class="modal fade col-md-12" id="selectModal_effective_skills_{{fitting.pk}}" data-backdrop="false">
+        <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>Missing Effective Skills</h4>
+                    </div>
+                    <div class="modal-body">
+                        <textarea id="effective_skills_{{fitting.pk}}_textarea" style="width:100%" onclick="this.select()" class="col-md-12" rows="15" readonly="readonly">
+                            &#13;&#10;
+                        </textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+    </div>
+    {% endfor %}
+
+{% endblock %}
+
+{% block scripts %}
+
+<script>
+    $(function () {
+        $('table').DataTable({
+            'paging': false,
+            'lengthChange': false,
+            'searching': true,
+            'ordering': true,
+            'info': false,
+            'autoWidth': false,
+            'order': [[1, 'asc']],
+            'columnDefs': [
+                { 'orderable': false, 'targets': 0 }
+            ]
+        })
+    })
+</script>
+
+<script>
+var classname = document.getElementsByClassName("check-skills");
+
+var myFunction = function() {
+    var parent = this.parentElement
+    var element_id = this.id;
+    var fitting_id = element_id.split("_")[2]
+    var url = `/eveonline/api/fittings/skillcheck/?external_id={{request.user.info.get_eveonline_character.external_id}}&fitting_id=${fitting_id}`
+    console.log(url)
+    // create spinner element 
+    var spinner = document.createElement("i")
+    spinner.className = "fa fa-1x fa-spinner fa-spin"
+    // create error element 
+    var error = document.createElement("p")
+    error.className = "text-danger"
+    error.innerText = "Unknown Error"
+    // create success element 
+    var success = document.createElement("p")
+    success.className = "text-success"
+    success.innerText = "Skills success"
+    // create modal element 
+    var modal = document.createElement("button")
+    modal.setAttribute("data-toggle", "modal")
+    modal.setAttribute("data-target", `#selectModal_${element_id}`)
+    modal.setAttribute("class", "btn btn-danger btn-block")
+    modal.innerHTML = "Missing Skills"
+    // remove button, add spinner 
+    this.remove()
+    parent.appendChild(spinner)
+
+    $.ajax(url, {
+        error: function (data, status, xhr) {
+            spinner.remove()
+            parent.appendChild(error);
+        },
+        success: function (data, status, xhr) {
+            if (element_id.includes("minimum") && data['minimum_skills']) {
+                console.log(data['minimum_skills'])
+                spinner.remove()
+                var textarea = document.getElementById(`${element_id}_textarea`)
+                textarea.innerHTML = data['minimum_skills']
+                parent.appendChild(modal)
+            }
+            else if (element_id.includes("effective") && data['effective_skills']) {
+                console.log(data['effective_skills'])
+                spinner.remove()
+                var textarea = document.getElementById(`${element_id}_textarea`)
+                textarea.innerHTML = data['effective_skills']
+                parent.appendChild(modal)
+            }
+            else {
+                spinner.remove()
+                parent.appendChild(success);
+            }
+        }
+    });
+ 
+};
+
+for (var i = 0; i < classname.length; i++) {
+    classname[i].addEventListener('click', myFunction, false);
+}
+
+{% comment %} {% for fitting in doctrine.fittings.all %}
+$.ajax('/eveonline/api/fittings/{{fitting.pk}}/skillcheck/?external_id={{request.user.get_main_character.external_id}}',   // request url
+{
+        error: function (data, status, xhr) {
+            $('#minimum_skills_{{fitting.pk}}').removeClass('fa-spinner');
+            $('#minimum_skills_{{fitting.pk}}').removeClass('fa-spin');
+            $('#effective_skills_{{fitting.pk}}').removeClass('fa-spinner');
+            $('#effective_skills_{{fitting.pk}}').removeClass('fa-spin');
+            $('#minimum_skills_{{fitting.pk}}').addClass('fa-warning');
+            $('#effective_skills_{{fitting.pk}}').addClass('fa-warning');
+        }
+
+        success: function (data, status, xhr) {
+        }
+});
+{% endfor %} {% endcomment %}
+
+</script>
+{% endblock %}

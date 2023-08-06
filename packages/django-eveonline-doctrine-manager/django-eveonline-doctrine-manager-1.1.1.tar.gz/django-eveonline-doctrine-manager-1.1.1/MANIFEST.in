@@ -1,0 +1,4 @@
+include LICENSE
+include README.md
+recursive-include django_eveonline_doctrine_manager/fixtures *
+recursive-include django_eveonline_doctrine_manager/templates *

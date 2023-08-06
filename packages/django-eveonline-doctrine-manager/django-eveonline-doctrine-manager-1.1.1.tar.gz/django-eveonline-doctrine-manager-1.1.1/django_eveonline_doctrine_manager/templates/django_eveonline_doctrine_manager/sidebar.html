@@ -1,0 +1,23 @@
+<li class="treeview">
+    <a href="#">
+        <i class="fa fa-rocket"></i> <span>Doctrine Manager</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+        </span>
+    </a>
+    
+    
+    <ul class="treeview-menu">
+        {% if perms.django_eveonline_doctrine_manager.view_evefitting %}
+        <li><a href="{% url 'django-eveonline-doctrine-manager-fittings-list' %}"><i class="fa fa-wrench"></i>Fittings</a></li>
+        {% else %}
+        <li><a href="#"><i class="fa fa-wrench"></i>No Access: Fittings</a></li>
+        {% endif %}
+        {% if perms.django_eveonline_doctrine_manager.view_evedoctrine %}
+        <li><a href="{% url 'django-eveonline-doctrine-manager-doctrines-list' %}"><i class="fa fa-rocket"></i>Doctrines</a></li>
+        {% else %}
+        <li><a href="#"><i class="fa fa-rocket"></i>No Access: Doctrines</a></li>
+        {% endif %}
+    </ul>
+
+</li>
