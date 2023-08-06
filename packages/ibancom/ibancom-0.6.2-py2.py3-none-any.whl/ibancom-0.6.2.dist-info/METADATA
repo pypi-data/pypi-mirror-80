@@ -1,0 +1,147 @@
+Metadata-Version: 2.1
+Name: ibancom
+Version: 0.6.2
+Summary: Python client for IBAN.com service
+Home-page: https://github.com/RegioHelden/ibancom
+Author: RegioHelden GmbH
+Author-email: entwicklung@regiohelden.de
+License: MIT license
+Keywords: ibancom
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: requests (>=2.21.0)
+
+=======
+ibancom
+=======
+
+
+.. image:: https://img.shields.io/pypi/v/ibancom.svg
+        :target: https://pypi.python.org/pypi/ibancom
+
+.. image:: https://img.shields.io/travis/RegioHelden/ibancom.svg
+        :target: https://travis-ci.org/RegioHelden/ibancom
+
+.. image:: https://readthedocs.org/projects/ibancom/badge/?version=latest
+        :target: https://ibancom.readthedocs.io/en/latest/?badge=latest
+        :alt: Documentation Status
+
+
+Python client for IBAN.com_ API
+
+.. _IBAN.com: https://www.iban.com
+
+
+* Free software: MIT license
+* Documentation: https://ibancom.readthedocs.io.
+
+
+Features
+--------
+
+* IBAN validation
+* IBAN bank data details
+
+Tests
+-----
+
+Tests will be automatically run by travis on commit to master.
+
+They can also be executed locally using docker-compose by running ```docker-compose up```
+
+Requirements upgrades
+---------------------
+
+Check for upgradeable packages by running ```docker-compose run --rm python pip-check```
+
+Making a new release
+--------------------
+
+bumpversion_ is used to manage releases.
+
+.. _bumpversion: https://www.iban.com
+
+Add your changes to the HISTORY_ and run ```docker-compose run --rm python bumpversion <major|minor|patch>```, then push (including tags)
+
+.. _HISTORY: ./HISTORY.rst
+
+Credits
+---------
+
+This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
+
+.. _Cookiecutter: https://github.com/audreyr/cookiecutter
+.. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
+
+
+
+=======
+History
+=======
+
+0.6.1 (2019-09-25)
+------------------
+
+* Replace IBAN URL
+* Use Black for formatting
+
+0.6.0 (2019-10-30)
+------------------
+
+* Upgrade packages
+* Remove Python 2.x support
+* Add tests for Python 3.8
+
+
+0.5.6 (2018-01-08)
+------------------
+
+* Add checking againt SEPA supports for SCT, SDD, COR1, B2B and SCC
+
+
+0.5.5 (2018-01-08)
+------------------
+
+* Add imports in module __init__
+
+
+0.5.4 (2018-01-08)
+------------------
+
+* Improve the way of usage of the library by returning an IBAN object
+* Add pytest-cov to run tests coverage with pytest
+
+
+0.5.3 (2018-01-06)
+------------------
+
+* Update contributing file and fix pep8 errors
+
+0.5.2 (2018-01-06)
+------------------
+
+* Updating README and documentation usage
+
+0.5.1 (2018-01-06)
+------------------
+
+* Remove python 2.6 from travis and setup.py
+
+0.5.0 (2018-01-06)
+------------------
+
+* Remove tests for python 2.6 and add tests for python 3.6.
+
+0.1.1 (2018-01-06)
+------------------
+
+* First release on PyPI.
+
+
