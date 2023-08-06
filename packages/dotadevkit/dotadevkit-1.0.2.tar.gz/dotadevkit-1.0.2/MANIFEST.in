@@ -1,0 +1,5 @@
+include *.md
+include *.txt
+
+# Extensions
+recursive-include ./dotadevkit/polyiou *.h  *.i *.cpp *.py
