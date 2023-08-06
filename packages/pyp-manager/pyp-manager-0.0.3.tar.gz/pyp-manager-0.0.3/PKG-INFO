@@ -1,0 +1,20 @@
+Metadata-Version: 1.1
+Name: pyp-manager
+Version: 0.0.3
+Summary: A pip wrapper that writes requirements.txt automatically
+Home-page: https://github.com/zachtylr21/pyp
+Author: Zach Taylor
+Author-email: zachdtaylor.b@gmail.com
+License: MIT
+Download-URL: https://github.com/zachtylr21/pyp/archive/v0.0.3.tar.gz
+Description: UNKNOWN
+Keywords: pip,python,package,requirements,dependency
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
