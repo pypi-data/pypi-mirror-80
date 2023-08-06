@@ -1,0 +1,3 @@
+[console_scripts]
+eb_multi_app = eb_multi_app.main:main
+
