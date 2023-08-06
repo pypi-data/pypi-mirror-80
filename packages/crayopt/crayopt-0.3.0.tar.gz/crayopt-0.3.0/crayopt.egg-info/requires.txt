@@ -1,0 +1,12 @@
+numpy>=1.17.1
+craygraph>=0.3.0
+craynn>=0.3.0
+tensorflow>=2.3.0
+
+[test]
+pytest>=6.0.0
+
+[visualization]
+matplotlib>=3.3.1
+ffmpeg-python>=0.2.0
+pillow>=7.2.0
