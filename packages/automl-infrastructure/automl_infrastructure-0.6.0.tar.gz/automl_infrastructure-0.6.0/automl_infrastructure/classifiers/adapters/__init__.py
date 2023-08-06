@@ -1,0 +1,2 @@
+from automl_infrastructure.classifiers.adapters.sklearn import SklearnClassifierAdapter
+from automl_infrastructure.classifiers.adapters.keras_classifier import KerasClassifierAdapter
