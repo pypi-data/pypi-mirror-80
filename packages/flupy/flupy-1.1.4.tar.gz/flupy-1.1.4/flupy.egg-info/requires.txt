@@ -1,0 +1,8 @@
+
+[dev]
+pytest
+pytest-cov
+pre-commit
+pylint
+black
+mypy
