@@ -1,0 +1,40 @@
+Metadata-Version: 2.1
+Name: mdformat-config
+Version: 0.1.1
+Summary: Mdformat plugin to beautify configuration and data-serialization formats
+Home-page: https://github.com/hukkinj1/mdformat-config
+License: MIT
+Keywords: mdformat,json,markdown,commonmark,formatter
+Author: Taneli Hukkinen
+Author-email: hukkinj1@users.noreply.github.com
+Requires-Python: >=3.6,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Topic :: Documentation
+Classifier: Topic :: Text Processing :: Markup
+Requires-Dist: mdformat (>=0.1.2)
+Requires-Dist: ruamel.yaml (>=0.16.0)
+Requires-Dist: toml (>=0.10.0)
+Project-URL: Repository, https://github.com/hukkinj1/mdformat-config
+Description-Content-Type: text/markdown
+
+[![Build Status](https://github.com/hukkinj1/mdformat-config/workflows/Tests/badge.svg?branch=master)](<https://github.com/hukkinj1/mdformat-config/actions?query=workflow%3ATests+branch%3Amaster+event%3Apush>)
+[![PyPI version](https://badge.fury.io/py/mdformat-config.svg)](<https://badge.fury.io/py/mdformat-config>)
+
+# mdformat-config
+> Mdformat plugin to beautify configuration and data-serialization formats
+
+## Description
+mdformat-config is an [mdformat](https://github.com/executablebooks/mdformat) plugin
+that makes mdformat beautify configuration and data-serialization formats.
+Currently supported formats are JSON, TOML and YAML.
+
+## Usage
+Install with:
+```console
+pip install mdformat-config
+```
+
