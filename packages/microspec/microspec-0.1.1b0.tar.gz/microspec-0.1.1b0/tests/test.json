@@ -1,0 +1,33 @@
+{
+  "globals":
+  {
+     "hex": "0xFF"
+    ,"int": 256
+    ,"string": "foo"
+    ,"bool": false
+  },
+  "protocol":
+  {
+    "command":
+    {
+       "0":  { "name": "a", "variables": [ "command_id"           ], "sizes": [1] }
+      ,"1":  { "name": "b", "variables": [ "command_id", "a"      ], "sizes": [1,1] }
+      ,"2":  { "name": "c", "variables": [ "command_id", "a", "b" ], "sizes": [1,1,4],
+                            "repeat":    { "b": "a" } }
+    },
+    "bridge":
+    {
+       "0":  { "name": "a", "variables": [ "command_id"           ], "sizes": [1] }
+      ,"1":  { "name": "b", "variables": [ "command_id", "a"      ], "sizes": [1,1] }
+      ,"2":  { "name": "c", "variables": [ "command_id", "a", "b" ], "sizes": [1,1,4],
+                            "repeat":    { "b": "a" } }
+    },
+    "sensor":
+    {
+       "0":  { "name": "a", "variables": [ "command_id"           ], "sizes": [1] }
+      ,"1":  { "name": "b", "variables": [ "command_id", "a"      ], "sizes": [1,1] }
+      ,"2":  { "name": "c", "variables": [ "command_id", "a", "b" ], "sizes": [1,1,4],
+                            "repeat":    { "b": "a" } }
+    }
+  }
+}
