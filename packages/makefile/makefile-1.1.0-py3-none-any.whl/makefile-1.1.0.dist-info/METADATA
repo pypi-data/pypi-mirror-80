@@ -1,0 +1,43 @@
+Metadata-Version: 2.1
+Name: makefile
+Version: 1.1.0
+Summary: makefile is python package to read makefile variables
+Home-page: https://github.com/kirankotari/makefile.git
+Author: Kiran Kumar Kotari
+Author-email: kirankotari@live.com
+License: UNKNOWN
+Keywords: Makefile,makefile reader,makefile-reader
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Description-Content-Type: text/markdown
+
+# makefile
+
+makefile is simple tool to read varialbe from Makefile
+
+## How to Install
+
+```bash
+pip install makefile
+```
+
+## Usage
+
+```bash
+from makefile import Makefile
+obj = Makefile()
+print(obj.read())
+```
+
+## Contact
+
+Contact Kiran Kumar Kotari <kirankotari@live.com> with any suggestions or comments. If you find any bugs please fix them and send me a pull request.
+
