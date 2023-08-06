@@ -1,0 +1,37 @@
+Metadata-Version: 2.1
+Name: pymaro
+Version: 0.1.1a4
+Summary: 
+Requires-Dist: numpy (==1.19.1)
+Requires-Dist: torch (==1.6.0)
+Requires-Dist: holidays (==0.10.3)
+Requires-Dist: pyaml (==20.4.0)
+Requires-Dist: redis (==3.5.3)
+Requires-Dist: pyzmq (==19.0.2)
+Requires-Dist: requests (==2.24.0)
+Requires-Dist: psutil (==5.7.2)
+Requires-Dist: deepdiff (==5.0.2)
+Requires-Dist: azure-storage-blob (==12.3.2)
+Requires-Dist: azure-storage-common (==2.1.0)
+Requires-Dist: geopy (==2.0.0)
+Requires-Dist: pandas (==0.25.3)
+Requires-Dist: PyYAML (==5.3.1)
+
+Multi-Agent Resource Optimization (MARO) platform is an instance of Reinforcement
+learning as a Service (RaaS) for real-world resource optimization.
+
+Home-page: https://github.com/microsoft/maro
+Author: Arthur Jiang
+Author-email: shujia.jiang@microsoft.com
+License: MIT License
+Project-URL: Code, https://github.com/microsoft/maro
+Project-URL: Issues, https://github.com/microsoft/maro/issues
+Project-URL: Documents, https://maro.readthedocs.io/en/latest
+Description: UNKNOWN
+Keywords: citi-bike,inventory-management,operations-research,reinforcement-learning,resource-optimization,simulator
+Platform: Windows
+Platform: Linux
+Platform: macOS
+Classifier: Programing Language :: Python
+Classifier: Programing Language :: Python :: 3
+Requires-Python: >=3.6,<3.8
