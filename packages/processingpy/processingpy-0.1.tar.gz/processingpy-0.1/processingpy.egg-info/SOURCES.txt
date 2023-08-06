@@ -1,0 +1,12 @@
+README.md
+setup.cfg
+setup.py
+package_archetype/__init__.py
+package_archetype/hello_world.py
+package_archetype/test/__init__.py
+processingpy.egg-info/PKG-INFO
+processingpy.egg-info/SOURCES.txt
+processingpy.egg-info/dependency_links.txt
+processingpy.egg-info/entry_points.txt
+processingpy.egg-info/requires.txt
+processingpy.egg-info/top_level.txt
