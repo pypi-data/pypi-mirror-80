@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: mma
+Version: 1.3.20.2
+Summary: MMA - Music Midi Accompaniment available as a pip module
+Home-page: https://github.com/hugonxc/mma_pip
+Author: Hugo Neves de Carvalho
+Author-email: hugonvsc@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+
+# MMA—Musical MIDI Accompaniment
+
+This is a fork from [MMA](https://www.mellowood.ca/mma/) to make it available as a pip module.
+The current version of MMA in this project is 20.02, which can be different from the main repository.
+
+
