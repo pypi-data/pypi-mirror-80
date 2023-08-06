@@ -1,0 +1,4 @@
+[console_scripts]
+remarkable_sim = remarkable_sim.sim:main
+resim = remarkable_sim.sim:main
+
