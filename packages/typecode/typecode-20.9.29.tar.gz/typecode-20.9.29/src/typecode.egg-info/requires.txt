@@ -1,0 +1,17 @@
+attrs
+binaryornot
+commoncode
+pdfminer.six
+plugincode
+pygments
+six
+
+[full]
+typecode-libmagic
+
+[minimal]
+typecode-libmagic-system-provided
+
+[testing]
+pytest>=6
+pytest-xdist>=2
